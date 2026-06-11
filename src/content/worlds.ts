@@ -15,8 +15,6 @@ import bodyStages from "./body/stages.json";
 import feelingsStages from "./feelings/stages.json";
 import affixStages from "./affix/stages.json";
 import grammarStages from "./grammar/stages.json";
-import ifElseStages from "./ifelse/stages.json";
-import loopsStages from "./loops/stages.json";
 import type { StageDef } from "./types";
 
 export interface WorldDef {
@@ -232,30 +230,6 @@ export const WORLDS: WorldDef[] = [
       { stage: 40, name: "Sentence Star", icon: "⭐" },
       { stage: 50, name: "Grammar Guru", icon: "📖" },
       { stage: 55, name: "Master of Grammar", icon: "🏆" },
-    ],
-  },
-  {
-    id: "ifelse", name: "Decision Valley", icon: "🔀", tagline: "If… then… else!",
-    stages: ifElseStages as StageDef[],
-    milestones: [
-      { stage: 10, name: "Rule Follower", icon: "📜" },
-      { stage: 20, name: "Path Chooser", icon: "🔀" },
-      { stage: 30, name: "Comparer", icon: "⚖️" },
-      { stage: 40, name: "Logic Thinker", icon: "🧠" },
-      { stage: 50, name: "Decision Star", icon: "⭐" },
-      { stage: 55, name: "Master of Decisions", icon: "🏆" },
-    ],
-  },
-  {
-    id: "loops", name: "Repeat Rapids", icon: "🔁", tagline: "Loops & repeats!",
-    stages: loopsStages as StageDef[],
-    milestones: [
-      { stage: 10, name: "Loop Counter", icon: "🔂" },
-      { stage: 20, name: "Group Repeater", icon: "🔢" },
-      { stage: 30, name: "Pattern Pro", icon: "🌀" },
-      { stage: 40, name: "Iteration Ace", icon: "🤖" },
-      { stage: 50, name: "Loop Star", icon: "⭐" },
-      { stage: 55, name: "Master of Loops", icon: "🏆" },
     ],
   },
 ];

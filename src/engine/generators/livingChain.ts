@@ -18,6 +18,11 @@ const CHAINS: string[][] = [
   ["🍃 plankton", "🦐 shrimp", "🐧 penguin", "🐋 orca"],
   ["☀️ sunlight", "🌱 grass", "🦗 cricket", "🐸 frog", "🦅 hawk"],
   ["🍂 leaves", "🪱 worm", "🐦 bird", "🐱 cat", "🦊 fox"],
+  ["🌽 corn", "🐔 chicken", "🦊 fox"],
+  ["🥬 lettuce", "🐌 snail", "🐦 bird"],
+  ["🌱 grass", "🦌 deer", "🐯 tiger"],
+  ["🌸 flower", "🦋 butterfly", "🕷️ spider", "🐦 bird"],
+  ["🌾 seeds", "🐿️ squirrel", "🦉 owl"],
 ];
 
 const CYCLES: string[][] = [
@@ -28,12 +33,18 @@ const CYCLES: string[][] = [
   ["🥚 egg", "🪱 tadpole", "🐸 frog"],
   ["🌑 new moon", "🌓 half moon", "🌕 full moon", "🌗 waning moon"],
   ["🥚 egg", "🐛 larva", "🛏 pupa", "🐝 bee"],
+  ["🌰 acorn", "🌱 seedling", "🌳 oak tree"],
+  ["🥚 egg", "🐧 fluffy chick", "🐧 penguin"],
+  ["🥚 egg", "🐢 baby turtle", "🐢 big sea turtle"],
 ];
 
 const HABITATS: Array<[string, string]> = [
   ["🐪 camel", "desert"], ["🐧 penguin", "ice"], ["🐵 monkey", "jungle"],
   ["🦈 shark", "ocean"], ["🦅 eagle", "mountains"], ["🐸 frog", "pond"],
   ["🦊 fox", "forest"], ["🐍 snake", "desert"], ["🐋 whale", "ocean"],
+  ["🐻 bear", "forest"], ["🦒 giraffe", "savanna"], ["🐬 dolphin", "ocean"],
+  ["🦫 beaver", "river"], ["🦂 scorpion", "desert"], ["🐆 jaguar", "jungle"],
+  ["🐐 mountain goat", "mountains"], ["🦆 duck", "pond"], ["🦜 parrot", "jungle"],
 ];
 const HABITAT_NAMES = [...new Set(HABITATS.map(([, h]) => h))];
 

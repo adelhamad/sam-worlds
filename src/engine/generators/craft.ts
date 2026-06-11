@@ -19,8 +19,14 @@ const MOBS: Array<[string, string]> = [
   ["Which mob 👁️ teleports away?", "Enderman"],
   ["Which mob 🐷 lives in the Nether?", "Piglin"],
   ["Which mob 🕸️ climbs walls?", "Spider"],
+  ["Which mob 🔥 shoots fireballs?", "Blaze"],
+  ["Which mob 💚 splits when you hit it?", "Slime"],
+  ["Which mob 💎 trades for emeralds?", "Villager"],
+  ["Which mob ☀️ burns in sunlight?", "Zombie"],
+  ["Which mob 🌊 guards ocean temples?", "Guardian"],
+  ["Which mob 🐉 waits at the End?", "Ender Dragon"],
 ];
-const MOB_NAMES = [...new Set(MOBS.map(([, m]) => m)), "Zombie", "Sheep", "Villager"];
+const MOB_NAMES = [...new Set(MOBS.map(([, m]) => m)), "Sheep", "Cow", "Bat"];
 
 export interface CraftParams {
   types: Array<"recipe" | "wall" | "stack" | "smelt" | "coords" | "mob">;

@@ -17,8 +17,6 @@ import { generateBody, type BodyParams } from "./body";
 import { generateFeelings, type FeelingsParams } from "./feelings";
 import { generateAffix, type AffixParams } from "./affix";
 import { generateGrammar, type GrammarParams } from "./grammar";
-import { generateIfElse, type IfElseParams } from "./ifElse";
-import { generateLoops, type LoopParams } from "./loops";
 import type { GenContext, GeneratorParams, Question } from "./types";
 
 export type GeneratorId =
@@ -39,9 +37,7 @@ export type GeneratorId =
   | "body"
   | "feelings"
   | "affix"
-  | "grammar"
-  | "ifElse"
-  | "loops";
+  | "grammar";
 
 function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, ctx: GenContext): Question {
   switch (id) {
@@ -81,10 +77,6 @@ function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, c
       return generateAffix(params as unknown as AffixParams, rng, ctx);
     case "grammar":
       return generateGrammar(params as unknown as GrammarParams, rng, ctx);
-    case "ifElse":
-      return generateIfElse(params as unknown as IfElseParams, rng, ctx);
-    case "loops":
-      return generateLoops(params as unknown as LoopParams, rng, ctx);
   }
 }
 

@@ -13,6 +13,9 @@ const LANDMARKS: Array<[string, string]> = [
   ["🗼 Eiffel Tower", "France"], ["🗽 Statue of Liberty", "USA"], ["🐫 Great Pyramids", "Egypt"],
   ["🏯 Himeji Castle", "Japan"], ["🗿 Moai statues", "Easter Island"], ["🏛️ Parthenon", "Greece"],
   ["🧱 Great Wall", "China"], ["🎡 London Eye", "England"], ["⛪ Sagrada Família", "Spain"],
+  ["🏟️ Colosseum", "Italy"], ["🕌 Taj Mahal", "India"], ["🗻 Mount Fuji", "Japan"],
+  ["🎭 Sydney Opera House", "Australia"], ["⛰️ Machu Picchu", "Peru"], ["🏰 Neuschwanstein Castle", "Germany"],
+  ["🌉 Golden Gate Bridge", "USA"], ["🕋 Kaaba", "Saudi Arabia"], ["🏛️ Petra", "Jordan"],
 ];
 const COUNTRIES = [...new Set(LANDMARKS.map(([, c]) => c))];
 
@@ -20,15 +23,18 @@ const COLOR_MIXES: Array<[string, string]> = [
   ["purple 🟣", "🔴 red + 🔵 blue"], ["green 🟢", "🔵 blue + 🟡 yellow"],
   ["orange 🟠", "🔴 red + 🟡 yellow"], ["pink 🩷", "🔴 red + ⚪ white"],
   ["brown 🟤", "🔴 red + 🟢 green"], ["sky blue 🩵", "🔵 blue + ⚪ white"],
+  ["gray 🩶", "⚫ black + ⚪ white"],
 ];
 const MIX_OPTIONS = [...new Set(COLOR_MIXES.map(([, m]) => m))];
 
-const TIMELINE = ["🛞 wheel", "📜 paper", "🖨️ printing press", "🚂 steam train", "💡 light bulb", "✈️ airplane", "🚀 space rocket", "💻 computer"];
+const TIMELINE = ["🛞 wheel", "📜 paper", "🖨️ printing press", "🚂 steam train", "💡 light bulb", "🚗 car", "✈️ airplane", "🚀 space rocket", "💻 computer", "📱 smartphone"];
 
 const CONTINENT_ANIMALS: Array<[string, string]> = [
   ["🦘 kangaroo", "Australia"], ["🐼 panda", "Asia"], ["🦁 lion", "Africa"],
   ["🦬 bison", "North America"], ["🦙 llama", "South America"], ["🐺 wolf", "Europe"],
   ["🐧 emperor penguin", "Antarctica"],
+  ["🐨 koala", "Australia"], ["🦍 gorilla", "Africa"], ["🐯 tiger", "Asia"],
+  ["🦅 bald eagle", "North America"], ["🦌 reindeer", "Europe"], ["🦜 toucan", "South America"],
 ];
 const CONTINENTS = [...new Set(CONTINENT_ANIMALS.map(([, c]) => c))];
 

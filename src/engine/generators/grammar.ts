@@ -2,19 +2,37 @@
 import { pick, shuffle, type RNG } from "../rng";
 import type { GenContext, Question } from "./types";
 
-const NOUNS = ["dog", "ball", "tree", "car", "book", "house", "teacher", "river", "chair", "apple"];
-const VERBS = ["run", "jump", "eat", "sleep", "sing", "read", "swim", "write", "play", "laugh"];
-const ADJECTIVES = ["big", "happy", "red", "fast", "tall", "soft", "loud", "cold", "funny", "shiny"];
+const NOUNS = [
+  "dog", "ball", "tree", "car", "book", "house", "teacher", "river", "chair", "apple",
+  "school", "beach", "bird", "cake", "train", "garden", "doctor", "mountain", "pencil", "shoe",
+];
+const VERBS = [
+  "run", "jump", "eat", "sleep", "sing", "read", "swim", "write", "play", "laugh",
+  "climb", "dance", "throw", "catch", "draw", "build", "shout", "listen", "cook", "fly",
+];
+const ADJECTIVES = [
+  "big", "happy", "red", "fast", "tall", "soft", "loud", "cold", "funny", "shiny",
+  "small", "green", "slow", "short", "quiet", "warm", "sad", "brave", "dirty", "bright",
+];
 
 // vowel-sound words take "an"
-const AN_WORDS = ["apple", "egg", "orange", "umbrella", "igloo", "elephant", "ant", "octopus"];
-const A_WORDS = ["ball", "dog", "car", "house", "tree", "book", "cup", "kite"];
+const AN_WORDS = [
+  "apple", "egg", "orange", "umbrella", "igloo", "elephant", "ant", "octopus",
+  "owl", "oven", "island", "ear", "eagle", "insect", "astronaut",
+];
+const A_WORDS = [
+  "ball", "dog", "car", "house", "tree", "book", "cup", "kite",
+  "banana", "robot", "train", "lion", "table", "garden", "pencil", "rainbow",
+];
 
 // [singular, plural]
 const PLURALS: Array<[string, string]> = [
   ["dog", "dogs"], ["cat", "cats"], ["book", "books"], ["car", "cars"], ["box", "boxes"], ["bus", "buses"],
   ["child", "children"], ["foot", "feet"], ["tooth", "teeth"], ["mouse", "mice"], ["man", "men"],
   ["woman", "women"], ["person", "people"], ["fish", "fish"], ["sheep", "sheep"],
+  ["fox", "foxes"], ["dish", "dishes"], ["brush", "brushes"], ["baby", "babies"], ["puppy", "puppies"],
+  ["story", "stories"], ["cherry", "cherries"], ["leaf", "leaves"], ["wolf", "wolves"], ["knife", "knives"],
+  ["goose", "geese"],
 ];
 
 // [present, past]
@@ -22,6 +40,9 @@ const PAST: Array<[string, string]> = [
   ["jump", "jumped"], ["play", "played"], ["walk", "walked"], ["help", "helped"],
   ["run", "ran"], ["eat", "ate"], ["go", "went"], ["see", "saw"], ["swim", "swam"],
   ["sing", "sang"], ["write", "wrote"], ["sleep", "slept"], ["make", "made"], ["give", "gave"],
+  ["drink", "drank"], ["ride", "rode"], ["fly", "flew"], ["draw", "drew"], ["build", "built"],
+  ["catch", "caught"], ["think", "thought"], ["buy", "bought"], ["come", "came"], ["fall", "fell"],
+  ["tell", "told"], ["find", "found"],
 ];
 
 export interface GrammarParams {

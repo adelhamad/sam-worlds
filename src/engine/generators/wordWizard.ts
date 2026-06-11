@@ -15,10 +15,26 @@ const RHYMES: string[][] = [
   ["LIGHT", "NIGHT", "KITE", "BRIGHT"],
   ["BLUE", "GLUE", "SHOE", "TWO"],
   ["RING", "KING", "SING", "WING"],
+  ["RAIN", "TRAIN", "BRAIN", "CHAIN"],
+  ["GOAT", "BOAT", "COAT", "NOTE"],
+  ["BEAR", "CHAIR", "PEAR", "HAIR"],
+  ["SNOW", "GROW", "SLOW", "GLOW"],
+  ["FISH", "DISH", "WISH", "SWISH"],
+  ["DAY", "PLAY", "WAY", "TRAY"],
+  ["TEN", "PEN", "HEN", "DEN"],
+  ["ROCK", "SOCK", "CLOCK", "BLOCK"],
+  ["ICE", "RICE", "MICE", "DICE"],
+  ["HOUSE", "MOUSE", "BLOUSE"],
 ];
 
-const SHORT_WORDS = ["SUN", "CUP", "DOG", "CAT", "BOX", "HAT", "BUS", "PEN", "BED", "FOX", "JAM", "MAP"];
-const LONG_WORDS = ["TRAIN", "PLANT", "BREAD", "CLOUD", "SMILE", "BRUSH", "CROWN", "GHOST", "SNAIL", "SWORD"];
+const SHORT_WORDS = [
+  "SUN", "CUP", "DOG", "CAT", "BOX", "HAT", "BUS", "PEN", "BED", "FOX", "JAM", "MAP",
+  "PIG", "WEB", "NUT", "RUG", "LIP", "VAN", "ZIP", "MUD",
+];
+const LONG_WORDS = [
+  "TRAIN", "PLANT", "BREAD", "CLOUD", "SMILE", "BRUSH", "CROWN", "GHOST", "SNAIL", "SWORD",
+  "STORM", "BEACH", "TIGER", "CANDY", "MAGIC", "ROBOT", "SHARK", "FRUIT", "QUEEN", "HORSE",
+];
 
 export interface WordParams {
   types: Array<"rhyme" | "unscramble" | "missing" | "oddSound">;

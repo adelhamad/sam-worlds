@@ -106,18 +106,6 @@ const WORLD_BEATS: Record<string, StoryBeat[]> = {
     { afterStage: 30, text: "You can send words into the past!", tease: "Whole sentences await a grammar master…" },
     { afterStage: 55, text: "The galaxy reads perfectly!", tease: "Master of Grammar — beautifully said." },
   ],
-  ifelse: [
-    { afterStage: 0, text: "Two paths split at every turn of the valley.", tease: "IF this… THEN what?" },
-    { afterStage: 10, text: "Now paths branch with an ELSE!", tease: "When the IF is false, where do you go?" },
-    { afterStage: 30, text: "You compare numbers like a real computer.", tease: "Bigger? Smaller? You decide…" },
-    { afterStage: 55, text: "Every decision bends to your logic!", tease: "Master of Decisions — that's coding thinking!" },
-  ],
-  loops: [
-    { afterStage: 0, text: "The river repeats the same little rapid.", tease: "How many times does it loop?" },
-    { afterStage: 10, text: "Whole groups repeat now — like multiplying!", tease: "Count them all…" },
-    { afterStage: 30, text: "Patterns loop forever down the rapids.", tease: "What comes next in the cycle?" },
-    { afterStage: 55, text: "Every loop bends to your command!", tease: "Master of Loops — real programmer thinking!" },
-  ],
   arabic: [
     { afterStage: 0, text: "A quiet garden where letters grow on trees.", tease: "The first letters are sprouting…" },
     { afterStage: 10, text: "The garden hums with new sounds!", tease: "Soon the letters will join into words…" },

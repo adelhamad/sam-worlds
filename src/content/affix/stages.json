@@ -13,8 +13,8 @@
     "payout": 24,
     "intro": [
       "A prefix is added to the FRONT of a word.",
-      "un + happy = unhappy!",
-      "Tap the right word."
+      "un + happy = unhappy — \"not happy\"!",
+      "Pick the part that makes the meaning."
     ]
   },
   {
@@ -123,7 +123,8 @@
     "payout": 40,
     "intro": [
       "A suffix is added to the END of a word.",
-      "help + ful = helpful!"
+      "help + ful = helpful — \"full of help\"!",
+      "Pick the ending that makes the meaning."
     ]
   },
   {

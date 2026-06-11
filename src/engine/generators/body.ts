@@ -13,6 +13,9 @@ const ORGANS: Array<[string, string, string]> = [
   ["👁️", "eyes", "let you see"],
   ["👂", "ears", "let you hear"],
   ["🫃", "stomach", "breaks down food"],
+  ["🩸", "blood", "carries food and air around your body"],
+  ["🧍", "skin", "protects everything inside you"],
+  ["🫘", "kidneys", "clean your blood"],
 ];
 
 // [sense emoji, body part, sense]
@@ -35,6 +38,12 @@ const HEALTHY: Array<[string, string[]]> = [
   ["🧼 washing hands", ["🤧 touching food dirty", "🚫 skipping the sink", "👋 dirty hands"]],
   ["🥛 milk for bones", ["🥤 fizzy drink", "🍦 ice cream meal", "🍫 chocolate bar"]],
   ["☀️ play outside", ["📱 screens all day", "🛏️ stay in bed", "🎮 no breaks"]],
+  ["🥗 a fresh salad", ["🍟 fries every day", "🍫 chocolate dinner", "🥤 fizzy drink"]],
+  ["🦷 visiting the dentist", ["🙈 hiding from check-ups", "🍬 extra candy", "🚫 never brushing"]],
+  ["⚽ playing sports", ["🛋️ couch all weekend", "🎮 gaming all night", "🍕 pizza marathon"]],
+  ["🥕 carrot sticks", ["🍩 a donut", "🍬 gummy bears", "🍪 a cookie jar"]],
+  ["🧘 quiet rest time", ["📺 loud TV all day", "🏃 never slowing down", "🎮 screens till midnight"]],
+  ["🚶 walking to school", ["🛗 always the elevator", "🛋️ never moving", "📱 walking while staring at a phone"]],
 ];
 
 // ordering journeys — each is a self-contained "put in order" question
@@ -43,6 +52,10 @@ const SEQUENCES: Array<[string, string[]]> = [
   ["How does a breath travel?", ["👃 nose", "🌬️ windpipe", "🫁 lungs"]],
   ["How do you grow up?", ["👶 baby", "🧒 child", "🧑 grown-up"]],
   ["A tooth's life:", ["🦷 baby tooth", "🫨 wobbly tooth", "✨ new tooth"]],
+  ["Where does blood travel?", ["🫀 heart", "🩸 blood vessels", "🦶 all the way to your toes"]],
+  ["How does a cut heal?", ["🩸 it bleeds a little", "🩹 a scab grows", "✨ new skin appears"]],
+  ["Wash those germs away!", ["💧 wet your hands", "🧼 scrub with soap", "🧻 dry them off"]],
+  ["Getting ready to sleep:", ["🪥 brush your teeth", "📖 a bedtime story", "😴 lights out"]],
 ];
 
 export interface BodyParams {
