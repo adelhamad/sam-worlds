@@ -76,6 +76,24 @@ const WORLD_BEATS: Record<string, StoryBeat[]> = {
     { afterStage: 40, text: "You dug below zero and survived!", tease: "Diamond counting awaits the brave…" },
     { afterStage: 55, text: "The cavern bows to a true crafter.", tease: "Netherite Master — count on it!" },
   ],
+  wordwizard: [
+    { afterStage: 0, text: "A library of glowing words hums quietly.", tease: "Some words sound like twins…" },
+    { afterStage: 10, text: "Scrambled letters tumble off the shelves!", tease: "Can you put them back in order?" },
+    { afterStage: 30, text: "The longest words shimmer into view.", tease: "Only a true word-smith can spell these…" },
+    { afterStage: 55, text: "Every word obeys your wand!", tease: "Master of Words — well read, Captain!" },
+  ],
+  body: [
+    { afterStage: 0, text: "A giant friendly body model lights up.", tease: "What makes your heart go thump?" },
+    { afterStage: 10, text: "Your five senses switch on one by one!", tease: "Deeper inside, the organs are working…" },
+    { afterStage: 30, text: "You can trace food's whole journey now.", tease: "Healthy habits unlock the last doors…" },
+    { afterStage: 55, text: "You understand the whole body!", tease: "Junior doctor no more — Body Master!" },
+  ],
+  feelings: [
+    { afterStage: 0, text: "Friendly faces peek from the forest trees.", tease: "Can you tell happy from sad?" },
+    { afterStage: 10, text: "The faces tell little stories now.", tease: "How would YOU feel in each one?" },
+    { afterStage: 30, text: "When feelings get big, you stay calm.", tease: "Kindness opens the deepest paths…" },
+    { afterStage: 55, text: "You read every heart in the forest!", tease: "Master of Hearts — kind and wise." },
+  ],
   arabic: [
     { afterStage: 0, text: "A quiet garden where letters grow on trees.", tease: "The first letters are sprouting…" },
     { afterStage: 10, text: "The garden hums with new sounds!", tease: "Soon the letters will join into words…" },

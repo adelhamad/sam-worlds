@@ -10,6 +10,9 @@ import atlasStages from "./atlas/stages.json";
 import flagsStages from "./flags/stages.json";
 import arabicStages from "./arabic/stages.json";
 import craftStages from "./craft/stages.json";
+import wordWizardStages from "./wordwizard/stages.json";
+import bodyStages from "./body/stages.json";
+import feelingsStages from "./feelings/stages.json";
 import type { StageDef } from "./types";
 
 export interface WorldDef {
@@ -165,6 +168,42 @@ export const WORLDS: WorldDef[] = [
       { stage: 40, name: "Redstone Reckoner", icon: "🔴" },
       { stage: 50, name: "Diamond Counter", icon: "💎" },
       { stage: 55, name: "Netherite Master", icon: "🏆" },
+    ],
+  },
+  {
+    id: "wordwizard", name: "Word Wizard", icon: "🔤", tagline: "Rhyme, spell, unscramble!",
+    stages: wordWizardStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Rhyme Finder", icon: "🎵" },
+      { stage: 20, name: "Word Builder", icon: "🔡" },
+      { stage: 30, name: "Sound Sleuth", icon: "🔍" },
+      { stage: 40, name: "Spelling Bee", icon: "🐝" },
+      { stage: 50, name: "Word Smith", icon: "📚" },
+      { stage: 55, name: "Master of Words", icon: "🏆" },
+    ],
+  },
+  {
+    id: "body", name: "Body Explorer", icon: "🫀", tagline: "How your body works!",
+    stages: bodyStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Sense Scout", icon: "👀" },
+      { stage: 20, name: "Organ Expert", icon: "🫁" },
+      { stage: 30, name: "Health Hero", icon: "🥦" },
+      { stage: 40, name: "Body Buff", icon: "💪" },
+      { stage: 50, name: "Junior Doctor", icon: "🩺" },
+      { stage: 55, name: "Body Master", icon: "🏆" },
+    ],
+  },
+  {
+    id: "feelings", name: "Feelings Forest", icon: "🎭", tagline: "Name and tame feelings!",
+    stages: feelingsStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Face Reader", icon: "😊" },
+      { stage: 20, name: "Mood Finder", icon: "🌈" },
+      { stage: 30, name: "Calm Keeper", icon: "🌬️" },
+      { stage: 40, name: "Kind Heart", icon: "💛" },
+      { stage: 50, name: "Empathy Star", icon: "🤝" },
+      { stage: 55, name: "Master of Hearts", icon: "🏆" },
     ],
   },
 ];

@@ -24,6 +24,9 @@ const PLANET_HUES: Record<string, string> = {
   flags: "#f87171",
   arabic: "#34d399",
   craft: "#a47551",
+  wordwizard: "#fbbf24",
+  body: "#fb7185",
+  feelings: "#a78bfa",
 };
 
 export function Hub() {

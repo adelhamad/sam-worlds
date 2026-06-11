@@ -99,7 +99,7 @@ function genBuildWord(params: ArabicParams, rng: RNG, ctx: GenContext): Question
   return {
     id: id(),
     prompt: `Spell ${word} — first letter first!`,
-    answer: letters.join(" "),
+    answer: letters.join(" · "),
     choices: [],
     hint: `It starts with ${letters[0]} (the right side!).`,
     inputMode: "order",

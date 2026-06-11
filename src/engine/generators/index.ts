@@ -12,6 +12,9 @@ import { generateAtlas, type AtlasParams } from "./atlas";
 import { generateFlags, type FlagsParams } from "./flags";
 import { generateArabic, type ArabicParams } from "./arabic";
 import { generateCraft, type CraftParams } from "./craft";
+import { generateWordWizard, type WordParams } from "./wordWizard";
+import { generateBody, type BodyParams } from "./body";
+import { generateFeelings, type FeelingsParams } from "./feelings";
 import type { GenContext, GeneratorParams, Question } from "./types";
 
 export type GeneratorId =
@@ -27,7 +30,10 @@ export type GeneratorId =
   | "atlas"
   | "flags"
   | "arabic"
-  | "craft";
+  | "craft"
+  | "wordWizard"
+  | "body"
+  | "feelings";
 
 function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, ctx: GenContext): Question {
   switch (id) {
@@ -57,6 +63,12 @@ function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, c
       return generateArabic(params as unknown as ArabicParams, rng, ctx);
     case "craft":
       return generateCraft(params as unknown as CraftParams, rng, ctx);
+    case "wordWizard":
+      return generateWordWizard(params as unknown as WordParams, rng, ctx);
+    case "body":
+      return generateBody(params as unknown as BodyParams, rng, ctx);
+    case "feelings":
+      return generateFeelings(params as unknown as FeelingsParams, rng, ctx);
   }
 }
 
