@@ -145,9 +145,21 @@ export function Hub() {
             navigate("/orbit");
           }}
         >
-          <span className="tile-icon">🛰️</span>
-          <span className="tile-name">Orbit Rescue</span>
-          <span className="tile-sub">Slingshot through gravity!</span>
+          <span className="tile-icon">⛳</span>
+          <span className="tile-name">Space Golf</span>
+          <span className="tile-sub">Putt past the magnets!</span>
+        </button>
+        <button
+          className="tile tile-glow"
+          onClick={() => {
+            unlockAudio();
+            sfx.tap();
+            navigate("/maze");
+          }}
+        >
+          <span className="tile-icon">🌀</span>
+          <span className="tile-name">Marble Maze</span>
+          <span className="tile-sub">Tilt and roll!</span>
         </button>
         <button
           className="tile"

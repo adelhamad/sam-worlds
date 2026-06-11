@@ -4,33 +4,10 @@ import { useGame } from "../../state/store";
 import { TiltCatchScene } from "../../pixi/TiltCatchScene";
 import { sfx, unlockAudio } from "../../engine/feedback/audio";
 import { randInt, mulberry32, newSeed } from "../../engine/rng";
+import { requestTiltPermission, screenTiltX } from "../../engine/sensors";
 
 const ROUND_SECONDS = 60;
 const MAX_PAYOUT = 30;
-
-interface IOSOrientationEvent {
-  requestPermission?: () => Promise<"granted" | "denied">;
-}
-
-/**
- * Screen-relative left/right tilt. In portrait that's gamma, but when the
- * screen rotates the device axes don't — beta/gamma must be remapped.
- */
-function screenTilt(e: DeviceOrientationEvent): number | null {
-  if (e.beta === null || e.gamma === null) return null;
-  const raw = screen.orientation?.angle ?? (window as { orientation?: number }).orientation ?? 0;
-  const angle = ((raw % 360) + 360) % 360;
-  switch (angle) {
-    case 90:
-      return e.beta;
-    case 180:
-      return -e.gamma;
-    case 270:
-      return -e.beta;
-    default:
-      return e.gamma;
-  }
-}
 
 export function CometCatch() {
   const navigate = useNavigate();
@@ -116,7 +93,7 @@ export function CometCatch() {
   useEffect(() => {
     if (phase !== "play") return;
     const onTilt = (e: DeviceOrientationEvent) => {
-      const tilt = screenTilt(e);
+      const tilt = screenTiltX(e);
       if (tilt === null) return;
       setTiltActive(true);
       sceneRef.current?.steer(Math.max(-30, Math.min(30, tilt)) / 30);
@@ -146,15 +123,7 @@ export function CometCatch() {
   async function start() {
     unlockAudio();
     sfx.tap();
-    // iOS needs explicit permission, and it must come from a tap.
-    const DOE = DeviceOrientationEvent as unknown as IOSOrientationEvent;
-    if (typeof DOE.requestPermission === "function") {
-      try {
-        await DOE.requestPermission();
-      } catch {
-        // fall back to touch steering
-      }
-    }
+    await requestTiltPermission(); // iOS: must come from a tap
     setTarget(randInt(mulberry32(newSeed()), 8, 16));
     setCaught(0);
     setSeconds(ROUND_SECONDS);

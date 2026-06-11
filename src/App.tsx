@@ -6,7 +6,8 @@ import { Hub } from "./ui/Hub";
 import { WorldMap } from "./modules/play/WorldMap";
 import { PlayStage } from "./modules/play/PlayStage";
 import { CometCatch } from "./modules/cometcatch/CometCatch";
-import { OrbitRescue } from "./modules/orbit/OrbitRescue";
+import { SpaceGolf } from "./modules/orbit/SpaceGolf";
+import { MarbleMaze } from "./modules/maze/MarbleMaze";
 
 /** Each screen starts at the top — no inherited scroll position. */
 function ScrollToTop() {
@@ -57,7 +58,8 @@ export default function App() {
         <Route path="/world/:worldId" element={<WorldMap />} />
         <Route path="/play/:stageId" element={<PlayStage />} />
         <Route path="/catch" element={<CometCatch />} />
-        <Route path="/orbit" element={<OrbitRescue />} />
+        <Route path="/orbit" element={<SpaceGolf />} />
+        <Route path="/maze" element={<MarbleMaze />} />
       </Routes>
     </HashRouter>
   );
