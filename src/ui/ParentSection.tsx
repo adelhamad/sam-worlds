@@ -2,11 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useGame } from "../state/store";
 import { completedInWorld, WORLDS } from "../content/worlds";
-import { clearAxisMaps } from "../engine/sensors";
 import { itemById } from "../engine/economy/catalog";
 
 const PARENT_PASSWORD = "adel";
-const UNLOCK_KEY = "parent-unlocked";
 
 /**
  * Parent Section: password-protected controls for Adel.
@@ -15,13 +13,13 @@ const UNLOCK_KEY = "parent-unlocked";
  * automatically; new mechanics with their own state need explicit controls.
  */
 export function ParentSection() {
-  const [unlocked, setUnlocked] = useState(sessionStorage.getItem(UNLOCK_KEY) === "1");
+  // Deliberately NOT persisted: leaving the section locks it again.
+  const [unlocked, setUnlocked] = useState(false);
   const [pass, setPass] = useState("");
   const [error, setError] = useState(false);
 
   function tryUnlock() {
     if (pass.toLowerCase().trim() === PARENT_PASSWORD) {
-      sessionStorage.setItem(UNLOCK_KEY, "1");
       setUnlocked(true);
     } else {
       setError(true);
@@ -105,17 +103,31 @@ function RewardHistory() {
   );
 }
 
-function TiltResetButton() {
-  const [done, setDone] = useState(false);
+async function forceUpdate(): Promise<void> {
+  try {
+    const regs = (await navigator.serviceWorker?.getRegistrations()) ?? [];
+    await Promise.all(regs.map((r) => r.unregister()));
+    if (typeof caches !== "undefined") {
+      const keys = await caches.keys();
+      await Promise.all(keys.map((k) => caches.delete(k)));
+    }
+  } finally {
+    window.location.reload();
+  }
+}
+
+function ForceUpdateButton() {
+  const [busy, setBusy] = useState(false);
   return (
     <button
-      className="btn btn-secondary"
+      className="btn btn-primary"
+      disabled={busy}
       onClick={() => {
-        clearAxisMaps();
-        setDone(true);
+        setBusy(true);
+        void forceUpdate();
       }}
     >
-      {done ? "✓ Will re-calibrate on next play" : "Reset tilt calibration"}
+      {busy ? "Updating…" : "Clear cache & reload"}
     </button>
   );
 }
@@ -196,9 +208,12 @@ function ParentControls() {
       <RewardHistory />
 
       <section className="panel parent-block">
-        <h2>🧭 Tilt games</h2>
-        <p className="dim">If tilting feels wrong on this device, redo the quick setup.</p>
-        <TiltResetButton />
+        <h2>🔄 Update the game</h2>
+        <p className="dim">
+          Clears the app cache and reloads so a freshly deployed version is picked up. Progress and
+          rewards are NOT touched.
+        </p>
+        <ForceUpdateButton />
       </section>
 
       <section className="panel parent-block parent-danger">

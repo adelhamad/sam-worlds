@@ -1,11 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  attachRawOrientation,
-  loadAxisMap,
-  saveAxisMap,
-  vibrate,
-  type AxisMap,
-} from "../engine/sensors";
+import { attachRawOrientation, saveAxisMap, vibrate, type AxisMap } from "../engine/sensors";
 import { sfx } from "../engine/feedback/audio";
 
 const THRESHOLD = 14; // degrees of deliberate tilt
@@ -34,10 +28,11 @@ interface Props {
 }
 
 /**
- * One-time physical axis calibration (per screen rotation): we ASK the player
- * to tilt a known way and MEASURE which sensor axis responds. Immune to every
- * platform's orientation-convention quirks. Skips itself if a map is already
- * stored or no sensor events arrive (touch-only devices).
+ * Physical axis calibration, run EVERY time a tilt game starts: we ASK the
+ * player to tilt a known way and MEASURE which sensor axis responds. Immune
+ * to every platform's orientation-convention quirks, and a botched
+ * calibration never outlives the round. Auto-skips only when no sensor
+ * events arrive (touch-only devices).
  */
 export function TiltCalibrator({ needY, onDone }: Props) {
   const [step, setStep] = useState<"x" | "y">("x");
@@ -53,10 +48,6 @@ export function TiltCalibrator({ needY, onDone }: Props) {
   }
 
   useEffect(() => {
-    if (loadAxisMap()) {
-      finish(true); // already calibrated for this rotation
-      return;
-    }
     let gotEvent = false;
     const noSensor = setTimeout(() => {
       if (!gotEvent) finish(true); // no sensors — touch fallback handles play

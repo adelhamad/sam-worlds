@@ -18,9 +18,29 @@ function ScrollToTop() {
   }, [pathname]);
   return null;
 }
+
+/**
+ * Native-app feel: browser back/forward (iPad edge-swipe, Android back
+ * gesture) is neutralized by keeping a duplicate history entry on top —
+ * popping it lands on an identical URL, so nothing changes on screen.
+ * All navigation goes through the in-app buttons.
+ */
+function BlockBrowserNav() {
+  const location = useLocation();
+  useEffect(() => {
+    window.history.pushState(null, "", window.location.href);
+  }, [location]);
+  useEffect(() => {
+    const onPop = () => window.history.pushState(null, "", window.location.href);
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
+  return null;
+}
 import { STR } from "./strings/en";
 import { unlockAudio } from "./engine/feedback/audio";
 import { startMusic } from "./engine/feedback/music";
+import { keepScreenAwake } from "./engine/wakeLock";
 
 export default function App() {
   const loaded = useGame((s) => s.loaded);
@@ -28,7 +48,15 @@ export default function App() {
 
   useEffect(() => {
     void hydrate();
+    keepScreenAwake();
   }, [hydrate]);
+
+  // Native feel: no long-press context menus anywhere.
+  useEffect(() => {
+    const onContextMenu = (e: Event) => e.preventDefault();
+    window.addEventListener("contextmenu", onContextMenu);
+    return () => window.removeEventListener("contextmenu", onContextMenu);
+  }, []);
 
   // First tap anywhere unlocks audio and starts the background loop.
   useEffect(() => {
@@ -53,6 +81,7 @@ export default function App() {
   return (
     <HashRouter>
       <ScrollToTop />
+      <BlockBrowserNav />
       <Routes>
         <Route path="/" element={<TitleScreen />} />
         <Route path="/hub" element={<Hub />} />
