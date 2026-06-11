@@ -7,6 +7,7 @@ import { WorldMap } from "./modules/play/WorldMap";
 import { PlayStage } from "./modules/play/PlayStage";
 import { CometCatch } from "./modules/cometcatch/CometCatch";
 import { CodeQuest } from "./modules/codequest/CodeQuest";
+import { ParentSection } from "./ui/ParentSection";
 import { MarbleMaze } from "./modules/maze/MarbleMaze";
 
 /** Each screen starts at the top — no inherited scroll position. */
@@ -60,6 +61,7 @@ export default function App() {
         <Route path="/catch" element={<CometCatch />} />
         <Route path="/code" element={<CodeQuest />} />
         <Route path="/maze" element={<MarbleMaze />} />
+        <Route path="/parent" element={<ParentSection />} />
       </Routes>
     </HashRouter>
   );

@@ -63,6 +63,9 @@ export function Hub() {
             <button className="btn btn-icon" aria-label="sound" onClick={() => { unlockAudio(); toggleSound(); }}>
               {soundOn ? "🔊" : "🔇"}
             </button>
+            <button className="btn btn-icon parent-gear" aria-label="parent section" onClick={() => navigate("/parent")}>
+              ⚙️
+            </button>
           </div>
         </div>
         <div className="hero-mission">

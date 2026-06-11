@@ -1,12 +1,13 @@
 import { create } from "zustand";
 import { db, logEvent, type BadgeRow, type CouponRow, type ProgressRow, type SessionRow } from "../engine/save/db";
+import { clearBackup, requestPersistentStorage, restoreBackupIfNeeded } from "../engine/save/backup";
 import { generateQuestionSet } from "../engine/generators";
 import { DEFAULT_RATING, difficultyFromRating, updateRating } from "../engine/difficulty/skillRating";
 import { starsForResult } from "../engine/progress/stars";
 import { isRapidGuessing, weightedPayout, workedExample } from "../engine/answers/answerEngine";
 import { STR } from "../strings/en";
 import { itemById } from "../engine/economy/catalog";
-import { BADGES, stageById, type BadgeDef } from "../content/worlds";
+import { BADGES, stageById, worldById, type BadgeDef } from "../content/worlds";
 import { persona } from "../persona.config";
 import { newSeed } from "../engine/rng";
 import { setMuted } from "../engine/feedback/audio";
@@ -52,6 +53,10 @@ interface GameStore {
   earnDust: (amount: number, reason: string) => void;
   toggleSound: () => void;
   toggleMusic: () => void;
+  // Parent Section controls
+  setStarDust: (amount: number) => void;
+  setWorldProgress: (worldId: string, completedCount: number) => void;
+  resetAll: () => Promise<void>;
 }
 
 function persistSettings(get: () => GameStore): void {
@@ -142,6 +147,8 @@ export const useGame = create<GameStore>((set, get) => ({
   session: null,
 
   hydrate: async () => {
+    requestPersistentStorage();
+    await restoreBackupIfNeeded();
     const [profile, economy, progressRows, sessionRow, inventoryRows, badgeRows, settings, skillRows, couponRows] =
       await Promise.all([
         db.profile.get(1),
@@ -403,5 +410,60 @@ export const useGame = create<GameStore>((set, get) => ({
     else stopMusic();
     set({ musicOn });
     persistSettings(get);
+  },
+
+  setStarDust: (amount) => {
+    const starDust = Math.max(0, Math.round(amount));
+    set({ starDust });
+    void db.economy.put({ id: 1, starDust, melodyShards: 0 });
+    logEvent("parent.setDust", { starDust });
+  },
+
+  setWorldProgress: (worldId, completedCount) => {
+    const world = worldById(worldId);
+    if (!world) return;
+    const n = Math.max(0, Math.min(world.stages.length, Math.round(completedCount)));
+    const progress = { ...get().progress };
+    const puts: ProgressRow[] = [];
+    const deletes: string[] = [];
+    world.stages.forEach((stage, i) => {
+      if (i < n) {
+        const row: ProgressRow = progress[stage.id]?.completed
+          ? progress[stage.id]
+          : { stageId: stage.id, bestStars: 1, attempts: 1, completed: true };
+        progress[stage.id] = row;
+        puts.push(row);
+      } else if (progress[stage.id]) {
+        delete progress[stage.id];
+        deletes.push(stage.id);
+      }
+    });
+    void db.progress.bulkPut(puts);
+    void db.progress.bulkDelete(deletes);
+    // drop an in-flight session that now points past the new frontier
+    const s = get().session;
+    if (s && deletes.includes(s.stageId)) {
+      set({ session: null });
+      void db.session.delete(1);
+    }
+    set({ progress });
+    logEvent("parent.setWorldProgress", { worldId, completedCount: n });
+  },
+
+  resetAll: async () => {
+    await Promise.all([
+      db.profile.clear(),
+      db.economy.clear(),
+      db.progress.clear(),
+      db.session.clear(),
+      db.inventory.clear(),
+      db.badges.clear(),
+      db.settings.clear(),
+      db.skillRatings.clear(),
+      db.eventLog.clear(),
+      db.coupons.clear(),
+    ]);
+    clearBackup();
+    location.reload();
   },
 }));

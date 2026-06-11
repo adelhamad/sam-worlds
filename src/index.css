@@ -1128,6 +1128,66 @@ body,
   color: var(--amber);
 }
 
+/* ---------- parent section ---------- */
+.parent-screen {
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+.parent-gate {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  width: min(420px, 100%);
+}
+.parent-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.parent-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.parent-world-row {
+  justify-content: space-between;
+}
+.parent-world-name {
+  font-weight: 800;
+  min-width: 170px;
+}
+.parent-input {
+  font: inherit;
+  font-size: 20px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 2px solid var(--panel-edge);
+  background: var(--night-deep);
+  color: var(--text);
+  width: 160px;
+}
+.parent-input-sm {
+  width: 90px;
+}
+.parent-danger {
+  border-color: #7f1d1d;
+}
+.btn-danger {
+  background: linear-gradient(180deg, #ef4444, #991b1b);
+  color: #fff;
+}
+.parent-gear {
+  opacity: 0.55;
+}
+.calib-arrow {
+  font-size: 64px;
+  animation: drift 1.4s infinite ease-in-out;
+}
+
 /* ---------- code quest ---------- */
 .code-quest {
   max-width: 720px;

@@ -4,6 +4,7 @@ import { useGame } from "../../state/store";
 import { TiltMazeScene, type MazeSpec, type MazeTarget } from "../../pixi/TiltMazeScene";
 import { sfx, unlockAudio } from "../../engine/feedback/audio";
 import { attachTilt, calibrateTilt, requestTiltPermission, vibrate } from "../../engine/sensors";
+import { TiltCalibrator } from "../../ui/TiltCalibrator";
 import { mulberry32, newSeed, pick, randInt, shuffle, type RNG } from "../../engine/rng";
 
 const MAZES_PER_RUN = 3;
@@ -105,7 +106,7 @@ export function MarbleMaze() {
   const rngRef = useRef<RNG>(mulberry32(newSeed()));
   const labelsRef = useRef<string[]>([]);
   const [labels, setLabels] = useState<string[]>([]);
-  const [phase, setPhase] = useState<"intro" | "play" | "done">("intro");
+  const [phase, setPhase] = useState<"intro" | "calibrate" | "play" | "done">("intro");
   const [mazeNum, setMazeNum] = useState(1);
   const [nextIdx, setNextIdx] = useState(0);
   const [collected, setCollected] = useState(0);
@@ -223,6 +224,10 @@ export function MarbleMaze() {
     unlockAudio();
     sfx.tap();
     await requestTiltPermission();
+    setPhase("calibrate"); // skips itself when already calibrated
+  }
+
+  function beginRun() {
     calibrateTilt(); // however he's holding it right now = neutral
     setMazeNum(1);
     setCollected(0);
@@ -253,6 +258,8 @@ export function MarbleMaze() {
           {note && <span className="catch-stat orbit-note">{note}</span>}
         </div>
       )}
+
+      {phase === "calibrate" && <TiltCalibrator needY onDone={beginRun} />}
 
       {phase === "intro" && (
         <div className="overlay">

@@ -1,13 +1,11 @@
 // Shared device-sensor helpers for the tilt minigames.
 //
-// iPad/iOS notes: motion needs HTTPS, and permission must be requested on
-// BOTH DeviceOrientationEvent and DeviceMotionEvent from a user tap. Some
-// iPadOS contexts deliver no `deviceorientation` events at all — so
-// attachTilt() falls back to `devicemotion` gravity readings automatically.
-//
-// Intuitiveness: nobody holds a tablet flat. calibrateTilt() makes the NEXT
-// reading the neutral position, so however the player holds the device when
-// they tap Start becomes "no tilt".
+// The cross-platform trap: iPadOS and Android disagree about which "natural
+// orientation" the sensor axes and screen.orientation.angle are measured
+// from, so any fixed beta/gamma formula is wrong on some device. The
+// GUARANTEED fix is empirical: a one-time calibration per screen rotation
+// ("tilt the right edge down") measures which raw axis really is screen-X,
+// and the result is cached in localStorage.
 
 interface PermissionedEvent {
   requestPermission?: () => Promise<"granted" | "denied">;
@@ -26,23 +24,75 @@ export async function requestTiltPermission(): Promise<void> {
   }
 }
 
-function screenAngle(): number {
-  const raw = screen.orientation?.angle ?? (window as { orientation?: number }).orientation ?? 0;
+export function screenAngle(): number {
+  // iOS keeps window.orientation portrait-referenced — same reference as its
+  // sensor frame — so prefer it. screen.orientation.angle is the fallback.
+  const winO = (window as { orientation?: number }).orientation;
+  const raw = typeof winO === "number" ? winO : screen.orientation?.angle ?? 0;
   return ((raw % 360) + 360) % 360;
 }
 
-/** Rotate device-frame x/y into screen-frame x/y for the current rotation. */
-function remap(x: number, y: number): { x: number; y: number } {
+/* ---------- empirically calibrated axis map ---------- */
+
+export interface AxisMap {
+  xAxis: "beta" | "gamma";
+  xSign: 1 | -1;
+  yAxis: "beta" | "gamma";
+  ySign: 1 | -1;
+}
+
+const mapKey = () => `tilt-axis-map-${screenAngle()}`;
+
+export function loadAxisMap(): AxisMap | null {
+  try {
+    const raw = localStorage.getItem(mapKey());
+    return raw ? (JSON.parse(raw) as AxisMap) : null;
+  } catch {
+    return null;
+  }
+}
+
+export function saveAxisMap(map: AxisMap): void {
+  try {
+    localStorage.setItem(mapKey(), JSON.stringify(map));
+  } catch {
+    // private mode — calibration just reruns next time
+  }
+}
+
+export function clearAxisMaps(): void {
+  for (const angle of [0, 90, 180, 270]) localStorage.removeItem(`tilt-axis-map-${angle}`);
+}
+
+/** Raw orientation listener (for the calibrator). Returns cleanup. */
+export function attachRawOrientation(cb: (beta: number, gamma: number) => void): () => void {
+  const on = (e: DeviceOrientationEvent) => {
+    if (e.beta === null || e.gamma === null) return;
+    cb(e.beta, e.gamma);
+  };
+  window.addEventListener("deviceorientation", on);
+  return () => window.removeEventListener("deviceorientation", on);
+}
+
+/* ---------- tilt stream ---------- */
+
+/** Heuristic fallback used only before any calibration exists. */
+function heuristicRemap(gamma: number, beta: number): { x: number; y: number } {
   switch (screenAngle()) {
     case 90:
-      return { x: y, y: -x };
+      return { x: beta, y: -gamma };
     case 180:
-      return { x: -x, y: -y };
+      return { x: -gamma, y: -beta };
     case 270:
-      return { x: -y, y: x };
+      return { x: -beta, y: gamma };
     default:
-      return { x, y };
+      return { x: gamma, y: beta };
   }
+}
+
+function applyMap(map: AxisMap, beta: number, gamma: number): { x: number; y: number } {
+  const v = { beta, gamma };
+  return { x: map.xSign * v[map.xAxis], y: map.ySign * v[map.yAxis] };
 }
 
 let baseline: { x: number; y: number } | null = null;
@@ -63,30 +113,28 @@ function emit(cb: (x: number, y: number) => void, rawX: number, rawY: number): v
 
 /**
  * Listen for tilt in DEGREES relative to the calibrated grip, screen-frame
- * (x: right edge down +, y: bottom edge down +). Uses deviceorientation;
- * falls back to devicemotion gravity if orientation stays silent (iPadOS).
- * Returns a cleanup function.
+ * (x: right edge down +, y: bottom edge down +). Uses the empirically
+ * calibrated axis map when one exists for this rotation; falls back to
+ * devicemotion gravity if orientation events never arrive. Returns cleanup.
  */
 export function attachTilt(cb: (tiltX: number, tiltY: number) => void): () => void {
   let gotOrientation = false;
+  const map = loadAxisMap();
 
   const onOrientation = (e: DeviceOrientationEvent) => {
     if (e.beta === null || e.gamma === null) return;
     gotOrientation = true;
-    const { x, y } = remap(e.gamma, e.beta);
+    const { x, y } = map ? applyMap(map, e.beta, e.gamma) : heuristicRemap(e.gamma, e.beta);
     emit(cb, x, y);
   };
 
   const onMotion = (e: DeviceMotionEvent) => {
-    if (gotOrientation) return; // orientation is the better signal when present
+    if (gotOrientation) return;
     const g = e.accelerationIncludingGravity;
     if (!g || g.x === null || g.y === null || g.z === null) return;
-    // Normalize the platform sign so "gravity" really points down: when the
-    // device is near-flat, physical gravity along z is negative (into the
-    // back). iOS and Android report opposite conventions.
     const zSign = g.z > 0 ? -1 : 1;
     const toDeg = 90 / 9.81;
-    const { x, y } = remap(g.x * zSign * toDeg, -g.y * zSign * toDeg);
+    const { x, y } = heuristicRemap(g.x * zSign * toDeg, -g.y * zSign * toDeg);
     emit(cb, x, y);
   };
 

@@ -95,6 +95,10 @@ db.version(2).stores({
   coupons: "++id, itemId",
 });
 
+import { scheduleBackup } from "./backup";
+
 export function logEvent(type: string, data: unknown): void {
   void db.eventLog.add({ t: Date.now(), type, data: JSON.stringify(data ?? null) });
+  // every meaningful event refreshes the localStorage safety snapshot
+  scheduleBackup();
 }
