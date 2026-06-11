@@ -83,6 +83,50 @@ function persistSession(session: Session | null): void {
   }, 300);
 }
 
+function withReplacedQuestion(s: Session, generator: Parameters<typeof generateQuestionSet>[0], params: Parameters<typeof generateQuestionSet>[1], difficulty: number, easier: boolean): Session["questions"] {
+  const [replacement] = generateQuestionSet(generator, params, 1, newSeed(), { difficulty, easier });
+  const questions = [...s.questions];
+  questions[s.index] = replacement;
+  return questions;
+}
+
+/** Rule 1+3+5 miss transition: discard, regenerate, scaffold, detect guessing. */
+function missTransition(
+  s: Session,
+  stage: NonNullable<ReturnType<typeof stageById>>,
+  skill: string,
+  ratings: Record<string, number>,
+  q: Session["questions"][number],
+  firstAttemptInSlot: boolean,
+): Session {
+  const wrongStamps = [...s.wrongStamps, Date.now()];
+  const rapid = isRapidGuessing(wrongStamps);
+  const missStreak = firstAttemptInSlot ? s.missStreak + 1 : s.missStreak;
+  const easier = rapid || missStreak >= 2;
+  if (rapid) {
+    // Rule 5: a signal, not misbehavior — adapt difficulty, log, one warm line.
+    ratings[skill] = Math.max(0, (ratings[skill] ?? DEFAULT_RATING) - 8);
+    void db.skillRatings.put({ skill, rating: ratings[skill] });
+    logEvent("guess.rapid", { stageId: s.stageId, skill });
+  }
+  const difficulty = easier ? 0 : difficultyFromRating(ratings[skill] ?? DEFAULT_RATING);
+  return {
+    ...s,
+    questions: withReplacedQuestion(s, stage.generator, stage.params, difficulty, easier),
+    wrongStamps,
+    lastAnswer: "wrong",
+    // Choice questions are tap-guessable: demand 2 correct in a row.
+    proveLeft: q.inputMode === "choices" ? 2 : 0,
+    attemptMissed: true,
+    firstTryMisses: firstAttemptInSlot ? s.firstTryMisses + 1 : s.firstTryMisses,
+    missStreak: easier ? 0 : missStreak,
+    showHint: true,
+    // Rule 3: second miss in the slot → show the discarded question solved.
+    workedExample: firstAttemptInSlot ? null : workedExample(q) || null,
+    companionLine: rapid ? STR.companionSlow : s.companionLine,
+  };
+}
+
 export const useGame = create<GameStore>((set, get) => ({
   loaded: false,
   hasSave: false,
@@ -211,29 +255,22 @@ export const useGame = create<GameStore>((set, get) => ({
     }
 
     let next: Session;
-    if (correct) {
+    let verdict: "correct" | "wrong" | "again";
+    if (correct && (s.proveLeft ?? 0) > 1) {
       // Anti-guessing: a missed CHOICE slot demands consecutive proof —
       // each owed proof is a fresh question, so lucky taps can't convert.
-      if ((s.proveLeft ?? 0) > 1) {
-        const [replacement] = generateQuestionSet(stage.generator, stage.params, 1, newSeed(), {
-          difficulty: difficultyFromRating(ratings[skill] ?? DEFAULT_RATING),
-          easier: false,
-        });
-        const questions = [...s.questions];
-        questions[s.index] = replacement;
-        next = {
-          ...s,
-          questions,
-          proveLeft: (s.proveLeft ?? 0) - 1,
-          lastAnswer: null,
-          showHint: false,
-          workedExample: null,
-          missStreak: 0,
-        };
-        set({ skillRatings: ratings, session: next });
-        persistSession(next);
-        return "again";
-      }
+      const difficulty = difficultyFromRating(ratings[skill] ?? DEFAULT_RATING);
+      next = {
+        ...s,
+        questions: withReplacedQuestion(s, stage.generator, stage.params, difficulty, false),
+        proveLeft: (s.proveLeft ?? 0) - 1,
+        lastAnswer: null,
+        showHint: false,
+        workedExample: null,
+        missStreak: 0,
+      };
+      verdict = "again";
+    } else if (correct) {
       next = {
         ...s,
         lastAnswer: "correct",
@@ -243,44 +280,14 @@ export const useGame = create<GameStore>((set, get) => ({
         workedExample: null,
         proveLeft: 0,
       };
+      verdict = "correct";
     } else {
-      // Rule 1: discard the question, regenerate fresh at the same difficulty
-      // (gentler after two consecutive misses or rapid guessing).
-      const wrongStamps = [...s.wrongStamps, Date.now()];
-      const rapid = isRapidGuessing(wrongStamps);
-      const missStreak = firstAttemptInSlot ? s.missStreak + 1 : s.missStreak;
-      const easier = rapid || missStreak >= 2;
-      if (rapid) {
-        // Rule 5: a signal, not misbehavior — adapt difficulty, log, one warm line.
-        ratings[skill] = Math.max(0, (ratings[skill] ?? DEFAULT_RATING) - 8);
-        void db.skillRatings.put({ skill, rating: ratings[skill] });
-        logEvent("guess.rapid", { stageId: s.stageId, skill });
-      }
-      const [replacement] = generateQuestionSet(stage.generator, stage.params, 1, newSeed(), {
-        difficulty: easier ? 0 : difficultyFromRating(ratings[skill] ?? DEFAULT_RATING),
-        easier,
-      });
-      const questions = [...s.questions];
-      questions[s.index] = replacement;
-      next = {
-        ...s,
-        questions,
-        wrongStamps,
-        lastAnswer: "wrong",
-        // Choice questions are tap-guessable: demand 2 correct in a row.
-        proveLeft: q.inputMode === "choices" ? 2 : 0,
-        attemptMissed: true,
-        firstTryMisses: firstAttemptInSlot ? s.firstTryMisses + 1 : s.firstTryMisses,
-        missStreak: easier ? 0 : missStreak,
-        showHint: true,
-        // Rule 3: second miss in the slot → show the discarded question solved.
-        workedExample: firstAttemptInSlot ? null : workedExample(q) || null,
-        companionLine: rapid ? STR.companionSlow : s.companionLine,
-      };
+      next = missTransition(s, stage, skill, ratings, q, firstAttemptInSlot);
+      verdict = "wrong";
     }
     set({ skillRatings: ratings, session: next });
     persistSession(next);
-    return correct ? "correct" : "wrong";
+    return verdict;
   },
 
   advance: () => {

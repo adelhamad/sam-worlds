@@ -466,5 +466,372 @@
     "questions": 8,
     "mechanic": "gate-run",
     "payout": 106
+  },
+  {
+    "id": "ea-33",
+    "name": "History March",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "continent",
+        "landmark"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "ea-34",
+    "name": "Continent Sweep",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "continent",
+        "landmark"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "ea-35",
+    "name": "Wonder Tour II",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "continent",
+        "landmark"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 92
+  },
+  {
+    "id": "ea-36",
+    "name": "The Old World",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "continent",
+        "landmark"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 94
+  },
+  {
+    "id": "ea-37",
+    "name": "Invention Storm",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "continent",
+        "landmark"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 96
+  },
+  {
+    "id": "ea-38",
+    "name": "Maps and Makers",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "continent",
+        "landmark"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "ea-39",
+    "name": "Timeline Trek",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "continent",
+        "landmark"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "ea-40",
+    "name": "Explorer's Gate",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "continent",
+        "landmark"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "ea-41",
+    "name": "The New World",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "continent",
+        "landmark"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 104
+  },
+  {
+    "id": "ea-42",
+    "name": "Color Histories",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "continent",
+        "landmark"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 106
+  },
+  {
+    "id": "ea-43",
+    "name": "Landmark Legends",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "continent",
+        "landmark"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 108
+  },
+  {
+    "id": "ea-44",
+    "name": "Animal Empires",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "continent",
+        "landmark"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "ea-45",
+    "name": "The Long Timeline",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "planets",
+        "landmark",
+        "continent",
+        "color"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "ea-46",
+    "name": "Chart Master",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "planets",
+        "landmark",
+        "continent",
+        "color"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 114
+  },
+  {
+    "id": "ea-47",
+    "name": "World Weaver",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "planets",
+        "landmark",
+        "continent",
+        "color"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 116
+  },
+  {
+    "id": "ea-48",
+    "name": "Atlas Storm",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "planets",
+        "landmark",
+        "continent",
+        "color"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 118
+  },
+  {
+    "id": "ea-49",
+    "name": "The Final Map",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "planets",
+        "landmark",
+        "continent",
+        "color"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "ea-50",
+    "name": "Painter's Planet",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "planets",
+        "landmark",
+        "continent",
+        "color"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 147
+  },
+  {
+    "id": "ea-51",
+    "name": "Grand Chronicle",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "planets",
+        "landmark",
+        "continent",
+        "color"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "ea-52",
+    "name": "Master Explorer",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "planets",
+        "landmark",
+        "continent",
+        "color"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 126
+  },
+  {
+    "id": "ea-53",
+    "name": "The Last Chart",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "planets",
+        "landmark",
+        "continent",
+        "color"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 128
+  },
+  {
+    "id": "ea-54",
+    "name": "Atlas Supreme",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "planets",
+        "landmark",
+        "continent",
+        "color"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 130
+  },
+  {
+    "id": "ea-55",
+    "name": "Eye of the World",
+    "generator": "atlas",
+    "params": {
+      "types": [
+        "timeline",
+        "planets",
+        "landmark",
+        "continent",
+        "color"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 157
   }
 ]

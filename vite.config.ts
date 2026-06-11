@@ -14,8 +14,8 @@ export default defineConfig({
         description: "Sam's personal universe of worlds and puzzles",
         theme_color: "#0b1b3a",
         background_color: "#0b1b3a",
-        display: "standalone",
-        orientation: "landscape",
+        display: "fullscreen",
+        display_override: ["fullscreen", "standalone"],
         start_url: ".",
         icons: [
           { src: "icons/icon-192.png", sizes: "192x192", type: "image/png" },

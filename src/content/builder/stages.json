@@ -472,5 +472,350 @@
     "questions": 8,
     "mechanic": "gate-run",
     "payout": 106
+  },
+  {
+    "id": "br-33",
+    "name": "Narrow Canyon",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "br-34",
+    "name": "The Far Ledge",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "br-35",
+    "name": "Heavy Balance",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 92
+  },
+  {
+    "id": "br-36",
+    "name": "Triple Beam",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 94
+  },
+  {
+    "id": "br-37",
+    "name": "Wind-Up II",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 96
+  },
+  {
+    "id": "br-38",
+    "name": "Precision Peak",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "br-39",
+    "name": "The Tiny Flag",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "br-40",
+    "name": "Engineer's Gate",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 4
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "br-41",
+    "name": "Long-Shot Lane",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 104
+  },
+  {
+    "id": "br-42",
+    "name": "The Balance Master",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 106
+  },
+  {
+    "id": "br-43",
+    "name": "Steep Canyon",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 108
+  },
+  {
+    "id": "br-44",
+    "name": "Pinpoint Arc",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "br-45",
+    "name": "TNT Alley",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "br-46",
+    "name": "The Far Target",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 114
+  },
+  {
+    "id": "br-47",
+    "name": "Grand Lever",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 116
+  },
+  {
+    "id": "br-48",
+    "name": "Master Range",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 118
+  },
+  {
+    "id": "br-49",
+    "name": "The Impossible Shot",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "br-50",
+    "name": "Canyon King",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 3
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 147
+  },
+  {
+    "id": "br-51",
+    "name": "Perfect Trajectory",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "br-52",
+    "name": "Grand Construction",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 126
+  },
+  {
+    "id": "br-53",
+    "name": "The Last Launch",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 128
+  },
+  {
+    "id": "br-54",
+    "name": "Builder's Crown",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 130
+  },
+  {
+    "id": "br-55",
+    "name": "Architect Supreme",
+    "generator": "builder",
+    "params": {
+      "types": [
+        "launch",
+        "lever"
+      ],
+      "tolerance": 3
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 157
   }
 ]

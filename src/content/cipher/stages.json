@@ -503,5 +503,385 @@
     "questions": 8,
     "mechanic": "gate-run",
     "payout": 106
+  },
+  {
+    "id": "cb-33",
+    "name": "Galaxy Code",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift",
+        "number"
+      ],
+      "maxLen": 8,
+      "maxShift": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "cb-34",
+    "name": "Long Signals II",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift",
+        "number"
+      ],
+      "maxLen": 8,
+      "maxShift": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "cb-35",
+    "name": "The Compass Cipher",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift",
+        "number"
+      ],
+      "maxLen": 8,
+      "maxShift": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 92
+  },
+  {
+    "id": "cb-36",
+    "name": "Asteroid Message",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift",
+        "number"
+      ],
+      "maxLen": 8,
+      "maxShift": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 94
+  },
+  {
+    "id": "cb-37",
+    "name": "Obsidian Scroll",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift",
+        "number"
+      ],
+      "maxLen": 8,
+      "maxShift": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 96
+  },
+  {
+    "id": "cb-38",
+    "name": "Villager's Note",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift",
+        "number"
+      ],
+      "maxLen": 8,
+      "maxShift": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "cb-39",
+    "name": "Sevenfold Shift",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift",
+        "number"
+      ],
+      "maxLen": 8,
+      "maxShift": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "cb-40",
+    "name": "The Code Vault",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift",
+        "number"
+      ],
+      "maxLen": 8,
+      "maxShift": 6
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "cb-41",
+    "name": "Enderman's Riddle",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift",
+        "number"
+      ],
+      "maxLen": 8,
+      "maxShift": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 104
+  },
+  {
+    "id": "cb-42",
+    "name": "Treasure Glyphs",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift",
+        "number"
+      ],
+      "maxLen": 8,
+      "maxShift": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 106
+  },
+  {
+    "id": "cb-43",
+    "name": "Portal Password",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift",
+        "number"
+      ],
+      "maxLen": 8,
+      "maxShift": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 108
+  },
+  {
+    "id": "cb-44",
+    "name": "The Long Word",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift",
+        "number"
+      ],
+      "maxLen": 8,
+      "maxShift": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "cb-45",
+    "name": "Shifting Sands II",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift"
+      ],
+      "maxLen": 9,
+      "maxShift": 7
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "cb-46",
+    "name": "Symbol Storm",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift"
+      ],
+      "maxLen": 9,
+      "maxShift": 7
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 114
+  },
+  {
+    "id": "cb-47",
+    "name": "Master Legend",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift"
+      ],
+      "maxLen": 9,
+      "maxShift": 7
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 116
+  },
+  {
+    "id": "cb-48",
+    "name": "Nine-Letter Night",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift"
+      ],
+      "maxLen": 9,
+      "maxShift": 7
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 118
+  },
+  {
+    "id": "cb-49",
+    "name": "The Adventure Code",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift"
+      ],
+      "maxLen": 9,
+      "maxShift": 7
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "cb-50",
+    "name": "Telescope Secret",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift"
+      ],
+      "maxLen": 9,
+      "maxShift": 7
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 147
+  },
+  {
+    "id": "cb-51",
+    "name": "Final Frequencies",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift"
+      ],
+      "maxLen": 9,
+      "maxShift": 7
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "cb-52",
+    "name": "Grand Decryption",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift"
+      ],
+      "maxLen": 9,
+      "maxShift": 7
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 126
+  },
+  {
+    "id": "cb-53",
+    "name": "The Last Legend",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift"
+      ],
+      "maxLen": 9,
+      "maxShift": 7
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 128
+  },
+  {
+    "id": "cb-54",
+    "name": "Cipher Supreme",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift"
+      ],
+      "maxLen": 9,
+      "maxShift": 7
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 130
+  },
+  {
+    "id": "cb-55",
+    "name": "Key to Everything",
+    "generator": "cipher",
+    "params": {
+      "types": [
+        "symbol",
+        "shift"
+      ],
+      "maxLen": 9,
+      "maxShift": 7
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 157
   }
 ]

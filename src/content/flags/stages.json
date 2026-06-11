@@ -554,5 +554,408 @@
     "questions": 8,
     "mechanic": "gate-run",
     "payout": 106
+  },
+  {
+    "id": "fl-33",
+    "name": "Twin Tricolors",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar",
+        "wider"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "fl-34",
+    "name": "Crossed Banners",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar",
+        "wider"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "fl-35",
+    "name": "Stripe Detective",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar",
+        "wider"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 92
+  },
+  {
+    "id": "fl-36",
+    "name": "The Lookalikes",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar",
+        "wider"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 94
+  },
+  {
+    "id": "fl-37",
+    "name": "Crescent Hunt",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar",
+        "wider"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 96
+  },
+  {
+    "id": "fl-38",
+    "name": "Star Spotters",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar",
+        "wider"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "fl-39",
+    "name": "Southern Banners",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar",
+        "wider"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "fl-40",
+    "name": "Banner Gate II",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar",
+        "wider"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "fl-41",
+    "name": "Nordic Trial",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar",
+        "wider"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 104
+  },
+  {
+    "id": "fl-42",
+    "name": "Desert Colors",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar",
+        "wider"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 106
+  },
+  {
+    "id": "fl-43",
+    "name": "Island Flags",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar",
+        "wider"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 108
+  },
+  {
+    "id": "fl-44",
+    "name": "The Close Call",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar",
+        "wider"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "fl-45",
+    "name": "Flag Storm",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "fl-46",
+    "name": "Eagle Eyes",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 114
+  },
+  {
+    "id": "fl-47",
+    "name": "Master Banners",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 116
+  },
+  {
+    "id": "fl-48",
+    "name": "The Twin Test",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 118
+  },
+  {
+    "id": "fl-49",
+    "name": "World Salute",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "fl-50",
+    "name": "Final Colors",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 147
+  },
+  {
+    "id": "fl-51",
+    "name": "Banner Legends",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "fl-52",
+    "name": "Grand Parade",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 126
+  },
+  {
+    "id": "fl-53",
+    "name": "The Last Flag",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 128
+  },
+  {
+    "id": "fl-54",
+    "name": "Flag Supreme",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 130
+  },
+  {
+    "id": "fl-55",
+    "name": "Keeper of Colors",
+    "generator": "flags",
+    "params": {
+      "pools": [
+        "similar"
+      ],
+      "modes": [
+        "toCountry",
+        "toFlag"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 157
   }
 ]

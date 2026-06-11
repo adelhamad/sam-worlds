@@ -420,5 +420,304 @@
     "questions": 8,
     "mechanic": "gate-run",
     "payout": 106
+  },
+  {
+    "id": "rv-33",
+    "name": "Seven-Wide Shaft",
+    "generator": "robotMaze",
+    "params": {
+      "size": 7,
+      "pathLen": 10,
+      "turns": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "rv-34",
+    "name": "Crystal Depths",
+    "generator": "robotMaze",
+    "params": {
+      "size": 7,
+      "pathLen": 10,
+      "turns": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "rv-35",
+    "name": "Long Expedition",
+    "generator": "robotMaze",
+    "params": {
+      "size": 7,
+      "pathLen": 10,
+      "turns": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 92
+  },
+  {
+    "id": "rv-36",
+    "name": "The Switchbacks",
+    "generator": "robotMaze",
+    "params": {
+      "size": 7,
+      "pathLen": 10,
+      "turns": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 94
+  },
+  {
+    "id": "rv-37",
+    "name": "Echo Tunnels",
+    "generator": "robotMaze",
+    "params": {
+      "size": 7,
+      "pathLen": 10,
+      "turns": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 96
+  },
+  {
+    "id": "rv-38",
+    "name": "Bedrock Run",
+    "generator": "robotMaze",
+    "params": {
+      "size": 7,
+      "pathLen": 10,
+      "turns": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "rv-39",
+    "name": "Deep Diamond Vein",
+    "generator": "robotMaze",
+    "params": {
+      "size": 7,
+      "pathLen": 10,
+      "turns": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "rv-40",
+    "name": "The Miner's Gate",
+    "generator": "robotMaze",
+    "params": {
+      "size": 7,
+      "pathLen": 10,
+      "turns": 4
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "rv-41",
+    "name": "Maze of Echoes",
+    "generator": "robotMaze",
+    "params": {
+      "size": 7,
+      "pathLen": 10,
+      "turns": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 104
+  },
+  {
+    "id": "rv-42",
+    "name": "Eight-Wide Caverns",
+    "generator": "robotMaze",
+    "params": {
+      "size": 7,
+      "pathLen": 10,
+      "turns": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 106
+  },
+  {
+    "id": "rv-43",
+    "name": "The Great Descent",
+    "generator": "robotMaze",
+    "params": {
+      "size": 7,
+      "pathLen": 10,
+      "turns": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 108
+  },
+  {
+    "id": "rv-44",
+    "name": "Obsidian Paths",
+    "generator": "robotMaze",
+    "params": {
+      "size": 7,
+      "pathLen": 10,
+      "turns": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "rv-45",
+    "name": "Lost Lantern II",
+    "generator": "robotMaze",
+    "params": {
+      "size": 8,
+      "pathLen": 12,
+      "turns": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "rv-46",
+    "name": "Winding Worlds",
+    "generator": "robotMaze",
+    "params": {
+      "size": 8,
+      "pathLen": 12,
+      "turns": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 114
+  },
+  {
+    "id": "rv-47",
+    "name": "The Long Program",
+    "generator": "robotMaze",
+    "params": {
+      "size": 8,
+      "pathLen": 12,
+      "turns": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 116
+  },
+  {
+    "id": "rv-48",
+    "name": "Diamond Storm",
+    "generator": "robotMaze",
+    "params": {
+      "size": 8,
+      "pathLen": 12,
+      "turns": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 118
+  },
+  {
+    "id": "rv-49",
+    "name": "Cave of Turns",
+    "generator": "robotMaze",
+    "params": {
+      "size": 8,
+      "pathLen": 12,
+      "turns": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "rv-50",
+    "name": "Master Route",
+    "generator": "robotMaze",
+    "params": {
+      "size": 8,
+      "pathLen": 12,
+      "turns": 5
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 147
+  },
+  {
+    "id": "rv-51",
+    "name": "The Deepest Dig",
+    "generator": "robotMaze",
+    "params": {
+      "size": 8,
+      "pathLen": 12,
+      "turns": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "rv-52",
+    "name": "Grand Expedition",
+    "generator": "robotMaze",
+    "params": {
+      "size": 8,
+      "pathLen": 12,
+      "turns": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 126
+  },
+  {
+    "id": "rv-53",
+    "name": "Final Descent",
+    "generator": "robotMaze",
+    "params": {
+      "size": 8,
+      "pathLen": 12,
+      "turns": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 128
+  },
+  {
+    "id": "rv-54",
+    "name": "The Perfect Path",
+    "generator": "robotMaze",
+    "params": {
+      "size": 8,
+      "pathLen": 12,
+      "turns": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 130
+  },
+  {
+    "id": "rv-55",
+    "name": "Legend of the Mines",
+    "generator": "robotMaze",
+    "params": {
+      "size": 8,
+      "pathLen": 12,
+      "turns": 5
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 157
   }
 ]

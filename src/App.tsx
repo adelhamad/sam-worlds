@@ -1,11 +1,21 @@
 import { useEffect } from "react";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes, useLocation } from "react-router-dom";
 import { useGame } from "./state/store";
 import { TitleScreen } from "./ui/TitleScreen";
 import { Hub } from "./ui/Hub";
 import { WorldMap } from "./modules/play/WorldMap";
 import { PlayStage } from "./modules/play/PlayStage";
 import { CometCatch } from "./modules/cometcatch/CometCatch";
+import { OrbitRescue } from "./modules/orbit/OrbitRescue";
+
+/** Each screen starts at the top — no inherited scroll position. */
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 import { STR } from "./strings/en";
 import { unlockAudio } from "./engine/feedback/audio";
 import { startMusic } from "./engine/feedback/music";
@@ -40,12 +50,14 @@ export default function App() {
 
   return (
     <HashRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<TitleScreen />} />
         <Route path="/hub" element={<Hub />} />
         <Route path="/world/:worldId" element={<WorldMap />} />
         <Route path="/play/:stageId" element={<PlayStage />} />
         <Route path="/catch" element={<CometCatch />} />
+        <Route path="/orbit" element={<OrbitRescue />} />
       </Routes>
     </HashRouter>
   );

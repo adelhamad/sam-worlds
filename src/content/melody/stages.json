@@ -651,5 +651,580 @@
     "questions": 8,
     "mechanic": "gate-run",
     "payout": 106
+  },
+  {
+    "id": "me-33",
+    "name": "Long Echo Hall",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 5,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "me-34",
+    "name": "Wide Leaps",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 5,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "me-35",
+    "name": "Sixth and Seventh",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 5,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 92
+  },
+  {
+    "id": "me-36",
+    "name": "Octave Antenna",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 5,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 94
+  },
+  {
+    "id": "me-37",
+    "name": "Deep Listening",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 5,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 96
+  },
+  {
+    "id": "me-38",
+    "name": "Harmonic Maze",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 5,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "me-39",
+    "name": "Twin Melodies",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 5,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "me-40",
+    "name": "The Resonant Gate",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 5,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "me-41",
+    "name": "Five-Note Carrier",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 5,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 104
+  },
+  {
+    "id": "me-42",
+    "name": "Key Voyager",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 5,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 106
+  },
+  {
+    "id": "me-43",
+    "name": "Minor Shadows",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 5,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 108
+  },
+  {
+    "id": "me-44",
+    "name": "Phrase Builder",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 5,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "me-45",
+    "name": "Echo Storm",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 6,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "me-46",
+    "name": "Grand Intervals",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 6,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 114
+  },
+  {
+    "id": "me-47",
+    "name": "Chord Cascades",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 6,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 116
+  },
+  {
+    "id": "me-48",
+    "name": "Memory of Six",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 6,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 118
+  },
+  {
+    "id": "me-49",
+    "name": "The Long Phrase",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 6,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "me-50",
+    "name": "Maestro's Riddle",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 6,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 147
+  },
+  {
+    "id": "me-51",
+    "name": "Silent Score",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 6,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "me-52",
+    "name": "Perfect Pitch Trial",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 6,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 126
+  },
+  {
+    "id": "me-53",
+    "name": "Symphony Sparks",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 6,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 128
+  },
+  {
+    "id": "me-54",
+    "name": "The Final Cadence",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 6,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 130
+  },
+  {
+    "id": "me-55",
+    "name": "Maestro of Worlds",
+    "generator": "melody",
+    "params": {
+      "types": [
+        "echo",
+        "transpose",
+        "interval",
+        "chord"
+      ],
+      "length": 6,
+      "intervals": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        12
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 157
   }
 ]

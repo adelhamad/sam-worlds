@@ -16,6 +16,8 @@ const CHAINS: string[][] = [
   ["🌸 flower", "🐝 bee", "🐸 frog", "🐍 snake"],
   ["🌾 wheat", "🐭 mouse", "🦉 owl"],
   ["🍃 plankton", "🦐 shrimp", "🐧 penguin", "🐋 orca"],
+  ["☀️ sunlight", "🌱 grass", "🦗 cricket", "🐸 frog", "🦅 hawk"],
+  ["🍂 leaves", "🪱 worm", "🐦 bird", "🐱 cat", "🦊 fox"],
 ];
 
 const CYCLES: string[][] = [
@@ -24,6 +26,8 @@ const CYCLES: string[][] = [
   ["🌰 seed", "🌱 sprout", "🌿 plant", "🌳 tree"],
   ["💧 rain", "🏞️ river", "🌊 sea", "☁️ cloud"],
   ["🥚 egg", "🪱 tadpole", "🐸 frog"],
+  ["🌑 new moon", "🌓 half moon", "🌕 full moon", "🌗 waning moon"],
+  ["🥚 egg", "🐛 larva", "🛏 pupa", "🐝 bee"],
 ];
 
 const HABITATS: Array<[string, string]> = [

@@ -81,7 +81,8 @@ function drawBackground(px: Uint8Array, size: number): void {
 
 function paintGlyphCell(
   px: Uint8Array,
-  size: number,
+  w: number,
+  h: number,
   x0: number,
   y0: number,
   cell: number,
@@ -89,8 +90,8 @@ function paintGlyphCell(
 ): void {
   for (let y = y0 - glowPad; y < y0 + cell + glowPad; y++) {
     for (let x = x0 - glowPad; x < x0 + cell + glowPad; x++) {
-      if (x < 0 || y < 0 || x >= size || y >= size) continue;
-      const i = (y * size + x) * 4;
+      if (x < 0 || y < 0 || x >= w || y >= h) continue;
+      const i = (y * w + x) * 4;
       if (px[i + 3] === 0) continue;
       const isCore = x >= x0 && x < x0 + cell && y >= y0 && y < y0 + cell;
       if (isCore) px.set(FG, i);
@@ -114,7 +115,38 @@ function drawIcon(size: number, padFrac: number): Uint8Array {
   for (let gy = 0; gy < gh; gy++) {
     for (let gx = 0; gx < gw; gx++) {
       if (S_GRID[gy][gx] !== "#") continue;
-      paintGlyphCell(px, size, ox + gx * cell, oy + gy * cell, cell, glowPad);
+      paintGlyphCell(px, size, size, ox + gx * cell, oy + gy * cell, cell, glowPad);
+    }
+  }
+  return px;
+}
+
+function drawBanner(w: number, h: number): Uint8Array {
+  const px = new Uint8Array(w * h * 4);
+  // night sky with sprinkled stars
+  for (let i = 0; i < w * h; i++) px.set(BG, i * 4);
+  let seed = 42;
+  const rnd = () => {
+    seed = (seed * 1103515245 + 12345) & 0x7fffffff;
+    return seed / 0x7fffffff;
+  };
+  for (let s = 0; s < 240; s++) {
+    const x = Math.floor(rnd() * w);
+    const y = Math.floor(rnd() * h);
+    const b = 140 + Math.floor(rnd() * 115);
+    px.set([b, b, Math.min(255, b + 20), 255], (y * w + x) * 4);
+  }
+  // centered S emblem
+  const gw = S_GRID[0].length;
+  const gh = S_GRID.length;
+  const cell = Math.floor(Math.min((h * 0.72) / gh, (w * 0.3) / gw));
+  const ox = Math.floor((w - cell * gw) / 2);
+  const oy = Math.floor((h - cell * gh) / 2);
+  const glowPad = Math.max(2, Math.floor(cell * 0.25));
+  for (let gy = 0; gy < gh; gy++) {
+    for (let gx = 0; gx < gw; gx++) {
+      if (S_GRID[gy][gx] !== "#") continue;
+      paintGlyphCell(px, w, h, ox + gx * cell, oy + gy * cell, cell, glowPad);
     }
   }
   return px;
@@ -129,3 +161,5 @@ for (const [name, size, pad] of [
   writeFileSync(`public/icons/${name}`, encodePNG(size, size, drawIcon(size, pad)));
   console.log(`wrote public/icons/${name}`);
 }
+writeFileSync("public/og.png", encodePNG(1200, 630, drawBanner(1200, 630)));
+console.log("wrote public/og.png");

@@ -11,9 +11,10 @@ export interface CipherParams {
 
 const WORDS = [
   "STAR", "MOON", "SHIP", "GEAR", "CODE", "SPARK", "ORBIT", "LIGHT", "COMET", "ROBOT",
-  "FORGE", "ROCKET", "PLANET", "SIGNAL",
+  "FORGE", "ROCKET", "PLANET", "SIGNAL", "GALAXY", "COMPASS", "ASTEROID", "TREASURE", "TELESCOPE", "ADVENTURE",
   // Minecraft flavor
   "CRAFT", "MINER", "CREEPER", "DIAMOND", "REDSTONE", "EMERALD", "PICKAXE", "NETHER", "BLOCK", "SLIME",
+  "PORTAL", "VILLAGER", "ENDERMAN", "OBSIDIAN",
 ];
 
 const SYMBOLS = ["★", "♦", "♣", "♠", "●", "▲", "■", "✿", "☂", "☼", "♞", "♪", "⚡", "❄"];

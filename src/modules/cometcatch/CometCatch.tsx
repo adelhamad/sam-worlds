@@ -12,6 +12,26 @@ interface IOSOrientationEvent {
   requestPermission?: () => Promise<"granted" | "denied">;
 }
 
+/**
+ * Screen-relative left/right tilt. In portrait that's gamma, but when the
+ * screen rotates the device axes don't — beta/gamma must be remapped.
+ */
+function screenTilt(e: DeviceOrientationEvent): number | null {
+  if (e.beta === null || e.gamma === null) return null;
+  const raw = screen.orientation?.angle ?? (window as { orientation?: number }).orientation ?? 0;
+  const angle = ((raw % 360) + 360) % 360;
+  switch (angle) {
+    case 90:
+      return e.beta;
+    case 180:
+      return -e.gamma;
+    case 270:
+      return -e.beta;
+    default:
+      return e.gamma;
+  }
+}
+
 export function CometCatch() {
   const navigate = useNavigate();
   const earnDust = useGame((s) => s.earnDust);
@@ -96,9 +116,10 @@ export function CometCatch() {
   useEffect(() => {
     if (phase !== "play") return;
     const onTilt = (e: DeviceOrientationEvent) => {
-      if (e.gamma === null) return;
+      const tilt = screenTilt(e);
+      if (tilt === null) return;
       setTiltActive(true);
-      sceneRef.current?.steer(Math.max(-30, Math.min(30, e.gamma)) / 30);
+      sceneRef.current?.steer(Math.max(-30, Math.min(30, tilt)) / 30);
     };
     const onPointer = (e: PointerEvent) => {
       if (e.buttons === 0 && e.pointerType === "mouse") return;

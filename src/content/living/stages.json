@@ -482,5 +482,373 @@
     "questions": 8,
     "mechanic": "gate-run",
     "payout": 106
+  },
+  {
+    "id": "lp-33",
+    "name": "Five-Link Chains",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "lp-34",
+    "name": "Moon Cycles",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "lp-35",
+    "name": "Bee Beginnings",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 92
+  },
+  {
+    "id": "lp-36",
+    "name": "The Web Widens",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 94
+  },
+  {
+    "id": "lp-37",
+    "name": "Deep Sea Five",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 96
+  },
+  {
+    "id": "lp-38",
+    "name": "Sunlight Lines",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "lp-39",
+    "name": "Hidden Hunters",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "lp-40",
+    "name": "Guardian's Gate",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "lp-41",
+    "name": "The Long Cycle",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 104
+  },
+  {
+    "id": "lp-42",
+    "name": "Predator Paths",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 106
+  },
+  {
+    "id": "lp-43",
+    "name": "Night Feeders",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 108
+  },
+  {
+    "id": "lp-44",
+    "name": "The Full Web",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "lp-45",
+    "name": "Wild Riddles II",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "lp-46",
+    "name": "Nature's Memory",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 114
+  },
+  {
+    "id": "lp-47",
+    "name": "Cycle Storm",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 116
+  },
+  {
+    "id": "lp-48",
+    "name": "Chain Grandmaster",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 118
+  },
+  {
+    "id": "lp-49",
+    "name": "The Balance Test",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "lp-50",
+    "name": "Planet Pulse",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 147
+  },
+  {
+    "id": "lp-51",
+    "name": "Last Wild Secret",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "lp-52",
+    "name": "Grand Ecosystem",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 126
+  },
+  {
+    "id": "lp-53",
+    "name": "The Final Chain",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 128
+  },
+  {
+    "id": "lp-54",
+    "name": "Keeper of Life",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 130
+  },
+  {
+    "id": "lp-55",
+    "name": "Heart of the Planet",
+    "generator": "living",
+    "params": {
+      "types": [
+        "chain",
+        "cycle",
+        "fact"
+      ],
+      "maxLen": 5
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 157
   }
 ]

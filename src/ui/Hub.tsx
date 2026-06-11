@@ -140,6 +140,18 @@ export function Hub() {
           <span className="tile-sub">Tilt to fly!</span>
         </button>
         <button
+          className="tile tile-glow"
+          onClick={() => {
+            unlockAudio();
+            sfx.tap();
+            navigate("/orbit");
+          }}
+        >
+          <span className="tile-icon">🛰️</span>
+          <span className="tile-name">Orbit Rescue</span>
+          <span className="tile-sub">Slingshot through gravity!</span>
+        </button>
+        <button
           className="tile"
           onClick={() => {
             unlockAudio();

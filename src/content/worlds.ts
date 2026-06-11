@@ -40,6 +40,9 @@ export const WORLDS: WorldDef[] = [
       { stage: 10, name: "Echo Cadet", icon: "🎧" },
       { stage: 20, name: "Harmony Smith", icon: "🎼" },
       { stage: 30, name: "Engine Maestro", icon: "🎹" },
+      { stage: 40, name: "Phrase Weaver", icon: "🎵" },
+      { stage: 50, name: "Perfect Pitch", icon: "👂" },
+      { stage: 55, name: "Grand Maestro", icon: "🏆" },
     ],
   },
   {
@@ -49,6 +52,9 @@ export const WORLDS: WorldDef[] = [
       { stage: 10, name: "Switch Tamer", icon: "🔌" },
       { stage: 20, name: "Gate Wizard", icon: "💡" },
       { stage: 30, name: "Circuit Master", icon: "⚡" },
+      { stage: 40, name: "Truth Hunter", icon: "🔦" },
+      { stage: 50, name: "Grand Designer", icon: "🏛️" },
+      { stage: 55, name: "Architect of Light", icon: "🏆" },
     ],
   },
   {
@@ -58,6 +64,9 @@ export const WORLDS: WorldDef[] = [
       { stage: 10, name: "Path Finder", icon: "🧭" },
       { stage: 20, name: "Tunnel Coder", icon: "⛏️" },
       { stage: 30, name: "Robot Whisperer", icon: "🤖" },
+      { stage: 40, name: "Deep Digger", icon: "💎" },
+      { stage: 50, name: "Route Master", icon: "🗺️" },
+      { stage: 55, name: "Legend of the Mines", icon: "🏆" },
     ],
   },
   {
@@ -67,6 +76,9 @@ export const WORLDS: WorldDef[] = [
       { stage: 10, name: "Clock Winder", icon: "🕰️" },
       { stage: 20, name: "Minute Master", icon: "⏱️" },
       { stage: 30, name: "Keeper of Hours", icon: "⏳" },
+      { stage: 40, name: "Timetable Tamer", icon: "🚂" },
+      { stage: 50, name: "Master of Minutes", icon: "⏰" },
+      { stage: 55, name: "Lord of Time", icon: "🏆" },
     ],
   },
   {
@@ -76,6 +88,9 @@ export const WORLDS: WorldDef[] = [
       { stage: 10, name: "Code Spotter", icon: "🔍" },
       { stage: 20, name: "Shift Breaker", icon: "🗝️" },
       { stage: 30, name: "Code Breaker", icon: "🔐" },
+      { stage: 40, name: "Glyph Hunter", icon: "🔣" },
+      { stage: 50, name: "Grand Decryptor", icon: "🧩" },
+      { stage: 55, name: "Cipher Supreme", icon: "🏆" },
     ],
   },
   {
@@ -85,6 +100,9 @@ export const WORLDS: WorldDef[] = [
       { stage: 10, name: "Lever Lord", icon: "⚖️" },
       { stage: 20, name: "Cannon Captain", icon: "🧨" },
       { stage: 30, name: "Master Engineer", icon: "🏗️" },
+      { stage: 40, name: "Pinpoint Gunner", icon: "🎯" },
+      { stage: 50, name: "Canyon King", icon: "🏔️" },
+      { stage: 55, name: "Architect Supreme", icon: "🏆" },
     ],
   },
   {
@@ -94,6 +112,9 @@ export const WORLDS: WorldDef[] = [
       { stage: 10, name: "Seed Scout", icon: "🌱" },
       { stage: 20, name: "Chain Keeper", icon: "🦊" },
       { stage: 30, name: "Planet Guardian", icon: "🌍" },
+      { stage: 40, name: "Web Weaver", icon: "🕸️" },
+      { stage: 50, name: "Ecosystem Sage", icon: "🌿" },
+      { stage: 55, name: "Heart of the Planet", icon: "🏆" },
     ],
   },
   {
@@ -103,6 +124,9 @@ export const WORLDS: WorldDef[] = [
       { stage: 10, name: "Star Mapper", icon: "🌟" },
       { stage: 20, name: "World Stitcher", icon: "🗺️" },
       { stage: 30, name: "Grand Explorer", icon: "🪐" },
+      { stage: 40, name: "Chronicle Keeper", icon: "📜" },
+      { stage: 50, name: "Master Explorer", icon: "🧭" },
+      { stage: 55, name: "Eye of the World", icon: "🏆" },
     ],
   },
   {
@@ -112,6 +136,9 @@ export const WORLDS: WorldDef[] = [
       { stage: 10, name: "Flag Finder", icon: "🚩" },
       { stage: 20, name: "Banner Expert", icon: "🎌" },
       { stage: 30, name: "Flag Grandmaster", icon: "🏁" },
+      { stage: 40, name: "Eagle Eyes", icon: "🦅" },
+      { stage: 50, name: "Banner Legend", icon: "🎖️" },
+      { stage: 55, name: "Keeper of Colors", icon: "🏆" },
     ],
   },
 ];

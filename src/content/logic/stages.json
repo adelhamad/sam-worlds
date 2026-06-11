@@ -567,5 +567,419 @@
     "questions": 8,
     "mechanic": "gate-run",
     "payout": 106
+  },
+  {
+    "id": "lc-33",
+    "name": "Four-Gate Forest",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "lc-34",
+    "name": "Tangled Truths",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "lc-35",
+    "name": "The Predictor II",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 92
+  },
+  {
+    "id": "lc-36",
+    "name": "Wire Cathedral",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 94
+  },
+  {
+    "id": "lc-37",
+    "name": "Triple XOR",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 96
+  },
+  {
+    "id": "lc-38",
+    "name": "Logic Falls",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "lc-39",
+    "name": "Gate Avalanche",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "lc-40",
+    "name": "The Deep Vault",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 3
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "lc-41",
+    "name": "Inverted Castle",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 104
+  },
+  {
+    "id": "lc-42",
+    "name": "Circuit Canyon",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 106
+  },
+  {
+    "id": "lc-43",
+    "name": "Spark Synthesis",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 108
+  },
+  {
+    "id": "lc-44",
+    "name": "The Long Wire",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 3
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "lc-45",
+    "name": "Redstone Peak",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "lc-46",
+    "name": "Master Predictor",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 114
+  },
+  {
+    "id": "lc-47",
+    "name": "Gate Symphony",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 116
+  },
+  {
+    "id": "lc-48",
+    "name": "Truth Hunter",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 118
+  },
+  {
+    "id": "lc-49",
+    "name": "The Tangle King",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "lc-50",
+    "name": "Lightning Logic",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 4
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 147
+  },
+  {
+    "id": "lc-51",
+    "name": "Circuit Cosmos",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "lc-52",
+    "name": "Grand Designer",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 126
+  },
+  {
+    "id": "lc-53",
+    "name": "The Last Lamp",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 128
+  },
+  {
+    "id": "lc-54",
+    "name": "Architect of Light",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 4
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 130
+  },
+  {
+    "id": "lc-55",
+    "name": "Crown of Circuits",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 3,
+      "depth": 4
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 157
   }
 ]

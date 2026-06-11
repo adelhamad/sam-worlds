@@ -1115,6 +1115,13 @@ body,
   font-size: 20px;
   margin: 0;
 }
+.orbit-host {
+  touch-action: none;
+  cursor: crosshair;
+}
+.orbit-note {
+  color: var(--amber);
+}
 
 /* ---------- celebration ---------- */
 .celebration-card {
