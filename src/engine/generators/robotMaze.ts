@@ -42,6 +42,7 @@ export function generateRobotMaze(params: RobotParams, rng: RNG, ctx: GenContext
         choices: [],
         hint: "Count the squares before each turn.",
         inputMode: "commands",
+        dedupeKey: `${maze.start}-${maze.goal}-${maze.dir}-${maze.rocks.length}`,
         payload: maze,
       };
     }

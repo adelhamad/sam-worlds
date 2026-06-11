@@ -53,6 +53,7 @@ export function generateLiving(params: LivingParams, rng: RNG, ctx: GenContext):
     choices: [],
     hint: `It starts with ${seq[0]}.`,
     inputMode: "order",
+    dedupeKey: `seq-${seq.join("")}`,
     payload: { items: shuffle(rng, seq), arrow: "→" },
   };
 }

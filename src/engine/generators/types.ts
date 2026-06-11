@@ -18,6 +18,12 @@ export interface Question {
   answer: string;
   choices: string[]; // for "choices" mode; includes the answer, shuffled
   hint: string;
+  /**
+   * Identifies the question's SUBJECT for within-session dedupe. Set this when
+   * the prompt text is generic ("Unscramble the word!", "Wire it…") but the
+   * content varies. Falls back to the prompt when omitted.
+   */
+  dedupeKey?: string;
   /** Defaults to "numpad" when omitted. */
   inputMode?: InputMode;
   /** Extra JSON-serializable data the input widget needs (maze, circuit, notes…). */

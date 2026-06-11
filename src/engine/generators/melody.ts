@@ -1,16 +1,15 @@
-// Melody Engine — NOT piano lessons. Ear training, intervals, chords,
-// transposition: Sam plays answers on a real-pitch keyboard.
+// Melody Engine — NOT piano lessons. Real music skills: READING written notes
+// on the staff, ear training, chords, transposition. Answers are played on a
+// real-pitch keyboard.
 import { pick, randInt, type RNG } from "../rng";
-import { INTERVALS, transpose, triad, WHITE_KEYS } from "../music/notes";
+import { transpose, triad, WHITE_KEYS } from "../music/notes";
 import type { GenContext, Question } from "./types";
 
 export interface MelodyParams {
   /** Question types this stage draws from. */
-  types: Array<"echo" | "interval" | "chord" | "transpose">;
+  types: Array<"read" | "echo" | "chord" | "transpose">;
   /** Echo/transpose melody length. */
   length?: number;
-  /** Interval semitone choices (keys of INTERVALS). */
-  intervals?: number[];
 }
 
 let qid = 0;
@@ -19,8 +18,8 @@ const id = () => `me${++qid}`;
 export function generateMelody(params: MelodyParams, rng: RNG, ctx: GenContext): Question {
   const type = ctx.easier ? params.types[0] : pick(rng, params.types);
   switch (type) {
-    case "interval":
-      return genInterval(params, rng);
+    case "read":
+      return genReadNote(rng);
     case "chord":
       return genChord(rng);
     case "transpose":
@@ -28,6 +27,22 @@ export function generateMelody(params: MelodyParams, rng: RNG, ctx: GenContext):
     default:
       return genEcho(params, rng, ctx);
   }
+}
+
+/** Read a written note on the treble staff, then play it on the keyboard. */
+function genReadNote(rng: RNG): Question {
+  const note = pick(rng, WHITE_KEYS);
+  const letter = note.replace(/[45]/, "");
+  return {
+    id: id(),
+    prompt: "Read the note — then play it!",
+    answer: note,
+    choices: [],
+    hint: `Lines (bottom→top) are E G B D F. This one is ${letter}.`,
+    inputMode: "piano",
+    dedupeKey: `read-${note}`,
+    payload: { staff: note, expected: 1 },
+  };
 }
 
 function walk(rng: RNG, length: number): string[] {
@@ -50,24 +65,8 @@ function genEcho(params: MelodyParams, rng: RNG, ctx: GenContext): Question {
     choices: [],
     hint: `It starts on ${notes[0]}.`,
     inputMode: "piano",
+    dedupeKey: `echo-${notes.join("")}`,
     payload: { play: notes, listenFirst: true },
-  };
-}
-
-function genInterval(params: MelodyParams, rng: RNG): Question {
-  const semis = pick(rng, params.intervals ?? [4, 7]);
-  // pick a root where the interval stays on the keyboard
-  const roots = WHITE_KEYS.filter((n) => transpose(n, semis));
-  const root = pick(rng, roots);
-  const answer = transpose(root, semis)!;
-  return {
-    id: id(),
-    prompt: `Tap the note a ${INTERVALS[semis]} above ${root}`,
-    answer,
-    choices: [],
-    hint: `Count ${semis} small steps up from ${root}.`,
-    inputMode: "piano",
-    payload: { play: [root], highlight: root },
   };
 }
 

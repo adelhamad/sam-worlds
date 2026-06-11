@@ -56,6 +56,7 @@ function genRhyme(rng: RNG): Question {
     choices: shuffle(rng, [answer, ...others]),
     hint: `Say them out loud — listen to the ending sound.`,
     inputMode: "choices",
+    dedupeKey: `rhyme-${target}`,
   };
 }
 
@@ -70,6 +71,7 @@ function genUnscramble(params: WordParams, rng: RNG, ctx: GenContext): Question 
     choices: [],
     hint: `It starts with ${letters[0]}.`,
     inputMode: "order",
+    dedupeKey: `unscramble-${word}`,
     payload: { items: shuffle(rng, letters), arrow: "·" },
   };
 }
@@ -104,5 +106,6 @@ function genOddSound(rng: RNG): Question {
     choices: shuffle(rng, [...three, odd]),
     hint: "Three sound the same at the end — one is different.",
     inputMode: "choices",
+    dedupeKey: `odd-${group[0]}-${odd}`,
   };
 }

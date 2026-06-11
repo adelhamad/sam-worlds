@@ -27,6 +27,10 @@ const PLANET_HUES: Record<string, string> = {
   wordwizard: "#fbbf24",
   body: "#fb7185",
   feelings: "#a78bfa",
+  affix: "#22d3ee",
+  grammar: "#f472b6",
+  ifelse: "#60a5fa",
+  loops: "#2dd4bf",
 };
 
 export function Hub() {

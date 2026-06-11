@@ -4,6 +4,7 @@ import { useGame } from "../state/store";
 import { completedInWorld, WORLDS } from "../content/worlds";
 import { MINIGAMES } from "../content/minigames";
 import { itemById } from "../engine/economy/catalog";
+import { youTubeId } from "../engine/video";
 import { clearAxisMaps, requestTiltPermission } from "../engine/sensors";
 import { TiltCalibrator } from "./TiltCalibrator";
 
@@ -110,6 +111,71 @@ function TiltControls() {
             setNote("✓ Calibrated for this device");
           }}
         />
+      )}
+    </section>
+  );
+}
+
+/** YouTube companion: curated videos that play during the game to draw him in. */
+function VideoControls() {
+  const enabled = useGame((s) => s.videoEnabled);
+  const mode = useGame((s) => s.videoMode);
+  const urls = useGame((s) => s.videoUrls);
+  const setEnabled = useGame((s) => s.setVideoEnabled);
+  const setMode = useGame((s) => s.setVideoMode);
+  const addUrl = useGame((s) => s.addVideoUrl);
+  const removeUrl = useGame((s) => s.removeVideoUrl);
+  const [input, setInput] = useState("");
+  const valid = youTubeId(input) !== null;
+
+  return (
+    <section className="panel parent-block">
+      <h2>📺 Video companion</h2>
+      <p className="dim">
+        Plays his favorite YouTube videos during the game — in a corner or behind it — to slowly
+        pull his attention into playing.
+      </p>
+      <div className="parent-row">
+        <button className={`btn ${enabled ? "btn-primary" : "btn-secondary"}`} onClick={() => setEnabled(!enabled)}>
+          {enabled ? "✅ On" : "⬜ Off"}
+        </button>
+        <button className={`btn ${mode === "corner" ? "btn-primary" : "btn-secondary"}`} onClick={() => setMode("corner")}>
+          Corner
+        </button>
+        <button className={`btn ${mode === "background" ? "btn-primary" : "btn-secondary"}`} onClick={() => setMode("background")}>
+          Behind game
+        </button>
+      </div>
+      <div className="parent-row">
+        <input
+          className="parent-input"
+          placeholder="Paste a YouTube link…"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <button
+          className={`btn ${valid ? "btn-primary" : "btn-disabled"}`}
+          onClick={() => {
+            if (valid) {
+              addUrl(input);
+              setInput("");
+            }
+          }}
+        >
+          Add
+        </button>
+      </div>
+      {urls.length === 0 ? (
+        <p className="dim">No videos yet.</p>
+      ) : (
+        urls.map((u) => (
+          <div key={u} className="parent-row parent-history-row">
+            <span className="video-url">{u}</span>
+            <button className="btn btn-secondary" onClick={() => removeUrl(u)}>
+              ✕
+            </button>
+          </div>
+        ))
       )}
     </section>
   );
@@ -310,6 +376,8 @@ function ParentControls() {
       </section>
 
       <AccessControls />
+
+      <VideoControls />
 
       <TiltControls />
 

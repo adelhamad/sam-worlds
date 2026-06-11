@@ -64,6 +64,7 @@ export function generateFlags(params: FlagsParams, rng: RNG, ctx: GenContext): Q
       choices: shuffle(rng, [emoji, ...distractors.map((f) => f[0])]),
       hint: `Picture ${country}'s colors…`,
       inputMode: "choices",
+      dedupeKey: `toflag-${country}`,
       payload: { bigChoices: true },
     };
   }
@@ -74,6 +75,7 @@ export function generateFlags(params: FlagsParams, rng: RNG, ctx: GenContext): Q
     choices: shuffle(rng, [country, ...distractors.map((f) => f[1])]),
     hint: `It starts with ${country[0]}…`,
     inputMode: "choices",
+    dedupeKey: `tocountry-${country}`,
     payload: { bigSymbol: emoji },
   };
 }

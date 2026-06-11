@@ -1,0 +1,807 @@
+[
+  {
+    "id": "ie-01",
+    "name": "If It Rains",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "IF something is true, THEN you do it!",
+      "Read the rule, then choose."
+    ]
+  },
+  {
+    "id": "ie-02",
+    "name": "Follow the Rule",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "ie-03",
+    "name": "Green Means Go",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 28
+  },
+  {
+    "id": "ie-04",
+    "name": "First Choices",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "ie-05",
+    "name": "Rule Reader",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 32
+  },
+  {
+    "id": "ie-06",
+    "name": "True or Not",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "ie-07",
+    "name": "Decision Time",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "ie-08",
+    "name": "The Rule Gate",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 38
+  },
+  {
+    "id": "ie-09",
+    "name": "If-Else Begins",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "branch",
+        "rule"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 40,
+    "intro": [
+      "IF true \u2192 do THEN. IF false \u2192 do ELSE!",
+      "Check the fact first."
+    ]
+  },
+  {
+    "id": "ie-10",
+    "name": "Two Paths",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "branch",
+        "rule"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 67
+  },
+  {
+    "id": "ie-11",
+    "name": "This or That",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "branch",
+        "rule"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "ie-12",
+    "name": "Branch Out",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "branch",
+        "rule"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "ie-13",
+    "name": "Sunny or Rainy",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "branch",
+        "rule"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "ie-14",
+    "name": "Choose Wisely",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "branch",
+        "rule"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 50
+  },
+  {
+    "id": "ie-15",
+    "name": "Path Master",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "branch",
+        "rule"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 52
+  },
+  {
+    "id": "ie-16",
+    "name": "The Branch Gate",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "branch",
+        "rule"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 54
+  },
+  {
+    "id": "ie-17",
+    "name": "Bigger Than?",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "compare",
+        "branch"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56,
+    "intro": [
+      "IF a number is bigger, do one thing.",
+      "Compare, then choose!"
+    ]
+  },
+  {
+    "id": "ie-18",
+    "name": "Compare It",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "compare",
+        "branch"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "ie-19",
+    "name": "Number Checks",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "compare",
+        "branch"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 60
+  },
+  {
+    "id": "ie-20",
+    "name": "If Greater",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "compare",
+        "branch"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 87
+  },
+  {
+    "id": "ie-21",
+    "name": "Smaller or Bigger",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "compare",
+        "branch"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 64
+  },
+  {
+    "id": "ie-22",
+    "name": "Compare Master",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "compare",
+        "branch"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "ie-23",
+    "name": "Logic Checks",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "compare",
+        "branch"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "ie-24",
+    "name": "The Compare Gate",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "compare",
+        "branch"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 70
+  },
+  {
+    "id": "ie-25",
+    "name": "Mixed Decisions",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 72
+  },
+  {
+    "id": "ie-26",
+    "name": "Rule Pro",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 74
+  },
+  {
+    "id": "ie-27",
+    "name": "Branch Pro",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 76
+  },
+  {
+    "id": "ie-28",
+    "name": "Compare Pro",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "ie-29",
+    "name": "Smart Choices",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "ie-30",
+    "name": "Decision Riddles",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "ie-31",
+    "name": "Quick Decide",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 84
+  },
+  {
+    "id": "ie-32",
+    "name": "The Logic Crown",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 86
+  },
+  {
+    "id": "ie-33",
+    "name": "Master Rules",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "ie-34",
+    "name": "Tricky Branches",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "ie-35",
+    "name": "Hard Compares",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 92
+  },
+  {
+    "id": "ie-36",
+    "name": "If-Else Chains",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 94
+  },
+  {
+    "id": "ie-37",
+    "name": "Decision Marathon",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 96
+  },
+  {
+    "id": "ie-38",
+    "name": "Logic Star",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "ie-39",
+    "name": "Choice Sage",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "ie-40",
+    "name": "The Decision Vault",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "ie-41",
+    "name": "Rule Royalty",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 104
+  },
+  {
+    "id": "ie-42",
+    "name": "Branch Royalty",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 106
+  },
+  {
+    "id": "ie-43",
+    "name": "Compare Legend",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 108
+  },
+  {
+    "id": "ie-44",
+    "name": "Logic Sage",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "ie-45",
+    "name": "Decision Master",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "ie-46",
+    "name": "Choice Star",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 114
+  },
+  {
+    "id": "ie-47",
+    "name": "The Long Rule",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 116
+  },
+  {
+    "id": "ie-48",
+    "name": "Grand Logic",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 118
+  },
+  {
+    "id": "ie-49",
+    "name": "Decision Storm",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "ie-50",
+    "name": "Branch Sage",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 147
+  },
+  {
+    "id": "ie-51",
+    "name": "Compare Sage",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "ie-52",
+    "name": "Almost Coder",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 126
+  },
+  {
+    "id": "ie-53",
+    "name": "The Final Choice",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 128
+  },
+  {
+    "id": "ie-54",
+    "name": "Logic Supreme",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 130
+  },
+  {
+    "id": "ie-55",
+    "name": "Master of Decisions",
+    "generator": "ifElse",
+    "params": {
+      "types": [
+        "rule",
+        "branch",
+        "compare"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 157
+  }
+]

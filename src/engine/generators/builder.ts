@@ -34,6 +34,7 @@ function genLaunch(params: BuilderParams, rng: RNG, ctx: GenContext): Question {
     choices: [],
     hint: angle < 45 ? "Flatter shots land closer in." : "Steep shots also drop short — try high!",
     inputMode: "launch",
+    dedupeKey: `launch-${target}`,
     payload: { target, tolerance },
   };
 }

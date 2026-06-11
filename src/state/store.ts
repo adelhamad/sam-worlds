@@ -2,13 +2,13 @@ import { create } from "zustand";
 import { db, logEvent, type BadgeRow, type CouponRow, type ProgressRow, type SessionRow } from "../engine/save/db";
 import { clearBackup, requestPersistentStorage, restoreBackupIfNeeded } from "../engine/save/backup";
 import { generateQuestionSet } from "../engine/generators";
-import { DEFAULT_RATING, difficultyFromRating, updateRating } from "../engine/difficulty/skillRating";
+import { DEFAULT_RATING, difficultyFromRating, stageDifficulty, updateRating } from "../engine/difficulty/skillRating";
 import { starsForResult } from "../engine/progress/stars";
 import { isRapidGuessing, weightedPayout, workedExample } from "../engine/answers/answerEngine";
 import { STR } from "../strings/en";
 import { itemById } from "../engine/economy/catalog";
-import { BADGES, stageById, worldById, WORLDS, type BadgeDef } from "../content/worlds";
-import { MINIGAMES } from "../content/minigames";
+import { BADGES, stageById, stageIndexInWorld, worldOfStage, worldById, type BadgeDef } from "../content/worlds";
+import { withGameDefaults, withWorldDefaults } from "./gates";
 import { persona } from "../persona.config";
 import { newSeed } from "../engine/rng";
 import { setMuted } from "../engine/feedback/audio";
@@ -45,6 +45,9 @@ interface GameStore {
   /** Parent gates: which worlds / minigames Sam may open right now. */
   enabledWorlds: Record<string, boolean>;
   enabledGames: Record<string, boolean>;
+  videoEnabled: boolean;
+  videoMode: "corner" | "background";
+  videoUrls: string[];
   session: Session | null;
 
   hydrate: () => Promise<void>;
@@ -62,26 +65,16 @@ interface GameStore {
   setWorldProgress: (worldId: string, completedCount: number) => void;
   setWorldEnabled: (worldId: string, on: boolean) => void;
   setGameEnabled: (gameId: string, on: boolean) => void;
+  setVideoEnabled: (on: boolean) => void;
+  setVideoMode: (mode: "corner" | "background") => void;
+  addVideoUrl: (url: string) => void;
+  removeVideoUrl: (url: string) => void;
   resetAll: () => Promise<void>;
 }
 
-/** Default: only the first two worlds are open until the parent enables more. */
-function withWorldDefaults(stored?: Record<string, boolean>): Record<string, boolean> {
-  const out: Record<string, boolean> = {};
-  WORLDS.forEach((w, i) => {
-    out[w.id] = stored?.[w.id] ?? i < 2;
-  });
-  return out;
-}
-
-function withGameDefaults(stored?: Record<string, boolean>): Record<string, boolean> {
-  const out: Record<string, boolean> = {};
-  for (const g of MINIGAMES) out[g.id] = stored?.[g.id] ?? false;
-  return out;
-}
 
 function persistSettings(get: () => GameStore): void {
-  const { soundOn, musicOn, lastStageId, enabledWorlds, enabledGames } = get();
+  const { soundOn, musicOn, lastStageId, enabledWorlds, enabledGames, videoEnabled, videoMode, videoUrls } = get();
   void db.settings.put({
     id: 1,
     soundOn,
@@ -89,6 +82,9 @@ function persistSettings(get: () => GameStore): void {
     lastStageId: lastStageId ?? undefined,
     enabledWorlds,
     enabledGames,
+    videoEnabled,
+    videoMode,
+    videoUrls,
   });
 }
 
@@ -174,6 +170,9 @@ export const useGame = create<GameStore>((set, get) => ({
   coupons: [],
   enabledWorlds: withWorldDefaults(),
   enabledGames: withGameDefaults(),
+  videoEnabled: false,
+  videoMode: "corner",
+  videoUrls: [],
   session: null,
 
   hydrate: async () => {
@@ -226,6 +225,9 @@ export const useGame = create<GameStore>((set, get) => ({
       coupons: couponRows,
       enabledWorlds: withWorldDefaults(settings?.enabledWorlds),
       enabledGames: withGameDefaults(settings?.enabledGames),
+      videoEnabled: settings?.videoEnabled ?? false,
+      videoMode: settings?.videoMode ?? "corner",
+      videoUrls: settings?.videoUrls ?? [],
       session: sessionRow
         ? {
             ...sessionRow,
@@ -247,8 +249,10 @@ export const useGame = create<GameStore>((set, get) => ({
     const skill = stage.skill ?? stage.generator;
     const rating = get().skillRatings[skill] ?? DEFAULT_RATING;
     const seed = newSeed();
+    const world = worldOfStage(stageId);
+    const stageProgress = world ? stageIndexInWorld(stageId) / Math.max(1, world.stages.length - 1) : 0.5;
     const questions = generateQuestionSet(stage.generator, stage.params, stage.questions, seed, {
-      difficulty: difficultyFromRating(rating),
+      difficulty: stageDifficulty(stageProgress, rating),
       easier: false,
     });
     const session: Session = {
@@ -492,6 +496,29 @@ export const useGame = create<GameStore>((set, get) => ({
     set({ enabledGames: { ...get().enabledGames, [gameId]: on } });
     persistSettings(get);
     logEvent("parent.gameGate", { gameId, on });
+  },
+
+  setVideoEnabled: (on) => {
+    set({ videoEnabled: on });
+    persistSettings(get);
+    logEvent("parent.videoEnabled", { on });
+  },
+
+  setVideoMode: (mode) => {
+    set({ videoMode: mode });
+    persistSettings(get);
+  },
+
+  addVideoUrl: (url) => {
+    const u = url.trim();
+    if (!u || get().videoUrls.includes(u)) return;
+    set({ videoUrls: [...get().videoUrls, u] });
+    persistSettings(get);
+  },
+
+  removeVideoUrl: (url) => {
+    set({ videoUrls: get().videoUrls.filter((u) => u !== url) });
+    persistSettings(get);
   },
 
   resetAll: async () => {

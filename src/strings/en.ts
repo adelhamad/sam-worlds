@@ -21,6 +21,7 @@ export const STR = {
   greatJob: ["Great!", "Yes!", "Nice one!", "You got it!", "Brilliant!"],
   perfectRun: "Perfect Run!",
   proveAgain: "Yes! One more to prove it…",
+  thinkFirst: "🤔 Think about it first…",
   howToPlay: "How to play",
   companionSlow: `Take your time, ${persona.title} ${n} — the Forge isn't going anywhere.`,
   stageComplete: "Gate cleared!",

@@ -22,6 +22,57 @@ import { OrderCards } from "../../ui/inputs/OrderCards";
 import { ChoiceButtons } from "../../ui/inputs/ChoiceButtons";
 
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const THINK_MS = 1200;
+
+interface VerdictDeps {
+  gateIndex: number;
+  scene: GateRunScene | null;
+  setBusy: (b: boolean) => void;
+  setPraise: (p: string | null) => void;
+  advance: () => void;
+}
+
+interface SubmitDeps extends VerdictDeps {
+  busy: boolean;
+  shownAt: number;
+  answer: (v: string) => "correct" | "wrong" | "again" | null;
+}
+
+/** Full answer pipeline: guard, think-first gate, then verdict animation. */
+function handleSubmit(value: string, d: SubmitDeps): void {
+  if (d.busy) return;
+  unlockAudio();
+  // Ignore answers fired in the first ~1.2s so click-spam can't beat thinking.
+  if (Date.now() - d.shownAt < THINK_MS) {
+    d.setPraise(STR.thinkFirst);
+    setTimeout(() => d.setPraise(null), 1100);
+    return;
+  }
+  applyVerdict(d.answer(value), d);
+}
+
+/** Animate + sequence the response to an answer verdict. */
+function applyVerdict(res: "correct" | "wrong" | "again" | null, d: VerdictDeps): void {
+  if (res === "wrong") {
+    sfx.wrong();
+    d.scene?.wrongShake();
+    d.setBusy(true);
+    setTimeout(() => d.setBusy(false), MISS_LOCK_MS);
+    return;
+  }
+  if (res !== "correct" && res !== "again") return;
+  // correct (advance) or "again" (proved one, one more to go — fresh Q ready)
+  sfx.correct();
+  const advancing = res === "correct";
+  if (advancing) d.scene?.openGate(d.gateIndex);
+  d.setPraise(advancing ? pickPraise() : STR.proveAgain);
+  d.setBusy(true);
+  setTimeout(() => {
+    d.setBusy(false);
+    d.setPraise(null);
+    if (advancing) d.advance();
+  }, advancing ? 850 : 750);
+}
 
 function pickPraise(): string {
   return STR.greatJob[Math.floor(Math.random() * STR.greatJob.length)];
@@ -73,6 +124,7 @@ export function PlayStage() {
 
   const hostRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<GateRunScene | null>(null);
+  const shownAtRef = useRef(0);
   const [busy, setBusy] = useState(false);
   const [praise, setPraise] = useState<string | null>(null);
   const [helpOpen, setHelpOpen] = useState(false);
@@ -95,12 +147,19 @@ export function PlayStage() {
     return () => unduckMusic();
   }, [world?.id]);
 
+  // Reset the think-first timer whenever a new question is shown.
+  const shownQid = liveSession ? liveSession.questions[liveSession.index]?.id : undefined;
+  useEffect(() => {
+    shownAtRef.current = Date.now();
+  }, [shownQid]);
+
   const seed = liveSession?.seed;
   useEffect(() => {
     if (!stage || !worldEnabled || seed === undefined || !hostRef.current) return;
     let cancelled = false;
+    const liveQuestions = useGame.getState().session?.questions.length ?? stage.questions;
     const resumeIndex = useGame.getState().session?.index ?? 0;
-    void GateRunScene.create(hostRef.current, stage.questions, reducedMotion()).then((scene) => {
+    void GateRunScene.create(hostRef.current, liveQuestions, reducedMotion()).then((scene) => {
       if (cancelled) {
         scene.destroy();
         return;
@@ -113,7 +172,7 @@ export function PlayStage() {
       sceneRef.current?.destroy();
       sceneRef.current = null;
     };
-  }, [stage, seed]);
+  }, [stage, seed, worldEnabled]);
 
   useEffect(() => {
     if (!result) return;
@@ -136,34 +195,17 @@ export function PlayStage() {
   const q = liveSession ? liveSession.questions[liveSession.index] : null;
 
   function submit(value: string) {
-    if (busy || !liveSession) return;
-    unlockAudio();
-    const res = answer(value);
-    if (res === "correct") {
-      sfx.correct();
-      setPraise(pickPraise());
-      sceneRef.current?.openGate(liveSession.index);
-      setBusy(true);
-      setTimeout(() => {
-        setBusy(false);
-        setPraise(null);
-        advance();
-      }, 850);
-    } else if (res === "again") {
-      // proved one — a fresh question is already in place, one more to go
-      sfx.correct();
-      setPraise(STR.proveAgain);
-      setBusy(true);
-      setTimeout(() => {
-        setBusy(false);
-        setPraise(null);
-      }, 750);
-    } else if (res === "wrong") {
-      sfx.wrong();
-      sceneRef.current?.wrongShake();
-      setBusy(true);
-      setTimeout(() => setBusy(false), MISS_LOCK_MS);
-    }
+    if (!liveSession) return;
+    handleSubmit(value, {
+      busy,
+      shownAt: shownAtRef.current,
+      answer,
+      gateIndex: liveSession.index,
+      scene: sceneRef.current,
+      setBusy,
+      setPraise,
+      advance,
+    });
   }
 
   const idx = stageIndexInWorld(stageId);
@@ -174,43 +216,14 @@ export function PlayStage() {
     <div className="screen stage-play">
       <div className="pixi-host" ref={hostRef} />
 
-      <header className="stage-header">
-        <Link to={`/world/${world.id}`} className="btn btn-secondary" onClick={() => sfx.tap()}>
-          ← Map
-        </Link>
-        <span className="stage-title">
-          {world.icon} {stage.name}
-        </span>
-        <span className="stage-header-right">
-          {stage.intro && (
-            <button
-              className="btn btn-icon help-btn"
-              aria-label={STR.howToPlay}
-              onClick={() => {
-                sfx.tap();
-                setHelpOpen((h) => !h);
-              }}
-            >
-              ❓
-            </button>
-          )}
-          <span className="dust-counter">✨ {starDust}</span>
-        </span>
-      </header>
-
-      {helpOpen && stage.intro && (
-        <div className="help-panel panel">
-          <h3>✨ {STR.howToPlay}</h3>
-          {stage.intro.map((line) => (
-            <p key={line} className="intro-line">
-              {line}
-            </p>
-          ))}
-          <button className="btn btn-primary" onClick={() => setHelpOpen(false)}>
-            Got it!
-          </button>
-        </div>
-      )}
+      <StageHeader
+        worldId={world.id}
+        title={`${world.icon} ${stage.name}`}
+        starDust={starDust}
+        intro={stage.intro}
+        helpOpen={helpOpen}
+        setHelpOpen={setHelpOpen}
+      />
 
       {liveSession && q && (
         <QuestionCard session={liveSession} q={q} praise={praise} busy={busy} interactive={Boolean(interactive)} onSubmit={submit} />
@@ -241,6 +254,49 @@ export function PlayStage() {
         />
       )}
     </div>
+  );
+}
+
+interface StageHeaderProps {
+  worldId: string;
+  title: string;
+  starDust: number;
+  intro?: string[];
+  helpOpen: boolean;
+  setHelpOpen: (fn: (h: boolean) => boolean) => void;
+}
+
+function StageHeader({ worldId, title, starDust, intro, helpOpen, setHelpOpen }: StageHeaderProps) {
+  return (
+    <>
+      <header className="stage-header">
+        <Link to={`/world/${worldId}`} className="btn btn-secondary" onClick={() => sfx.tap()}>
+          ← Map
+        </Link>
+        <span className="stage-title">{title}</span>
+        <span className="stage-header-right">
+          {intro && (
+            <button className="btn btn-icon help-btn" aria-label={STR.howToPlay} onClick={() => { sfx.tap(); setHelpOpen((h) => !h); }}>
+              ❓
+            </button>
+          )}
+          <span className="dust-counter">✨ {starDust}</span>
+        </span>
+      </header>
+      {helpOpen && intro && (
+        <div className="help-panel panel">
+          <h3>✨ {STR.howToPlay}</h3>
+          {intro.map((line) => (
+            <p key={line} className="intro-line">
+              {line}
+            </p>
+          ))}
+          <button className="btn btn-primary" onClick={() => setHelpOpen(() => false)}>
+            Got it!
+          </button>
+        </div>
+      )}
+    </>
   );
 }
 

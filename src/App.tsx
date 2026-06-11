@@ -9,6 +9,7 @@ import { CometCatch } from "./modules/cometcatch/CometCatch";
 import { CodeQuest } from "./modules/codequest/CodeQuest";
 import { ParentSection } from "./ui/ParentSection";
 import { LockedScreen } from "./ui/LockedScreen";
+import { VideoCompanion } from "./ui/VideoCompanion";
 import { MarbleMaze } from "./modules/maze/MarbleMaze";
 import { Calculator } from "./modules/calculator/Calculator";
 
@@ -90,6 +91,7 @@ export default function App() {
     <HashRouter>
       <ScrollToTop />
       <BlockBrowserNav />
+      <VideoCompanion />
       <Routes>
         <Route path="/" element={<TitleScreen />} />
         <Route path="/hub" element={<Hub />} />

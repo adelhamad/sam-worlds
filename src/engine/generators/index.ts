@@ -15,6 +15,10 @@ import { generateCraft, type CraftParams } from "./craft";
 import { generateWordWizard, type WordParams } from "./wordWizard";
 import { generateBody, type BodyParams } from "./body";
 import { generateFeelings, type FeelingsParams } from "./feelings";
+import { generateAffix, type AffixParams } from "./affix";
+import { generateGrammar, type GrammarParams } from "./grammar";
+import { generateIfElse, type IfElseParams } from "./ifElse";
+import { generateLoops, type LoopParams } from "./loops";
 import type { GenContext, GeneratorParams, Question } from "./types";
 
 export type GeneratorId =
@@ -33,7 +37,11 @@ export type GeneratorId =
   | "craft"
   | "wordWizard"
   | "body"
-  | "feelings";
+  | "feelings"
+  | "affix"
+  | "grammar"
+  | "ifElse"
+  | "loops";
 
 function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, ctx: GenContext): Question {
   switch (id) {
@@ -69,6 +77,14 @@ function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, c
       return generateBody(params as unknown as BodyParams, rng, ctx);
     case "feelings":
       return generateFeelings(params as unknown as FeelingsParams, rng, ctx);
+    case "affix":
+      return generateAffix(params as unknown as AffixParams, rng, ctx);
+    case "grammar":
+      return generateGrammar(params as unknown as GrammarParams, rng, ctx);
+    case "ifElse":
+      return generateIfElse(params as unknown as IfElseParams, rng, ctx);
+    case "loops":
+      return generateLoops(params as unknown as LoopParams, rng, ctx);
   }
 }
 
@@ -82,20 +98,35 @@ export function generateQuestionSet(
 ): Question[] {
   const rng = mulberry32(seed);
   const out: Question[] = [];
-  const seen = new Set<string>();
+  const seenPrompt = new Set<string>();
   let guard = 0;
-  while (out.length < count && guard++ < count * 30) {
+  // Dedupe by PROMPT (not prompt+answer) so a stage never asks the same
+  // question twice — each slot is a genuinely different subject.
+  while (out.length < count && guard++ < count * 40) {
     const q = dispatch(id, params, rng, ctx);
-    const key = q.prompt + q.answer;
-    if (seen.has(key)) continue;
-    seen.add(key);
+    const key = q.dedupeKey ?? q.prompt;
+    if (seenPrompt.has(key)) continue;
+    seenPrompt.add(key);
     out.push({ ...q, id: `${id}-${seed}-${out.length}` });
   }
-  // Narrow bands (e.g. a single times-table) can run out of unique prompts —
-  // top up with repeats rather than shipping a short set.
-  while (out.length < count) {
+  // Last resort for genuinely tiny pools: allow a repeat subject but never two
+  // identical (prompt+answer).
+  const seenFull = new Set(out.map((q) => q.prompt + q.answer));
+  guard = 0;
+  while (out.length < count && guard++ < count * 40) {
     const q = dispatch(id, params, rng, ctx);
+    const full = q.prompt + q.answer;
+    if (seenFull.has(full)) continue;
+    seenFull.add(full);
     out.push({ ...q, id: `${id}-${seed}-${out.length}` });
+  }
+  // If the pool truly can't fill `count` with distinct questions (e.g. a
+  // single-switch tutorial circuit), it's better to run a SHORTER stage than
+  // to repeat the same question many times. Floor at MIN_QUESTIONS so a stage
+  // is never trivially tiny.
+  const MIN_QUESTIONS = Math.min(count, 4);
+  while (out.length < MIN_QUESTIONS) {
+    out.push({ ...dispatch(id, params, rng, ctx), id: `${id}-${seed}-${out.length}` });
   }
   return out;
 }

@@ -62,6 +62,7 @@ function order(rng: RNG, ctx: GenContext, pool: string[], prompt: string, anySli
     choices: [],
     hint: `${seq[0]} comes first.`,
     inputMode: "order",
+    dedupeKey: `seq-${seq.join("")}`,
     payload: { items: shuffle(rng, seq), arrow: "→" },
   };
 }

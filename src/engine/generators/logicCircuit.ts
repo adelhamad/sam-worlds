@@ -56,15 +56,18 @@ export function generateLogicCircuit(params: LogicParams, rng: RNG, ctx: GenCont
   const names = ["A", "B", "C"].slice(0, Math.max(1, inputCount));
   const depth = ctx.easier ? Math.min(1, params.depth) : params.depth;
 
-  // depth 0 tutorial: the lamp is wired straight to one switch
+  // depth 0 tutorial: the lamp is wired straight to one switch. Alternate the
+  // goal (glow / stay dark) so even the tutorial has two distinct tasks.
   if (depth === 0) {
+    const wantOn = rng() < 0.5;
     return {
       id: `lc${++qid}`,
-      prompt: "The lamp is wired to switch A. Make it glow!",
-      answer: "1",
+      prompt: wantOn ? "Wire A so the lamp GLOWS! 💡" : "Wire A so the lamp stays OFF! ⚫",
+      answer: wantOn ? "1" : "0",
       choices: [],
-      hint: "Flip A and watch the lamp.",
+      hint: wantOn ? "Flip A ON and watch the lamp." : "Keep A OFF.",
       inputMode: "toggle",
+      dedupeKey: wantOn ? "tut-on" : "tut-off",
       payload: { tree: { in: "A" }, inputs: ["A"], preview: true },
     };
   }
@@ -86,6 +89,7 @@ export function generateLogicCircuit(params: LogicParams, rng: RNG, ctx: GenCont
       choices: [],
       hint: `Try ${firstName} ${example[firstName] ? "ON" : "OFF"} first…`,
       inputMode: "toggle",
+      dedupeKey: JSON.stringify(tree),
       payload: { tree, inputs: names, preview: Boolean(params.preview) },
     };
   }

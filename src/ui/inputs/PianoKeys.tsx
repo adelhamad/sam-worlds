@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { KEYBOARD, NOTE_FREQ, semitone } from "../../engine/music/notes";
 import { playPitch } from "../../engine/feedback/audio";
 import type { Question } from "../../engine/generators/types";
+import { StaffNote } from "./StaffNote";
 
 const BLACK_AFTER: Record<string, string> = {
   C4: "C#4", D4: "D#4", F4: "F#4", G4: "G#4", A4: "A#4",
@@ -19,6 +20,7 @@ export function PianoKeys({ question, disabled, onSubmit }: Props) {
   const payload = question.payload ?? {};
   const demo = (payload.play as string[] | undefined) ?? [];
   const sorted = Boolean(payload.sorted);
+  const staff = payload.staff as string | undefined;
 
   function hearIt() {
     demo.forEach((n, i) => playPitch(NOTE_FREQ[n], 0.4, i * 0.5));
@@ -48,6 +50,7 @@ export function PianoKeys({ question, disabled, onSubmit }: Props) {
 
   return (
     <div className="piano-input">
+      {staff && <StaffNote note={staff} />}
       <div className="piano-seq">{seq.length ? seq.join(" · ") : "—"}</div>
       <div className="piano">
         {WHITES.map((w) => (

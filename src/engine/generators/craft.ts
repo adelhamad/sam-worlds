@@ -86,6 +86,7 @@ function genWall(params: CraftParams, rng: RNG, ctx: GenContext): Question {
     answer: String(w * h),
     choices: numericChoices(rng, w * h, [w, h, 1]),
     hint: `${h} rows of ${w} blocks.`,
+    dedupeKey: `wall-${w}x${h}`,
     payload: { gridRows: Array.from({ length: h }, () => "🟫".repeat(w)) },
   };
 }

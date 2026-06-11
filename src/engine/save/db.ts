@@ -50,6 +50,10 @@ export interface SettingsRow {
   /** Parent-controlled gates; missing keys fall back to defaults. */
   enabledWorlds?: Record<string, boolean>;
   enabledGames?: Record<string, boolean>;
+  /** Parent-curated YouTube companion. */
+  videoEnabled?: boolean;
+  videoMode?: "corner" | "background";
+  videoUrls?: string[];
 }
 export interface CouponRow {
   id?: number;

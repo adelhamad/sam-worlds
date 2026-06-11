@@ -71,6 +71,7 @@ function genLetterWord(params: ArabicParams, rng: RNG, ctx: GenContext): Questio
     choices: shuffle(rng, [`${emoji} ${word}`, ...wrong.map(([, w, e]) => `${e} ${w}`)]),
     hint: `${letter} sounds like the start of ${word}.`,
     inputMode: "choices",
+    dedupeKey: `letter-${letter}`,
     payload: { bigSymbol: letter, bigChoices: true },
   };
 }
@@ -87,6 +88,7 @@ function genEmojiWord(params: ArabicParams, rng: RNG, ctx: GenContext): Question
     choices: shuffle(rng, [word, ...wrong.map(([, w]) => w)]),
     hint: `It starts with ${word[0]}.`,
     inputMode: "choices",
+    dedupeKey: `emoji-${word}`,
     payload: { bigSymbol: emoji, bigChoices: true },
   };
 }
@@ -118,6 +120,7 @@ function genNumeral(rng: RNG): Question {
     choices: shuffle(rng, [value, ...wrong.map(([, v]) => v)]),
     hint: "Count it out slowly…",
     inputMode: "choices",
+    dedupeKey: `numeral-${value}`,
     payload: { bigSymbol: glyph, bigChoices: true },
   };
 }

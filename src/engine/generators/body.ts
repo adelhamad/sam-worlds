@@ -29,12 +29,21 @@ const HEALTHY: Array<[string, string[]]> = [
   ["🥦 vegetables", ["🍭 lollipop", "🍟 fries", "🥤 soda"]],
   ["💧 water", ["🥤 soda", "🧃 sugary juice", "🍬 candy"]],
   ["😴 good sleep", ["📺 late TV", "🎮 all-night games", "☕ coffee"]],
-  ["🏃 running", ["🛋️ sitting all day", "🍕 lots of pizza", "😴 no exercise"]],
+  ["🏃 running outside", ["🛋️ sitting all day", "🍕 lots of pizza", "😴 no exercise"]],
   ["🪥 brushing teeth", ["🍫 chocolate before bed", "🚫 skipping brushing", "🍭 candy at night"]],
+  ["🍎 fruit snack", ["🍩 donut", "🍪 cookies", "🧁 cupcake"]],
+  ["🧼 washing hands", ["🤧 touching food dirty", "🚫 skipping the sink", "👋 dirty hands"]],
+  ["🥛 milk for bones", ["🥤 fizzy drink", "🍦 ice cream meal", "🍫 chocolate bar"]],
+  ["☀️ play outside", ["📱 screens all day", "🛏️ stay in bed", "🎮 no breaks"]],
 ];
 
-// digestion journey — order it
-const DIGESTION = ["👄 mouth", "🫃 stomach", "🌀 intestine"];
+// ordering journeys — each is a self-contained "put in order" question
+const SEQUENCES: Array<[string, string[]]> = [
+  ["Where does food go?", ["👄 mouth", "🫃 stomach", "🌀 intestine"]],
+  ["How does a breath travel?", ["👃 nose", "🌬️ windpipe", "🫁 lungs"]],
+  ["How do you grow up?", ["👶 baby", "🧒 child", "🧑 grown-up"]],
+  ["A tooth's life:", ["🦷 baby tooth", "🫨 wobbly tooth", "✨ new tooth"]],
+];
 
 export interface BodyParams {
   types: Array<"organ" | "sense" | "healthy" | "digest">;
@@ -69,6 +78,7 @@ function genOrgan(rng: RNG): Question {
       choices: shuffle(rng, [`${emoji} ${name}`, ...wrong.map(([e, n]) => `${e} ${n}`)]),
       hint: "Picture where it sits inside you.",
       inputMode: "choices",
+      dedupeKey: `organ-job-${name}`,
     };
   }
   const wrong = shuffle(rng, ORGANS.filter((o) => o[2] !== does)).slice(0, 3);
@@ -79,6 +89,7 @@ function genOrgan(rng: RNG): Question {
     choices: shuffle(rng, [does, ...wrong.map(([, , d]) => d)]),
     hint: "Think about what you feel it doing.",
     inputMode: "choices",
+    dedupeKey: `organ-do-${name}`,
     payload: { bigSymbol: emoji },
   };
 }
@@ -93,6 +104,7 @@ function genSense(rng: RNG): Question {
     choices: shuffle(rng, [`to ${sense}`, ...wrong.map(([, , s]) => `to ${s}`)]),
     hint: "One of your five senses!",
     inputMode: "choices",
+    dedupeKey: `sense-${part}`,
     payload: { bigSymbol: emoji },
   };
 }
@@ -106,17 +118,20 @@ function genHealthy(rng: RNG): Question {
     choices: shuffle(rng, [good, ...bad]),
     hint: "Which one helps your body grow strong?",
     inputMode: "choices",
+    dedupeKey: `healthy-${good}`,
   };
 }
 
 function genDigest(rng: RNG): Question {
+  const [title, seq] = pick(rng, SEQUENCES);
   return {
     id: id(),
-    prompt: "Where does food go? Put it in order!",
-    answer: DIGESTION.join(" → "),
+    prompt: `${title} Put it in order!`,
+    answer: seq.join(" → "),
     choices: [],
-    hint: "It starts where you bite!",
+    hint: `It starts with ${seq[0]}.`,
     inputMode: "order",
-    payload: { items: shuffle(rng, DIGESTION), arrow: "→" },
+    dedupeKey: `seq-${title}`,
+    payload: { items: shuffle(rng, seq), arrow: "→" },
   };
 }

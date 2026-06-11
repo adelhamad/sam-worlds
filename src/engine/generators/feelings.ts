@@ -38,6 +38,10 @@ const HELPS: Array<[string, string, string[]]> = [
   ["sad", "🫂 talk to someone you trust", ["🙈 hide it forever", "😢 stay all alone", "😠 be mean to others"]],
   ["scared", "💡 ask a grown-up for help", ["🏃 run and hide alone", "🤫 keep it secret", "😱 panic"]],
   ["worried", "🗣️ share what worries you", ["🤐 say nothing", "😟 worry alone", "😴 ignore it"]],
+  ["frustrated", "🧩 try a different way", ["🛑 give up", "😤 break it", "😢 cry and quit"]],
+  ["jealous", "💬 say how you feel kindly", ["😠 take their things", "🙄 be mean", "😢 sulk alone"]],
+  ["excited", "🙌 share the good news", ["🏃 push others", "📢 interrupt everyone", "😤 brag a lot"]],
+  ["embarrassed", "😅 it's okay, everyone makes mistakes", ["🙈 hide forever", "😠 blame someone", "😢 never try again"]],
 ];
 
 export interface FeelingsParams {
@@ -71,6 +75,7 @@ function genFace(rng: RNG): Question {
     choices: shuffle(rng, [feeling, ...wrong.map(([, f]) => f)]),
     hint: "Look at the eyes and mouth.",
     inputMode: "choices",
+    dedupeKey: `face-${feeling}`,
     payload: { bigSymbol: face },
   };
 }

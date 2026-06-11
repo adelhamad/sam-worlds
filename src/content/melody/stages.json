@@ -5,22 +5,16 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
-        "interval"
-      ],
-      "length": 3,
-      "intervals": [
-        4,
-        7
+        "read"
       ]
     },
     "questions": 6,
     "mechanic": "gate-run",
     "payout": 24,
     "intro": [
-      "Tap \ud83d\udd0a to hear the sound.",
-      "Play it back on the keys.",
-      "\u232b erases. OK sends it!"
+      "A note sits on the staff.",
+      "Read it, then play it on the keys!",
+      "Lines are E G B D F."
     ]
   },
   {
@@ -29,13 +23,7 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
-        "interval"
-      ],
-      "length": 3,
-      "intervals": [
-        4,
-        7
+        "read"
       ]
     },
     "questions": 6,
@@ -48,13 +36,7 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
-        "interval"
-      ],
-      "length": 3,
-      "intervals": [
-        4,
-        7
+        "read"
       ]
     },
     "questions": 6,
@@ -67,13 +49,7 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
-        "interval"
-      ],
-      "length": 3,
-      "intervals": [
-        4,
-        7
+        "read"
       ]
     },
     "questions": 6,
@@ -86,15 +62,7 @@
     "generator": "melody",
     "params": {
       "types": [
-        "interval",
-        "echo"
-      ],
-      "length": 4,
-      "intervals": [
-        2,
-        4,
-        5,
-        7
+        "read"
       ]
     },
     "questions": 6,
@@ -107,15 +75,7 @@
     "generator": "melody",
     "params": {
       "types": [
-        "interval",
-        "echo"
-      ],
-      "length": 4,
-      "intervals": [
-        2,
-        4,
-        5,
-        7
+        "read"
       ]
     },
     "questions": 6,
@@ -128,20 +88,18 @@
     "generator": "melody",
     "params": {
       "types": [
-        "interval",
+        "read",
         "echo"
       ],
-      "length": 4,
-      "intervals": [
-        2,
-        4,
-        5,
-        7
-      ]
+      "length": 3
     },
     "questions": 6,
     "mechanic": "gate-run",
-    "payout": 36
+    "payout": 36,
+    "intro": [
+      "Tap \ud83d\udd0a to hear the tune.",
+      "Play it back on the keys!"
+    ]
   },
   {
     "id": "me-08",
@@ -149,16 +107,10 @@
     "generator": "melody",
     "params": {
       "types": [
-        "interval",
+        "read",
         "echo"
       ],
-      "length": 4,
-      "intervals": [
-        2,
-        4,
-        5,
-        7
-      ]
+      "length": 3
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -170,14 +122,10 @@
     "generator": "melody",
     "params": {
       "types": [
-        "chord",
-        "interval"
+        "read",
+        "echo"
       ],
-      "intervals": [
-        4,
-        5,
-        7
-      ]
+      "length": 3
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -189,18 +137,14 @@
     "generator": "melody",
     "params": {
       "types": [
-        "chord",
-        "interval"
+        "read",
+        "echo"
       ],
-      "intervals": [
-        4,
-        5,
-        7
-      ]
+      "length": 3
     },
     "questions": 8,
     "mechanic": "gate-run",
-    "payout": 62
+    "payout": 67
   },
   {
     "id": "me-11",
@@ -208,14 +152,10 @@
     "generator": "melody",
     "params": {
       "types": [
-        "chord",
-        "interval"
+        "read",
+        "echo"
       ],
-      "intervals": [
-        4,
-        5,
-        7
-      ]
+      "length": 3
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -227,14 +167,10 @@
     "generator": "melody",
     "params": {
       "types": [
-        "chord",
-        "interval"
+        "read",
+        "echo"
       ],
-      "intervals": [
-        4,
-        5,
-        7
-      ]
+      "length": 3
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -246,18 +182,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "chord",
-        "interval",
-        "echo"
+        "read",
+        "echo",
+        "chord"
       ],
-      "length": 4,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9
-      ]
+      "length": 3
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -269,18 +198,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "chord",
-        "interval",
-        "echo"
+        "read",
+        "echo",
+        "chord"
       ],
-      "length": 4,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9
-      ]
+      "length": 3
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -292,18 +214,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "chord",
-        "interval",
-        "echo"
+        "read",
+        "echo",
+        "chord"
       ],
-      "length": 4,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9
-      ]
+      "length": 3
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -315,18 +230,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "chord",
-        "interval",
-        "echo"
+        "read",
+        "echo",
+        "chord"
       ],
-      "length": 4,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9
-      ]
+      "length": 3
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -338,7 +246,8 @@
     "generator": "melody",
     "params": {
       "types": [
-        "transpose",
+        "read",
+        "echo",
         "chord"
       ],
       "length": 3
@@ -353,7 +262,8 @@
     "generator": "melody",
     "params": {
       "types": [
-        "transpose",
+        "read",
+        "echo",
         "chord"
       ],
       "length": 3
@@ -368,7 +278,8 @@
     "generator": "melody",
     "params": {
       "types": [
-        "transpose",
+        "read",
+        "echo",
         "chord"
       ],
       "length": 3
@@ -383,14 +294,15 @@
     "generator": "melody",
     "params": {
       "types": [
-        "transpose",
+        "read",
+        "echo",
         "chord"
       ],
       "length": 3
     },
     "questions": 8,
     "mechanic": "gate-run",
-    "payout": 82
+    "payout": 87
   },
   {
     "id": "me-21",
@@ -398,8 +310,8 @@
     "generator": "melody",
     "params": {
       "types": [
-        "transpose",
         "echo",
+        "read",
         "chord"
       ],
       "length": 4
@@ -414,8 +326,8 @@
     "generator": "melody",
     "params": {
       "types": [
-        "transpose",
         "echo",
+        "read",
         "chord"
       ],
       "length": 4
@@ -430,8 +342,8 @@
     "generator": "melody",
     "params": {
       "types": [
-        "transpose",
         "echo",
+        "read",
         "chord"
       ],
       "length": 4
@@ -446,8 +358,8 @@
     "generator": "melody",
     "params": {
       "types": [
-        "transpose",
         "echo",
+        "read",
         "chord"
       ],
       "length": 4
@@ -463,18 +375,10 @@
     "params": {
       "types": [
         "echo",
-        "transpose",
-        "interval"
+        "read",
+        "chord"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -487,18 +391,10 @@
     "params": {
       "types": [
         "echo",
-        "transpose",
-        "interval"
+        "read",
+        "chord"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -511,18 +407,10 @@
     "params": {
       "types": [
         "echo",
-        "transpose",
-        "interval"
+        "read",
+        "chord"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -535,18 +423,10 @@
     "params": {
       "types": [
         "echo",
-        "transpose",
-        "interval"
+        "read",
+        "chord"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -558,20 +438,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "transpose",
-        "chord",
-        "interval",
-        "echo"
+        "echo",
+        "read",
+        "chord"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -583,24 +454,15 @@
     "generator": "melody",
     "params": {
       "types": [
-        "transpose",
-        "chord",
-        "interval",
-        "echo"
+        "echo",
+        "read",
+        "chord"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 8,
     "mechanic": "gate-run",
-    "payout": 102
+    "payout": 107
   },
   {
     "id": "me-31",
@@ -608,20 +470,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "transpose",
         "chord",
-        "interval",
+        "read",
         "echo"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -633,24 +486,15 @@
     "generator": "melody",
     "params": {
       "types": [
-        "transpose",
         "chord",
-        "interval",
+        "read",
         "echo"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
-    "questions": 8,
+    "questions": 6,
     "mechanic": "gate-run",
-    "payout": 106
+    "payout": 86
   },
   {
     "id": "me-33",
@@ -658,20 +502,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
-        "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "read",
+        "echo"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -683,20 +518,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
-        "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "read",
+        "echo"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -708,20 +534,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
-        "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "read",
+        "echo"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -733,20 +550,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
-        "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "read",
+        "echo"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -758,20 +566,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
-        "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "read",
+        "echo"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -783,20 +582,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
-        "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "read",
+        "echo"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -808,20 +598,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
-        "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "read",
+        "echo"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -833,20 +614,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
-        "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "read",
+        "echo"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 8,
     "mechanic": "gate-run",
@@ -858,20 +630,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
         "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "read"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -883,20 +646,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
         "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "read"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -908,20 +662,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
         "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "read"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -933,20 +678,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
         "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "read"
       ],
-      "length": 5,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -958,20 +694,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
         "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "read"
       ],
-      "length": 6,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -983,20 +710,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
         "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "read"
       ],
-      "length": 6,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -1008,20 +726,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
         "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "read"
       ],
-      "length": 6,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -1033,20 +742,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
         "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "read"
       ],
-      "length": 6,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -1058,20 +758,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
         "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "read"
       ],
-      "length": 6,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -1083,20 +774,11 @@
     "generator": "melody",
     "params": {
       "types": [
-        "echo",
         "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "read"
       ],
-      "length": 6,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 4
     },
     "questions": 8,
     "mechanic": "gate-run",
@@ -1108,20 +790,12 @@
     "generator": "melody",
     "params": {
       "types": [
+        "read",
         "echo",
-        "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "transpose"
       ],
-      "length": 6,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 5
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -1133,20 +807,12 @@
     "generator": "melody",
     "params": {
       "types": [
+        "read",
         "echo",
-        "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "transpose"
       ],
-      "length": 6,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 5
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -1158,20 +824,12 @@
     "generator": "melody",
     "params": {
       "types": [
+        "read",
         "echo",
-        "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "transpose"
       ],
-      "length": 6,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 5
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -1183,20 +841,12 @@
     "generator": "melody",
     "params": {
       "types": [
+        "read",
         "echo",
-        "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "transpose"
       ],
-      "length": 6,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 5
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -1208,20 +858,12 @@
     "generator": "melody",
     "params": {
       "types": [
+        "read",
         "echo",
-        "transpose",
-        "interval",
-        "chord"
+        "chord",
+        "transpose"
       ],
-      "length": 6,
-      "intervals": [
-        2,
-        4,
-        5,
-        7,
-        9,
-        12
-      ]
+      "length": 5
     },
     "questions": 8,
     "mechanic": "gate-run",

@@ -94,6 +94,30 @@ const WORLD_BEATS: Record<string, StoryBeat[]> = {
     { afterStage: 30, text: "When feelings get big, you stay calm.", tease: "Kindness opens the deepest paths…" },
     { afterStage: 55, text: "You read every heart in the forest!", tease: "Master of Hearts — kind and wise." },
   ],
+  affix: [
+    { afterStage: 0, text: "A workshop full of word-parts on hooks.", tease: "Snap a front-part onto a word…" },
+    { afterStage: 10, text: "End-parts join the shelves too!", tease: "Each part changes the meaning…" },
+    { afterStage: 30, text: "You can find the root hiding in any word.", tease: "Master builders snap it all together…" },
+    { afterStage: 55, text: "Every word obeys your toolbox!", tease: "Master of Word Parts — well built!" },
+  ],
+  grammar: [
+    { afterStage: 0, text: "Words float in the Grammar Galaxy, unsorted.", tease: "Which are naming words? Which are actions?" },
+    { afterStage: 10, text: "Now the words multiply — one becomes many!", tease: "Some change in surprising ways…" },
+    { afterStage: 30, text: "You can send words into the past!", tease: "Whole sentences await a grammar master…" },
+    { afterStage: 55, text: "The galaxy reads perfectly!", tease: "Master of Grammar — beautifully said." },
+  ],
+  ifelse: [
+    { afterStage: 0, text: "Two paths split at every turn of the valley.", tease: "IF this… THEN what?" },
+    { afterStage: 10, text: "Now paths branch with an ELSE!", tease: "When the IF is false, where do you go?" },
+    { afterStage: 30, text: "You compare numbers like a real computer.", tease: "Bigger? Smaller? You decide…" },
+    { afterStage: 55, text: "Every decision bends to your logic!", tease: "Master of Decisions — that's coding thinking!" },
+  ],
+  loops: [
+    { afterStage: 0, text: "The river repeats the same little rapid.", tease: "How many times does it loop?" },
+    { afterStage: 10, text: "Whole groups repeat now — like multiplying!", tease: "Count them all…" },
+    { afterStage: 30, text: "Patterns loop forever down the rapids.", tease: "What comes next in the cycle?" },
+    { afterStage: 55, text: "Every loop bends to your command!", tease: "Master of Loops — real programmer thinking!" },
+  ],
   arabic: [
     { afterStage: 0, text: "A quiet garden where letters grow on trees.", tease: "The first letters are sprouting…" },
     { afterStage: 10, text: "The garden hums with new sounds!", tease: "Soon the letters will join into words…" },
