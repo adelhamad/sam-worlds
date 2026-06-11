@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useGame } from "../state/store";
 import { completedInWorld, WORLDS } from "../content/worlds";
 import { clearAxisMaps } from "../engine/sensors";
+import { itemById } from "../engine/economy/catalog";
 
 const PARENT_PASSWORD = "adel";
 const UNLOCK_KEY = "parent-unlocked";
@@ -58,6 +59,50 @@ export function ParentSection() {
   }
 
   return <ParentControls />;
+}
+
+function fmt(t: number): string {
+  return new Date(t).toLocaleString(undefined, {
+    day: "numeric",
+    month: "short",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
+
+/** Every Daddy Reward ever bought: what, when bought, when redeemed. */
+function RewardHistory() {
+  const coupons = useGame((s) => s.coupons);
+  const rows = [...coupons].sort(
+    (a, b) => (b.redeemedAt ?? b.purchasedAt) - (a.redeemedAt ?? a.purchasedAt),
+  );
+  const redeemedCount = rows.filter((c) => c.redeemedAt).length;
+
+  return (
+    <section className="panel parent-block">
+      <h2>🎟️ Daddy Rewards history</h2>
+      <p className="dim">
+        {rows.length === 0
+          ? "No rewards bought yet."
+          : `${rows.length} bought · ${redeemedCount} redeemed · ${rows.length - redeemedCount} still in the wallet.`}
+      </p>
+      {rows.map((c) => {
+        const item = itemById(c.itemId);
+        return (
+          <div key={c.id} className="parent-row parent-history-row">
+            <span className="parent-world-name">
+              {item?.icon ?? "🎟️"} {item?.name ?? c.itemId}
+            </span>
+            {c.redeemedAt ? (
+              <span className="history-redeemed">✓ Redeemed {fmt(c.redeemedAt)}</span>
+            ) : (
+              <span className="dim">In wallet — bought {fmt(c.purchasedAt)}</span>
+            )}
+          </div>
+        );
+      })}
+    </section>
+  );
 }
 
 function TiltResetButton() {
@@ -147,6 +192,8 @@ function ParentControls() {
           );
         })}
       </section>
+
+      <RewardHistory />
 
       <section className="panel parent-block">
         <h2>🧭 Tilt games</h2>

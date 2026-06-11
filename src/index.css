@@ -21,16 +21,31 @@ html,
 body,
 #root {
   margin: 0;
-  height: 100%;
-  background: radial-gradient(ellipse at 50% -20%, #14306b 0%, var(--night) 45%, var(--night-deep) 100%);
   color: var(--text);
   font-family: "Trebuchet MS", "Comic Sans MS", system-ui, sans-serif;
   user-select: none;
   overscroll-behavior: none;
 }
 
-.screen {
+/* Solid base everywhere (incl. overscroll bounce); the glow gradient sits on
+   top, pinned to the first viewport and fading into the same solid color —
+   so scrolling past 100vh never "restarts" the bright part. */
+html {
+  height: 100%;
+  background: var(--night-deep);
+}
+body {
   min-height: 100%;
+  background-color: var(--night-deep);
+  background-image: radial-gradient(ellipse 120% 100vh at 50% -20vh, #14306b 0%, var(--night) 45%, var(--night-deep) 100%);
+  background-repeat: no-repeat;
+}
+#root {
+  min-height: 100vh;
+}
+
+.screen {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   padding: max(12px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right))
@@ -119,7 +134,7 @@ body,
 
 /* ---------- boot & title ---------- */
 .boot-splash {
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -611,7 +626,8 @@ body,
 .stage-play {
   position: relative;
   padding: 0;
-  height: 100%;
+  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 .pixi-host {
@@ -1182,6 +1198,15 @@ body,
 }
 .parent-gear {
   opacity: 0.55;
+}
+.parent-history-row {
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(36, 64, 122, 0.4);
+  padding-bottom: 6px;
+}
+.history-redeemed {
+  color: var(--good);
+  font-weight: 700;
 }
 .calib-arrow {
   font-size: 64px;
