@@ -5,7 +5,6 @@ import { TiltCatchScene } from "../../pixi/TiltCatchScene";
 import { sfx, unlockAudio } from "../../engine/feedback/audio";
 import { randInt, mulberry32, newSeed } from "../../engine/rng";
 import { attachTilt, calibrateTilt, requestTiltPermission } from "../../engine/sensors";
-import { TiltCalibrator } from "../../ui/TiltCalibrator";
 
 const ROUND_SECONDS = 60;
 const MAX_PAYOUT = 30;
@@ -17,7 +16,7 @@ export function CometCatch() {
 
   const hostRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<TiltCatchScene | null>(null);
-  const [phase, setPhase] = useState<"intro" | "calibrate" | "play" | "done">("intro");
+  const [phase, setPhase] = useState<"intro" | "play" | "done">("intro");
   const [target, setTarget] = useState(10);
   const [caught, setCaught] = useState(0);
   const [seconds, setSeconds] = useState(ROUND_SECONDS);
@@ -122,10 +121,6 @@ export function CometCatch() {
     unlockAudio();
     sfx.tap();
     await requestTiltPermission(); // iOS: must come from a tap
-    setPhase("calibrate"); // skips itself when already calibrated
-  }
-
-  function beginRound() {
     calibrateTilt(); // current grip = neutral
     setTarget(randInt(mulberry32(newSeed()), 8, 16));
     setCaught(0);
@@ -155,8 +150,6 @@ export function CometCatch() {
           )}
         </div>
       )}
-
-      {phase === "calibrate" && <TiltCalibrator needY={false} onDone={beginRound} />}
 
       {phase === "intro" && (
         <div className="overlay">

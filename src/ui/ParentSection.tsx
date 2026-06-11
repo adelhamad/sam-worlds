@@ -4,6 +4,8 @@ import { useGame } from "../state/store";
 import { completedInWorld, WORLDS } from "../content/worlds";
 import { MINIGAMES } from "../content/minigames";
 import { itemById } from "../engine/economy/catalog";
+import { clearAxisMaps, requestTiltPermission } from "../engine/sensors";
+import { TiltCalibrator } from "./TiltCalibrator";
 
 const PARENT_PASSWORD = "adel";
 
@@ -58,6 +60,59 @@ export function ParentSection() {
   }
 
   return <ParentControls />;
+}
+
+/**
+ * Global tilt calibration. By default the games use the standard mapping
+ * (works on Android). If a device feels wrong (some iPads), calibrate ONCE
+ * here — the measured mapping then applies to all tilt games — or reset
+ * back to the standard.
+ */
+function TiltControls() {
+  const [calibrating, setCalibrating] = useState(false);
+  const [note, setNote] = useState<string | null>(null);
+
+  return (
+    <section className="panel parent-block">
+      <h2>🧭 Tilt calibration</h2>
+      <p className="dim">
+        Games use the standard tilt out of the box. If tilting feels wrong on this device,
+        calibrate once here; it applies to all tilt games.
+      </p>
+      <div className="parent-row">
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            void requestTiltPermission().then(() => {
+              setNote(null);
+              setCalibrating(true);
+            });
+          }}
+        >
+          Calibrate this device
+        </button>
+        <button
+          className="btn btn-secondary"
+          onClick={() => {
+            clearAxisMaps();
+            setNote("✓ Back to the standard tilt");
+          }}
+        >
+          Reset to default
+        </button>
+      </div>
+      {note && <p className="history-redeemed">{note}</p>}
+      {calibrating && (
+        <TiltCalibrator
+          needY
+          onDone={() => {
+            setCalibrating(false);
+            setNote("✓ Calibrated for this device");
+          }}
+        />
+      )}
+    </section>
+  );
 }
 
 /** Which worlds and minigames Sam may open — e.g. clock-reading focus week. */
@@ -255,6 +310,8 @@ function ParentControls() {
       </section>
 
       <AccessControls />
+
+      <TiltControls />
 
       <RewardHistory />
 
