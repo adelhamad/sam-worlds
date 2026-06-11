@@ -1,0 +1,43 @@
+dev-dist
+.vercel
+*.local
+
+# Dependencies
+node_modules
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Testing
+coverage
+
+# Turbo
+.turbo
+
+#AI
+.ai
+
+# Build Outputs
+build
+dist
+.vercel/output
+*.tsbuildinfo
+
+# Debug
+*.log
+
+# Misc
+.DS_Store
+*.pem
+secrets.json
+
+# VsCode
+.vscode
+
+# Kiro
+.kiro
+.antigravitycli

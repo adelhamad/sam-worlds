@@ -1,0 +1,864 @@
+[
+  {
+    "id": "nf-01",
+    "name": "First Sparks",
+    "generator": "arithmetic",
+    "params": {
+      "op": "add",
+      "max": 10
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Solve the math.",
+      "Type the answer on the pad.",
+      "OK opens the gate!"
+    ]
+  },
+  {
+    "id": "nf-02",
+    "name": "Twin Flames",
+    "generator": "arithmetic",
+    "params": {
+      "op": "add",
+      "max": 20
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 22
+  },
+  {
+    "id": "nf-03",
+    "name": "Cooling Coils",
+    "generator": "arithmetic",
+    "params": {
+      "op": "sub",
+      "max": 10
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 22
+  },
+  {
+    "id": "nf-04",
+    "name": "Steam Vents",
+    "generator": "arithmetic",
+    "params": {
+      "op": "sub",
+      "max": 20
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 24
+  },
+  {
+    "id": "nf-05",
+    "name": "The Mixer",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mix",
+      "max": 20
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 28
+  },
+  {
+    "id": "nf-06",
+    "name": "Hidden Sparks",
+    "generator": "arithmetic",
+    "params": {
+      "op": "add",
+      "max": 12,
+      "missingOperand": true
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 28
+  },
+  {
+    "id": "nf-07",
+    "name": "Ghost Numbers",
+    "generator": "arithmetic",
+    "params": {
+      "op": "sub",
+      "max": 20,
+      "missingOperand": true
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "nf-08",
+    "name": "The Riddle Pipe",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mix",
+      "max": 20,
+      "missingOperand": true
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 32
+  },
+  {
+    "id": "nf-09",
+    "name": "Pattern Pistons",
+    "generator": "numberSequence",
+    "params": {
+      "kinds": [
+        "step"
+      ],
+      "stepMax": 3
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 32
+  },
+  {
+    "id": "nf-10",
+    "name": "The Apprentice Gate",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mix",
+      "max": 20,
+      "missingOperand": true
+    },
+    "questions": 12,
+    "mechanic": "gate-run",
+    "payout": 50
+  },
+  {
+    "id": "nf-11",
+    "name": "Double Furnace",
+    "generator": "arithmetic",
+    "params": {
+      "op": "add",
+      "digits": [
+        2,
+        2
+      ],
+      "carrying": false
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "nf-12",
+    "name": "The Carry Gate",
+    "generator": "arithmetic",
+    "params": {
+      "op": "add",
+      "digits": [
+        2,
+        2
+      ],
+      "carrying": true
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 40
+  },
+  {
+    "id": "nf-13",
+    "name": "Skip Sprockets",
+    "generator": "numberSequence",
+    "params": {
+      "kinds": [
+        "skip"
+      ],
+      "stepMax": 10
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 38
+  },
+  {
+    "id": "nf-14",
+    "name": "Cooling Towers",
+    "generator": "arithmetic",
+    "params": {
+      "op": "sub",
+      "digits": [
+        2,
+        2
+      ],
+      "carrying": false
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 38
+  },
+  {
+    "id": "nf-15",
+    "name": "The Borrow Bridge",
+    "generator": "arithmetic",
+    "params": {
+      "op": "sub",
+      "digits": [
+        2,
+        2
+      ],
+      "carrying": true
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 42
+  },
+  {
+    "id": "nf-16",
+    "name": "Broken Conveyor",
+    "generator": "numberSequence",
+    "params": {
+      "kinds": [
+        "step",
+        "skip"
+      ],
+      "stepMax": 5,
+      "mode": "missing"
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 42
+  },
+  {
+    "id": "nf-17",
+    "name": "Furnace Storm",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mix",
+      "digits": [
+        2,
+        2
+      ],
+      "carrying": true
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "nf-18",
+    "name": "The Great Pipes",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mix",
+      "digits": [
+        2,
+        2
+      ]
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "nf-19",
+    "name": "Twin Rhythms",
+    "generator": "numberSequence",
+    "params": {
+      "kinds": [
+        "alternate",
+        "step"
+      ],
+      "stepMax": 5,
+      "mode": "missing"
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 50
+  },
+  {
+    "id": "nf-20",
+    "name": "The Master Door",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mix",
+      "digits": [
+        2,
+        2
+      ],
+      "missingOperand": true
+    },
+    "questions": 12,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "nf-21",
+    "name": "Twin Engines",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mul",
+      "tables": [
+        2
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 52
+  },
+  {
+    "id": "nf-22",
+    "name": "Triple Coils",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mul",
+      "tables": [
+        3
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 54
+  },
+  {
+    "id": "nf-23",
+    "name": "Pattern Press",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mul",
+      "tables": [
+        2,
+        3,
+        4
+      ]
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "nf-24",
+    "name": "The Five Forge",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mul",
+      "tables": [
+        5
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "nf-25",
+    "name": "Sequence Surge",
+    "generator": "numberSequence",
+    "params": {
+      "kinds": [
+        "step",
+        "skip"
+      ],
+      "stepMax": 10,
+      "mode": "missing"
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "nf-26",
+    "name": "Chain Reaction",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mix",
+      "chain": 3,
+      "max": 30
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "nf-27",
+    "name": "Mixed Tables",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mul",
+      "tables": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "missingOperand": true
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 60
+  },
+  {
+    "id": "nf-28",
+    "name": "Backwards Machine",
+    "generator": "arithmetic",
+    "params": {
+      "op": "div",
+      "tables": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 62
+  },
+  {
+    "id": "nf-29",
+    "name": "Chains of Fifty",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mix",
+      "chain": 3,
+      "max": 50
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 64
+  },
+  {
+    "id": "nf-30",
+    "name": "The Pattern Gate",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mix",
+      "tables": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "questions": 12,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "nf-31",
+    "name": "Six Cylinder",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mul",
+      "tables": [
+        6
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "nf-32",
+    "name": "Seven Sprockets",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mul",
+      "tables": [
+        7
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "nf-33",
+    "name": "Great Sequences",
+    "generator": "numberSequence",
+    "params": {
+      "kinds": [
+        "step",
+        "alternate"
+      ],
+      "stepMax": 8,
+      "mode": "missing"
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "nf-34",
+    "name": "Eight Pistons",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mul",
+      "tables": [
+        8
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 70
+  },
+  {
+    "id": "nf-35",
+    "name": "Nine Gears",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mul",
+      "tables": [
+        9
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 72
+  },
+  {
+    "id": "nf-36",
+    "name": "Division Bay",
+    "generator": "arithmetic",
+    "params": {
+      "op": "div",
+      "tables": [
+        4,
+        5,
+        6
+      ]
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 74
+  },
+  {
+    "id": "nf-37",
+    "name": "Long Chains",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mix",
+      "chain": 4,
+      "max": 60
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 76
+  },
+  {
+    "id": "nf-38",
+    "name": "Two-Step Forge",
+    "generator": "arithmetic",
+    "params": {
+      "orderOfOps": true,
+      "op": "mix",
+      "tables": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "max": 12
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "nf-39",
+    "name": "Division Works",
+    "generator": "arithmetic",
+    "params": {
+      "op": "div",
+      "tables": [
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "nf-40",
+    "name": "The Engine Core",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mix",
+      "tables": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "questions": 12,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "nf-41",
+    "name": "Order of the Forge",
+    "generator": "arithmetic",
+    "params": {
+      "orderOfOps": true,
+      "op": "mix",
+      "tables": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "max": 15
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 82
+  },
+  {
+    "id": "nf-42",
+    "name": "Giant Sequences",
+    "generator": "numberSequence",
+    "params": {
+      "kinds": [
+        "step",
+        "skip",
+        "alternate"
+      ],
+      "stepMax": 12,
+      "length": 6,
+      "mode": "missing"
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 84
+  },
+  {
+    "id": "nf-43",
+    "name": "Mega Chains",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mix",
+      "chain": 4,
+      "max": 99
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 86
+  },
+  {
+    "id": "nf-44",
+    "name": "Sneaky Symbols",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mix",
+      "digits": [
+        2,
+        2
+      ],
+      "missingOperand": true
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "nf-45",
+    "name": "Order Master",
+    "generator": "arithmetic",
+    "params": {
+      "orderOfOps": true,
+      "op": "mix",
+      "tables": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "max": 20
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "nf-46",
+    "name": "Hundred Heat",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mix",
+      "chain": 3,
+      "max": 100
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 92
+  },
+  {
+    "id": "nf-47",
+    "name": "Speed Sequences",
+    "generator": "numberSequence",
+    "params": {
+      "kinds": [
+        "skip",
+        "step"
+      ],
+      "stepMax": 10,
+      "length": 6
+    },
+    "questions": 12,
+    "mechanic": "gate-run",
+    "payout": 92
+  },
+  {
+    "id": "nf-48",
+    "name": "Double Trouble",
+    "generator": "arithmetic",
+    "params": {
+      "orderOfOps": true,
+      "op": "mix",
+      "tables": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "max": 20
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 94
+  },
+  {
+    "id": "nf-49",
+    "name": "The Long Pipe",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mix",
+      "chain": 5,
+      "max": 100
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 96
+  },
+  {
+    "id": "nf-50",
+    "name": "Half-Century Gate",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mix",
+      "tables": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "max": 20,
+      "missingOperand": true
+    },
+    "questions": 12,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "nf-51",
+    "name": "Spark Storm",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mix",
+      "max": 20,
+      "tables": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "missingOperand": true
+    },
+    "questions": 12,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "nf-52",
+    "name": "Pattern Vault",
+    "generator": "numberSequence",
+    "params": {
+      "kinds": [
+        "step",
+        "skip",
+        "alternate"
+      ],
+      "stepMax": 12,
+      "length": 6,
+      "mode": "missing"
+    },
+    "questions": 12,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "nf-53",
+    "name": "Chain Lightning",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mix",
+      "chain": 5,
+      "max": 99
+    },
+    "questions": 12,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "nf-54",
+    "name": "The Equation",
+    "generator": "arithmetic",
+    "params": {
+      "orderOfOps": true,
+      "op": "mix",
+      "tables": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "max": 25
+    },
+    "questions": 12,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "nf-55",
+    "name": "The Forge Master",
+    "generator": "arithmetic",
+    "params": {
+      "op": "mix",
+      "tables": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "digits": [
+        2,
+        2
+      ],
+      "missingOperand": true
+    },
+    "questions": 14,
+    "mechanic": "gate-run",
+    "payout": 150
+  }
+]
