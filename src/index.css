@@ -1123,6 +1123,94 @@ body,
   color: var(--amber);
 }
 
+/* ---------- code quest ---------- */
+.code-quest {
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+.code-intro {
+  margin: auto;
+}
+.code-status {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.code-board {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+.code-slots {
+  display: flex;
+  gap: 10px;
+}
+.code-slot {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  border: 3px dashed var(--panel-edge);
+  display: grid;
+  place-items: center;
+  font-size: 34px;
+  position: relative;
+  background: var(--night-deep);
+}
+.code-solved {
+  border-style: solid;
+  border-color: var(--good);
+}
+.code-hint-tag {
+  position: absolute;
+  bottom: -8px;
+  font-size: 10px;
+  color: var(--cyan);
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+.code-gems {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.code-gem {
+  font-size: 32px;
+  min-width: 64px;
+  min-height: 64px;
+  padding: 6px;
+  background: #18294f;
+  border: 2px solid var(--panel-edge);
+}
+.code-gem:disabled {
+  opacity: 0.3;
+}
+.code-history {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+.code-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+}
+.code-row-gems {
+  font-size: 26px;
+  letter-spacing: 4px;
+}
+.code-row-pegs {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--cyan);
+  letter-spacing: 2px;
+}
+
 /* ---------- celebration ---------- */
 .celebration-card {
   width: min(560px, 100%);

@@ -21,6 +21,17 @@ let playing = false;
 let ducked = false;
 let lastIndex = -1;
 
+// Leaving the app (home screen, app switcher, tab switch) must silence the
+// music — and coming back resumes it.
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    el?.pause();
+  } else if (playing && !ducked) {
+    el?.play().catch(() => undefined);
+  }
+});
+window.addEventListener("pagehide", () => el?.pause());
+
 /** Silence the music without losing state (ear-training stages). */
 export function duckMusic(): void {
   ducked = true;

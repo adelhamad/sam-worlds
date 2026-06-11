@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useGame } from "../../state/store";
 import { TiltMazeScene, type MazeSpec, type MazeTarget } from "../../pixi/TiltMazeScene";
 import { sfx, unlockAudio } from "../../engine/feedback/audio";
-import { requestTiltPermission, screenTiltX, screenTiltY, vibrate } from "../../engine/sensors";
+import { attachTilt, calibrateTilt, requestTiltPermission, vibrate } from "../../engine/sensors";
 import { mulberry32, newSeed, pick, randInt, shuffle, type RNG } from "../../engine/rng";
 
 const MAZES_PER_RUN = 3;
@@ -184,15 +184,12 @@ export function MarbleMaze() {
     };
   }, [phase]);
 
-  // tilt steering with touch fallback
+  // tilt steering (orientation with motion fallback) + touch fallback
   useEffect(() => {
     if (phase !== "play") return;
-    const onTilt = (e: DeviceOrientationEvent) => {
-      const tx = screenTiltX(e);
-      const ty = screenTiltY(e);
-      if (tx === null || ty === null) return;
+    const detachTilt = attachTilt((tx, ty) => {
       sceneRef.current?.setTilt(tx / TILT_RANGE, ty / TILT_RANGE);
-    };
+    });
     let dragging = false;
     const onPointer = (e: PointerEvent) => {
       if (e.type === "pointerdown") dragging = true;
@@ -205,12 +202,11 @@ export function MarbleMaze() {
       const k = Math.min(window.innerWidth, window.innerHeight) / 3;
       sceneRef.current?.setTilt((e.clientX - window.innerWidth / 2) / k, (e.clientY - window.innerHeight / 2) / k);
     };
-    window.addEventListener("deviceorientation", onTilt);
     window.addEventListener("pointerdown", onPointer);
     window.addEventListener("pointermove", onPointer);
     window.addEventListener("pointerup", onPointer);
     return () => {
-      window.removeEventListener("deviceorientation", onTilt);
+      detachTilt();
       window.removeEventListener("pointerdown", onPointer);
       window.removeEventListener("pointermove", onPointer);
       window.removeEventListener("pointerup", onPointer);
@@ -227,6 +223,7 @@ export function MarbleMaze() {
     unlockAudio();
     sfx.tap();
     await requestTiltPermission();
+    calibrateTilt(); // however he's holding it right now = neutral
     setMazeNum(1);
     setCollected(0);
     setFalls(0);
@@ -261,7 +258,8 @@ export function MarbleMaze() {
         <div className="overlay">
           <div className="panel celebration-card">
             <h2>🌀 Marble Maze</h2>
-            <p className="catch-howto">Tilt the tablet to roll the marble!</p>
+            <p className="catch-howto">Hold the tablet comfy — then tap Roll!</p>
+            <p className="catch-howto dim">Tilt gently to roll the marble.</p>
             <p className="catch-howto dim">Collect the numbers IN ORDER.</p>
             <p className="catch-howto dim">Dodge the dark holes! 🕳️</p>
             <button className="btn btn-primary btn-big" onClick={() => void start()}>

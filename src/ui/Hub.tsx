@@ -142,12 +142,12 @@ export function Hub() {
           onClick={() => {
             unlockAudio();
             sfx.tap();
-            navigate("/orbit");
+            navigate("/code");
           }}
         >
-          <span className="tile-icon">⛳</span>
-          <span className="tile-name">Space Golf</span>
-          <span className="tile-sub">Putt past the magnets!</span>
+          <span className="tile-icon">🔮</span>
+          <span className="tile-name">Code Quest</span>
+          <span className="tile-sub">Crack the secret code!</span>
         </button>
         <button
           className="tile tile-glow"
