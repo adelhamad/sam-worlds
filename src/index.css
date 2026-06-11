@@ -1311,6 +1311,7 @@ body {
   border: 2px solid var(--cyan);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
   background: #000;
+  touch-action: none;
 }
 .video-corner.video-min {
   width: 56px;
@@ -1324,21 +1325,33 @@ body {
   width: 100%;
   height: 100%;
   display: block;
+  pointer-events: none; /* never reachable; shield handles interaction */
+}
+/* transparent layer over the video: blocks taps to YouTube + drag handle */
+.video-shield {
+  position: absolute;
+  inset: 0;
+  cursor: grab;
+  touch-action: none;
+}
+.video-shield:active {
+  cursor: grabbing;
 }
 .video-toggle {
   position: absolute;
   top: 2px;
   right: 2px;
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   border: none;
   border-radius: 8px;
-  background: rgba(7, 15, 34, 0.7);
+  background: rgba(7, 15, 34, 0.8);
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
   display: grid;
   place-items: center;
+  z-index: 2;
 }
 .video-min .video-toggle {
   position: static;
@@ -1346,28 +1359,6 @@ body {
   height: 100%;
   font-size: 26px;
   background: none;
-}
-.video-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-.video-bg iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-/* in background mode, let the video show behind the translucent app */
-body.video-bg-active {
-  background: #000;
-}
-body.video-bg-active #root {
-  position: relative;
-  z-index: 1;
-}
-body.video-bg-active .screen {
-  background: rgba(7, 15, 34, 0.55);
 }
 .video-url {
   font-size: 12px;

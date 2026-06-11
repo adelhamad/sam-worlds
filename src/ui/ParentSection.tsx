@@ -119,10 +119,8 @@ function TiltControls() {
 /** YouTube companion: curated videos that play during the game to draw him in. */
 function VideoControls() {
   const enabled = useGame((s) => s.videoEnabled);
-  const mode = useGame((s) => s.videoMode);
   const urls = useGame((s) => s.videoUrls);
   const setEnabled = useGame((s) => s.setVideoEnabled);
-  const setMode = useGame((s) => s.setVideoMode);
   const addUrl = useGame((s) => s.addVideoUrl);
   const removeUrl = useGame((s) => s.removeVideoUrl);
   const [input, setInput] = useState("");
@@ -132,18 +130,12 @@ function VideoControls() {
     <section className="panel parent-block">
       <h2>📺 Video companion</h2>
       <p className="dim">
-        Plays his favorite YouTube videos during the game — in a corner or behind it — to slowly
-        pull his attention into playing.
+        Plays his favorite YouTube videos in a small movable corner player during the game, to
+        slowly pull his attention into playing. He can drag it but can't open YouTube.
       </p>
       <div className="parent-row">
         <button className={`btn ${enabled ? "btn-primary" : "btn-secondary"}`} onClick={() => setEnabled(!enabled)}>
           {enabled ? "✅ On" : "⬜ Off"}
-        </button>
-        <button className={`btn ${mode === "corner" ? "btn-primary" : "btn-secondary"}`} onClick={() => setMode("corner")}>
-          Corner
-        </button>
-        <button className={`btn ${mode === "background" ? "btn-primary" : "btn-secondary"}`} onClick={() => setMode("background")}>
-          Behind game
         </button>
       </div>
       <div className="parent-row">
