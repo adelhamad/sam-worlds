@@ -9,6 +9,7 @@ import livingStages from "./living/stages.json";
 import atlasStages from "./atlas/stages.json";
 import flagsStages from "./flags/stages.json";
 import arabicStages from "./arabic/stages.json";
+import craftStages from "./craft/stages.json";
 import type { StageDef } from "./types";
 
 export interface WorldDef {
@@ -152,6 +153,18 @@ export const WORLDS: WorldDef[] = [
       { stage: 40, name: "Number Sage", icon: "🔢" },
       { stage: 50, name: "Reading Star", icon: "📖" },
       { stage: 55, name: "Master of Letters", icon: "🏆" },
+    ],
+  },
+  {
+    id: "craft", name: "Craft Caverns", icon: "⛏️", tagline: "Mine, craft, count!",
+    stages: craftStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Wood Gatherer", icon: "🪵" },
+      { stage: 20, name: "Stone Mason", icon: "🪨" },
+      { stage: 30, name: "Iron Smelter", icon: "🔥" },
+      { stage: 40, name: "Redstone Reckoner", icon: "🔴" },
+      { stage: 50, name: "Diamond Counter", icon: "💎" },
+      { stage: 55, name: "Netherite Master", icon: "🏆" },
     ],
   },
 ];

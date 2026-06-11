@@ -1,0 +1,946 @@
+[
+  {
+    "id": "cc-01",
+    "name": "First Logs",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "recipe"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Crafting is counting!",
+      "1 log makes 4 planks.",
+      "Type the answer on the pad."
+    ]
+  },
+  {
+    "id": "cc-02",
+    "name": "Plank Practice",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "recipe"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "cc-03",
+    "name": "The Crafting Table",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "recipe"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 28
+  },
+  {
+    "id": "cc-04",
+    "name": "Stick Counter",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "recipe"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "cc-05",
+    "name": "Wood Workshop",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "recipe"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 32
+  },
+  {
+    "id": "cc-06",
+    "name": "Recipe Reader",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "recipe"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "cc-07",
+    "name": "Busy Crafter",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "recipe"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "cc-08",
+    "name": "The Lumber Gate",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "recipe"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 38
+  },
+  {
+    "id": "cc-09",
+    "name": "Cobble Walls",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "stack",
+        "recipe"
+      ],
+      "maxSide": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 40
+  },
+  {
+    "id": "cc-10",
+    "name": "Block by Block",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "stack",
+        "recipe"
+      ],
+      "maxSide": 5
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 67
+  },
+  {
+    "id": "cc-11",
+    "name": "Wall Builder",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "stack",
+        "recipe"
+      ],
+      "maxSide": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "cc-12",
+    "name": "Tall Towers",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "stack",
+        "recipe"
+      ],
+      "maxSide": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "cc-13",
+    "name": "Half Stacks",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "stack",
+        "recipe"
+      ],
+      "maxSide": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "cc-14",
+    "name": "Pocket Counter",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "stack",
+        "recipe"
+      ],
+      "maxSide": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 50
+  },
+  {
+    "id": "cc-15",
+    "name": "Chest Math",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "stack",
+        "recipe"
+      ],
+      "maxSide": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 52
+  },
+  {
+    "id": "cc-16",
+    "name": "The Stone Gate",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "stack",
+        "recipe"
+      ],
+      "maxSide": 5
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 54
+  },
+  {
+    "id": "cc-17",
+    "name": "Furnace Fires",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "smelt",
+        "wall",
+        "stack"
+      ],
+      "maxSide": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "cc-18",
+    "name": "Coal Counter",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "smelt",
+        "wall",
+        "stack"
+      ],
+      "maxSide": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "cc-19",
+    "name": "Smelting Shift",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "smelt",
+        "wall",
+        "stack"
+      ],
+      "maxSide": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 60
+  },
+  {
+    "id": "cc-20",
+    "name": "Iron Batches",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "smelt",
+        "wall",
+        "stack"
+      ],
+      "maxSide": 6
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 87
+  },
+  {
+    "id": "cc-21",
+    "name": "Big Walls",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "smelt",
+        "wall",
+        "stack"
+      ],
+      "maxSide": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 64
+  },
+  {
+    "id": "cc-22",
+    "name": "Brick Layers",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "smelt",
+        "wall",
+        "stack"
+      ],
+      "maxSide": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "cc-23",
+    "name": "Furnace Master",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "smelt",
+        "wall",
+        "stack"
+      ],
+      "maxSide": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "cc-24",
+    "name": "The Iron Gate",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "smelt",
+        "wall",
+        "stack"
+      ],
+      "maxSide": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 70
+  },
+  {
+    "id": "cc-25",
+    "name": "First Steps East",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "coords",
+        "recipe",
+        "smelt"
+      ],
+      "maxSide": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 72
+  },
+  {
+    "id": "cc-26",
+    "name": "Walking West",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "coords",
+        "recipe",
+        "smelt"
+      ],
+      "maxSide": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 74
+  },
+  {
+    "id": "cc-27",
+    "name": "Coordinate Trail",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "coords",
+        "recipe",
+        "smelt"
+      ],
+      "maxSide": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 76
+  },
+  {
+    "id": "cc-28",
+    "name": "Long Marches",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "coords",
+        "recipe",
+        "smelt"
+      ],
+      "maxSide": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "cc-29",
+    "name": "Map Reader",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "coords",
+        "recipe",
+        "smelt"
+      ],
+      "maxSide": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "cc-30",
+    "name": "Mixed Mining",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "coords",
+        "recipe",
+        "smelt"
+      ],
+      "maxSide": 6
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "cc-31",
+    "name": "Cavern Counts",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "coords",
+        "recipe",
+        "smelt"
+      ],
+      "maxSide": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 84
+  },
+  {
+    "id": "cc-32",
+    "name": "The Compass Gate",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "coords",
+        "recipe",
+        "smelt"
+      ],
+      "maxSide": 6
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 86
+  },
+  {
+    "id": "cc-33",
+    "name": "Thick Walls",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "coords",
+        "mob"
+      ],
+      "maxSide": 7,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "cc-34",
+    "name": "Layer Logic",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "coords",
+        "mob"
+      ],
+      "maxSide": 7,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "cc-35",
+    "name": "Volume Vault",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "coords",
+        "mob"
+      ],
+      "maxSide": 7,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 92
+  },
+  {
+    "id": "cc-36",
+    "name": "Deep Digging",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "coords",
+        "mob"
+      ],
+      "maxSide": 7,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 94
+  },
+  {
+    "id": "cc-37",
+    "name": "Below Zero!",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "coords",
+        "mob"
+      ],
+      "maxSide": 7,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 96
+  },
+  {
+    "id": "cc-38",
+    "name": "Bedrock Bound",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "coords",
+        "mob"
+      ],
+      "maxSide": 7,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "cc-39",
+    "name": "Mob Watcher",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "coords",
+        "mob"
+      ],
+      "maxSide": 7,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "cc-40",
+    "name": "The Redstone Gate",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "coords",
+        "mob"
+      ],
+      "maxSide": 7,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "cc-41",
+    "name": "Mega Builds",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "stack",
+        "coords",
+        "smelt",
+        "mob"
+      ],
+      "maxSide": 8,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 104
+  },
+  {
+    "id": "cc-42",
+    "name": "Stack Storm",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "stack",
+        "coords",
+        "smelt",
+        "mob"
+      ],
+      "maxSide": 8,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 106
+  },
+  {
+    "id": "cc-43",
+    "name": "Trade Counts",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "stack",
+        "coords",
+        "smelt",
+        "mob"
+      ],
+      "maxSide": 8,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 108
+  },
+  {
+    "id": "cc-44",
+    "name": "Negative Depths",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "stack",
+        "coords",
+        "smelt",
+        "mob"
+      ],
+      "maxSide": 8,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "cc-45",
+    "name": "Master Recipes",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "stack",
+        "coords",
+        "smelt",
+        "mob"
+      ],
+      "maxSide": 8,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "cc-46",
+    "name": "Fortress Math",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "stack",
+        "coords",
+        "smelt",
+        "mob"
+      ],
+      "maxSide": 8,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 114
+  },
+  {
+    "id": "cc-47",
+    "name": "Cavern Riddles",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "stack",
+        "coords",
+        "smelt",
+        "mob"
+      ],
+      "maxSide": 8,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 116
+  },
+  {
+    "id": "cc-48",
+    "name": "The Diamond Gate",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "wall",
+        "stack",
+        "coords",
+        "smelt",
+        "mob"
+      ],
+      "maxSide": 8,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 118
+  },
+  {
+    "id": "cc-49",
+    "name": "Nether Numbers",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "recipe",
+        "wall",
+        "stack",
+        "coords",
+        "smelt",
+        "mob"
+      ],
+      "maxSide": 8,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "cc-50",
+    "name": "End Counting",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "recipe",
+        "wall",
+        "stack",
+        "coords",
+        "smelt",
+        "mob"
+      ],
+      "maxSide": 8,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 147
+  },
+  {
+    "id": "cc-51",
+    "name": "Grand Crafting",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "recipe",
+        "wall",
+        "stack",
+        "coords",
+        "smelt",
+        "mob"
+      ],
+      "maxSide": 8,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "cc-52",
+    "name": "Deep Dark Math",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "recipe",
+        "wall",
+        "stack",
+        "coords",
+        "smelt",
+        "mob"
+      ],
+      "maxSide": 8,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 126
+  },
+  {
+    "id": "cc-53",
+    "name": "The Final Build",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "recipe",
+        "wall",
+        "stack",
+        "coords",
+        "smelt",
+        "mob"
+      ],
+      "maxSide": 8,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 128
+  },
+  {
+    "id": "cc-54",
+    "name": "Cavern Supreme",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "recipe",
+        "wall",
+        "stack",
+        "coords",
+        "smelt",
+        "mob"
+      ],
+      "maxSide": 8,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 130
+  },
+  {
+    "id": "cc-55",
+    "name": "Netherite Master",
+    "generator": "craft",
+    "params": {
+      "types": [
+        "recipe",
+        "wall",
+        "stack",
+        "coords",
+        "smelt",
+        "mob"
+      ],
+      "maxSide": 8,
+      "volume": true,
+      "belowZero": true
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 157
+  }
+]

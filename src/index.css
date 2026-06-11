@@ -806,6 +806,11 @@ body,
   font-size: clamp(40px, 8vw, 56px);
   min-height: 80px;
 }
+.block-grid {
+  font-size: clamp(16px, 3.4vw, 26px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+}
 .lamp-on {
   filter: none !important;
   text-shadow: 0 0 18px rgba(255, 220, 120, 0.95);

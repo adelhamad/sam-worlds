@@ -261,6 +261,13 @@ function QuestionCard({ session, q, praise, busy, interactive, onSubmit }: Quest
         </div>
       )}
       {typeof q.payload?.bigSymbol === "string" && <div className="big-symbol">{q.payload.bigSymbol}</div>}
+      {Array.isArray(q.payload?.gridRows) && (
+        <div className="block-grid">
+          {(q.payload.gridRows as string[]).map((row, i) => (
+            <div key={i}>{row}</div>
+          ))}
+        </div>
+      )}
       <div className={`q-prompt ${interactive ? "q-prompt-sm" : ""} ${praise ? "q-correct" : ""}`}>{q.prompt}</div>
       {praise && <div className="q-praise">{praise}</div>}
       {!praise && missLocked && <div className="q-retry">{STR.almostLook}</div>}

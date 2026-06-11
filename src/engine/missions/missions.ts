@@ -69,6 +69,13 @@ const WORLD_BEATS: Record<string, StoryBeat[]> = {
     { afterStage: 20, text: "Your sharp eyes catch every stripe.", tease: "The trickiest look-alikes remain…" },
     { afterStage: 32, text: "Every flag flies proudly!", tease: "The whole world salutes you, Captain." },
   ],
+  craft: [
+    { afterStage: 0, text: "A blocky cavern echoes with pickaxe sounds.", tease: "Every craft starts with counting…" },
+    { afterStage: 10, text: "Your chests fill with planks and sticks!", tease: "The walls you build need block math…" },
+    { afterStage: 20, text: "Furnaces roar — smelting is division!", tease: "A map shows coordinates deep below…" },
+    { afterStage: 40, text: "You dug below zero and survived!", tease: "Diamond counting awaits the brave…" },
+    { afterStage: 55, text: "The cavern bows to a true crafter.", tease: "Netherite Master — count on it!" },
+  ],
   arabic: [
     { afterStage: 0, text: "A quiet garden where letters grow on trees.", tease: "The first letters are sprouting…" },
     { afterStage: 10, text: "The garden hums with new sounds!", tease: "Soon the letters will join into words…" },

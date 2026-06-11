@@ -22,6 +22,7 @@ const PLANET_HUES: Record<string, string> = {
   atlas: "#c084fc",
   flags: "#f87171",
   arabic: "#34d399",
+  craft: "#a47551",
 };
 
 export function Hub() {
