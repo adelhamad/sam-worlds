@@ -10,6 +10,7 @@ import { CodeQuest } from "./modules/codequest/CodeQuest";
 import { ParentSection } from "./ui/ParentSection";
 import { LockedScreen } from "./ui/LockedScreen";
 import { MarbleMaze } from "./modules/maze/MarbleMaze";
+import { Calculator } from "./modules/calculator/Calculator";
 
 /** Each screen starts at the top — no inherited scroll position. */
 function ScrollToTop() {
@@ -97,6 +98,7 @@ export default function App() {
         <Route path="/catch" element={<GameGate id="catch"><CometCatch /></GameGate>} />
         <Route path="/code" element={<GameGate id="code"><CodeQuest /></GameGate>} />
         <Route path="/maze" element={<GameGate id="maze"><MarbleMaze /></GameGate>} />
+        <Route path="/calc" element={<GameGate id="calc"><Calculator /></GameGate>} />
         <Route path="/parent" element={<ParentSection />} />
       </Routes>
     </HashRouter>

@@ -11,4 +11,5 @@ export const MINIGAMES: MinigameDef[] = [
   { id: "catch", name: "Comet Catch", icon: "🌠", sub: "Tilt to fly!", route: "/catch" },
   { id: "code", name: "Code Quest", icon: "🔮", sub: "Crack the secret code!", route: "/code" },
   { id: "maze", name: "Marble Maze", icon: "🌀", sub: "Tilt and roll!", route: "/maze" },
+  { id: "calc", name: "Calculator", icon: "🧮", sub: "Crunch any number!", route: "/calc" },
 ];
