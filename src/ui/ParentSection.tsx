@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useGame } from "../state/store";
 import { completedInWorld, WORLDS } from "../content/worlds";
+import { MINIGAMES } from "../content/minigames";
 import { itemById } from "../engine/economy/catalog";
 
 const PARENT_PASSWORD = "adel";
@@ -57,6 +58,54 @@ export function ParentSection() {
   }
 
   return <ParentControls />;
+}
+
+/** Which worlds and minigames Sam may open — e.g. clock-reading focus week. */
+function AccessControls() {
+  const enabledWorlds = useGame((s) => s.enabledWorlds);
+  const enabledGames = useGame((s) => s.enabledGames);
+  const setWorldEnabled = useGame((s) => s.setWorldEnabled);
+  const setGameEnabled = useGame((s) => s.setGameEnabled);
+
+  return (
+    <section className="panel parent-block">
+      <h2>🔓 What can he open?</h2>
+      <p className="dim">Locked items stay visible in the base but can't be opened.</p>
+      {WORLDS.map((w) => {
+        const on = Boolean(enabledWorlds[w.id]);
+        return (
+          <div key={w.id} className="parent-row parent-world-row">
+            <span className="parent-world-name">
+              {w.icon} {w.name}
+            </span>
+            <button
+              className={`btn ${on ? "btn-primary" : "btn-secondary"}`}
+              onClick={() => setWorldEnabled(w.id, !on)}
+            >
+              {on ? "✅ Open" : "🔒 Locked"}
+            </button>
+          </div>
+        );
+      })}
+      <h2>🕹️ Minigames</h2>
+      {MINIGAMES.map((g) => {
+        const on = Boolean(enabledGames[g.id]);
+        return (
+          <div key={g.id} className="parent-row parent-world-row">
+            <span className="parent-world-name">
+              {g.icon} {g.name}
+            </span>
+            <button
+              className={`btn ${on ? "btn-primary" : "btn-secondary"}`}
+              onClick={() => setGameEnabled(g.id, !on)}
+            >
+              {on ? "✅ Open" : "🔒 Locked"}
+            </button>
+          </div>
+        );
+      })}
+    </section>
+  );
 }
 
 function fmt(t: number): string {
@@ -204,6 +253,8 @@ function ParentControls() {
           );
         })}
       </section>
+
+      <AccessControls />
 
       <RewardHistory />
 

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useGame } from "../state/store";
-import { completedInWorld, focusWorld } from "../content/worlds";
+import { completedInWorld, focusWorldIn, WORLDS } from "../content/worlds";
 import { cliffhanger } from "../engine/missions/missions";
 import { unlockAudio, sfx } from "../engine/feedback/audio";
 import { MUSIC_CREDIT, startMusic } from "../engine/feedback/music";
@@ -20,6 +20,8 @@ export function TitleScreen() {
   const session = useGame((s) => s.session);
   const progress = useGame((s) => s.progress);
 
+  const enabledWorlds = useGame((s) => s.enabledWorlds);
+  const focus = focusWorldIn(WORLDS.filter((w) => enabledWorlds[w.id]), progress);
   const resumeMidPuzzle = session && !session.result;
 
   function go() {
@@ -53,10 +55,8 @@ export function TitleScreen() {
         ))}
       </h1>
       <p className="title-sub">{hasSave ? STR.welcomeBack : STR.newAdventure}</p>
-      {hasSave && (
-        <p className="title-cliffhanger">
-          “{cliffhanger(focusWorld(progress).id, completedInWorld(focusWorld(progress), progress))}”
-        </p>
+      {hasSave && focus && (
+        <p className="title-cliffhanger">“{cliffhanger(focus.id, completedInWorld(focus, progress))}”</p>
       )}
       <button className="btn btn-primary btn-big" onClick={go}>
         {hasSave ? STR.continueBtn : STR.startBtn}

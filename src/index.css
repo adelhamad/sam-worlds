@@ -455,6 +455,11 @@ body {
   border-color: var(--cyan);
   box-shadow: 0 0 14px rgba(34, 211, 238, 0.3);
 }
+.tile-locked {
+  opacity: 0.45;
+  cursor: default;
+  border-style: dashed;
+}
 .tile {
   font: inherit;
   color: var(--text);

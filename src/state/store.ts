@@ -7,7 +7,8 @@ import { starsForResult } from "../engine/progress/stars";
 import { isRapidGuessing, weightedPayout, workedExample } from "../engine/answers/answerEngine";
 import { STR } from "../strings/en";
 import { itemById } from "../engine/economy/catalog";
-import { BADGES, stageById, worldById, type BadgeDef } from "../content/worlds";
+import { BADGES, stageById, worldById, WORLDS, type BadgeDef } from "../content/worlds";
+import { MINIGAMES } from "../content/minigames";
 import { persona } from "../persona.config";
 import { newSeed } from "../engine/rng";
 import { setMuted } from "../engine/feedback/audio";
@@ -41,6 +42,9 @@ interface GameStore {
   musicOn: boolean;
   lastStageId: string | null;
   coupons: CouponRow[];
+  /** Parent gates: which worlds / minigames Sam may open right now. */
+  enabledWorlds: Record<string, boolean>;
+  enabledGames: Record<string, boolean>;
   session: Session | null;
 
   hydrate: () => Promise<void>;
@@ -56,12 +60,36 @@ interface GameStore {
   // Parent Section controls
   setStarDust: (amount: number) => void;
   setWorldProgress: (worldId: string, completedCount: number) => void;
+  setWorldEnabled: (worldId: string, on: boolean) => void;
+  setGameEnabled: (gameId: string, on: boolean) => void;
   resetAll: () => Promise<void>;
 }
 
+/** Default: only the first two worlds are open until the parent enables more. */
+function withWorldDefaults(stored?: Record<string, boolean>): Record<string, boolean> {
+  const out: Record<string, boolean> = {};
+  WORLDS.forEach((w, i) => {
+    out[w.id] = stored?.[w.id] ?? i < 2;
+  });
+  return out;
+}
+
+function withGameDefaults(stored?: Record<string, boolean>): Record<string, boolean> {
+  const out: Record<string, boolean> = {};
+  for (const g of MINIGAMES) out[g.id] = stored?.[g.id] ?? false;
+  return out;
+}
+
 function persistSettings(get: () => GameStore): void {
-  const { soundOn, musicOn, lastStageId } = get();
-  void db.settings.put({ id: 1, soundOn, musicOn, lastStageId: lastStageId ?? undefined });
+  const { soundOn, musicOn, lastStageId, enabledWorlds, enabledGames } = get();
+  void db.settings.put({
+    id: 1,
+    soundOn,
+    musicOn,
+    lastStageId: lastStageId ?? undefined,
+    enabledWorlds,
+    enabledGames,
+  });
 }
 
 let saveTimer: ReturnType<typeof setTimeout> | null = null;
@@ -144,6 +172,8 @@ export const useGame = create<GameStore>((set, get) => ({
   musicOn: true,
   lastStageId: null,
   coupons: [],
+  enabledWorlds: withWorldDefaults(),
+  enabledGames: withGameDefaults(),
   session: null,
 
   hydrate: async () => {
@@ -194,6 +224,8 @@ export const useGame = create<GameStore>((set, get) => ({
       musicOn,
       lastStageId: settings?.lastStageId ?? null,
       coupons: couponRows,
+      enabledWorlds: withWorldDefaults(settings?.enabledWorlds),
+      enabledGames: withGameDefaults(settings?.enabledGames),
       session: sessionRow
         ? {
             ...sessionRow,
@@ -448,6 +480,18 @@ export const useGame = create<GameStore>((set, get) => ({
     }
     set({ progress });
     logEvent("parent.setWorldProgress", { worldId, completedCount: n });
+  },
+
+  setWorldEnabled: (worldId, on) => {
+    set({ enabledWorlds: { ...get().enabledWorlds, [worldId]: on } });
+    persistSettings(get);
+    logEvent("parent.worldGate", { worldId, on });
+  },
+
+  setGameEnabled: (gameId, on) => {
+    set({ enabledGames: { ...get().enabledGames, [gameId]: on } });
+    persistSettings(get);
+    logEvent("parent.gameGate", { gameId, on });
   },
 
   resetAll: async () => {

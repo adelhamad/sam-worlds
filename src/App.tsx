@@ -8,6 +8,7 @@ import { PlayStage } from "./modules/play/PlayStage";
 import { CometCatch } from "./modules/cometcatch/CometCatch";
 import { CodeQuest } from "./modules/codequest/CodeQuest";
 import { ParentSection } from "./ui/ParentSection";
+import { LockedScreen } from "./ui/LockedScreen";
 import { MarbleMaze } from "./modules/maze/MarbleMaze";
 
 /** Each screen starts at the top — no inherited scroll position. */
@@ -25,6 +26,12 @@ function ScrollToTop() {
  * popping it lands on an identical URL, so nothing changes on screen.
  * All navigation goes through the in-app buttons.
  */
+/** Parent gate for minigame routes. */
+function GameGate({ id, children }: { id: string; children: React.ReactElement }) {
+  const on = useGame((s) => Boolean(s.enabledGames[id]));
+  return on ? children : <LockedScreen />;
+}
+
 function BlockBrowserNav() {
   const location = useLocation();
   useEffect(() => {
@@ -87,9 +94,9 @@ export default function App() {
         <Route path="/hub" element={<Hub />} />
         <Route path="/world/:worldId" element={<WorldMap />} />
         <Route path="/play/:stageId" element={<PlayStage />} />
-        <Route path="/catch" element={<CometCatch />} />
-        <Route path="/code" element={<CodeQuest />} />
-        <Route path="/maze" element={<MarbleMaze />} />
+        <Route path="/catch" element={<GameGate id="catch"><CometCatch /></GameGate>} />
+        <Route path="/code" element={<GameGate id="code"><CodeQuest /></GameGate>} />
+        <Route path="/maze" element={<GameGate id="maze"><MarbleMaze /></GameGate>} />
         <Route path="/parent" element={<ParentSection />} />
       </Routes>
     </HashRouter>

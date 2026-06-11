@@ -3,6 +3,7 @@ import { useGame } from "../../state/store";
 import { worldById } from "../../content/worlds";
 import { sfx } from "../../engine/feedback/audio";
 import type { StageDef } from "../../content/types";
+import { LockedScreen } from "../../ui/LockedScreen";
 
 function nodeStars(completed: boolean | undefined, bestStars: number | undefined, unlocked: boolean): string {
   if (completed) return "⭐".repeat(bestStars ?? 1);
@@ -15,7 +16,9 @@ export function WorldMap() {
   const world = worldById(worldId);
   const progress = useGame((s) => s.progress);
   const starDust = useGame((s) => s.starDust);
+  const worldEnabled = useGame((s) => Boolean(world && s.enabledWorlds[world.id]));
 
+  if (world && !worldEnabled) return <LockedScreen />;
   if (!world) {
     return (
       <div className="screen">

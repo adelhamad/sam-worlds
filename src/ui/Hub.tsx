@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGame } from "../state/store";
-import { completedInWorld, focusWorld, nextStageIn, stageById, WORLDS, worldOfStage } from "../content/worlds";
+import { completedInWorld, focusWorldIn, nextStageIn, stageById, WORLDS, worldOfStage } from "../content/worlds";
+import { MINIGAMES } from "../content/minigames";
 import { activeBeat } from "../engine/missions/missions";
 import { sfx, unlockAudio } from "../engine/feedback/audio";
 import { STR } from "../strings/en";
@@ -36,12 +37,15 @@ export function Hub() {
   const toggleMusic = useGame((s) => s.toggleMusic);
   const [shopOpen, setShopOpen] = useState(false);
 
-  const focus = focusWorld(progress);
-  const beat = activeBeat(focus.id, completedInWorld(focus, progress));
-  const nextStage = nextStageIn(focus, progress);
+  const enabledWorlds = useGame((s) => s.enabledWorlds);
+  const enabledGames = useGame((s) => s.enabledGames);
+  const openWorlds = WORLDS.filter((w) => enabledWorlds[w.id]);
+  const focus = focusWorldIn(openWorlds, progress);
+  const beat = focus ? activeBeat(focus.id, completedInWorld(focus, progress)) : null;
+  const nextStage = focus ? nextStageIn(focus, progress) : null;
 
   // Continue where he left off: the in-progress session, or the next stage
-  // in the last world he played.
+  // in the last world he played — only if that world is still enabled.
   const lastStageId = useGame((s) => s.lastStageId);
   const session = useGame((s) => s.session);
   const lastWorld = lastStageId ? worldOfStage(lastStageId) : undefined;
@@ -49,6 +53,7 @@ export function Hub() {
   if (session && !session.result) continueStage = stageById(session.stageId);
   else if (lastWorld) continueStage = nextStageIn(lastWorld, progress);
   const continueWorld = continueStage ? worldOfStage(continueStage.id) : undefined;
+  const continueAllowed = continueWorld && enabledWorlds[continueWorld.id];
 
   return (
     <div className="screen hub">
@@ -69,22 +74,24 @@ export function Hub() {
           </div>
         </div>
         <div className="hero-mission">
-          <p className="mission-tease">“{beat.tease}”</p>
-          <button
-            className="btn btn-primary btn-go"
-            onClick={() => {
-              unlockAudio();
-              sfx.tap();
-              navigate(`/play/${nextStage.id}`);
-            }}
-          >
-            ▶ {STR.goBtn}
-            <small>{nextStage.name}</small>
-          </button>
+          <p className="mission-tease">{beat ? `“${beat.tease}”` : "All worlds are resting. Ask Daddy!"}</p>
+          {nextStage && (
+            <button
+              className="btn btn-primary btn-go"
+              onClick={() => {
+                unlockAudio();
+                sfx.tap();
+                navigate(`/play/${nextStage.id}`);
+              }}
+            >
+              ▶ {STR.goBtn}
+              <small>{nextStage.name}</small>
+            </button>
+          )}
         </div>
       </section>
 
-      {continueStage && continueWorld && (
+      {continueStage && continueWorld && continueAllowed && (
         <button
           className="btn continue-bar"
           onClick={() => {
@@ -105,10 +112,12 @@ export function Hub() {
         <div className="planet-row">
           {WORLDS.map((w) => {
             const wDone = completedInWorld(w, progress);
+            const on = Boolean(enabledWorlds[w.id]);
             return (
               <button
                 key={w.id}
-                className={`planet planet-open ${w.id === focus.id ? "planet-focus" : ""}`}
+                className={`planet ${on ? "planet-open" : "planet-locked"} ${focus && w.id === focus.id ? "planet-focus" : ""}`}
+                disabled={!on}
                 onClick={() => {
                   unlockAudio();
                   sfx.tap();
@@ -119,8 +128,8 @@ export function Hub() {
                   <span className="planet-icon">{w.icon}</span>
                 </span>
                 <span className="planet-name">{w.name}</span>
-                <span className={`planet-chip ${wDone === 0 ? "dim-chip" : ""}`}>
-                  {wDone}/{w.stages.length}
+                <span className={`planet-chip ${!on || wDone === 0 ? "dim-chip" : ""}`}>
+                  {on ? `${wDone}/${w.stages.length}` : "🔒"}
                 </span>
               </button>
             );
@@ -129,42 +138,25 @@ export function Hub() {
       </section>
 
       <div className="hub-bottom">
-        <button
-          className="tile tile-glow"
-          onClick={() => {
-            unlockAudio();
-            sfx.tap();
-            navigate("/catch");
-          }}
-        >
-          <span className="tile-icon">🌠</span>
-          <span className="tile-name">Comet Catch</span>
-          <span className="tile-sub">Tilt to fly!</span>
-        </button>
-        <button
-          className="tile tile-glow"
-          onClick={() => {
-            unlockAudio();
-            sfx.tap();
-            navigate("/code");
-          }}
-        >
-          <span className="tile-icon">🔮</span>
-          <span className="tile-name">Code Quest</span>
-          <span className="tile-sub">Crack the secret code!</span>
-        </button>
-        <button
-          className="tile tile-glow"
-          onClick={() => {
-            unlockAudio();
-            sfx.tap();
-            navigate("/maze");
-          }}
-        >
-          <span className="tile-icon">🌀</span>
-          <span className="tile-name">Marble Maze</span>
-          <span className="tile-sub">Tilt and roll!</span>
-        </button>
+        {MINIGAMES.map((g) => {
+          const on = Boolean(enabledGames[g.id]);
+          return (
+            <button
+              key={g.id}
+              className={`tile ${on ? "tile-glow" : "tile-locked"}`}
+              disabled={!on}
+              onClick={() => {
+                unlockAudio();
+                sfx.tap();
+                navigate(g.route);
+              }}
+            >
+              <span className="tile-icon">{g.icon}</span>
+              <span className="tile-name">{g.name}</span>
+              <span className="tile-sub">{on ? g.sub : "🔒 Ask Daddy"}</span>
+            </button>
+          );
+        })}
         <button
           className="tile"
           onClick={() => {

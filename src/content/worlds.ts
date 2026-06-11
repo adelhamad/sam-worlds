@@ -211,9 +211,9 @@ export function completedInWorld(world: WorldDef, progress: Record<string, { com
   return world.stages.filter((s) => progress[s.id]?.completed).length;
 }
 
-/** The world the Mission Board points at: first one with stages left. */
-export function focusWorld(progress: Record<string, { completed: boolean }>): WorldDef {
-  return WORLDS.find((w) => completedInWorld(w, progress) < w.stages.length) ?? WORLDS[0];
+/** The world the Mission Board points at: first ENABLED one with stages left. */
+export function focusWorldIn(worlds: WorldDef[], progress: Record<string, { completed: boolean }>): WorldDef | undefined {
+  return worlds.find((w) => completedInWorld(w, progress) < w.stages.length) ?? worlds[0];
 }
 
 export function nextStageIn(world: WorldDef, progress: Record<string, { completed: boolean }>): StageDef {

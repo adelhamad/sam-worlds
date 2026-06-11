@@ -47,8 +47,8 @@ export function BaseScene({ badgeCount }: { badgeCount: number }) {
         {/* workshop dome */}
         <path d="M250 252 A150 118 0 0 1 550 252 Z" fill="url(#dome)" stroke="#24407a" strokeWidth="3" />
         {/* warm windows */}
-        <circle cx="335" cy="195" r="22" fill="url(#winGlow)" stroke="#0b1b3a" strokeWidth="4" />
-        <circle cx="465" cy="195" r="22" fill="url(#winGlow)" stroke="#0b1b3a" strokeWidth="4" />
+        <circle cx="335" cy="207" r="20" fill="url(#winGlow)" stroke="#0b1b3a" strokeWidth="4" />
+        <circle cx="465" cy="207" r="20" fill="url(#winGlow)" stroke="#0b1b3a" strokeWidth="4" />
         {/* door */}
         <rect x="372" y="196" width="56" height="58" rx="14" fill="#0b1b3a" stroke="#ffb454" strokeWidth="3" />
         <circle cx="414" cy="226" r="4" fill="#ffb454" />
@@ -56,8 +56,8 @@ export function BaseScene({ badgeCount }: { badgeCount: number }) {
         <line x1="400" y1="134" x2="400" y2="88" stroke="#24407a" strokeWidth="5" />
         <circle cx="400" cy="82" r="7" fill="#22d3ee" className="beacon" />
         {/* name sign */}
-        <rect x="312" y="142" width="176" height="32" rx="10" fill="#0b1b3a" stroke="#ffb454" strokeWidth="2.5" />
-        <text x="400" y="164" textAnchor="middle" fontSize="19" fontWeight="900" fill="#ffb454" style={{ letterSpacing: 2 }}>
+        <rect x="278" y="134" width="244" height="46" rx="12" fill="#0b1b3a" stroke="#ffb454" strokeWidth="3" />
+        <text x="400" y="167" textAnchor="middle" fontSize="30" fontWeight="900" fill="#ffb454" style={{ letterSpacing: 3 }}>
           {persona.name.toUpperCase()}'S BASE
         </text>
 

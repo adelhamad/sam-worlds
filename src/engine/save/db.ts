@@ -47,6 +47,9 @@ export interface SettingsRow {
   soundOn: boolean;
   musicOn?: boolean;
   lastStageId?: string;
+  /** Parent-controlled gates; missing keys fall back to defaults. */
+  enabledWorlds?: Record<string, boolean>;
+  enabledGames?: Record<string, boolean>;
 }
 export interface CouponRow {
   id?: number;

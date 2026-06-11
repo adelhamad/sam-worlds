@@ -10,6 +10,7 @@ import { sfx, unlockAudio } from "../../engine/feedback/audio";
 import { duckMusic, unduckMusic } from "../../engine/feedback/music";
 import { STR } from "../../strings/en";
 import { persona } from "../../persona.config";
+import { LockedScreen } from "../../ui/LockedScreen";
 import { NumPad } from "../../ui/inputs/NumPad";
 import { PianoKeys } from "../../ui/inputs/PianoKeys";
 import { ToggleCircuit } from "../../ui/inputs/ToggleCircuit";
@@ -79,11 +80,13 @@ export function PlayStage() {
   const liveSession = session && session.stageId === stageId && !session.result ? session : null;
   const result = session && session.stageId === stageId ? session.result : null;
 
+  const worldEnabled = useGame((s) => Boolean(world && s.enabledWorlds[world.id]));
+
   useEffect(() => {
-    if (!stage) return;
+    if (!stage || !worldEnabled) return;
     const s = useGame.getState().session;
     if (!s || s.stageId !== stageId || s.result) startStage(stageId);
-  }, [stage, stageId, startStage]);
+  }, [stage, stageId, startStage, worldEnabled]);
 
   // Ear-training must play in silence: pause background music in Melody stages.
   useEffect(() => {
@@ -94,7 +97,7 @@ export function PlayStage() {
 
   const seed = liveSession?.seed;
   useEffect(() => {
-    if (!stage || seed === undefined || !hostRef.current) return;
+    if (!stage || !worldEnabled || seed === undefined || !hostRef.current) return;
     let cancelled = false;
     const resumeIndex = useGame.getState().session?.index ?? 0;
     void GateRunScene.create(hostRef.current, stage.questions, reducedMotion()).then((scene) => {
@@ -128,6 +131,7 @@ export function PlayStage() {
       </div>
     );
   }
+  if (!worldEnabled) return <LockedScreen />;
 
   const q = liveSession ? liveSession.questions[liveSession.index] : null;
 
