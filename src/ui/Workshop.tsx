@@ -6,7 +6,6 @@ import { STR } from "../strings/en";
 
 export function Workshop({ onClose }: { onClose: () => void }) {
   const starDust = useGame((s) => s.starDust);
-  const inventory = useGame((s) => s.inventory);
   const buyItem = useGame((s) => s.buyItem);
   const [note, setNote] = useState<string | null>(null);
 
@@ -31,33 +30,9 @@ export function Workshop({ onClose }: { onClose: () => void }) {
           </button>
         </header>
         {note && <p className="shop-note">{note}</p>}
-        <h3 className="shop-section">🏠 {STR.decorations}</h3>
-        <div className="shop-grid">
-          {CATALOG.filter((i) => i.kind === "deco").map((item) => {
-            const owned = inventory.includes(item.id);
-            const affordable = starDust >= item.cost;
-            return (
-              <div key={item.id} className={`shop-item ${owned ? "owned" : ""}`}>
-                <span className="shop-icon">{item.icon}</span>
-                <span className="shop-name">{item.name}</span>
-                <span className="shop-blurb">{item.blurb}</span>
-                {owned ? (
-                  <span className="shop-owned">✓ {STR.owned}</span>
-                ) : (
-                  <button
-                    className={`btn ${affordable ? "btn-primary" : "btn-disabled"}`}
-                    onClick={() => buy(item.id)}
-                  >
-                    ✨ {item.cost}
-                  </button>
-                )}
-              </div>
-            );
-          })}
-        </div>
         <h3 className="shop-section">🎟️ {STR.couponSection}</h3>
         <div className="shop-grid">
-          {CATALOG.filter((i) => i.kind === "coupon").map((item) => {
+          {CATALOG.map((item) => {
             const affordable = starDust >= item.cost;
             return (
               <div key={item.id} className="shop-item shop-coupon">

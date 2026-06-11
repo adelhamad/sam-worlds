@@ -8,6 +8,7 @@ import builderStages from "./builder/stages.json";
 import livingStages from "./living/stages.json";
 import atlasStages from "./atlas/stages.json";
 import flagsStages from "./flags/stages.json";
+import arabicStages from "./arabic/stages.json";
 import type { StageDef } from "./types";
 
 export interface WorldDef {
@@ -139,6 +140,18 @@ export const WORLDS: WorldDef[] = [
       { stage: 40, name: "Eagle Eyes", icon: "🦅" },
       { stage: 50, name: "Banner Legend", icon: "🎖️" },
       { stage: 55, name: "Keeper of Colors", icon: "🏆" },
+    ],
+  },
+  {
+    id: "arabic", name: "Letter Garden", icon: "🕌", tagline: "اقرأ — read the letters!",
+    stages: arabicStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Letter Scout", icon: "🔤" },
+      { stage: 20, name: "Sound Finder", icon: "👂" },
+      { stage: 30, name: "Word Builder", icon: "🧱" },
+      { stage: 40, name: "Number Sage", icon: "🔢" },
+      { stage: 50, name: "Reading Star", icon: "📖" },
+      { stage: 55, name: "Master of Letters", icon: "🏆" },
     ],
   },
 ];

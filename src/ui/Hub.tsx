@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useGame } from "../state/store";
 import { completedInWorld, focusWorld, nextStageIn, stageById, WORLDS, worldOfStage } from "../content/worlds";
 import { activeBeat } from "../engine/missions/missions";
-import { CATALOG } from "../engine/economy/catalog";
 import { sfx, unlockAudio } from "../engine/feedback/audio";
 import { STR } from "../strings/en";
 import { Workshop } from "./Workshop";
@@ -21,13 +20,14 @@ const PLANET_HUES: Record<string, string> = {
   builder: "#f4845f",
   living: "#6ee7b7",
   atlas: "#c084fc",
+  flags: "#f87171",
+  arabic: "#34d399",
 };
 
 export function Hub() {
   const navigate = useNavigate();
   const starDust = useGame((s) => s.starDust);
   const progress = useGame((s) => s.progress);
-  const inventory = useGame((s) => s.inventory);
   const badges = useGame((s) => s.badges);
   const soundOn = useGame((s) => s.soundOn);
   const musicOn = useGame((s) => s.musicOn);
@@ -38,8 +38,6 @@ export function Hub() {
   const focus = focusWorld(progress);
   const beat = activeBeat(focus.id, completedInWorld(focus, progress));
   const nextStage = nextStageIn(focus, progress);
-  const ownedItems = CATALOG.filter((i) => i.kind === "deco" && inventory.includes(i.id));
-  const decoCount = CATALOG.filter((i) => i.kind === "deco").length;
 
   // Continue where he left off: the in-progress session, or the next stage
   // in the last world he played.
@@ -54,7 +52,7 @@ export function Hub() {
   return (
     <div className="screen hub">
       <section className="hero">
-        <BaseScene items={ownedItems} badgeCount={badges.length} />
+        <BaseScene badgeCount={badges.length} />
         <div className="hero-top">
           <span className="dust-counter">✨ {starDust}</span>
           <div className="hub-header-right">
@@ -161,7 +159,7 @@ export function Hub() {
         >
           <span className="tile-icon">🛠️</span>
           <span className="tile-name">{STR.workshop}</span>
-          <span className="tile-sub">{ownedItems.length}/{decoCount} built</span>
+          <span className="tile-sub">Earn Daddy Rewards! 🎟️</span>
         </button>
         <div className="tile tile-static">
           <span className="tile-icon">🏆</span>

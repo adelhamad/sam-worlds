@@ -1,24 +1,7 @@
 import { persona } from "../persona.config";
-import type { ShopItem } from "../engine/economy/catalog";
 
-// Where each Workshop item lives in the scene (percent coordinates).
-const SLOTS: Record<string, { left: string; top: string; size: number }> = {
-  lamp: { left: "30%", top: "56%", size: 34 },
-  plant: { left: "16%", top: "60%", size: 38 },
-  poster: { left: "63%", top: "44%", size: 32 },
-  rug: { left: "46%", top: "72%", size: 42 },
-  window: { left: "70%", top: "30%", size: 36 },
-  bot: { left: "80%", top: "58%", size: 40 },
-  garden: { left: "24%", top: "76%", size: 34 },
-  starmap: { left: "38%", top: "44%", size: 28 },
-  disco: { left: "50%", top: "16%", size: 30 },
-  aquarium: { left: "12%", top: "78%", size: 36 },
-  telescope: { left: "88%", top: "38%", size: 38 },
-  drumkit: { left: "60%", top: "78%", size: 36 },
-};
-
-/** Sam's floating workshop — the visual home that grows with every purchase. */
-export function BaseScene({ items, badgeCount }: { items: ShopItem[]; badgeCount: number }) {
+/** Sam's floating workshop — the visual heart of the base. */
+export function BaseScene({ badgeCount }: { badgeCount: number }) {
   return (
     <div className="base-scene">
       <svg viewBox="0 0 800 380" preserveAspectRatio="xMidYMid slice" aria-hidden>
@@ -86,21 +69,6 @@ export function BaseScene({ items, badgeCount }: { items: ShopItem[]; badgeCount
           </g>
         ))}
       </svg>
-
-      {items.map((item) => {
-        const slot = SLOTS[item.id];
-        if (!slot) return null;
-        return (
-          <span
-            key={item.id}
-            className="scene-item"
-            title={item.name}
-            style={{ left: slot.left, top: slot.top, fontSize: slot.size }}
-          >
-            {item.icon}
-          </span>
-        );
-      })}
     </div>
   );
 }

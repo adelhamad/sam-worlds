@@ -364,25 +364,14 @@ export const useGame = create<GameStore>((set, get) => ({
     const state = get();
     const item = itemById(itemId);
     if (!item || state.starDust < item.cost) return false;
-
-    if (item.kind === "coupon") {
-      const starDust = state.starDust - item.cost;
-      const row: CouponRow = { itemId, purchasedAt: Date.now(), redeemedAt: null };
-      set({ starDust });
-      void db.economy.put({ id: 1, starDust, melodyShards: 0 });
-      void db.coupons.add(row).then((id) => {
-        set({ coupons: [...get().coupons, { ...row, id }] });
-      });
-      logEvent("shop.coupon", { itemId, cost: item.cost });
-      return true;
-    }
-
-    if (state.inventory.includes(itemId)) return false;
     const starDust = state.starDust - item.cost;
-    set({ starDust, inventory: [...state.inventory, itemId] });
+    const row: CouponRow = { itemId, purchasedAt: Date.now(), redeemedAt: null };
+    set({ starDust });
     void db.economy.put({ id: 1, starDust, melodyShards: 0 });
-    void db.inventory.put({ itemId, purchasedAt: Date.now() });
-    logEvent("shop.buy", { itemId, cost: item.cost });
+    void db.coupons.add(row).then((id) => {
+      set({ coupons: [...get().coupons, { ...row, id }] });
+    });
+    logEvent("shop.coupon", { itemId, cost: item.cost });
     return true;
   },
 

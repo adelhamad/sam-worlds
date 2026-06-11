@@ -10,6 +10,7 @@ import { generateBuilder, type BuilderParams } from "./builder";
 import { generateLiving, type LivingParams } from "./livingChain";
 import { generateAtlas, type AtlasParams } from "./atlas";
 import { generateFlags, type FlagsParams } from "./flags";
+import { generateArabic, type ArabicParams } from "./arabic";
 import type { GenContext, GeneratorParams, Question } from "./types";
 
 export type GeneratorId =
@@ -23,7 +24,8 @@ export type GeneratorId =
   | "builder"
   | "living"
   | "atlas"
-  | "flags";
+  | "flags"
+  | "arabic";
 
 function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, ctx: GenContext): Question {
   switch (id) {
@@ -49,6 +51,8 @@ function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, c
       return generateAtlas(params as unknown as AtlasParams, rng, ctx);
     case "flags":
       return generateFlags(params as unknown as FlagsParams, rng, ctx);
+    case "arabic":
+      return generateArabic(params as unknown as ArabicParams, rng, ctx);
   }
 }
 

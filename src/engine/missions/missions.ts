@@ -69,6 +69,13 @@ const WORLD_BEATS: Record<string, StoryBeat[]> = {
     { afterStage: 20, text: "Your sharp eyes catch every stripe.", tease: "The trickiest look-alikes remain…" },
     { afterStage: 32, text: "Every flag flies proudly!", tease: "The whole world salutes you, Captain." },
   ],
+  arabic: [
+    { afterStage: 0, text: "A quiet garden where letters grow on trees.", tease: "The first letters are sprouting…" },
+    { afterStage: 10, text: "The garden hums with new sounds!", tease: "Soon the letters will join into words…" },
+    { afterStage: 20, text: "Words bloom — built letter by letter!", tease: "Arabic numbers hide among the flowers…" },
+    { afterStage: 40, text: "You read the garden like a book.", tease: "The longest words wait at the gate…" },
+    { afterStage: 55, text: "The whole garden reads with you!", tease: "ما شاء الله — Master of Letters!" },
+  ],
   atlas: [
     { afterStage: 0, text: "An empty atlas and a sky full of worlds.", tease: "Start with our own Sun…" },
     { afterStage: 10, text: "Planets mapped! Now the lands below.", tease: "Wonders hide on every continent…" },
