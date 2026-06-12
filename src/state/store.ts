@@ -9,6 +9,7 @@ import { itemById } from "../engine/economy/catalog";
 import { BADGES, stageById, stageIndexInWorld, worldOfStage, worldById, type BadgeDef } from "../content/worlds";
 import { withGameDefaults, withWorldDefaults } from "./gates";
 import { missTransition, withReplacedQuestion } from "./missTransition";
+import { persistSettings, settingsState } from "./settings";
 import { persona } from "../persona.config";
 import { newSeed } from "../engine/rng";
 import { setMuted } from "../engine/feedback/audio";
@@ -30,7 +31,7 @@ export interface Session extends SessionRow {
   result: SessionResult | null;
 }
 
-interface GameStore {
+export interface GameStore {
   loaded: boolean;
   hasSave: boolean;
   starDust: number;
@@ -49,6 +50,8 @@ interface GameStore {
   videoMode: "corner" | "background";
   videoOpacity: number;
   videoUrls: string[];
+  rushBest: number;
+  surfBest: number;
   session: Session | null;
 
   hydrate: () => Promise<void>;
@@ -70,27 +73,16 @@ interface GameStore {
   setVideoEnabled: (on: boolean) => void;
   setVideoMode: (mode: "corner" | "background") => void;
   setVideoOpacity: (pct: number) => void;
+  reportRushScore: (score: number) => void;
+  resetRushBest: () => void;
+  reportSurfScore: (score: number) => void;
+  resetSurfBest: () => void;
   addVideoUrl: (url: string) => void;
   removeVideoUrl: (url: string) => void;
   resetAll: () => Promise<void>;
 }
 
 
-function persistSettings(get: () => GameStore): void {
-  const { soundOn, musicOn, lastStageId, enabledWorlds, enabledGames, videoEnabled, videoMode, videoUrls, videoOpacity } = get();
-  void db.settings.put({
-    id: 1,
-    soundOn,
-    musicOn,
-    lastStageId: lastStageId ?? undefined,
-    enabledWorlds,
-    enabledGames,
-    videoEnabled,
-    videoMode,
-    videoUrls,
-    videoOpacity,
-  });
-}
 
 let saveTimer: ReturnType<typeof setTimeout> | null = null;
 function persistSession(session: Session | null): void {
@@ -134,6 +126,8 @@ export const useGame = create<GameStore>((set, get) => ({
   videoMode: "corner",
   videoOpacity: 80,
   videoUrls: [],
+  rushBest: 0,
+  surfBest: 0,
   session: null,
 
   hydrate: async () => {
@@ -168,9 +162,8 @@ export const useGame = create<GameStore>((set, get) => ({
     const skillRatings: Record<string, number> = {};
     for (const row of skillRows) skillRatings[row.skill] = row.rating;
 
-    const soundOn = settings?.soundOn ?? true;
-    const musicOn = settings?.musicOn ?? true;
-    setMuted(!soundOn);
+    const fromSettings = settingsState(settings);
+    setMuted(!fromSettings.soundOn);
 
     set({
       loaded: true,
@@ -180,16 +173,8 @@ export const useGame = create<GameStore>((set, get) => ({
       inventory: inventoryRows.map((r) => r.itemId),
       badges: badgeRows,
       skillRatings,
-      soundOn,
-      musicOn,
-      lastStageId: settings?.lastStageId ?? null,
       coupons: couponRows,
-      enabledWorlds: withWorldDefaults(settings?.enabledWorlds),
-      enabledGames: withGameDefaults(settings?.enabledGames),
-      videoEnabled: settings?.videoEnabled ?? false,
-      videoMode: settings?.videoMode ?? "corner",
-      videoOpacity: settings?.videoOpacity ?? 80,
-      videoUrls: settings?.videoUrls ?? [],
+      ...fromSettings,
       session: sessionRow
         ? {
             ...sessionRow,
@@ -484,6 +469,32 @@ export const useGame = create<GameStore>((set, get) => ({
   setVideoOpacity: (pct) => {
     set({ videoOpacity: Math.max(20, Math.min(100, Math.round(pct))) });
     persistSettings(get);
+  },
+
+  reportRushScore: (score) => {
+    logEvent("rush.run", { score });
+    if (score <= get().rushBest) return;
+    set({ rushBest: score });
+    persistSettings(get);
+  },
+
+  resetRushBest: () => {
+    set({ rushBest: 0 });
+    persistSettings(get);
+    logEvent("parent.rushReset", {});
+  },
+
+  reportSurfScore: (score) => {
+    logEvent("surf.run", { score });
+    if (score <= get().surfBest) return;
+    set({ surfBest: score });
+    persistSettings(get);
+  },
+
+  resetSurfBest: () => {
+    set({ surfBest: 0 });
+    persistSettings(get);
+    logEvent("parent.surfReset", {});
   },
 
   addVideoUrl: (url) => {

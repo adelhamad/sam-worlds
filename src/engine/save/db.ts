@@ -56,6 +56,9 @@ export interface SettingsRow {
   videoUrls?: string[];
   /** Player visibility 20–100 (%). */
   videoOpacity?: number;
+  /** Minigame records. */
+  rushBest?: number;
+  surfBest?: number;
 }
 export interface CouponRow {
   id?: number;

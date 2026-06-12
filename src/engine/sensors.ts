@@ -149,3 +149,36 @@ export function attachTilt(cb: (tiltX: number, tiltY: number) => void): () => vo
 export function vibrate(pattern: number | number[]): void {
   navigator.vibrate?.(pattern);
 }
+
+/**
+ * Acceleration magnitude stream in m/s² (gravity included — at rest ≈ 9.8).
+ * Used by the exercise game to detect jumps/shakes/stillness. Returns cleanup.
+ */
+export function attachMotion(cb: (magnitude: number) => void): () => void {
+  const on = (e: DeviceMotionEvent) => {
+    const a = e.accelerationIncludingGravity;
+    if (!a || a.x === null) return;
+    cb(Math.hypot(a.x ?? 0, a.y ?? 0, a.z ?? 0));
+  };
+  window.addEventListener("devicemotion", on);
+  return () => window.removeEventListener("devicemotion", on);
+}
+
+/** Compass/spin stream: cumulative rotation in degrees. Returns cleanup. */
+export function attachSpin(cb: (totalDegrees: number) => void): () => void {
+  let last: number | null = null;
+  let total = 0;
+  const on = (e: DeviceOrientationEvent) => {
+    if (e.alpha === null) return;
+    if (last !== null) {
+      let d = e.alpha - last;
+      if (d > 180) d -= 360;
+      if (d < -180) d += 360;
+      total += Math.abs(d);
+      cb(total);
+    }
+    last = e.alpha;
+  };
+  window.addEventListener("deviceorientation", on);
+  return () => window.removeEventListener("deviceorientation", on);
+}

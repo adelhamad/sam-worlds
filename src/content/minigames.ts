@@ -9,7 +9,9 @@ export interface MinigameDef {
 
 export const MINIGAMES: MinigameDef[] = [
   { id: "catch", name: "Comet Catch", icon: "🌠", sub: "Tilt to fly!", route: "/catch" },
-  { id: "code", name: "Code Quest", icon: "🔮", sub: "Crack the secret code!", route: "/code" },
-  { id: "maze", name: "Marble Maze", icon: "🌀", sub: "Tilt and roll!", route: "/maze" },
+  { id: "rush", name: "Number Rush", icon: "🏃", sub: "Run, solve, score!", route: "/rush" },
+  { id: "surf", name: "Word Surfer", icon: "🏄", sub: "Spell in 3D!", route: "/surf" },
+  { id: "cube", name: "Cube Coach", icon: "🧊", sub: "Scramble & solve!", route: "/cube" },
+  { id: "jump", name: "Jump Jam", icon: "🤸", sub: "Move for real!", route: "/jump" },
   { id: "calc", name: "Calculator", icon: "🧮", sub: "Crunch any number!", route: "/calc" },
 ];

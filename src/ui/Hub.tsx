@@ -6,7 +6,6 @@ import { MINIGAMES } from "../content/minigames";
 import { sfx, unlockAudio } from "../engine/feedback/audio";
 import { STR } from "../strings/en";
 import { Workshop } from "./Workshop";
-import { BaseScene } from "./BaseScene";
 import { CouponWallet } from "./CouponWallet";
 
 // Each world portal gets its own planet hue.
@@ -64,7 +63,11 @@ export function Hub() {
   return (
     <div className="screen hub">
       <section className="hero">
-        <BaseScene badgeCount={badges.length} />
+        <div className="galaxy-bg">
+          <div className="galaxy-stars" />
+          <div className="galaxy-stars galaxy-stars-2" />
+        </div>
+        <h1 className="hero-title">{STR.gameTitle}</h1>
         <div className="hero-top">
           <span className="dust-counter">✨ {starDust}</span>
           <div className="hub-header-right">

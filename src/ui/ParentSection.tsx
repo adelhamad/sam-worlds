@@ -213,6 +213,7 @@ function AccessControls() {
           </div>
         );
       })}
+      <MinigameRecords />
       <h2>🕹️ Minigames</h2>
       {MINIGAMES.map((g) => {
         const on = Boolean(enabledGames[g.id]);
@@ -231,6 +232,34 @@ function AccessControls() {
         );
       })}
     </section>
+  );
+}
+
+/** Minigame records — view & reset (CLAUDE.md rule 2: persisted state needs controls). */
+function MinigameRecords() {
+  const rushBest = useGame((s) => s.rushBest);
+  const surfBest = useGame((s) => s.surfBest);
+  const resetRushBest = useGame((s) => s.resetRushBest);
+  const resetSurfBest = useGame((s) => s.resetSurfBest);
+  return (
+    <>
+      {rushBest > 0 && (
+        <div className="parent-row parent-world-row">
+          <span className="parent-world-name">🏃 Number Rush best: {rushBest}</span>
+          <button className="btn btn-secondary" onClick={resetRushBest}>
+            Reset record
+          </button>
+        </div>
+      )}
+      {surfBest > 0 && (
+        <div className="parent-row parent-world-row">
+          <span className="parent-world-name">🏄 Word Surfer best: {surfBest}</span>
+          <button className="btn btn-secondary" onClick={resetSurfBest}>
+            Reset record
+          </button>
+        </div>
+      )}
+    </>
   );
 }
 
