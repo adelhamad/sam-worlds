@@ -53,7 +53,7 @@ export function generateAtlas(params: AtlasParams, rng: RNG, ctx: GenContext): Q
     case "timeline":
       return order(rng, ctx, TIMELINE, "Oldest first — order the inventions!", true);
     default:
-      return order(rng, ctx, PLANETS, "Order from the Sun!", false);
+      return order(rng, ctx, PLANETS, "Closest to the Sun first — put them in order!", true);
   }
 }
 

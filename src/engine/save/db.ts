@@ -54,6 +54,8 @@ export interface SettingsRow {
   videoEnabled?: boolean;
   videoMode?: "corner" | "background";
   videoUrls?: string[];
+  /** Player visibility 20–100 (%). */
+  videoOpacity?: number;
 }
 export interface CouponRow {
   id?: number;

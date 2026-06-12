@@ -1,41 +1,106 @@
-// Craft Caverns — Minecraft-flavored math: crafting ratios, stacks of 64,
-// furnace smelting, block walls (with a visual grid!) and mining coordinates.
-import { pick, randInt, shuffle, type RNG } from "../rng";
-import { lerp, numericChoices, type GenContext, type Question } from "./types";
+// Craft Caverns — Minecraft KNOWLEDGE, all visual: mobs and what they do,
+// tools for jobs, reading crafting grids, mob/block drops, and where things
+// live in the world. No math here — Number Forge owns numbers.
+import { pick, shuffle, type RNG } from "../rng";
+import type { GenContext, Question } from "./types";
 
-const RECIPES: Array<[string, string, number]> = [
-  ["log 🪵", "planks 🟫", 4],
-  ["plank 🟫", "sticks 🪵", 4],
-  ["block of coal ⬛", "coal lumps ⚫", 9],
-  ["melon 🍉", "slices 🍉", 9],
-  ["iron block ⬜", "ingots 🔩", 9],
-  ["sugar cane 🎋", "paper 📜", 3],
+// [emoji, name, what it does]
+const MOBS: Array<[string, string, string]> = [
+  ["🟩", "Creeper", "sneaks up and explodes 💥"],
+  ["💀", "Skeleton", "shoots arrows from far away"],
+  ["🧟", "Zombie", "burns in the morning sun"],
+  ["🕷️", "Spider", "climbs straight up walls"],
+  ["👁️", "Enderman", "teleports away when you look at it"],
+  ["🧙", "Witch", "throws splash potions"],
+  ["🔥", "Blaze", "shoots fireballs in the Nether"],
+  ["🟢", "Slime", "splits into smaller slimes when hit"],
+  ["👨‍🌾", "Villager", "trades goodies for emeralds"],
+  ["🐷", "Piglin", "loves gold more than anything"],
+  ["🐡", "Guardian", "guards the ocean temple"],
+  ["🐉", "Ender Dragon", "rules the End"],
+  ["👻", "Ghast", "cries and shoots fireballs"],
+  ["🦇", "Bat", "hangs in dark caves"],
 ];
 
-const MOBS: Array<[string, string]> = [
-  ["Which mob 💥 explodes?", "Creeper"],
-  ["Which mob 🏹 shoots arrows?", "Skeleton"],
-  ["Which mob 🧪 throws potions?", "Witch"],
-  ["Which mob 👁️ teleports away?", "Enderman"],
-  ["Which mob 🐷 lives in the Nether?", "Piglin"],
-  ["Which mob 🕸️ climbs walls?", "Spider"],
-  ["Which mob 🔥 shoots fireballs?", "Blaze"],
-  ["Which mob 💚 splits when you hit it?", "Slime"],
-  ["Which mob 💎 trades for emeralds?", "Villager"],
-  ["Which mob ☀️ burns in sunlight?", "Zombie"],
-  ["Which mob 🌊 guards ocean temples?", "Guardian"],
-  ["Which mob 🐉 waits at the End?", "Ender Dragon"],
+// [job, tool]
+const TOOLS: Array<[string, string]> = [
+  ["chop wood fastest", "🪓 axe"],
+  ["mine stone fastest", "⛏️ pickaxe"],
+  ["dig dirt and sand fastest", "🦯 shovel"],
+  ["fight off mobs", "🗡️ sword"],
+  ["catch fish", "🎣 fishing rod"],
+  ["shear a sheep's wool", "✂️ shears"],
+  ["till soil into farmland", "🌾 hoe"],
+  ["light the Nether portal", "🔥 flint and steel"],
 ];
-const MOB_NAMES = [...new Set(MOBS.map(([, m]) => m)), "Sheep", "Cow", "Bat"];
+const TOOL_NAMES = [...new Set(TOOLS.map(([, t]) => t))];
+
+// [what you want, the key thing you need]
+const NEEDS: Array<[string, string]> = [
+  ["bake bread 🍞", "🌾 wheat"],
+  ["craft a torch 🔦", "⚫ coal on a stick"],
+  ["make glass 🪟", "🏖️ smelted sand"],
+  ["craft a bed 🛏️", "🐑 wool"],
+  ["tame a wolf 🐺", "🦴 a bone"],
+  ["build a snow golem ⛄", "🎃 a pumpkin head"],
+  ["brew potions 🧪", "💧 water bottles"],
+  ["enter the Nether 🌋", "🟪 an obsidian portal"],
+];
+const NEED_NAMES = [...new Set(NEEDS.map(([, x]) => x))];
+
+// [grid rows, crafted item, hint]
+const RECIPES: Array<[string[], string, string]> = [
+  [["⚫", "🪵"], "🔦 torch", "Coal on a stick lights the night."],
+  [["🪨", "🪨", "🪵"], "🗡️ stone sword", "Two sharp blocks on a handle."],
+  [["🪨🪨🪨", "⬜🪵⬜", "⬜🪵⬜"], "⛏️ pickaxe", "A wide top on a long handle."],
+  [["🪵⬜🪵", "🪵🪵🪵", "🪵⬜🪵"], "🪜 ladder", "Sticks shaped like an H."],
+  [["🟫🟫", "🟫🟫"], "🛠️ crafting table", "Four planks make the maker."],
+  [["🪨🪨🪨", "🪨⬜🪨", "🪨🪨🪨"], "🔥 furnace", "A stone ring with a hole for fire."],
+  [["🟫🟫🟫", "🟫⬜🟫", "🟫🟫🟫"], "📦 chest", "A plank ring with room inside."],
+  [["🟥🟥🟥", "🟫🟫🟫"], "🛏️ bed", "Wool on top, planks below."],
+  [["🟫🟫", "🟫🟫", "🟫🟫"], "🚪 door", "Six planks standing tall."],
+  [["🟫🟫🟫", "📕📕📕", "🟫🟫🟫"], "📚 bookshelf", "Books hiding between planks."],
+  [["⬜🎃⬜", "⬜☃️⬜", "⬜☃️⬜"], "⛄ snow golem", "A pumpkin head on snow."],
+  [["🪵", "🪵"], "🥢 sticks", "Planks stacked make sticks."],
+];
+const RECIPE_NAMES = [...new Set(RECIPES.map(([, r]) => r))];
+
+// [emoji, source, drop]
+const DROPS: Array<[string, string, string]> = [
+  ["🐔", "chicken", "🥚 eggs"],
+  ["🐄", "cow", "🥛 milk (with a bucket)"],
+  ["🐑", "sheep", "🧶 wool"],
+  ["🕷️", "spider", "🕸️ string"],
+  ["💀", "skeleton", "🦴 bones"],
+  ["🟩", "creeper", "💥 gunpowder"],
+  ["🌳", "oak tree", "🪵 wood and sometimes 🍎"],
+  ["🐷", "pig", "🥓 porkchops"],
+  ["⬛", "coal ore", "⚫ coal"],
+  ["💎", "diamond ore", "💎 diamonds"],
+  ["🎋", "sugar cane", "📜 paper (after crafting)"],
+  ["🧟", "zombie", "🥩 rotten flesh — don't eat it!"],
+];
+const DROP_NAMES = [...new Set(DROPS.map(([, , d]) => d))];
+
+// [emoji, thing, where it's found]
+const WHERE: Array<[string, string, string]> = [
+  ["💎", "diamonds", "deep underground, near bedrock"],
+  ["🌵", "cactus", "in the desert"],
+  ["🎋", "sugar cane", "right next to water"],
+  ["🍉", "melons", "in the jungle"],
+  ["🐺", "wolves", "in the forest"],
+  ["🔥", "Blazes", "in a Nether fortress"],
+  ["🐉", "the Ender Dragon", "in the End"],
+  ["🐻‍❄️", "polar bears", "in the snowy biome"],
+  ["🏜️", "sandy temples", "in the desert"],
+  ["🌋", "oceans of lava", "in the Nether"],
+  ["🐡", "Guardians", "in the ocean temple"],
+  ["🍄", "giant mushrooms", "on the mushroom island"],
+];
+const WHERE_NAMES = [...new Set(WHERE.map(([, , w]) => w))];
 
 export interface CraftParams {
-  types: Array<"recipe" | "wall" | "stack" | "smelt" | "coords" | "mob">;
-  /** Wall/volume size cap per side. */
-  maxSide?: number;
-  /** 3D volume questions (layers). */
-  volume?: boolean;
-  /** Coordinate questions may dig below zero ("blocks below zero"). */
-  belowZero?: boolean;
+  types: Array<"mob" | "tool" | "need" | "recipe" | "drop" | "where">;
 }
 
 let qid = 0;
@@ -44,120 +109,119 @@ const id = () => `cc${++qid}`;
 export function generateCraft(params: CraftParams, rng: RNG, ctx: GenContext): Question {
   const type = ctx.easier ? params.types[0] : pick(rng, params.types);
   switch (type) {
-    case "wall":
-      return genWall(params, rng, ctx);
-    case "stack":
-      return genStack(rng, ctx);
-    case "smelt":
-      return genSmelt(rng, ctx);
-    case "coords":
-      return genCoords(params, rng, ctx);
-    case "mob":
-      return genMob(rng);
+    case "tool":
+      return genTool(rng);
+    case "need":
+      return genNeed(rng);
+    case "recipe":
+      return genRecipe(rng);
+    case "drop":
+      return genDrop(rng);
+    case "where":
+      return genWhere(rng);
     default:
-      return genRecipe(rng, ctx);
+      return genMob(rng);
   }
-}
-
-function genRecipe(rng: RNG, ctx: GenContext): Question {
-  const [input, output, ratio] = pick(rng, RECIPES);
-  const count = randInt(rng, 2, ctx.easier ? 4 : Math.round(lerp(5, 9, ctx.difficulty)));
-  return {
-    id: id(),
-    prompt: `1 ${input} → ${ratio} ${output}. Craft with ${count}: how many?`,
-    answer: String(count * ratio),
-    choices: numericChoices(rng, count * ratio, [ratio, count, 1]),
-    hint: `${count} groups of ${ratio}. Skip-count: ${ratio}, ${ratio * 2}…`,
-  };
-}
-
-function genWall(params: CraftParams, rng: RNG, ctx: GenContext): Question {
-  const cap = ctx.easier ? 4 : Math.min(params.maxSide ?? 6, Math.round(lerp(4, 8, ctx.difficulty)));
-  const w = randInt(rng, 2, cap);
-  const h = randInt(rng, 2, Math.min(cap, 5));
-  if (params.volume && !ctx.easier && rng() < 0.5) {
-    const d = randInt(rng, 2, 4);
-    return {
-      id: id(),
-      prompt: `A wall ${w} wide and ${h} tall — built ${d} layers thick. Total blocks?`,
-      answer: String(w * h * d),
-      choices: numericChoices(rng, w * h * d, [w, h, d]),
-      hint: `One layer is ${w} × ${h} = ${w * h}. Now ${d} layers…`,
-      payload: { gridRows: Array.from({ length: h }, () => "🟫".repeat(w)) },
-    };
-  }
-  return {
-    id: id(),
-    prompt: "How many blocks in this wall?",
-    answer: String(w * h),
-    choices: numericChoices(rng, w * h, [w, h, 1]),
-    hint: `${h} rows of ${w} blocks.`,
-    dedupeKey: `wall-${w}x${h}`,
-    payload: { gridRows: Array.from({ length: h }, () => "🟫".repeat(w)) },
-  };
-}
-
-function genStack(rng: RNG, ctx: GenContext): Question {
-  const stackSize = ctx.easier ? 10 : pick(rng, [16, 64]);
-  const stacks = randInt(rng, 1, ctx.easier ? 2 : 3);
-  const loose = randInt(rng, 1, stackSize - 1);
-  return {
-    id: id(),
-    prompt: `A stack holds ${stackSize}. You carry ${stacks} full stack${stacks > 1 ? "s" : ""} + ${loose} more. Total?`,
-    answer: String(stacks * stackSize + loose),
-    choices: numericChoices(rng, stacks * stackSize + loose, [stackSize, 10, 1]),
-    hint: `${stacks} × ${stackSize} first, then add ${loose}.`,
-  };
-}
-
-function genSmelt(rng: RNG, ctx: GenContext): Question {
-  const per = pick(rng, ctx.easier ? [2, 4] : [4, 8]);
-  const batches = randInt(rng, 2, ctx.easier ? 4 : 8);
-  return {
-    id: id(),
-    prompt: `1 coal ⚫ smelts ${per} items. How much coal for ${per * batches} items?`,
-    answer: String(batches),
-    choices: numericChoices(rng, batches, [1, 2, per]),
-    hint: `How many ${per}s fit in ${per * batches}?`,
-  };
-}
-
-function genCoords(params: CraftParams, rng: RNG, ctx: GenContext): Question {
-  if (params.belowZero && !ctx.easier && rng() < 0.5) {
-    // Minecraft makes negatives concrete: bedrock lives below zero.
-    const start = randInt(rng, 3, 12);
-    const dig = start + randInt(rng, 1, 8);
-    return {
-      id: id(),
-      prompt: `You stand at height ${start} and dig DOWN ${dig}. How many blocks below zero?`,
-      answer: String(dig - start),
-      choices: numericChoices(rng, dig - start, [1, 2, start]),
-      hint: `First ${start} blocks reach zero. Keep digging…`,
-    };
-  }
-  const start = randInt(rng, 1, ctx.easier ? 10 : 30);
-  const move = randInt(rng, 2, ctx.easier ? 10 : 25);
-  const east = rng() < 0.6 || start - move < 0;
-  return {
-    id: id(),
-    prompt: east
-      ? `You stand at x = ${start} and walk ${move} blocks east (+). New x?`
-      : `You stand at x = ${start} and walk ${move} blocks west (−). New x?`,
-    answer: String(east ? start + move : start - move),
-    choices: numericChoices(rng, east ? start + move : start - move, [1, 2, 10]),
-    hint: east ? `East means adding.` : `West means taking away.`,
-  };
 }
 
 function genMob(rng: RNG): Question {
-  const [prompt, answer] = pick(rng, MOBS);
-  const wrong = shuffle(rng, MOB_NAMES.filter((m) => m !== answer)).slice(0, 3);
+  const [emoji, name, does] = pick(rng, MOBS);
+  const askByDeed = rng() < 0.5;
+  if (askByDeed) {
+    const wrong = shuffle(rng, MOBS.filter((m) => m[1] !== name)).slice(0, 3);
+    return {
+      id: id(),
+      prompt: `Which mob ${does}?`,
+      answer: `${emoji} ${name}`,
+      choices: shuffle(rng, [`${emoji} ${name}`, ...wrong.map(([e, n]) => `${e} ${n}`)]),
+      hint: "Think of your last adventure…",
+      inputMode: "choices",
+      dedupeKey: `mob-deed-${name}`,
+    };
+  }
+  const wrong = shuffle(rng, MOBS.filter((m) => m[2] !== does)).slice(0, 3);
   return {
     id: id(),
-    prompt,
-    answer,
-    choices: shuffle(rng, [answer, ...wrong]),
-    hint: "Think of your last adventure…",
+    prompt: `What does the ${name} do?`,
+    answer: does,
+    choices: shuffle(rng, [does, ...wrong.map(([, , d]) => d)]),
+    hint: "Picture meeting it at night…",
     inputMode: "choices",
+    dedupeKey: `mob-does-${name}`,
+    payload: { bigSymbol: emoji },
+  };
+}
+
+function genTool(rng: RNG): Question {
+  const [job, tool] = pick(rng, TOOLS);
+  const wrong = shuffle(rng, TOOL_NAMES.filter((t) => t !== tool)).slice(0, 3);
+  return {
+    id: id(),
+    prompt: `Which tool helps you ${job}?`,
+    answer: tool,
+    choices: shuffle(rng, [tool, ...wrong]),
+    hint: "Picture yourself holding it…",
+    inputMode: "choices",
+    dedupeKey: `tool-${job}`,
+  };
+}
+
+function genNeed(rng: RNG): Question {
+  const [goal, need] = pick(rng, NEEDS);
+  const wrong = shuffle(rng, NEED_NAMES.filter((x) => x !== need)).slice(0, 3);
+  return {
+    id: id(),
+    prompt: `To ${goal} you need…?`,
+    answer: need,
+    choices: shuffle(rng, [need, ...wrong]),
+    hint: "Think of your crafting table!",
+    inputMode: "choices",
+    dedupeKey: `need-${goal}`,
+  };
+}
+
+/** Read a crafting-grid picture — what does it make? */
+function genRecipe(rng: RNG): Question {
+  const [rows, item, hint] = pick(rng, RECIPES);
+  const wrong = shuffle(rng, RECIPE_NAMES.filter((r) => r !== item)).slice(0, 3);
+  return {
+    id: id(),
+    prompt: "What does this recipe craft?",
+    answer: item,
+    choices: shuffle(rng, [item, ...wrong]),
+    hint,
+    inputMode: "choices",
+    dedupeKey: `recipe-${item}`,
+    payload: { gridRows: rows },
+  };
+}
+
+function genDrop(rng: RNG): Question {
+  const [emoji, source, drop] = pick(rng, DROPS);
+  const wrong = shuffle(rng, DROP_NAMES.filter((d) => d !== drop)).slice(0, 3);
+  return {
+    id: id(),
+    prompt: `What do you get from the ${source}?`,
+    answer: drop,
+    choices: shuffle(rng, [drop, ...wrong]),
+    hint: "What would it leave behind?",
+    inputMode: "choices",
+    dedupeKey: `drop-${source}`,
+    payload: { bigSymbol: emoji },
+  };
+}
+
+function genWhere(rng: RNG): Question {
+  const [emoji, thing, place] = pick(rng, WHERE);
+  const wrong = shuffle(rng, WHERE_NAMES.filter((w) => w !== place)).slice(0, 3);
+  return {
+    id: id(),
+    prompt: `Where do you find ${thing}?`,
+    answer: place,
+    choices: shuffle(rng, [place, ...wrong]),
+    hint: "Picture the biome around it…",
+    inputMode: "choices",
+    dedupeKey: `where-${thing}`,
+    payload: { bigSymbol: emoji },
   };
 }

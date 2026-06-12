@@ -1,0 +1,1102 @@
+[
+  {
+    "id": "al-01",
+    "name": "The Hidden Box",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box"
+      ],
+      "max": 10
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "A number hides in the box ▢!",
+      "▢ + 3 = 7 … so the box must be 4.",
+      "Type the hidden number!"
+    ]
+  },
+  {
+    "id": "al-02",
+    "name": "What's Inside?",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box"
+      ],
+      "max": 10
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "al-03",
+    "name": "Box Detective",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box"
+      ],
+      "max": 10
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 28
+  },
+  {
+    "id": "al-04",
+    "name": "Mystery Number",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box"
+      ],
+      "max": 10
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "al-05",
+    "name": "Apple Math",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji"
+      ],
+      "max": 12
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 32,
+    "intro": [
+      "Fruit code! 🍎 + 🍎 = 8.",
+      "Two of the SAME fruit — split the total in half."
+    ]
+  },
+  {
+    "id": "al-06",
+    "name": "Twin Fruits",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji"
+      ],
+      "max": 12
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "al-07",
+    "name": "Double Trouble",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji"
+      ],
+      "max": 12
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "al-08",
+    "name": "Fruit Code",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji"
+      ],
+      "max": 12
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 38
+  },
+  {
+    "id": "al-09",
+    "name": "Secret Pairs",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji"
+      ],
+      "max": 12
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 40
+  },
+  {
+    "id": "al-10",
+    "name": "Equation Badge",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji"
+      ],
+      "max": 15
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 67
+  },
+  {
+    "id": "al-11",
+    "name": "Banana Puzzle",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44,
+    "intro": [
+      "Two-step puzzles!",
+      "Find the first fruit, USE it to find the second."
+    ]
+  },
+  {
+    "id": "al-12",
+    "name": "Two-Step Code",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "al-13",
+    "name": "Fruit Detective",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "al-14",
+    "name": "Crack the Pair",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 50
+  },
+  {
+    "id": "al-15",
+    "name": "Sum Sleuth",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair"
+      ],
+      "max": 20
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 52
+  },
+  {
+    "id": "al-16",
+    "name": "The Times Box",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair"
+      ],
+      "max": 20
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 54
+  },
+  {
+    "id": "al-17",
+    "name": "Mul-Box Mystery",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair"
+      ],
+      "max": 20
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "al-18",
+    "name": "Number Spy",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair"
+      ],
+      "max": 20
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "al-19",
+    "name": "Balance Master",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair"
+      ],
+      "max": 20
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 60
+  },
+  {
+    "id": "al-20",
+    "name": "Algebra Ace",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "pair",
+        "pairSum",
+        "box",
+        "emoji"
+      ],
+      "max": 20
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 87,
+    "intro": [
+      "Even sneakier: find both fruits, then answer the last line!"
+    ]
+  },
+  {
+    "id": "al-21",
+    "name": "The Hidden Box II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "pair",
+        "pairSum",
+        "box",
+        "emoji"
+      ],
+      "max": 20
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 64
+  },
+  {
+    "id": "al-22",
+    "name": "What's Inside? II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "pair",
+        "pairSum",
+        "box",
+        "emoji"
+      ],
+      "max": 20
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "al-23",
+    "name": "Box Detective II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "pair",
+        "pairSum",
+        "box",
+        "emoji"
+      ],
+      "max": 20
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "al-24",
+    "name": "Mystery Number II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "pair",
+        "pairSum",
+        "box",
+        "emoji"
+      ],
+      "max": 20
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 70
+  },
+  {
+    "id": "al-25",
+    "name": "Apple Math II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "pair",
+        "pairSum",
+        "box",
+        "emoji"
+      ],
+      "max": 20
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 72
+  },
+  {
+    "id": "al-26",
+    "name": "Twin Fruits II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "pair",
+        "pairSum",
+        "box",
+        "emoji"
+      ],
+      "max": 20
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 74
+  },
+  {
+    "id": "al-27",
+    "name": "Double Trouble II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "pair",
+        "pairSum",
+        "box",
+        "emoji"
+      ],
+      "max": 20
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 76
+  },
+  {
+    "id": "al-28",
+    "name": "Fruit Code II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "pair",
+        "pairSum",
+        "box",
+        "emoji"
+      ],
+      "max": 20
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "al-29",
+    "name": "Secret Pairs II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "pair",
+        "pairSum",
+        "box",
+        "emoji"
+      ],
+      "max": 20
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "al-30",
+    "name": "Equation Badge II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "mulBox",
+        "box",
+        "pair"
+      ],
+      "max": 30,
+      "tables": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 107,
+    "intro": [
+      "The times box! ▢ × 3 = 12.",
+      "How many 3s make 12?"
+    ]
+  },
+  {
+    "id": "al-31",
+    "name": "Banana Puzzle II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "mulBox",
+        "box",
+        "pair"
+      ],
+      "max": 30,
+      "tables": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 84
+  },
+  {
+    "id": "al-32",
+    "name": "Two-Step Code II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "mulBox",
+        "box",
+        "pair"
+      ],
+      "max": 30,
+      "tables": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 86
+  },
+  {
+    "id": "al-33",
+    "name": "Fruit Detective II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "mulBox",
+        "box",
+        "pair"
+      ],
+      "max": 30,
+      "tables": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "al-34",
+    "name": "Crack the Pair II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "mulBox",
+        "box",
+        "pair"
+      ],
+      "max": 30,
+      "tables": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "al-35",
+    "name": "Sum Sleuth II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "mulBox",
+        "box",
+        "pair"
+      ],
+      "max": 30,
+      "tables": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 92
+  },
+  {
+    "id": "al-36",
+    "name": "The Times Box II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "mulBox",
+        "box",
+        "pair"
+      ],
+      "max": 30,
+      "tables": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 94
+  },
+  {
+    "id": "al-37",
+    "name": "Mul-Box Mystery II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "mulBox",
+        "box",
+        "pair"
+      ],
+      "max": 30,
+      "tables": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 96
+  },
+  {
+    "id": "al-38",
+    "name": "Number Spy II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "mulBox",
+        "box",
+        "pair"
+      ],
+      "max": 30,
+      "tables": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "al-39",
+    "name": "Balance Master II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "mulBox",
+        "box",
+        "pair"
+      ],
+      "max": 30,
+      "tables": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "al-40",
+    "name": "Algebra Ace II",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair",
+        "pairSum",
+        "mulBox"
+      ],
+      "max": 40,
+      "tables": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "al-41",
+    "name": "The Hidden Box III",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair",
+        "pairSum",
+        "mulBox"
+      ],
+      "max": 40,
+      "tables": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 104
+  },
+  {
+    "id": "al-42",
+    "name": "What's Inside? III",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair",
+        "pairSum",
+        "mulBox"
+      ],
+      "max": 40,
+      "tables": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 106
+  },
+  {
+    "id": "al-43",
+    "name": "Box Detective III",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair",
+        "pairSum",
+        "mulBox"
+      ],
+      "max": 40,
+      "tables": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 108
+  },
+  {
+    "id": "al-44",
+    "name": "Mystery Number III",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair",
+        "pairSum",
+        "mulBox"
+      ],
+      "max": 40,
+      "tables": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "al-45",
+    "name": "Apple Math III",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair",
+        "pairSum",
+        "mulBox"
+      ],
+      "max": 40,
+      "tables": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "al-46",
+    "name": "Twin Fruits III",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair",
+        "pairSum",
+        "mulBox"
+      ],
+      "max": 40,
+      "tables": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 114
+  },
+  {
+    "id": "al-47",
+    "name": "Double Trouble III",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair",
+        "pairSum",
+        "mulBox"
+      ],
+      "max": 40,
+      "tables": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 116
+  },
+  {
+    "id": "al-48",
+    "name": "Fruit Code III",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair",
+        "pairSum",
+        "mulBox"
+      ],
+      "max": 40,
+      "tables": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 118
+  },
+  {
+    "id": "al-49",
+    "name": "Secret Pairs III",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair",
+        "pairSum",
+        "mulBox"
+      ],
+      "max": 40,
+      "tables": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "al-50",
+    "name": "Equation Badge III",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair",
+        "pairSum",
+        "mulBox"
+      ],
+      "max": 50,
+      "tables": [
+        3,
+        4,
+        6,
+        7,
+        8
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 147
+  },
+  {
+    "id": "al-51",
+    "name": "Banana Puzzle III",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair",
+        "pairSum",
+        "mulBox"
+      ],
+      "max": 50,
+      "tables": [
+        3,
+        4,
+        6,
+        7,
+        8
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "al-52",
+    "name": "Two-Step Code III",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair",
+        "pairSum",
+        "mulBox"
+      ],
+      "max": 50,
+      "tables": [
+        3,
+        4,
+        6,
+        7,
+        8
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 126
+  },
+  {
+    "id": "al-53",
+    "name": "Fruit Detective III",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair",
+        "pairSum",
+        "mulBox"
+      ],
+      "max": 50,
+      "tables": [
+        3,
+        4,
+        6,
+        7,
+        8
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 128
+  },
+  {
+    "id": "al-54",
+    "name": "Crack the Pair III",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair",
+        "pairSum",
+        "mulBox"
+      ],
+      "max": 50,
+      "tables": [
+        3,
+        4,
+        6,
+        7,
+        8
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 130
+  },
+  {
+    "id": "al-55",
+    "name": "Sum Sleuth III",
+    "generator": "algebra",
+    "params": {
+      "types": [
+        "box",
+        "emoji",
+        "pair",
+        "pairSum",
+        "mulBox"
+      ],
+      "max": 50,
+      "tables": [
+        3,
+        4,
+        6,
+        7,
+        8
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 157
+  }
+]

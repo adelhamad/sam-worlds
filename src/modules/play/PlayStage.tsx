@@ -20,6 +20,8 @@ import { LetterPad } from "../../ui/inputs/LetterPad";
 import { Launcher } from "../../ui/inputs/Launcher";
 import { OrderCards } from "../../ui/inputs/OrderCards";
 import { ChoiceButtons } from "../../ui/inputs/ChoiceButtons";
+import { CircuitDiagram } from "../../ui/inputs/CircuitDiagram";
+import type { Node as CircuitNode } from "../../engine/generators/logicCircuit";
 
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const THINK_MS = 1200;
@@ -321,6 +323,16 @@ function QuestionCard({ session, q, praise, busy, interactive, onSubmit }: Quest
         </div>
       )}
       {typeof q.payload?.bigSymbol === "string" && <div className="big-symbol">{q.payload.bigSymbol}</div>}
+      {q.payload?.tree && q.inputMode !== "toggle" ? (
+        <CircuitDiagram tree={q.payload.tree as CircuitNode} lamp="unknown" />
+      ) : null}
+      {Array.isArray(q.payload?.listRows) && (
+        <div className="q-list">
+          {(q.payload.listRows as string[]).map((row) => (
+            <div key={row}>{row}</div>
+          ))}
+        </div>
+      )}
       {Array.isArray(q.payload?.gridRows) && (
         <div className="block-grid">
           {(q.payload.gridRows as string[]).map((row, i) => (

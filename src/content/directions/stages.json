@@ -1,0 +1,925 @@
+[
+  {
+    "id": "dr-01",
+    "name": "Left or Right?",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Friends stand in a line!",
+      "LEFT is this way ⬅️, RIGHT is this way ➡️."
+    ]
+  },
+  {
+    "id": "dr-02",
+    "name": "The Line-Up",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "dr-03",
+    "name": "Treat Hunt",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way"
+      ],
+      "span": 1
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 28,
+    "intro": [
+      "A treat hunt on the grid!",
+      "Which way must the friend walk?"
+    ]
+  },
+  {
+    "id": "dr-04",
+    "name": "Which Way?",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way"
+      ],
+      "span": 1
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "dr-05",
+    "name": "Grid Walker",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 32
+  },
+  {
+    "id": "dr-06",
+    "name": "Turn About",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "dr-07",
+    "name": "Spin Around",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "dr-08",
+    "name": "Face North",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 38,
+    "intro": [
+      "Turning time! Face a way, then turn your body.",
+      "RIGHT turn = clockwise ↻."
+    ]
+  },
+  {
+    "id": "dr-09",
+    "name": "The Compass Rose",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 40
+  },
+  {
+    "id": "dr-10",
+    "name": "Map Reader",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn"
+      ],
+      "span": 2
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 67
+  },
+  {
+    "id": "dr-11",
+    "name": "East or West?",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "dr-12",
+    "name": "Lost Puppy",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "dr-13",
+    "name": "Cheese Chase",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "dr-14",
+    "name": "Twisty Turns",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 50
+  },
+  {
+    "id": "dr-15",
+    "name": "North Star",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "turn",
+        "compass"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 52,
+    "intro": [
+      "The compass! North ⬆️, East ➡️, South ⬇️, West ⬅️.",
+      "North is always UP on the map."
+    ]
+  },
+  {
+    "id": "dr-16",
+    "name": "Around Town",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 54
+  },
+  {
+    "id": "dr-17",
+    "name": "Path Finder",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "dr-18",
+    "name": "Compass Captain",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "dr-19",
+    "name": "Wayfinder",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 60
+  },
+  {
+    "id": "dr-20",
+    "name": "True North",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 87
+  },
+  {
+    "id": "dr-21",
+    "name": "Left or Right? II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 64
+  },
+  {
+    "id": "dr-22",
+    "name": "The Line-Up II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "dr-23",
+    "name": "Treat Hunt II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "dr-24",
+    "name": "Which Way? II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 70
+  },
+  {
+    "id": "dr-25",
+    "name": "Grid Walker II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 72
+  },
+  {
+    "id": "dr-26",
+    "name": "Turn About II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 74
+  },
+  {
+    "id": "dr-27",
+    "name": "Spin Around II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 76
+  },
+  {
+    "id": "dr-28",
+    "name": "Face North II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "dr-29",
+    "name": "The Compass Rose II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "dr-30",
+    "name": "Map Reader II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "dr-31",
+    "name": "East or West? II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 84
+  },
+  {
+    "id": "dr-32",
+    "name": "Lost Puppy II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 86
+  },
+  {
+    "id": "dr-33",
+    "name": "Cheese Chase II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "dr-34",
+    "name": "Twisty Turns II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "dr-35",
+    "name": "North Star II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 92
+  },
+  {
+    "id": "dr-36",
+    "name": "Around Town II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 94
+  },
+  {
+    "id": "dr-37",
+    "name": "Path Finder II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 96
+  },
+  {
+    "id": "dr-38",
+    "name": "Compass Captain II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "dr-39",
+    "name": "Wayfinder II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "dr-40",
+    "name": "True North II",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "dr-41",
+    "name": "Left or Right? III",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 104
+  },
+  {
+    "id": "dr-42",
+    "name": "The Line-Up III",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 106
+  },
+  {
+    "id": "dr-43",
+    "name": "Treat Hunt III",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 108
+  },
+  {
+    "id": "dr-44",
+    "name": "Which Way? III",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "dr-45",
+    "name": "Grid Walker III",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "dr-46",
+    "name": "Turn About III",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 114
+  },
+  {
+    "id": "dr-47",
+    "name": "Spin Around III",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 116
+  },
+  {
+    "id": "dr-48",
+    "name": "Face North III",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 118
+  },
+  {
+    "id": "dr-49",
+    "name": "The Compass Rose III",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "dr-50",
+    "name": "Map Reader III",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 147
+  },
+  {
+    "id": "dr-51",
+    "name": "East or West? III",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "dr-52",
+    "name": "Lost Puppy III",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 126
+  },
+  {
+    "id": "dr-53",
+    "name": "Cheese Chase III",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 128
+  },
+  {
+    "id": "dr-54",
+    "name": "Twisty Turns III",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 130
+  },
+  {
+    "id": "dr-55",
+    "name": "North Star III",
+    "generator": "directions",
+    "params": {
+      "types": [
+        "row",
+        "way",
+        "turn",
+        "compass"
+      ],
+      "span": 2
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 157
+  }
+]

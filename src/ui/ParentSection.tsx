@@ -120,7 +120,9 @@ function TiltControls() {
 function VideoControls() {
   const enabled = useGame((s) => s.videoEnabled);
   const urls = useGame((s) => s.videoUrls);
+  const opacity = useGame((s) => s.videoOpacity);
   const setEnabled = useGame((s) => s.setVideoEnabled);
+  const setOpacity = useGame((s) => s.setVideoOpacity);
   const addUrl = useGame((s) => s.addVideoUrl);
   const removeUrl = useGame((s) => s.removeVideoUrl);
   const [input, setInput] = useState("");
@@ -137,6 +139,17 @@ function VideoControls() {
         <button className={`btn ${enabled ? "btn-primary" : "btn-secondary"}`} onClick={() => setEnabled(!enabled)}>
           {enabled ? "✅ On" : "⬜ Off"}
         </button>
+      </div>
+      <div className="parent-row">
+        <span className="parent-world-name">Visibility: {opacity}%</span>
+        <input
+          type="range"
+          min={20}
+          max={100}
+          step={5}
+          value={opacity}
+          onChange={(e) => setOpacity(Number(e.target.value))}
+        />
       </div>
       <div className="parent-row">
         <input
@@ -233,6 +246,8 @@ function fmt(t: number): string {
 /** Every Daddy Reward ever bought: what, when bought, when redeemed. */
 function RewardHistory() {
   const coupons = useGame((s) => s.coupons);
+  const clearRedeemed = useGame((s) => s.clearRedeemedCoupons);
+  const [confirmClear, setConfirmClear] = useState(false);
   const rows = [...coupons].sort(
     (a, b) => (b.redeemedAt ?? b.purchasedAt) - (a.redeemedAt ?? a.purchasedAt),
   );
@@ -246,6 +261,30 @@ function RewardHistory() {
           ? "No rewards bought yet."
           : `${rows.length} bought · ${redeemedCount} redeemed · ${rows.length - redeemedCount} still in the wallet.`}
       </p>
+      {redeemedCount > 0 && (
+        <div className="parent-row">
+          {confirmClear ? (
+            <>
+              <button className="btn btn-secondary" onClick={() => setConfirmClear(false)}>
+                Cancel
+              </button>
+              <button
+                className="btn btn-danger"
+                onClick={() => {
+                  clearRedeemed();
+                  setConfirmClear(false);
+                }}
+              >
+                Yes, remove {redeemedCount} redeemed
+              </button>
+            </>
+          ) : (
+            <button className="btn btn-secondary" onClick={() => setConfirmClear(true)}>
+              🧹 Clean history (keeps wallet)
+            </button>
+          )}
+        </div>
+      )}
       {rows.map((c) => {
         const item = itemById(c.itemId);
         return (

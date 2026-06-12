@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useGame } from "../state/store";
 import { completedInWorld, focusWorldIn, nextStageIn, stageById, WORLDS, worldOfStage } from "../content/worlds";
 import { MINIGAMES } from "../content/minigames";
-import { activeBeat } from "../engine/missions/missions";
 import { sfx, unlockAudio } from "../engine/feedback/audio";
 import { STR } from "../strings/en";
 import { Workshop } from "./Workshop";
@@ -29,6 +28,11 @@ const PLANET_HUES: Record<string, string> = {
   feelings: "#a78bfa",
   affix: "#22d3ee",
   grammar: "#f472b6",
+  prepositions: "#4ade80",
+  directions: "#38bdf8",
+  physics: "#f97316",
+  chemistry: "#a3e635",
+  algebra: "#e879f9",
 };
 
 export function Hub() {
@@ -44,11 +48,8 @@ export function Hub() {
 
   const enabledWorlds = useGame((s) => s.enabledWorlds);
   const enabledGames = useGame((s) => s.enabledGames);
-  const openWorlds = WORLDS.filter((w) => enabledWorlds[w.id]);
-  const focus = focusWorldIn(openWorlds, progress);
-  const beat = focus ? activeBeat(focus.id, completedInWorld(focus, progress)) : null;
-  const nextStage = focus ? nextStageIn(focus, progress) : null;
-
+  // The world the planets row highlights as "current".
+  const focus = focusWorldIn(WORLDS.filter((w) => enabledWorlds[w.id]), progress);
   // Continue where he left off: the in-progress session, or the next stage
   // in the last world he played — only if that world is still enabled.
   const lastStageId = useGame((s) => s.lastStageId);
@@ -77,22 +78,6 @@ export function Hub() {
               ⚙️
             </button>
           </div>
-        </div>
-        <div className="hero-mission">
-          <p className="mission-tease">{beat ? `“${beat.tease}”` : "All worlds are resting. Ask Daddy!"}</p>
-          {nextStage && (
-            <button
-              className="btn btn-primary btn-go"
-              onClick={() => {
-                unlockAudio();
-                sfx.tap();
-                navigate(`/play/${nextStage.id}`);
-              }}
-            >
-              ▶ {STR.goBtn}
-              <small>{nextStage.name}</small>
-            </button>
-          )}
         </div>
       </section>
 

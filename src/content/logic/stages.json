@@ -5,36 +5,25 @@
     "generator": "logicCircuit",
     "params": {
       "ops": [],
-      "inputs": 1,
+      "inputs": 2,
       "depth": 0,
-      "preview": true
+      "preview": true,
+      "types": [
+        "tutorial"
+      ]
     },
     "questions": 4,
     "mechanic": "gate-run",
     "payout": 24,
     "intro": [
       "Switches send power down wires.",
-      "ON means power flows.",
-      "Flip A and watch the lamp!",
-      "Press \u26a1 POWER when it glows."
+      "Only ONE switch is wired to the lamp!",
+      "Flip switches and watch what happens.",
+      "Press ⚡ POWER when the lamp matches the goal."
     ]
   },
   {
     "id": "lc-02",
-    "name": "Switch Practice",
-    "generator": "logicCircuit",
-    "params": {
-      "ops": [],
-      "inputs": 1,
-      "depth": 0,
-      "preview": true
-    },
-    "questions": 5,
-    "mechanic": "gate-run",
-    "payout": 26
-  },
-  {
-    "id": "lc-03",
     "name": "The AND Gate",
     "generator": "logicCircuit",
     "params": {
@@ -43,54 +32,24 @@
       ],
       "inputs": 2,
       "depth": 1,
-      "preview": true
+      "preview": true,
+      "types": [
+        "glow",
+        "dark",
+        "locked"
+      ]
     },
-    "questions": 5,
+    "questions": 4,
     "mechanic": "gate-run",
-    "payout": 28,
+    "payout": 26,
     "intro": [
-      "This is an AND gate.",
-      "It needs BOTH switches ON.",
-      "Watch the lamp while you learn!"
+      "This is an AND gate — it needs BOTH switches ON.",
+      "Sometimes the lamp starts ON: make it go DARK!",
+      "A stuck switch 🔒 can't be flipped. Solve around it!"
     ]
   },
   {
-    "id": "lc-04",
-    "name": "Both Together",
-    "generator": "logicCircuit",
-    "params": {
-      "ops": [
-        "AND"
-      ],
-      "inputs": 2,
-      "depth": 1,
-      "preview": true
-    },
-    "questions": 6,
-    "mechanic": "gate-run",
-    "payout": 30
-  },
-  {
-    "id": "lc-05",
-    "name": "AND for Real",
-    "generator": "logicCircuit",
-    "params": {
-      "ops": [
-        "AND"
-      ],
-      "inputs": 2,
-      "depth": 1
-    },
-    "questions": 6,
-    "mechanic": "gate-run",
-    "payout": 32,
-    "intro": [
-      "No more helper lamp!",
-      "Think first, then press POWER."
-    ]
-  },
-  {
-    "id": "lc-06",
+    "id": "lc-03",
     "name": "The OR Gate",
     "generator": "logicCircuit",
     "params": {
@@ -99,33 +58,24 @@
       ],
       "inputs": 2,
       "depth": 1,
-      "preview": true
+      "preview": true,
+      "types": [
+        "glow",
+        "dark",
+        "locked",
+        "count"
+      ]
     },
     "questions": 5,
     "mechanic": "gate-run",
-    "payout": 34,
+    "payout": 28,
     "intro": [
-      "This is an OR gate.",
-      "ONE switch ON is enough."
+      "OR glows when AT LEAST ONE switch is ON.",
+      "Detective questions 🔍 list every way — count the glows!"
     ]
   },
   {
-    "id": "lc-07",
-    "name": "Either One",
-    "generator": "logicCircuit",
-    "params": {
-      "ops": [
-        "OR"
-      ],
-      "inputs": 2,
-      "depth": 1
-    },
-    "questions": 6,
-    "mechanic": "gate-run",
-    "payout": 36
-  },
-  {
-    "id": "lc-08",
+    "id": "lc-04",
     "name": "AND or OR?",
     "generator": "logicCircuit",
     "params": {
@@ -134,68 +84,51 @@
         "OR"
       ],
       "inputs": 2,
-      "depth": 1
+      "depth": 1,
+      "types": [
+        "glow",
+        "dark",
+        "gateName",
+        "mystery",
+        "count"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
-    "payout": 38
+    "payout": 30,
+    "intro": [
+      "No more helper lamp — think first!",
+      "A mystery box 📦 hides a gate.",
+      "Read the clues and name it!"
+    ]
   },
   {
-    "id": "lc-09",
+    "id": "lc-05",
     "name": "The NOT Gate",
     "generator": "logicCircuit",
     "params": {
       "ops": [
         "NOT"
       ],
-      "inputs": 1,
+      "inputs": 2,
       "depth": 1,
-      "preview": true
+      "preview": true,
+      "types": [
+        "glow",
+        "dark",
+        "count"
+      ]
     },
     "questions": 5,
     "mechanic": "gate-run",
-    "payout": 40,
+    "payout": 32,
     "intro": [
-      "NOT flips the signal.",
-      "ON becomes OFF.",
-      "OFF becomes ON!"
+      "NOT flips the signal: ON becomes OFF!",
+      "One switch is a decoy — find the one that matters."
     ]
   },
   {
-    "id": "lc-10",
-    "name": "Flip It",
-    "generator": "logicCircuit",
-    "params": {
-      "ops": [
-        "NOT",
-        "AND"
-      ],
-      "inputs": 2,
-      "depth": 2
-    },
-    "questions": 8,
-    "mechanic": "gate-run",
-    "payout": 62
-  },
-  {
-    "id": "lc-11",
-    "name": "Mixed Gates",
-    "generator": "logicCircuit",
-    "params": {
-      "ops": [
-        "AND",
-        "OR",
-        "NOT"
-      ],
-      "inputs": 2,
-      "depth": 2
-    },
-    "questions": 6,
-    "mechanic": "gate-run",
-    "payout": 44
-  },
-  {
-    "id": "lc-12",
+    "id": "lc-06",
     "name": "The XOR Gate",
     "generator": "logicCircuit",
     "params": {
@@ -204,26 +137,185 @@
       ],
       "inputs": 2,
       "depth": 1,
-      "preview": true
+      "preview": true,
+      "types": [
+        "glow",
+        "dark",
+        "locked",
+        "count"
+      ]
     },
     "questions": 5,
     "mechanic": "gate-run",
-    "payout": 46,
+    "payout": 34,
     "intro": [
       "XOR likes exactly ONE on.",
       "Two ONs turn it off!"
     ]
   },
   {
-    "id": "lc-13",
-    "name": "Exactly One",
+    "id": "lc-07",
+    "name": "Gate Quiz",
     "generator": "logicCircuit",
     "params": {
       "ops": [
+        "AND",
+        "OR",
+        "NOT",
         "XOR"
       ],
       "inputs": 2,
-      "depth": 1
+      "depth": 1,
+      "types": [
+        "gateName",
+        "mystery",
+        "setting"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36,
+    "intro": [
+      "Quiz time! Name the gates, crack mystery boxes 📦, read circuits."
+    ]
+  },
+  {
+    "id": "lc-08",
+    "name": "Two Gates Deep",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 2,
+      "depth": 2,
+      "types": [
+        "glow",
+        "dark",
+        "locked"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 38,
+    "intro": [
+      "Gates can stack — one feeds the next!",
+      "Read the circuit from the inside out."
+    ]
+  },
+  {
+    "id": "lc-09",
+    "name": "Flip It",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 2,
+      "depth": 2,
+      "types": [
+        "glow",
+        "locked",
+        "setting"
+      ]
+    },
+    "questions": 5,
+    "mechanic": "gate-run",
+    "payout": 40
+  },
+  {
+    "id": "lc-10",
+    "name": "Mixed Gates",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 2,
+      "depth": 2,
+      "types": [
+        "glow",
+        "dark",
+        "mystery"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 62
+  },
+  {
+    "id": "lc-11",
+    "name": "Lamp Detective",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 2,
+      "depth": 2,
+      "types": [
+        "glow",
+        "count",
+        "gateName"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "lc-12",
+    "name": "Stuck Switches",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 2,
+      "depth": 2,
+      "types": [
+        "glow",
+        "dark",
+        "locked"
+      ]
+    },
+    "questions": 5,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "lc-13",
+    "name": "Mystery Boxes",
+    "generator": "logicCircuit",
+    "params": {
+      "ops": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "inputs": 2,
+      "depth": 2,
+      "types": [
+        "glow",
+        "setting",
+        "mystery"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -231,20 +323,30 @@
   },
   {
     "id": "lc-14",
-    "name": "Two-Gate Intro",
+    "name": "Three Switches",
     "generator": "logicCircuit",
     "params": {
       "ops": [
         "AND",
         "OR",
+        "NOT",
         "XOR"
       ],
-      "inputs": 2,
-      "depth": 2
+      "inputs": 3,
+      "depth": 2,
+      "types": [
+        "glow",
+        "locked",
+        "setting"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
-    "payout": 50
+    "payout": 50,
+    "intro": [
+      "THREE switches now!",
+      "More ways to set them — stay sharp."
+    ]
   },
   {
     "id": "lc-15",
@@ -254,10 +356,16 @@
       "ops": [
         "AND",
         "OR",
+        "NOT",
         "XOR"
       ],
-      "inputs": 2,
-      "depth": 2
+      "inputs": 3,
+      "depth": 2,
+      "types": [
+        "glow",
+        "dark",
+        "mystery"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -271,10 +379,16 @@
       "ops": [
         "AND",
         "OR",
+        "NOT",
         "XOR"
       ],
-      "inputs": 2,
-      "depth": 2
+      "inputs": 3,
+      "depth": 2,
+      "types": [
+        "glow",
+        "count",
+        "gateName"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -291,8 +405,13 @@
         "NOT",
         "XOR"
       ],
-      "inputs": 2,
-      "depth": 2
+      "inputs": 3,
+      "depth": 2,
+      "types": [
+        "glow",
+        "dark",
+        "locked"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -309,8 +428,13 @@
         "NOT",
         "XOR"
       ],
-      "inputs": 2,
-      "depth": 2
+      "inputs": 3,
+      "depth": 2,
+      "types": [
+        "glow",
+        "setting",
+        "mystery"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -327,8 +451,13 @@
         "NOT",
         "XOR"
       ],
-      "inputs": 2,
-      "depth": 2
+      "inputs": 3,
+      "depth": 2,
+      "types": [
+        "glow",
+        "locked",
+        "setting"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -345,8 +474,13 @@
         "NOT",
         "XOR"
       ],
-      "inputs": 2,
-      "depth": 2
+      "inputs": 3,
+      "depth": 3,
+      "types": [
+        "glow",
+        "dark",
+        "mystery"
+      ]
     },
     "questions": 8,
     "mechanic": "gate-run",
@@ -364,7 +498,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 2
+      "depth": 3,
+      "types": [
+        "glow",
+        "count",
+        "gateName"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -382,7 +521,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 2
+      "depth": 3,
+      "types": [
+        "glow",
+        "dark",
+        "locked"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -400,7 +544,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 2
+      "depth": 3,
+      "types": [
+        "glow",
+        "setting",
+        "mystery"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -418,7 +567,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 2
+      "depth": 3,
+      "types": [
+        "glow",
+        "locked",
+        "setting"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -436,7 +590,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 3,
+      "types": [
+        "glow",
+        "dark",
+        "mystery"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -454,7 +613,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 3,
+      "types": [
+        "glow",
+        "count",
+        "gateName"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -472,7 +636,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 3,
+      "types": [
+        "glow",
+        "dark",
+        "locked"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -490,7 +659,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 3,
+      "types": [
+        "glow",
+        "setting",
+        "mystery"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -508,7 +682,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 3,
+      "types": [
+        "glow",
+        "locked",
+        "setting"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -526,7 +705,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 3,
+      "types": [
+        "glow",
+        "dark",
+        "mystery"
+      ]
     },
     "questions": 8,
     "mechanic": "gate-run",
@@ -544,7 +728,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 3,
+      "types": [
+        "glow",
+        "count",
+        "gateName"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -562,7 +751,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 3,
+      "types": [
+        "glow",
+        "dark",
+        "locked"
+      ]
     },
     "questions": 8,
     "mechanic": "gate-run",
@@ -580,7 +774,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 3,
+      "types": [
+        "glow",
+        "setting",
+        "mystery"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -598,7 +797,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 3,
+      "types": [
+        "glow",
+        "locked",
+        "setting"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -616,7 +820,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 3,
+      "types": [
+        "glow",
+        "dark",
+        "mystery"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -634,7 +843,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 3,
+      "types": [
+        "glow",
+        "count",
+        "gateName"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -652,7 +866,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 3,
+      "types": [
+        "glow",
+        "dark",
+        "locked"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -670,7 +889,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 3,
+      "types": [
+        "glow",
+        "setting",
+        "mystery"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -688,7 +912,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 3,
+      "types": [
+        "glow",
+        "locked",
+        "setting"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -706,11 +935,20 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 4,
+      "types": [
+        "glow",
+        "dark",
+        "mystery"
+      ]
     },
     "questions": 8,
     "mechanic": "gate-run",
-    "payout": 127
+    "payout": 127,
+    "intro": [
+      "The deepest circuits — gates stacked four high!",
+      "Read them from the inside out."
+    ]
   },
   {
     "id": "lc-41",
@@ -724,7 +962,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 4,
+      "types": [
+        "glow",
+        "count",
+        "gateName"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -742,7 +985,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 4,
+      "types": [
+        "glow",
+        "dark",
+        "locked"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -760,7 +1008,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 4,
+      "types": [
+        "glow",
+        "setting",
+        "mystery"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -778,7 +1031,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 3
+      "depth": 4,
+      "types": [
+        "glow",
+        "locked",
+        "setting"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -796,7 +1054,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 4
+      "depth": 4,
+      "types": [
+        "glow",
+        "dark",
+        "mystery"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -814,7 +1077,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 4
+      "depth": 4,
+      "types": [
+        "glow",
+        "count",
+        "gateName"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -832,7 +1100,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 4
+      "depth": 4,
+      "types": [
+        "glow",
+        "dark",
+        "locked"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -850,7 +1123,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 4
+      "depth": 4,
+      "types": [
+        "glow",
+        "setting",
+        "mystery"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -868,7 +1146,12 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 4
+      "depth": 4,
+      "types": [
+        "glow",
+        "locked",
+        "setting"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -886,7 +1169,15 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 4
+      "depth": 4,
+      "types": [
+        "glow",
+        "dark",
+        "locked",
+        "setting",
+        "mystery",
+        "count"
+      ]
     },
     "questions": 8,
     "mechanic": "gate-run",
@@ -904,7 +1195,15 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 4
+      "depth": 4,
+      "types": [
+        "glow",
+        "dark",
+        "locked",
+        "setting",
+        "mystery",
+        "count"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -922,7 +1221,15 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 4
+      "depth": 4,
+      "types": [
+        "glow",
+        "dark",
+        "locked",
+        "setting",
+        "mystery",
+        "count"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -940,7 +1247,15 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 4
+      "depth": 4,
+      "types": [
+        "glow",
+        "dark",
+        "locked",
+        "setting",
+        "mystery",
+        "count"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -958,7 +1273,15 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 4
+      "depth": 4,
+      "types": [
+        "glow",
+        "dark",
+        "locked",
+        "setting",
+        "mystery",
+        "count"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -976,7 +1299,15 @@
         "XOR"
       ],
       "inputs": 3,
-      "depth": 4
+      "depth": 4,
+      "types": [
+        "glow",
+        "dark",
+        "locked",
+        "setting",
+        "mystery",
+        "count"
+      ]
     },
     "questions": 8,
     "mechanic": "gate-run",

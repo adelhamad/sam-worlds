@@ -15,6 +15,11 @@ import bodyStages from "./body/stages.json";
 import feelingsStages from "./feelings/stages.json";
 import affixStages from "./affix/stages.json";
 import grammarStages from "./grammar/stages.json";
+import prepositionStages from "./prepositions/stages.json";
+import directionStages from "./directions/stages.json";
+import physicsStages from "./physics/stages.json";
+import chemistryStages from "./chemistry/stages.json";
+import algebraStages from "./algebra/stages.json";
 import type { StageDef } from "./types";
 
 export interface WorldDef {
@@ -161,14 +166,14 @@ export const WORLDS: WorldDef[] = [
     ],
   },
   {
-    id: "craft", name: "Craft Caverns", icon: "⛏️", tagline: "Mine, craft, count!",
+    id: "craft", name: "Craft Caverns", icon: "⛏️", tagline: "Mobs, tools & crafting!",
     stages: craftStages as StageDef[],
     milestones: [
-      { stage: 10, name: "Wood Gatherer", icon: "🪵" },
-      { stage: 20, name: "Stone Mason", icon: "🪨" },
-      { stage: 30, name: "Iron Smelter", icon: "🔥" },
-      { stage: 40, name: "Redstone Reckoner", icon: "🔴" },
-      { stage: 50, name: "Diamond Counter", icon: "💎" },
+      { stage: 10, name: "Mob Expert", icon: "🟩" },
+      { stage: 20, name: "Master Crafter", icon: "🛠️" },
+      { stage: 30, name: "Loot Hunter", icon: "🎁" },
+      { stage: 40, name: "Biome Explorer", icon: "🌋" },
+      { stage: 50, name: "Diamond Hunter", icon: "💎" },
       { stage: 55, name: "Netherite Master", icon: "🏆" },
     ],
   },
@@ -230,6 +235,66 @@ export const WORLDS: WorldDef[] = [
       { stage: 40, name: "Sentence Star", icon: "⭐" },
       { stage: 50, name: "Grammar Guru", icon: "📖" },
       { stage: 55, name: "Master of Grammar", icon: "🏆" },
+    ],
+  },
+  {
+    id: "prepositions", name: "Preposition Park", icon: "🛝", tagline: "On, under, between!",
+    stages: prepositionStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Spot Finder", icon: "📍" },
+      { stage: 20, name: "Sentence Scout", icon: "🔎" },
+      { stage: 30, name: "Opposite Expert", icon: "🔃" },
+      { stage: 40, name: "Position Pro", icon: "🎯" },
+      { stage: 50, name: "Park Ranger", icon: "🌳" },
+      { stage: 55, name: "Master of Places", icon: "🏆" },
+    ],
+  },
+  {
+    id: "directions", name: "Compass Cove", icon: "🧭", tagline: "Left, right, north, south!",
+    stages: directionStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Left-Right Scout", icon: "↔️" },
+      { stage: 20, name: "Grid Walker", icon: "🗺️" },
+      { stage: 30, name: "Turn Master", icon: "🔄" },
+      { stage: 40, name: "Compass Reader", icon: "🧭" },
+      { stage: 50, name: "Wayfinder", icon: "⭐" },
+      { stage: 55, name: "Master Navigator", icon: "🏆" },
+    ],
+  },
+  {
+    id: "physics", name: "Tinker Lab", icon: "🧲", tagline: "Push, pull, sink, float!",
+    stages: physicsStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Float Tester", icon: "🛟" },
+      { stage: 20, name: "Magnet Hunter", icon: "🧲" },
+      { stage: 30, name: "Force Finder", icon: "🫸" },
+      { stage: 40, name: "Gravity Guru", icon: "🌍" },
+      { stage: 50, name: "Shadow Sage", icon: "🔦" },
+      { stage: 55, name: "Master Tinkerer", icon: "🏆" },
+    ],
+  },
+  {
+    id: "chemistry", name: "Potion Lab", icon: "🧪", tagline: "Mix, melt, fizz!",
+    stages: chemistryStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "State Sorter", icon: "🧊" },
+      { stage: 20, name: "Melt Master", icon: "🫠" },
+      { stage: 30, name: "Dissolve Detective", icon: "✨" },
+      { stage: 40, name: "Material Expert", icon: "🪟" },
+      { stage: 50, name: "Fizz Wizard", icon: "🫧" },
+      { stage: 55, name: "Master Chemist", icon: "🏆" },
+    ],
+  },
+  {
+    id: "algebra", name: "Equation Station", icon: "⚖️", tagline: "Find the hidden number!",
+    stages: algebraStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Box Detective", icon: "📦" },
+      { stage: 20, name: "Fruit Coder", icon: "🍎" },
+      { stage: 30, name: "Pair Solver", icon: "🍌" },
+      { stage: 40, name: "Times Boxer", icon: "✖️" },
+      { stage: 50, name: "Balance Brain", icon: "⚖️" },
+      { stage: 55, name: "Master of Equations", icon: "🏆" },
     ],
   },
 ];

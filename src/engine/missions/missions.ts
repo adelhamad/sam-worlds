@@ -70,11 +70,11 @@ const WORLD_BEATS: Record<string, StoryBeat[]> = {
     { afterStage: 32, text: "Every flag flies proudly!", tease: "The whole world salutes you, Captain." },
   ],
   craft: [
-    { afterStage: 0, text: "A blocky cavern echoes with pickaxe sounds.", tease: "Every craft starts with counting…" },
-    { afterStage: 10, text: "Your chests fill with planks and sticks!", tease: "The walls you build need block math…" },
-    { afterStage: 20, text: "Furnaces roar — smelting is division!", tease: "A map shows coordinates deep below…" },
-    { afterStage: 40, text: "You dug below zero and survived!", tease: "Diamond counting awaits the brave…" },
-    { afterStage: 55, text: "The cavern bows to a true crafter.", tease: "Netherite Master — count on it!" },
+    { afterStage: 0, text: "A blocky cavern echoes with pickaxe sounds.", tease: "Do you really know your mobs?" },
+    { afterStage: 10, text: "Every mob's secret is in your head now!", tease: "The crafting grids hold patterns…" },
+    { afterStage: 20, text: "You read crafting grids like a book!", tease: "What treasure does each mob drop…?" },
+    { afterStage: 40, text: "From desert to Nether, you know every biome!", tease: "The deepest lore awaits…" },
+    { afterStage: 55, text: "The cavern bows to a true crafter.", tease: "Netherite Master — you know it ALL!" },
   ],
   wordwizard: [
     { afterStage: 0, text: "A library of glowing words hums quietly.", tease: "Some words sound like twins…" },
@@ -118,6 +118,36 @@ const WORLD_BEATS: Record<string, StoryBeat[]> = {
     { afterStage: 10, text: "Planets mapped! Now the lands below.", tease: "Wonders hide on every continent…" },
     { afterStage: 20, text: "Colors, creatures, countries — all charted.", tease: "Only history's timeline remains…" },
     { afterStage: 32, text: "The Atlas is complete!", tease: "Every world remembers its Explorer." },
+  ],
+  prepositions: [
+    { afterStage: 0, text: "A playground where everything has its place.", tease: "Is the cat ON the box… or UNDER it?" },
+    { afterStage: 10, text: "You can say exactly where anything is!", tease: "Now the sentences need you…" },
+    { afterStage: 30, text: "Over, under, through — words bend for you.", tease: "The trickiest spots are still hidden…" },
+    { afterStage: 55, text: "Every corner of the park is mapped!", tease: "Master of Places — perfectly put." },
+  ],
+  directions: [
+    { afterStage: 0, text: "A foggy cove where travelers get lost.", tease: "Which way is LEFT again?" },
+    { afterStage: 10, text: "You guide friends through every grid!", tease: "But which way is NORTH…?" },
+    { afterStage: 30, text: "The old compass spins to life in your hand.", tease: "Storms twist and turn ahead…" },
+    { afterStage: 55, text: "No one gets lost in the cove anymore!", tease: "Master Navigator — true north found." },
+  ],
+  physics: [
+    { afterStage: 0, text: "A workshop of ramps, magnets and bathtubs.", tease: "Will it sink… or float?" },
+    { afterStage: 10, text: "The magnet hums — it only loves iron!", tease: "Push or pull? The machines need force…" },
+    { afterStage: 30, text: "You feel gravity tugging everything down.", tease: "Light and shadows play tricks upstairs…" },
+    { afterStage: 55, text: "The whole lab tinkers to your tune!", tease: "Master Tinkerer — forces obey you." },
+  ],
+  chemistry: [
+    { afterStage: 0, text: "Bubbling beakers line the potion shelves.", tease: "Solid, liquid… or gas?" },
+    { afterStage: 10, text: "You melt and freeze like a pro!", tease: "Some powders vanish in water…" },
+    { afterStage: 30, text: "Dissolving holds no secrets for you.", tease: "The fizzy mixtures wait for a master…" },
+    { afterStage: 55, text: "The Potion Lab sparkles with your skill!", tease: "Master Chemist — safely, always." },
+  ],
+  algebra: [
+    { afterStage: 0, text: "Boxes with hidden numbers ride the trains.", tease: "▢ + 3 = 7… what hides inside?" },
+    { afterStage: 10, text: "No box can hide its number from you!", tease: "The fruit codes look trickier…" },
+    { afterStage: 30, text: "Two-step codes crack under your pencil.", tease: "The times box multiplies the mystery…" },
+    { afterStage: 55, text: "Every equation balances perfectly!", tease: "Master of Equations — x marks YOU." },
   ],
 };
 

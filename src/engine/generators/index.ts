@@ -17,6 +17,11 @@ import { generateBody, type BodyParams } from "./body";
 import { generateFeelings, type FeelingsParams } from "./feelings";
 import { generateAffix, type AffixParams } from "./affix";
 import { generateGrammar, type GrammarParams } from "./grammar";
+import { generatePrepositions, type PrepositionParams } from "./prepositions";
+import { generateDirections, type DirectionParams } from "./directions";
+import { generatePhysics, type PhysicsParams } from "./physics";
+import { generateChemistry, type ChemistryParams } from "./chemistry";
+import { generateAlgebra, type AlgebraParams } from "./algebra";
 import type { GenContext, GeneratorParams, Question } from "./types";
 
 export type GeneratorId =
@@ -37,7 +42,12 @@ export type GeneratorId =
   | "body"
   | "feelings"
   | "affix"
-  | "grammar";
+  | "grammar"
+  | "prepositions"
+  | "directions"
+  | "physics"
+  | "chemistry"
+  | "algebra";
 
 function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, ctx: GenContext): Question {
   switch (id) {
@@ -77,6 +87,16 @@ function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, c
       return generateAffix(params as unknown as AffixParams, rng, ctx);
     case "grammar":
       return generateGrammar(params as unknown as GrammarParams, rng, ctx);
+    case "prepositions":
+      return generatePrepositions(params as unknown as PrepositionParams, rng, ctx);
+    case "directions":
+      return generateDirections(params as unknown as DirectionParams, rng, ctx);
+    case "physics":
+      return generatePhysics(params as unknown as PhysicsParams, rng, ctx);
+    case "chemistry":
+      return generateChemistry(params as unknown as ChemistryParams, rng, ctx);
+    case "algebra":
+      return generateAlgebra(params as unknown as AlgebraParams, rng, ctx);
   }
 }
 

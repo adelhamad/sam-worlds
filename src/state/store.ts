@@ -4,11 +4,11 @@ import { clearBackup, requestPersistentStorage, restoreBackupIfNeeded } from "..
 import { generateQuestionSet } from "../engine/generators";
 import { DEFAULT_RATING, difficultyFromRating, stageDifficulty, updateRating } from "../engine/difficulty/skillRating";
 import { starsForResult } from "../engine/progress/stars";
-import { isRapidGuessing, weightedPayout, workedExample } from "../engine/answers/answerEngine";
-import { STR } from "../strings/en";
+import { weightedPayout } from "../engine/answers/answerEngine";
 import { itemById } from "../engine/economy/catalog";
 import { BADGES, stageById, stageIndexInWorld, worldOfStage, worldById, type BadgeDef } from "../content/worlds";
 import { withGameDefaults, withWorldDefaults } from "./gates";
+import { missTransition, withReplacedQuestion } from "./missTransition";
 import { persona } from "../persona.config";
 import { newSeed } from "../engine/rng";
 import { setMuted } from "../engine/feedback/audio";
@@ -47,6 +47,7 @@ interface GameStore {
   enabledGames: Record<string, boolean>;
   videoEnabled: boolean;
   videoMode: "corner" | "background";
+  videoOpacity: number;
   videoUrls: string[];
   session: Session | null;
 
@@ -57,6 +58,7 @@ interface GameStore {
   clearSession: () => void;
   buyItem: (itemId: string) => boolean;
   redeemCoupon: (couponId: number) => void;
+  clearRedeemedCoupons: () => void;
   earnDust: (amount: number, reason: string) => void;
   toggleSound: () => void;
   toggleMusic: () => void;
@@ -67,6 +69,7 @@ interface GameStore {
   setGameEnabled: (gameId: string, on: boolean) => void;
   setVideoEnabled: (on: boolean) => void;
   setVideoMode: (mode: "corner" | "background") => void;
+  setVideoOpacity: (pct: number) => void;
   addVideoUrl: (url: string) => void;
   removeVideoUrl: (url: string) => void;
   resetAll: () => Promise<void>;
@@ -74,7 +77,7 @@ interface GameStore {
 
 
 function persistSettings(get: () => GameStore): void {
-  const { soundOn, musicOn, lastStageId, enabledWorlds, enabledGames, videoEnabled, videoMode, videoUrls } = get();
+  const { soundOn, musicOn, lastStageId, enabledWorlds, enabledGames, videoEnabled, videoMode, videoUrls, videoOpacity } = get();
   void db.settings.put({
     id: 1,
     soundOn,
@@ -85,6 +88,7 @@ function persistSettings(get: () => GameStore): void {
     videoEnabled,
     videoMode,
     videoUrls,
+    videoOpacity,
   });
 }
 
@@ -112,50 +116,6 @@ function persistSession(session: Session | null): void {
   }, 300);
 }
 
-function withReplacedQuestion(s: Session, generator: Parameters<typeof generateQuestionSet>[0], params: Parameters<typeof generateQuestionSet>[1], difficulty: number, easier: boolean): Session["questions"] {
-  const [replacement] = generateQuestionSet(generator, params, 1, newSeed(), { difficulty, easier });
-  const questions = [...s.questions];
-  questions[s.index] = replacement;
-  return questions;
-}
-
-/** Rule 1+3+5 miss transition: discard, regenerate, scaffold, detect guessing. */
-function missTransition(
-  s: Session,
-  stage: NonNullable<ReturnType<typeof stageById>>,
-  skill: string,
-  ratings: Record<string, number>,
-  q: Session["questions"][number],
-  firstAttemptInSlot: boolean,
-): Session {
-  const wrongStamps = [...s.wrongStamps, Date.now()];
-  const rapid = isRapidGuessing(wrongStamps);
-  const missStreak = firstAttemptInSlot ? s.missStreak + 1 : s.missStreak;
-  const easier = rapid || missStreak >= 2;
-  if (rapid) {
-    // Rule 5: a signal, not misbehavior — adapt difficulty, log, one warm line.
-    ratings[skill] = Math.max(0, (ratings[skill] ?? DEFAULT_RATING) - 8);
-    void db.skillRatings.put({ skill, rating: ratings[skill] });
-    logEvent("guess.rapid", { stageId: s.stageId, skill });
-  }
-  const difficulty = easier ? 0 : difficultyFromRating(ratings[skill] ?? DEFAULT_RATING);
-  return {
-    ...s,
-    questions: withReplacedQuestion(s, stage.generator, stage.params, difficulty, easier),
-    wrongStamps,
-    lastAnswer: "wrong",
-    // Choice questions are tap-guessable: demand 2 correct in a row.
-    proveLeft: q.inputMode === "choices" ? 2 : 0,
-    attemptMissed: true,
-    firstTryMisses: firstAttemptInSlot ? s.firstTryMisses + 1 : s.firstTryMisses,
-    missStreak: easier ? 0 : missStreak,
-    showHint: true,
-    // Rule 3: second miss in the slot → show the discarded question solved.
-    workedExample: firstAttemptInSlot ? null : workedExample(q) || null,
-    companionLine: rapid ? STR.companionSlow : s.companionLine,
-  };
-}
-
 export const useGame = create<GameStore>((set, get) => ({
   loaded: false,
   hasSave: false,
@@ -172,6 +132,7 @@ export const useGame = create<GameStore>((set, get) => ({
   enabledGames: withGameDefaults(),
   videoEnabled: false,
   videoMode: "corner",
+  videoOpacity: 80,
   videoUrls: [],
   session: null,
 
@@ -227,6 +188,7 @@ export const useGame = create<GameStore>((set, get) => ({
       enabledGames: withGameDefaults(settings?.enabledGames),
       videoEnabled: settings?.videoEnabled ?? false,
       videoMode: settings?.videoMode ?? "corner",
+      videoOpacity: settings?.videoOpacity ?? 80,
       videoUrls: settings?.videoUrls ?? [],
       session: sessionRow
         ? {
@@ -425,6 +387,16 @@ export const useGame = create<GameStore>((set, get) => ({
     logEvent("coupon.redeem", { couponId });
   },
 
+  // Parent Section: tidy the rewards history. Only REDEEMED coupons go —
+  // anything still in Sam's wallet stays untouched.
+  clearRedeemedCoupons: () => {
+    const redeemed = get().coupons.filter((c) => c.redeemedAt);
+    if (redeemed.length === 0) return;
+    set({ coupons: get().coupons.filter((c) => !c.redeemedAt) });
+    void db.coupons.bulkDelete(redeemed.map((c) => c.id!));
+    logEvent("coupon.clearHistory", { removed: redeemed.length });
+  },
+
   earnDust: (amount, reason) => {
     if (amount <= 0) return;
     const starDust = get().starDust + amount;
@@ -506,6 +478,11 @@ export const useGame = create<GameStore>((set, get) => ({
 
   setVideoMode: (mode) => {
     set({ videoMode: mode });
+    persistSettings(get);
+  },
+
+  setVideoOpacity: (pct) => {
+    set({ videoOpacity: Math.max(20, Math.min(100, Math.round(pct))) });
     persistSettings(get);
   },
 

@@ -1,42 +1,48 @@
 [
   {
     "id": "cc-01",
-    "name": "First Logs",
+    "name": "Mob Spotter",
     "generator": "craft",
     "params": {
       "types": [
-        "recipe"
+        "mob"
       ]
     },
     "questions": 6,
     "mechanic": "gate-run",
     "payout": 24,
     "intro": [
-      "Crafting is counting!",
-      "1 log makes 4 planks.",
-      "Type the answer on the pad."
+      "Welcome to the Craft Caverns!",
+      "Do you REALLY know your mobs?",
+      "Tap the right answer."
     ]
   },
   {
     "id": "cc-02",
-    "name": "Plank Practice",
+    "name": "The Tool Shed",
     "generator": "craft",
     "params": {
       "types": [
-        "recipe"
+        "mob",
+        "tool"
       ]
     },
     "questions": 6,
     "mechanic": "gate-run",
-    "payout": 26
+    "payout": 26,
+    "intro": [
+      "Every job has its tool!",
+      "Axe, pickaxe, shovel, sword…"
+    ]
   },
   {
     "id": "cc-03",
-    "name": "The Crafting Table",
+    "name": "Crafting 101",
     "generator": "craft",
     "params": {
       "types": [
-        "recipe"
+        "tool",
+        "need"
       ]
     },
     "questions": 6,
@@ -45,7 +51,7 @@
   },
   {
     "id": "cc-04",
-    "name": "Stick Counter",
+    "name": "Grid Reader",
     "generator": "craft",
     "params": {
       "types": [
@@ -54,15 +60,20 @@
     },
     "questions": 6,
     "mechanic": "gate-run",
-    "payout": 30
+    "payout": 30,
+    "intro": [
+      "Read the crafting grid! 🛠️",
+      "Look at the pattern — what does it make?"
+    ]
   },
   {
     "id": "cc-05",
-    "name": "Wood Workshop",
+    "name": "Recipe Hunter",
     "generator": "craft",
     "params": {
       "types": [
-        "recipe"
+        "recipe",
+        "need"
       ]
     },
     "questions": 6,
@@ -71,23 +82,30 @@
   },
   {
     "id": "cc-06",
-    "name": "Recipe Reader",
+    "name": "What Drops?",
     "generator": "craft",
     "params": {
       "types": [
-        "recipe"
+        "drop",
+        "mob"
       ]
     },
     "questions": 6,
     "mechanic": "gate-run",
-    "payout": 34
+    "payout": 34,
+    "intro": [
+      "Mobs and blocks drop treasure!",
+      "What do you get from each one?"
+    ]
   },
   {
     "id": "cc-07",
-    "name": "Busy Crafter",
+    "name": "Loot Finder",
     "generator": "craft",
     "params": {
       "types": [
+        "drop",
+        "tool",
         "recipe"
       ]
     },
@@ -97,28 +115,32 @@
   },
   {
     "id": "cc-08",
-    "name": "The Lumber Gate",
+    "name": "Biome Trekker",
     "generator": "craft",
     "params": {
       "types": [
-        "recipe"
+        "where",
+        "mob"
       ]
     },
     "questions": 6,
     "mechanic": "gate-run",
-    "payout": 38
+    "payout": 38,
+    "intro": [
+      "Explore the biomes!",
+      "Deserts, jungles, the Nether, the End…"
+    ]
   },
   {
     "id": "cc-09",
-    "name": "Cobble Walls",
+    "name": "Cave Explorer",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "stack",
-        "recipe"
-      ],
-      "maxSide": 5
+        "mob",
+        "recipe",
+        "where"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -126,15 +148,17 @@
   },
   {
     "id": "cc-10",
-    "name": "Block by Block",
+    "name": "Crafter Badge",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "stack",
-        "recipe"
-      ],
-      "maxSide": 5
+        "mob",
+        "tool",
+        "need",
+        "recipe",
+        "drop",
+        "where"
+      ]
     },
     "questions": 8,
     "mechanic": "gate-run",
@@ -142,15 +166,14 @@
   },
   {
     "id": "cc-11",
-    "name": "Wall Builder",
+    "name": "Night Watch",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "stack",
-        "recipe"
-      ],
-      "maxSide": 5
+        "recipe",
+        "mob",
+        "drop"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -158,15 +181,14 @@
   },
   {
     "id": "cc-12",
-    "name": "Tall Towers",
+    "name": "Nether Knowledge",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "stack",
-        "recipe"
-      ],
-      "maxSide": 5
+        "where",
+        "need",
+        "tool"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -174,15 +196,14 @@
   },
   {
     "id": "cc-13",
-    "name": "Half Stacks",
+    "name": "Ocean Secrets",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "stack",
-        "recipe"
-      ],
-      "maxSide": 5
+        "drop",
+        "recipe",
+        "where"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -190,15 +211,14 @@
   },
   {
     "id": "cc-14",
-    "name": "Pocket Counter",
+    "name": "Village Visit",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "stack",
-        "recipe"
-      ],
-      "maxSide": 5
+        "mob",
+        "recipe",
+        "where"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -206,15 +226,14 @@
   },
   {
     "id": "cc-15",
-    "name": "Chest Math",
+    "name": "Dragon Lore",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "stack",
-        "recipe"
-      ],
-      "maxSide": 5
+        "tool",
+        "drop",
+        "need"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -222,15 +241,14 @@
   },
   {
     "id": "cc-16",
-    "name": "The Stone Gate",
+    "name": "Treasure Trail",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "stack",
-        "recipe"
-      ],
-      "maxSide": 5
+        "recipe",
+        "mob",
+        "drop"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -238,15 +256,14 @@
   },
   {
     "id": "cc-17",
-    "name": "Furnace Fires",
+    "name": "Mob Manners",
     "generator": "craft",
     "params": {
       "types": [
-        "smelt",
-        "wall",
-        "stack"
-      ],
-      "maxSide": 6
+        "where",
+        "need",
+        "tool"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -254,15 +271,14 @@
   },
   {
     "id": "cc-18",
-    "name": "Coal Counter",
+    "name": "Deep Dark",
     "generator": "craft",
     "params": {
       "types": [
-        "smelt",
-        "wall",
-        "stack"
-      ],
-      "maxSide": 6
+        "drop",
+        "recipe",
+        "where"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -270,15 +286,14 @@
   },
   {
     "id": "cc-19",
-    "name": "Smelting Shift",
+    "name": "Block Wisdom",
     "generator": "craft",
     "params": {
       "types": [
-        "smelt",
-        "wall",
-        "stack"
-      ],
-      "maxSide": 6
+        "mob",
+        "recipe",
+        "where"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -286,15 +301,17 @@
   },
   {
     "id": "cc-20",
-    "name": "Iron Batches",
+    "name": "True Crafter",
     "generator": "craft",
     "params": {
       "types": [
-        "smelt",
-        "wall",
-        "stack"
-      ],
-      "maxSide": 6
+        "mob",
+        "tool",
+        "need",
+        "recipe",
+        "drop",
+        "where"
+      ]
     },
     "questions": 8,
     "mechanic": "gate-run",
@@ -302,15 +319,14 @@
   },
   {
     "id": "cc-21",
-    "name": "Big Walls",
+    "name": "Mob Spotter II",
     "generator": "craft",
     "params": {
       "types": [
-        "smelt",
-        "wall",
-        "stack"
-      ],
-      "maxSide": 6
+        "recipe",
+        "mob",
+        "drop"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -318,15 +334,14 @@
   },
   {
     "id": "cc-22",
-    "name": "Brick Layers",
+    "name": "The Tool Shed II",
     "generator": "craft",
     "params": {
       "types": [
-        "smelt",
-        "wall",
-        "stack"
-      ],
-      "maxSide": 6
+        "where",
+        "need",
+        "tool"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -334,15 +349,14 @@
   },
   {
     "id": "cc-23",
-    "name": "Furnace Master",
+    "name": "Crafting 101 II",
     "generator": "craft",
     "params": {
       "types": [
-        "smelt",
-        "wall",
-        "stack"
-      ],
-      "maxSide": 6
+        "drop",
+        "recipe",
+        "where"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -350,15 +364,14 @@
   },
   {
     "id": "cc-24",
-    "name": "The Iron Gate",
+    "name": "Grid Reader II",
     "generator": "craft",
     "params": {
       "types": [
-        "smelt",
-        "wall",
-        "stack"
-      ],
-      "maxSide": 6
+        "mob",
+        "recipe",
+        "where"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -366,15 +379,14 @@
   },
   {
     "id": "cc-25",
-    "name": "First Steps East",
+    "name": "Recipe Hunter II",
     "generator": "craft",
     "params": {
       "types": [
-        "coords",
-        "recipe",
-        "smelt"
-      ],
-      "maxSide": 6
+        "tool",
+        "drop",
+        "need"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -382,15 +394,14 @@
   },
   {
     "id": "cc-26",
-    "name": "Walking West",
+    "name": "What Drops? II",
     "generator": "craft",
     "params": {
       "types": [
-        "coords",
         "recipe",
-        "smelt"
-      ],
-      "maxSide": 6
+        "mob",
+        "drop"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -398,15 +409,14 @@
   },
   {
     "id": "cc-27",
-    "name": "Coordinate Trail",
+    "name": "Loot Finder II",
     "generator": "craft",
     "params": {
       "types": [
-        "coords",
-        "recipe",
-        "smelt"
-      ],
-      "maxSide": 6
+        "where",
+        "need",
+        "tool"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -414,15 +424,14 @@
   },
   {
     "id": "cc-28",
-    "name": "Long Marches",
+    "name": "Biome Trekker II",
     "generator": "craft",
     "params": {
       "types": [
-        "coords",
+        "drop",
         "recipe",
-        "smelt"
-      ],
-      "maxSide": 6
+        "where"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -430,15 +439,14 @@
   },
   {
     "id": "cc-29",
-    "name": "Map Reader",
+    "name": "Cave Explorer II",
     "generator": "craft",
     "params": {
       "types": [
-        "coords",
+        "mob",
         "recipe",
-        "smelt"
-      ],
-      "maxSide": 6
+        "where"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -446,15 +454,17 @@
   },
   {
     "id": "cc-30",
-    "name": "Mixed Mining",
+    "name": "Crafter Badge II",
     "generator": "craft",
     "params": {
       "types": [
-        "coords",
+        "mob",
+        "tool",
+        "need",
         "recipe",
-        "smelt"
-      ],
-      "maxSide": 6
+        "drop",
+        "where"
+      ]
     },
     "questions": 8,
     "mechanic": "gate-run",
@@ -462,15 +472,14 @@
   },
   {
     "id": "cc-31",
-    "name": "Cavern Counts",
+    "name": "Night Watch II",
     "generator": "craft",
     "params": {
       "types": [
-        "coords",
         "recipe",
-        "smelt"
-      ],
-      "maxSide": 6
+        "mob",
+        "drop"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -478,15 +487,14 @@
   },
   {
     "id": "cc-32",
-    "name": "The Compass Gate",
+    "name": "Nether Knowledge II",
     "generator": "craft",
     "params": {
       "types": [
-        "coords",
-        "recipe",
-        "smelt"
-      ],
-      "maxSide": 6
+        "where",
+        "need",
+        "tool"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -494,17 +502,14 @@
   },
   {
     "id": "cc-33",
-    "name": "Thick Walls",
+    "name": "Ocean Secrets II",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "coords",
-        "mob"
-      ],
-      "maxSide": 7,
-      "volume": true,
-      "belowZero": true
+        "drop",
+        "recipe",
+        "where"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -512,17 +517,14 @@
   },
   {
     "id": "cc-34",
-    "name": "Layer Logic",
+    "name": "Village Visit II",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "coords",
-        "mob"
-      ],
-      "maxSide": 7,
-      "volume": true,
-      "belowZero": true
+        "mob",
+        "recipe",
+        "where"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -530,17 +532,14 @@
   },
   {
     "id": "cc-35",
-    "name": "Volume Vault",
+    "name": "Dragon Lore II",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "coords",
-        "mob"
-      ],
-      "maxSide": 7,
-      "volume": true,
-      "belowZero": true
+        "tool",
+        "drop",
+        "need"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -548,17 +547,14 @@
   },
   {
     "id": "cc-36",
-    "name": "Deep Digging",
+    "name": "Treasure Trail II",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "coords",
-        "mob"
-      ],
-      "maxSide": 7,
-      "volume": true,
-      "belowZero": true
+        "recipe",
+        "mob",
+        "drop"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -566,17 +562,14 @@
   },
   {
     "id": "cc-37",
-    "name": "Below Zero!",
+    "name": "Mob Manners II",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "coords",
-        "mob"
-      ],
-      "maxSide": 7,
-      "volume": true,
-      "belowZero": true
+        "where",
+        "need",
+        "tool"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -584,17 +577,14 @@
   },
   {
     "id": "cc-38",
-    "name": "Bedrock Bound",
+    "name": "Deep Dark II",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "coords",
-        "mob"
-      ],
-      "maxSide": 7,
-      "volume": true,
-      "belowZero": true
+        "drop",
+        "recipe",
+        "where"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -602,17 +592,14 @@
   },
   {
     "id": "cc-39",
-    "name": "Mob Watcher",
+    "name": "Block Wisdom II",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "coords",
-        "mob"
-      ],
-      "maxSide": 7,
-      "volume": true,
-      "belowZero": true
+        "mob",
+        "recipe",
+        "where"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -620,17 +607,17 @@
   },
   {
     "id": "cc-40",
-    "name": "The Redstone Gate",
+    "name": "True Crafter II",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "coords",
-        "mob"
-      ],
-      "maxSide": 7,
-      "volume": true,
-      "belowZero": true
+        "mob",
+        "tool",
+        "need",
+        "recipe",
+        "drop",
+        "where"
+      ]
     },
     "questions": 8,
     "mechanic": "gate-run",
@@ -638,19 +625,14 @@
   },
   {
     "id": "cc-41",
-    "name": "Mega Builds",
+    "name": "Mob Spotter III",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "stack",
-        "coords",
-        "smelt",
-        "mob"
-      ],
-      "maxSide": 8,
-      "volume": true,
-      "belowZero": true
+        "recipe",
+        "mob",
+        "drop"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -658,19 +640,14 @@
   },
   {
     "id": "cc-42",
-    "name": "Stack Storm",
+    "name": "The Tool Shed III",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "stack",
-        "coords",
-        "smelt",
-        "mob"
-      ],
-      "maxSide": 8,
-      "volume": true,
-      "belowZero": true
+        "where",
+        "need",
+        "tool"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -678,19 +655,14 @@
   },
   {
     "id": "cc-43",
-    "name": "Trade Counts",
+    "name": "Crafting 101 III",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "stack",
-        "coords",
-        "smelt",
-        "mob"
-      ],
-      "maxSide": 8,
-      "volume": true,
-      "belowZero": true
+        "drop",
+        "recipe",
+        "where"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -698,19 +670,14 @@
   },
   {
     "id": "cc-44",
-    "name": "Negative Depths",
+    "name": "Grid Reader III",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "stack",
-        "coords",
-        "smelt",
-        "mob"
-      ],
-      "maxSide": 8,
-      "volume": true,
-      "belowZero": true
+        "mob",
+        "recipe",
+        "where"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -718,19 +685,14 @@
   },
   {
     "id": "cc-45",
-    "name": "Master Recipes",
+    "name": "Recipe Hunter III",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "stack",
-        "coords",
-        "smelt",
-        "mob"
-      ],
-      "maxSide": 8,
-      "volume": true,
-      "belowZero": true
+        "tool",
+        "drop",
+        "need"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -738,19 +700,14 @@
   },
   {
     "id": "cc-46",
-    "name": "Fortress Math",
+    "name": "What Drops? III",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "stack",
-        "coords",
-        "smelt",
-        "mob"
-      ],
-      "maxSide": 8,
-      "volume": true,
-      "belowZero": true
+        "recipe",
+        "mob",
+        "drop"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -758,19 +715,14 @@
   },
   {
     "id": "cc-47",
-    "name": "Cavern Riddles",
+    "name": "Loot Finder III",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "stack",
-        "coords",
-        "smelt",
-        "mob"
-      ],
-      "maxSide": 8,
-      "volume": true,
-      "belowZero": true
+        "where",
+        "need",
+        "tool"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -778,19 +730,14 @@
   },
   {
     "id": "cc-48",
-    "name": "The Diamond Gate",
+    "name": "Biome Trekker III",
     "generator": "craft",
     "params": {
       "types": [
-        "wall",
-        "stack",
-        "coords",
-        "smelt",
-        "mob"
-      ],
-      "maxSide": 8,
-      "volume": true,
-      "belowZero": true
+        "drop",
+        "recipe",
+        "where"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -798,20 +745,14 @@
   },
   {
     "id": "cc-49",
-    "name": "Nether Numbers",
+    "name": "Cave Explorer III",
     "generator": "craft",
     "params": {
       "types": [
+        "mob",
         "recipe",
-        "wall",
-        "stack",
-        "coords",
-        "smelt",
-        "mob"
-      ],
-      "maxSide": 8,
-      "volume": true,
-      "belowZero": true
+        "where"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -819,20 +760,17 @@
   },
   {
     "id": "cc-50",
-    "name": "End Counting",
+    "name": "Crafter Badge III",
     "generator": "craft",
     "params": {
       "types": [
+        "mob",
+        "tool",
+        "need",
         "recipe",
-        "wall",
-        "stack",
-        "coords",
-        "smelt",
-        "mob"
-      ],
-      "maxSide": 8,
-      "volume": true,
-      "belowZero": true
+        "drop",
+        "where"
+      ]
     },
     "questions": 8,
     "mechanic": "gate-run",
@@ -840,20 +778,14 @@
   },
   {
     "id": "cc-51",
-    "name": "Grand Crafting",
+    "name": "Night Watch III",
     "generator": "craft",
     "params": {
       "types": [
         "recipe",
-        "wall",
-        "stack",
-        "coords",
-        "smelt",
-        "mob"
-      ],
-      "maxSide": 8,
-      "volume": true,
-      "belowZero": true
+        "mob",
+        "drop"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -861,20 +793,14 @@
   },
   {
     "id": "cc-52",
-    "name": "Deep Dark Math",
+    "name": "Nether Knowledge III",
     "generator": "craft",
     "params": {
       "types": [
-        "recipe",
-        "wall",
-        "stack",
-        "coords",
-        "smelt",
-        "mob"
-      ],
-      "maxSide": 8,
-      "volume": true,
-      "belowZero": true
+        "where",
+        "need",
+        "tool"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -882,20 +808,14 @@
   },
   {
     "id": "cc-53",
-    "name": "The Final Build",
+    "name": "Ocean Secrets III",
     "generator": "craft",
     "params": {
       "types": [
+        "drop",
         "recipe",
-        "wall",
-        "stack",
-        "coords",
-        "smelt",
-        "mob"
-      ],
-      "maxSide": 8,
-      "volume": true,
-      "belowZero": true
+        "where"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -903,20 +823,14 @@
   },
   {
     "id": "cc-54",
-    "name": "Cavern Supreme",
+    "name": "Village Visit III",
     "generator": "craft",
     "params": {
       "types": [
+        "mob",
         "recipe",
-        "wall",
-        "stack",
-        "coords",
-        "smelt",
-        "mob"
-      ],
-      "maxSide": 8,
-      "volume": true,
-      "belowZero": true
+        "where"
+      ]
     },
     "questions": 6,
     "mechanic": "gate-run",
@@ -924,20 +838,17 @@
   },
   {
     "id": "cc-55",
-    "name": "Netherite Master",
+    "name": "Dragon Lore III",
     "generator": "craft",
     "params": {
       "types": [
+        "mob",
+        "tool",
+        "need",
         "recipe",
-        "wall",
-        "stack",
-        "coords",
-        "smelt",
-        "mob"
-      ],
-      "maxSide": 8,
-      "volume": true,
-      "belowZero": true
+        "drop",
+        "where"
+      ]
     },
     "questions": 8,
     "mechanic": "gate-run",

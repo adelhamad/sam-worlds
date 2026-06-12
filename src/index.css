@@ -692,6 +692,7 @@ body {
   font-size: clamp(26px, 4.6vw, 42px);
   font-weight: 900;
   letter-spacing: 2px;
+  white-space: pre-line;
 }
 .q-correct {
   color: var(--cyan);
@@ -848,6 +849,16 @@ body {
   line-height: 1.05;
   letter-spacing: -2px;
 }
+.q-list {
+  display: inline-block;
+  text-align: left;
+  font-size: clamp(16px, 3vw, 22px);
+  font-weight: 700;
+  line-height: 1.6;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 8px 18px;
+}
 .lamp-on {
   filter: none !important;
   text-shadow: 0 0 18px rgba(255, 220, 120, 0.95);
@@ -1002,6 +1013,10 @@ body {
 .switch-on {
   background: linear-gradient(180deg, var(--cyan), #0e9db4);
   color: #032030;
+}
+.switch-locked {
+  opacity: 0.6;
+  border-style: dashed;
 }
 
 /* robot maze */
@@ -1359,6 +1374,8 @@ body {
   height: 100%;
   font-size: 26px;
   background: none;
+  touch-action: none; /* draggable bubble: keep pointer events, not scrolling */
+  cursor: grab;
 }
 .video-url {
   font-size: 12px;
