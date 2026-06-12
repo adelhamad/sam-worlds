@@ -16,15 +16,16 @@ const SIZES = [
   { n: 5, name: "5×5 Huge", moves: 20 },
 ];
 /** Sizes that get the real "paint your cube → solve" flow. */
-const SOLVABLE = new Set([2, 3]);
+const SOLVABLE = new Set([2, 3, 4]);
 /** Palette order: white, yellow, green, blue, orange, red. */
 const PALETTE: Face[] = ["U", "D", "F", "B", "L", "R"];
 const COLOR_LABEL: Record<Face, string> = { U: "White", D: "Yellow", F: "Green", B: "Blue", L: "Orange", R: "Red" };
 
 /** Reference stickers locked before painting so the entered cube can't drift. */
 function lockedStickers(n: number): { grid: Vec; face: Face; color: Face }[] {
-  if (n === 2) {
-    // Pin the back-bottom-left corner so orientation is fixed.
+  if (n % 2 === 0) {
+    // Even cubes have no fixed centers: pin the back-bottom-left corner so
+    // orientation is fixed (hold the real cube with that corner matching).
     return (["D", "L", "B"] as Face[]).map((face) => ({ grid: [0, 0, 0] as Vec, face, color: face }));
   }
   const c = (n - 1) / 2; // odd cubes have real centers; pin each to its color
@@ -107,7 +108,7 @@ export function CubeCoach() {
     setPhase("paint");
     sceneRef.current?.setPaintColor("U");
     sceneRef.current?.enterPaint(n, lockedStickers(n), setRemaining);
-    if (n === 3) solverRef.current?.warmUp();
+    if (n >= 3) solverRef.current?.warmUp(); // 4×4 ends in the Kociemba phase too
   }
 
   function pickColor(face: Face) {
@@ -139,10 +140,13 @@ export function CubeCoach() {
       moves = solve2x2(engine);
     } else {
       setThinking(true);
-      const res = await solverRef.current!.solve(cubeToFacelets(engine));
+      const res =
+        size === 3
+          ? await solverRef.current!.solve(cubeToFacelets(engine))
+          : await solverRef.current!.solveBig(size, grids);
       setThinking(false);
       if (!res.ok) {
-        setPaintError("Hmm — that can't happen on a real cube. Check the colors!");
+        setPaintError(res.reason ?? "Hmm — that can't happen on a real cube. Check the colors!");
         sfx.wrong();
         return;
       }
@@ -250,7 +254,8 @@ export function CubeCoach() {
         {phase === "setup" && mixing && <span className="cube-instruction">🎲 Mixing it up…</span>}
         {phase === "solve" && next && (
           <span className="cube-instruction">
-            Turn <b style={{ color: FACE_COLORS[next.face] }}>{FACE_LABEL[next.face]}</b> {next.prime ? "↺" : "↻"} ·{" "}
+            Turn <b style={{ color: FACE_COLORS[next.face] }}>{FACE_LABEL[next.face]}</b>
+            {(next.layer ?? 0) > 0 ? " inside row" : ""} {next.prime ? "↺" : "↻"} ·{" "}
             {stepsLeft} step{stepsLeft > 1 ? "s" : ""} left
           </span>
         )}
@@ -332,8 +337,8 @@ export function CubeCoach() {
             <h2>🧊 Cube Coach</h2>
             <p className="catch-howto">Solve a real cube!</p>
             <p className="catch-howto dim">
-              2×2 &amp; 3×3: paint your cube to match the one in your hand, then I show you every turn to solve it. 4×4 &amp; 5×5: I
-              mix one up and coach you back.
+              2×2, 3×3 &amp; 4×4: paint your cube to match the one in your hand, then I show you every turn to solve it. 5×5: I mix
+              one up and coach you back.
             </p>
             <div className="celebration-actions cube-sizes">
               {SIZES.map((s) => (

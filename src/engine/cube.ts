@@ -1,13 +1,14 @@
-// Pure Rubik's-cube model for 2×2 / 3×3 / 4×4 (outer-layer turns).
+// Pure Rubik's-cube model for 2×2 … 5×5, including inner-slice turns.
 // Stickers live in 3D lattice coordinates and turns are true 90° rotations,
 // so the adjacency logic can't drift; the 2D net is just a projection.
-// Solving is undo-based: the solution is always the inverse of the history.
 import { randInt, type RNG } from "./rng";
 
 export type Face = "U" | "D" | "L" | "R" | "F" | "B";
 export interface Move {
   face: Face;
   prime: boolean; // true = counter-clockwise (as seen looking AT the face)
+  /** Layer depth from that face: 0/undefined = the face itself, 1 = the slice just behind it. */
+  layer?: number;
 }
 
 export const FACES: Face[] = ["U", "D", "L", "R", "F", "B"];
@@ -22,7 +23,7 @@ export const FACE_COLORS: Record<Face, string> = {
 };
 
 export type Vec = [number, number, number];
-interface Sticker {
+export interface Sticker {
   p: Vec; // cubie lattice position, each axis 0..n-1
   nv: Vec; // outward normal (unit axis vector)
   color: Face;
@@ -55,20 +56,6 @@ export function rotateVec(v: Vec, axis: Axis, cw: boolean, m: number): Vec {
   return out;
 }
 
-function rotateNormal(nv: Vec, axis: Axis, cw: boolean): Vec {
-  // same rotation applied to a direction vector (centered: CCW maps (a,b)→(-b,a))
-  const out: Vec = [...nv];
-  const [a, b] = PLANE[axis];
-  if (cw) {
-    out[a] = nv[b];
-    out[b] = -nv[a];
-  } else {
-    out[a] = -nv[b];
-    out[b] = nv[a];
-  }
-  return out;
-}
-
 export class Cube {
   readonly n: number;
   private stickers: Sticker[] = [];
@@ -94,16 +81,31 @@ export class Cube {
     }
   }
 
-  /** Turn a face. CW/CCW is as seen looking AT that face from outside. */
+  /** Turn a layer. CW/CCW is as seen looking AT the move's face from outside.
+   *  Allocation-free: solvers call this millions of times during search. */
   turn(move: Move): void {
-    const { axis, dir } = FACE_AXIS[move.face];
+    const { axis } = FACE_AXIS[move.face];
     const m = this.n - 1;
-    const layer = dir > 0 ? m : 0;
+    const layer = moveLayer(move, this.n);
     const cw = latticeCW(move);
+    const [a, b] = PLANE[axis];
     for (const s of this.stickers) {
       if (s.p[axis] !== layer) continue;
-      s.p = rotateVec(s.p, axis, cw, m);
-      s.nv = rotateNormal(s.nv, axis, cw);
+      const pa = s.p[a];
+      const pb = s.p[b];
+      const na = s.nv[a];
+      const nb = s.nv[b];
+      if (cw) {
+        s.p[a] = pb;
+        s.p[b] = m - pa;
+        s.nv[a] = nb;
+        s.nv[b] = -na;
+      } else {
+        s.p[a] = m - pb;
+        s.p[b] = pa;
+        s.nv[a] = -nb;
+        s.nv[b] = na;
+      }
     }
   }
 
@@ -140,6 +142,11 @@ export class Cube {
     });
   }
 
+  /** Read-only sticker view for solvers — never mutate through this. */
+  getStickers(): readonly Readonly<Sticker>[] {
+    return this.stickers;
+  }
+
   /** Deep copy (same sticker positions, normals and colors). */
   clone(): Cube {
     const c = new Cube(this.n);
@@ -165,8 +172,8 @@ export class Cube {
   }
 }
 
-/** Face whose outward normal equals nv (only valid on a solved lattice). */
-function faceFromNormal(nv: Vec): Face {
+/** Face whose outward normal equals nv. */
+export function faceFromNormal(nv: Vec): Face {
   for (const f of FACES) {
     const { axis, dir } = FACE_AXIS[f];
     const want: Vec = [0, 0, 0];
@@ -189,7 +196,13 @@ export function projectToGrid(face: Face, p: Vec, m: number): [number, number] {
   }
 }
 
-export const inverse = (mv: Move): Move => ({ face: mv.face, prime: !mv.prime });
+/** Lattice index (0..n-1) of the layer a move rotates, on the move's axis. */
+export function moveLayer(move: Move, n: number): number {
+  const depth = move.layer ?? 0;
+  return FACE_AXIS[move.face].dir > 0 ? n - 1 - depth : depth;
+}
+
+export const inverse = (mv: Move): Move => ({ ...mv, prime: !mv.prime });
 
 /**
  * Whether a move is a CLOCKWISE lattice rotation about its axis (viewed from
@@ -202,33 +215,36 @@ export function latticeCW(move: Move): boolean {
   return move.prime ? dir < 0 : dir > 0;
 }
 
-/** Random scramble that never undoes its own previous move. */
-export function scramble(count: number, rng: RNG): Move[] {
+/**
+ * Random scramble that never re-turns the layer it just turned. `layers` is
+ * how many layer depths each face may use (1 = outer only; 2 adds the inner
+ * slice, enough to reach every real 4×4/5×5 state).
+ */
+export function scramble(count: number, rng: RNG, layers = 1): Move[] {
   const out: Move[] = [];
   for (let i = 0; i < count; i++) {
     let mv: Move;
     do {
-      mv = { face: FACES[randInt(rng, 0, 5)], prime: rng() < 0.5 };
-    } while (out.length > 0 && mv.face === out[out.length - 1].face);
+      mv = { face: FACES[randInt(rng, 0, 5)], prime: rng() < 0.5, layer: randInt(rng, 0, layers - 1) };
+    } while (out.length > 0 && sameLayer(mv, out[out.length - 1]));
     out.push(mv);
   }
   return out;
 }
 
-/**
- * History → shortest undo plan: cancel adjacent inverse pairs and collapse
- * triple-same into a single opposite turn, then reverse + invert.
- */
-export function solutionFor(history: Move[]): Move[] {
+const sameLayer = (a: Move, b: Move): boolean => a.face === b.face && (a.layer ?? 0) === (b.layer ?? 0);
+
+/** Cancel adjacent inverse pairs; collapse triple-same into one opposite turn. */
+export function compress(moves: Move[]): Move[] {
   const h: Move[] = [];
-  for (const mv of history) {
+  for (const mv of moves) {
     const top = h[h.length - 1];
-    if (top && top.face === mv.face && top.prime !== mv.prime) {
+    if (top && sameLayer(top, mv) && top.prime !== mv.prime) {
       h.pop(); // X then X' cancels
       continue;
     }
     const a = h[h.length - 2];
-    if (top && a && top.face === mv.face && a.face === mv.face && top.prime === mv.prime && a.prime === mv.prime) {
+    if (top && a && sameLayer(top, mv) && sameLayer(a, mv) && top.prime === mv.prime && a.prime === mv.prime) {
       h.pop();
       h.pop();
       h.push(inverse(mv)); // three same turns = one opposite turn
@@ -236,5 +252,10 @@ export function solutionFor(history: Move[]): Move[] {
     }
     h.push(mv);
   }
-  return h.map(inverse).reverse();
+  return h;
+}
+
+/** History → shortest undo plan: compress, then reverse + invert. */
+export function solutionFor(history: Move[]): Move[] {
+  return compress(history).map(inverse).reverse();
 }

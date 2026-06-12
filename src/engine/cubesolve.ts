@@ -7,7 +7,7 @@
 import { Cube, FACES, inverse, type Face, type Move } from "./cube";
 
 /** cubejs reads faces in this order, each row-major in faceGrid orientation. */
-const FACELET_ORDER: Face[] = ["U", "R", "F", "D", "L", "B"];
+export const FACELET_ORDER: Face[] = ["U", "R", "F", "D", "L", "B"];
 
 /** A solved cube's colors keyed by face — what a correct entry must contain. */
 export function cubeToFacelets(cube: Cube): string {
