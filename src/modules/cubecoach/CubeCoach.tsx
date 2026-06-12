@@ -11,6 +11,7 @@ const SIZES = [
   { n: 2, name: "2×2 Mini", moves: 8 },
   { n: 3, name: "3×3 Classic", moves: 12 },
   { n: 4, name: "4×4 Big", moves: 16 },
+  { n: 5, name: "5×5 Huge", moves: 20 },
 ];
 
 /**
