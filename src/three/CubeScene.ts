@@ -3,10 +3,21 @@
 // helper the logic engine uses, so the picture can never disagree with the
 // engine's idea of the cube.
 import * as THREE from "three";
-import { FACE_AXIS, FACE_COLORS, latticeCW, rotateVec, type Move, type Vec } from "../engine/cube";
+import { FACE_AXIS, FACE_COLORS, FACES, latticeCW, projectToGrid, rotateVec, type Face, type Move, type Vec } from "../engine/cube";
 
 const TURN_MS = 260;
 const INNER = 0x101c38;
+const BLANK = 0x2a3550; // unpainted sticker
+/** BoxGeometry material order +x,-x,+y,-y,+z,-z → face letters. */
+const MAT_FACE: Face[] = ["R", "L", "U", "D", "F", "B"];
+
+/** A sticker the player may paint: which cubelet face it lives on. */
+export interface PaintSticker {
+  grid: Vec;
+  face: Face;
+  color: Face | null; // null = blank
+  locked: boolean;
+}
 const AXIS_VEC: Record<number, THREE.Vector3> = {
   0: new THREE.Vector3(1, 0, 0),
   1: new THREE.Vector3(0, 1, 0),
@@ -19,6 +30,8 @@ interface Cubelet {
   /** Exact accumulated orientation (multiples of 90°). */
   quat: THREE.Quaternion;
 }
+
+const stickerKey = (grid: Vec, face: Face): string => `${grid[0]},${grid[1]},${grid[2]}|${face}`;
 
 function cubeletMaterials(grid: Vec, n: number): THREE.Material[] {
   const m = n - 1;
@@ -45,6 +58,13 @@ export class CubeScene {
   private azimuth = 0.62;
   private polar = 1.05;
   private anim: { pivot: THREE.Group; axis: THREE.Vector3; target: number; t0: number; sel: Cubelet[]; move: Move; done?: () => void } | null = null;
+
+  private raycaster = new THREE.Raycaster();
+  private painting = false;
+  private paintColor: Face = "U";
+  /** Paintable stickers keyed by `${x},${y},${z}|FACE`. */
+  private paint = new Map<string, PaintSticker>();
+  private onPaintChange?: (remaining: number) => void;
 
   static create(host: HTMLElement): CubeScene {
     return new CubeScene(host);
@@ -79,27 +99,61 @@ export class CubeScene {
     this.raf = requestAnimationFrame(tick);
   }
 
-  /** Drag anywhere on the canvas to orbit around the cube. */
+  /** Drag to orbit; a tap (while painting) paints the sticker under it. */
   private attachOrbit(): void {
     let dragging = false;
     let lx = 0;
     let ly = 0;
+    let moved = 0; // total drag distance — distinguishes a tap from an orbit
     const el = this.renderer.domElement;
     el.addEventListener("pointerdown", (e) => {
       dragging = true;
+      moved = 0;
       lx = e.clientX;
       ly = e.clientY;
       el.setPointerCapture(e.pointerId);
     });
     el.addEventListener("pointermove", (e) => {
       if (!dragging) return;
+      moved += Math.abs(e.clientX - lx) + Math.abs(e.clientY - ly);
       this.azimuth -= (e.clientX - lx) * 0.008;
       this.polar = Math.max(0.4, Math.min(2.4, this.polar - (e.clientY - ly) * 0.006));
       lx = e.clientX;
       ly = e.clientY;
     });
-    el.addEventListener("pointerup", () => (dragging = false));
+    el.addEventListener("pointerup", (e) => {
+      dragging = false;
+      if (this.painting && moved < 8) this.paintAt(e.clientX, e.clientY);
+    });
     el.addEventListener("pointercancel", () => (dragging = false));
+  }
+
+  /** Raycast a screen point to a sticker and paint it the current color. */
+  private paintAt(clientX: number, clientY: number): void {
+    const rect = this.renderer.domElement.getBoundingClientRect();
+    const ndc = new THREE.Vector2(
+      ((clientX - rect.left) / rect.width) * 2 - 1,
+      -((clientY - rect.top) / rect.height) * 2 + 1,
+    );
+    this.raycaster.setFromCamera(ndc, this.camera);
+    const meshes = this.cubelets.map((c) => c.mesh);
+    const hit = this.raycaster.intersectObjects(meshes, false)[0];
+    if (!hit || hit.face == null) return;
+    const cub = this.cubelets.find((c) => c.mesh === hit.object);
+    if (!cub) return;
+    const face = MAT_FACE[Math.floor(hit.face.materialIndex)];
+    const k = stickerKey(cub.grid, face);
+    const st = this.paint.get(k);
+    if (!st || st.locked) return;
+    st.color = this.paintColor;
+    (cub.mesh.material as THREE.MeshStandardMaterial[])[hit.face.materialIndex].color.set(FACE_COLORS[this.paintColor]);
+    this.onPaintChange?.(this.remainingBlanks());
+  }
+
+  private remainingBlanks(): number {
+    let n = 0;
+    for (const st of this.paint.values()) if (!st.color) n++;
+    return n;
   }
 
   private placeCamera(): void {
@@ -149,6 +203,53 @@ export class CubeScene {
         }
       }
     }
+  }
+
+  /**
+   * Enter paint mode: rebuild a size-n cube with every visible sticker blank,
+   * except `locked` reference stickers (centers / a fixed corner). `onChange`
+   * reports how many stickers are still blank after each tap.
+   */
+  enterPaint(n: number, locked: { grid: Vec; face: Face; color: Face }[], onChange: (remaining: number) => void): void {
+    this.setSize(n);
+    this.paint.clear();
+    this.painting = true;
+    this.onPaintChange = onChange;
+    const lock = new Map(locked.map((l) => [stickerKey(l.grid, l.face), l.color] as const));
+    const m = n - 1;
+    for (const cub of this.cubelets) {
+      const [x, y, z] = cub.grid;
+      const visible: Partial<Record<Face, boolean>> = { R: x === m, L: x === 0, U: y === m, D: y === 0, F: z === m, B: z === 0 };
+      for (const face of FACES) {
+        if (!visible[face]) continue;
+        const k = stickerKey(cub.grid, face);
+        const lockedColor = lock.get(k) ?? null;
+        this.paint.set(k, { grid: [...cub.grid] as Vec, face, color: lockedColor, locked: lockedColor !== null });
+        const mat = (cub.mesh.material as THREE.MeshStandardMaterial[])[MAT_FACE.indexOf(face)];
+        mat.color.set(lockedColor ? FACE_COLORS[lockedColor] : BLANK);
+      }
+    }
+    onChange(this.remainingBlanks());
+  }
+
+  setPaintColor(face: Face): void {
+    this.paintColor = face;
+  }
+
+  exitPaint(): void {
+    this.painting = false;
+  }
+
+  /** Read the painted stickers back as per-face color grids (blanks → "U"). */
+  getPaintedColors(n: number): Record<Face, Face[][]> {
+    const m = n - 1;
+    const grids = {} as Record<Face, Face[][]>;
+    for (const f of FACES) grids[f] = Array.from({ length: n }, () => Array.from({ length: n }, () => "U" as Face));
+    for (const st of this.paint.values()) {
+      const [row, col] = projectToGrid(st.face, st.grid, m);
+      grids[st.face][row][col] = st.color ?? "U";
+    }
+    return grids;
   }
 
   get busy(): boolean {

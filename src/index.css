@@ -1321,6 +1321,33 @@ body {
 .cube-sizes {
   flex-wrap: wrap;
 }
+.cube-palette {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 4px 0 2px;
+}
+.cube-swatch {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: transform 0.1s, border-color 0.1s;
+}
+.cube-swatch.is-sel {
+  border-color: #fff;
+  transform: scale(1.15);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.5);
+}
+.cube-paint-error {
+  text-align: center;
+  color: #ffd500;
+  font-weight: 700;
+  margin: 2px 0;
+  font-size: 14px;
+}
 
 /* ---------- jump jam ---------- */
 .jam-stage {

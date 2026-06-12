@@ -139,6 +139,54 @@ export class Cube {
       return g.every((row) => row.every((cell) => cell === c));
     });
   }
+
+  /** Deep copy (same sticker positions, normals and colors). */
+  clone(): Cube {
+    const c = new Cube(this.n);
+    c.stickers = this.stickers.map((s) => ({ p: [...s.p] as Vec, nv: [...s.nv] as Vec, color: s.color }));
+    return c;
+  }
+
+  /**
+   * Build a cube from hand-entered face colors (each `grids[face]` is an n×n
+   * array of color letters in the SAME orientation `faceGrid` returns). Lets a
+   * physical cube's state be entered, then validated/turned/solved.
+   */
+  static fromColors(n: number, grids: Record<Face, Face[][]>): Cube {
+    const cube = new Cube(n);
+    const m = n - 1;
+    for (const s of cube.stickers) {
+      // which face does this sticker currently show? (solved cube: nv axis)
+      const face = faceFromNormal(s.nv);
+      const [row, col] = projectToGrid(face, s.p, m);
+      s.color = grids[face][row][col];
+    }
+    return cube;
+  }
+}
+
+/** Face whose outward normal equals nv (only valid on a solved lattice). */
+function faceFromNormal(nv: Vec): Face {
+  for (const f of FACES) {
+    const { axis, dir } = FACE_AXIS[f];
+    const want: Vec = [0, 0, 0];
+    want[axis] = dir;
+    if (nv[0] === want[0] && nv[1] === want[1] && nv[2] === want[2]) return f;
+  }
+  return "U";
+}
+
+/** Position → (row,col) in a face's 2D grid — mirror of Cube.faceGrid. */
+export function projectToGrid(face: Face, p: Vec, m: number): [number, number] {
+  const [x, y, z] = p;
+  switch (face) {
+    case "F": return [m - y, x];
+    case "B": return [m - y, m - x];
+    case "U": return [z, x];
+    case "D": return [m - z, x];
+    case "R": return [m - y, m - z];
+    case "L": return [m - y, z];
+  }
 }
 
 export const inverse = (mv: Move): Move => ({ face: mv.face, prime: !mv.prime });
