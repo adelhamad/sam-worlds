@@ -59,6 +59,9 @@ export interface SettingsRow {
   /** Minigame records. */
   rushBest?: number;
   surfBest?: number;
+  critterBest?: number;
+  /** Critterdex: animal names Sam has correctly identified at least once. */
+  critterDex?: string[];
 }
 export interface CouponRow {
   id?: number;

@@ -10,6 +10,7 @@ import { BADGES, stageById, stageIndexInWorld, worldOfStage, worldById, type Bad
 import { withGameDefaults, withWorldDefaults } from "./gates";
 import { missTransition, withReplacedQuestion } from "./missTransition";
 import { persistSettings, settingsState } from "./settings";
+import { recordActions } from "./records";
 import { persona } from "../persona.config";
 import { newSeed } from "../engine/rng";
 import { setMuted } from "../engine/feedback/audio";
@@ -52,6 +53,8 @@ export interface GameStore {
   videoUrls: string[];
   rushBest: number;
   surfBest: number;
+  critterBest: number;
+  critterDex: string[];
   session: Session | null;
 
   hydrate: () => Promise<void>;
@@ -77,6 +80,9 @@ export interface GameStore {
   resetRushBest: () => void;
   reportSurfScore: (score: number) => void;
   resetSurfBest: () => void;
+  reportCritterScore: (score: number) => void;
+  addCritterDex: (names: string[]) => void;
+  resetCritter: () => void;
   addVideoUrl: (url: string) => void;
   removeVideoUrl: (url: string) => void;
   resetAll: () => Promise<void>;
@@ -128,6 +134,8 @@ export const useGame = create<GameStore>((set, get) => ({
   videoUrls: [],
   rushBest: 0,
   surfBest: 0,
+  critterBest: 0,
+  critterDex: [],
   session: null,
 
   hydrate: async () => {
@@ -471,31 +479,7 @@ export const useGame = create<GameStore>((set, get) => ({
     persistSettings(get);
   },
 
-  reportRushScore: (score) => {
-    logEvent("rush.run", { score });
-    if (score <= get().rushBest) return;
-    set({ rushBest: score });
-    persistSettings(get);
-  },
-
-  resetRushBest: () => {
-    set({ rushBest: 0 });
-    persistSettings(get);
-    logEvent("parent.rushReset", {});
-  },
-
-  reportSurfScore: (score) => {
-    logEvent("surf.run", { score });
-    if (score <= get().surfBest) return;
-    set({ surfBest: score });
-    persistSettings(get);
-  },
-
-  resetSurfBest: () => {
-    set({ surfBest: 0 });
-    persistSettings(get);
-    logEvent("parent.surfReset", {});
-  },
+  ...recordActions(set, get),
 
   addVideoUrl: (url) => {
     const u = url.trim();

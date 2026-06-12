@@ -4,7 +4,7 @@ import { withGameDefaults, withWorldDefaults } from "./gates";
 import type { GameStore } from "./store";
 
 export function persistSettings(get: () => GameStore): void {
-  const { soundOn, musicOn, lastStageId, enabledWorlds, enabledGames, videoEnabled, videoMode, videoUrls, videoOpacity, rushBest, surfBest } = get();
+  const { soundOn, musicOn, lastStageId, enabledWorlds, enabledGames, videoEnabled, videoMode, videoUrls, videoOpacity, rushBest, surfBest, critterBest, critterDex } = get();
   void db.settings.put({
     id: 1,
     soundOn,
@@ -18,6 +18,8 @@ export function persistSettings(get: () => GameStore): void {
     videoOpacity,
     rushBest,
     surfBest,
+    critterBest,
+    critterDex,
   });
 }
 
@@ -34,6 +36,8 @@ export function settingsState(settings: SettingsRow | undefined) {
     videoOpacity: settings?.videoOpacity ?? 80,
     rushBest: settings?.rushBest ?? 0,
     surfBest: settings?.surfBest ?? 0,
+    critterBest: settings?.critterBest ?? 0,
+    critterDex: settings?.critterDex ?? [],
     videoUrls: settings?.videoUrls ?? [],
   };
 }

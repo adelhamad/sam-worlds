@@ -239,8 +239,11 @@ function AccessControls() {
 function MinigameRecords() {
   const rushBest = useGame((s) => s.rushBest);
   const surfBest = useGame((s) => s.surfBest);
+  const critterBest = useGame((s) => s.critterBest);
+  const critterDex = useGame((s) => s.critterDex);
   const resetRushBest = useGame((s) => s.resetRushBest);
   const resetSurfBest = useGame((s) => s.resetSurfBest);
+  const resetCritter = useGame((s) => s.resetCritter);
   return (
     <>
       {rushBest > 0 && (
@@ -256,6 +259,16 @@ function MinigameRecords() {
           <span className="parent-world-name">🏄 Word Surfer best: {surfBest}</span>
           <button className="btn btn-secondary" onClick={resetSurfBest}>
             Reset record
+          </button>
+        </div>
+      )}
+      {(critterBest > 0 || critterDex.length > 0) && (
+        <div className="parent-row parent-world-row">
+          <span className="parent-world-name">
+            🦉 Critter Current best: {critterBest} · 📔 {critterDex.length} discovered
+          </span>
+          <button className="btn btn-secondary" onClick={resetCritter}>
+            Reset
           </button>
         </div>
       )}

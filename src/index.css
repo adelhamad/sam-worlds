@@ -1417,6 +1417,34 @@ body {
   padding: 4px 16px;
   animation: zone-pop 0.5s ease-out;
 }
+
+/* ---------- critter current ---------- */
+.critter-ask {
+  max-width: min(92vw, 680px);
+  white-space: normal;
+  text-align: center;
+  line-height: 1.2;
+}
+.critter-golden {
+  color: #ffd84d;
+  text-shadow: 0 0 18px rgba(255, 216, 77, 0.6);
+}
+.critter-toast {
+  letter-spacing: 0.5px;
+  max-width: min(92vw, 640px);
+  white-space: normal;
+  text-align: center;
+  line-height: 1.35;
+}
+.critter-toast-teach {
+  color: #ffd9a0;
+  border-color: rgba(255, 180, 84, 0.5);
+  font-size: 18px;
+}
+.critter-toast-new {
+  color: #b6ffce;
+  border-color: rgba(52, 211, 153, 0.5);
+}
 @keyframes zone-pop {
   from {
     transform: scale(1.5);

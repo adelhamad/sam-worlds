@@ -11,6 +11,7 @@ import { LockedScreen } from "./ui/LockedScreen";
 import { VideoCompanion } from "./ui/VideoCompanion";
 import { NumberRush } from "./modules/numberrush/NumberRush";
 import { WordSurf } from "./modules/wordsurf/WordSurf";
+import { CritterCurrent } from "./modules/critters/CritterCurrent";
 import { CubeCoach } from "./modules/cubecoach/CubeCoach";
 import { JumpJam } from "./modules/jumpjam/JumpJam";
 import { Calculator } from "./modules/calculator/Calculator";
@@ -102,6 +103,7 @@ export default function App() {
         <Route path="/catch" element={<GameGate id="catch"><CometCatch /></GameGate>} />
         <Route path="/rush" element={<GameGate id="rush"><NumberRush /></GameGate>} />
         <Route path="/surf" element={<GameGate id="surf"><WordSurf /></GameGate>} />
+        <Route path="/critter" element={<GameGate id="critter"><CritterCurrent /></GameGate>} />
         <Route path="/cube" element={<GameGate id="cube"><CubeCoach /></GameGate>} />
         <Route path="/jump" element={<GameGate id="jump"><JumpJam /></GameGate>} />
         <Route path="/calc" element={<GameGate id="calc"><Calculator /></GameGate>} />
