@@ -26,16 +26,21 @@ interface Gate {
   lanes: string[]; // 3 labels, one per lane
 }
 
+const levelOf = (score: number) => Math.min(6, Math.floor(score / 8));
+
 function makeGate(rng: RNG, score: number): Gate {
-  const level = Math.min(6, Math.floor(score / 8));
-  const q = generateArithmetic(bandParams(level), rng, { difficulty: Math.min(1, score / 50), easier: false });
+  const q = generateArithmetic(bandParams(levelOf(score)), rng, { difficulty: Math.min(1, score / 50), easier: false });
   const wrongs = [...new Set(q.choices.filter((c) => c !== q.answer))].slice(0, 2);
   while (wrongs.length < 2) wrongs.push(String(Number(q.answer) + wrongs.length + 1));
   return { prompt: q.prompt, answer: q.answer, lanes: shuffle(rng, [q.answer, ...wrongs]) };
 }
 
-/** Gate travel time shrinks as the score grows — the speed ramp. */
-const gateMs = (score: number) => Math.max(1600, 3600 - score * 45);
+/**
+ * Gate travel time GROWS with the difficulty band, so a harder question always
+ * gives more thinking time than an easier one — never less. (It used to shrink
+ * as the score climbed, which rushed the hardest questions the most.)
+ */
+const gateMs = (score: number) => 2800 + levelOf(score) * 350;
 
 export function NumberRush() {
   const navigate = useNavigate();

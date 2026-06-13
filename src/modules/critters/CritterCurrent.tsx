@@ -103,7 +103,9 @@ export function CritterCurrent() {
     r.alive.clear();
     r.spawnAcc = -0.8; // a breath while the banner shows
     sceneRef.current?.setPalette(TRAIT_PALETTE[wave.trait]);
-    sceneRef.current!.flow = Math.min(2.1, 1 + r.waveIdx * 0.07);
+    // Flow quickens only gently and caps low, so later waves never rush the
+    // tap window (it used to more than double, leaving little reaction time).
+    sceneRef.current!.flow = Math.min(1.5, 1 + r.waveIdx * 0.03);
     syncHud(r);
   }
 
@@ -120,7 +122,7 @@ export function CritterCurrent() {
       return;
     }
     r.spawnAcc += dt;
-    const gap = Math.max(0.8, 1.7 - r.waveIdx * 0.05);
+    const gap = Math.max(1.1, 1.7 - r.waveIdx * 0.03);
     if (r.pending.length > 0 && r.spawnAcc >= gap) {
       r.spawnAcc = 0;
       const slot = r.pending.shift()!;

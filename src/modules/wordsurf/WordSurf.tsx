@@ -76,6 +76,13 @@ interface RunState {
 
 const zoneOf = (r: RunState): Zone => ZONE_CYCLE[r.zoneIdx % ZONE_CYCLE.length];
 
+/**
+ * Surf speed grows GENTLY and caps low, so reading/spelling time stays
+ * comfortable as the run advances. (It used to ramp to 40 within ~50 points,
+ * leaving almost no reaction time for the harder later zones.)
+ */
+const surfSpeed = (score: number) => Math.min(24, 16 + score * 0.16);
+
 function spellTask(r: RunState): Task {
   const need = r.word[r.collected];
   const wrongs = shuffle(r.rng, [...ALPHA].filter((c) => c !== need)).slice(0, 2);
@@ -211,7 +218,7 @@ export function WordSurf() {
       setPhase("done");
       return;
     }
-    scene.speed = Math.min(40, 16 + r.score * 0.5);
+    scene.speed = surfSpeed(r.score);
     spawn(r); // a miss never replays the same gates (rule 1)
   }
 
@@ -275,7 +282,7 @@ export function WordSurf() {
       sceneRef.current?.celebrate();
       syncHud(run);
     };
-    scene.speed = 16;
+    scene.speed = surfSpeed(0);
     scene.setLane(1);
     scene.start();
     setPhase("play");
