@@ -6,7 +6,11 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: "autoUpdate",
+      // We register + drive updates ourselves in src/pwa.ts so a new deploy is
+      // applied seamlessly (reload only while the tab is hidden). Disable the
+      // auto-injected registration and use prompt mode for that manual control.
+      registerType: "prompt",
+      injectRegister: false,
       includeAssets: ["icons/icon-192.png", "icons/icon-512.png"],
       manifest: {
         name: "Sam's Worlds",
