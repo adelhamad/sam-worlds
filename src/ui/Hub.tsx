@@ -33,6 +33,9 @@ const PLANET_HUES: Record<string, string> = {
   chemistry: "#a3e635",
   algebra: "#e879f9",
   placevalue: "#60a5fa",
+  money: "#fcd34d",
+  shapes: "#f472b6",
+  measure: "#2dd4bf",
 };
 
 export function Hub() {

@@ -21,6 +21,9 @@ import physicsStages from "./physics/stages.json";
 import chemistryStages from "./chemistry/stages.json";
 import algebraStages from "./algebra/stages.json";
 import placeValueStages from "./placevalue/stages.json";
+import moneyStages from "./money/stages.json";
+import shapesStages from "./shapes/stages.json";
+import measureStages from "./measure/stages.json";
 import type { StageDef } from "./types";
 
 export interface WorldDef {
@@ -308,6 +311,42 @@ export const WORLDS: WorldDef[] = [
       { stage: 40, name: "Hundreds Climber", icon: "🗼" },
       { stage: 50, name: "Number Sage", icon: "🧠" },
       { stage: 55, name: "Place Value Master", icon: "🏆" },
+    ],
+  },
+  {
+    id: "money", name: "Coin Quest", icon: "🪙", tagline: "Count coins, make change!",
+    stages: moneyStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Coin Counter", icon: "🪙" },
+      { stage: 20, name: "Pocket Money", icon: "👛" },
+      { stage: 30, name: "Coin Builder", icon: "🧮" },
+      { stage: 40, name: "Shopkeeper", icon: "🛒" },
+      { stage: 50, name: "Dollar Champ", icon: "💵" },
+      { stage: 55, name: "Money Master", icon: "🏆" },
+    ],
+  },
+  {
+    id: "shapes", name: "Shape Studio", icon: "🔺", tagline: "Shapes, solids & fractions!",
+    stages: shapesStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Side Counter", icon: "📐" },
+      { stage: 20, name: "Shape Spotter", icon: "🔷" },
+      { stage: 30, name: "Fraction Finder", icon: "🍕" },
+      { stage: 40, name: "Array Builder", icon: "🔢" },
+      { stage: 50, name: "Geometry Star", icon: "✨" },
+      { stage: 55, name: "Shape Master", icon: "🏆" },
+    ],
+  },
+  {
+    id: "measure", name: "Measure Up", icon: "📏", tagline: "Longer, shorter, how far!",
+    stages: measureStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Length Spotter", icon: "📏" },
+      { stage: 20, name: "Difference Finder", icon: "➖" },
+      { stage: 30, name: "Unit Counter", icon: "📎" },
+      { stage: 40, name: "Ruler Reader", icon: "📐" },
+      { stage: 50, name: "Estimate Expert", icon: "🎯" },
+      { stage: 55, name: "Measure Master", icon: "🏆" },
     ],
   },
 ];

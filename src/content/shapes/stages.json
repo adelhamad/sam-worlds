@@ -1,0 +1,988 @@
+[
+  {
+    "id": "shapes-01",
+    "name": "Count the Sides",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Shapes have straight sides.",
+      "A triangle has 3 sides.",
+      "Count and type!"
+    ]
+  },
+  {
+    "id": "shapes-02",
+    "name": "More Sides",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24
+  },
+  {
+    "id": "shapes-03",
+    "name": "Count the Corners",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "corners"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 25,
+    "intro": [
+      "Corners are where sides meet.",
+      "A square has 4 corners.",
+      "Count the corners!"
+    ]
+  },
+  {
+    "id": "shapes-04",
+    "name": "Sides and Corners",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "shapes-05",
+    "name": "Shape Spotter",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "nameShape"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26,
+    "intro": [
+      "Name the shape by its sides.",
+      "3 sides → triangle.",
+      "Pick the right one!"
+    ]
+  },
+  {
+    "id": "shapes-06",
+    "name": "Name the Shape",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "nameShape"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 27
+  },
+  {
+    "id": "shapes-07",
+    "name": "Shape Detective",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "nameShape",
+        "sides",
+        "corners"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 28
+  },
+  {
+    "id": "shapes-08",
+    "name": "Flat Shapes Master",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "shapes-09",
+    "name": "Solid Shapes",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "shape3d"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 27,
+    "intro": [
+      "Some shapes are solid (3D).",
+      "A dice is a cube · a ball is a sphere.",
+      "Name it or count its faces!"
+    ]
+  },
+  {
+    "id": "shapes-10",
+    "name": "Faces of Solids",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "shape3d"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 28
+  },
+  {
+    "id": "shapes-11",
+    "name": "3D Shape Hunt",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "shape3d"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "shapes-12",
+    "name": "Solid Master",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "shape3d",
+        "nameShape"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "shapes-13",
+    "name": "Equal Parts",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "fractionName"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 28,
+    "intro": [
+      "Whole things split into equal parts.",
+      "2 parts = halves · 4 = fourths.",
+      "Name each part!"
+    ]
+  },
+  {
+    "id": "shapes-14",
+    "name": "Name the Part",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "fractionName"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "shapes-15",
+    "name": "Halves and Fourths",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "fractionCount"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29,
+    "intro": [
+      "How many parts make a whole?",
+      "It takes 4 fourths to fill one whole.",
+      "Type how many!"
+    ]
+  },
+  {
+    "id": "shapes-16",
+    "name": "Parts of a Whole",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "fractionName",
+        "fractionCount"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "shapes-17",
+    "name": "Sharing Fairly",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "fractionLeft"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29,
+    "intro": [
+      "Cut it, then take some away.",
+      "Pizza in 4, eat 1 → 3 left.",
+      "How many parts left?"
+    ]
+  },
+  {
+    "id": "shapes-18",
+    "name": "Parts Left",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "fractionLeft"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "shapes-19",
+    "name": "Fraction Fun",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "fractionName",
+        "fractionCount",
+        "fractionLeft"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "shapes-20",
+    "name": "Rows and Columns",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "array"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29,
+    "intro": [
+      "Dots in rows and columns!",
+      "3 rows of 4 = 4+4+4 = 12.",
+      "How many in all?"
+    ]
+  },
+  {
+    "id": "shapes-21",
+    "name": "Make an Array",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "array"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "shapes-22",
+    "name": "Array Builder",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "array"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "shapes-23",
+    "name": "Array Master",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "array",
+        "fractionCount"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 32
+  },
+  {
+    "id": "shapes-24",
+    "name": "Geometry Mix I",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 33
+  },
+  {
+    "id": "shapes-25",
+    "name": "Geometry Mix II",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "shapes-26",
+    "name": "Shape Studio 1",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 11
+  },
+  {
+    "id": "shapes-27",
+    "name": "Shape Studio 2",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 12
+  },
+  {
+    "id": "shapes-28",
+    "name": "Shape Studio 3",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 13
+  },
+  {
+    "id": "shapes-29",
+    "name": "Shape Studio 4",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 14
+  },
+  {
+    "id": "shapes-30",
+    "name": "Shape Studio 5",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 15
+  },
+  {
+    "id": "shapes-31",
+    "name": "Shape Studio 6",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 16
+  },
+  {
+    "id": "shapes-32",
+    "name": "Shape Studio 7",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 17
+  },
+  {
+    "id": "shapes-33",
+    "name": "Shape Studio 8",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 18
+  },
+  {
+    "id": "shapes-34",
+    "name": "Shape Studio 9",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 19
+  },
+  {
+    "id": "shapes-35",
+    "name": "Shape Studio 10",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 20
+  },
+  {
+    "id": "shapes-36",
+    "name": "Shape Studio 11",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 21
+  },
+  {
+    "id": "shapes-37",
+    "name": "Shape Studio 12",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 22
+  },
+  {
+    "id": "shapes-38",
+    "name": "Shape Studio 13",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 23
+  },
+  {
+    "id": "shapes-39",
+    "name": "Shape Studio 14",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 24
+  },
+  {
+    "id": "shapes-40",
+    "name": "Shape Studio 15",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 25
+  },
+  {
+    "id": "shapes-41",
+    "name": "Shape Studio 16",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "shapes-42",
+    "name": "Shape Studio 17",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 27
+  },
+  {
+    "id": "shapes-43",
+    "name": "Shape Studio 18",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 28
+  },
+  {
+    "id": "shapes-44",
+    "name": "Shape Studio 19",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "shapes-45",
+    "name": "Shape Studio 20",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "shapes-46",
+    "name": "Shape Studio 21",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "shapes-47",
+    "name": "Shape Studio 22",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 32
+  },
+  {
+    "id": "shapes-48",
+    "name": "Shape Studio 23",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 33
+  },
+  {
+    "id": "shapes-49",
+    "name": "Shape Studio 24",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "shapes-50",
+    "name": "Shape Studio 25",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 35
+  },
+  {
+    "id": "shapes-51",
+    "name": "Shape Studio 26",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "shapes-52",
+    "name": "Shape Studio 27",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 37
+  },
+  {
+    "id": "shapes-53",
+    "name": "Shape Studio 28",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 38
+  },
+  {
+    "id": "shapes-54",
+    "name": "Shape Studio 29",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "shapes-55",
+    "name": "Shape Master",
+    "generator": "shapes",
+    "params": {
+      "types": [
+        "sides",
+        "corners",
+        "nameShape",
+        "shape3d",
+        "fractionName",
+        "fractionCount",
+        "fractionLeft",
+        "array"
+      ]
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 40,
+    "intro": [
+      "The grand studio!",
+      "Shapes, solids and fractions.",
+      "Become a Shape Master!"
+    ]
+  }
+]

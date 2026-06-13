@@ -1,0 +1,1019 @@
+[
+  {
+    "id": "measure-01",
+    "name": "Longer or Shorter",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare"
+      ],
+      "max": 9,
+      "unit": "blocks"
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Compare how long things are.",
+      "🐍 6 blocks vs 🐛 4 blocks.",
+      "Pick the longer one!"
+    ]
+  },
+  {
+    "id": "measure-02",
+    "name": "Which Is Longer?",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare"
+      ],
+      "max": 12,
+      "unit": "blocks"
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24
+  },
+  {
+    "id": "measure-03",
+    "name": "Compare Lengths",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare"
+      ],
+      "max": 12,
+      "unit": "cm"
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 25
+  },
+  {
+    "id": "measure-04",
+    "name": "Length Spotter",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare"
+      ],
+      "max": 15,
+      "unit": "cm"
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "measure-05",
+    "name": "How Much Longer?",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "difference"
+      ],
+      "max": 10,
+      "unit": "cm"
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26,
+    "intro": [
+      "Find the difference in length.",
+      "Rope 8, string 3 → 5 longer.",
+      "Take away to compare!"
+    ]
+  },
+  {
+    "id": "measure-06",
+    "name": "The Difference",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "difference"
+      ],
+      "max": 12,
+      "unit": "cm"
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 27
+  },
+  {
+    "id": "measure-07",
+    "name": "Longer By",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "difference"
+      ],
+      "max": 15,
+      "unit": "cm"
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 28
+  },
+  {
+    "id": "measure-08",
+    "name": "Difference Master",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "difference",
+        "compare"
+      ],
+      "max": 15,
+      "unit": "cm"
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "measure-09",
+    "name": "End to End",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "addLength"
+      ],
+      "max": 9,
+      "unit": "cm"
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 27,
+    "intro": [
+      "Join lengths end to end.",
+      "4 cm + 5 cm = 9 cm.",
+      "Add them up!"
+    ]
+  },
+  {
+    "id": "measure-10",
+    "name": "Join the Sticks",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "addLength"
+      ],
+      "max": 12,
+      "unit": "cm"
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 28
+  },
+  {
+    "id": "measure-11",
+    "name": "Add Lengths",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "addLength"
+      ],
+      "max": 15,
+      "unit": "cm"
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "measure-12",
+    "name": "Length Adder",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "addLength",
+        "difference"
+      ],
+      "max": 15,
+      "unit": "cm"
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "measure-13",
+    "name": "Paperclip Long",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "iterate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 28,
+    "intro": [
+      "Measure with a unit, over and over.",
+      "1 crayon = 5 clips → 2 = 10.",
+      "Count the units!"
+    ]
+  },
+  {
+    "id": "measure-14",
+    "name": "Unit by Unit",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "iterate"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "measure-15",
+    "name": "Iterate Units",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "iterate"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "measure-16",
+    "name": "Measuring Master",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "iterate",
+        "addLength"
+      ],
+      "max": 15,
+      "unit": "cm"
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "measure-17",
+    "name": "Read the Ruler",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "ruler"
+      ],
+      "max": 12,
+      "unit": "cm"
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29,
+    "intro": [
+      "A ruler starts at 0.",
+      "Ends at 7 → it is 7 long.",
+      "Read the length!"
+    ]
+  },
+  {
+    "id": "measure-18",
+    "name": "Ruler Reader",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "ruler"
+      ],
+      "max": 15,
+      "unit": "cm"
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "measure-19",
+    "name": "Start and End",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "ruler"
+      ],
+      "max": 18,
+      "unit": "cm"
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "measure-20",
+    "name": "Ruler Master",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "ruler",
+        "difference"
+      ],
+      "max": 18,
+      "unit": "cm"
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 32
+  },
+  {
+    "id": "measure-21",
+    "name": "Pick the Unit",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "unit"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29,
+    "intro": [
+      "Choose the right measuring unit.",
+      "Small things → cm or inches.",
+      "Big things → feet or meters!"
+    ]
+  },
+  {
+    "id": "measure-22",
+    "name": "Right Unit",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "unit"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "measure-23",
+    "name": "Unit Detective",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "unit"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "measure-24",
+    "name": "About How Long?",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 30,
+    "intro": [
+      "Estimate a sensible length.",
+      "A door is about 2 meters.",
+      "Pick what makes sense!"
+    ]
+  },
+  {
+    "id": "measure-25",
+    "name": "Good Guess",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "estimate"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "measure-26",
+    "name": "Estimate Expert",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "estimate",
+        "unit"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 32
+  },
+  {
+    "id": "measure-27",
+    "name": "Measure Mix I",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength"
+      ],
+      "max": 18,
+      "unit": "cm"
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 33
+  },
+  {
+    "id": "measure-28",
+    "name": "Measure Mix II",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "measure-29",
+    "name": "Measure Lab 1",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 14
+  },
+  {
+    "id": "measure-30",
+    "name": "Measure Lab 2",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 15
+  },
+  {
+    "id": "measure-31",
+    "name": "Measure Lab 3",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 16
+  },
+  {
+    "id": "measure-32",
+    "name": "Measure Lab 4",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 17
+  },
+  {
+    "id": "measure-33",
+    "name": "Measure Lab 5",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 18
+  },
+  {
+    "id": "measure-34",
+    "name": "Measure Lab 6",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 19
+  },
+  {
+    "id": "measure-35",
+    "name": "Measure Lab 7",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 20
+  },
+  {
+    "id": "measure-36",
+    "name": "Measure Lab 8",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 21
+  },
+  {
+    "id": "measure-37",
+    "name": "Measure Lab 9",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 22
+  },
+  {
+    "id": "measure-38",
+    "name": "Measure Lab 10",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 23
+  },
+  {
+    "id": "measure-39",
+    "name": "Measure Lab 11",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 24
+  },
+  {
+    "id": "measure-40",
+    "name": "Measure Lab 12",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 25
+  },
+  {
+    "id": "measure-41",
+    "name": "Measure Lab 13",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "measure-42",
+    "name": "Measure Lab 14",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 27
+  },
+  {
+    "id": "measure-43",
+    "name": "Measure Lab 15",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 28
+  },
+  {
+    "id": "measure-44",
+    "name": "Measure Lab 16",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "measure-45",
+    "name": "Measure Lab 17",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "measure-46",
+    "name": "Measure Lab 18",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "measure-47",
+    "name": "Measure Lab 19",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 32
+  },
+  {
+    "id": "measure-48",
+    "name": "Measure Lab 20",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 33
+  },
+  {
+    "id": "measure-49",
+    "name": "Measure Lab 21",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "measure-50",
+    "name": "Measure Lab 22",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 35
+  },
+  {
+    "id": "measure-51",
+    "name": "Measure Lab 23",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "measure-52",
+    "name": "Measure Lab 24",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 37
+  },
+  {
+    "id": "measure-53",
+    "name": "Measure Lab 25",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 38
+  },
+  {
+    "id": "measure-54",
+    "name": "Measure Lab 26",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "measure-55",
+    "name": "Measure Master",
+    "generator": "measure",
+    "params": {
+      "types": [
+        "compare",
+        "difference",
+        "addLength",
+        "iterate",
+        "ruler",
+        "unit",
+        "estimate"
+      ],
+      "max": 20,
+      "unit": "cm"
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 40,
+    "intro": [
+      "The measurement lab!",
+      "Length, units and estimates.",
+      "Become a Measure Master!"
+    ]
+  }
+]

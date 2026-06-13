@@ -23,6 +23,9 @@ import { generatePhysics, type PhysicsParams } from "./physics";
 import { generateChemistry, type ChemistryParams } from "./chemistry";
 import { generateAlgebra, type AlgebraParams } from "./algebra";
 import { generatePlaceValue, type PlaceValueParams } from "./placeValue";
+import { generateMoney, type MoneyParams } from "./money";
+import { generateShapes, type ShapeParams } from "./shapes";
+import { generateMeasure, type MeasureParams } from "./measure";
 import type { GenContext, GeneratorParams, Question } from "./types";
 
 export type GeneratorId =
@@ -49,59 +52,48 @@ export type GeneratorId =
   | "physics"
   | "chemistry"
   | "algebra"
-  | "placeValue";
+  | "placeValue"
+  | "money"
+  | "shapes"
+  | "measure";
+
+/** Generator registry — one entry per id (params are cast per generator). */
+type GenFn = (params: GeneratorParams, rng: () => number, ctx: GenContext) => Question;
+const cast = <P>(fn: (p: P, rng: () => number, ctx: GenContext) => Question): GenFn =>
+  (params, rng, ctx) => fn(params as unknown as P, rng, ctx);
+
+const GENERATORS: Record<GeneratorId, GenFn> = {
+  arithmetic: cast<ArithmeticParams>(generateArithmetic),
+  numberSequence: cast<SequenceParams>(generateNumberSequence),
+  melody: cast<MelodyParams>(generateMelody),
+  logicCircuit: cast<LogicParams>(generateLogicCircuit),
+  robotMaze: cast<RobotParams>(generateRobotMaze),
+  clock: cast<ClockParams>(generateClock),
+  cipher: cast<CipherParams>(generateCipher),
+  builder: cast<BuilderParams>(generateBuilder),
+  living: cast<LivingParams>(generateLiving),
+  atlas: cast<AtlasParams>(generateAtlas),
+  flags: cast<FlagsParams>(generateFlags),
+  arabic: cast<ArabicParams>(generateArabic),
+  craft: cast<CraftParams>(generateCraft),
+  wordWizard: cast<WordParams>(generateWordWizard),
+  body: cast<BodyParams>(generateBody),
+  feelings: cast<FeelingsParams>(generateFeelings),
+  affix: cast<AffixParams>(generateAffix),
+  grammar: cast<GrammarParams>(generateGrammar),
+  prepositions: cast<PrepositionParams>(generatePrepositions),
+  directions: cast<DirectionParams>(generateDirections),
+  physics: cast<PhysicsParams>(generatePhysics),
+  chemistry: cast<ChemistryParams>(generateChemistry),
+  algebra: cast<AlgebraParams>(generateAlgebra),
+  placeValue: cast<PlaceValueParams>(generatePlaceValue),
+  money: cast<MoneyParams>(generateMoney),
+  shapes: cast<ShapeParams>(generateShapes),
+  measure: cast<MeasureParams>(generateMeasure),
+};
 
 function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, ctx: GenContext): Question {
-  switch (id) {
-    case "arithmetic":
-      return generateArithmetic(params as unknown as ArithmeticParams, rng, ctx);
-    case "numberSequence":
-      return generateNumberSequence(params as unknown as SequenceParams, rng, ctx);
-    case "melody":
-      return generateMelody(params as unknown as MelodyParams, rng, ctx);
-    case "logicCircuit":
-      return generateLogicCircuit(params as unknown as LogicParams, rng, ctx);
-    case "robotMaze":
-      return generateRobotMaze(params as unknown as RobotParams, rng, ctx);
-    case "clock":
-      return generateClock(params as unknown as ClockParams, rng, ctx);
-    case "cipher":
-      return generateCipher(params as unknown as CipherParams, rng, ctx);
-    case "builder":
-      return generateBuilder(params as unknown as BuilderParams, rng, ctx);
-    case "living":
-      return generateLiving(params as unknown as LivingParams, rng, ctx);
-    case "atlas":
-      return generateAtlas(params as unknown as AtlasParams, rng, ctx);
-    case "flags":
-      return generateFlags(params as unknown as FlagsParams, rng, ctx);
-    case "arabic":
-      return generateArabic(params as unknown as ArabicParams, rng, ctx);
-    case "craft":
-      return generateCraft(params as unknown as CraftParams, rng, ctx);
-    case "wordWizard":
-      return generateWordWizard(params as unknown as WordParams, rng, ctx);
-    case "body":
-      return generateBody(params as unknown as BodyParams, rng, ctx);
-    case "feelings":
-      return generateFeelings(params as unknown as FeelingsParams, rng, ctx);
-    case "affix":
-      return generateAffix(params as unknown as AffixParams, rng, ctx);
-    case "grammar":
-      return generateGrammar(params as unknown as GrammarParams, rng, ctx);
-    case "prepositions":
-      return generatePrepositions(params as unknown as PrepositionParams, rng, ctx);
-    case "directions":
-      return generateDirections(params as unknown as DirectionParams, rng, ctx);
-    case "physics":
-      return generatePhysics(params as unknown as PhysicsParams, rng, ctx);
-    case "chemistry":
-      return generateChemistry(params as unknown as ChemistryParams, rng, ctx);
-    case "algebra":
-      return generateAlgebra(params as unknown as AlgebraParams, rng, ctx);
-    case "placeValue":
-      return generatePlaceValue(params as unknown as PlaceValueParams, rng, ctx);
-  }
+  return GENERATORS[id](params, rng, ctx);
 }
 
 /** Generate a fresh question set; avoids duplicate prompts within a session. */

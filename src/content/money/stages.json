@@ -1,0 +1,1259 @@
+[
+  {
+    "id": "money-01",
+    "name": "Meet the Coins",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue"
+      ],
+      "coins": [
+        1,
+        5,
+        10
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Coins are worth cents!",
+      "Penny 1¢ · nickel 5¢ · dime 10¢.",
+      "Type the value!"
+    ]
+  },
+  {
+    "id": "money-02",
+    "name": "Coin Values",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24
+  },
+  {
+    "id": "money-03",
+    "name": "Name That Coin",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 25
+  },
+  {
+    "id": "money-04",
+    "name": "Coin Expert",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "money-05",
+    "name": "Count Pennies",
+    "generator": "money",
+    "params": {
+      "types": [
+        "countSame"
+      ],
+      "coins": [
+        1,
+        5
+      ],
+      "max": 30
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 25,
+    "intro": [
+      "Count coins of one kind.",
+      "3 nickels = 5, 10, 15.",
+      "Skip-count to the total!"
+    ]
+  },
+  {
+    "id": "money-06",
+    "name": "Count Nickels",
+    "generator": "money",
+    "params": {
+      "types": [
+        "countSame"
+      ],
+      "coins": [
+        5,
+        10
+      ],
+      "max": 50
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "money-07",
+    "name": "Count Dimes",
+    "generator": "money",
+    "params": {
+      "types": [
+        "countSame"
+      ],
+      "coins": [
+        10,
+        25
+      ],
+      "max": 60
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 27
+  },
+  {
+    "id": "money-08",
+    "name": "Stacks of Coins",
+    "generator": "money",
+    "params": {
+      "types": [
+        "countSame"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 80
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 28
+  },
+  {
+    "id": "money-09",
+    "name": "A Mixed Handful",
+    "generator": "money",
+    "params": {
+      "types": [
+        "countMixed"
+      ],
+      "coins": [
+        1,
+        5,
+        10
+      ],
+      "max": 40
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 27,
+    "intro": [
+      "Now coins of two kinds.",
+      "2 dimes and 3 pennies = 23¢.",
+      "Big coins first, then count on!"
+    ]
+  },
+  {
+    "id": "money-10",
+    "name": "Two Kinds",
+    "generator": "money",
+    "params": {
+      "types": [
+        "countMixed"
+      ],
+      "coins": [
+        1,
+        5,
+        10
+      ],
+      "max": 50
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 28
+  },
+  {
+    "id": "money-11",
+    "name": "Pocket Money",
+    "generator": "money",
+    "params": {
+      "types": [
+        "countMixed"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 60
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "money-12",
+    "name": "Coin Counter",
+    "generator": "money",
+    "params": {
+      "types": [
+        "countMixed"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 75
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "money-13",
+    "name": "Which Is More?",
+    "generator": "money",
+    "params": {
+      "types": [
+        "compare"
+      ],
+      "coins": [
+        5,
+        10,
+        25
+      ],
+      "max": 50
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 28,
+    "intro": [
+      "Compare two handfuls.",
+      "Add each one up first.",
+      "Pick the bigger amount!"
+    ]
+  },
+  {
+    "id": "money-14",
+    "name": "More or Less",
+    "generator": "money",
+    "params": {
+      "types": [
+        "compare"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 60
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "money-15",
+    "name": "Money Match",
+    "generator": "money",
+    "params": {
+      "types": [
+        "compare"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 80
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "money-16",
+    "name": "Make 20 Cents",
+    "generator": "money",
+    "params": {
+      "types": [
+        "make"
+      ],
+      "coins": [
+        5,
+        10
+      ],
+      "max": 40
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 28,
+    "intro": [
+      "How many coins make an amount?",
+      "How many nickels make 20¢?",
+      "Count by the coin's value!"
+    ]
+  },
+  {
+    "id": "money-17",
+    "name": "Make the Amount",
+    "generator": "money",
+    "params": {
+      "types": [
+        "make"
+      ],
+      "coins": [
+        5,
+        10,
+        25
+      ],
+      "max": 60
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "money-18",
+    "name": "Coin Builder",
+    "generator": "money",
+    "params": {
+      "types": [
+        "make",
+        "countSame"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 75
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "money-19",
+    "name": "Making Change",
+    "generator": "money",
+    "params": {
+      "types": [
+        "change"
+      ],
+      "max": 50
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29,
+    "intro": [
+      "You pay, you get change back.",
+      "Toy 35¢, pay 50¢ → change 15¢.",
+      "Take the cost away!"
+    ]
+  },
+  {
+    "id": "money-20",
+    "name": "Change Back",
+    "generator": "money",
+    "params": {
+      "types": [
+        "change"
+      ],
+      "max": 60
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "money-21",
+    "name": "Shopkeeper",
+    "generator": "money",
+    "params": {
+      "types": [
+        "change",
+        "countMixed"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 75
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "money-22",
+    "name": "Dollar Power",
+    "generator": "money",
+    "params": {
+      "types": [
+        "dollars"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 30,
+    "intro": [
+      "A dollar is 100 cents!",
+      "$1 = 100¢ · 4 quarters = 100¢.",
+      "Type the cents!"
+    ]
+  },
+  {
+    "id": "money-23",
+    "name": "Dollars and Cents",
+    "generator": "money",
+    "params": {
+      "types": [
+        "dollars"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "money-24",
+    "name": "A Dollar Plus",
+    "generator": "money",
+    "params": {
+      "types": [
+        "dollars"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 32
+  },
+  {
+    "id": "money-25",
+    "name": "Big Money",
+    "generator": "money",
+    "params": {
+      "types": [
+        "dollars",
+        "countMixed"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 90
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 33
+  },
+  {
+    "id": "money-26",
+    "name": "Coin Master I",
+    "generator": "money",
+    "params": {
+      "types": [
+        "countMixed",
+        "compare",
+        "make"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 80
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "money-27",
+    "name": "Coin Master II",
+    "generator": "money",
+    "params": {
+      "types": [
+        "change",
+        "dollars",
+        "countSame"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 90
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 35
+  },
+  {
+    "id": "money-28",
+    "name": "Money Mix",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countMixed",
+        "compare",
+        "make",
+        "change"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 90
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "money-29",
+    "name": "Cash Register",
+    "generator": "money",
+    "params": {
+      "types": [
+        "change",
+        "countMixed",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 37
+  },
+  {
+    "id": "money-30",
+    "name": "Market Day",
+    "generator": "money",
+    "params": {
+      "types": [
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 38
+  },
+  {
+    "id": "money-31",
+    "name": "Treasure Vault 1",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 16
+  },
+  {
+    "id": "money-32",
+    "name": "Treasure Vault 2",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 17
+  },
+  {
+    "id": "money-33",
+    "name": "Treasure Vault 3",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 18
+  },
+  {
+    "id": "money-34",
+    "name": "Treasure Vault 4",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 19
+  },
+  {
+    "id": "money-35",
+    "name": "Treasure Vault 5",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 20
+  },
+  {
+    "id": "money-36",
+    "name": "Treasure Vault 6",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 21
+  },
+  {
+    "id": "money-37",
+    "name": "Treasure Vault 7",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 22
+  },
+  {
+    "id": "money-38",
+    "name": "Treasure Vault 8",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 23
+  },
+  {
+    "id": "money-39",
+    "name": "Treasure Vault 9",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 24
+  },
+  {
+    "id": "money-40",
+    "name": "Treasure Vault 10",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 25
+  },
+  {
+    "id": "money-41",
+    "name": "Treasure Vault 11",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "money-42",
+    "name": "Treasure Vault 12",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 27
+  },
+  {
+    "id": "money-43",
+    "name": "Treasure Vault 13",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 28
+  },
+  {
+    "id": "money-44",
+    "name": "Treasure Vault 14",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "money-45",
+    "name": "Treasure Vault 15",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "money-46",
+    "name": "Treasure Vault 16",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "money-47",
+    "name": "Treasure Vault 17",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 32
+  },
+  {
+    "id": "money-48",
+    "name": "Treasure Vault 18",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 33
+  },
+  {
+    "id": "money-49",
+    "name": "Treasure Vault 19",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "money-50",
+    "name": "Treasure Vault 20",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 35
+  },
+  {
+    "id": "money-51",
+    "name": "Treasure Vault 21",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "money-52",
+    "name": "Treasure Vault 22",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 37
+  },
+  {
+    "id": "money-53",
+    "name": "Treasure Vault 23",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 38
+  },
+  {
+    "id": "money-54",
+    "name": "Treasure Vault 24",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "money-55",
+    "name": "Money Master",
+    "generator": "money",
+    "params": {
+      "types": [
+        "coinValue",
+        "countSame",
+        "countMixed",
+        "compare",
+        "make",
+        "change",
+        "dollars"
+      ],
+      "coins": [
+        1,
+        5,
+        10,
+        25
+      ],
+      "max": 99
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 40,
+    "intro": [
+      "The royal treasury!",
+      "Coins, change and dollars.",
+      "Prove you're a Money Master!"
+    ]
+  }
+]
