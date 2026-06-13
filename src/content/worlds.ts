@@ -20,6 +20,7 @@ import directionStages from "./directions/stages.json";
 import physicsStages from "./physics/stages.json";
 import chemistryStages from "./chemistry/stages.json";
 import algebraStages from "./algebra/stages.json";
+import placeValueStages from "./placevalue/stages.json";
 import type { StageDef } from "./types";
 
 export interface WorldDef {
@@ -295,6 +296,18 @@ export const WORLDS: WorldDef[] = [
       { stage: 40, name: "Times Boxer", icon: "✖️" },
       { stage: 50, name: "Balance Brain", icon: "⚖️" },
       { stage: 55, name: "Master of Equations", icon: "🏆" },
+    ],
+  },
+  {
+    id: "placevalue", name: "Tower of Tens", icon: "🗼", tagline: "Tens, hundreds & big numbers!",
+    stages: placeValueStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Tower Builder", icon: "🧱" },
+      { stage: 20, name: "Place Spotter", icon: "🔢" },
+      { stage: 30, name: "Skip Counter", icon: "🦘" },
+      { stage: 40, name: "Hundreds Climber", icon: "🗼" },
+      { stage: 50, name: "Number Sage", icon: "🧠" },
+      { stage: 55, name: "Place Value Master", icon: "🏆" },
     ],
   },
 ];

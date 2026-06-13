@@ -1,0 +1,968 @@
+[
+  {
+    "id": "pv-01",
+    "name": "Two Towers",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "tensOnes"
+      ],
+      "max": 39
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Numbers are towers of tens!",
+      "3 tens and 4 ones makes 34.",
+      "Build the number — type it!"
+    ]
+  },
+  {
+    "id": "pv-02",
+    "name": "Stack the Tens",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "tensOnes"
+      ],
+      "max": 59
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24
+  },
+  {
+    "id": "pv-03",
+    "name": "Tens and Ones",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "tensOnes"
+      ],
+      "max": 79
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 25
+  },
+  {
+    "id": "pv-04",
+    "name": "Build It Big",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "tensOnes"
+      ],
+      "max": 99
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "pv-05",
+    "name": "Tower Master",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "tensOnes"
+      ],
+      "max": 99
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 27
+  },
+  {
+    "id": "pv-06",
+    "name": "Which Digit?",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "digitValue"
+      ],
+      "max": 59
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26,
+    "intro": [
+      "Each digit has a place.",
+      "In 47, the 4 means 4 tens = 40.",
+      "Find what a digit is worth!"
+    ]
+  },
+  {
+    "id": "pv-07",
+    "name": "Place Spotter",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "digitValue"
+      ],
+      "max": 99
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 27
+  },
+  {
+    "id": "pv-08",
+    "name": "Worth How Much?",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "digitValue",
+        "tensOnes"
+      ],
+      "max": 99
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 28
+  },
+  {
+    "id": "pv-09",
+    "name": "Digit Detective",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "digitValue"
+      ],
+      "max": 99
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 28
+  },
+  {
+    "id": "pv-10",
+    "name": "Break It Apart",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "expand"
+      ],
+      "max": 99
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 27,
+    "intro": [
+      "Numbers split into parts.",
+      "40 + 3 = 43.  And 43 = 40 + 3.",
+      "Put the parts together!"
+    ]
+  },
+  {
+    "id": "pv-11",
+    "name": "Add the Parts",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "expand"
+      ],
+      "max": 99
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 28
+  },
+  {
+    "id": "pv-12",
+    "name": "Fill the Box",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "expand"
+      ],
+      "max": 99
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "pv-13",
+    "name": "Expand Expert",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "expand",
+        "tensOnes"
+      ],
+      "max": 99
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "pv-14",
+    "name": "Which Sign?",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "compare"
+      ],
+      "max": 49
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 28,
+    "intro": [
+      "Compare two numbers.",
+      "The sign opens to the BIGGER one.",
+      "5 < 8 … 9 > 2 … 4 = 4."
+    ]
+  },
+  {
+    "id": "pv-15",
+    "name": "Bigger or Smaller",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "compare"
+      ],
+      "max": 79
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "pv-16",
+    "name": "Greater Than",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "compare"
+      ],
+      "max": 99
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "pv-17",
+    "name": "Sign Master",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "compare"
+      ],
+      "max": 99
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "pv-18",
+    "name": "Count by Tens",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "skip"
+      ],
+      "max": 99,
+      "steps": [
+        10
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 28,
+    "intro": [
+      "Skip-counting jumps by steps.",
+      "10, 20, 30, … find the missing one!"
+    ]
+  },
+  {
+    "id": "pv-19",
+    "name": "Count by Fives",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "skip"
+      ],
+      "max": 99,
+      "steps": [
+        5
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 28
+  },
+  {
+    "id": "pv-20",
+    "name": "Count by Twos",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "skip"
+      ],
+      "max": 60,
+      "steps": [
+        2
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "pv-21",
+    "name": "Skip Around",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "skip"
+      ],
+      "max": 99,
+      "steps": [
+        2,
+        5,
+        10
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "pv-22",
+    "name": "Skip Champion",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "skip"
+      ],
+      "max": 99,
+      "steps": [
+        2,
+        5,
+        10
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "pv-23",
+    "name": "Ten More",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "moreLess"
+      ],
+      "max": 89
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29,
+    "intro": [
+      "Add or take away a whole ten.",
+      "10 more than 34 is 44.",
+      "Only the tens digit changes!"
+    ]
+  },
+  {
+    "id": "pv-24",
+    "name": "Ten Less",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "moreLess"
+      ],
+      "max": 99
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "pv-25",
+    "name": "One More, One Less",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "moreLess"
+      ],
+      "max": 99
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "pv-26",
+    "name": "More and Less",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "moreLess",
+        "skip"
+      ],
+      "max": 99,
+      "steps": [
+        5,
+        10
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "pv-27",
+    "name": "Counting Patterns",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "skip",
+        "moreLess"
+      ],
+      "max": 99,
+      "steps": [
+        2,
+        5,
+        10
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "pv-28",
+    "name": "Number Sense",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "tensOnes",
+        "expand",
+        "compare"
+      ],
+      "max": 99
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 32
+  },
+  {
+    "id": "pv-29",
+    "name": "Tower of Tens",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "digitValue",
+        "skip",
+        "moreLess",
+        "compare"
+      ],
+      "max": 99
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 33
+  },
+  {
+    "id": "pv-30",
+    "name": "Grade 1 Peak",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "tensOnes",
+        "digitValue",
+        "expand",
+        "compare",
+        "skip",
+        "moreLess"
+      ],
+      "max": 99
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "pv-31",
+    "name": "Hundreds Climb",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "hundreds"
+      ],
+      "max": 1000
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 32,
+    "intro": [
+      "Now numbers reach the hundreds!",
+      "3 hundreds, 4 tens, 2 ones = 342.",
+      "Build the big number!"
+    ]
+  },
+  {
+    "id": "pv-32",
+    "name": "Three Towers",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "hundreds"
+      ],
+      "max": 1000
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 33
+  },
+  {
+    "id": "pv-33",
+    "name": "Build to 1000",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "hundreds",
+        "tensOnes"
+      ],
+      "max": 1000
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 33
+  },
+  {
+    "id": "pv-34",
+    "name": "Hundreds Master",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "hundreds"
+      ],
+      "max": 1000
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "pv-35",
+    "name": "Big Digits",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "digitValue"
+      ],
+      "max": 999
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 34,
+    "intro": [
+      "In 482, the 4 means 4 hundreds = 400.",
+      "Find what each digit is worth!"
+    ]
+  },
+  {
+    "id": "pv-36",
+    "name": "Place to Hundreds",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "digitValue",
+        "hundreds"
+      ],
+      "max": 999
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 35
+  },
+  {
+    "id": "pv-37",
+    "name": "Expand the Hundreds",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "expand"
+      ],
+      "max": 999
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 35,
+    "intro": [
+      "300 + 20 + 5 = 325.",
+      "Add the three parts!"
+    ]
+  },
+  {
+    "id": "pv-38",
+    "name": "Big Expanded Form",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "expand"
+      ],
+      "max": 999
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "pv-39",
+    "name": "Compare to 1000",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "compare"
+      ],
+      "max": 999
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 35,
+    "intro": [
+      "Compare big numbers now.",
+      "Check hundreds first, then tens."
+    ]
+  },
+  {
+    "id": "pv-40",
+    "name": "Which Is Greater?",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "compare"
+      ],
+      "max": 999
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "pv-41",
+    "name": "Count by Hundreds",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "skip"
+      ],
+      "max": 1000,
+      "steps": [
+        100
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 35,
+    "intro": [
+      "100, 200, 300, … skip by hundreds!"
+    ]
+  },
+  {
+    "id": "pv-42",
+    "name": "Big Skips",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "skip"
+      ],
+      "max": 1000,
+      "steps": [
+        5,
+        10,
+        100
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "pv-43",
+    "name": "Hundred More",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "moreLess"
+      ],
+      "max": 900
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 36,
+    "intro": [
+      "100 more than 342 is 442.",
+      "Only the hundreds digit changes!"
+    ]
+  },
+  {
+    "id": "pv-44",
+    "name": "More and Less to 1000",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "moreLess"
+      ],
+      "max": 999
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 37
+  },
+  {
+    "id": "pv-45",
+    "name": "Number Builder",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "hundreds",
+        "expand",
+        "digitValue"
+      ],
+      "max": 999
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 37
+  },
+  {
+    "id": "pv-46",
+    "name": "Sense to 1000",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "compare",
+        "skip",
+        "moreLess"
+      ],
+      "max": 999,
+      "steps": [
+        5,
+        10,
+        100
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 38
+  },
+  {
+    "id": "pv-47",
+    "name": "Place Value Pro",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "tensOnes",
+        "hundreds",
+        "expand",
+        "compare"
+      ],
+      "max": 999
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 38
+  },
+  {
+    "id": "pv-48",
+    "name": "Three-Digit Detective",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "digitValue",
+        "hundreds",
+        "moreLess"
+      ],
+      "max": 999
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "pv-49",
+    "name": "Hundreds Patterns",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "skip",
+        "moreLess",
+        "compare"
+      ],
+      "max": 999,
+      "steps": [
+        10,
+        100
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 38
+  },
+  {
+    "id": "pv-50",
+    "name": "Big Number Sense",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "expand",
+        "compare",
+        "skip",
+        "hundreds"
+      ],
+      "max": 999,
+      "steps": [
+        5,
+        10,
+        100
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "pv-51",
+    "name": "Master of Tens",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "tensOnes",
+        "digitValue",
+        "expand",
+        "compare",
+        "skip",
+        "moreLess",
+        "hundreds"
+      ],
+      "max": 999,
+      "steps": [
+        2,
+        5,
+        10,
+        100
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 40
+  },
+  {
+    "id": "pv-52",
+    "name": "Master of Hundreds",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "tensOnes",
+        "digitValue",
+        "expand",
+        "compare",
+        "skip",
+        "moreLess",
+        "hundreds"
+      ],
+      "max": 999,
+      "steps": [
+        5,
+        10,
+        100
+      ]
+    },
+    "questions": 9,
+    "mechanic": "gate-run",
+    "payout": 40
+  },
+  {
+    "id": "pv-53",
+    "name": "Number Sage",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "tensOnes",
+        "digitValue",
+        "expand",
+        "compare",
+        "skip",
+        "moreLess",
+        "hundreds"
+      ],
+      "max": 999,
+      "steps": [
+        2,
+        5,
+        10,
+        100
+      ]
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 40
+  },
+  {
+    "id": "pv-54",
+    "name": "Tower Champion",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "tensOnes",
+        "digitValue",
+        "expand",
+        "compare",
+        "skip",
+        "moreLess",
+        "hundreds"
+      ],
+      "max": 999,
+      "steps": [
+        5,
+        10,
+        100
+      ]
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 40
+  },
+  {
+    "id": "pv-55",
+    "name": "Place Value Master",
+    "generator": "placeValue",
+    "params": {
+      "types": [
+        "tensOnes",
+        "digitValue",
+        "expand",
+        "compare",
+        "skip",
+        "moreLess",
+        "hundreds"
+      ],
+      "max": 999,
+      "steps": [
+        2,
+        5,
+        10,
+        100
+      ]
+    },
+    "questions": 10,
+    "mechanic": "gate-run",
+    "payout": 40,
+    "intro": [
+      "The top of the tower!",
+      "Tens, hundreds, signs and skips.",
+      "Show you're a Place Value Master!"
+    ]
+  }
+]

@@ -22,6 +22,7 @@ import { generateDirections, type DirectionParams } from "./directions";
 import { generatePhysics, type PhysicsParams } from "./physics";
 import { generateChemistry, type ChemistryParams } from "./chemistry";
 import { generateAlgebra, type AlgebraParams } from "./algebra";
+import { generatePlaceValue, type PlaceValueParams } from "./placeValue";
 import type { GenContext, GeneratorParams, Question } from "./types";
 
 export type GeneratorId =
@@ -47,7 +48,8 @@ export type GeneratorId =
   | "directions"
   | "physics"
   | "chemistry"
-  | "algebra";
+  | "algebra"
+  | "placeValue";
 
 function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, ctx: GenContext): Question {
   switch (id) {
@@ -97,6 +99,8 @@ function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, c
       return generateChemistry(params as unknown as ChemistryParams, rng, ctx);
     case "algebra":
       return generateAlgebra(params as unknown as AlgebraParams, rng, ctx);
+    case "placeValue":
+      return generatePlaceValue(params as unknown as PlaceValueParams, rng, ctx);
   }
 }
 
