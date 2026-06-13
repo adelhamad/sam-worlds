@@ -96,7 +96,25 @@ function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, c
   return GENERATORS[id](params, rng, ctx);
 }
 
-/** Generate a fresh question set; avoids duplicate prompts within a session. */
+/**
+ * The thing that makes one question genuinely the same as another: the
+ * generator's own `dedupeKey` when it sets one (the real subject — a note, a
+ * maze, a word), otherwise the full visible content (prompt + answer + payload
+ * + choices). A generic prompt like "Read the note!" therefore does NOT count
+ * as a repeat as long as the note behind it differs.
+ */
+function questionKey(q: Question): string {
+  if (q.dedupeKey) return q.dedupeKey;
+  const payload = q.payload ? JSON.stringify(q.payload) : "";
+  const choices = q.choices.length ? q.choices.join(",") : "";
+  return `${q.prompt}|${q.answer}|${payload}|${choices}`;
+}
+
+/**
+ * Generate a fresh question set with NO repeats within the stage. Draws until
+ * it has `count` distinct questions; if the generator's pool is smaller than
+ * `count`, the stage simply runs shorter rather than ever repeating a question.
+ */
 export function generateQuestionSet(
   id: GeneratorId,
   params: GeneratorParams,
@@ -106,35 +124,21 @@ export function generateQuestionSet(
 ): Question[] {
   const rng = mulberry32(seed);
   const out: Question[] = [];
-  const seenPrompt = new Set<string>();
-  let guard = 0;
-  // Dedupe by PROMPT (not prompt+answer) so a stage never asks the same
-  // question twice — each slot is a genuinely different subject.
-  while (out.length < count && guard++ < count * 40) {
+  const seen = new Set<string>();
+  // Stop once the pool looks exhausted: a long run of consecutive draws that
+  // are all duplicates means there's nothing new left to find.
+  let sinceNew = 0;
+  const giveUpAfter = Math.max(120, count * 40);
+  while (out.length < count && sinceNew < giveUpAfter) {
     const q = dispatch(id, params, rng, ctx);
-    const key = q.dedupeKey ?? q.prompt;
-    if (seenPrompt.has(key)) continue;
-    seenPrompt.add(key);
+    const key = questionKey(q);
+    if (seen.has(key)) {
+      sinceNew++;
+      continue;
+    }
+    seen.add(key);
+    sinceNew = 0;
     out.push({ ...q, id: `${id}-${seed}-${out.length}` });
-  }
-  // Last resort for genuinely tiny pools: allow a repeat subject but never two
-  // identical (prompt+answer).
-  const seenFull = new Set(out.map((q) => q.prompt + q.answer));
-  guard = 0;
-  while (out.length < count && guard++ < count * 40) {
-    const q = dispatch(id, params, rng, ctx);
-    const full = q.prompt + q.answer;
-    if (seenFull.has(full)) continue;
-    seenFull.add(full);
-    out.push({ ...q, id: `${id}-${seed}-${out.length}` });
-  }
-  // If the pool truly can't fill `count` with distinct questions (e.g. a
-  // single-switch tutorial circuit), it's better to run a SHORTER stage than
-  // to repeat the same question many times. Floor at MIN_QUESTIONS so a stage
-  // is never trivially tiny.
-  const MIN_QUESTIONS = Math.min(count, 4);
-  while (out.length < MIN_QUESTIONS) {
-    out.push({ ...dispatch(id, params, rng, ctx), id: `${id}-${seed}-${out.length}` });
   }
   return out;
 }
