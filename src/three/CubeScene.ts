@@ -3,7 +3,7 @@
 // helper the logic engine uses, so the picture can never disagree with the
 // engine's idea of the cube.
 import * as THREE from "three";
-import { FACE_AXIS, FACE_COLORS, FACES, latticeCW, projectToGrid, rotateVec, type Face, type Move, type Vec } from "../engine/cube";
+import { FACE_AXIS, FACE_COLORS, FACES, latticeCW, layersFor, projectToGrid, rotateVec, type Face, type Move, type Vec } from "../engine/cube";
 
 const TURN_MS = 260;
 const INNER = 0x101c38;
@@ -259,9 +259,9 @@ export class CubeScene {
   /** Animate one face turn; resolves when the layer snaps into place. */
   turn(move: Move, opts?: { fast?: boolean; done?: () => void }): boolean {
     if (this.anim) return false;
-    const { axis, dir } = FACE_AXIS[move.face];
-    const layer = dir > 0 ? this.n - 1 : 0;
-    const sel = this.cubelets.filter((c) => c.grid[axis] === layer);
+    const { axis } = FACE_AXIS[move.face];
+    const layers = new Set(layersFor(move, this.n));
+    const sel = this.cubelets.filter((c) => layers.has(c.grid[axis]));
     const pivot = new THREE.Group();
     this.root.add(pivot);
     for (const c of sel) pivot.attach(c.mesh);

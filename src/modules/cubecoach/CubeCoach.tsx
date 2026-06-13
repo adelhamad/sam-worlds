@@ -2,29 +2,29 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useGame } from "../../state/store";
 import { sfx, unlockAudio } from "../../engine/feedback/audio";
-import { mulberry32, newSeed } from "../../engine/rng";
-import { Cube, FACE_AXIS, FACE_COLORS, FACES, scramble, solutionFor, type Face, type Move, type Vec } from "../../engine/cube";
+import { newSeed } from "../../engine/rng";
+import { Cube, FACE_AXIS, FACE_COLORS, FACES, type Face, type Move, type Vec } from "../../engine/cube";
 import { checkColorCounts, cubeToFacelets, solve2x2 } from "../../engine/cubesolve";
 import { Cube3Solver } from "../../engine/cube3solver";
+import { BigCubeSolver } from "../../engine/bigcube/client";
 import { CubeScene } from "../../three/CubeScene";
 
 const FACE_LABEL: Record<Face, string> = { U: "TOP", D: "BOTTOM", F: "FRONT", B: "BACK", L: "LEFT", R: "RIGHT" };
 const SIZES = [
-  { n: 2, name: "2×2 Mini", moves: 8 },
-  { n: 3, name: "3×3 Classic", moves: 12 },
-  { n: 4, name: "4×4 Big", moves: 16 },
-  { n: 5, name: "5×5 Huge", moves: 20 },
+  { n: 2, name: "2×2 Mini" },
+  { n: 3, name: "3×3 Classic" },
+  { n: 4, name: "4×4 Big" },
+  { n: 5, name: "5×5 Huge" },
 ];
-/** Sizes that get the real "paint your cube → solve" flow. */
-const SOLVABLE = new Set([2, 3]);
 /** Palette order: white, yellow, green, blue, orange, red. */
 const PALETTE: Face[] = ["U", "D", "F", "B", "L", "R"];
 const COLOR_LABEL: Record<Face, string> = { U: "White", D: "Yellow", F: "Green", B: "Blue", L: "Orange", R: "Red" };
 
 /** Reference stickers locked before painting so the entered cube can't drift. */
 function lockedStickers(n: number): { grid: Vec; face: Face; color: Face }[] {
-  if (n === 2) {
-    // Pin the back-bottom-left corner so orientation is fixed.
+  if (n % 2 === 0) {
+    // Even cubes have no fixed centers — pin the back-bottom-left corner so the
+    // cube's orientation (which color faces where) can't drift while painting.
     return (["D", "L", "B"] as Face[]).map((face) => ({ grid: [0, 0, 0] as Vec, face, color: face }));
   }
   const c = (n - 1) / 2; // odd cubes have real centers; pin each to its color
@@ -36,13 +36,23 @@ function lockedStickers(n: number): { grid: Vec; face: Face; color: Face }[] {
   });
 }
 
-type Phase = "pick" | "paint" | "setup" | "solve" | "solved";
+/** A coach instruction for one move — names the face and how many layers turn. */
+function moveLabel(mv: Move): { face: Face; text: string; turn: string } {
+  const depth = mv.depth ?? 1;
+  const layers = depth > 1 ? ` (${depth} layers)` : "";
+  return { face: mv.face, text: `${FACE_LABEL[mv.face]}${layers}`, turn: mv.prime ? "↺" : "↻" };
+}
+
+type Phase = "pick" | "paint" | "solve" | "solved";
 
 /**
- * Cube Coach. For 2×2 and 3×3 the player paints the cube to match the real one
- * in their hand, then a true solver (cubejs / meet-in-the-middle) calls out
- * every turn. For 4×4 and 5×5 — which have no browser solver — it stays the
- * mix-it-then-undo coach, where the plan is the inverse of the scramble.
+ * Cube Coach. For every size (2×2 … 5×5) the player paints the cube to match
+ * the real one in their hand, then a true solver calls out every turn:
+ *   • 2×2 — meet-in-the-middle search.
+ *   • 3×3 — Kociemba two-phase (cubejs, in a worker).
+ *   • 4×4 / 5×5 — reduction (centers + edge pairing) finished by cubejs, also
+ *     in a worker. Bigger cubes need wide (multi-layer) turns, which the coach
+ *     labels and the 3D view animates.
  */
 export function CubeCoach() {
   const navigate = useNavigate();
@@ -53,13 +63,13 @@ export function CubeCoach() {
   const sceneRef = useRef<CubeScene | null>(null);
   const engineRef = useRef<Cube>(new Cube(3));
   const solverRef = useRef<Cube3Solver | null>(null);
+  const bigSolverRef = useRef<BigCubeSolver | null>(null);
 
   const [size, setSize] = useState(3);
   const [payout, setPayout] = useState(0);
   const [phase, setPhase] = useState<Phase>("pick");
-  const [history, setHistory] = useState<Move[]>([]);
+  const [, setHistory] = useState<Move[]>([]);
   const [plan, setPlan] = useState<Move[]>([]);
-  const [mixing, setMixing] = useState(false);
   const [solves, setSolves] = useState(0);
   // Paint-flow state
   const [selColor, setSelColor] = useState<Face>("U");
@@ -69,18 +79,21 @@ export function CubeCoach() {
 
   const next: Move | undefined = plan[0];
 
-  // Mount the 3D scene + 3×3 solver worker once (StrictMode-safe).
+  // Mount the 3D scene + solver workers once (StrictMode-safe).
   useEffect(() => {
     if (!hostRef.current) return;
     const scene = CubeScene.create(hostRef.current);
     scene.setSize(3);
     sceneRef.current = scene;
     solverRef.current = new Cube3Solver();
+    bigSolverRef.current = new BigCubeSolver();
     return () => {
       sceneRef.current = null;
       scene.destroy();
       solverRef.current?.destroy();
       solverRef.current = null;
+      bigSolverRef.current?.destroy();
+      bigSolverRef.current = null;
     };
   }, []);
 
@@ -91,23 +104,17 @@ export function CubeCoach() {
     setHistory([]);
     setPlan([]);
     setPaintError(null);
-    if (SOLVABLE.has(s.n)) {
-      startPainting(s.n);
-    } else {
-      engineRef.current = new Cube(s.n);
-      sceneRef.current?.setSize(s.n);
-      setPhase("setup");
-      mix(s.moves);
-    }
+    startPainting(s.n);
   }
 
-  /** Enter paint mode: blank cube + locked references; warm the 3×3 solver. */
+  /** Enter paint mode: blank cube + locked references; warm the right solver. */
   function startPainting(n: number) {
     setSelColor("U");
     setPhase("paint");
     sceneRef.current?.setPaintColor("U");
     sceneRef.current?.enterPaint(n, lockedStickers(n), setRemaining);
     if (n === 3) solverRef.current?.warmUp();
+    if (n >= 4) bigSolverRef.current?.warmUp();
   }
 
   function pickColor(face: Face) {
@@ -137,12 +144,22 @@ export function CubeCoach() {
     let moves: Move[];
     if (size === 2) {
       moves = solve2x2(engine);
-    } else {
+    } else if (size === 3) {
       setThinking(true);
       const res = await solverRef.current!.solve(cubeToFacelets(engine));
       setThinking(false);
       if (!res.ok) {
         setPaintError("Hmm — that can't happen on a real cube. Check the colors!");
+        sfx.wrong();
+        return;
+      }
+      moves = res.moves;
+    } else {
+      setThinking(true);
+      const res = await bigSolverRef.current!.solve(size, grids, newSeed());
+      setThinking(false);
+      if (!res.ok) {
+        setPaintError(res.reason ?? "Hmm — that can't happen on a real cube. Check the colors!");
         sfx.wrong();
         return;
       }
@@ -183,33 +200,6 @@ export function CubeCoach() {
     return true;
   }
 
-  /** Auto-mix: a quick animated scramble (4×4 / 5×5 coach path). */
-  function mix(count: number) {
-    const moves = scramble(count, mulberry32(newSeed()));
-    setMixing(true);
-    let i = 0;
-    const step = () => {
-      if (!sceneRef.current) return; // left the screen mid-mix
-      if (i >= moves.length) {
-        setMixing(false);
-        return;
-      }
-      const mv = moves[i++];
-      sfx.tap();
-      doTurn(mv, true, step);
-    };
-    step();
-  }
-
-  /** START SOLVING for the coach path: the plan is the inverse of the mix. */
-  function startCoaching() {
-    sfx.tap();
-    const p = solutionFor(history);
-    setPlan(p);
-    setPayout(Math.max(4, Math.min(24, p.length)));
-    setPhase("solve");
-  }
-
   /** The big DO IT button: perform the next coached move and watch it animate. */
   function doNext() {
     if (!next) return;
@@ -246,11 +236,9 @@ export function CubeCoach() {
             {remaining > 0 ? <>Pick a color, tap the cube to match yours · {remaining} to go</> : <>All set — tap SOLVE! 🧭</>}
           </span>
         )}
-        {phase === "setup" && !mixing && <span className="cube-instruction">Twist it, mix it — then hit SOLVE!</span>}
-        {phase === "setup" && mixing && <span className="cube-instruction">🎲 Mixing it up…</span>}
         {phase === "solve" && next && (
           <span className="cube-instruction">
-            Turn <b style={{ color: FACE_COLORS[next.face] }}>{FACE_LABEL[next.face]}</b> {next.prime ? "↺" : "↻"} ·{" "}
+            Turn <b style={{ color: FACE_COLORS[next.face] }}>{moveLabel(next).text}</b> {moveLabel(next).turn} ·{" "}
             {stepsLeft} step{stepsLeft > 1 ? "s" : ""} left
           </span>
         )}
@@ -285,39 +273,6 @@ export function CubeCoach() {
         </>
       )}
 
-      {phase === "setup" && !mixing && (
-        <>
-          <div className="cube-controls">
-            {FACES.map((face) => (
-              <div key={face} className="cube-ctl">
-                <span className="cube-ctl-label" style={{ background: FACE_COLORS[face] }}>
-                  {FACE_LABEL[face]}
-                </span>
-                {[true, false].map((prime) => (
-                  <button
-                    key={String(prime)}
-                    className="btn btn-secondary cube-btn"
-                    onClick={() => {
-                      if (doTurn({ face, prime })) sfx.tap();
-                    }}
-                  >
-                    {prime ? "↺" : "↻"}
-                  </button>
-                ))}
-              </div>
-            ))}
-          </div>
-          <div className="celebration-actions">
-            <button className="btn btn-secondary" onClick={() => mix(SIZES.find((s) => s.n === engineRef.current.n)?.moves ?? 12)}>
-              🎲 Mix more
-            </button>
-            <button className="btn btn-primary" disabled={stepsLeft === 0} onClick={startCoaching}>
-              🧭 START SOLVING
-            </button>
-          </div>
-        </>
-      )}
-
       {phase === "solve" && (
         <div className="celebration-actions">
           <button className="btn btn-primary btn-big cube-doit" onClick={doNext}>
@@ -332,8 +287,8 @@ export function CubeCoach() {
             <h2>🧊 Cube Coach</h2>
             <p className="catch-howto">Solve a real cube!</p>
             <p className="catch-howto dim">
-              2×2 &amp; 3×3: paint your cube to match the one in your hand, then I show you every turn to solve it. 4×4 &amp; 5×5: I
-              mix one up and coach you back.
+              Paint your cube to match the one in your hand, then I show you every turn to solve it. Bigger cubes use wide
+              turns — I&apos;ll tell you how many layers to grab.
             </p>
             <div className="celebration-actions cube-sizes">
               {SIZES.map((s) => (

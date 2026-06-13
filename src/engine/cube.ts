@@ -8,6 +8,10 @@ export type Face = "U" | "D" | "L" | "R" | "F" | "B";
 export interface Move {
   face: Face;
   prime: boolean; // true = counter-clockwise (as seen looking AT the face)
+  /** How many outermost layers turn together (default 1 = just the face). */
+  depth?: number;
+  /** true = ONLY the single layer `depth` in from the face (an inner slice). */
+  slice?: boolean;
 }
 
 export const FACES: Face[] = ["U", "D", "L", "R", "F", "B"];
@@ -55,7 +59,7 @@ export function rotateVec(v: Vec, axis: Axis, cw: boolean, m: number): Vec {
   return out;
 }
 
-function rotateNormal(nv: Vec, axis: Axis, cw: boolean): Vec {
+export function rotateNormal(nv: Vec, axis: Axis, cw: boolean): Vec {
   // same rotation applied to a direction vector (centered: CCW maps (a,b)→(-b,a))
   const out: Vec = [...nv];
   const [a, b] = PLANE[axis];
@@ -94,14 +98,14 @@ export class Cube {
     }
   }
 
-  /** Turn a face. CW/CCW is as seen looking AT that face from outside. */
+  /** Turn a face (or wide/slice layers). CW/CCW is as seen looking AT that face. */
   turn(move: Move): void {
-    const { axis, dir } = FACE_AXIS[move.face];
+    const { axis } = FACE_AXIS[move.face];
     const m = this.n - 1;
-    const layer = dir > 0 ? m : 0;
+    const layers = new Set(layersFor(move, this.n));
     const cw = latticeCW(move);
     for (const s of this.stickers) {
-      if (s.p[axis] !== layer) continue;
+      if (!layers.has(s.p[axis])) continue;
       s.p = rotateVec(s.p, axis, cw, m);
       s.nv = rotateNormal(s.nv, axis, cw);
     }
@@ -165,8 +169,16 @@ export class Cube {
   }
 }
 
+/** Layer indices (along the move's axis) that a move rotates. */
+export function layersFor(move: Move, n: number): number[] {
+  const { dir } = FACE_AXIS[move.face];
+  const d = move.depth ?? 1;
+  const depths = move.slice ? [d - 1] : Array.from({ length: d }, (_, k) => k);
+  return depths.map((k) => (dir > 0 ? n - 1 - k : k));
+}
+
 /** Face whose outward normal equals nv (only valid on a solved lattice). */
-function faceFromNormal(nv: Vec): Face {
+export function faceFromNormal(nv: Vec): Face {
   for (const f of FACES) {
     const { axis, dir } = FACE_AXIS[f];
     const want: Vec = [0, 0, 0];
@@ -189,7 +201,11 @@ export function projectToGrid(face: Face, p: Vec, m: number): [number, number] {
   }
 }
 
-export const inverse = (mv: Move): Move => ({ face: mv.face, prime: !mv.prime });
+export const inverse = (mv: Move): Move => ({ ...mv, prime: !mv.prime });
+
+/** Same face + same layer selection (so cancellation logic stays honest). */
+export const sameLayers = (a: Move, b: Move): boolean =>
+  a.face === b.face && (a.depth ?? 1) === (b.depth ?? 1) && !a.slice === !b.slice;
 
 /**
  * Whether a move is a CLOCKWISE lattice rotation about its axis (viewed from
@@ -216,19 +232,19 @@ export function scramble(count: number, rng: RNG): Move[] {
 }
 
 /**
- * History → shortest undo plan: cancel adjacent inverse pairs and collapse
- * triple-same into a single opposite turn, then reverse + invert.
+ * Cancel adjacent inverse pairs and collapse triple-same into one opposite
+ * turn. Used for undo plans and to tidy generated solutions.
  */
-export function solutionFor(history: Move[]): Move[] {
+export function cancelMoves(moves: Move[]): Move[] {
   const h: Move[] = [];
-  for (const mv of history) {
+  for (const mv of moves) {
     const top = h[h.length - 1];
-    if (top && top.face === mv.face && top.prime !== mv.prime) {
+    if (top && sameLayers(top, mv) && top.prime !== mv.prime) {
       h.pop(); // X then X' cancels
       continue;
     }
     const a = h[h.length - 2];
-    if (top && a && top.face === mv.face && a.face === mv.face && top.prime === mv.prime && a.prime === mv.prime) {
+    if (top && a && sameLayers(top, mv) && sameLayers(a, mv) && top.prime === mv.prime && a.prime === mv.prime) {
       h.pop();
       h.pop();
       h.push(inverse(mv)); // three same turns = one opposite turn
@@ -236,5 +252,10 @@ export function solutionFor(history: Move[]): Move[] {
     }
     h.push(mv);
   }
-  return h.map(inverse).reverse();
+  return h;
+}
+
+/** History → shortest undo plan: cancel, then reverse + invert. */
+export function solutionFor(history: Move[]): Move[] {
+  return cancelMoves(history).map(inverse).reverse();
 }
