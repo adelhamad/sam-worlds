@@ -7,7 +7,9 @@ import { Cube, FACE_AXIS, FACE_COLORS, FACES, type Face, type Move, type Vec } f
 import { checkColorCounts, cubeToFacelets, solve2x2 } from "../../engine/cubesolve";
 import { Cube3Solver } from "../../engine/cube3solver";
 import { BigCubeSolver } from "../../engine/bigcube/client";
-import { CubeScene } from "../../three/CubeScene";
+import { CubeScene, type PaintState } from "../../three/CubeScene";
+
+const EMPTY_COUNTS: Record<Face, number> = { U: 0, D: 0, L: 0, R: 0, F: 0, B: 0 };
 
 const FACE_LABEL: Record<Face, string> = { U: "TOP", D: "BOTTOM", F: "FRONT", B: "BACK", L: "LEFT", R: "RIGHT" };
 const SIZES = [
@@ -73,7 +75,8 @@ export function CubeCoach() {
   const [solves, setSolves] = useState(0);
   // Paint-flow state
   const [selColor, setSelColor] = useState<Face>("U");
-  const [remaining, setRemaining] = useState(0);
+  const [paint, setPaint] = useState<PaintState>({ remaining: 0, counts: EMPTY_COUNTS, cap: 0 });
+  const remaining = paint.remaining;
   const [thinking, setThinking] = useState(false);
   const [paintError, setPaintError] = useState<string | null>(null);
 
@@ -112,7 +115,7 @@ export function CubeCoach() {
     setSelColor("U");
     setPhase("paint");
     sceneRef.current?.setPaintColor("U");
-    sceneRef.current?.enterPaint(n, lockedStickers(n), setRemaining);
+    sceneRef.current?.enterPaint(n, lockedStickers(n), setPaint);
     if (n === 3) solverRef.current?.warmUp();
     if (n >= 4) bigSolverRef.current?.warmUp();
   }
@@ -233,7 +236,7 @@ export function CubeCoach() {
       <div className="cube-coachbar">
         {phase === "paint" && (
           <span className="cube-instruction">
-            {remaining > 0 ? <>Pick a color, tap the cube to match yours · {remaining} to go</> : <>All set — tap SOLVE! 🧭</>}
+            {remaining > 0 ? <>Tap to paint · tap again to undo · {remaining} to go</> : <>All set — tap SOLVE! 🧭</>}
           </span>
         )}
         {phase === "solve" && next && (
@@ -251,15 +254,20 @@ export function CubeCoach() {
       {phase === "paint" && (
         <>
           <div className="cube-palette">
-            {PALETTE.map((face) => (
-              <button
-                key={face}
-                className={`cube-swatch${selColor === face ? " is-sel" : ""}`}
-                style={{ background: FACE_COLORS[face] }}
-                aria-label={COLOR_LABEL[face]}
-                onClick={() => pickColor(face)}
-              />
-            ))}
+            {PALETTE.map((face) => {
+              const left = Math.max(0, paint.cap - (paint.counts[face] ?? 0));
+              return (
+                <button
+                  key={face}
+                  className={`cube-swatch${selColor === face ? " is-sel" : ""}${left === 0 ? " is-full" : ""}`}
+                  style={{ background: FACE_COLORS[face] }}
+                  aria-label={`${COLOR_LABEL[face]} — ${left} left`}
+                  onClick={() => pickColor(face)}
+                >
+                  <span className="cube-swatch-count">{left}</span>
+                </button>
+              );
+            })}
           </div>
           {paintError && <p className="cube-paint-error">{paintError}</p>}
           <div className="celebration-actions">

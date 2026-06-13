@@ -18,6 +18,16 @@ export interface PaintSticker {
   color: Face | null; // null = blank
   locked: boolean;
 }
+
+/** Live paint progress reported to the UI after every tap. */
+export interface PaintState {
+  /** Stickers still blank. */
+  remaining: number;
+  /** Stickers placed per color so far. */
+  counts: Record<Face, number>;
+  /** Max allowed per color (n²). */
+  cap: number;
+}
 const AXIS_VEC: Record<number, THREE.Vector3> = {
   0: new THREE.Vector3(1, 0, 0),
   1: new THREE.Vector3(0, 1, 0),
@@ -64,7 +74,9 @@ export class CubeScene {
   private paintColor: Face = "U";
   /** Paintable stickers keyed by `${x},${y},${z}|FACE`. */
   private paint = new Map<string, PaintSticker>();
-  private onPaintChange?: (remaining: number) => void;
+  /** Max stickers per color = n² (a solved cube has exactly that many). */
+  private paintCap = 0;
+  private onPaintChange?: (s: PaintState) => void;
 
   static create(host: HTMLElement): CubeScene {
     return new CubeScene(host);
@@ -145,15 +157,43 @@ export class CubeScene {
     const k = stickerKey(cub.grid, face);
     const st = this.paint.get(k);
     if (!st || st.locked) return;
+    // Already this color → tap again to clear it (lets a mistake be undone).
+    if (st.color === this.paintColor) {
+      st.color = null;
+      this.recolor(cub, hit.face.materialIndex, BLANK);
+      this.onPaintChange?.(this.paintState());
+      return;
+    }
+    // Live validation: never allow more than n² of one color (a real cube has
+    // exactly n²). Painting over another color frees that one up.
+    const counts = this.colorCounts();
+    if ((counts[this.paintColor] ?? 0) >= this.paintCap) {
+      this.onPaintChange?.(this.paintState()); // unchanged — UI flashes "0 left"
+      return;
+    }
     st.color = this.paintColor;
-    (cub.mesh.material as THREE.MeshStandardMaterial[])[hit.face.materialIndex].color.set(FACE_COLORS[this.paintColor]);
-    this.onPaintChange?.(this.remainingBlanks());
+    this.recolor(cub, hit.face.materialIndex, FACE_COLORS[this.paintColor]);
+    this.onPaintChange?.(this.paintState());
+  }
+
+  private recolor(cub: Cubelet, materialIndex: number, color: THREE.ColorRepresentation): void {
+    (cub.mesh.material as THREE.MeshStandardMaterial[])[materialIndex].color.set(color);
+  }
+
+  private colorCounts(): Record<Face, number> {
+    const counts = { U: 0, D: 0, L: 0, R: 0, F: 0, B: 0 } as Record<Face, number>;
+    for (const st of this.paint.values()) if (st.color) counts[st.color]++;
+    return counts;
   }
 
   private remainingBlanks(): number {
     let n = 0;
     for (const st of this.paint.values()) if (!st.color) n++;
     return n;
+  }
+
+  private paintState(): PaintState {
+    return { remaining: this.remainingBlanks(), counts: this.colorCounts(), cap: this.paintCap };
   }
 
   private placeCamera(): void {
@@ -210,10 +250,11 @@ export class CubeScene {
    * except `locked` reference stickers (centers / a fixed corner). `onChange`
    * reports how many stickers are still blank after each tap.
    */
-  enterPaint(n: number, locked: { grid: Vec; face: Face; color: Face }[], onChange: (remaining: number) => void): void {
+  enterPaint(n: number, locked: { grid: Vec; face: Face; color: Face }[], onChange: (s: PaintState) => void): void {
     this.setSize(n);
     this.paint.clear();
     this.painting = true;
+    this.paintCap = n * n;
     this.onPaintChange = onChange;
     const lock = new Map(locked.map((l) => [stickerKey(l.grid, l.face), l.color] as const));
     const m = n - 1;
@@ -229,7 +270,7 @@ export class CubeScene {
         mat.color.set(lockedColor ? FACE_COLORS[lockedColor] : BLANK);
       }
     }
-    onChange(this.remainingBlanks());
+    onChange(this.paintState());
   }
 
   setPaintColor(face: Face): void {

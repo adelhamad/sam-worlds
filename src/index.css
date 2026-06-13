@@ -1329,17 +1329,42 @@ body {
   margin: 4px 0 2px;
 }
 .cube-swatch {
+  position: relative;
   width: 48px;
   height: 48px;
   border-radius: 12px;
   border: 3px solid rgba(255, 255, 255, 0.25);
   cursor: pointer;
-  transition: transform 0.1s, border-color 0.1s;
+  transition: transform 0.1s, border-color 0.1s, opacity 0.1s;
 }
 .cube-swatch.is-sel {
   border-color: #fff;
   transform: scale(1.15);
   box-shadow: 0 0 14px rgba(255, 255, 255, 0.5);
+}
+/* live "remaining of this color" badge */
+.cube-swatch-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 4px;
+  border-radius: 10px;
+  background: #1a2238;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 20px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+/* a colour that's all used up: dim it and grey the badge */
+.cube-swatch.is-full {
+  opacity: 0.4;
+}
+.cube-swatch.is-full .cube-swatch-count {
+  background: #4a5568;
 }
 .cube-paint-error {
   text-align: center;
