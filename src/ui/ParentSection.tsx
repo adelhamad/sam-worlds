@@ -243,11 +243,13 @@ function MinigameRecords() {
   const critterDex = useGame((s) => s.critterDex);
   const blasterBest = useGame((s) => s.blasterBest);
   const pulseBest = useGame((s) => s.pulseBest);
+  const rangerBest = useGame((s) => s.rangerBest);
   const resetRushBest = useGame((s) => s.resetRushBest);
   const resetSurfBest = useGame((s) => s.resetSurfBest);
   const resetCritter = useGame((s) => s.resetCritter);
   const resetBlasterBest = useGame((s) => s.resetBlasterBest);
   const resetPulseBest = useGame((s) => s.resetPulseBest);
+  const resetRangerBest = useGame((s) => s.resetRangerBest);
   return (
     <>
       {rushBest > 0 && (
@@ -288,6 +290,14 @@ function MinigameRecords() {
         <div className="parent-row parent-world-row">
           <span className="parent-world-name">🟣 Pulse Pads best chain: {pulseBest}</span>
           <button className="btn btn-secondary" onClick={resetPulseBest}>
+            Reset record
+          </button>
+        </div>
+      )}
+      {rangerBest > 0 && (
+        <div className="parent-row parent-world-row">
+          <span className="parent-world-name">🤠 Star Ranger best patrol: {rangerBest}</span>
+          <button className="btn btn-secondary" onClick={resetRangerBest}>
             Reset record
           </button>
         </div>

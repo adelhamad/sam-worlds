@@ -62,6 +62,7 @@ export interface SettingsRow {
   critterBest?: number;
   blasterBest?: number;
   pulseBest?: number;
+  rangerBest?: number;
   /** Critterdex: animal names Sam has correctly identified at least once. */
   critterDex?: string[];
   /** Daily Gift + Treasure Vault. */

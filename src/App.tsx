@@ -17,6 +17,7 @@ import { JumpJam } from "./modules/jumpjam/JumpJam";
 import { Calculator } from "./modules/calculator/Calculator";
 import { AsteroidArena } from "./modules/asteroid/AsteroidArena";
 import { PulsePads } from "./modules/pulse/PulsePads";
+import { StarRanger } from "./modules/ranger/StarRanger";
 
 /** Each screen starts at the top — no inherited scroll position. */
 function ScrollToTop() {
@@ -111,6 +112,7 @@ export default function App() {
         <Route path="/calc" element={<GameGate id="calc"><Calculator /></GameGate>} />
         <Route path="/blaster" element={<GameGate id="blaster"><AsteroidArena /></GameGate>} />
         <Route path="/pulse" element={<GameGate id="pulse"><PulsePads /></GameGate>} />
+        <Route path="/ranger" element={<GameGate id="ranger"><StarRanger /></GameGate>} />
         <Route path="/parent" element={<ParentSection />} />
       </Routes>
     </HashRouter>

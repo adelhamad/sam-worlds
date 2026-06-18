@@ -60,6 +60,7 @@ export interface GameStore {
   critterBest: number;
   blasterBest: number;
   pulseBest: number;
+  rangerBest: number;
   critterDex: string[];
   // Daily Gift + Treasure Vault
   gifts: string[];
@@ -98,6 +99,8 @@ export interface GameStore {
   resetBlasterBest: () => void;
   reportPulseScore: (score: number) => void;
   resetPulseBest: () => void;
+  reportRangerScore: (score: number) => void;
+  resetRangerBest: () => void;
   claimDailyGift: () => DailyGift | null;
   resetGifts: () => void;
   addVideoUrl: (url: string) => void;
@@ -149,11 +152,7 @@ export const useGame = create<GameStore>((set, get) => ({
   videoMode: "corner",
   videoOpacity: 80,
   videoUrls: [],
-  rushBest: 0,
-  surfBest: 0,
-  critterBest: 0,
-  blasterBest: 0,
-  pulseBest: 0,
+  rushBest: 0, surfBest: 0, critterBest: 0, blasterBest: 0, pulseBest: 0, rangerBest: 0,
   critterDex: [],
   gifts: [],
   lastGiftDay: null,
