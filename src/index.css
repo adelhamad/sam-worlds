@@ -2152,3 +2152,106 @@ body {
   pointer-events: auto;
 }
 .racer-arrow:active { transform: scale(0.92); background: var(--cyan); }
+
+/* ── Cosmo: the persistent companion ─────────────────────────────────── */
+.pet-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+}
+.pet-egg-card { background: linear-gradient(180deg, var(--panel), var(--night)); }
+.pet-avatar {
+  font-size: 52px;
+  line-height: 1;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.45));
+}
+.pet-avatar:active { transform: scale(0.9); }
+.pet-bob { animation: petBob 2.6s ease-in-out infinite; }
+@keyframes petBob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-6px) rotate(2deg); }
+}
+.pet-body { flex: 1 1 auto; min-width: 0; }
+.pet-name { font-weight: 700; font-size: 1.05rem; }
+.pet-name small { color: var(--text-dim); font-weight: 600; }
+.pet-mood { color: var(--text-dim); font-size: 0.92rem; margin: 2px 0 8px; }
+.pet-goal { color: var(--cyan); font-size: 0.86rem; margin-top: 6px; font-weight: 600; }
+.pet-bar {
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+.pet-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--cyan), var(--good));
+  transition: width 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.pet-name-row { display: flex; gap: 8px; }
+.pet-name-input { flex: 1 1 auto; min-width: 0; }
+
+.pet-legendary {
+  border-color: var(--cyan);
+  animation: legendaryGlow 3s ease-in-out infinite;
+}
+@keyframes legendaryGlow {
+  0%, 100% { box-shadow: 0 0 0 rgba(34, 211, 238, 0); }
+  50% { box-shadow: 0 0 22px rgba(34, 211, 238, 0.55); }
+}
+.pet-evolve-burst {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--night-deep);
+  background: radial-gradient(circle, rgba(255, 230, 150, 0.97), rgba(34, 211, 238, 0.92));
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  animation: evolvePop 320ms ease-out;
+}
+.pet-card { position: relative; }
+@keyframes evolvePop {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* In-stage nibbler */
+.stage-pet {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.stage-pet-avatar { font-size: 22px; display: inline-block; }
+.pet-eat { animation: petEat 0.6s ease; }
+@keyframes petEat {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.45) rotate(-8deg); }
+  60% { transform: scale(1.15) rotate(6deg); }
+  100% { transform: scale(1); }
+}
+.stage-pet-yum {
+  color: var(--good);
+  font-weight: 700;
+  font-size: 0.85rem;
+  animation: yumFloat 0.65s ease-out;
+}
+@keyframes yumFloat {
+  0% { transform: translateY(0); opacity: 0; }
+  40% { opacity: 1; }
+  100% { transform: translateY(-14px); opacity: 0; }
+}
+.stage-pet-goal { color: var(--cyan); font-size: 0.78rem; font-weight: 600; }

@@ -12,6 +12,7 @@ import { missTransition, withReplacedQuestion } from "./missTransition";
 import { persistSettings, settingsState } from "./settings";
 import { recordActions } from "./records";
 import { giftActions } from "./gifts";
+import { petActions, petInitial, type PetSlice } from "./pet";
 import { drawTreasure, type DailyGift, type Treasure, treasureById } from "../engine/economy/gifts";
 import { persona } from "../persona.config";
 import { newSeed } from "../engine/rng";
@@ -36,7 +37,7 @@ export interface Session extends SessionRow {
   result: SessionResult | null;
 }
 
-export interface GameStore {
+export interface GameStore extends PetSlice {
   loaded: boolean;
   hasSave: boolean;
   starDust: number;
@@ -155,12 +156,9 @@ export const useGame = create<GameStore>((set, get) => ({
   videoMode: "corner",
   videoOpacity: 80,
   videoUrls: [],
-  rushBest: 0, surfBest: 0, critterBest: 0, blasterBest: 0, pulseBest: 0, rangerBest: 0, racerBest: 0,
-  critterDex: [],
-  gifts: [],
-  lastGiftDay: null,
-  giftStreak: 0,
-  giftBestStreak: 0,
+  rushBest: 0, surfBest: 0, critterBest: 0, blasterBest: 0, pulseBest: 0, rangerBest: 0, racerBest: 0, critterDex: [],
+  gifts: [], lastGiftDay: null, giftStreak: 0, giftBestStreak: 0,
+  ...petInitial,
   session: null,
 
   hydrate: async () => {
@@ -392,6 +390,7 @@ export const useGame = create<GameStore>((set, get) => ({
     });
     if (surprise) persistSettings(get);
     persistSession(finished); // result set → deletes the in-progress row
+    get().feedStage(s.correctCount, perfect, firstTime); // Cosmo eats what Sam earned
   },
 
   clearSession: () => {
@@ -522,6 +521,7 @@ export const useGame = create<GameStore>((set, get) => ({
 
   ...recordActions(set, get),
   ...giftActions(set, get),
+  ...petActions(set, get),
 
   addVideoUrl: (url) => {
     const u = url.trim();

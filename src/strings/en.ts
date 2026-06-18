@@ -41,4 +41,17 @@ export const STR = {
   couponSection: "Daddy Rewards — buy, then show Daddy!",
   question: (i: number, total: number) => `${i} of ${total}`,
   badgeEarned: "New Trophy!",
+  // Cosmo — the companion
+  petEggTitle: `A mystery egg appeared, ${n}!`,
+  petEggSub: "Give it a name to hatch it 🥚",
+  petNamePlaceholder: "Name your buddy…",
+  petHatchBtn: "Hatch! ✨",
+  petHappy: (name: string) => `${name} is happy and full ✨`,
+  petPeckish: (name: string) => `${name} is getting peckish 🍃`,
+  petHungry: (name: string) => `${name} is hungry — answer questions to feed it! 🍙`,
+  petMaxed: (name: string) => `${name} is fully grown — a legend! 🌟`,
+  petToNext: (meals: number, label: string) =>
+    `${meals} more ${meals === 1 ? "meal" : "meals"} → ${label}!`,
+  petEvolved: (name: string, label: string) => `${name} grew into a ${label}! 🎉`,
+  petTapLine: (name: string) => `${name} loves you, ${n}! 💖`,
 } as const;

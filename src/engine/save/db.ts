@@ -71,6 +71,12 @@ export interface SettingsRow {
   lastGiftDay?: string | null;
   giftStreak?: number;
   giftBestStreak?: number;
+  /** Cosmo companion (rides this row — no schema bump, mirrored by backup). */
+  petName?: string | null;
+  petXp?: number;
+  petStageIdx?: number;
+  petFedAt?: number;
+  petBornAt?: number;
 }
 export interface CouponRow {
   id?: number;

@@ -28,6 +28,11 @@ export function persistSettings(get: () => GameStore): void {
     lastGiftDay: s.lastGiftDay,
     giftStreak: s.giftStreak,
     giftBestStreak: s.giftBestStreak,
+    petName: s.petName,
+    petXp: s.petXp,
+    petStageIdx: s.petStageIdx,
+    petFedAt: s.petFedAt,
+    petBornAt: s.petBornAt,
   });
 }
 
@@ -63,11 +68,24 @@ function recordSettings(s: SettingsRow | undefined) {
   };
 }
 
+/** Cosmo companion defaults (split out to keep each helper under the cap). */
+function petSettings(s: SettingsRow | undefined) {
+  return {
+    petName: s?.petName ?? null,
+    petXp: s?.petXp ?? 0,
+    petStageIdx: s?.petStageIdx ?? 0,
+    petFedAt: s?.petFedAt ?? 0,
+    petBornAt: s?.petBornAt ?? 0,
+    petEvolvedTo: null as number | null,
+  };
+}
+
 /** Stored settings row → state slice, with all defaults in one place. */
 export function settingsState(settings: SettingsRow | undefined) {
   return {
     ...scalarSettings(settings),
     ...recordSettings(settings),
+    ...petSettings(settings),
     enabledWorlds: withWorldDefaults(settings?.enabledWorlds),
     enabledGames: withGameDefaults(settings?.enabledGames),
   };

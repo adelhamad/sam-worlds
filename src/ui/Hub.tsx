@@ -8,6 +8,7 @@ import { STR } from "../strings/en";
 import { Workshop } from "./Workshop";
 import { CouponWallet } from "./CouponWallet";
 import { DailyGiftBanner } from "./DailyGift";
+import { PetCompanion } from "./PetCompanion";
 import { TreasureVault } from "./TreasureVault";
 import { vaultProgress } from "../engine/economy/gifts";
 
@@ -97,6 +98,8 @@ export function Hub() {
           </div>
         </div>
       </section>
+
+      <PetCompanion />
 
       <DailyGiftBanner />
 

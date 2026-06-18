@@ -7,6 +7,7 @@ import { youTubeId } from "../engine/video";
 import { clearAxisMaps, requestTiltPermission } from "../engine/sensors";
 import { TiltCalibrator } from "./TiltCalibrator";
 import { GiftControls, RewardHistory } from "./ParentRewards";
+import { PetControls } from "./ParentPet";
 
 const PARENT_PASSWORD = "adel";
 
@@ -419,6 +420,8 @@ function ParentControls() {
       </section>
 
       <AccessControls />
+
+      <PetControls />
 
       <GiftControls />
 

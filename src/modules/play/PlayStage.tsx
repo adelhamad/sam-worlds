@@ -20,6 +20,7 @@ import { LetterPad } from "../../ui/inputs/LetterPad";
 import { Launcher } from "../../ui/inputs/Launcher";
 import { OrderCards } from "../../ui/inputs/OrderCards";
 import { ChoiceButtons } from "../../ui/inputs/ChoiceButtons";
+import { StagePet } from "../../ui/PetCompanion";
 import { CircuitDiagram } from "../../ui/inputs/CircuitDiagram";
 import type { Node as CircuitNode } from "../../engine/generators/logicCircuit";
 
@@ -303,7 +304,7 @@ function StageHeader({ worldId, title, starDust, intro, helpOpen, setHelpOpen }:
 }
 
 interface QuestionCardProps {
-  session: { index: number; questions: unknown[]; companionLine: string | null; workedExample: string | null; lastAnswer: string | null; showHint: boolean };
+  session: { index: number; questions: unknown[]; correctCount: number; companionLine: string | null; workedExample: string | null; lastAnswer: string | null; showHint: boolean };
   q: Question;
   praise: string | null;
   busy: boolean;
@@ -315,7 +316,10 @@ function QuestionCard({ session, q, praise, busy, interactive, onSubmit }: Quest
   const missLocked = busy && session.lastAnswer === "wrong";
   return (
     <div className={`question-card panel ${interactive ? "q-wide" : ""}`}>
-      <div className="q-progress">{STR.question(session.index + 1, session.questions.length)}</div>
+      <div className="q-progress">
+        {STR.question(session.index + 1, session.questions.length)}
+        <StagePet correctCount={session.correctCount} />
+      </div>
       {session.companionLine && <div className="q-companion">🤖 {session.companionLine}</div>}
       {session.workedExample && (
         <div className="q-worked">
