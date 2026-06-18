@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { useGame } from "../state/store";
 import { completedInWorld, WORLDS } from "../content/worlds";
 import { MINIGAMES } from "../content/minigames";
-import { itemById } from "../engine/economy/catalog";
 import { youTubeId } from "../engine/video";
 import { clearAxisMaps, requestTiltPermission } from "../engine/sensors";
 import { TiltCalibrator } from "./TiltCalibrator";
+import { GiftControls, RewardHistory } from "./ParentRewards";
 
 const PARENT_PASSWORD = "adel";
 
@@ -241,9 +241,13 @@ function MinigameRecords() {
   const surfBest = useGame((s) => s.surfBest);
   const critterBest = useGame((s) => s.critterBest);
   const critterDex = useGame((s) => s.critterDex);
+  const blasterBest = useGame((s) => s.blasterBest);
+  const pulseBest = useGame((s) => s.pulseBest);
   const resetRushBest = useGame((s) => s.resetRushBest);
   const resetSurfBest = useGame((s) => s.resetSurfBest);
   const resetCritter = useGame((s) => s.resetCritter);
+  const resetBlasterBest = useGame((s) => s.resetBlasterBest);
+  const resetPulseBest = useGame((s) => s.resetPulseBest);
   return (
     <>
       {rushBest > 0 && (
@@ -272,77 +276,23 @@ function MinigameRecords() {
           </button>
         </div>
       )}
-    </>
-  );
-}
-
-function fmt(t: number): string {
-  return new Date(t).toLocaleString(undefined, {
-    day: "numeric",
-    month: "short",
-    hour: "numeric",
-    minute: "2-digit",
-  });
-}
-
-/** Every Daddy Reward ever bought: what, when bought, when redeemed. */
-function RewardHistory() {
-  const coupons = useGame((s) => s.coupons);
-  const clearRedeemed = useGame((s) => s.clearRedeemedCoupons);
-  const [confirmClear, setConfirmClear] = useState(false);
-  const rows = [...coupons].sort(
-    (a, b) => (b.redeemedAt ?? b.purchasedAt) - (a.redeemedAt ?? a.purchasedAt),
-  );
-  const redeemedCount = rows.filter((c) => c.redeemedAt).length;
-
-  return (
-    <section className="panel parent-block">
-      <h2>🎟️ Daddy Rewards history</h2>
-      <p className="dim">
-        {rows.length === 0
-          ? "No rewards bought yet."
-          : `${rows.length} bought · ${redeemedCount} redeemed · ${rows.length - redeemedCount} still in the wallet.`}
-      </p>
-      {redeemedCount > 0 && (
-        <div className="parent-row">
-          {confirmClear ? (
-            <>
-              <button className="btn btn-secondary" onClick={() => setConfirmClear(false)}>
-                Cancel
-              </button>
-              <button
-                className="btn btn-danger"
-                onClick={() => {
-                  clearRedeemed();
-                  setConfirmClear(false);
-                }}
-              >
-                Yes, remove {redeemedCount} redeemed
-              </button>
-            </>
-          ) : (
-            <button className="btn btn-secondary" onClick={() => setConfirmClear(true)}>
-              🧹 Clean history (keeps wallet)
-            </button>
-          )}
+      {blasterBest > 0 && (
+        <div className="parent-row parent-world-row">
+          <span className="parent-world-name">🚀 Asteroid Arena best: {blasterBest}</span>
+          <button className="btn btn-secondary" onClick={resetBlasterBest}>
+            Reset record
+          </button>
         </div>
       )}
-      {rows.map((c) => {
-        const item = itemById(c.itemId);
-        return (
-          <div key={c.id} className="parent-row parent-history-row">
-            <span className="parent-world-name">
-              {item?.icon ?? "🎟️"} {item?.name ?? c.itemId}
-            </span>
-            {c.redeemedAt ? (
-              <span className="history-redeemed">✓ Redeemed {fmt(c.redeemedAt)}</span>
-            ) : (
-              <span className="dim">In wallet — bought {fmt(c.purchasedAt)}</span>
-            )}
-          </div>
-        );
-      })}
-    </section>
+      {pulseBest > 0 && (
+        <div className="parent-row parent-world-row">
+          <span className="parent-world-name">🟣 Pulse Pads best chain: {pulseBest}</span>
+          <button className="btn btn-secondary" onClick={resetPulseBest}>
+            Reset record
+          </button>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -449,6 +399,8 @@ function ParentControls() {
       </section>
 
       <AccessControls />
+
+      <GiftControls />
 
       <VideoControls />
 

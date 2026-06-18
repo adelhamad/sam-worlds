@@ -16,15 +16,34 @@ const ORGANS: Array<[string, string, string]> = [
   ["🩸", "blood", "carries food and air around your body"],
   ["🧍", "skin", "protects everything inside you"],
   ["🫘", "kidneys", "clean your blood"],
+  ["👃", "nose", "lets you smell"],
+  ["👅", "tongue", "lets you taste"],
+  ["🩻", "ribs", "shield your heart and lungs"],
+  ["🌀", "intestines", "soak up food into your body"],
+  ["🟤", "liver", "cleans out things your body doesn't need"],
+  ["🦴", "spine", "carries messages up and down your back"],
+  ["✋", "hands", "let you grab and hold things"],
+  ["🦵", "legs", "let you walk and run"],
+  ["💧", "sweat", "cools you down when you're hot"],
+  ["🧬", "cells", "are the tiny building blocks of you"],
+  ["💇", "hair", "keeps your head warm"],
+  ["💅", "nails", "protect the tips of your fingers"],
 ];
 
-// [sense emoji, body part, sense]
-const SENSES: Array<[string, string, string]> = [
-  ["👀", "eyes", "see"],
-  ["👂", "ears", "hear"],
-  ["👃", "nose", "smell"],
-  ["👅", "tongue", "taste"],
-  ["✋", "hands", "touch"],
+// [emoji, thing you sense, sense, body part you use]
+const SENSES: Array<[string, string, string, string]> = [
+  ["🌈", "a rainbow", "see", "eyes"],
+  ["🎵", "music", "hear", "ears"],
+  ["🌹", "a flower", "smell", "nose"],
+  ["🍋", "a sour lemon", "taste", "tongue"],
+  ["🧊", "a cold ice cube", "touch", "hands"],
+  ["⭐", "a twinkling star", "see", "eyes"],
+  ["🐦", "a bird singing", "hear", "ears"],
+  ["🍪", "fresh cookies", "smell", "nose"],
+  ["🍯", "sweet honey", "taste", "tongue"],
+  ["🐈", "soft fur", "touch", "hands"],
+  ["📖", "the words in a book", "see", "eyes"],
+  ["🔔", "a ringing bell", "hear", "ears"],
 ];
 
 // healthy vs not — pick the healthy choice
@@ -44,6 +63,15 @@ const HEALTHY: Array<[string, string[]]> = [
   ["🥕 carrot sticks", ["🍩 a donut", "🍬 gummy bears", "🍪 a cookie jar"]],
   ["🧘 quiet rest time", ["📺 loud TV all day", "🏃 never slowing down", "🎮 screens till midnight"]],
   ["🚶 walking to school", ["🛗 always the elevator", "🛋️ never moving", "📱 walking while staring at a phone"]],
+  ["🥜 a handful of nuts", ["🍫 a chocolate bar", "🍬 a bag of candy", "🍩 two donuts"]],
+  ["🛌 going to bed on time", ["📱 phone under the covers", "📺 TV until midnight", "🎮 games all night"]],
+  ["🪥 brushing twice a day", ["🍭 candy instead of brushing", "🚫 skipping it all week", "🥤 soda before bed"]],
+  ["🥬 a green smoothie", ["🍦 a giant sundae", "🥤 a big fizzy drink", "🍰 cake for breakfast"]],
+  ["🤸 stretching your body", ["🛋️ slouching all day", "📱 hunching over a screen", "🚫 never moving"]],
+  ["🧴 sunscreen at the beach", ["🔥 burning in the sun", "🚫 no hat or shade", "😎 staring at the sun"]],
+  ["🍓 berries for a snack", ["🍟 a basket of fries", "🍫 chocolate buttons", "🧁 a frosted cupcake"]],
+  ["💤 a calm bedtime routine", ["😱 scary shows at night", "🥤 caffeine before bed", "📱 bright screens late"]],
+  ["🚰 sipping water when thirsty", ["🥤 only soda all day", "🧃 sugary juice boxes", "🍦 a milkshake instead"]],
 ];
 
 // ordering journeys — each is a self-contained "put in order" question
@@ -56,6 +84,14 @@ const SEQUENCES: Array<[string, string[]]> = [
   ["How does a cut heal?", ["🩸 it bleeds a little", "🩹 a scab grows", "✨ new skin appears"]],
   ["Wash those germs away!", ["💧 wet your hands", "🧼 scrub with soap", "🧻 dry them off"]],
   ["Getting ready to sleep:", ["🪥 brush your teeth", "📖 a bedtime story", "😴 lights out"]],
+  ["From food to energy:", ["🍎 you eat", "🌀 your body soaks it up", "⚡ you get energy"]],
+  ["A breath out:", ["🫁 lungs squeeze", "🌬️ air goes up", "👃 out the nose"]],
+  ["Hearing a sound:", ["🔔 a sound is made", "👂 your ear catches it", "🧠 your brain knows it"]],
+  ["Seeing a picture:", ["👁️ light hits your eye", "🧠 your brain reads it", "💡 you know what it is"]],
+  ["Growing a tooth back:", ["🦷 baby tooth wobbles", "🕳️ it falls out", "✨ a big tooth grows"]],
+  ["From thirsty to better:", ["😓 you feel thirsty", "💧 you drink water", "😊 you feel good again"]],
+  ["When you scrape your knee:", ["🩸 it bleeds a little", "🩹 a scab forms", "✨ it heals up"]],
+  ["From tired to rested:", ["🥱 you yawn", "😴 you fall asleep", "🌅 you wake up fresh"]],
 ];
 
 export interface BodyParams {
@@ -108,16 +144,18 @@ function genOrgan(rng: RNG): Question {
 }
 
 function genSense(rng: RNG): Question {
-  const [emoji, part, sense] = pick(rng, SENSES);
-  const wrong = shuffle(rng, SENSES.filter((s) => s[2] !== sense)).slice(0, 3);
+  const [emoji, thing, sense, part] = pick(rng, SENSES);
+  // collect distinct wrong senses so no choice repeats
+  const otherSenses = [...new Set(SENSES.map(([, , s]) => s).filter((s) => s !== sense))];
+  const wrong = shuffle(rng, otherSenses).slice(0, 3);
   return {
     id: id(),
-    prompt: `What do you use your ${part} for?`,
+    prompt: `Which sense do you use for ${thing}?`,
     answer: `to ${sense}`,
-    choices: shuffle(rng, [`to ${sense}`, ...wrong.map(([, , s]) => `to ${s}`)]),
-    hint: "One of your five senses!",
+    choices: shuffle(rng, [`to ${sense}`, ...wrong.map((s) => `to ${s}`)]),
+    hint: `Your ${part} help you!`,
     inputMode: "choices",
-    dedupeKey: `sense-${part}`,
+    dedupeKey: `sense-${thing}`,
     payload: { bigSymbol: emoji },
   };
 }

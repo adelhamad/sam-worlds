@@ -21,11 +21,17 @@ const SHAPES_3D = [
   { name: "cone", faces: 2, like: "a party hat" },
   { name: "cylinder", faces: 3, like: "a can" },
   { name: "pyramid", faces: 5, like: "a tent" },
+  { name: "rectangular prism", faces: 6, like: "a box" },
+  { name: "triangular prism", faces: 5, like: "a tent roof" },
 ];
 const FRACTIONS = [
   { parts: 2, one: "half", many: "halves" },
   { parts: 3, one: "third", many: "thirds" },
   { parts: 4, one: "fourth", many: "fourths" },
+  { parts: 5, one: "fifth", many: "fifths" },
+  { parts: 6, one: "sixth", many: "sixths" },
+  { parts: 8, one: "eighth", many: "eighths" },
+  { parts: 10, one: "tenth", many: "tenths" },
 ];
 const FOODS = ["🍕", "🍪", "🍫", "🥧", "🧇", "🍊", "🍉", "🥪", "🥯"];
 
@@ -138,13 +144,14 @@ function genShape3d(rng: RNG): Question {
 function genFractionName(rng: RNG): Question {
   const f = pick(rng, FRACTIONS);
   const food = pick(rng, FOODS);
+  const others = shuffle(rng, FRACTIONS.filter((x) => x.one !== f.one)).slice(0, 3);
   return {
     id: id(),
     prompt: `${food} cut into ${f.parts} equal parts.\nEach part is one ___?`,
     answer: f.one,
-    choices: shuffle(rng, FRACTIONS.map((x) => x.one)),
+    choices: shuffle(rng, [f.one, ...others.map((o) => o.one)]),
     inputMode: "choices",
-    hint: `2 parts → halves, 3 → thirds, 4 → fourths.`,
+    hint: `2 parts → halves, 3 → thirds, 4 → fourths — the name matches the count.`,
     dedupeKey: `fn-${f.parts}`,
   };
 }

@@ -16,6 +16,13 @@ const LANDMARKS: Array<[string, string]> = [
   ["🏟️ Colosseum", "Italy"], ["🕌 Taj Mahal", "India"], ["🗻 Mount Fuji", "Japan"],
   ["🎭 Sydney Opera House", "Australia"], ["⛰️ Machu Picchu", "Peru"], ["🏰 Neuschwanstein Castle", "Germany"],
   ["🌉 Golden Gate Bridge", "USA"], ["🕋 Kaaba", "Saudi Arabia"], ["🏛️ Petra", "Jordan"],
+  ["🗼 Tokyo Tower", "Japan"], ["🌬️ Windmills of Kinderdijk", "Netherlands"], ["🏰 Edinburgh Castle", "Scotland"],
+  ["🦁 Merlion", "Singapore"], ["⛲ Trevi Fountain", "Italy"], ["🗽 Christ the Redeemer", "Brazil"],
+  ["🛕 Angkor Wat", "Cambodia"], ["🏔️ Matterhorn", "Switzerland"], ["🌁 Tower Bridge", "England"],
+  ["🕌 Blue Mosque", "Turkey"], ["🏛️ Brandenburg Gate", "Germany"], ["🗻 Table Mountain", "South Africa"],
+  ["🏯 Forbidden City", "China"], ["🌋 Mount Vesuvius", "Italy"], ["🏰 Tower of London", "England"],
+  ["🐉 Komodo dragons", "Indonesia"], ["🦒 Serengeti", "Tanzania"], ["🌊 Niagara Falls", "Canada"],
+  ["🏰 CN Tower", "Canada"], ["🦘 Uluru", "Australia"], ["🌸 Cherry blossoms", "Japan"],
 ];
 const COUNTRIES = [...new Set(LANDMARKS.map(([, c]) => c))];
 
@@ -23,7 +30,11 @@ const COLOR_MIXES: Array<[string, string]> = [
   ["purple 🟣", "🔴 red + 🔵 blue"], ["green 🟢", "🔵 blue + 🟡 yellow"],
   ["orange 🟠", "🔴 red + 🟡 yellow"], ["pink 🩷", "🔴 red + ⚪ white"],
   ["brown 🟤", "🔴 red + 🟢 green"], ["sky blue 🩵", "🔵 blue + ⚪ white"],
-  ["gray 🩶", "⚫ black + ⚪ white"],
+  ["gray 🩶", "⚫ black + ⚪ white"], ["light green 🟢", "🟢 green + ⚪ white"],
+  ["dark red 🔴", "🔴 red + ⚫ black"], ["teal 🩵", "🔵 blue + 🟢 green"],
+  ["lime 🟢", "🟡 yellow + 🟢 green"], ["maroon 🟤", "🔴 red + 🟤 brown"],
+  ["peach 🩷", "🟠 orange + ⚪ white"], ["lavender 🟣", "🟣 purple + ⚪ white"],
+  ["mint 🩵", "🟢 green + ⚪ white + 🔵 blue"], ["gold 🟡", "🟡 yellow + 🟠 orange"],
 ];
 const MIX_OPTIONS = [...new Set(COLOR_MIXES.map(([, m]) => m))];
 
@@ -89,5 +100,6 @@ function matching(
     choices: shuffle(rng, [answer, ...wrong]),
     hint,
     inputMode: "choices",
+    dedupeKey: `match-${subject}`,
   };
 }

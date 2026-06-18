@@ -7,6 +7,9 @@ import { sfx, unlockAudio } from "../engine/feedback/audio";
 import { STR } from "../strings/en";
 import { Workshop } from "./Workshop";
 import { CouponWallet } from "./CouponWallet";
+import { DailyGiftBanner } from "./DailyGift";
+import { TreasureVault } from "./TreasureVault";
+import { vaultProgress } from "../engine/economy/gifts";
 
 // Each world portal gets its own planet hue.
 const PLANET_HUES: Record<string, string> = {
@@ -36,6 +39,10 @@ const PLANET_HUES: Record<string, string> = {
   money: "#fcd34d",
   shapes: "#f472b6",
   measure: "#2dd4bf",
+  primes: "#fb923c",
+  binary: "#34d399",
+  fractions: "#f9a8d4",
+  elements: "#818cf8",
 };
 
 export function Hub() {
@@ -47,7 +54,10 @@ export function Hub() {
   const musicOn = useGame((s) => s.musicOn);
   const toggleSound = useGame((s) => s.toggleSound);
   const toggleMusic = useGame((s) => s.toggleMusic);
+  const gifts = useGame((s) => s.gifts);
   const [shopOpen, setShopOpen] = useState(false);
+  const [vaultOpen, setVaultOpen] = useState(false);
+  const vault = vaultProgress(gifts);
 
   const enabledWorlds = useGame((s) => s.enabledWorlds);
   const enabledGames = useGame((s) => s.enabledGames);
@@ -87,6 +97,8 @@ export function Hub() {
           </div>
         </div>
       </section>
+
+      <DailyGiftBanner />
 
       {continueStage && continueWorld && continueAllowed && (
         <button
@@ -166,6 +178,18 @@ export function Hub() {
           <span className="tile-name">{STR.workshop}</span>
           <span className="tile-sub">Earn Daddy Rewards! 🎟️</span>
         </button>
+        <button
+          className="tile tile-glow"
+          onClick={() => {
+            unlockAudio();
+            sfx.tap();
+            setVaultOpen(true);
+          }}
+        >
+          <span className="tile-icon">🗝️</span>
+          <span className="tile-name">Treasure Vault</span>
+          <span className="tile-sub">{vault.owned}/{vault.total} collected ✨</span>
+        </button>
         <div className="tile tile-static">
           <span className="tile-icon">🏆</span>
           <span className="tile-name">{STR.trophyShelf}</span>
@@ -184,6 +208,7 @@ export function Hub() {
       </div>
 
       {shopOpen && <Workshop onClose={() => setShopOpen(false)} />}
+      {vaultOpen && <TreasureVault onClose={() => setVaultOpen(false)} />}
     </div>
   );
 }

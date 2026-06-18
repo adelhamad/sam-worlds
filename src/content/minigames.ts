@@ -15,4 +15,6 @@ export const MINIGAMES: MinigameDef[] = [
   { id: "cube", name: "Cube Coach", icon: "🧊", sub: "Scramble & solve!", route: "/cube" },
   { id: "jump", name: "Jump Jam", icon: "🤸", sub: "Move for real!", route: "/jump" },
   { id: "calc", name: "Calculator", icon: "🧮", sub: "Crunch any number!", route: "/calc" },
+  { id: "blaster", name: "Asteroid Arena", icon: "🚀", sub: "Blast the right numbers!", route: "/blaster" },
+  { id: "pulse", name: "Pulse Pads", icon: "🟣", sub: "Watch & echo the glow!", route: "/pulse" },
 ];

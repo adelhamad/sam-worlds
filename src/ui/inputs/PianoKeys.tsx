@@ -21,6 +21,7 @@ export function PianoKeys({ question, disabled, onSubmit }: Props) {
   const demo = (payload.play as string[] | undefined) ?? [];
   const sorted = Boolean(payload.sorted);
   const staff = payload.staff as string | undefined;
+  const clef = (payload.clef as string | undefined) ?? "treble";
 
   function hearIt() {
     demo.forEach((n, i) => playPitch(NOTE_FREQ[n], 0.4, i * 0.5));
@@ -50,7 +51,7 @@ export function PianoKeys({ question, disabled, onSubmit }: Props) {
 
   return (
     <div className="piano-input">
-      {staff && <StaffNote note={staff} />}
+      {staff && <StaffNote note={staff} clef={clef} />}
       <div className="piano-seq">{seq.length ? seq.join(" · ") : "—"}</div>
       <div className="piano">
         {WHITES.map((w) => (

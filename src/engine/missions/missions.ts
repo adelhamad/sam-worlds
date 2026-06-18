@@ -149,6 +149,30 @@ const WORLD_BEATS: Record<string, StoryBeat[]> = {
     { afterStage: 30, text: "Two-step codes crack under your pencil.", tease: "The times box multiplies the mystery…" },
     { afterStage: 55, text: "Every equation balances perfectly!", tease: "Master of Equations — x marks YOU." },
   ],
+  primes: [
+    { afterStage: 0, text: "A mountain of numbers towers ahead.", tease: "The lower slopes need your times tables…" },
+    { afterStage: 10, text: "You climb the multiplication ridge!", tease: "Caves of division open higher up…" },
+    { afterStage: 30, text: "Square stones pave the path now.", tease: "Strange lonely numbers guard the peak…" },
+    { afterStage: 55, text: "You stand atop Prime Peaks!", tease: "Grandmaster of factors and primes." },
+  ],
+  binary: [
+    { afterStage: 0, text: "A dark beacon waits for a code of 0s and 1s.", tease: "Light it with your first bits…" },
+    { afterStage: 10, text: "The beacon flickers awake!", tease: "Now WRITE numbers in binary…" },
+    { afterStage: 30, text: "You add and count in base two!", tease: "The signal grows stronger…" },
+    { afterStage: 55, text: "The Beacon blazes across space!", tease: "You think like a computer now." },
+  ],
+  fractions: [
+    { afterStage: 0, text: "A factory of pies and bars hums to life.", tease: "Read the very first slice…" },
+    { afterStage: 10, text: "You take fractions of any number!", tease: "Twin fractions hide on the line…" },
+    { afterStage: 30, text: "You add and simplify like a pro.", tease: "A bridge to decimals appears…" },
+    { afterStage: 55, text: "Every slice obeys you!", tease: "Fraction Master — perfectly even." },
+  ],
+  elements: [
+    { afterStage: 0, text: "A gleaming lab of bottled elements.", tease: "Learn the first symbols…" },
+    { afterStage: 10, text: "You build molecules from atoms!", tease: "Peer INSIDE the atom itself…" },
+    { afterStage: 30, text: "Protons, neutrons, electrons — all clear.", tease: "The gas experiments bubble away…" },
+    { afterStage: 55, text: "The whole lab answers to you!", tease: "Master Chemist — safely brilliant." },
+  ],
 };
 
 export function activeBeat(worldId: string, completedInWorld: number): StoryBeat {

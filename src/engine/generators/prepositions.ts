@@ -51,12 +51,34 @@ const SENTENCES: Array<[string, string, string[]]> = [
   ["The ball rolled ___ the table.", "under", ["in", "through", "above"]],
   ["Climb ___ the ladder to the slide!", "up", ["under", "between", "through"]],
   ["The dog squeezed ___ the fence hole.", "through", ["on", "above", "between"]],
+  ["The cup sits ___ the shelf.", "on", ["in", "under", "through"]],
+  ["A fish swims ___ the water.", "in", ["on", "above", "over"]],
+  ["The plane flies ___ the clouds.", "above", ["under", "in", "behind"]],
+  ["Slide ___ the hill on your sled.", "down", ["up", "in", "between"]],
+  ["The mouse ran ___ the chair leg.", "behind", ["on", "above", "in"]],
+  ["Tuck the toy ___ the box and the wall.", "between", ["on", "in", "over"]],
+  ["The kite soared ___ the rooftops.", "over", ["under", "in", "behind"]],
+  ["Crawl ___ the tunnel slide.", "through", ["on", "above", "next to"]],
+  ["The lamp stands ___ the desk.", "next to", ["in", "through", "above"]],
+  ["Put the milk ___ the fridge.", "in", ["on", "over", "behind"]],
+  ["A rainbow arches ___ the hills.", "above", ["under", "in", "through"]],
+  ["The cat hid ___ the blanket.", "under", ["on", "above", "next to"]],
+  ["Roll the ball ___ the goal.", "into", ["above", "behind", "over"]],
+  ["The boat floats ___ the lake.", "on", ["under", "in", "through"]],
+  ["Hop ___ the log on the trail.", "over", ["under", "in", "behind"]],
+  ["Your coat hangs ___ the hook.", "on", ["in", "under", "through"]],
+  ["The squirrel sat ___ the two branches.", "between", ["on", "in", "above"]],
+  ["The keys fell ___ the sofa cushions.", "behind", ["on", "above", "over"]],
+  ["Step ___ the bus carefully.", "onto", ["under", "behind", "above"]],
 ];
 
 // [word, opposite]
 const OPPOSITES: Array<[string, string]> = [
   ["over", "under"], ["in", "out"], ["above", "below"],
   ["in front of", "behind"], ["up", "down"], ["inside", "outside"],
+  ["on", "off"], ["near", "far"], ["top", "bottom"],
+  ["left", "right"], ["before", "after"], ["into", "out of"],
+  ["toward", "away from"], ["high", "low"],
 ];
 const OPPOSITE_WORDS = OPPOSITES.flat();
 

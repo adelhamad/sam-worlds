@@ -5,14 +5,17 @@ import type { GenContext, Question } from "./types";
 const NOUNS = [
   "dog", "ball", "tree", "car", "book", "house", "teacher", "river", "chair", "apple",
   "school", "beach", "bird", "cake", "train", "garden", "doctor", "mountain", "pencil", "shoe",
+  "lion", "kite", "spoon", "flower", "window",
 ];
 const VERBS = [
   "run", "jump", "eat", "sleep", "sing", "read", "swim", "write", "play", "laugh",
   "climb", "dance", "throw", "catch", "draw", "build", "shout", "listen", "cook", "fly",
+  "paint", "wash", "kick", "smile", "push",
 ];
 const ADJECTIVES = [
   "big", "happy", "red", "fast", "tall", "soft", "loud", "cold", "funny", "shiny",
   "small", "green", "slow", "short", "quiet", "warm", "sad", "brave", "dirty", "bright",
+  "hot", "wet", "smooth", "heavy", "tiny",
 ];
 
 // vowel-sound words take "an"
@@ -33,6 +36,17 @@ const PLURALS: Array<[string, string]> = [
   ["fox", "foxes"], ["dish", "dishes"], ["brush", "brushes"], ["baby", "babies"], ["puppy", "puppies"],
   ["story", "stories"], ["cherry", "cherries"], ["leaf", "leaves"], ["wolf", "wolves"], ["knife", "knives"],
   ["goose", "geese"],
+  // more regular -s
+  ["bird", "birds"], ["tree", "trees"], ["apple", "apples"], ["chair", "chairs"], ["table", "tables"],
+  ["shoe", "shoes"], ["star", "stars"], ["hand", "hands"],
+  // -es after sh / ch / x / s
+  ["watch", "watches"], ["beach", "beaches"], ["bench", "benches"], ["glass", "glasses"], ["wish", "wishes"],
+  // consonant + y -> ies
+  ["pony", "ponies"], ["bunny", "bunnies"], ["fly", "flies"], ["lady", "ladies"], ["city", "cities"],
+  // f / fe -> ves
+  ["half", "halves"], ["shelf", "shelves"], ["loaf", "loaves"],
+  // more irregulars
+  ["ox", "oxen"], ["cactus", "cacti"],
 ];
 
 // [present, past]
@@ -43,6 +57,12 @@ const PAST: Array<[string, string]> = [
   ["drink", "drank"], ["ride", "rode"], ["fly", "flew"], ["draw", "drew"], ["build", "built"],
   ["catch", "caught"], ["think", "thought"], ["buy", "bought"], ["come", "came"], ["fall", "fell"],
   ["tell", "told"], ["find", "found"],
+  // more regular -ed
+  ["cook", "cooked"], ["dance", "danced"], ["clean", "cleaned"], ["paint", "painted"], ["wash", "washed"],
+  ["climb", "climbed"], ["laugh", "laughed"], ["open", "opened"],
+  // more irregulars
+  ["take", "took"], ["throw", "threw"], ["read", "read"], ["sit", "sat"], ["stand", "stood"],
+  ["wear", "wore"], ["bring", "brought"], ["teach", "taught"], ["grow", "grew"], ["know", "knew"],
 ];
 
 export interface GrammarParams {

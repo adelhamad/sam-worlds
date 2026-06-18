@@ -11,6 +11,8 @@ import { withGameDefaults, withWorldDefaults } from "./gates";
 import { missTransition, withReplacedQuestion } from "./missTransition";
 import { persistSettings, settingsState } from "./settings";
 import { recordActions } from "./records";
+import { giftActions } from "./gifts";
+import { drawTreasure, type DailyGift, type Treasure, treasureById } from "../engine/economy/gifts";
 import { persona } from "../persona.config";
 import { newSeed } from "../engine/rng";
 import { setMuted } from "../engine/feedback/audio";
@@ -22,6 +24,8 @@ export interface SessionResult {
   firstTime: boolean;
   newBadge: BadgeDef | null;
   perfect: boolean;
+  /** Bonus collectible dropped at a stage milestone (every 5th new stage). */
+  surprise: Treasure | null;
 }
 
 export interface Session extends SessionRow {
@@ -54,7 +58,14 @@ export interface GameStore {
   rushBest: number;
   surfBest: number;
   critterBest: number;
+  blasterBest: number;
+  pulseBest: number;
   critterDex: string[];
+  // Daily Gift + Treasure Vault
+  gifts: string[];
+  lastGiftDay: string | null;
+  giftStreak: number;
+  giftBestStreak: number;
   session: Session | null;
 
   hydrate: () => Promise<void>;
@@ -83,6 +94,12 @@ export interface GameStore {
   reportCritterScore: (score: number) => void;
   addCritterDex: (names: string[]) => void;
   resetCritter: () => void;
+  reportBlasterScore: (score: number) => void;
+  resetBlasterBest: () => void;
+  reportPulseScore: (score: number) => void;
+  resetPulseBest: () => void;
+  claimDailyGift: () => DailyGift | null;
+  resetGifts: () => void;
   addVideoUrl: (url: string) => void;
   removeVideoUrl: (url: string) => void;
   resetAll: () => Promise<void>;
@@ -135,7 +152,13 @@ export const useGame = create<GameStore>((set, get) => ({
   rushBest: 0,
   surfBest: 0,
   critterBest: 0,
+  blasterBest: 0,
+  pulseBest: 0,
   critterDex: [],
+  gifts: [],
+  lastGiftDay: null,
+  giftStreak: 0,
+  giftBestStreak: 0,
   session: null,
 
   hydrate: async () => {
@@ -343,13 +366,29 @@ export const useGame = create<GameStore>((set, get) => ({
     void db.economy.put({ id: 1, starDust, melodyShards: 0 });
     logEvent("stage.complete", { stageId: s.stageId, stars, payout, firstTime, perfect });
 
-    const finished: Session = { ...s, result: { stars, payout, firstTime, newBadge, perfect } };
+    // Surprise treasure every 5th NEW stage cleared — a steady ownership drip.
+    let surprise: Treasure | null = null;
+    let gifts = state.gifts;
+    if (firstTime) {
+      const totalCompleted = Object.values(state.progress).filter((p) => p.completed).length + 1;
+      if (totalCompleted % 5 === 0) {
+        const tid = drawTreasure(state.gifts, (s.seed ^ (totalCompleted * 2654435761)) >>> 0);
+        if (tid) {
+          surprise = treasureById(tid) ?? null;
+          gifts = [...state.gifts, tid];
+        }
+      }
+    }
+
+    const finished: Session = { ...s, result: { stars, payout, firstTime, newBadge, perfect, surprise } };
     set({
       starDust,
+      gifts,
       progress: { ...state.progress, [s.stageId]: progressRow },
       session: finished,
       hasSave: true,
     });
+    if (surprise) persistSettings(get);
     persistSession(finished); // result set → deletes the in-progress row
   },
 
@@ -480,6 +519,7 @@ export const useGame = create<GameStore>((set, get) => ({
   },
 
   ...recordActions(set, get),
+  ...giftActions(set, get),
 
   addVideoUrl: (url) => {
     const u = url.trim();

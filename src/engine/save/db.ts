@@ -60,8 +60,15 @@ export interface SettingsRow {
   rushBest?: number;
   surfBest?: number;
   critterBest?: number;
+  blasterBest?: number;
+  pulseBest?: number;
   /** Critterdex: animal names Sam has correctly identified at least once. */
   critterDex?: string[];
+  /** Daily Gift + Treasure Vault. */
+  gifts?: string[];
+  lastGiftDay?: string | null;
+  giftStreak?: number;
+  giftBestStreak?: number;
 }
 export interface CouponRow {
   id?: number;

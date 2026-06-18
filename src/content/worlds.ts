@@ -24,6 +24,10 @@ import placeValueStages from "./placevalue/stages.json";
 import moneyStages from "./money/stages.json";
 import shapesStages from "./shapes/stages.json";
 import measureStages from "./measure/stages.json";
+import primesStages from "./primes/stages.json";
+import binaryStages from "./binary/stages.json";
+import fractionsStages from "./fractions/stages.json";
+import elementsStages from "./elements/stages.json";
 import type { StageDef } from "./types";
 
 export interface WorldDef {
@@ -347,6 +351,54 @@ export const WORLDS: WorldDef[] = [
       { stage: 40, name: "Ruler Reader", icon: "📐" },
       { stage: 50, name: "Estimate Expert", icon: "🎯" },
       { stage: 55, name: "Measure Master", icon: "🏆" },
+    ],
+  },
+  {
+    id: "primes", name: "Prime Peaks", icon: "⛰️", tagline: "Tables, factors & primes!",
+    stages: primesStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Times Climber", icon: "✖️" },
+      { stage: 20, name: "Division Ace", icon: "➗" },
+      { stage: 30, name: "Square Scaler", icon: "🟦" },
+      { stage: 40, name: "Factor Hunter", icon: "🔢" },
+      { stage: 50, name: "Prime Seeker", icon: "💠" },
+      { stage: 55, name: "Peak Grandmaster", icon: "🏆" },
+    ],
+  },
+  {
+    id: "binary", name: "Binary Beacon", icon: "🔦", tagline: "Count like a computer!",
+    stages: binaryStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Bit Reader", icon: "0️⃣" },
+      { stage: 20, name: "Binary Writer", icon: "1️⃣" },
+      { stage: 30, name: "Bit Counter", icon: "🔢" },
+      { stage: 40, name: "Binary Adder", icon: "➕" },
+      { stage: 50, name: "Signal Master", icon: "📡" },
+      { stage: 55, name: "Beacon Grandmaster", icon: "🏆" },
+    ],
+  },
+  {
+    id: "fractions", name: "Fraction Factory", icon: "🍰", tagline: "Slices, parts & decimals!",
+    stages: fractionsStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Slice Reader", icon: "🍕" },
+      { stage: 20, name: "Equal Twins", icon: "🟰" },
+      { stage: 30, name: "Adder of Parts", icon: "➕" },
+      { stage: 40, name: "Simplifier", icon: "✨" },
+      { stage: 50, name: "Decimal Bridger", icon: "🌉" },
+      { stage: 55, name: "Fraction Master", icon: "🏆" },
+    ],
+  },
+  {
+    id: "elements", name: "Element Lab", icon: "⚗️", tagline: "Atoms, gases & the table!",
+    stages: elementsStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Symbol Reader", icon: "🔤" },
+      { stage: 20, name: "Molecule Maker", icon: "💧" },
+      { stage: 30, name: "Atom Explorer", icon: "⚛️" },
+      { stage: 40, name: "Lab Technician", icon: "🥽" },
+      { stage: 50, name: "Reaction Master", icon: "🧪" },
+      { stage: 55, name: "Master Chemist", icon: "🏆" },
     ],
   },
 ];

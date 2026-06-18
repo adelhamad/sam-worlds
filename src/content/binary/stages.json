@@ -1,0 +1,897 @@
+[
+  {
+    "id": "bn-01",
+    "name": "Read the Bits 1",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal"
+      ],
+      "max": 7
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Computers count in 0s and 1s!",
+      "Places double: 1, 2, 4, 8, 16…",
+      "Type your answer on the pad."
+    ]
+  },
+  {
+    "id": "bn-02",
+    "name": "Read the Bits 2",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal"
+      ],
+      "max": 7
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "bn-03",
+    "name": "Read the Bits 3",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal"
+      ],
+      "max": 7
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 28
+  },
+  {
+    "id": "bn-04",
+    "name": "Read the Bits 4",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal"
+      ],
+      "max": 7
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 30
+  },
+  {
+    "id": "bn-05",
+    "name": "Read the Bits 5",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal"
+      ],
+      "max": 7
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 32
+  },
+  {
+    "id": "bn-06",
+    "name": "Read the Bits 6",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal"
+      ],
+      "max": 7
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "bn-07",
+    "name": "Place Values 1",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal",
+        "place"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "bn-08",
+    "name": "Place Values 2",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal",
+        "place"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 38
+  },
+  {
+    "id": "bn-09",
+    "name": "Place Values 3",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal",
+        "place"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 40
+  },
+  {
+    "id": "bn-10",
+    "name": "Place Values 4",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal",
+        "place"
+      ],
+      "max": 15
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "bn-11",
+    "name": "Place Values 5",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal",
+        "place"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "bn-12",
+    "name": "Place Values 6",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal",
+        "place"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "bn-13",
+    "name": "Write Binary 1",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toBinary",
+        "toDecimal"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "bn-14",
+    "name": "Write Binary 2",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toBinary",
+        "toDecimal"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 50
+  },
+  {
+    "id": "bn-15",
+    "name": "Write Binary 3",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toBinary",
+        "toDecimal"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 52
+  },
+  {
+    "id": "bn-16",
+    "name": "Write Binary 4",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toBinary",
+        "toDecimal"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 54
+  },
+  {
+    "id": "bn-17",
+    "name": "Write Binary 5",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toBinary",
+        "toDecimal"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "bn-18",
+    "name": "Write Binary 6",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toBinary",
+        "toDecimal"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "bn-19",
+    "name": "Bit Counter 1",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "countOnes",
+        "toDecimal",
+        "place"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 60
+  },
+  {
+    "id": "bn-20",
+    "name": "Bit Counter 2",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "countOnes",
+        "toDecimal",
+        "place"
+      ],
+      "max": 31
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "bn-21",
+    "name": "Bit Counter 3",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "countOnes",
+        "toDecimal",
+        "place"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 64
+  },
+  {
+    "id": "bn-22",
+    "name": "Bit Counter 4",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "countOnes",
+        "toDecimal",
+        "place"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "bn-23",
+    "name": "Bit Counter 5",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "countOnes",
+        "toDecimal",
+        "place"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "bn-24",
+    "name": "Bit Counter 6",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "countOnes",
+        "toDecimal",
+        "place"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 70
+  },
+  {
+    "id": "bn-25",
+    "name": "Counting Up 1",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "next",
+        "toBinary",
+        "countOnes"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 72
+  },
+  {
+    "id": "bn-26",
+    "name": "Counting Up 2",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "next",
+        "toBinary",
+        "countOnes"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 74
+  },
+  {
+    "id": "bn-27",
+    "name": "Counting Up 3",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "next",
+        "toBinary",
+        "countOnes"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 76
+  },
+  {
+    "id": "bn-28",
+    "name": "Counting Up 4",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "next",
+        "toBinary",
+        "countOnes"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "bn-29",
+    "name": "Counting Up 5",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "next",
+        "toBinary",
+        "countOnes"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "bn-30",
+    "name": "Counting Up 6",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "next",
+        "toBinary",
+        "countOnes"
+      ],
+      "max": 15
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 119
+  },
+  {
+    "id": "bn-31",
+    "name": "Binary Adder 1",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "add",
+        "toBinary",
+        "toDecimal"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 84
+  },
+  {
+    "id": "bn-32",
+    "name": "Binary Adder 2",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "add",
+        "toBinary",
+        "toDecimal"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 86
+  },
+  {
+    "id": "bn-33",
+    "name": "Binary Adder 3",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "add",
+        "toBinary",
+        "toDecimal"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "bn-34",
+    "name": "Binary Adder 4",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "add",
+        "toBinary",
+        "toDecimal"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "bn-35",
+    "name": "Binary Adder 5",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "add",
+        "toBinary",
+        "toDecimal"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 92
+  },
+  {
+    "id": "bn-36",
+    "name": "Binary Adder 6",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "add",
+        "toBinary",
+        "toDecimal"
+      ],
+      "max": 15
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 94
+  },
+  {
+    "id": "bn-37",
+    "name": "Bigger Bits 1",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "compare",
+        "toDecimal",
+        "place"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 96
+  },
+  {
+    "id": "bn-38",
+    "name": "Bigger Bits 2",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "compare",
+        "toDecimal",
+        "place"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "bn-39",
+    "name": "Bigger Bits 3",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "compare",
+        "toDecimal",
+        "place"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "bn-40",
+    "name": "Bigger Bits 4",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "compare",
+        "toDecimal",
+        "place"
+      ],
+      "max": 31
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 148
+  },
+  {
+    "id": "bn-41",
+    "name": "Bigger Bits 5",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "compare",
+        "toDecimal",
+        "place"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 104
+  },
+  {
+    "id": "bn-42",
+    "name": "Bigger Bits 6",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "compare",
+        "toDecimal",
+        "place"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 106
+  },
+  {
+    "id": "bn-43",
+    "name": "Signal Master 1",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal",
+        "toBinary",
+        "add",
+        "countOnes"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 108
+  },
+  {
+    "id": "bn-44",
+    "name": "Signal Master 2",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal",
+        "toBinary",
+        "add",
+        "countOnes"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "bn-45",
+    "name": "Signal Master 3",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal",
+        "toBinary",
+        "add",
+        "countOnes"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "bn-46",
+    "name": "Signal Master 4",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal",
+        "toBinary",
+        "add",
+        "countOnes"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 114
+  },
+  {
+    "id": "bn-47",
+    "name": "Signal Master 5",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal",
+        "toBinary",
+        "add",
+        "countOnes"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 116
+  },
+  {
+    "id": "bn-48",
+    "name": "Signal Master 6",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal",
+        "toBinary",
+        "add",
+        "countOnes"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 118
+  },
+  {
+    "id": "bn-49",
+    "name": "Beacon Grandmaster 1",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal",
+        "toBinary",
+        "place",
+        "countOnes",
+        "add",
+        "next",
+        "compare"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "bn-50",
+    "name": "Beacon Grandmaster 2",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal",
+        "toBinary",
+        "place",
+        "countOnes",
+        "add",
+        "next",
+        "compare"
+      ],
+      "max": 31
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 177
+  },
+  {
+    "id": "bn-51",
+    "name": "Beacon Grandmaster 3",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal",
+        "toBinary",
+        "place",
+        "countOnes",
+        "add",
+        "next",
+        "compare"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "bn-52",
+    "name": "Beacon Grandmaster 4",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal",
+        "toBinary",
+        "place",
+        "countOnes",
+        "add",
+        "next",
+        "compare"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 126
+  },
+  {
+    "id": "bn-53",
+    "name": "Beacon Grandmaster 5",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal",
+        "toBinary",
+        "place",
+        "countOnes",
+        "add",
+        "next",
+        "compare"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 128
+  },
+  {
+    "id": "bn-54",
+    "name": "Beacon Grandmaster 6",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal",
+        "toBinary",
+        "place",
+        "countOnes",
+        "add",
+        "next",
+        "compare"
+      ],
+      "max": 31
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 130
+  },
+  {
+    "id": "bn-55",
+    "name": "Beacon Grandmaster",
+    "generator": "binary",
+    "params": {
+      "types": [
+        "toDecimal",
+        "toBinary",
+        "place",
+        "countOnes",
+        "add",
+        "next",
+        "compare"
+      ],
+      "max": 31
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 191
+  }
+]

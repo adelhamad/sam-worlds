@@ -10,11 +10,20 @@ export interface CipherParams {
 }
 
 const WORDS = [
-  "STAR", "MOON", "SHIP", "GEAR", "CODE", "SPARK", "ORBIT", "LIGHT", "COMET", "ROBOT",
+  // 3-letter (lots — difficulty bands favor short words)
+  "CAT", "SUN", "MAP", "KEY", "BOX", "DOG", "BAT", "HAT", "CUP", "BUG",
+  "FOX", "OWL", "JAR", "NET", "PIE", "BUS", "FAN", "PEN", "RUG", "TOY",
+  "ICE", "SKY", "JET", "ANT", "BEE", "CAR", "EGG", "GEM", "PIG", "HEN",
+  // 4-letter
+  "STAR", "MOON", "SHIP", "GEAR", "CODE", "FISH", "BIRD", "TREE", "FROG", "LION",
+  "BEAR", "DUCK", "GOAT", "WOLF", "LEAF", "ROCK", "SNOW", "RAIN", "WIND", "FIRE",
+  "CAKE", "MILK", "BOAT", "KITE", "DRUM", "BELL", "RING", "DOOR", "LAMP", "NEST",
+  // 5-letter
+  "SPARK", "ORBIT", "LIGHT", "COMET", "ROBOT", "CRAFT", "MINER", "BLOCK", "SLIME", "APPLE",
+  "TIGER", "ZEBRA", "PANDA", "HONEY", "CLOUD", "RIVER", "BEACH", "MOUSE", "HORSE", "SNAKE",
+  // longer (space + Minecraft flavor)
   "FORGE", "ROCKET", "PLANET", "SIGNAL", "GALAXY", "COMPASS", "ASTEROID", "TREASURE", "TELESCOPE", "ADVENTURE",
-  // Minecraft flavor
-  "CRAFT", "MINER", "CREEPER", "DIAMOND", "REDSTONE", "EMERALD", "PICKAXE", "NETHER", "BLOCK", "SLIME",
-  "PORTAL", "VILLAGER", "ENDERMAN", "OBSIDIAN",
+  "CREEPER", "DIAMOND", "REDSTONE", "EMERALD", "PICKAXE", "NETHER", "PORTAL", "VILLAGER", "ENDERMAN", "OBSIDIAN",
 ];
 
 const SYMBOLS = ["★", "♦", "♣", "♠", "●", "▲", "■", "✿", "☂", "☼", "♞", "♪", "⚡", "❄"];
@@ -30,7 +39,7 @@ export function generateCipher(params: CipherParams, rng: RNG, ctx: GenContext):
 
   if (type === "number") {
     const encoded = [...word].map((ch) => ch.charCodeAt(0) - A + 1).join("-");
-    return q(word, `Decode: ${encoded}`, "A=1, B=2, C=3…", { legend: "A=1 B=2 C=3 …" });
+    return q(word, type, `Decode: ${encoded}`, "A=1, B=2, C=3…", { legend: "A=1 B=2 C=3 …" });
   }
 
   if (type === "shift") {
@@ -38,7 +47,7 @@ export function generateCipher(params: CipherParams, rng: RNG, ctx: GenContext):
     const encoded = [...word]
       .map((ch) => String.fromCharCode(((ch.charCodeAt(0) - A + k) % 26) + A))
       .join("");
-    return q(word, `Decode: ${encoded}`, `Each letter slid ${k} forward.`, {
+    return q(word, type, `Decode: ${encoded}`, `Each letter slid ${k} forward.`, {
       legend: `Key: A→${String.fromCharCode(A + k)} (shift ${k})`,
     });
   }
@@ -55,16 +64,24 @@ export function generateCipher(params: CipherParams, rng: RNG, ctx: GenContext):
     .map((ch) => `${map[ch]}=${ch}`)
     .sort(() => 0.5 - rng())
     .join("  ");
-  return q(word, `Decode: ${encoded}`, "Match each symbol in the legend.", { legend });
+  return q(word, type, `Decode: ${encoded}`, "Match each symbol in the legend.", { legend });
 }
 
-function q(word: string, prompt: string, hint: string, payload: Record<string, unknown>): Question {
+function q(
+  word: string,
+  type: CipherParams["types"][number],
+  prompt: string,
+  hint: string,
+  payload: Record<string, unknown>,
+): Question {
   return {
     id: `cb${++qid}`,
     prompt,
     answer: word,
     choices: [],
     hint: `${hint} It starts with ${word[0]}.`,
+    // Same word under a different cipher is a DISTINCT question, so dedupe by both.
+    dedupeKey: `${type}:${word}`,
     inputMode: "letters",
     payload: { ...payload, length: word.length },
   };

@@ -169,6 +169,17 @@ function genEstimate(rng: RNG): Question {
     { thing: "bed", ok: "2 meters", bad: ["2 centimeters", "20 millimeters"] },
     { thing: "school bus", ok: "10 meters", bad: ["10 centimeters", "1 meter"] },
     { thing: "shoe", ok: "25 centimeters", bad: ["25 meters", "2 meters"] },
+    { thing: "paperclip", ok: "3 centimeters", bad: ["3 meters", "30 centimeters"] },
+    { thing: "table", ok: "1 meter", bad: ["1 centimeter", "10 meters"] },
+    { thing: "football field", ok: "100 meters", bad: ["100 centimeters", "10 meters"] },
+    { thing: "ladybug", ok: "5 millimeters", bad: ["5 centimeters", "5 meters"] },
+    { thing: "tall tree", ok: "15 meters", bad: ["15 centimeters", "1 meter"] },
+    { thing: "fork", ok: "20 centimeters", bad: ["20 meters", "2 meters"] },
+    { thing: "swimming pool", ok: "25 meters", bad: ["25 centimeters", "2 meters"] },
+    { thing: "book", ok: "25 centimeters", bad: ["25 meters", "25 millimeters"] },
+    { thing: "car", ok: "4 meters", bad: ["4 centimeters", "40 meters"] },
+    { thing: "finger", ok: "7 centimeters", bad: ["7 meters", "70 centimeters"] },
+    { thing: "ten-storey building", ok: "30 meters", bad: ["30 centimeters", "3 meters"] },
   ];
   const it = pick(rng, items);
   return {

@@ -57,5 +57,31 @@ export function recordActions(set: Set, get: Get) {
       persistSettings(get);
       logEvent("parent.critterReset", {});
     },
+
+    reportBlasterScore: (score: number) => {
+      logEvent("blaster.run", { score });
+      if (score <= get().blasterBest) return;
+      set({ blasterBest: score });
+      persistSettings(get);
+    },
+
+    resetBlasterBest: () => {
+      set({ blasterBest: 0 });
+      persistSettings(get);
+      logEvent("parent.blasterReset", {});
+    },
+
+    reportPulseScore: (score: number) => {
+      logEvent("pulse.run", { score });
+      if (score <= get().pulseBest) return;
+      set({ pulseBest: score });
+      persistSettings(get);
+    },
+
+    resetPulseBest: () => {
+      set({ pulseBest: 0 });
+      persistSettings(get);
+      logEvent("parent.pulseReset", {});
+    },
   };
 }

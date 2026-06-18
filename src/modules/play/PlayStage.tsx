@@ -350,7 +350,14 @@ function QuestionCard({ session, q, praise, busy, interactive, onSubmit }: Quest
 }
 
 interface CelebrationProps {
-  result: { stars: number; payout: number; firstTime: boolean; perfect: boolean; newBadge: { icon: string; name: string } | null };
+  result: {
+    stars: number;
+    payout: number;
+    firstTime: boolean;
+    perfect: boolean;
+    newBadge: { icon: string; name: string } | null;
+    surprise: { icon: string; name: string; rarity: string } | null;
+  };
   tease: string;
   onBackToMap: () => void;
   onNext: () => void;
@@ -379,6 +386,14 @@ function Celebration({ result, tease, onBackToMap, onNext, nextLabel }: Celebrat
             <span>
               {STR.badgeEarned} <b>{result.newBadge.name}</b> — {persona.name},{" "}
               {new Date().toLocaleDateString(undefined, { month: "long", year: "numeric" })}
+            </span>
+          </div>
+        )}
+        {result.surprise && (
+          <div className={`badge-banner rarity-${result.surprise.rarity}`}>
+            <span className="badge-icon">{result.surprise.icon}</span>
+            <span>
+              Surprise treasure! <b>{result.surprise.name}</b> added to your Vault 🗝️
             </span>
           </div>
         )}

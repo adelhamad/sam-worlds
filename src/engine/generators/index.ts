@@ -26,6 +26,10 @@ import { generatePlaceValue, type PlaceValueParams } from "./placeValue";
 import { generateMoney, type MoneyParams } from "./money";
 import { generateShapes, type ShapeParams } from "./shapes";
 import { generateMeasure, type MeasureParams } from "./measure";
+import { generateMultiplyMaster, type MultParams } from "./multiplyMaster";
+import { generateBinary, type BinaryParams } from "./binary";
+import { generateFractions, type FractionParams } from "./fractions";
+import { generateElements, type ElementParams } from "./elements";
 import type { GenContext, GeneratorParams, Question } from "./types";
 
 export type GeneratorId =
@@ -55,7 +59,11 @@ export type GeneratorId =
   | "placeValue"
   | "money"
   | "shapes"
-  | "measure";
+  | "measure"
+  | "multiplyMaster"
+  | "binary"
+  | "fractions"
+  | "elements";
 
 /** Generator registry — one entry per id (params are cast per generator). */
 type GenFn = (params: GeneratorParams, rng: () => number, ctx: GenContext) => Question;
@@ -90,6 +98,10 @@ const GENERATORS: Record<GeneratorId, GenFn> = {
   money: cast<MoneyParams>(generateMoney),
   shapes: cast<ShapeParams>(generateShapes),
   measure: cast<MeasureParams>(generateMeasure),
+  multiplyMaster: cast<MultParams>(generateMultiplyMaster),
+  binary: cast<BinaryParams>(generateBinary),
+  fractions: cast<FractionParams>(generateFractions),
+  elements: cast<ElementParams>(generateElements),
 };
 
 function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, ctx: GenContext): Question {

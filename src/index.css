@@ -1855,3 +1855,110 @@ body {
     transition: none !important;
   }
 }
+
+/* ---------- daily gift + treasure vault ---------- */
+.daily-gift-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  margin: 8px 0 4px;
+  background: linear-gradient(110deg, #2a1c54, #3a2470 55%, #b8731f);
+  border: 2px solid var(--cyan);
+  border-radius: var(--radius);
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.35);
+  animation: gift-pulse 1.6s ease-in-out infinite;
+}
+@keyframes gift-pulse {
+  0%, 100% { box-shadow: 0 0 14px rgba(34, 211, 238, 0.3); }
+  50% { box-shadow: 0 0 26px rgba(34, 211, 238, 0.6); }
+}
+.dg-chest {
+  font-size: 40px;
+  animation: gift-wiggle 1.2s ease-in-out infinite;
+}
+@keyframes gift-wiggle {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+}
+.dg-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.dg-text b { color: #fff; font-size: 17px; }
+.dg-text small { color: #ffe3b3; font-size: 13px; }
+.dg-spark { font-size: 24px; }
+.daily-gift-card { text-align: center; }
+.dg-open-chest {
+  font-size: 78px;
+  animation: dg-burst 0.6s ease-out;
+}
+@keyframes dg-burst {
+  0% { transform: scale(0.3) rotate(-20deg); opacity: 0; }
+  60% { transform: scale(1.25) rotate(8deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+.dg-treasure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin: 10px auto;
+  padding: 14px 22px;
+  border-radius: 16px;
+  background: var(--night-deep);
+  border: 2px solid var(--panel-edge);
+  animation: pop-in 0.4s ease-out;
+}
+.dg-treasure-icon { font-size: 54px; }
+.dg-treasure-name { font-weight: 800; color: var(--text); }
+.dg-treasure-rarity {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+}
+
+/* rarity accents */
+.rarity-common { border-color: #7f93b8; }
+.rarity-rare { border-color: #38bdf8; box-shadow: 0 0 12px rgba(56, 189, 248, 0.4); }
+.rarity-epic { border-color: #c084fc; box-shadow: 0 0 14px rgba(192, 132, 252, 0.5); }
+.rarity-legendary {
+  border-color: #fbbf24;
+  box-shadow: 0 0 18px rgba(251, 191, 36, 0.6);
+  animation: legendary-glow 1.8s ease-in-out infinite;
+}
+@keyframes legendary-glow {
+  0%, 100% { box-shadow: 0 0 12px rgba(251, 191, 36, 0.4); }
+  50% { box-shadow: 0 0 24px rgba(251, 191, 36, 0.85); }
+}
+.rarity-text-common { color: #9fb0d8; }
+.rarity-text-rare { color: #38bdf8; }
+.rarity-text-epic { color: #c084fc; }
+.rarity-text-legendary { color: #fbbf24; }
+
+.vault { width: min(820px, 100%); }
+.vault-group { margin-top: 6px; }
+.vault-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+  gap: 10px;
+  margin: 8px 0 4px;
+}
+.vault-cell {
+  background: var(--night-deep);
+  border: 2px solid var(--panel-edge);
+  border-radius: 14px;
+  padding: 10px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+}
+.vault-locked { opacity: 0.45; filter: grayscale(0.6); }
+.vault-icon { font-size: 34px; }
+.vault-name { font-size: 11px; color: var(--text-dim); line-height: 1.1; }
