@@ -33,6 +33,7 @@ import { generateElements, type ElementParams } from "./elements";
 import { generateSpace, type SpaceParams } from "./space";
 import { generateDinos, type DinoParams } from "./dinos";
 import { generateWeather, type WeatherParams } from "./weather";
+import { generatePhonics, type PhonicsParams } from "./phonics";
 import type { GenContext, GeneratorParams, Question } from "./types";
 
 export type GeneratorId =
@@ -69,7 +70,8 @@ export type GeneratorId =
   | "elements"
   | "space"
   | "dinos"
-  | "weather";
+  | "weather"
+  | "phonics";
 
 /** Generator registry — one entry per id (params are cast per generator). */
 type GenFn = (params: GeneratorParams, rng: () => number, ctx: GenContext) => Question;
@@ -111,6 +113,7 @@ const GENERATORS: Record<GeneratorId, GenFn> = {
   space: cast<SpaceParams>(generateSpace),
   dinos: cast<DinoParams>(generateDinos),
   weather: cast<WeatherParams>(generateWeather),
+  phonics: cast<PhonicsParams>(generatePhonics),
 };
 
 function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, ctx: GenContext): Question {

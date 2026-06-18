@@ -31,6 +31,7 @@ import elementsStages from "./elements/stages.json";
 import spaceStages from "./space/stages.json";
 import dinosStages from "./dinos/stages.json";
 import weatherStages from "./weather/stages.json";
+import phonicsStages from "./phonics/stages.json";
 import type { StageDef } from "./types";
 
 export interface WorldDef {
@@ -438,6 +439,18 @@ export const WORLDS: WorldDef[] = [
       { stage: 40, name: "Storm Watcher", icon: "⛈️" },
       { stage: 50, name: "Cycle Keeper", icon: "💧" },
       { stage: 55, name: "Master of the Skies", icon: "🏆" },
+    ],
+  },
+  {
+    id: "phonics", name: "Sound It Out", icon: "🔊", tagline: "Letter sounds & spelling!",
+    stages: phonicsStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Sound Spotter", icon: "👂" },
+      { stage: 20, name: "Vowel Voyager", icon: "🅰️" },
+      { stage: 30, name: "Digraph Detective", icon: "🔍" },
+      { stage: 40, name: "Word Blender", icon: "🥤" },
+      { stage: 50, name: "Syllable Star", icon: "👏" },
+      { stage: 55, name: "Master of Sounds", icon: "🏆" },
     ],
   },
 ];

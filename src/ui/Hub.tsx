@@ -46,6 +46,7 @@ const PLANET_HUES: Record<string, string> = {
   space: "#8b5cf6",
   dinos: "#84cc16",
   weather: "#38bdf8",
+  phonics: "#fb7185",
 };
 
 export function Hub() {

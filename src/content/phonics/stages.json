@@ -1,0 +1,884 @@
+[
+  {
+    "id": "phonics-01",
+    "name": "First Sound",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Hear it, sound it, spell it!",
+      "Tap the right answer."
+    ]
+  },
+  {
+    "id": "phonics-02",
+    "name": "Last Sound",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "phonics-03",
+    "name": "Sound Match",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "phonics-04",
+    "name": "Starting Letters",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "phonics-05",
+    "name": "Ending Letters",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "phonics-06",
+    "name": "Picture Sounds",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "phonics-07",
+    "name": "Short A",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "phonics-08",
+    "name": "Short E",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "phonics-09",
+    "name": "Vowel Hunt",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "phonics-10",
+    "name": "Short I",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "phonics-11",
+    "name": "Short O",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "phonics-12",
+    "name": "Short U",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "phonics-13",
+    "name": "Sh Sound",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "phonics-14",
+    "name": "Ch Sound",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "phonics-15",
+    "name": "Th Sound",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "phonics-16",
+    "name": "Wh Sound",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "phonics-17",
+    "name": "Two-Letter Teams",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "phonics-18",
+    "name": "Digraph Detective",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "phonics-19",
+    "name": "Blend It",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "phonics-20",
+    "name": "Spell the Word",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "phonics-21",
+    "name": "Sound and Build",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "phonics-22",
+    "name": "CVC Cabin",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "phonics-23",
+    "name": "Clap the Beats",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "phonics-24",
+    "name": "Syllable Hop",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "phonics-25",
+    "name": "Count the Beats",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "phonics-26",
+    "name": "Sound Spotter",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "phonics-27",
+    "name": "Vowel Voyage",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "phonics-28",
+    "name": "Word Workshop",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "phonics-29",
+    "name": "Letter Lab",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "phonics-30",
+    "name": "Master of Sounds",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "phonics-31",
+    "name": "First Sound II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "phonics-32",
+    "name": "Last Sound II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "phonics-33",
+    "name": "Sound Match II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "phonics-34",
+    "name": "Starting Letters II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "phonics-35",
+    "name": "Ending Letters II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "phonics-36",
+    "name": "Picture Sounds II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "phonics-37",
+    "name": "Short A II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "phonics-38",
+    "name": "Short E II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "phonics-39",
+    "name": "Vowel Hunt II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "phonics-40",
+    "name": "Short I II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "phonics-41",
+    "name": "Short O II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "phonics-42",
+    "name": "Short U II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "phonics-43",
+    "name": "Sh Sound II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "phonics-44",
+    "name": "Ch Sound II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "phonics-45",
+    "name": "Th Sound II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "phonics-46",
+    "name": "Wh Sound II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "phonics-47",
+    "name": "Two-Letter Teams II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build",
+        "syllable"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "phonics-48",
+    "name": "Digraph Detective II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build",
+        "syllable"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "phonics-49",
+    "name": "Blend It II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build",
+        "syllable"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "phonics-50",
+    "name": "Spell the Word II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build",
+        "syllable"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "phonics-51",
+    "name": "Sound and Build II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build",
+        "syllable"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "phonics-52",
+    "name": "CVC Cabin II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build",
+        "syllable"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "phonics-53",
+    "name": "Clap the Beats II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build",
+        "syllable"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "phonics-54",
+    "name": "Syllable Hop II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build",
+        "syllable"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "phonics-55",
+    "name": "Count the Beats II",
+    "generator": "phonics",
+    "params": {
+      "types": [
+        "begin",
+        "end",
+        "vowel",
+        "digraph",
+        "build",
+        "syllable"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]
