@@ -35,6 +35,12 @@ import { generateDinos, type DinoParams } from "./dinos";
 import { generateWeather, type WeatherParams } from "./weather";
 import { generatePhonics, type PhonicsParams } from "./phonics";
 import { generateIdioms, type IdiomParams } from "./idioms";
+import { generateManners, type MannersParams } from "./manners";
+import { generateSafety, type SafetyParams } from "./safety";
+import { generateHelpers, type HelpersParams } from "./helpers";
+import { generateAnimals, type AnimalsParams } from "./animals";
+import { generateGreen, type GreenParams } from "./green";
+import { generateCalendar, type CalendarParams } from "./calendar";
 import type { GenContext, GeneratorParams, Question } from "./types";
 
 export type GeneratorId =
@@ -73,7 +79,13 @@ export type GeneratorId =
   | "dinos"
   | "weather"
   | "phonics"
-  | "idioms";
+  | "idioms"
+  | "manners"
+  | "safety"
+  | "helpers"
+  | "animals"
+  | "green"
+  | "calendar";
 
 /** Generator registry — one entry per id (params are cast per generator). */
 type GenFn = (params: GeneratorParams, rng: () => number, ctx: GenContext) => Question;
@@ -117,6 +129,12 @@ const GENERATORS: Record<GeneratorId, GenFn> = {
   weather: cast<WeatherParams>(generateWeather),
   phonics: cast<PhonicsParams>(generatePhonics),
   idioms: cast<IdiomParams>(generateIdioms),
+  manners: cast<MannersParams>(generateManners),
+  safety: cast<SafetyParams>(generateSafety),
+  helpers: cast<HelpersParams>(generateHelpers),
+  animals: cast<AnimalsParams>(generateAnimals),
+  green: cast<GreenParams>(generateGreen),
+  calendar: cast<CalendarParams>(generateCalendar),
 };
 
 function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, ctx: GenContext): Question {

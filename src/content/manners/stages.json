@@ -1,0 +1,813 @@
+[
+  {
+    "id": "manners-01",
+    "name": "Magic Words",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Good manners make everyone happy!",
+      "Tap the kind, polite choice."
+    ]
+  },
+  {
+    "id": "manners-02",
+    "name": "Please & Thank You",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "manners-03",
+    "name": "Saying Sorry",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "manners-04",
+    "name": "Excuse Me",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "manners-05",
+    "name": "Be Kind",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "manners-06",
+    "name": "Helping Hands",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "manners-07",
+    "name": "Share & Care",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "manners-08",
+    "name": "Good Listener",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "manners-09",
+    "name": "Table Manners",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "manners-10",
+    "name": "Kind Words",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "manners-11",
+    "name": "Taking Turns",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "manners-12",
+    "name": "Nice Friend",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "manners-13",
+    "name": "Polite Please",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "manners-14",
+    "name": "Thoughtful You",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "manners-15",
+    "name": "Gentle Hands",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "manners-16",
+    "name": "Warm Hellos",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "manners-17",
+    "name": "Caring Heart",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "manners-18",
+    "name": "Best Manners",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "manners-19",
+    "name": "Magic Words II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "manners-20",
+    "name": "Please & Thank You II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "manners-21",
+    "name": "Saying Sorry II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "manners-22",
+    "name": "Excuse Me II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "manners-23",
+    "name": "Be Kind II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "manners-24",
+    "name": "Helping Hands II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "manners-25",
+    "name": "Share & Care II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "manners-26",
+    "name": "Good Listener II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "manners-27",
+    "name": "Table Manners II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "manners-28",
+    "name": "Kind Words II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "manners-29",
+    "name": "Taking Turns II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "manners-30",
+    "name": "Nice Friend II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "manners-31",
+    "name": "Polite Please II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "manners-32",
+    "name": "Thoughtful You II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "manners-33",
+    "name": "Gentle Hands II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "manners-34",
+    "name": "Warm Hellos II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "manners-35",
+    "name": "Caring Heart II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "manners-36",
+    "name": "Best Manners II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "manners-37",
+    "name": "Magic Words II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "manners-38",
+    "name": "Please & Thank You II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "manners-39",
+    "name": "Saying Sorry II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "manners-40",
+    "name": "Excuse Me II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "manners-41",
+    "name": "Be Kind II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "manners-42",
+    "name": "Helping Hands II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "manners-43",
+    "name": "Share & Care II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "manners-44",
+    "name": "Good Listener II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "manners-45",
+    "name": "Table Manners II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "manners-46",
+    "name": "Kind Words II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "manners-47",
+    "name": "Taking Turns II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "manners-48",
+    "name": "Nice Friend II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "manners-49",
+    "name": "Polite Please II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "manners-50",
+    "name": "Thoughtful You II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "manners-51",
+    "name": "Gentle Hands II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "manners-52",
+    "name": "Warm Hellos II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "manners-53",
+    "name": "Caring Heart II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "manners-54",
+    "name": "Best Manners II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "manners-55",
+    "name": "Magic Words II",
+    "generator": "manners",
+    "params": {
+      "types": [
+        "magic",
+        "kind",
+        "table"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

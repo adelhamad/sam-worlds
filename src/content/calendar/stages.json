@@ -1,0 +1,844 @@
+[
+  {
+    "id": "calendar-01",
+    "name": "Days of the Week",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Days, months and time!",
+      "Tap or order the answer."
+    ]
+  },
+  {
+    "id": "calendar-02",
+    "name": "After & Before",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "calendar-03",
+    "name": "Weekend!",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "calendar-04",
+    "name": "Months of the Year",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "calendar-05",
+    "name": "First & Last",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "calendar-06",
+    "name": "Order the Days",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "calendar-07",
+    "name": "How Many Days",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "calendar-08",
+    "name": "Order the Months",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "calendar-09",
+    "name": "School Days",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "calendar-10",
+    "name": "Winter Months",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "calendar-11",
+    "name": "Count the Weeks",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "calendar-12",
+    "name": "Next Month",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "calendar-13",
+    "name": "Yesterday & Today",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "calendar-14",
+    "name": "Time Order",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "calendar-15",
+    "name": "Calendar Facts",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "calendar-16",
+    "name": "Week by Week",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "calendar-17",
+    "name": "Month Match",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "calendar-18",
+    "name": "Time Keeper",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "calendar-19",
+    "name": "Days of the Week II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "calendar-20",
+    "name": "After & Before II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "calendar-21",
+    "name": "Weekend! II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "calendar-22",
+    "name": "Months of the Year II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "calendar-23",
+    "name": "First & Last II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "calendar-24",
+    "name": "Order the Days II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "calendar-25",
+    "name": "How Many Days II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "calendar-26",
+    "name": "Order the Months II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "calendar-27",
+    "name": "School Days II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "calendar-28",
+    "name": "Winter Months II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "calendar-29",
+    "name": "Count the Weeks II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "calendar-30",
+    "name": "Next Month II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "calendar-31",
+    "name": "Yesterday & Today II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "calendar-32",
+    "name": "Time Order II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "calendar-33",
+    "name": "Calendar Facts II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "calendar-34",
+    "name": "Week by Week II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "calendar-35",
+    "name": "Month Match II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "calendar-36",
+    "name": "Time Keeper II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "calendar-37",
+    "name": "Days of the Week II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "calendar-38",
+    "name": "After & Before II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "calendar-39",
+    "name": "Weekend! II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "calendar-40",
+    "name": "Months of the Year II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "calendar-41",
+    "name": "First & Last II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "calendar-42",
+    "name": "Order the Days II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "calendar-43",
+    "name": "How Many Days II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "calendar-44",
+    "name": "Order the Months II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "calendar-45",
+    "name": "School Days II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "calendar-46",
+    "name": "Winter Months II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "calendar-47",
+    "name": "Count the Weeks II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "calendar-48",
+    "name": "Next Month II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "calendar-49",
+    "name": "Yesterday & Today II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "calendar-50",
+    "name": "Time Order II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "calendar-51",
+    "name": "Calendar Facts II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "calendar-52",
+    "name": "Week by Week II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "calendar-53",
+    "name": "Month Match II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "calendar-54",
+    "name": "Time Keeper II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "calendar-55",
+    "name": "Days of the Week II",
+    "generator": "calendar",
+    "params": {
+      "types": [
+        "next",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

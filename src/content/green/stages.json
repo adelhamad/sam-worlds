@@ -1,0 +1,813 @@
+[
+  {
+    "id": "green-01",
+    "name": "Recycle It",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Help take care of our Earth!",
+      "Tap the green choice."
+    ]
+  },
+  {
+    "id": "green-02",
+    "name": "Sort the Bins",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "green-03",
+    "name": "Compost Pile",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "green-04",
+    "name": "Save Water",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "green-05",
+    "name": "Lights Off",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "green-06",
+    "name": "Reduce Reuse Recycle",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "green-07",
+    "name": "Plant a Tree",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "green-08",
+    "name": "Pick Up Litter",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "green-09",
+    "name": "Clean Park",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "green-10",
+    "name": "Save Power",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "green-11",
+    "name": "Reusable Bottle",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "green-12",
+    "name": "Love the Bees",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "green-13",
+    "name": "Walk or Bike",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "green-14",
+    "name": "Care for Nature",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "green-15",
+    "name": "Earth Helper",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "green-16",
+    "name": "Green Habits",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "green-17",
+    "name": "Clean Planet",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "green-18",
+    "name": "Earth Hero",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "green-19",
+    "name": "Recycle It II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "green-20",
+    "name": "Sort the Bins II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "green-21",
+    "name": "Compost Pile II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "green-22",
+    "name": "Save Water II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "green-23",
+    "name": "Lights Off II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "green-24",
+    "name": "Reduce Reuse Recycle II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "green-25",
+    "name": "Plant a Tree II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "green-26",
+    "name": "Pick Up Litter II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "green-27",
+    "name": "Clean Park II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "green-28",
+    "name": "Save Power II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "green-29",
+    "name": "Reusable Bottle II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "green-30",
+    "name": "Love the Bees II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "green-31",
+    "name": "Walk or Bike II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "green-32",
+    "name": "Care for Nature II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "green-33",
+    "name": "Earth Helper II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "green-34",
+    "name": "Green Habits II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "green-35",
+    "name": "Clean Planet II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "green-36",
+    "name": "Earth Hero II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "green-37",
+    "name": "Recycle It II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "green-38",
+    "name": "Sort the Bins II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "green-39",
+    "name": "Compost Pile II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "green-40",
+    "name": "Save Water II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "green-41",
+    "name": "Lights Off II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "green-42",
+    "name": "Reduce Reuse Recycle II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "green-43",
+    "name": "Plant a Tree II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "green-44",
+    "name": "Pick Up Litter II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "green-45",
+    "name": "Clean Park II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "green-46",
+    "name": "Save Power II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "green-47",
+    "name": "Reusable Bottle II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "green-48",
+    "name": "Love the Bees II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "green-49",
+    "name": "Walk or Bike II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "green-50",
+    "name": "Care for Nature II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "green-51",
+    "name": "Earth Helper II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "green-52",
+    "name": "Green Habits II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "green-53",
+    "name": "Clean Planet II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "green-54",
+    "name": "Earth Hero II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "green-55",
+    "name": "Recycle It II",
+    "generator": "green",
+    "params": {
+      "types": [
+        "sort",
+        "nature",
+        "save"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

@@ -309,6 +309,15 @@ function ParentControls() {
       </header>
 
       <section className="panel parent-block">
+        <h2>🔄 Update the game</h2>
+        <p className="dim">
+          Clears the app cache and reloads so a freshly deployed version is picked up. Progress and
+          rewards are NOT touched.
+        </p>
+        <ForceUpdateButton />
+      </section>
+
+      <section className="panel parent-block">
         <h2>✨ Star Dust</h2>
         <div className="parent-row">
           <input
@@ -374,15 +383,6 @@ function ParentControls() {
       <TiltControls />
 
       <RewardHistory />
-
-      <section className="panel parent-block">
-        <h2>🔄 Update the game</h2>
-        <p className="dim">
-          Clears the app cache and reloads so a freshly deployed version is picked up. Progress and
-          rewards are NOT touched.
-        </p>
-        <ForceUpdateButton />
-      </section>
 
       <section className="panel parent-block parent-danger">
         <h2>🧨 Full reset</h2>

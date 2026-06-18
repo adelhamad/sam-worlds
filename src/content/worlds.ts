@@ -1,7 +1,8 @@
-import { WORLDS, type WorldDef } from "./worldList";
+import { WORLDS as BASE_WORLDS, type WorldDef } from "./worldList";
+import { EXTRA_WORLDS } from "./worldListExtra";
 import type { StageDef } from "./types";
 
-export { WORLDS };
+export const WORLDS: WorldDef[] = [...BASE_WORLDS, ...EXTRA_WORLDS];
 export type { WorldDef };
 
 export interface BadgeDef {

@@ -1,0 +1,793 @@
+[
+  {
+    "id": "helpers-01",
+    "name": "Firefighter",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Meet the people who help our town!",
+      "Tap the right helper."
+    ]
+  },
+  {
+    "id": "helpers-02",
+    "name": "Doctor",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "helpers-03",
+    "name": "Teacher",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "helpers-04",
+    "name": "Farmer",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "helpers-05",
+    "name": "Dentist",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "helpers-06",
+    "name": "Vet",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "helpers-07",
+    "name": "Police Officer",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "helpers-08",
+    "name": "Mail Carrier",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "helpers-09",
+    "name": "Chef",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "helpers-10",
+    "name": "Pilot",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "helpers-11",
+    "name": "Librarian",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "helpers-12",
+    "name": "Bus Driver",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "helpers-13",
+    "name": "Tools of the Job",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "helpers-14",
+    "name": "Where They Work",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "helpers-15",
+    "name": "Helper Match",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "helpers-16",
+    "name": "Busy Town",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "helpers-17",
+    "name": "Who Helps?",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "helpers-18",
+    "name": "Town Hero",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "helpers-19",
+    "name": "Firefighter II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "helpers-20",
+    "name": "Doctor II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "helpers-21",
+    "name": "Teacher II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "helpers-22",
+    "name": "Farmer II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "helpers-23",
+    "name": "Dentist II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "helpers-24",
+    "name": "Vet II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "helpers-25",
+    "name": "Police Officer II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "helpers-26",
+    "name": "Mail Carrier II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "helpers-27",
+    "name": "Chef II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "helpers-28",
+    "name": "Pilot II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "helpers-29",
+    "name": "Librarian II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "helpers-30",
+    "name": "Bus Driver II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "helpers-31",
+    "name": "Tools of the Job II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "helpers-32",
+    "name": "Where They Work II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "helpers-33",
+    "name": "Helper Match II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "helpers-34",
+    "name": "Busy Town II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "helpers-35",
+    "name": "Who Helps? II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "helpers-36",
+    "name": "Town Hero II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "helpers-37",
+    "name": "Firefighter II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "helpers-38",
+    "name": "Doctor II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "helpers-39",
+    "name": "Teacher II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "helpers-40",
+    "name": "Farmer II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "helpers-41",
+    "name": "Dentist II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "helpers-42",
+    "name": "Vet II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "helpers-43",
+    "name": "Police Officer II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "helpers-44",
+    "name": "Mail Carrier II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "helpers-45",
+    "name": "Chef II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "helpers-46",
+    "name": "Pilot II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "helpers-47",
+    "name": "Librarian II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "helpers-48",
+    "name": "Bus Driver II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "helpers-49",
+    "name": "Tools of the Job II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "helpers-50",
+    "name": "Where They Work II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "helpers-51",
+    "name": "Helper Match II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "helpers-52",
+    "name": "Busy Town II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "helpers-53",
+    "name": "Who Helps? II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "helpers-54",
+    "name": "Town Hero II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "helpers-55",
+    "name": "Firefighter II",
+    "generator": "helpers",
+    "params": {
+      "types": [
+        "who",
+        "tool",
+        "place"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]
