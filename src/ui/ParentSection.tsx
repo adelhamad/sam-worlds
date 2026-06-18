@@ -2,12 +2,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useGame } from "../state/store";
 import { completedInWorld, WORLDS } from "../content/worlds";
-import { MINIGAMES } from "../content/minigames";
 import { youTubeId } from "../engine/video";
 import { clearAxisMaps, requestTiltPermission } from "../engine/sensors";
 import { TiltCalibrator } from "./TiltCalibrator";
 import { GiftControls, RewardHistory } from "./ParentRewards";
 import { PetControls } from "./ParentPet";
+import { persona } from "../persona.config";
+import { testCheer, timedRemindersSupported } from "../engine/notify/reminders";
 
 const PARENT_PASSWORD = "adel";
 
@@ -187,17 +188,15 @@ function VideoControls() {
   );
 }
 
-/** Which worlds and minigames Sam may open — e.g. clock-reading focus week. */
+/** Which worlds Sam may open — e.g. a clock-reading focus week. */
 function AccessControls() {
   const enabledWorlds = useGame((s) => s.enabledWorlds);
-  const enabledGames = useGame((s) => s.enabledGames);
   const setWorldEnabled = useGame((s) => s.setWorldEnabled);
-  const setGameEnabled = useGame((s) => s.setGameEnabled);
 
   return (
     <section className="panel parent-block">
       <h2>🔓 What can he open?</h2>
-      <p className="dim">Locked items stay visible in the base but can't be opened.</p>
+      <p className="dim">Locked worlds stay visible in the base but can't be opened.</p>
       {WORLDS.map((w) => {
         const on = Boolean(enabledWorlds[w.id]);
         return (
@@ -214,106 +213,49 @@ function AccessControls() {
           </div>
         );
       })}
-      <MinigameRecords />
-      <h2>🕹️ Minigames</h2>
-      {MINIGAMES.map((g) => {
-        const on = Boolean(enabledGames[g.id]);
-        return (
-          <div key={g.id} className="parent-row parent-world-row">
-            <span className="parent-world-name">
-              {g.icon} {g.name}
-            </span>
-            <button
-              className={`btn ${on ? "btn-primary" : "btn-secondary"}`}
-              onClick={() => setGameEnabled(g.id, !on)}
-            >
-              {on ? "✅ Open" : "🔒 Locked"}
-            </button>
-          </div>
-        );
-      })}
     </section>
   );
 }
 
-/** Minigame records — view & reset (CLAUDE.md rule 2: persisted state needs controls). */
-function MinigameRecords() {
-  const rushBest = useGame((s) => s.rushBest);
-  const surfBest = useGame((s) => s.surfBest);
-  const critterBest = useGame((s) => s.critterBest);
-  const critterDex = useGame((s) => s.critterDex);
-  const blasterBest = useGame((s) => s.blasterBest);
-  const pulseBest = useGame((s) => s.pulseBest);
-  const rangerBest = useGame((s) => s.rangerBest);
-  const racerBest = useGame((s) => s.racerBest);
-  const resetRushBest = useGame((s) => s.resetRushBest);
-  const resetSurfBest = useGame((s) => s.resetSurfBest);
-  const resetCritter = useGame((s) => s.resetCritter);
-  const resetBlasterBest = useGame((s) => s.resetBlasterBest);
-  const resetPulseBest = useGame((s) => s.resetPulseBest);
-  const resetRangerBest = useGame((s) => s.resetRangerBest);
-  const resetRacerBest = useGame((s) => s.resetRacerBest);
+/** Encouragement reminders: timed local notifications to draw Sam back. */
+function ReminderControls() {
+  const on = useGame((s) => s.remindersOn);
+  const setReminders = useGame((s) => s.setReminders);
+  const [note, setNote] = useState<string | null>(null);
+  const supported = timedRemindersSupported();
+
   return (
-    <>
-      {rushBest > 0 && (
-        <div className="parent-row parent-world-row">
-          <span className="parent-world-name">🏃 Number Rush best: {rushBest}</span>
-          <button className="btn btn-secondary" onClick={resetRushBest}>
-            Reset record
+    <section className="panel parent-block">
+      <h2>🔔 Encouragement reminders</h2>
+      <p className="dim">
+        Friendly notifications about every 6 hours (daytime only) inviting {persona.name} back —
+        like “Cosmo misses you!”. They fire even when the app is closed.
+      </p>
+      <div className="parent-row">
+        <button
+          className={`btn ${on ? "btn-primary" : "btn-secondary"}`}
+          onClick={() => {
+            void setReminders(!on).then((armed) => {
+              setNote(!on && !armed ? "Couldn't turn on — please allow notifications for this app, then try again." : null);
+            });
+          }}
+        >
+          {on ? "✅ On" : "⬜ Off"}
+        </button>
+        {on && (
+          <button className="btn btn-secondary" onClick={() => void testCheer()}>
+            Send a test now
           </button>
-        </div>
+        )}
+      </div>
+      {!supported && (
+        <p className="dim">
+          Heads up: timed reminders need Android/Chrome. This device may not support scheduling them
+          while closed (iPads can't yet).
+        </p>
       )}
-      {surfBest > 0 && (
-        <div className="parent-row parent-world-row">
-          <span className="parent-world-name">🏄 Word Surfer best: {surfBest}</span>
-          <button className="btn btn-secondary" onClick={resetSurfBest}>
-            Reset record
-          </button>
-        </div>
-      )}
-      {(critterBest > 0 || critterDex.length > 0) && (
-        <div className="parent-row parent-world-row">
-          <span className="parent-world-name">
-            🦉 Critter Current best: {critterBest} · 📔 {critterDex.length} discovered
-          </span>
-          <button className="btn btn-secondary" onClick={resetCritter}>
-            Reset
-          </button>
-        </div>
-      )}
-      {blasterBest > 0 && (
-        <div className="parent-row parent-world-row">
-          <span className="parent-world-name">🚀 Asteroid Arena best: {blasterBest}</span>
-          <button className="btn btn-secondary" onClick={resetBlasterBest}>
-            Reset record
-          </button>
-        </div>
-      )}
-      {pulseBest > 0 && (
-        <div className="parent-row parent-world-row">
-          <span className="parent-world-name">🟣 Pulse Pads best chain: {pulseBest}</span>
-          <button className="btn btn-secondary" onClick={resetPulseBest}>
-            Reset record
-          </button>
-        </div>
-      )}
-      {rangerBest > 0 && (
-        <div className="parent-row parent-world-row">
-          <span className="parent-world-name">🤠 Star Ranger best patrol: {rangerBest}</span>
-          <button className="btn btn-secondary" onClick={resetRangerBest}>
-            Reset record
-          </button>
-        </div>
-      )}
-      {racerBest > 0 && (
-        <div className="parent-row parent-world-row">
-          <span className="parent-world-name">🏎️ Turbo Tracks best: {racerBest}</span>
-          <button className="btn btn-secondary" onClick={resetRacerBest}>
-            Reset record
-          </button>
-        </div>
-      )}
-    </>
+      {note && <p className="history-redeemed">{note}</p>}
+    </section>
   );
 }
 
@@ -424,6 +366,8 @@ function ParentControls() {
       <PetControls />
 
       <GiftControls />
+
+      <ReminderControls />
 
       <VideoControls />
 

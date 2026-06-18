@@ -46,26 +46,17 @@ export interface SettingsRow {
   id: number;
   soundOn: boolean;
   musicOn?: boolean;
+  /** Parent opt-in: timed encouragement notifications. */
+  remindersOn?: boolean;
   lastStageId?: string;
   /** Parent-controlled gates; missing keys fall back to defaults. */
   enabledWorlds?: Record<string, boolean>;
-  enabledGames?: Record<string, boolean>;
   /** Parent-curated YouTube companion. */
   videoEnabled?: boolean;
   videoMode?: "corner" | "background";
   videoUrls?: string[];
   /** Player visibility 20–100 (%). */
   videoOpacity?: number;
-  /** Minigame records. */
-  rushBest?: number;
-  surfBest?: number;
-  critterBest?: number;
-  blasterBest?: number;
-  pulseBest?: number;
-  rangerBest?: number;
-  racerBest?: number;
-  /** Critterdex: animal names Sam has correctly identified at least once. */
-  critterDex?: string[];
   /** Daily Gift + Treasure Vault. */
   gifts?: string[];
   lastGiftDay?: string | null;

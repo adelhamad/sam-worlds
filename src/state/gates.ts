@@ -1,18 +1,13 @@
 import { WORLDS } from "../content/worlds";
-import { MINIGAMES } from "../content/minigames";
 
-/** Default: only the first two worlds are open until the parent enables more. */
+/** Worlds open out of the box: the first two, plus the newest explore-worlds
+ * so Sam can dive straight into them. The parent can lock any of these. */
+const OPEN_BY_DEFAULT = new Set(["space", "dinos", "weather"]);
+
 export function withWorldDefaults(stored?: Record<string, boolean>): Record<string, boolean> {
   const out: Record<string, boolean> = {};
   WORLDS.forEach((w, i) => {
-    out[w.id] = stored?.[w.id] ?? i < 2;
+    out[w.id] = stored?.[w.id] ?? (i < 2 || OPEN_BY_DEFAULT.has(w.id));
   });
-  return out;
-}
-
-/** Default: all minigames locked until the parent enables them. */
-export function withGameDefaults(stored?: Record<string, boolean>): Record<string, boolean> {
-  const out: Record<string, boolean> = {};
-  for (const g of MINIGAMES) out[g.id] = stored?.[g.id] ?? false;
   return out;
 }

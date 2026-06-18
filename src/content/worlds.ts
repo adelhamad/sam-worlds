@@ -28,6 +28,9 @@ import primesStages from "./primes/stages.json";
 import binaryStages from "./binary/stages.json";
 import fractionsStages from "./fractions/stages.json";
 import elementsStages from "./elements/stages.json";
+import spaceStages from "./space/stages.json";
+import dinosStages from "./dinos/stages.json";
+import weatherStages from "./weather/stages.json";
 import type { StageDef } from "./types";
 
 export interface WorldDef {
@@ -399,6 +402,42 @@ export const WORLDS: WorldDef[] = [
       { stage: 40, name: "Lab Technician", icon: "🥽" },
       { stage: 50, name: "Reaction Master", icon: "🧪" },
       { stage: 55, name: "Master Chemist", icon: "🏆" },
+    ],
+  },
+  {
+    id: "space", name: "Space Voyage", icon: "🚀", tagline: "Planets, stars & rockets!",
+    stages: spaceStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Star Cadet", icon: "⭐" },
+      { stage: 20, name: "Planet Spotter", icon: "🪐" },
+      { stage: 30, name: "Moon Walker", icon: "🌙" },
+      { stage: 40, name: "Rocket Pilot", icon: "🚀" },
+      { stage: 50, name: "Galaxy Ranger", icon: "🌌" },
+      { stage: 55, name: "Master of the Stars", icon: "🏆" },
+    ],
+  },
+  {
+    id: "dinos", name: "Dino Dig", icon: "🦕", tagline: "Dinosaurs & fossils!",
+    stages: dinosStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Bone Finder", icon: "🦴" },
+      { stage: 20, name: "Fossil Hunter", icon: "⛏️" },
+      { stage: 30, name: "Dino Spotter", icon: "🦖" },
+      { stage: 40, name: "Diet Detective", icon: "🌿" },
+      { stage: 50, name: "Paleontologist", icon: "🔬" },
+      { stage: 55, name: "Master of the Dinos", icon: "🏆" },
+    ],
+  },
+  {
+    id: "weather", name: "Weather Watch", icon: "🌦️", tagline: "Sun, rain, snow & seasons!",
+    stages: weatherStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Cloud Spotter", icon: "☁️" },
+      { stage: 20, name: "Season Sage", icon: "🍂" },
+      { stage: 30, name: "Rain Reader", icon: "🌧️" },
+      { stage: 40, name: "Storm Watcher", icon: "⛈️" },
+      { stage: 50, name: "Cycle Keeper", icon: "💧" },
+      { stage: 55, name: "Master of the Skies", icon: "🏆" },
     ],
   },
 ];

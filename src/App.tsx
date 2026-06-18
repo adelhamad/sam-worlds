@@ -5,20 +5,8 @@ import { TitleScreen } from "./ui/TitleScreen";
 import { Hub } from "./ui/Hub";
 import { WorldMap } from "./modules/play/WorldMap";
 import { PlayStage } from "./modules/play/PlayStage";
-import { CometCatch } from "./modules/cometcatch/CometCatch";
 import { ParentSection } from "./ui/ParentSection";
-import { LockedScreen } from "./ui/LockedScreen";
 import { VideoCompanion } from "./ui/VideoCompanion";
-import { NumberRush } from "./modules/numberrush/NumberRush";
-import { WordSurf } from "./modules/wordsurf/WordSurf";
-import { CritterCurrent } from "./modules/critters/CritterCurrent";
-import { CubeCoach } from "./modules/cubecoach/CubeCoach";
-import { JumpJam } from "./modules/jumpjam/JumpJam";
-import { Calculator } from "./modules/calculator/Calculator";
-import { AsteroidArena } from "./modules/asteroid/AsteroidArena";
-import { PulsePads } from "./modules/pulse/PulsePads";
-import { StarRanger } from "./modules/ranger/StarRanger";
-import { TurboTracks } from "./modules/racer/TurboTracks";
 
 /** Each screen starts at the top — no inherited scroll position. */
 function ScrollToTop() {
@@ -35,12 +23,6 @@ function ScrollToTop() {
  * popping it lands on an identical URL, so nothing changes on screen.
  * All navigation goes through the in-app buttons.
  */
-/** Parent gate for minigame routes. */
-function GameGate({ id, children }: { id: string; children: React.ReactElement }) {
-  const on = useGame((s) => Boolean(s.enabledGames[id]));
-  return on ? children : <LockedScreen />;
-}
-
 function BlockBrowserNav() {
   const location = useLocation();
   useEffect(() => {
@@ -57,13 +39,18 @@ import { STR } from "./strings/en";
 import { unlockAudio } from "./engine/feedback/audio";
 import { startMusic } from "./engine/feedback/music";
 import { keepScreenAwake } from "./engine/wakeLock";
+import { armReminders } from "./engine/notify/reminders";
 
 export default function App() {
   const loaded = useGame((s) => s.loaded);
   const hydrate = useGame((s) => s.hydrate);
 
   useEffect(() => {
-    void hydrate();
+    // Re-arm encouragement reminders relative to this visit (they fire ~6h
+    // apart afterwards, even with the app closed).
+    void hydrate().then(() => {
+      if (useGame.getState().remindersOn) void armReminders(Date.now());
+    });
     keepScreenAwake();
   }, [hydrate]);
 
@@ -104,17 +91,6 @@ export default function App() {
         <Route path="/hub" element={<Hub />} />
         <Route path="/world/:worldId" element={<WorldMap />} />
         <Route path="/play/:stageId" element={<PlayStage />} />
-        <Route path="/catch" element={<GameGate id="catch"><CometCatch /></GameGate>} />
-        <Route path="/rush" element={<GameGate id="rush"><NumberRush /></GameGate>} />
-        <Route path="/surf" element={<GameGate id="surf"><WordSurf /></GameGate>} />
-        <Route path="/critter" element={<GameGate id="critter"><CritterCurrent /></GameGate>} />
-        <Route path="/cube" element={<GameGate id="cube"><CubeCoach /></GameGate>} />
-        <Route path="/jump" element={<GameGate id="jump"><JumpJam /></GameGate>} />
-        <Route path="/calc" element={<GameGate id="calc"><Calculator /></GameGate>} />
-        <Route path="/blaster" element={<GameGate id="blaster"><AsteroidArena /></GameGate>} />
-        <Route path="/pulse" element={<GameGate id="pulse"><PulsePads /></GameGate>} />
-        <Route path="/ranger" element={<GameGate id="ranger"><StarRanger /></GameGate>} />
-        <Route path="/racer" element={<GameGate id="racer"><TurboTracks /></GameGate>} />
         <Route path="/parent" element={<ParentSection />} />
       </Routes>
     </HashRouter>

@@ -1,0 +1,875 @@
+[
+  {
+    "id": "space-01",
+    "name": "Lift-Off",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Blast off into space!",
+      "Tap the right answer."
+    ]
+  },
+  {
+    "id": "space-02",
+    "name": "Red Planet",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "space-03",
+    "name": "Sun & Moon",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "space-04",
+    "name": "Ringed Giant",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "space-05",
+    "name": "Day and Night",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "space-06",
+    "name": "Closest to the Sun",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "space-07",
+    "name": "Blue Marble",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "space-08",
+    "name": "Star Field",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "space-09",
+    "name": "Moon Walk",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "space-10",
+    "name": "Rocket Ride",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "space-11",
+    "name": "Comet Tail",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "space-12",
+    "name": "Giant Jupiter",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "space-13",
+    "name": "Spin Around",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "space-14",
+    "name": "Telescope Peek",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "space-15",
+    "name": "Eight Planets",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "space-16",
+    "name": "Hot Venus",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "space-17",
+    "name": "Cool Neptune",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "space-18",
+    "name": "Sideways World",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "space-19",
+    "name": "Galaxy Glow",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "space-20",
+    "name": "Satellite Loop",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "space-21",
+    "name": "Shooting Star",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "space-22",
+    "name": "Space Suit",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "space-23",
+    "name": "Counting Moons",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "space-24",
+    "name": "Far and Near",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "space-25",
+    "name": "Sun Power",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "space-26",
+    "name": "Night Sky",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "space-27",
+    "name": "Planet Parade",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "space-28",
+    "name": "Deep Space",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "space-29",
+    "name": "Orbit Path",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "space-30",
+    "name": "Mission Control",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "space-31",
+    "name": "Lift-Off II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "space-32",
+    "name": "Red Planet II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "space-33",
+    "name": "Sun & Moon II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "space-34",
+    "name": "Ringed Giant II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "space-35",
+    "name": "Day and Night II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "space-36",
+    "name": "Closest to the Sun II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "space-37",
+    "name": "Blue Marble II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "space-38",
+    "name": "Star Field II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "space-39",
+    "name": "Moon Walk II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "space-40",
+    "name": "Rocket Ride II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "space-41",
+    "name": "Comet Tail II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "space-42",
+    "name": "Giant Jupiter II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "space-43",
+    "name": "Spin Around II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "space-44",
+    "name": "Telescope Peek II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "space-45",
+    "name": "Eight Planets II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "space-46",
+    "name": "Hot Venus II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "space-47",
+    "name": "Cool Neptune II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "space-48",
+    "name": "Sideways World II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "space-49",
+    "name": "Galaxy Glow II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "space-50",
+    "name": "Satellite Loop II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "space-51",
+    "name": "Shooting Star II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "space-52",
+    "name": "Space Suit II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "space-53",
+    "name": "Counting Moons II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "space-54",
+    "name": "Far and Near II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "space-55",
+    "name": "Sun Power II",
+    "generator": "space",
+    "params": {
+      "types": [
+        "planet",
+        "sky",
+        "count",
+        "order",
+        "thing"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

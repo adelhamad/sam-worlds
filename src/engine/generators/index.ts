@@ -30,6 +30,9 @@ import { generateMultiplyMaster, type MultParams } from "./multiplyMaster";
 import { generateBinary, type BinaryParams } from "./binary";
 import { generateFractions, type FractionParams } from "./fractions";
 import { generateElements, type ElementParams } from "./elements";
+import { generateSpace, type SpaceParams } from "./space";
+import { generateDinos, type DinoParams } from "./dinos";
+import { generateWeather, type WeatherParams } from "./weather";
 import type { GenContext, GeneratorParams, Question } from "./types";
 
 export type GeneratorId =
@@ -63,7 +66,10 @@ export type GeneratorId =
   | "multiplyMaster"
   | "binary"
   | "fractions"
-  | "elements";
+  | "elements"
+  | "space"
+  | "dinos"
+  | "weather";
 
 /** Generator registry — one entry per id (params are cast per generator). */
 type GenFn = (params: GeneratorParams, rng: () => number, ctx: GenContext) => Question;
@@ -102,6 +108,9 @@ const GENERATORS: Record<GeneratorId, GenFn> = {
   binary: cast<BinaryParams>(generateBinary),
   fractions: cast<FractionParams>(generateFractions),
   elements: cast<ElementParams>(generateElements),
+  space: cast<SpaceParams>(generateSpace),
+  dinos: cast<DinoParams>(generateDinos),
+  weather: cast<WeatherParams>(generateWeather),
 };
 
 function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, ctx: GenContext): Question {

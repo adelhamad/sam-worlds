@@ -1,0 +1,875 @@
+[
+  {
+    "id": "dinos-01",
+    "name": "First Dig",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Dig up the dinosaurs!",
+      "Tap the right answer."
+    ]
+  },
+  {
+    "id": "dinos-02",
+    "name": "Long Neck",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "dinos-03",
+    "name": "Three Horns",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "dinos-04",
+    "name": "King T. rex",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "dinos-05",
+    "name": "Plate Back",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "dinos-06",
+    "name": "Tiny Arms",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "dinos-07",
+    "name": "Plant or Meat",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "dinos-08",
+    "name": "Fossil Hunt",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "dinos-09",
+    "name": "Sharp Claws",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "dinos-10",
+    "name": "Sail Back",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "dinos-11",
+    "name": "Armor Tail",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "dinos-12",
+    "name": "Trumpet Head",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "dinos-13",
+    "name": "Egg to Dino",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "dinos-14",
+    "name": "Bone Detective",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "dinos-15",
+    "name": "Museum Day",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "dinos-16",
+    "name": "Fast Runner",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "dinos-17",
+    "name": "Herbivore",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "dinos-18",
+    "name": "Carnivore",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "dinos-19",
+    "name": "Terrible Lizard",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "dinos-20",
+    "name": "Dig It Up",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "dinos-21",
+    "name": "Old Bones",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "dinos-22",
+    "name": "Giant Plant-Eater",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "dinos-23",
+    "name": "Clever Raptor",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "dinos-24",
+    "name": "Spike Thumb",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "dinos-25",
+    "name": "Frill Face",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "dinos-26",
+    "name": "Buried Deep",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "dinos-27",
+    "name": "Stone Bones",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "dinos-28",
+    "name": "Big Footprints",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "dinos-29",
+    "name": "Ancient World",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "dinos-30",
+    "name": "Dino Master",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "dinos-31",
+    "name": "First Dig II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "dinos-32",
+    "name": "Long Neck II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "dinos-33",
+    "name": "Three Horns II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "dinos-34",
+    "name": "King T. rex II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "dinos-35",
+    "name": "Plate Back II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "dinos-36",
+    "name": "Tiny Arms II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "dinos-37",
+    "name": "Plant or Meat II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "dinos-38",
+    "name": "Fossil Hunt II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "dinos-39",
+    "name": "Sharp Claws II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "dinos-40",
+    "name": "Sail Back II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "dinos-41",
+    "name": "Armor Tail II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "dinos-42",
+    "name": "Trumpet Head II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "dinos-43",
+    "name": "Egg to Dino II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "dinos-44",
+    "name": "Bone Detective II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "dinos-45",
+    "name": "Museum Day II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "dinos-46",
+    "name": "Fast Runner II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "dinos-47",
+    "name": "Herbivore II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "dinos-48",
+    "name": "Carnivore II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "dinos-49",
+    "name": "Terrible Lizard II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "dinos-50",
+    "name": "Dig It Up II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "dinos-51",
+    "name": "Old Bones II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "dinos-52",
+    "name": "Giant Plant-Eater II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "dinos-53",
+    "name": "Clever Raptor II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "dinos-54",
+    "name": "Spike Thumb II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "dinos-55",
+    "name": "Frill Face II",
+    "generator": "dinos",
+    "params": {
+      "types": [
+        "clue",
+        "diet",
+        "fact",
+        "count",
+        "order"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

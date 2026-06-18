@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGame } from "../state/store";
 import { completedInWorld, focusWorldIn, nextStageIn, stageById, WORLDS, worldOfStage } from "../content/worlds";
-import { MINIGAMES } from "../content/minigames";
 import { sfx, unlockAudio } from "../engine/feedback/audio";
 import { STR } from "../strings/en";
 import { Workshop } from "./Workshop";
@@ -44,6 +43,9 @@ const PLANET_HUES: Record<string, string> = {
   binary: "#34d399",
   fractions: "#f9a8d4",
   elements: "#818cf8",
+  space: "#8b5cf6",
+  dinos: "#84cc16",
+  weather: "#38bdf8",
 };
 
 export function Hub() {
@@ -61,7 +63,6 @@ export function Hub() {
   const vault = vaultProgress(gifts);
 
   const enabledWorlds = useGame((s) => s.enabledWorlds);
-  const enabledGames = useGame((s) => s.enabledGames);
   // The world the planets row highlights as "current".
   const focus = focusWorldIn(WORLDS.filter((w) => enabledWorlds[w.id]), progress);
   // Continue where he left off: the in-progress session, or the next stage
@@ -150,25 +151,6 @@ export function Hub() {
       </section>
 
       <div className="hub-bottom">
-        {MINIGAMES.map((g) => {
-          const on = Boolean(enabledGames[g.id]);
-          return (
-            <button
-              key={g.id}
-              className={`tile ${on ? "tile-glow" : "tile-locked"}`}
-              disabled={!on}
-              onClick={() => {
-                unlockAudio();
-                sfx.tap();
-                navigate(g.route);
-              }}
-            >
-              <span className="tile-icon">{g.icon}</span>
-              <span className="tile-name">{g.name}</span>
-              <span className="tile-sub">{on ? g.sub : "🔒 Ask Daddy"}</span>
-            </button>
-          );
-        })}
         <button
           className="tile"
           onClick={() => {

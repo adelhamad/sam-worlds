@@ -1,0 +1,863 @@
+[
+  {
+    "id": "weather-01",
+    "name": "Sunny Day",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Watch the weather change!",
+      "Tap the right answer."
+    ]
+  },
+  {
+    "id": "weather-02",
+    "name": "Rain Drops",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "weather-03",
+    "name": "Snow Flakes",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "weather-04",
+    "name": "Four Seasons",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "weather-05",
+    "name": "Windy Hill",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "weather-06",
+    "name": "Cloud Watch",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "weather-07",
+    "name": "Spring Bloom",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "weather-08",
+    "name": "Hot Summer",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "weather-09",
+    "name": "Falling Leaves",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "weather-10",
+    "name": "Cold Winter",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "weather-11",
+    "name": "Umbrella Up",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "weather-12",
+    "name": "Dress Warm",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "weather-13",
+    "name": "Rainbow Sky",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "weather-14",
+    "name": "Thunder Boom",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "weather-15",
+    "name": "Lightning Flash",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "weather-16",
+    "name": "Foggy Morning",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "weather-17",
+    "name": "Water Cycle",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "weather-18",
+    "name": "Puddle to Cloud",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "weather-19",
+    "name": "Thermometer",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "weather-20",
+    "name": "Weather Tools",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "weather-21",
+    "name": "Beach Day",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "weather-22",
+    "name": "Snowy Coat",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "weather-23",
+    "name": "Storm Safety",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "weather-24",
+    "name": "Gentle Breeze",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "weather-25",
+    "name": "Hailstones",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "weather-26",
+    "name": "Forecast Time",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "weather-27",
+    "name": "Season Spin",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "weather-28",
+    "name": "Sky High",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "weather-29",
+    "name": "Wet and Dry",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "weather-30",
+    "name": "Weather Master",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "weather-31",
+    "name": "Sunny Day II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "weather-32",
+    "name": "Rain Drops II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "weather-33",
+    "name": "Snow Flakes II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "weather-34",
+    "name": "Four Seasons II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "weather-35",
+    "name": "Windy Hill II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "weather-36",
+    "name": "Cloud Watch II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "weather-37",
+    "name": "Spring Bloom II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "weather-38",
+    "name": "Hot Summer II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "weather-39",
+    "name": "Falling Leaves II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "weather-40",
+    "name": "Cold Winter II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "weather-41",
+    "name": "Umbrella Up II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "weather-42",
+    "name": "Dress Warm II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "weather-43",
+    "name": "Rainbow Sky II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "weather-44",
+    "name": "Thunder Boom II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky",
+        "cycle"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "weather-45",
+    "name": "Lightning Flash II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "weather-46",
+    "name": "Foggy Morning II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "weather-47",
+    "name": "Water Cycle II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "weather-48",
+    "name": "Puddle to Cloud II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "weather-49",
+    "name": "Thermometer II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "weather-50",
+    "name": "Weather Tools II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "weather-51",
+    "name": "Beach Day II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "weather-52",
+    "name": "Snowy Coat II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "weather-53",
+    "name": "Storm Safety II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "weather-54",
+    "name": "Gentle Breeze II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "weather-55",
+    "name": "Hailstones II",
+    "generator": "weather",
+    "params": {
+      "types": [
+        "identify",
+        "season",
+        "wear",
+        "sky",
+        "cycle"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

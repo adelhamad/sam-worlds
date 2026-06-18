@@ -7,10 +7,9 @@ import { starsForResult } from "../engine/progress/stars";
 import { weightedPayout } from "../engine/answers/answerEngine";
 import { itemById } from "../engine/economy/catalog";
 import { BADGES, stageById, stageIndexInWorld, worldOfStage, worldById, type BadgeDef } from "../content/worlds";
-import { withGameDefaults, withWorldDefaults } from "./gates";
+import { withWorldDefaults } from "./gates";
 import { missTransition, withReplacedQuestion } from "./missTransition";
 import { persistSettings, settingsState } from "./settings";
-import { recordActions } from "./records";
 import { giftActions } from "./gifts";
 import { petActions, petInitial, type PetSlice } from "./pet";
 import { drawTreasure, type DailyGift, type Treasure, treasureById } from "../engine/economy/gifts";
@@ -18,6 +17,7 @@ import { persona } from "../persona.config";
 import { newSeed } from "../engine/rng";
 import { setMuted } from "../engine/feedback/audio";
 import { startMusic, stopMusic } from "../engine/feedback/music";
+import { armReminders, disarmReminders, requestReminderPermission } from "../engine/notify/reminders";
 
 export interface SessionResult {
   stars: 1 | 2 | 3;
@@ -47,23 +47,15 @@ export interface GameStore extends PetSlice {
   skillRatings: Record<string, number>;
   soundOn: boolean;
   musicOn: boolean;
+  remindersOn: boolean;
   lastStageId: string | null;
   coupons: CouponRow[];
-  /** Parent gates: which worlds / minigames Sam may open right now. */
+  /** Parent gates: which worlds Sam may open right now. */
   enabledWorlds: Record<string, boolean>;
-  enabledGames: Record<string, boolean>;
   videoEnabled: boolean;
   videoMode: "corner" | "background";
   videoOpacity: number;
   videoUrls: string[];
-  rushBest: number;
-  surfBest: number;
-  critterBest: number;
-  blasterBest: number;
-  pulseBest: number;
-  rangerBest: number;
-  racerBest: number;
-  critterDex: string[];
   // Daily Gift + Treasure Vault
   gifts: string[];
   lastGiftDay: string | null;
@@ -82,29 +74,14 @@ export interface GameStore extends PetSlice {
   earnDust: (amount: number, reason: string) => void;
   toggleSound: () => void;
   toggleMusic: () => void;
+  setReminders: (on: boolean) => Promise<boolean>;
   // Parent Section controls
   setStarDust: (amount: number) => void;
   setWorldProgress: (worldId: string, completedCount: number) => void;
   setWorldEnabled: (worldId: string, on: boolean) => void;
-  setGameEnabled: (gameId: string, on: boolean) => void;
   setVideoEnabled: (on: boolean) => void;
   setVideoMode: (mode: "corner" | "background") => void;
   setVideoOpacity: (pct: number) => void;
-  reportRushScore: (score: number) => void;
-  resetRushBest: () => void;
-  reportSurfScore: (score: number) => void;
-  resetSurfBest: () => void;
-  reportCritterScore: (score: number) => void;
-  addCritterDex: (names: string[]) => void;
-  resetCritter: () => void;
-  reportBlasterScore: (score: number) => void;
-  resetBlasterBest: () => void;
-  reportPulseScore: (score: number) => void;
-  resetPulseBest: () => void;
-  reportRangerScore: (score: number) => void;
-  resetRangerBest: () => void;
-  reportRacerScore: (score: number) => void;
-  resetRacerBest: () => void;
   claimDailyGift: () => DailyGift | null;
   resetGifts: () => void;
   addVideoUrl: (url: string) => void;
@@ -148,15 +125,14 @@ export const useGame = create<GameStore>((set, get) => ({
   skillRatings: {},
   soundOn: true,
   musicOn: true,
+  remindersOn: false,
   lastStageId: null,
   coupons: [],
   enabledWorlds: withWorldDefaults(),
-  enabledGames: withGameDefaults(),
   videoEnabled: false,
   videoMode: "corner",
   videoOpacity: 80,
   videoUrls: [],
-  rushBest: 0, surfBest: 0, critterBest: 0, blasterBest: 0, pulseBest: 0, rangerBest: 0, racerBest: 0, critterDex: [],
   gifts: [], lastGiftDay: null, giftStreak: 0, giftBestStreak: 0,
   ...petInitial,
   session: null,
@@ -453,6 +429,24 @@ export const useGame = create<GameStore>((set, get) => ({
     persistSettings(get);
   },
 
+  // Parent opt-in for timed encouragement notifications. Returns whether they
+  // are actually armed (needs permission + a platform that can schedule them).
+  setReminders: async (on) => {
+    if (!on) {
+      set({ remindersOn: false });
+      persistSettings(get);
+      await disarmReminders();
+      logEvent("reminders.off", {});
+      return false;
+    }
+    const perm = await requestReminderPermission();
+    const armed = perm === "granted" ? await armReminders(Date.now()) : false;
+    set({ remindersOn: armed });
+    persistSettings(get);
+    logEvent("reminders.on", { armed, perm });
+    return armed;
+  },
+
   setStarDust: (amount) => {
     const starDust = Math.max(0, Math.round(amount));
     set({ starDust });
@@ -497,12 +491,6 @@ export const useGame = create<GameStore>((set, get) => ({
     logEvent("parent.worldGate", { worldId, on });
   },
 
-  setGameEnabled: (gameId, on) => {
-    set({ enabledGames: { ...get().enabledGames, [gameId]: on } });
-    persistSettings(get);
-    logEvent("parent.gameGate", { gameId, on });
-  },
-
   setVideoEnabled: (on) => {
     set({ videoEnabled: on });
     persistSettings(get);
@@ -519,7 +507,6 @@ export const useGame = create<GameStore>((set, get) => ({
     persistSettings(get);
   },
 
-  ...recordActions(set, get),
   ...giftActions(set, get),
   ...petActions(set, get),
 
