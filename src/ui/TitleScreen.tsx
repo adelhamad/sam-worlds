@@ -17,18 +17,18 @@ const DECOR = [
 export function TitleScreen() {
   const navigate = useNavigate();
   const hasSave = useGame((s) => s.hasSave);
-  const session = useGame((s) => s.session);
   const progress = useGame((s) => s.progress);
 
   const enabledWorlds = useGame((s) => s.enabledWorlds);
   const focus = focusWorldIn(WORLDS.filter((w) => enabledWorlds[w.id]), progress);
-  const resumeMidPuzzle = session && !session.result;
 
   function go() {
     unlockAudio();
     if (useGame.getState().musicOn) startMusic();
     sfx.tap();
-    navigate(resumeMidPuzzle ? `/play/${session.stageId}` : "/hub");
+    // Always land on the base/home. The hub itself offers a Continue bar to
+    // resume an in-progress stage — starting must never jump straight into it.
+    navigate("/hub");
   }
 
   return (

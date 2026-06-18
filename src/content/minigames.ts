@@ -18,4 +18,5 @@ export const MINIGAMES: MinigameDef[] = [
   { id: "blaster", name: "Asteroid Arena", icon: "🚀", sub: "Blast the right numbers!", route: "/blaster" },
   { id: "pulse", name: "Pulse Pads", icon: "🟣", sub: "Watch & echo the glow!", route: "/pulse" },
   { id: "ranger", name: "Star Ranger", icon: "🤠", sub: "Roam & zap in 3D!", route: "/ranger" },
+  { id: "racer", name: "Turbo Tracks", icon: "🏎️", sub: "Race & solve in 3D!", route: "/racer" },
 ];

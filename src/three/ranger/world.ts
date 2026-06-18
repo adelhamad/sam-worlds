@@ -203,3 +203,69 @@ export function makeCoin(): THREE.Mesh {
   coin.position.y = 1;
   return coin;
 }
+
+export const WORLD_R = 30;
+
+const NPC_KINDS: Array<[string, number]> = [
+  ["🐼", 0xf2f2f2], ["🦊", 0xe8884a], ["🐸", 0x7ec850], ["🐰", 0xe7d7c8], ["🐨", 0x9aa7b0], ["🐯", 0xf4b942],
+];
+
+export interface NPC { group: THREE.Group; phase: number; dir: number; speed: number; }
+export interface Obstacle { x: number; z: number; r: number; }
+
+/** Build the whole static meadow (lights, ground, hills, flag, props, NPCs,
+ * clouds) and return the bits the scene needs to animate / collide against. */
+export function buildMeadow(scene: THREE.Scene, name: string): { obstacles: Obstacle[]; npcs: NPC[]; clouds: THREE.Group[] } {
+  scene.add(new THREE.HemisphereLight(0xcfeaff, 0x4f7a3a, 1.05));
+  const sun = new THREE.DirectionalLight(0xfff4d6, 1.25);
+  sun.position.set(14, 22, 8);
+  scene.add(sun);
+
+  const ground = new THREE.Mesh(
+    new THREE.CircleGeometry(WORLD_R + 8, 64),
+    new THREE.MeshStandardMaterial({ map: grassTexture(), roughness: 1 }),
+  );
+  ground.rotation.x = -Math.PI / 2;
+  scene.add(ground, makeHills(Math.random));
+
+  const flag = makeFlag(name);
+  flag.position.set(0, 0, -6);
+  scene.add(flag);
+
+  const obstacles: Obstacle[] = [];
+  for (let i = 0; i < 16; i++) {
+    const a = Math.random() * Math.PI * 2;
+    const r = 7 + Math.random() * (WORLD_R - 6);
+    const x = Math.cos(a) * r;
+    const z = Math.sin(a) * r;
+    const tree = Math.random() < 0.62;
+    const obj = tree ? makeTree(Math.random) : makeRock(Math.random);
+    obj.position.set(x, 0, z);
+    scene.add(obj);
+    obstacles.push({ x, z, r: tree ? 0.8 : 0.9 });
+  }
+  const pond = makePond(3.2);
+  pond.position.set(-11, 0, 9);
+  scene.add(pond);
+  obstacles.push({ x: -11, z: 9, r: 3.4 });
+
+  const npcs: NPC[] = [];
+  for (let i = 0; i < 5; i++) {
+    const [emoji, color] = NPC_KINDS[i % NPC_KINDS.length];
+    const g = makeNPC(emoji, color);
+    const a = Math.random() * Math.PI * 2;
+    const r = 6 + Math.random() * 16;
+    g.position.set(Math.cos(a) * r, 0, Math.sin(a) * r);
+    scene.add(g);
+    npcs.push({ group: g, phase: Math.random() * 10, dir: Math.random() * Math.PI * 2, speed: 0.5 + Math.random() * 0.7 });
+  }
+
+  const clouds: THREE.Group[] = [];
+  for (let i = 0; i < 7; i++) {
+    const c = makeCloud(Math.random);
+    c.position.set((Math.random() - 0.5) * 80, 16 + Math.random() * 8, (Math.random() - 0.5) * 80);
+    clouds.push(c);
+    scene.add(c);
+  }
+  return { obstacles, npcs, clouds };
+}

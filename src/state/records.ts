@@ -96,5 +96,18 @@ export function recordActions(set: Set, get: Get) {
       persistSettings(get);
       logEvent("parent.rangerReset", {});
     },
+
+    reportRacerScore: (score: number) => {
+      logEvent("racer.run", { score });
+      if (score <= get().racerBest) return;
+      set({ racerBest: score });
+      persistSettings(get);
+    },
+
+    resetRacerBest: () => {
+      set({ racerBest: 0 });
+      persistSettings(get);
+      logEvent("parent.racerReset", {});
+    },
   };
 }

@@ -13,13 +13,21 @@ import { useKeyboard } from "./useKeyboard";
 
 const MAX_PAYOUT = 50;
 
+// The golems you battle, escalating to a dragon boss. HP totals 12 = PATROL_LEN.
+const MONSTERS = [
+  { name: "Grumble", face: "👹", color: 0x9b5de5, hp: 2, scale: 1.0, boss: false },
+  { name: "Gloop", face: "👾", color: 0x4cc9f0, hp: 3, scale: 1.05, boss: false },
+  { name: "Rockjaw", face: "🗿", color: 0x8d99ae, hp: 3, scale: 1.12, boss: false },
+  { name: "Draglor", face: "🐲", color: 0xef476f, hp: 4, scale: 1.4, boss: true },
+];
+
 interface Run {
   rng: RNG;
-  index: number;
+  seen: Set<string>;
+  step: number; // difficulty pointer
   quest: Quest;
   questGolden: boolean;
   goldenId: number | null;
-  seen: Set<string>;
   firstTry: boolean;
   miss: number;
   wrongStamps: number[];
@@ -30,9 +38,12 @@ interface Run {
   combo: number;
   busy: boolean;
   over: boolean;
+  mIndex: number;
+  hp: number;
+  max: number;
 }
 
-/** Star Ranger — roam a blocky meadow in 3D and zap the right answer. */
+/** Star Ranger — roam a blocky planet in 3D and battle Number Golems. */
 export function StarRanger() {
   const navigate = useNavigate();
   const earnDust = useGame((s) => s.earnDust);
@@ -45,16 +56,16 @@ export function StarRanger() {
   const runRef = useRef<Run | null>(null);
   const onHitRef = useRef<(id: number) => void>(() => {});
   const onCoinRef = useRef<() => void>(() => {});
+  const dragRef = useRef<{ id: number; x: number; y: number; moved: boolean } | null>(null);
 
   const [phase, setPhase] = useState<"intro" | "play" | "done">("intro");
-  const [hud, setHud] = useState({ prompt: "", qNum: 1, score: 0, coins: 0 });
+  const [hud, setHud] = useState({ prompt: "", face: "", name: "", hp: 0, max: 0, score: 0, coins: 0 });
   const [line, setLine] = useState<string | null>(null);
   const [toast, setToast] = useState<{ text: string; kind: "teach" | "miss" } | null>(null);
   const [fireReady, setFireReady] = useState(false);
   const [startBest, setStartBest] = useState(0);
   const [result, setResult] = useState<{ score: number; coins: number; rank: string; perfect: boolean; payout: number } | null>(null);
 
-  // Mount the 3D meadow once (StrictMode-safe).
   useEffect(() => {
     if (!hostRef.current) return;
     const scene = RangerScene.create(hostRef.current, persona.name);
@@ -68,7 +79,6 @@ export function StarRanger() {
     };
   }, []);
 
-  // Keep the ZAP-ready glow in sync with whether a crystal is aimed.
   useEffect(() => {
     if (phase !== "play") return;
     const t = setInterval(() => setFireReady(Boolean(sceneRef.current?.hasAim())), 120);
@@ -82,7 +92,8 @@ export function StarRanger() {
   });
 
   function syncHud(r: Run) {
-    setHud({ prompt: r.quest.question.prompt, qNum: r.index + 1, score: r.score, coins: r.coins });
+    const m = MONSTERS[r.mIndex];
+    setHud({ prompt: r.quest.question.prompt, face: m.face, name: m.name, hp: r.hp, max: r.max, score: r.score, coins: r.coins });
   }
 
   function say(text: string, hold = 1800) {
@@ -98,6 +109,29 @@ export function StarRanger() {
     syncHud(r);
   }
 
+  /** Build the next question (same difficulty band advances by one step). */
+  function rollQuest(r: Run) {
+    r.step += 1;
+    r.quest = buildQuest(r.rng, r.step, false, r.seen);
+    r.firstTry = true;
+    r.miss = 0;
+    r.busy = false;
+    r.questGolden = !r.goldUsed && r.step >= 4 && r.rng() < 0.3;
+    if (r.questGolden) r.goldUsed = true;
+  }
+
+  function nextMonster(r: Run) {
+    r.mIndex += 1;
+    if (r.mIndex >= MONSTERS.length) { endRun(r); return; }
+    const m = MONSTERS[r.mIndex];
+    r.hp = m.hp;
+    r.max = m.hp;
+    rollQuest(r);
+    sceneRef.current?.spawnMonster(m.face, m.color, m.scale, m.boss);
+    spawnCurrent(r);
+    say(`${m.boss ? "👑 BOSS! " : ""}A ${m.name} appears! ${r.quest.question.prompt}`, 2600);
+  }
+
   function endRun(r: Run) {
     r.over = true;
     sceneRef.current?.clearCluster();
@@ -109,22 +143,6 @@ export function StarRanger() {
     else sfx.stageComplete();
     setResult({ score: r.score, coins: r.coins, rank: rankTitle(r.firstTryCount), perfect, payout });
     setPhase("done");
-  }
-
-  function nextQuest(r: Run) {
-    r.index += 1;
-    if (r.index >= PATROL_LEN) {
-      endRun(r);
-      return;
-    }
-    r.quest = buildQuest(r.rng, r.index, false, r.seen);
-    r.firstTry = true;
-    r.miss = 0;
-    r.busy = false;
-    r.questGolden = !r.goldUsed && r.index >= 4 && r.rng() < 0.3;
-    if (r.questGolden) r.goldUsed = true;
-    spawnCurrent(r);
-    say(`Pip: ${r.quest.question.prompt}  — zap the answer!`, 2400);
   }
 
   function fire() {
@@ -139,6 +157,7 @@ export function StarRanger() {
   function handleCorrect(r: Run, id: number) {
     r.busy = true;
     sceneRef.current?.shatter(id);
+    sceneRef.current?.flinch();
     sfx.correct();
     r.combo += 1;
     playPitch(440 * Math.pow(1.059, Math.min(r.combo, 12)), 0.16);
@@ -146,15 +165,21 @@ export function StarRanger() {
     r.score += crystalScore(r.firstTry) + (golden ? 15 : 0);
     if (r.firstTry) r.firstTryCount += 1;
     sceneRef.current?.dropCoin();
-    if (golden) sceneRef.current?.dropCoin();
-    say(golden ? `✨ GOLDEN crystal! Bonus, Ranger ${persona.name}!` : praise(r.rng));
+    r.hp -= 1;
     syncHud(r);
-    setTimeout(() => { if (!r.over) nextQuest(r); }, 780);
+    if (r.hp <= 0) {
+      sceneRef.current?.monsterDefeat();
+      say(`💥 ${MONSTERS[r.mIndex].name} defeated! Nice, Ranger ${persona.name}!`, 2200);
+      setTimeout(() => { if (!r.over) nextMonster(r); }, 900);
+    } else {
+      say(golden ? `✨ GOLDEN hit! Bonus!` : praise(r.rng));
+      setTimeout(() => { if (!r.over) { rollQuest(r); spawnCurrent(r); } }, 720);
+    }
   }
 
-  function handleWrong(r: Run, id: number) {
+  function handleWrong(r: Run) {
     r.busy = true;
-    sceneRef.current?.bounce(id);
+    sceneRef.current?.monsterAttack();
     sfx.wrong();
     r.firstTry = false;
     r.miss += 1;
@@ -164,11 +189,11 @@ export function StarRanger() {
     const second = r.miss >= 2;
     setToast({ text: second ? workedExample(q) || q.hint : q.hint, kind: second ? "teach" : "miss" });
     const rapid = isRapidGuessing(r.wrongStamps);
-    say(rapid ? `Take your time, Ranger ${persona.name} — no rush.` : STR.almostLook, 2400);
+    say(rapid ? `Steady, Ranger ${persona.name} — read it first.` : STR.almostLook, 2400);
     setTimeout(() => {
       const live = runRef.current;
       if (!live || live.over) return;
-      live.quest = buildQuest(live.rng, live.index, rapid, live.seen);
+      live.quest = buildQuest(live.rng, live.step, rapid, live.seen);
       live.busy = false;
       setToast(null);
       spawnCurrent(live);
@@ -181,7 +206,7 @@ export function StarRanger() {
     const target = r.quest.targets.find((t) => t.id === id);
     if (!target) return;
     if (target.correct) handleCorrect(r, id);
-    else handleWrong(r, id);
+    else handleWrong(r);
   }
 
   function handleCoin() {
@@ -192,7 +217,6 @@ export function StarRanger() {
     syncHud(r);
   }
 
-  // Keep scene callbacks pointed at the latest closures.
   useEffect(() => {
     onHitRef.current = handleHit;
     onCoinRef.current = handleCoin;
@@ -203,30 +227,57 @@ export function StarRanger() {
     sfx.tap();
     const rng = mulberry32(newSeed());
     const seen = new Set<string>();
+    const m0 = MONSTERS[0];
     const r: Run = {
-      rng, index: 0, quest: buildQuest(rng, 0, false, seen), questGolden: false, goldenId: null,
-      seen, firstTry: true, miss: 0, wrongStamps: [], goldUsed: false,
+      rng, seen, step: 0, quest: buildQuest(rng, 0, false, seen), questGolden: false, goldenId: null,
+      firstTry: true, miss: 0, wrongStamps: [], goldUsed: false,
       score: 0, coins: 0, firstTryCount: 0, combo: 0, busy: false, over: false,
+      mIndex: 0, hp: m0.hp, max: m0.hp,
     };
     runRef.current = r;
     setStartBest(best);
     setResult(null);
-    sceneRef.current?.clearCluster();
+    sceneRef.current?.spawnMonster(m0.face, m0.color, m0.scale, m0.boss);
     spawnCurrent(r);
     setPhase("play");
-    say(`Pip: ${r.quest.question.prompt}  — zap the answer!`, 2600);
+    say(`A ${m0.name} appears! Zap the answer to hit it!`, 2800);
+  }
+
+  // Drag anywhere on the 3D view to look around (orbit + tilt the camera).
+  function onDragStart(e: React.PointerEvent) {
+    dragRef.current = { id: e.pointerId, x: e.clientX, y: e.clientY, moved: false };
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+  }
+  function onDragMove(e: React.PointerEvent) {
+    const d = dragRef.current;
+    if (!d || d.id !== e.pointerId) return;
+    sceneRef.current?.look((e.clientX - d.x) * 0.005, -(e.clientY - d.y) * 0.004);
+    d.x = e.clientX;
+    d.y = e.clientY;
+  }
+  function onDragEnd(e: React.PointerEvent) {
+    if (dragRef.current?.id === e.pointerId) dragRef.current = null;
   }
 
   function doneTitle(): string {
     if (!result) return "";
-    if (result.perfect) return "⭐ PERFECT PATROL!";
+    if (result.perfect) return "⭐ FLAWLESS VICTORY!";
     if (result.score > startBest && result.score > 0) return "🏆 NEW BEST!";
-    return "Patrol Complete!";
+    return "🎉 Meadow Saved!";
   }
+
+  const hearts = "❤️".repeat(Math.max(0, hud.hp)) + "🖤".repeat(Math.max(0, hud.max - hud.hp));
 
   return (
     <div className="screen stage-play ranger-screen">
-      <div className="pixi-host" ref={hostRef} />
+      <div
+        className="pixi-host"
+        ref={hostRef}
+        onPointerDown={onDragStart}
+        onPointerMove={onDragMove}
+        onPointerUp={onDragEnd}
+        onPointerCancel={onDragEnd}
+      />
 
       <header className="stage-header ranger-top">
         <Link to="/hub" className="btn btn-secondary" onClick={() => sfx.tap()}>← Base</Link>
@@ -237,9 +288,9 @@ export function StarRanger() {
       {phase === "play" && (
         <>
           <div className="ranger-hud">
+            <div className="ranger-foe">{hud.face} {hud.name} <span className="ranger-hearts">{hearts}</span></div>
             <div key={hud.prompt} className="ranger-quest">{hud.prompt}</div>
             <div className="ranger-stats">
-              <span className="catch-stat">🎯 {hud.qNum}/{PATROL_LEN}</span>
               <span className="catch-stat">⭐ {hud.score}</span>
               <span className="catch-stat dim">🪙 {hud.coins}</span>
             </div>
@@ -259,11 +310,11 @@ export function StarRanger() {
         <div className="overlay">
           <div className="panel celebration-card">
             <h2>🤠 Star Ranger</h2>
-            <p className="catch-howto">Roam your blocky planet in 3D!</p>
-            <p className="catch-howto dim">🕹️ Drag to move · ⤴ JUMP · ⚡ ZAP the crystal with the right answer.</p>
-            <p className="catch-howto dim">Turn to aim — the ring lights up the crystal you'll hit. Find ✨golden ones!</p>
-            {best > 0 && <p className="catch-howto">🏆 Best patrol: {best}</p>}
-            <button className="btn btn-primary btn-big" onClick={start}>Start Patrol!</button>
+            <p className="catch-howto">Battle the Number Golems on your 3D planet!</p>
+            <p className="catch-howto dim">🕹️ Joystick to move · ⤴ JUMP · ✋ drag the view to look around.</p>
+            <p className="catch-howto dim">Turn to aim, then ⚡ZAP the crystal with the right answer to hit the golem. Beat all 4 — the last is a BOSS! 🐲</p>
+            {best > 0 && <p className="catch-howto">🏆 Best: {best}</p>}
+            <button className="btn btn-primary btn-big" onClick={start}>Start Battle!</button>
           </div>
         </div>
       )}
@@ -274,10 +325,10 @@ export function StarRanger() {
             <h2>{doneTitle()}</h2>
             <p className="catch-howto">{result.rank}</p>
             <div className="payout">⭐ {result.score} · 🪙 {result.coins} → +{result.payout} ✨</div>
-            <p className="catch-howto dim">🏆 Best: {Math.max(best, result.score)} · Pip waves: "Come back soon, Ranger {persona.name}!"</p>
+            <p className="catch-howto dim">🏆 Best: {Math.max(best, result.score)} · Pip cheers: "You saved the meadow, Ranger {persona.name}!"</p>
             <div className="celebration-actions">
               <button className="btn btn-secondary" onClick={() => { sfx.tap(); navigate("/hub"); }}>← Base</button>
-              <button className="btn btn-primary" onClick={start}>Patrol Again</button>
+              <button className="btn btn-primary" onClick={start}>Battle Again</button>
             </div>
           </div>
         </div>
