@@ -13,6 +13,8 @@ export function persistSettings(get: () => GameStore): void {
     lastStageId: s.lastStageId ?? undefined,
     enabledWorlds: s.enabledWorlds,
     hiddenWorlds: s.hiddenWorlds,
+    recentWorlds: s.recentWorlds,
+    favoriteWorlds: s.favoriteWorlds,
     videoEnabled: s.videoEnabled,
     videoMode: s.videoMode,
     videoUrls: s.videoUrls,
@@ -74,5 +76,7 @@ export function settingsState(settings: SettingsRow | undefined) {
     ...petSettings(settings),
     enabledWorlds: withWorldDefaults(settings?.enabledWorlds),
     hiddenWorlds: settings?.hiddenWorlds ?? {},
+    recentWorlds: settings?.recentWorlds ?? [],
+    favoriteWorlds: settings?.favoriteWorlds ?? [],
   };
 }

@@ -53,6 +53,9 @@ export interface SettingsRow {
   enabledWorlds?: Record<string, boolean>;
   /** Worlds the parent has hidden from the hub entirely (default: all shown). */
   hiddenWorlds?: Record<string, boolean>;
+  /** Hub: recently played + starred worlds. */
+  recentWorlds?: string[];
+  favoriteWorlds?: string[];
   /** Parent-curated YouTube companion. */
   videoEnabled?: boolean;
   videoMode?: "corner" | "background";

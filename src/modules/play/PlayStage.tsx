@@ -7,6 +7,7 @@ import { MISS_LOCK_MS } from "../../engine/answers/answerEngine";
 import type { Question } from "../../engine/generators/types";
 import { GateRunScene } from "../../pixi/GateRunScene";
 import { sfx, unlockAudio } from "../../engine/feedback/audio";
+import { speak } from "../../engine/feedback/speech";
 import { duckMusic, unduckMusic } from "../../engine/feedback/music";
 import { STR } from "../../strings/en";
 import { persona } from "../../persona.config";
@@ -376,7 +377,10 @@ function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onRevea
           ))}
         </div>
       )}
-      <div className={`q-prompt ${interactive ? "q-prompt-sm" : ""} ${praise ? "q-correct" : ""}`}>{q.prompt}</div>
+      <div className={`q-prompt ${interactive ? "q-prompt-sm" : ""} ${praise ? "q-correct" : ""}`}>
+        {q.prompt}
+        <button className="speak-btn" aria-label="read aloud" onClick={() => speak(q.prompt)}>🔊</button>
+      </div>
       {praise && <div className="q-praise">{praise}</div>}
       {!praise && missLocked && <div className="q-retry">{STR.almostLook}</div>}
       {session.revealed && <div className="q-reveal">{STR.revealAnswer} <b>{q.answer}</b></div>}

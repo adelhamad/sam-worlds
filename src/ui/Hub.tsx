@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGame } from "../state/store";
-import { completedInWorld, focusWorldIn, nextStageIn, stageById, WORLDS, worldOfStage } from "../content/worlds";
+import { nextStageIn, stageById, worldOfStage } from "../content/worlds";
 import { sfx, unlockAudio } from "../engine/feedback/audio";
 import { STR } from "../strings/en";
 import { Workshop } from "./Workshop";
@@ -9,82 +9,8 @@ import { CouponWallet } from "./CouponWallet";
 import { DailyGiftBanner } from "./DailyGift";
 import { PetCompanion } from "./PetCompanion";
 import { TreasureVault } from "./TreasureVault";
+import { WorldGrid } from "./HubWorlds";
 import { vaultProgress } from "../engine/economy/gifts";
-
-// Each world portal gets its own planet hue.
-const PLANET_HUES: Record<string, string> = {
-  numberforge: "#ff8c42",
-  melody: "#7c5cff",
-  logic: "#ffd166",
-  robot: "#9aa5b1",
-  time: "#5cc8ff",
-  cipher: "#3ddc97",
-  builder: "#f4845f",
-  living: "#6ee7b7",
-  atlas: "#c084fc",
-  flags: "#f87171",
-  arabic: "#34d399",
-  craft: "#a47551",
-  wordwizard: "#fbbf24",
-  body: "#fb7185",
-  feelings: "#a78bfa",
-  affix: "#22d3ee",
-  grammar: "#f472b6",
-  prepositions: "#4ade80",
-  directions: "#38bdf8",
-  physics: "#f97316",
-  chemistry: "#a3e635",
-  algebra: "#e879f9",
-  placevalue: "#60a5fa",
-  money: "#fcd34d",
-  shapes: "#f472b6",
-  measure: "#2dd4bf",
-  primes: "#fb923c",
-  binary: "#34d399",
-  fractions: "#f9a8d4",
-  elements: "#818cf8",
-  space: "#8b5cf6",
-  dinos: "#84cc16",
-  weather: "#38bdf8",
-  phonics: "#fb7185",
-  idioms: "#f0abfc",
-  manners: "#fca5a5",
-  safety: "#fbbf24",
-  helpers: "#60a5fa",
-  animals: "#fb923c",
-  green: "#4ade80",
-  calendar: "#a78bfa",
-  ocean: "#0ea5e9",
-  garden: "#65a30d",
-  nutrition: "#f87171",
-  colors: "#e879f9",
-  cultures: "#2dd4bf",
-  transport: "#fb7185",
-  moneysmarts: "#facc15",
-  bugs: "#a3e635",
-  machines: "#94a3b8",
-  patterns: "#c084fc",
-  synonyms: "#f472b6",
-  punctuation: "#fbbf24",
-  story: "#a78bfa",
-  compare: "#38bdf8",
-  data: "#34d399",
-  roman: "#d4b483",
-  rocks: "#a8a29e",
-  habitats: "#facc15",
-  town: "#60a5fa",
-  instruments: "#fb7185",
-  landforms: "#10b981",
-  chef: "#f97316",
-  riddles: "#818cf8",
-  sports: "#4ade80",
-  compounds: "#e879f9",
-  birds: "#22c55e",
-  thennow: "#d6a77a",
-  ordinals: "#fcd34d",
-  family: "#f9a8d4",
-  pets: "#fdba74",
-};
 
 export function Hub() {
   const navigate = useNavigate();
@@ -101,11 +27,6 @@ export function Hub() {
   const vault = vaultProgress(gifts);
 
   const enabledWorlds = useGame((s) => s.enabledWorlds);
-  const hiddenWorlds = useGame((s) => s.hiddenWorlds);
-  // Worlds the parent hasn't hidden — these are the only ones shown on the hub.
-  const visibleWorlds = WORLDS.filter((w) => !hiddenWorlds[w.id]);
-  // The world the planets row highlights as "current".
-  const focus = focusWorldIn(visibleWorlds.filter((w) => enabledWorlds[w.id]), progress);
   // Continue where he left off: the in-progress session, or the next stage
   // in the last world he played — only if that world is still enabled.
   const lastStageId = useGame((s) => s.lastStageId);
@@ -161,35 +82,7 @@ export function Hub() {
 
       <CouponWallet />
 
-      <section>
-        <h2 className="section-title">🌌 Worlds</h2>
-        <div className="planet-row">
-          {visibleWorlds.map((w) => {
-            const wDone = completedInWorld(w, progress);
-            const on = Boolean(enabledWorlds[w.id]);
-            return (
-              <button
-                key={w.id}
-                className={`planet ${on ? "planet-open" : "planet-locked"} ${focus && w.id === focus.id ? "planet-focus" : ""}`}
-                disabled={!on}
-                onClick={() => {
-                  unlockAudio();
-                  sfx.tap();
-                  navigate(`/world/${w.id}`);
-                }}
-              >
-                <span className="planet-ball" style={{ "--hue": PLANET_HUES[w.id] } as React.CSSProperties}>
-                  <span className="planet-icon">{w.icon}</span>
-                </span>
-                <span className="planet-name">{w.name}</span>
-                <span className={`planet-chip ${!on || wDone === 0 ? "dim-chip" : ""}`}>
-                  {on ? `${wDone}/${w.stages.length}` : "🔒"}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </section>
+      <WorldGrid />
 
       <div className="hub-bottom">
         <button

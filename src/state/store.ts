@@ -6,13 +6,14 @@ import { DEFAULT_RATING, difficultyFromRating, stageDifficulty, updateRating } f
 import { starsForResult } from "../engine/progress/stars";
 import { weightedPayout } from "../engine/answers/answerEngine";
 import { itemById } from "../engine/economy/catalog";
-import { BADGES, stageById, stageIndexInWorld, worldOfStage, worldById, type BadgeDef } from "../content/worlds";
+import { BADGES, stageById, stageIndexInWorld, worldOfStage, type BadgeDef } from "../content/worlds";
 import { withWorldDefaults } from "./gates";
 import { missTransition, withReplacedQuestion } from "./missTransition";
 import { persistSettings, settingsState } from "./settings";
 import { giftActions } from "./gifts";
 import { petActions, petInitial, type PetSlice } from "./pet";
 import { videoActions } from "./video";
+import { worldAdminActions } from "./worldAdmin";
 import { drawTreasure, type DailyGift, type Treasure, treasureById } from "../engine/economy/gifts";
 import { persona } from "../persona.config";
 import { newSeed } from "../engine/rng";
@@ -60,6 +61,10 @@ export interface GameStore extends PetSlice {
   enabledWorlds: Record<string, boolean>;
   /** Worlds hidden from the hub entirely (missing/false = shown). */
   hiddenWorlds: Record<string, boolean>;
+  /** Most-recently-played world ids, newest first (for the hub's Recent row). */
+  recentWorlds: string[];
+  /** Worlds the child has starred, newest first (hub Favorites row). */
+  favoriteWorlds: string[];
   videoEnabled: boolean;
   videoMode: "corner" | "background";
   videoOpacity: number;
@@ -90,6 +95,7 @@ export interface GameStore extends PetSlice {
   setWorldEnabled: (worldId: string, on: boolean) => void;
   setWorldHidden: (worldId: string, hidden: boolean) => void;
   showAllWorlds: () => void;
+  toggleFavorite: (worldId: string) => void;
   setVideoEnabled: (on: boolean) => void;
   setVideoMode: (mode: "corner" | "background") => void;
   setVideoOpacity: (pct: number) => void;
@@ -141,6 +147,7 @@ export const useGame = create<GameStore>((set, get) => ({
   coupons: [],
   enabledWorlds: withWorldDefaults(),
   hiddenWorlds: {},
+  recentWorlds: [], favoriteWorlds: [],
   videoEnabled: false, videoMode: "corner", videoOpacity: 80, videoUrls: [],
   gifts: [], lastGiftDay: null, giftStreak: 0, giftBestStreak: 0,
   ...petInitial,
@@ -236,7 +243,9 @@ export const useGame = create<GameStore>((set, get) => ({
       companionLine: null,
       result: null,
     };
-    set({ session, lastStageId: stageId });
+    const wid = worldOfStage(stageId)?.id;
+    const recentWorlds = wid ? [wid, ...get().recentWorlds.filter((w) => w !== wid)].slice(0, 8) : get().recentWorlds;
+    set({ session, lastStageId: stageId, recentWorlds });
     persistSession(session);
     persistSettings(get);
     logEvent("stage.start", { stageId, seed });
@@ -482,65 +491,12 @@ export const useGame = create<GameStore>((set, get) => ({
     return armed;
   },
 
-  setStarDust: (amount) => {
-    const starDust = Math.max(0, Math.round(amount));
-    set({ starDust });
-    void db.economy.put({ id: 1, starDust, melodyShards: 0 });
-    logEvent("parent.setDust", { starDust });
-  },
-
-  setWorldProgress: (worldId, completedCount) => {
-    const world = worldById(worldId);
-    if (!world) return;
-    const n = Math.max(0, Math.min(world.stages.length, Math.round(completedCount)));
-    const progress = { ...get().progress };
-    const puts: ProgressRow[] = [];
-    const deletes: string[] = [];
-    world.stages.forEach((stage, i) => {
-      if (i < n) {
-        const row: ProgressRow = progress[stage.id]?.completed
-          ? progress[stage.id]
-          : { stageId: stage.id, bestStars: 1, attempts: 1, completed: true };
-        progress[stage.id] = row;
-        puts.push(row);
-      } else if (progress[stage.id]) {
-        delete progress[stage.id];
-        deletes.push(stage.id);
-      }
-    });
-    void db.progress.bulkPut(puts);
-    void db.progress.bulkDelete(deletes);
-    // drop an in-flight session that now points past the new frontier
-    const s = get().session;
-    if (s && deletes.includes(s.stageId)) {
-      set({ session: null });
-      void db.session.delete(1);
-    }
-    set({ progress });
-    logEvent("parent.setWorldProgress", { worldId, completedCount: n });
-  },
-
-  setWorldEnabled: (worldId, on) => {
-    set({ enabledWorlds: { ...get().enabledWorlds, [worldId]: on } });
-    persistSettings(get);
-    logEvent("parent.worldGate", { worldId, on });
-  },
-
-  setWorldHidden: (worldId, hidden) => {
-    set({ hiddenWorlds: { ...get().hiddenWorlds, [worldId]: hidden } });
-    persistSettings(get);
-    logEvent("parent.worldHidden", { worldId, hidden });
-  },
-
-  showAllWorlds: () => {
-    set({ hiddenWorlds: {} });
-    persistSettings(get);
-    logEvent("parent.showAllWorlds", {});
-  },
+  ...worldAdminActions(set, get),
 
   ...giftActions(set, get),
   ...petActions(set, get),
   ...videoActions(set, get),
+  ...worldAdminActions(set, get),
 
   resetAll: async () => {
     await Promise.all([
