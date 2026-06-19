@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useGame } from "../../state/store";
+import { useGame, REVEAL_COST } from "../../state/store";
 import { completedInWorld, stageById, stageIndexInWorld, worldOfStage } from "../../content/worlds";
 import { cliffhanger } from "../../engine/missions/missions";
 import { MISS_LOCK_MS } from "../../engine/answers/answerEngine";
@@ -120,6 +120,7 @@ export function PlayStage() {
   const session = useGame((s) => s.session);
   const startStage = useGame((s) => s.startStage);
   const answer = useGame((s) => s.answer);
+  const revealAnswer = useGame((s) => s.revealAnswer);
   const advance = useGame((s) => s.advance);
   const clearSession = useGame((s) => s.clearSession);
   const progress = useGame((s) => s.progress);
@@ -211,6 +212,26 @@ export function PlayStage() {
     });
   }
 
+  function doReveal() {
+    if (busy) return;
+    unlockAudio();
+    const res = revealAnswer();
+    if (res === "poor") {
+      setPraise(`Need ${REVEAL_COST} ✨`);
+      setTimeout(() => setPraise(null), 1300);
+      return;
+    }
+    if (res === "revealed") {
+      sfx.tap();
+      sceneRef.current?.openGate(liveSession?.index ?? 0);
+      setBusy(true);
+      setTimeout(() => {
+        setBusy(false);
+        advance();
+      }, 2000);
+    }
+  }
+
   const idx = stageIndexInWorld(stageId);
   const nextStage = idx >= 0 ? world.stages[idx + 1] : undefined;
   const interactive = q && q.inputMode && q.inputMode !== "numpad";
@@ -229,7 +250,16 @@ export function PlayStage() {
       />
 
       {liveSession && q && (
-        <QuestionCard session={liveSession} q={q} praise={praise} busy={busy} interactive={Boolean(interactive)} onSubmit={submit} />
+        <QuestionCard
+          session={liveSession}
+          q={q}
+          praise={praise}
+          busy={busy}
+          interactive={Boolean(interactive)}
+          onSubmit={submit}
+          onReveal={doReveal}
+          canAffordReveal={starDust >= REVEAL_COST}
+        />
       )}
 
       {result && (
@@ -304,15 +334,17 @@ function StageHeader({ worldId, title, starDust, intro, helpOpen, setHelpOpen }:
 }
 
 interface QuestionCardProps {
-  session: { index: number; questions: unknown[]; correctCount: number; companionLine: string | null; workedExample: string | null; lastAnswer: string | null; showHint: boolean };
+  session: { index: number; questions: unknown[]; correctCount: number; companionLine: string | null; workedExample: string | null; lastAnswer: string | null; showHint: boolean; revealed?: boolean };
   q: Question;
   praise: string | null;
   busy: boolean;
   interactive: boolean;
   onSubmit: (v: string) => void;
+  onReveal: () => void;
+  canAffordReveal: boolean;
 }
 
-function QuestionCard({ session, q, praise, busy, interactive, onSubmit }: QuestionCardProps) {
+function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onReveal, canAffordReveal }: QuestionCardProps) {
   const missLocked = busy && session.lastAnswer === "wrong";
   return (
     <div className={`question-card panel ${interactive ? "q-wide" : ""}`}>
@@ -347,8 +379,14 @@ function QuestionCard({ session, q, praise, busy, interactive, onSubmit }: Quest
       <div className={`q-prompt ${interactive ? "q-prompt-sm" : ""} ${praise ? "q-correct" : ""}`}>{q.prompt}</div>
       {praise && <div className="q-praise">{praise}</div>}
       {!praise && missLocked && <div className="q-retry">{STR.almostLook}</div>}
+      {session.revealed && <div className="q-reveal">{STR.revealAnswer} <b>{q.answer}</b></div>}
       {session.showHint && <div className="q-hint">💡 {q.hint}</div>}
       <AnswerInput key={q.id} q={q} disabled={busy} onSubmit={onSubmit} />
+      {!session.revealed && (
+        <button className="reveal-btn" disabled={busy} onClick={onReveal}>
+          🔑 {STR.revealBtn(REVEAL_COST)}{!canAffordReveal && <span className="reveal-poor"> — need {REVEAL_COST} ✨</span>}
+        </button>
+      )}
     </div>
   );
 }

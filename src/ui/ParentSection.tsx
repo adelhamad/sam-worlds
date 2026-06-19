@@ -253,20 +253,22 @@ function AccessControls() {
             <span className="parent-world-name">
               {w.icon} {w.name}
             </span>
-            <button
-              className={`btn ${hidden ? "btn-secondary" : "btn-primary"}`}
-              onClick={() => setWorldHidden(w.id, !hidden)}
-            >
-              {hidden ? "🙈 Hidden" : "👁️ Shown"}
-            </button>
-            {!hidden && (
+            <div className="parent-row-ctrls">
               <button
-                className={`btn ${on ? "btn-primary" : "btn-secondary"}`}
-                onClick={() => setWorldEnabled(w.id, !on)}
+                className={`btn btn-compact ${hidden ? "btn-secondary" : "btn-primary"}`}
+                onClick={() => setWorldHidden(w.id, !hidden)}
               >
-                {on ? "✅ Open" : "🔒 Locked"}
+                {hidden ? "🙈 Hidden" : "👁️ Shown"}
               </button>
-            )}
+              {!hidden && (
+                <button
+                  className={`btn btn-compact ${on ? "btn-primary" : "btn-secondary"}`}
+                  onClick={() => setWorldEnabled(w.id, !on)}
+                >
+                  {on ? "✅ Open" : "🔒 Locked"}
+                </button>
+              )}
+            </div>
           </div>
         );
       })}
@@ -404,25 +406,27 @@ function ParentControls() {
             <div key={w.id} className="parent-row parent-world-row">
               <span className="parent-world-name">
                 {w.icon} {w.name}
+                <small className="parent-world-count">{done}/{w.stages.length}</small>
               </span>
-              <span className="dim">{done}/{w.stages.length}</span>
-              <input
-                className="parent-input parent-input-sm"
-                type="number"
-                min={0}
-                max={w.stages.length}
-                value={value}
-                onChange={(e) => setWorldInputs((m) => ({ ...m, [w.id]: e.target.value }))}
-              />
-              <button
-                className="btn btn-secondary"
-                onClick={() => {
-                  setWorldProgress(w.id, Number(value) || 0);
-                  setWorldInputs((m) => ({ ...m, [w.id]: String(Math.min(w.stages.length, Number(value) || 0)) }));
-                }}
-              >
-                Set
-              </button>
+              <div className="parent-row-ctrls">
+                <input
+                  className="parent-input parent-input-sm"
+                  type="number"
+                  min={0}
+                  max={w.stages.length}
+                  value={value}
+                  onChange={(e) => setWorldInputs((m) => ({ ...m, [w.id]: e.target.value }))}
+                />
+                <button
+                  className="btn btn-compact btn-secondary"
+                  onClick={() => {
+                    setWorldProgress(w.id, Number(value) || 0);
+                    setWorldInputs((m) => ({ ...m, [w.id]: String(Math.min(w.stages.length, Number(value) || 0)) }));
+                  }}
+                >
+                  Set
+                </button>
+              </div>
             </div>
           );
         })}

@@ -41,6 +41,8 @@ export const STR = {
   couponSection: "Daddy Rewards — buy, then show Daddy!",
   question: (i: number, total: number) => `${i} of ${total}`,
   badgeEarned: "New Trophy!",
+  revealBtn: (cost: number) => `Reveal & skip (${cost} ✨)`,
+  revealAnswer: "✨ The answer is",
   // Cosmo — the companion
   petEggTitle: `A mystery egg appeared, ${n}!`,
   petEggSub: "Give it a name to hatch it 🥚",

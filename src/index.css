@@ -1670,10 +1670,33 @@ body {
 }
 .parent-world-row {
   justify-content: space-between;
+  gap: 8px;
+  flex-wrap: nowrap;
 }
 .parent-world-name {
-  font-weight: 800;
-  min-width: 170px;
+  font-weight: 700;
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+.parent-world-count {
+  color: var(--text-dim);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+/* keep a row's controls clustered on the right so they never cram or wrap */
+.parent-row-ctrls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex: 0 0 auto;
+}
+.btn-compact {
+  padding: 9px 12px;
+  font-size: 0.95rem;
+  white-space: nowrap;
 }
 .parent-input {
   font: inherit;
@@ -1686,7 +1709,10 @@ body {
   width: 160px;
 }
 .parent-input-sm {
-  width: 90px;
+  width: 70px;
+  font-size: 18px;
+  padding: 8px 10px;
+  text-align: center;
 }
 .parent-danger {
   border-color: #7f1d1d;
@@ -2303,4 +2329,28 @@ body {
   padding: 0;
   border-radius: 999px;
   line-height: 1;
+}
+
+/* ── Reveal & skip (costs Star Dust) ────────────────────────────────── */
+.reveal-btn {
+  margin-top: 14px;
+  align-self: center;
+  background: none;
+  border: 2px dashed var(--panel-edge);
+  color: var(--text-dim);
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.reveal-btn:active { transform: scale(0.96); }
+.reveal-btn:disabled { opacity: 0.4; }
+.reveal-poor { color: var(--amber); }
+.q-reveal {
+  margin-top: 8px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--amber);
+  text-align: center;
 }

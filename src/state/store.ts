@@ -12,6 +12,7 @@ import { missTransition, withReplacedQuestion } from "./missTransition";
 import { persistSettings, settingsState } from "./settings";
 import { giftActions } from "./gifts";
 import { petActions, petInitial, type PetSlice } from "./pet";
+import { videoActions } from "./video";
 import { drawTreasure, type DailyGift, type Treasure, treasureById } from "../engine/economy/gifts";
 import { persona } from "../persona.config";
 import { newSeed } from "../engine/rng";
@@ -34,8 +35,13 @@ export interface Session extends SessionRow {
   showHint: boolean;
   workedExample: string | null;
   companionLine: string | null;
+  /** Transient: the parent/child spent dust to reveal this slot's answer. */
+  revealed?: boolean;
   result: SessionResult | null;
 }
+
+/** Star Dust it costs to reveal an answer and skip a question. */
+export const REVEAL_COST = 15;
 
 export interface GameStore extends PetSlice {
   loaded: boolean;
@@ -68,6 +74,7 @@ export interface GameStore extends PetSlice {
   hydrate: () => Promise<void>;
   startStage: (stageId: string) => boolean;
   answer: (choice: string) => "correct" | "wrong" | "again" | null;
+  revealAnswer: () => "revealed" | "poor" | null;
   advance: () => void;
   clearSession: () => void;
   buyItem: (itemId: string) => boolean;
@@ -134,10 +141,7 @@ export const useGame = create<GameStore>((set, get) => ({
   coupons: [],
   enabledWorlds: withWorldDefaults(),
   hiddenWorlds: {},
-  videoEnabled: false,
-  videoMode: "corner",
-  videoOpacity: 80,
-  videoUrls: [],
+  videoEnabled: false, videoMode: "corner", videoOpacity: 80, videoUrls: [],
   gifts: [], lastGiftDay: null, giftStreak: 0, giftBestStreak: 0,
   ...petInitial,
   session: null,
@@ -290,6 +294,32 @@ export const useGame = create<GameStore>((set, get) => ({
     set({ skillRatings: ratings, session: next });
     persistSession(next);
     return verdict;
+  },
+
+  // Spend Star Dust to reveal the answer and skip the slot. It counts as a
+  // missed slot (not first-try), so stars/payout reflect the help — nothing is
+  // ever deducted beyond the dust cost.
+  revealAnswer: () => {
+    const s = get().session;
+    if (!s || s.result || s.lastAnswer === "correct") return null;
+    if (get().starDust < REVEAL_COST) return "poor";
+    const starDust = get().starDust - REVEAL_COST;
+    const next: Session = {
+      ...s,
+      lastAnswer: "correct",
+      revealed: true,
+      correctCount: s.correctCount + 1,
+      firstTryMisses: s.firstTryMisses + (s.attemptMissed ? 0 : 1),
+      attemptMissed: true,
+      showHint: false,
+      workedExample: null,
+      proveLeft: 0,
+    };
+    set({ starDust, session: next });
+    void db.economy.put({ id: 1, starDust, melodyShards: 0 });
+    persistSession(next);
+    logEvent("reveal", { stageId: s.stageId, index: s.index, cost: REVEAL_COST });
+    return "revealed";
   },
 
   advance: () => {
@@ -508,36 +538,9 @@ export const useGame = create<GameStore>((set, get) => ({
     logEvent("parent.showAllWorlds", {});
   },
 
-  setVideoEnabled: (on) => {
-    set({ videoEnabled: on });
-    persistSettings(get);
-    logEvent("parent.videoEnabled", { on });
-  },
-
-  setVideoMode: (mode) => {
-    set({ videoMode: mode });
-    persistSettings(get);
-  },
-
-  setVideoOpacity: (pct) => {
-    set({ videoOpacity: Math.max(20, Math.min(100, Math.round(pct))) });
-    persistSettings(get);
-  },
-
   ...giftActions(set, get),
   ...petActions(set, get),
-
-  addVideoUrl: (url) => {
-    const u = url.trim();
-    if (!u || get().videoUrls.includes(u)) return;
-    set({ videoUrls: [...get().videoUrls, u] });
-    persistSettings(get);
-  },
-
-  removeVideoUrl: (url) => {
-    set({ videoUrls: get().videoUrls.filter((u) => u !== url) });
-    persistSettings(get);
-  },
+  ...videoActions(set, get),
 
   resetAll: async () => {
     await Promise.all([
