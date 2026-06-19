@@ -51,6 +51,8 @@ export interface SettingsRow {
   lastStageId?: string;
   /** Parent-controlled gates; missing keys fall back to defaults. */
   enabledWorlds?: Record<string, boolean>;
+  /** Worlds the parent has hidden from the hub entirely (default: all shown). */
+  hiddenWorlds?: Record<string, boolean>;
   /** Parent-curated YouTube companion. */
   videoEnabled?: boolean;
   videoMode?: "corner" | "background";

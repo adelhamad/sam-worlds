@@ -188,28 +188,54 @@ function VideoControls() {
   );
 }
 
-/** Which worlds Sam may open — e.g. a clock-reading focus week. */
+/** Manage worlds: hide them from the hub, and lock/unlock what Sam can open. */
 function AccessControls() {
   const enabledWorlds = useGame((s) => s.enabledWorlds);
+  const hiddenWorlds = useGame((s) => s.hiddenWorlds);
   const setWorldEnabled = useGame((s) => s.setWorldEnabled);
+  const setWorldHidden = useGame((s) => s.setWorldHidden);
+  const showAllWorlds = useGame((s) => s.showAllWorlds);
+  const hiddenCount = WORLDS.filter((w) => hiddenWorlds[w.id]).length;
 
   return (
     <section className="panel parent-block">
-      <h2>🔓 What can he open?</h2>
-      <p className="dim">Locked worlds stay visible in the base but can't be opened.</p>
+      <h2>🌍 Worlds</h2>
+      <p className="dim">
+        Hide worlds to declutter Sam's base (all are shown by default). A locked world stays
+        visible but can't be opened.
+      </p>
+      {hiddenCount > 0 && (
+        <div className="parent-row">
+          <span className="parent-world-name">
+            {hiddenCount} world{hiddenCount === 1 ? "" : "s"} hidden
+          </span>
+          <button className="btn btn-secondary" onClick={showAllWorlds}>
+            Show all
+          </button>
+        </div>
+      )}
       {WORLDS.map((w) => {
         const on = Boolean(enabledWorlds[w.id]);
+        const hidden = Boolean(hiddenWorlds[w.id]);
         return (
-          <div key={w.id} className="parent-row parent-world-row">
+          <div key={w.id} className="parent-row parent-world-row" style={hidden ? { opacity: 0.55 } : undefined}>
             <span className="parent-world-name">
               {w.icon} {w.name}
             </span>
             <button
-              className={`btn ${on ? "btn-primary" : "btn-secondary"}`}
-              onClick={() => setWorldEnabled(w.id, !on)}
+              className={`btn ${hidden ? "btn-secondary" : "btn-primary"}`}
+              onClick={() => setWorldHidden(w.id, !hidden)}
             >
-              {on ? "✅ Open" : "🔒 Locked"}
+              {hidden ? "🙈 Hidden" : "👁️ Shown"}
             </button>
+            {!hidden && (
+              <button
+                className={`btn ${on ? "btn-primary" : "btn-secondary"}`}
+                onClick={() => setWorldEnabled(w.id, !on)}
+              >
+                {on ? "✅ Open" : "🔒 Locked"}
+              </button>
+            )}
           </div>
         );
       })}

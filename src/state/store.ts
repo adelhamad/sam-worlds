@@ -52,6 +52,8 @@ export interface GameStore extends PetSlice {
   coupons: CouponRow[];
   /** Parent gates: which worlds Sam may open right now. */
   enabledWorlds: Record<string, boolean>;
+  /** Worlds hidden from the hub entirely (missing/false = shown). */
+  hiddenWorlds: Record<string, boolean>;
   videoEnabled: boolean;
   videoMode: "corner" | "background";
   videoOpacity: number;
@@ -79,6 +81,8 @@ export interface GameStore extends PetSlice {
   setStarDust: (amount: number) => void;
   setWorldProgress: (worldId: string, completedCount: number) => void;
   setWorldEnabled: (worldId: string, on: boolean) => void;
+  setWorldHidden: (worldId: string, hidden: boolean) => void;
+  showAllWorlds: () => void;
   setVideoEnabled: (on: boolean) => void;
   setVideoMode: (mode: "corner" | "background") => void;
   setVideoOpacity: (pct: number) => void;
@@ -129,6 +133,7 @@ export const useGame = create<GameStore>((set, get) => ({
   lastStageId: null,
   coupons: [],
   enabledWorlds: withWorldDefaults(),
+  hiddenWorlds: {},
   videoEnabled: false,
   videoMode: "corner",
   videoOpacity: 80,
@@ -489,6 +494,18 @@ export const useGame = create<GameStore>((set, get) => ({
     set({ enabledWorlds: { ...get().enabledWorlds, [worldId]: on } });
     persistSettings(get);
     logEvent("parent.worldGate", { worldId, on });
+  },
+
+  setWorldHidden: (worldId, hidden) => {
+    set({ hiddenWorlds: { ...get().hiddenWorlds, [worldId]: hidden } });
+    persistSettings(get);
+    logEvent("parent.worldHidden", { worldId, hidden });
+  },
+
+  showAllWorlds: () => {
+    set({ hiddenWorlds: {} });
+    persistSettings(get);
+    logEvent("parent.showAllWorlds", {});
   },
 
   setVideoEnabled: (on) => {

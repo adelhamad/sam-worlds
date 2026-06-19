@@ -81,8 +81,11 @@ export function Hub() {
   const vault = vaultProgress(gifts);
 
   const enabledWorlds = useGame((s) => s.enabledWorlds);
+  const hiddenWorlds = useGame((s) => s.hiddenWorlds);
+  // Worlds the parent hasn't hidden — these are the only ones shown on the hub.
+  const visibleWorlds = WORLDS.filter((w) => !hiddenWorlds[w.id]);
   // The world the planets row highlights as "current".
-  const focus = focusWorldIn(WORLDS.filter((w) => enabledWorlds[w.id]), progress);
+  const focus = focusWorldIn(visibleWorlds.filter((w) => enabledWorlds[w.id]), progress);
   // Continue where he left off: the in-progress session, or the next stage
   // in the last world he played — only if that world is still enabled.
   const lastStageId = useGame((s) => s.lastStageId);
@@ -141,7 +144,7 @@ export function Hub() {
       <section>
         <h2 className="section-title">🌌 Worlds</h2>
         <div className="planet-row">
-          {WORLDS.map((w) => {
+          {visibleWorlds.map((w) => {
             const wDone = completedInWorld(w, progress);
             const on = Boolean(enabledWorlds[w.id]);
             return (

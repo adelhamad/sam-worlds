@@ -12,6 +12,7 @@ export function persistSettings(get: () => GameStore): void {
     remindersOn: s.remindersOn,
     lastStageId: s.lastStageId ?? undefined,
     enabledWorlds: s.enabledWorlds,
+    hiddenWorlds: s.hiddenWorlds,
     videoEnabled: s.videoEnabled,
     videoMode: s.videoMode,
     videoUrls: s.videoUrls,
@@ -72,5 +73,6 @@ export function settingsState(settings: SettingsRow | undefined) {
     ...giftSettings(settings),
     ...petSettings(settings),
     enabledWorlds: withWorldDefaults(settings?.enabledWorlds),
+    hiddenWorlds: settings?.hiddenWorlds ?? {},
   };
 }
