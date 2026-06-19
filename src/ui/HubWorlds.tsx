@@ -2,8 +2,19 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGame } from "../state/store";
 import { completedInWorld, focusWorldIn, WORLDS, type WorldDef } from "../content/worlds";
-import { CATEGORIES, categoryOf } from "../content/categories";
+import { categoryOf } from "../content/categories";
 import { sfx, unlockAudio } from "../engine/feedback/audio";
+
+// The worlds aren't sorted into tabs — they're scattered across the universe as
+// themed "galaxies" you scroll through and explore.
+const GALAXIES: Array<{ key: string; name: string; icon: string; hue: string }> = [
+  { key: "math", name: "Number Nebula", icon: "🔢", hue: "#60a5fa" },
+  { key: "reading", name: "Word Galaxy", icon: "📖", hue: "#fbbf24" },
+  { key: "science", name: "Discovery Sector", icon: "🔬", hue: "#34d399" },
+  { key: "world", name: "Wonder Worlds", icon: "🌍", hue: "#2dd4bf" },
+  { key: "life", name: "Life Constellation", icon: "💛", hue: "#f9a8d4" },
+  { key: "creative", name: "Maker Moons", icon: "🎨", hue: "#c084fc" },
+];
 
 // Each world portal gets its own planet hue.
 const PLANET_HUES: Record<string, string> = {
@@ -85,15 +96,12 @@ export function WorldGrid() {
   const favoriteWorlds = useGame((s) => s.favoriteWorlds);
   const toggleFavorite = useGame((s) => s.toggleFavorite);
   const [search, setSearch] = useState("");
-  const [cat, setCat] = useState("all");
 
   const visible = WORLDS.filter((w) => !hiddenWorlds[w.id]);
   const focus = focusWorldIn(visible.filter((w) => enabledWorlds[w.id]), progress);
   const q = search.trim().toLowerCase();
-  const filtering = q.length > 0 || cat !== "all";
-  const filtered = visible.filter(
-    (w) => (cat === "all" || categoryOf(w.id) === cat) &&
-      (!q || w.name.toLowerCase().includes(q) || w.tagline.toLowerCase().includes(q)),
+  const matches = visible.filter(
+    (w) => !q || w.name.toLowerCase().includes(q) || w.tagline.toLowerCase().includes(q),
   );
   const pick = (ids: string[]) =>
     ids.map((id) => WORLDS.find((w) => w.id === id)).filter((w): w is WorldDef => !!w && !hiddenWorlds[w.id]);
@@ -105,56 +113,60 @@ export function WorldGrid() {
     sfx.tap();
     navigate(`/world/${w.id}`);
   }
+  const tile = (w: WorldDef) => (
+    <WorldTile
+      key={w.id}
+      w={w}
+      done={completedInWorld(w, progress)}
+      on={Boolean(enabledWorlds[w.id])}
+      focused={Boolean(focus && w.id === focus.id)}
+      fav={favoriteWorlds.includes(w.id)}
+      onOpen={() => open(w)}
+      onFav={() => { sfx.tap(); toggleFavorite(w.id); }}
+    />
+  );
+
+  const searchView = matches.length === 0
+    ? <p className="dim">No worlds match — try another search.</p>
+    : <div className="planet-row planet-grid">{matches.map(tile)}</div>;
 
   return (
     <section>
-      <h2 className="section-title">🌌 Worlds <small className="worlds-count">{visible.length}</small></h2>
+      <h2 className="section-title">🌌 Explore the Universe <small className="worlds-count">{visible.length}</small></h2>
 
       <div className="world-search">
         <input
           className="world-search-input"
-          placeholder="🔍 Search worlds…"
+          placeholder="🔍 Search the worlds…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
         {search && <button className="world-search-clear" aria-label="clear" onClick={() => setSearch("")}>✕</button>}
       </div>
-      <div className="cat-chips">
-        {CATEGORIES.map((c) => (
-          <button
-            key={c.key}
-            className={`cat-chip ${cat === c.key ? "cat-chip-on" : ""}`}
-            onClick={() => { sfx.tap(); setCat(c.key); }}
-          >
-            {c.icon} {c.label}
-          </button>
-        ))}
-      </div>
 
-      {!filtering && recent.length > 0 && (
-        <MiniRow title="▶ Recently played" worlds={recent} progress={progress} gates={enabledWorlds} onOpen={open} />
-      )}
-      {!filtering && favs.length > 0 && (
-        <MiniRow title="⭐ Favorites" worlds={favs} progress={progress} gates={enabledWorlds} onOpen={open} />
-      )}
-
-      {filtered.length === 0 ? (
-        <p className="dim">No worlds match — try another search or category.</p>
-      ) : (
-        <div className="planet-row planet-grid">
-          {filtered.map((w) => (
-            <WorldTile
-              key={w.id}
-              w={w}
-              done={completedInWorld(w, progress)}
-              on={Boolean(enabledWorlds[w.id])}
-              focused={Boolean(focus && w.id === focus.id)}
-              fav={favoriteWorlds.includes(w.id)}
-              onOpen={() => open(w)}
-              onFav={() => { sfx.tap(); toggleFavorite(w.id); }}
-            />
-          ))}
-        </div>
+      {q ? searchView : (
+        <>
+          {recent.length > 0 && (
+            <MiniRow title="▶ Recently played" worlds={recent} progress={progress} gates={enabledWorlds} onOpen={open} />
+          )}
+          {favs.length > 0 && (
+            <MiniRow title="⭐ Favorites" worlds={favs} progress={progress} gates={enabledWorlds} onOpen={open} />
+          )}
+          {GALAXIES.map((g) => {
+            const ws = visible.filter((w) => categoryOf(w.id) === g.key);
+            if (!ws.length) return null;
+            return (
+              <div key={g.key} className="galaxy" style={{ "--galaxy-hue": g.hue } as React.CSSProperties}>
+                <div className="galaxy-head">
+                  <span className="galaxy-icon">{g.icon}</span>
+                  <h3 className="galaxy-name">{g.name}</h3>
+                  <span className="galaxy-count">{ws.length}</span>
+                </div>
+                <div className="planet-row planet-grid">{ws.map(tile)}</div>
+              </div>
+            );
+          })}
+        </>
       )}
     </section>
   );
