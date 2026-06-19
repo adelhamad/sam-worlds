@@ -2472,3 +2472,29 @@ body {
   opacity: 0.75;
 }
 .speak-btn:active { transform: scale(0.9); }
+
+/* ── Trace It: draw-the-answer canvas ───────────────────────────────── */
+.trace-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+.trace-canvas {
+  width: min(300px, 78vw);
+  height: min(300px, 78vw);
+  border-radius: 20px;
+  border: 3px solid var(--panel-edge);
+  background: var(--night-deep);
+  touch-action: none;
+  cursor: crosshair;
+}
+.trace-feedback {
+  font-weight: 700;
+  color: var(--amber);
+}
+.trace-actions {
+  display: flex;
+  gap: 12px;
+}

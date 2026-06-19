@@ -10,6 +10,7 @@ export type InputMode =
   | "toggle" // flip circuit switches, then POWER (Logic Circuits)
   | "launch" // aim the cannon, then FIRE (Builder's Reach)
   | "order" // tap cards into sequence (Living Planet / Atlas)
+  | "canvas" // draw/trace the answer on a canvas (Trace It)
   | "choices"; // true matching questions only (rule 1 still applies)
 
 export interface Question {

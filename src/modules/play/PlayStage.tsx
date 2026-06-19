@@ -21,6 +21,7 @@ import { LetterPad } from "../../ui/inputs/LetterPad";
 import { Launcher } from "../../ui/inputs/Launcher";
 import { OrderCards } from "../../ui/inputs/OrderCards";
 import { ChoiceButtons } from "../../ui/inputs/ChoiceButtons";
+import { TraceCanvas } from "../../ui/inputs/TraceCanvas";
 import { StagePet } from "../../ui/PetCompanion";
 import { CircuitDiagram } from "../../ui/inputs/CircuitDiagram";
 import type { Node as CircuitNode } from "../../engine/generators/logicCircuit";
@@ -107,6 +108,8 @@ function AnswerInput({ q, disabled, onSubmit }: { q: Question; disabled: boolean
       return <OrderCards {...props} />;
     case "choices":
       return <ChoiceButtons {...props} />;
+    case "canvas":
+      return <TraceCanvas {...props} />;
     default:
       return <NumPad disabled={disabled} onSubmit={onSubmit} />;
   }

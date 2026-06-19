@@ -20,6 +20,7 @@ import thennowStages from "./thennow/stages.json";
 import ordinalsStages from "./ordinals/stages.json";
 import familyStages from "./family/stages.json";
 import petsStages from "./pets/stages.json";
+import traceStages from "./trace/stages.json";
 import type { StageDef } from "./types";
 import type { WorldDef } from "./worldList";
 
@@ -55,4 +56,5 @@ export const EXTRA_WORLDS2: WorldDef[] = [
   { id: "ordinals", name: "Race Ranks", icon: "🥇", tagline: "First, second, third!", stages: ordinalsStages as StageDef[], milestones: ms("Spot Speller", "Line Reader", "Rank Counter", "Place Pro", "Podium Star", ["🥇", "🚥", "🔢", "🏁", "🏅", "🏆", "Master of Ranks"]) },
   { id: "family", name: "Family Tree", icon: "👪", tagline: "Who's who in the family!", stages: familyStages as StageDef[], milestones: ms("Sibling Sorter", "Parent Pro", "Grandkid", "Cousin Counter", "Tree Climber", ["👫", "👩‍👧", "👵", "🧒", "🌳", "🏆", "Master of Family"]) },
   { id: "pets", name: "Pet Pals", icon: "🐾", tagline: "Pets & how to care!", stages: petsStages as StageDef[], milestones: ms("Pet Greeter", "Good Carer", "Wild Spotter", "Kind Owner", "Pet Pro", ["🐶", "🥣", "🦁", "💛", "🐾", "🏆", "Master of Pets"]) },
+  { id: "trace", name: "Trace It", icon: "✏️", tagline: "Draw numbers, letters & shapes!", stages: traceStages as StageDef[], milestones: ms("Number Tracer", "Letter Tracer", "Shape Tracer", "Steady Hand", "Neat Writer", ["1️⃣", "🅰️", "🔺", "✋", "✍️", "🏆", "Master Tracer"]) },
 ];

@@ -71,6 +71,7 @@ import { generateThenNow, type ThenNowParams } from "./thennow";
 import { generateOrdinals, type OrdinalsParams } from "./ordinals";
 import { generateFamily, type FamilyParams } from "./family";
 import { generatePets, type PetsParams } from "./pets";
+import { generateTrace, type TraceParams } from "./trace";
 import type { GenContext, GeneratorParams, Question } from "./types";
 
 export type GeneratorId =
@@ -145,7 +146,8 @@ export type GeneratorId =
   | "thennow"
   | "ordinals"
   | "family"
-  | "pets";
+  | "pets"
+  | "trace";
 
 /** Generator registry — one entry per id (params are cast per generator). */
 type GenFn = (params: GeneratorParams, rng: () => number, ctx: GenContext) => Question;
@@ -225,6 +227,7 @@ const GENERATORS: Record<GeneratorId, GenFn> = {
   ordinals: cast<OrdinalsParams>(generateOrdinals),
   family: cast<FamilyParams>(generateFamily),
   pets: cast<PetsParams>(generatePets),
+  trace: cast<TraceParams>(generateTrace),
 };
 
 function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, ctx: GenContext): Question {

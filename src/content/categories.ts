@@ -36,7 +36,7 @@ export const WORLD_CATEGORY: Record<string, string> = {
   moneysmarts: "life", town: "life", chef: "life", thennow: "life", family: "life", pets: "life",
   // creative / play
   melody: "creative", logic: "creative", robot: "creative", builder: "creative", craft: "creative",
-  colors: "creative", instruments: "creative", riddles: "creative", sports: "creative",
+  colors: "creative", instruments: "creative", riddles: "creative", sports: "creative", trace: "creative",
 };
 
 export function categoryOf(worldId: string): string {

@@ -10,7 +10,7 @@ const OPEN_BY_DEFAULT = new Set([
   "synonyms", "punctuation", "story", "compare", "data",
   "roman", "rocks", "habitats", "town", "instruments",
   "landforms", "chef", "riddles", "sports", "compounds",
-  "birds", "thennow", "ordinals", "family", "pets",
+  "birds", "thennow", "ordinals", "family", "pets", "trace",
 ]);
 
 export function withWorldDefaults(stored?: Record<string, boolean>): Record<string, boolean> {
