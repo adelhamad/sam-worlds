@@ -1,0 +1,758 @@
+[
+  {
+    "id": "ancient-01",
+    "name": "Pyramid Power",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Travel back in time!",
+      "Tap the answer."
+    ]
+  },
+  {
+    "id": "ancient-02",
+    "name": "Mighty Rome",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "ancient-03",
+    "name": "Old Greece",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "ancient-04",
+    "name": "Great Wall",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "ancient-05",
+    "name": "Brave Vikings",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "ancient-06",
+    "name": "Knights & Castles",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "ancient-07",
+    "name": "Pharaohs",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "ancient-08",
+    "name": "Lost Cities",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "ancient-09",
+    "name": "Dig It Up",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "ancient-10",
+    "name": "History Master",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "ancient-11",
+    "name": "Pyramid Power II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "ancient-12",
+    "name": "Mighty Rome II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "ancient-13",
+    "name": "Old Greece II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "ancient-14",
+    "name": "Great Wall II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "ancient-15",
+    "name": "Brave Vikings II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "ancient-16",
+    "name": "Knights & Castles II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "ancient-17",
+    "name": "Pharaohs II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "ancient-18",
+    "name": "Lost Cities II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "ancient-19",
+    "name": "Dig It Up II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "ancient-20",
+    "name": "History Master II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "ancient-21",
+    "name": "Pyramid Power II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "ancient-22",
+    "name": "Mighty Rome II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "ancient-23",
+    "name": "Old Greece II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "ancient-24",
+    "name": "Great Wall II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "ancient-25",
+    "name": "Brave Vikings II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "ancient-26",
+    "name": "Knights & Castles II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "ancient-27",
+    "name": "Pharaohs II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "ancient-28",
+    "name": "Lost Cities II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "ancient-29",
+    "name": "Dig It Up II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "ancient-30",
+    "name": "History Master II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "ancient-31",
+    "name": "Pyramid Power II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "ancient-32",
+    "name": "Mighty Rome II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "ancient-33",
+    "name": "Old Greece II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "ancient-34",
+    "name": "Great Wall II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "ancient-35",
+    "name": "Brave Vikings II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "ancient-36",
+    "name": "Knights & Castles II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "ancient-37",
+    "name": "Pharaohs II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "ancient-38",
+    "name": "Lost Cities II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "ancient-39",
+    "name": "Dig It Up II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "ancient-40",
+    "name": "History Master II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "ancient-41",
+    "name": "Pyramid Power II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "ancient-42",
+    "name": "Mighty Rome II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "ancient-43",
+    "name": "Old Greece II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "ancient-44",
+    "name": "Great Wall II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "ancient-45",
+    "name": "Brave Vikings II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "ancient-46",
+    "name": "Knights & Castles II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "ancient-47",
+    "name": "Pharaohs II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "ancient-48",
+    "name": "Lost Cities II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "ancient-49",
+    "name": "Dig It Up II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "ancient-50",
+    "name": "History Master II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "ancient-51",
+    "name": "Pyramid Power II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "ancient-52",
+    "name": "Mighty Rome II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "ancient-53",
+    "name": "Old Greece II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "ancient-54",
+    "name": "Great Wall II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "ancient-55",
+    "name": "Brave Vikings II",
+    "generator": "ancient",
+    "params": {
+      "types": [
+        "civ",
+        "fact"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

@@ -1,0 +1,758 @@
+[
+  {
+    "id": "myths-01",
+    "name": "Mighty Dragon",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Enter the world of legends!",
+      "Tap the answer."
+    ]
+  },
+  {
+    "id": "myths-02",
+    "name": "Magic Unicorn",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "myths-03",
+    "name": "Mermaid Song",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "myths-04",
+    "name": "Phoenix Fire",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "myths-05",
+    "name": "Fairy Dust",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "myths-06",
+    "name": "Genie Wishes",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "myths-07",
+    "name": "Legends",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "myths-08",
+    "name": "Folk Tales",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "myths-09",
+    "name": "Mythical Beasts",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "myths-10",
+    "name": "Legend Master",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "myths-11",
+    "name": "Mighty Dragon II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "myths-12",
+    "name": "Magic Unicorn II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "myths-13",
+    "name": "Mermaid Song II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "myths-14",
+    "name": "Phoenix Fire II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "myths-15",
+    "name": "Fairy Dust II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "myths-16",
+    "name": "Genie Wishes II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "myths-17",
+    "name": "Legends II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "myths-18",
+    "name": "Folk Tales II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "myths-19",
+    "name": "Mythical Beasts II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "myths-20",
+    "name": "Legend Master II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "myths-21",
+    "name": "Mighty Dragon II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "myths-22",
+    "name": "Magic Unicorn II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "myths-23",
+    "name": "Mermaid Song II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "myths-24",
+    "name": "Phoenix Fire II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "myths-25",
+    "name": "Fairy Dust II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "myths-26",
+    "name": "Genie Wishes II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "myths-27",
+    "name": "Legends II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "myths-28",
+    "name": "Folk Tales II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "myths-29",
+    "name": "Mythical Beasts II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "myths-30",
+    "name": "Legend Master II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "myths-31",
+    "name": "Mighty Dragon II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "myths-32",
+    "name": "Magic Unicorn II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "myths-33",
+    "name": "Mermaid Song II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "myths-34",
+    "name": "Phoenix Fire II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "myths-35",
+    "name": "Fairy Dust II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "myths-36",
+    "name": "Genie Wishes II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "myths-37",
+    "name": "Legends II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "myths-38",
+    "name": "Folk Tales II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "myths-39",
+    "name": "Mythical Beasts II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "myths-40",
+    "name": "Legend Master II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "myths-41",
+    "name": "Mighty Dragon II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "myths-42",
+    "name": "Magic Unicorn II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "myths-43",
+    "name": "Mermaid Song II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "myths-44",
+    "name": "Phoenix Fire II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "myths-45",
+    "name": "Fairy Dust II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "myths-46",
+    "name": "Genie Wishes II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "myths-47",
+    "name": "Legends II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "myths-48",
+    "name": "Folk Tales II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "myths-49",
+    "name": "Mythical Beasts II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "myths-50",
+    "name": "Legend Master II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "myths-51",
+    "name": "Mighty Dragon II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "myths-52",
+    "name": "Magic Unicorn II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "myths-53",
+    "name": "Mermaid Song II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "myths-54",
+    "name": "Phoenix Fire II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "myths-55",
+    "name": "Fairy Dust II",
+    "generator": "myths",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

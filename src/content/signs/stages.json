@@ -1,0 +1,758 @@
+[
+  {
+    "id": "signs-01",
+    "name": "Thumbs Up",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Talk with your hands!",
+      "Tap the answer."
+    ]
+  },
+  {
+    "id": "signs-02",
+    "name": "Wave Hello",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "signs-03",
+    "name": "Quiet Please",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "signs-04",
+    "name": "Good Luck",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "signs-05",
+    "name": "Hand Talk",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "signs-06",
+    "name": "Sign It",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "signs-07",
+    "name": "Gestures",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "signs-08",
+    "name": "I Love You",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "signs-09",
+    "name": "Silent Signs",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "signs-10",
+    "name": "Sign Master",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "signs-11",
+    "name": "Thumbs Up II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "signs-12",
+    "name": "Wave Hello II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "signs-13",
+    "name": "Quiet Please II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "signs-14",
+    "name": "Good Luck II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "signs-15",
+    "name": "Hand Talk II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "signs-16",
+    "name": "Sign It II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "signs-17",
+    "name": "Gestures II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "signs-18",
+    "name": "I Love You II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "signs-19",
+    "name": "Silent Signs II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "signs-20",
+    "name": "Sign Master II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "signs-21",
+    "name": "Thumbs Up II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "signs-22",
+    "name": "Wave Hello II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "signs-23",
+    "name": "Quiet Please II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "signs-24",
+    "name": "Good Luck II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "signs-25",
+    "name": "Hand Talk II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "signs-26",
+    "name": "Sign It II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "signs-27",
+    "name": "Gestures II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "signs-28",
+    "name": "I Love You II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "signs-29",
+    "name": "Silent Signs II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "signs-30",
+    "name": "Sign Master II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "signs-31",
+    "name": "Thumbs Up II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "signs-32",
+    "name": "Wave Hello II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "signs-33",
+    "name": "Quiet Please II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "signs-34",
+    "name": "Good Luck II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "signs-35",
+    "name": "Hand Talk II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "signs-36",
+    "name": "Sign It II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "signs-37",
+    "name": "Gestures II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "signs-38",
+    "name": "I Love You II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "signs-39",
+    "name": "Silent Signs II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "signs-40",
+    "name": "Sign Master II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "signs-41",
+    "name": "Thumbs Up II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "signs-42",
+    "name": "Wave Hello II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "signs-43",
+    "name": "Quiet Please II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "signs-44",
+    "name": "Good Luck II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "signs-45",
+    "name": "Hand Talk II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "signs-46",
+    "name": "Sign It II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "signs-47",
+    "name": "Gestures II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "signs-48",
+    "name": "I Love You II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "signs-49",
+    "name": "Silent Signs II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "signs-50",
+    "name": "Sign Master II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "signs-51",
+    "name": "Thumbs Up II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "signs-52",
+    "name": "Wave Hello II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "signs-53",
+    "name": "Quiet Please II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "signs-54",
+    "name": "Good Luck II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "signs-55",
+    "name": "Hand Talk II",
+    "generator": "signs",
+    "params": {
+      "types": [
+        "mean",
+        "which"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

@@ -72,6 +72,16 @@ import { generateOrdinals, type OrdinalsParams } from "./ordinals";
 import { generateFamily, type FamilyParams } from "./family";
 import { generatePets, type PetsParams } from "./pets";
 import { generateTrace, type TraceParams } from "./trace";
+import { generateStars, type StarsParams } from "./stars";
+import { generateAncient, type AncientParams } from "./ancient";
+import { generateMyths, type MythsParams } from "./myths";
+import { generateMaps, type MapsParams } from "./maps";
+import { generateHomophones, type HomophonesParams } from "./homophones";
+import { generateSymmetry, type SymmetryParams } from "./symmetry";
+import { generateChance, type ChanceParams } from "./chance";
+import { generateSigns, type SignsParams } from "./signs";
+import { generateInventors, type InventorsParams } from "./inventors";
+import { generateCalm, type CalmParams } from "./calm";
 import type { GenContext, GeneratorParams, Question } from "./types";
 
 export type GeneratorId =
@@ -147,7 +157,17 @@ export type GeneratorId =
   | "ordinals"
   | "family"
   | "pets"
-  | "trace";
+  | "trace"
+  | "stars"
+  | "ancient"
+  | "myths"
+  | "maps"
+  | "homophones"
+  | "symmetry"
+  | "chance"
+  | "signs"
+  | "inventors"
+  | "calm";
 
 /** Generator registry — one entry per id (params are cast per generator). */
 type GenFn = (params: GeneratorParams, rng: () => number, ctx: GenContext) => Question;
@@ -228,6 +248,16 @@ const GENERATORS: Record<GeneratorId, GenFn> = {
   family: cast<FamilyParams>(generateFamily),
   pets: cast<PetsParams>(generatePets),
   trace: cast<TraceParams>(generateTrace),
+  stars: cast<StarsParams>(generateStars),
+  ancient: cast<AncientParams>(generateAncient),
+  myths: cast<MythsParams>(generateMyths),
+  maps: cast<MapsParams>(generateMaps),
+  homophones: cast<HomophonesParams>(generateHomophones),
+  symmetry: cast<SymmetryParams>(generateSymmetry),
+  chance: cast<ChanceParams>(generateChance),
+  signs: cast<SignsParams>(generateSigns),
+  inventors: cast<InventorsParams>(generateInventors),
+  calm: cast<CalmParams>(generateCalm),
 };
 
 function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, ctx: GenContext): Question {

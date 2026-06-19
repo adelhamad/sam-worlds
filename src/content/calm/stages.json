@@ -1,0 +1,758 @@
+[
+  {
+    "id": "calm-01",
+    "name": "Deep Breaths",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Find your calm!",
+      "Tap the answer."
+    ]
+  },
+  {
+    "id": "calm-02",
+    "name": "Count to Ten",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "calm-03",
+    "name": "Take a Break",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "calm-04",
+    "name": "Calm Down",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "calm-05",
+    "name": "Be Kind",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "calm-06",
+    "name": "Big Feelings",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "calm-07",
+    "name": "Quiet Moment",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "calm-08",
+    "name": "Stay Calm",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "calm-09",
+    "name": "Peaceful Mind",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "calm-10",
+    "name": "Calm Master",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "calm-11",
+    "name": "Deep Breaths II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "calm-12",
+    "name": "Count to Ten II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "calm-13",
+    "name": "Take a Break II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "calm-14",
+    "name": "Calm Down II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "calm-15",
+    "name": "Be Kind II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "calm-16",
+    "name": "Big Feelings II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "calm-17",
+    "name": "Quiet Moment II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "calm-18",
+    "name": "Stay Calm II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "calm-19",
+    "name": "Peaceful Mind II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "calm-20",
+    "name": "Calm Master II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "calm-21",
+    "name": "Deep Breaths II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "calm-22",
+    "name": "Count to Ten II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "calm-23",
+    "name": "Take a Break II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "calm-24",
+    "name": "Calm Down II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "calm-25",
+    "name": "Be Kind II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "calm-26",
+    "name": "Big Feelings II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "calm-27",
+    "name": "Quiet Moment II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "calm-28",
+    "name": "Stay Calm II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "calm-29",
+    "name": "Peaceful Mind II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "calm-30",
+    "name": "Calm Master II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "calm-31",
+    "name": "Deep Breaths II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "calm-32",
+    "name": "Count to Ten II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "calm-33",
+    "name": "Take a Break II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "calm-34",
+    "name": "Calm Down II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "calm-35",
+    "name": "Be Kind II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "calm-36",
+    "name": "Big Feelings II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "calm-37",
+    "name": "Quiet Moment II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "calm-38",
+    "name": "Stay Calm II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "calm-39",
+    "name": "Peaceful Mind II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "calm-40",
+    "name": "Calm Master II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "calm-41",
+    "name": "Deep Breaths II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "calm-42",
+    "name": "Count to Ten II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "calm-43",
+    "name": "Take a Break II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "calm-44",
+    "name": "Calm Down II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "calm-45",
+    "name": "Be Kind II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "calm-46",
+    "name": "Big Feelings II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "calm-47",
+    "name": "Quiet Moment II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "calm-48",
+    "name": "Stay Calm II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "calm-49",
+    "name": "Peaceful Mind II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "calm-50",
+    "name": "Calm Master II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "calm-51",
+    "name": "Deep Breaths II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "calm-52",
+    "name": "Count to Ten II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "calm-53",
+    "name": "Take a Break II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "calm-54",
+    "name": "Calm Down II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "calm-55",
+    "name": "Be Kind II",
+    "generator": "calm",
+    "params": {
+      "types": [
+        "calm",
+        "fact"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

@@ -21,22 +21,24 @@ export const WORLD_CATEGORY: Record<string, string> = {
   numberforge: "math", time: "math", algebra: "math", placevalue: "math", money: "math",
   shapes: "math", measure: "math", primes: "math", binary: "math", fractions: "math",
   calendar: "math", patterns: "math", compare: "math", data: "math", roman: "math", ordinals: "math",
+  maps: "math", symmetry: "math", chance: "math",
   // reading
   cipher: "reading", arabic: "reading", wordwizard: "reading", affix: "reading", grammar: "reading",
   prepositions: "reading", phonics: "reading", idioms: "reading", synonyms: "reading",
-  punctuation: "reading", story: "reading", compounds: "reading",
+  punctuation: "reading", story: "reading", compounds: "reading", homophones: "reading", signs: "reading",
   // science
   living: "science", body: "science", physics: "science", chemistry: "science", elements: "science",
   space: "science", dinos: "science", weather: "science", animals: "science", ocean: "science",
   garden: "science", bugs: "science", machines: "science", rocks: "science", habitats: "science", birds: "science",
   // world / geography
   atlas: "world", flags: "world", directions: "world", cultures: "world", transport: "world", landforms: "world",
+  ancient: "world",
   // life skills
   feelings: "life", manners: "life", safety: "life", helpers: "life", green: "life", nutrition: "life",
-  moneysmarts: "life", town: "life", chef: "life", thennow: "life", family: "life", pets: "life",
+  moneysmarts: "life", town: "life", chef: "life", thennow: "life", family: "life", pets: "life", calm: "life",
   // creative / play
   melody: "creative", logic: "creative", robot: "creative", builder: "creative", craft: "creative",
-  colors: "creative", instruments: "creative", riddles: "creative", sports: "creative", trace: "creative",
+  colors: "creative", instruments: "creative", riddles: "creative", sports: "creative", trace: "creative", myths: "creative",
 };
 
 export function categoryOf(worldId: string): string {

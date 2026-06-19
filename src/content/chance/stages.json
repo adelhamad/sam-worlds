@@ -1,0 +1,758 @@
+[
+  {
+    "id": "chance-01",
+    "name": "Certain or Not",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "How likely is it?",
+      "Tap the answer."
+    ]
+  },
+  {
+    "id": "chance-02",
+    "name": "Heads or Tails",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "chance-03",
+    "name": "Roll the Dice",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "chance-04",
+    "name": "Likely & Unlikely",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "chance-05",
+    "name": "Maybe So",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "chance-06",
+    "name": "Impossible!",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "chance-07",
+    "name": "Lucky Pick",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "chance-08",
+    "name": "What Are the Odds",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "chance-09",
+    "name": "Chance It",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "chance-10",
+    "name": "Chance Master",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "chance-11",
+    "name": "Certain or Not II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "chance-12",
+    "name": "Heads or Tails II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "chance-13",
+    "name": "Roll the Dice II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "chance-14",
+    "name": "Likely & Unlikely II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "chance-15",
+    "name": "Maybe So II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "chance-16",
+    "name": "Impossible! II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "chance-17",
+    "name": "Lucky Pick II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "chance-18",
+    "name": "What Are the Odds II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "chance-19",
+    "name": "Chance It II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "chance-20",
+    "name": "Chance Master II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "chance-21",
+    "name": "Certain or Not II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "chance-22",
+    "name": "Heads or Tails II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "chance-23",
+    "name": "Roll the Dice II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "chance-24",
+    "name": "Likely & Unlikely II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "chance-25",
+    "name": "Maybe So II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "chance-26",
+    "name": "Impossible! II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "chance-27",
+    "name": "Lucky Pick II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "chance-28",
+    "name": "What Are the Odds II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "chance-29",
+    "name": "Chance It II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "chance-30",
+    "name": "Chance Master II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "chance-31",
+    "name": "Certain or Not II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "chance-32",
+    "name": "Heads or Tails II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "chance-33",
+    "name": "Roll the Dice II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "chance-34",
+    "name": "Likely & Unlikely II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "chance-35",
+    "name": "Maybe So II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "chance-36",
+    "name": "Impossible! II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "chance-37",
+    "name": "Lucky Pick II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "chance-38",
+    "name": "What Are the Odds II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "chance-39",
+    "name": "Chance It II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "chance-40",
+    "name": "Chance Master II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "chance-41",
+    "name": "Certain or Not II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "chance-42",
+    "name": "Heads or Tails II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "chance-43",
+    "name": "Roll the Dice II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "chance-44",
+    "name": "Likely & Unlikely II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "chance-45",
+    "name": "Maybe So II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "chance-46",
+    "name": "Impossible! II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "chance-47",
+    "name": "Lucky Pick II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "chance-48",
+    "name": "What Are the Odds II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "chance-49",
+    "name": "Chance It II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "chance-50",
+    "name": "Chance Master II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "chance-51",
+    "name": "Certain or Not II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "chance-52",
+    "name": "Heads or Tails II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "chance-53",
+    "name": "Roll the Dice II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "chance-54",
+    "name": "Likely & Unlikely II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "chance-55",
+    "name": "Maybe So II",
+    "generator": "chance",
+    "params": {
+      "types": [
+        "likely",
+        "fact"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

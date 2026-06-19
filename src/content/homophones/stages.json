@@ -1,0 +1,758 @@
+[
+  {
+    "id": "homophones-01",
+    "name": "Hear & Here",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Same sound, different word!",
+      "Tap the answer."
+    ]
+  },
+  {
+    "id": "homophones-02",
+    "name": "Two, To, Too",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "homophones-03",
+    "name": "There & Their",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "homophones-04",
+    "name": "Sea & See",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "homophones-05",
+    "name": "Sound-Alikes",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "homophones-06",
+    "name": "Right Spelling",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "homophones-07",
+    "name": "Tricky Twins",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "homophones-08",
+    "name": "Same Sound",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "homophones-09",
+    "name": "Word Pairs",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "homophones-10",
+    "name": "Sound-Alike Master",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "homophones-11",
+    "name": "Hear & Here II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "homophones-12",
+    "name": "Two, To, Too II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "homophones-13",
+    "name": "There & Their II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "homophones-14",
+    "name": "Sea & See II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "homophones-15",
+    "name": "Sound-Alikes II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "homophones-16",
+    "name": "Right Spelling II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "homophones-17",
+    "name": "Tricky Twins II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "homophones-18",
+    "name": "Same Sound II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "homophones-19",
+    "name": "Word Pairs II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "homophones-20",
+    "name": "Sound-Alike Master II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "homophones-21",
+    "name": "Hear & Here II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "homophones-22",
+    "name": "Two, To, Too II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "homophones-23",
+    "name": "There & Their II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "homophones-24",
+    "name": "Sea & See II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "homophones-25",
+    "name": "Sound-Alikes II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "homophones-26",
+    "name": "Right Spelling II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "homophones-27",
+    "name": "Tricky Twins II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "homophones-28",
+    "name": "Same Sound II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "homophones-29",
+    "name": "Word Pairs II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "homophones-30",
+    "name": "Sound-Alike Master II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "homophones-31",
+    "name": "Hear & Here II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "homophones-32",
+    "name": "Two, To, Too II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "homophones-33",
+    "name": "There & Their II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "homophones-34",
+    "name": "Sea & See II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "homophones-35",
+    "name": "Sound-Alikes II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "homophones-36",
+    "name": "Right Spelling II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "homophones-37",
+    "name": "Tricky Twins II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "homophones-38",
+    "name": "Same Sound II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "homophones-39",
+    "name": "Word Pairs II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "homophones-40",
+    "name": "Sound-Alike Master II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "homophones-41",
+    "name": "Hear & Here II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "homophones-42",
+    "name": "Two, To, Too II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "homophones-43",
+    "name": "There & Their II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "homophones-44",
+    "name": "Sea & See II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "homophones-45",
+    "name": "Sound-Alikes II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "homophones-46",
+    "name": "Right Spelling II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "homophones-47",
+    "name": "Tricky Twins II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "homophones-48",
+    "name": "Same Sound II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "homophones-49",
+    "name": "Word Pairs II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "homophones-50",
+    "name": "Sound-Alike Master II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "homophones-51",
+    "name": "Hear & Here II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "homophones-52",
+    "name": "Two, To, Too II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "homophones-53",
+    "name": "There & Their II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "homophones-54",
+    "name": "Sea & See II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "homophones-55",
+    "name": "Sound-Alikes II",
+    "generator": "homophones",
+    "params": {
+      "types": [
+        "choose",
+        "mean"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

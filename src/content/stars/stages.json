@@ -1,0 +1,758 @@
+[
+  {
+    "id": "stars-01",
+    "name": "Twinkle Twinkle",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Look up at the night sky!",
+      "Tap the answer."
+    ]
+  },
+  {
+    "id": "stars-02",
+    "name": "Big Dipper",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "stars-03",
+    "name": "Find the Bear",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "stars-04",
+    "name": "Star Stories",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "stars-05",
+    "name": "North Star",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "stars-06",
+    "name": "Constellations",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "stars-07",
+    "name": "Night Sky",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "stars-08",
+    "name": "Star Light",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "stars-09",
+    "name": "Sky Watcher",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "stars-10",
+    "name": "Star Master",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "stars-11",
+    "name": "Twinkle Twinkle II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "stars-12",
+    "name": "Big Dipper II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "stars-13",
+    "name": "Find the Bear II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "stars-14",
+    "name": "Star Stories II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "stars-15",
+    "name": "North Star II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "stars-16",
+    "name": "Constellations II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "stars-17",
+    "name": "Night Sky II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "stars-18",
+    "name": "Star Light II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "stars-19",
+    "name": "Sky Watcher II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "stars-20",
+    "name": "Star Master II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "stars-21",
+    "name": "Twinkle Twinkle II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "stars-22",
+    "name": "Big Dipper II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "stars-23",
+    "name": "Find the Bear II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "stars-24",
+    "name": "Star Stories II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "stars-25",
+    "name": "North Star II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "stars-26",
+    "name": "Constellations II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "stars-27",
+    "name": "Night Sky II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "stars-28",
+    "name": "Star Light II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "stars-29",
+    "name": "Sky Watcher II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "stars-30",
+    "name": "Star Master II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "stars-31",
+    "name": "Twinkle Twinkle II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "stars-32",
+    "name": "Big Dipper II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "stars-33",
+    "name": "Find the Bear II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "stars-34",
+    "name": "Star Stories II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "stars-35",
+    "name": "North Star II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "stars-36",
+    "name": "Constellations II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "stars-37",
+    "name": "Night Sky II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "stars-38",
+    "name": "Star Light II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "stars-39",
+    "name": "Sky Watcher II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "stars-40",
+    "name": "Star Master II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "stars-41",
+    "name": "Twinkle Twinkle II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "stars-42",
+    "name": "Big Dipper II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "stars-43",
+    "name": "Find the Bear II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "stars-44",
+    "name": "Star Stories II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "stars-45",
+    "name": "North Star II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "stars-46",
+    "name": "Constellations II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "stars-47",
+    "name": "Night Sky II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "stars-48",
+    "name": "Star Light II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "stars-49",
+    "name": "Sky Watcher II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "stars-50",
+    "name": "Star Master II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "stars-51",
+    "name": "Twinkle Twinkle II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "stars-52",
+    "name": "Big Dipper II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "stars-53",
+    "name": "Find the Bear II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "stars-54",
+    "name": "Star Stories II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "stars-55",
+    "name": "North Star II",
+    "generator": "stars",
+    "params": {
+      "types": [
+        "constellation",
+        "fact"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

@@ -21,6 +21,16 @@ import ordinalsStages from "./ordinals/stages.json";
 import familyStages from "./family/stages.json";
 import petsStages from "./pets/stages.json";
 import traceStages from "./trace/stages.json";
+import starsStages from "./stars/stages.json";
+import ancientStages from "./ancient/stages.json";
+import mythsStages from "./myths/stages.json";
+import mapsStages from "./maps/stages.json";
+import homophonesStages from "./homophones/stages.json";
+import symmetryStages from "./symmetry/stages.json";
+import chanceStages from "./chance/stages.json";
+import signsStages from "./signs/stages.json";
+import inventorsStages from "./inventors/stages.json";
+import calmStages from "./calm/stages.json";
 import type { StageDef } from "./types";
 import type { WorldDef } from "./worldList";
 
@@ -57,4 +67,14 @@ export const EXTRA_WORLDS2: WorldDef[] = [
   { id: "family", name: "Family Tree", icon: "👪", tagline: "Who's who in the family!", stages: familyStages as StageDef[], milestones: ms("Sibling Sorter", "Parent Pro", "Grandkid", "Cousin Counter", "Tree Climber", ["👫", "👩‍👧", "👵", "🧒", "🌳", "🏆", "Master of Family"]) },
   { id: "pets", name: "Pet Pals", icon: "🐾", tagline: "Pets & how to care!", stages: petsStages as StageDef[], milestones: ms("Pet Greeter", "Good Carer", "Wild Spotter", "Kind Owner", "Pet Pro", ["🐶", "🥣", "🦁", "💛", "🐾", "🏆", "Master of Pets"]) },
   { id: "trace", name: "Trace It", icon: "✏️", tagline: "Draw numbers, letters & shapes!", stages: traceStages as StageDef[], milestones: ms("Number Tracer", "Letter Tracer", "Shape Tracer", "Steady Hand", "Neat Writer", ["1️⃣", "🅰️", "🔺", "✋", "✍️", "🏆", "Master Tracer"]) },
+  { id: "stars", name: "Star Map", icon: "🌟", tagline: "Constellations & stargazing!", stages: starsStages as StageDef[], milestones: ms("Star Gazer", "Dipper Finder", "Bear Spotter", "Sky Reader", "Night Navigator", ["✨", "🥄", "🐻", "🔭", "🧭", "🏆", "Master Stargazer"]) },
+  { id: "ancient", name: "Ancient Worlds", icon: "🏺", tagline: "Pyramids, Rome & knights!", stages: ancientStages as StageDef[], milestones: ms("Time Traveler", "Pyramid Pal", "Rome Roamer", "Castle Climber", "History Buff", ["⏳", "🔺", "🏛️", "🏰", "📜", "🏆", "Master of History"]) },
+  { id: "myths", name: "Myths & Legends", icon: "🐉", tagline: "Dragons, unicorns & more!", stages: mythsStages as StageDef[], milestones: ms("Tale Teller", "Dragon Tamer", "Unicorn Finder", "Legend Keeper", "Myth Maker", ["📖", "🐉", "🦄", "🧚", "✨", "🏆", "Master of Legends"]) },
+  { id: "maps", name: "Treasure Maps", icon: "🗺️", tagline: "Read maps & find treasure!", stages: mapsStages as StageDef[], milestones: ms("Map Reader", "Symbol Spotter", "Treasure Tracker", "Path Finder", "Map Whiz", ["🧭", "❌", "💎", "〰️", "🗺️", "🏆", "Master Navigator"]) },
+  { id: "homophones", name: "Sound-Alikes", icon: "🔤", tagline: "Words that sound the same!", stages: homophonesStages as StageDef[], milestones: ms("Sound Matcher", "Spelling Spotter", "Twin Word Pro", "Sentence Star", "Word Wizard", ["👂", "✍️", "👯", "⭐", "📚", "🏆", "Master of Sound-Alikes"]) },
+  { id: "symmetry", name: "Mirror Magic", icon: "🪞", tagline: "Symmetry & matching halves!", stages: symmetryStages as StageDef[], milestones: ms("Half Finder", "Fold Master", "Mirror Letters", "Balance Pro", "Symmetry Star", ["✂️", "🦋", "🔤", "⚖️", "✨", "🏆", "Master of Mirrors"]) },
+  { id: "chance", name: "Chance & Luck", icon: "🎲", tagline: "Certain, likely or impossible!", stages: chanceStages as StageDef[], milestones: ms("Coin Flipper", "Dice Roller", "Odds Spotter", "Likely Logic", "Chance Pro", ["🪙", "🎲", "📊", "🔮", "🍀", "🏆", "Master of Chance"]) },
+  { id: "signs", name: "Hand Signs", icon: "🤟", tagline: "Talk with your hands!", stages: signsStages as StageDef[], milestones: ms("Wave Hello", "Thumbs Up", "Quiet Sign", "Gesture Pro", "Sign Reader", ["👋", "👍", "🤫", "👌", "🤟", "🏆", "Master of Signs"]) },
+  { id: "inventors", name: "Great Minds", icon: "🧑‍🔬", tagline: "Inventors & their big ideas!", stages: inventorsStages as StageDef[], milestones: ms("Idea Spotter", "Bulb Brightener", "Flight Fan", "Science Star", "Genius Pal", ["💡", "🍎", "✈️", "🔬", "🌟", "🏆", "Master of Great Minds"]) },
+  { id: "calm", name: "Calm Corner", icon: "🧘", tagline: "Breathe, relax & feel calm!", stages: calmStages as StageDef[], milestones: ms("Deep Breather", "Calm Counter", "Break Taker", "Kind Heart", "Peaceful Pro", ["🌬️", "🔟", "⏸️", "💛", "🕊️", "🏆", "Master of Calm"]) },
 ];

@@ -1,0 +1,758 @@
+[
+  {
+    "id": "symmetry-01",
+    "name": "Mirror Match",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Find the matching halves!",
+      "Tap the answer."
+    ]
+  },
+  {
+    "id": "symmetry-02",
+    "name": "Butterfly Wings",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "symmetry-03",
+    "name": "Same Both Sides",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "symmetry-04",
+    "name": "Fold It",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "symmetry-05",
+    "name": "Mirror Letters",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "symmetry-06",
+    "name": "Symmetry Hunt",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "symmetry-07",
+    "name": "Matching Halves",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "symmetry-08",
+    "name": "Reflections",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "symmetry-09",
+    "name": "Mirror Magic",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "symmetry-10",
+    "name": "Symmetry Master",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "symmetry-11",
+    "name": "Mirror Match II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "symmetry-12",
+    "name": "Butterfly Wings II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "symmetry-13",
+    "name": "Same Both Sides II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "symmetry-14",
+    "name": "Fold It II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "symmetry-15",
+    "name": "Mirror Letters II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "symmetry-16",
+    "name": "Symmetry Hunt II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "symmetry-17",
+    "name": "Matching Halves II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "symmetry-18",
+    "name": "Reflections II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "symmetry-19",
+    "name": "Mirror Magic II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "symmetry-20",
+    "name": "Symmetry Master II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "symmetry-21",
+    "name": "Mirror Match II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "symmetry-22",
+    "name": "Butterfly Wings II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "symmetry-23",
+    "name": "Same Both Sides II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "symmetry-24",
+    "name": "Fold It II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "symmetry-25",
+    "name": "Mirror Letters II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "symmetry-26",
+    "name": "Symmetry Hunt II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "symmetry-27",
+    "name": "Matching Halves II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "symmetry-28",
+    "name": "Reflections II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "symmetry-29",
+    "name": "Mirror Magic II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "symmetry-30",
+    "name": "Symmetry Master II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "symmetry-31",
+    "name": "Mirror Match II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "symmetry-32",
+    "name": "Butterfly Wings II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "symmetry-33",
+    "name": "Same Both Sides II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "symmetry-34",
+    "name": "Fold It II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "symmetry-35",
+    "name": "Mirror Letters II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "symmetry-36",
+    "name": "Symmetry Hunt II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "symmetry-37",
+    "name": "Matching Halves II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "symmetry-38",
+    "name": "Reflections II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "symmetry-39",
+    "name": "Mirror Magic II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "symmetry-40",
+    "name": "Symmetry Master II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "symmetry-41",
+    "name": "Mirror Match II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "symmetry-42",
+    "name": "Butterfly Wings II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "symmetry-43",
+    "name": "Same Both Sides II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "symmetry-44",
+    "name": "Fold It II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "symmetry-45",
+    "name": "Mirror Letters II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "symmetry-46",
+    "name": "Symmetry Hunt II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "symmetry-47",
+    "name": "Matching Halves II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "symmetry-48",
+    "name": "Reflections II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "symmetry-49",
+    "name": "Mirror Magic II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "symmetry-50",
+    "name": "Symmetry Master II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "symmetry-51",
+    "name": "Mirror Match II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "symmetry-52",
+    "name": "Butterfly Wings II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "symmetry-53",
+    "name": "Same Both Sides II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "symmetry-54",
+    "name": "Fold It II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "symmetry-55",
+    "name": "Mirror Letters II",
+    "generator": "symmetry",
+    "params": {
+      "types": [
+        "object",
+        "letter"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]
