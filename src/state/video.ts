@@ -15,6 +15,24 @@ export function videoActions(set: Set, get: Get) {
       logEvent("parent.videoEnabled", { on });
     },
 
+    /** Header on/off (beside music). Showing the video always un-hides it. */
+    toggleVideo: () => {
+      const on = !get().videoEnabled;
+      set({ videoEnabled: on, videoAudioOnly: on ? get().videoAudioOnly : false });
+      persistSettings(get);
+      logEvent("hub.videoToggle", { on });
+    },
+
+    setVideoAudioOnly: (on: boolean) => {
+      set({ videoAudioOnly: on });
+      persistSettings(get);
+    },
+
+    setVideoSize: (px: number) => {
+      set({ videoSize: Math.max(180, Math.min(460, Math.round(px))) });
+      persistSettings(get);
+    },
+
     setVideoMode: (mode: "corner" | "background") => {
       set({ videoMode: mode });
       persistSettings(get);

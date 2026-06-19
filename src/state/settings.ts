@@ -19,6 +19,8 @@ export function persistSettings(get: () => GameStore): void {
     videoMode: s.videoMode,
     videoUrls: s.videoUrls,
     videoOpacity: s.videoOpacity,
+    videoAudioOnly: s.videoAudioOnly,
+    videoSize: s.videoSize,
     gifts: s.gifts,
     lastGiftDay: s.lastGiftDay,
     giftStreak: s.giftStreak,
@@ -43,6 +45,8 @@ function scalarSettings(s: SettingsRow | undefined) {
     videoMode: s?.videoMode ?? ("corner" as const),
     videoOpacity: s?.videoOpacity ?? 80,
     videoUrls: s?.videoUrls ?? [],
+    videoAudioOnly: s?.videoAudioOnly ?? false,
+    videoSize: s?.videoSize ?? 280,
   };
 }
 

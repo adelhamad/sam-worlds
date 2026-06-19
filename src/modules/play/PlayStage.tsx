@@ -23,6 +23,7 @@ import { OrderCards } from "../../ui/inputs/OrderCards";
 import { ChoiceButtons } from "../../ui/inputs/ChoiceButtons";
 import { TraceCanvas } from "../../ui/inputs/TraceCanvas";
 import { StagePet } from "../../ui/PetCompanion";
+import { VideoToggle } from "../../ui/VideoToggle";
 import { CircuitDiagram } from "../../ui/inputs/CircuitDiagram";
 import type { Node as CircuitNode } from "../../engine/generators/logicCircuit";
 
@@ -312,6 +313,7 @@ function StageHeader({ worldId, title, starDust, intro, helpOpen, setHelpOpen }:
         </Link>
         <span className="stage-title">{title}</span>
         <span className="stage-header-right">
+          <VideoToggle />
           {intro && (
             <button className="btn btn-icon help-btn" aria-label={STR.howToPlay} onClick={() => { sfx.tap(); setHelpOpen((h) => !h); }}>
               ❓

@@ -2538,3 +2538,35 @@ body {
   border-radius: 999px;
   padding: 3px 10px;
 }
+
+/* ── Video companion: resize handle + audio-only pill ───────────────── */
+.video-resize {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 26px;
+  height: 26px;
+  cursor: nwse-resize;
+  touch-action: none;
+  background: linear-gradient(135deg, transparent 45%, var(--cyan) 45%);
+  border-bottom-right-radius: 12px;
+  z-index: 3;
+}
+.video-music-pill {
+  position: fixed;
+  top: max(10px, env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--cyan);
+  background: rgba(7, 15, 34, 0.92);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+.video-music-pill:active { transform: translateX(-50%) scale(0.96); }

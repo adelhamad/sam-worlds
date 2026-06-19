@@ -5,7 +5,6 @@ import { generateQuestionSet } from "../engine/generators";
 import { DEFAULT_RATING, difficultyFromRating, stageDifficulty, updateRating } from "../engine/difficulty/skillRating";
 import { starsForResult } from "../engine/progress/stars";
 import { weightedPayout } from "../engine/answers/answerEngine";
-import { itemById } from "../engine/economy/catalog";
 import { BADGES, stageById, stageIndexInWorld, worldOfStage, type BadgeDef } from "../content/worlds";
 import { withWorldDefaults } from "./gates";
 import { missTransition, withReplacedQuestion } from "./missTransition";
@@ -14,6 +13,7 @@ import { giftActions } from "./gifts";
 import { petActions, petInitial, type PetSlice } from "./pet";
 import { videoActions } from "./video";
 import { worldAdminActions } from "./worldAdmin";
+import { couponActions } from "./coupons";
 import { drawTreasure, type DailyGift, type Treasure, treasureById } from "../engine/economy/gifts";
 import { persona } from "../persona.config";
 import { newSeed } from "../engine/rng";
@@ -69,6 +69,8 @@ export interface GameStore extends PetSlice {
   videoMode: "corner" | "background";
   videoOpacity: number;
   videoUrls: string[];
+  videoAudioOnly: boolean;
+  videoSize: number;
   // Daily Gift + Treasure Vault
   gifts: string[];
   lastGiftDay: string | null;
@@ -97,8 +99,11 @@ export interface GameStore extends PetSlice {
   showAllWorlds: () => void;
   toggleFavorite: (worldId: string) => void;
   setVideoEnabled: (on: boolean) => void;
+  toggleVideo: () => void;
   setVideoMode: (mode: "corner" | "background") => void;
   setVideoOpacity: (pct: number) => void;
+  setVideoAudioOnly: (on: boolean) => void;
+  setVideoSize: (px: number) => void;
   claimDailyGift: () => DailyGift | null;
   resetGifts: () => void;
   addVideoUrl: (url: string) => void;
@@ -148,7 +153,7 @@ export const useGame = create<GameStore>((set, get) => ({
   enabledWorlds: withWorldDefaults(),
   hiddenWorlds: {},
   recentWorlds: [], favoriteWorlds: [],
-  videoEnabled: false, videoMode: "corner", videoOpacity: 80, videoUrls: [],
+  videoEnabled: false, videoMode: "corner", videoOpacity: 80, videoUrls: [], videoAudioOnly: false, videoSize: 280,
   gifts: [], lastGiftDay: null, giftStreak: 0, giftBestStreak: 0,
   ...petInitial,
   session: null,
@@ -418,38 +423,6 @@ export const useGame = create<GameStore>((set, get) => ({
     void db.session.delete(1);
   },
 
-  buyItem: (itemId) => {
-    const state = get();
-    const item = itemById(itemId);
-    if (!item || state.starDust < item.cost) return false;
-    const starDust = state.starDust - item.cost;
-    const row: CouponRow = { itemId, purchasedAt: Date.now(), redeemedAt: null };
-    set({ starDust });
-    void db.economy.put({ id: 1, starDust, melodyShards: 0 });
-    void db.coupons.add(row).then((id) => {
-      set({ coupons: [...get().coupons, { ...row, id }] });
-    });
-    logEvent("shop.coupon", { itemId, cost: item.cost });
-    return true;
-  },
-
-  redeemCoupon: (couponId) => {
-    const redeemedAt = Date.now();
-    set({ coupons: get().coupons.map((c) => (c.id === couponId ? { ...c, redeemedAt } : c)) });
-    void db.coupons.update(couponId, { redeemedAt });
-    logEvent("coupon.redeem", { couponId });
-  },
-
-  // Parent Section: tidy the rewards history. Only REDEEMED coupons go —
-  // anything still in Sam's wallet stays untouched.
-  clearRedeemedCoupons: () => {
-    const redeemed = get().coupons.filter((c) => c.redeemedAt);
-    if (redeemed.length === 0) return;
-    set({ coupons: get().coupons.filter((c) => !c.redeemedAt) });
-    void db.coupons.bulkDelete(redeemed.map((c) => c.id!));
-    logEvent("coupon.clearHistory", { removed: redeemed.length });
-  },
-
   earnDust: (amount, reason) => {
     if (amount <= 0) return;
     const starDust = get().starDust + amount;
@@ -497,6 +470,7 @@ export const useGame = create<GameStore>((set, get) => ({
   ...petActions(set, get),
   ...videoActions(set, get),
   ...worldAdminActions(set, get),
+  ...couponActions(set, get),
 
   resetAll: async () => {
     await Promise.all([

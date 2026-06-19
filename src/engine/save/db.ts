@@ -62,6 +62,10 @@ export interface SettingsRow {
   videoUrls?: string[];
   /** Player visibility 20–100 (%). */
   videoOpacity?: number;
+  /** Hide the video but keep its audio playing. */
+  videoAudioOnly?: boolean;
+  /** Player width in px (resizable). */
+  videoSize?: number;
   /** Daily Gift + Treasure Vault. */
   gifts?: string[];
   lastGiftDay?: string | null;

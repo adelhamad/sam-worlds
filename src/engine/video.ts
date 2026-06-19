@@ -20,7 +20,9 @@ export function youTubeId(url: string): string | null {
   return null;
 }
 
-/** Embed URL that autoplays, loops the single video, and hides extras. */
+/** Embed URL that autoplays, loops the single video, and hides extras.
+ * enablejsapi lets us drive playback (play/mute) via postMessage — needed
+ * because a transparent shield blocks taps, so the child can't press play. */
 export function embedUrl(id: string): string {
   const params = new URLSearchParams({
     autoplay: "1",
@@ -29,6 +31,12 @@ export function embedUrl(id: string): string {
     rel: "0",
     modestbranding: "1",
     playsinline: "1",
+    enablejsapi: "1",
   });
   return `https://www.youtube-nocookie.com/embed/${id}?${params}`;
+}
+
+/** Post a YouTube IFrame API command (e.g. playVideo, unMute) to an iframe. */
+export function ytCommand(frame: HTMLIFrameElement | null, func: string): void {
+  frame?.contentWindow?.postMessage(JSON.stringify({ event: "command", func, args: [] }), "*");
 }

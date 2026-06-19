@@ -10,6 +10,7 @@ import { DailyGiftBanner } from "./DailyGift";
 import { PetCompanion } from "./PetCompanion";
 import { TreasureVault } from "./TreasureVault";
 import { WorldGrid } from "./HubWorlds";
+import { VideoToggle } from "./VideoToggle";
 import { vaultProgress } from "../engine/economy/gifts";
 
 export function Hub() {
@@ -49,6 +50,7 @@ export function Hub() {
         <div className="hero-top">
           <span className="dust-counter">✨ {starDust}</span>
           <div className="hub-header-right">
+            <VideoToggle />
             <button className="btn btn-icon" aria-label="music" onClick={() => { unlockAudio(); toggleMusic(); }}>
               <span style={musicOn ? undefined : { opacity: 0.35 }}>🎵</span>
             </button>
