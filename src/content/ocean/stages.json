@@ -1,0 +1,813 @@
+[
+  {
+    "id": "ocean-01",
+    "name": "Splash In",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Dive into the deep blue sea!",
+      "Tap the right answer."
+    ]
+  },
+  {
+    "id": "ocean-02",
+    "name": "Eight Arms",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "ocean-03",
+    "name": "Big Whale",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "ocean-04",
+    "name": "Coral Reef",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "ocean-05",
+    "name": "Shark Teeth",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "ocean-06",
+    "name": "Sea Turtle",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "ocean-07",
+    "name": "Hide & Seek",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "ocean-08",
+    "name": "Salty Sea",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "ocean-09",
+    "name": "Deep Dark",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "ocean-10",
+    "name": "Tide Pool",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "ocean-11",
+    "name": "Jelly Wobble",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "ocean-12",
+    "name": "Ocean Facts",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "ocean-13",
+    "name": "Counting Arms",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "ocean-14",
+    "name": "Five Oceans",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "ocean-15",
+    "name": "Reef Friends",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "ocean-16",
+    "name": "Sea Detective",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "ocean-17",
+    "name": "Under the Waves",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "ocean-18",
+    "name": "Master of the Sea",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "ocean-19",
+    "name": "Splash In II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "ocean-20",
+    "name": "Eight Arms II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "ocean-21",
+    "name": "Big Whale II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "ocean-22",
+    "name": "Coral Reef II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "ocean-23",
+    "name": "Shark Teeth II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "ocean-24",
+    "name": "Sea Turtle II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "ocean-25",
+    "name": "Hide & Seek II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "ocean-26",
+    "name": "Salty Sea II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "ocean-27",
+    "name": "Deep Dark II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "ocean-28",
+    "name": "Tide Pool II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "ocean-29",
+    "name": "Jelly Wobble II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "ocean-30",
+    "name": "Ocean Facts II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "ocean-31",
+    "name": "Counting Arms II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "ocean-32",
+    "name": "Five Oceans II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "ocean-33",
+    "name": "Reef Friends II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "ocean-34",
+    "name": "Sea Detective II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "ocean-35",
+    "name": "Under the Waves II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "ocean-36",
+    "name": "Master of the Sea II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "ocean-37",
+    "name": "Splash In II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "ocean-38",
+    "name": "Eight Arms II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "ocean-39",
+    "name": "Big Whale II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "ocean-40",
+    "name": "Coral Reef II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "ocean-41",
+    "name": "Shark Teeth II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "ocean-42",
+    "name": "Sea Turtle II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "ocean-43",
+    "name": "Hide & Seek II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "ocean-44",
+    "name": "Salty Sea II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "ocean-45",
+    "name": "Deep Dark II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "ocean-46",
+    "name": "Tide Pool II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "ocean-47",
+    "name": "Jelly Wobble II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "ocean-48",
+    "name": "Ocean Facts II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "ocean-49",
+    "name": "Counting Arms II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "ocean-50",
+    "name": "Five Oceans II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "ocean-51",
+    "name": "Reef Friends II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "ocean-52",
+    "name": "Sea Detective II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "ocean-53",
+    "name": "Under the Waves II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "ocean-54",
+    "name": "Master of the Sea II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "ocean-55",
+    "name": "Splash In II",
+    "generator": "ocean",
+    "params": {
+      "types": [
+        "creature",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

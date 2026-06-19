@@ -1,0 +1,813 @@
+[
+  {
+    "id": "moneysmarts-01",
+    "name": "Need or Want",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Be smart with money!",
+      "Tap the right answer."
+    ]
+  },
+  {
+    "id": "moneysmarts-02",
+    "name": "Piggy Bank",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "moneysmarts-03",
+    "name": "Saving Up",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "moneysmarts-04",
+    "name": "Spending",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "moneysmarts-05",
+    "name": "Earning",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "moneysmarts-06",
+    "name": "Giving",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "moneysmarts-07",
+    "name": "Smart Choices",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "moneysmarts-08",
+    "name": "Food is a Need",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "moneysmarts-09",
+    "name": "Toys are Wants",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "moneysmarts-10",
+    "name": "At the Bank",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "moneysmarts-11",
+    "name": "Work for Money",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "moneysmarts-12",
+    "name": "Save a Little",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "moneysmarts-13",
+    "name": "Think First",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "moneysmarts-14",
+    "name": "Wants vs Needs",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "moneysmarts-15",
+    "name": "Money Moves",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "moneysmarts-16",
+    "name": "Money Detective",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "moneysmarts-17",
+    "name": "Coin Sense",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "moneysmarts-18",
+    "name": "Master of Money",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "moneysmarts-19",
+    "name": "Need or Want II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "moneysmarts-20",
+    "name": "Piggy Bank II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "moneysmarts-21",
+    "name": "Saving Up II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "moneysmarts-22",
+    "name": "Spending II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "moneysmarts-23",
+    "name": "Earning II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "moneysmarts-24",
+    "name": "Giving II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "moneysmarts-25",
+    "name": "Smart Choices II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "moneysmarts-26",
+    "name": "Food is a Need II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "moneysmarts-27",
+    "name": "Toys are Wants II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "moneysmarts-28",
+    "name": "At the Bank II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "moneysmarts-29",
+    "name": "Work for Money II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "moneysmarts-30",
+    "name": "Save a Little II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "moneysmarts-31",
+    "name": "Think First II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "moneysmarts-32",
+    "name": "Wants vs Needs II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "moneysmarts-33",
+    "name": "Money Moves II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "moneysmarts-34",
+    "name": "Money Detective II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "moneysmarts-35",
+    "name": "Coin Sense II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "moneysmarts-36",
+    "name": "Master of Money II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "moneysmarts-37",
+    "name": "Need or Want II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "moneysmarts-38",
+    "name": "Piggy Bank II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "moneysmarts-39",
+    "name": "Saving Up II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "moneysmarts-40",
+    "name": "Spending II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "moneysmarts-41",
+    "name": "Earning II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "moneysmarts-42",
+    "name": "Giving II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "moneysmarts-43",
+    "name": "Smart Choices II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "moneysmarts-44",
+    "name": "Food is a Need II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "moneysmarts-45",
+    "name": "Toys are Wants II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "moneysmarts-46",
+    "name": "At the Bank II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "moneysmarts-47",
+    "name": "Work for Money II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "moneysmarts-48",
+    "name": "Save a Little II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "moneysmarts-49",
+    "name": "Think First II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "moneysmarts-50",
+    "name": "Wants vs Needs II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "moneysmarts-51",
+    "name": "Money Moves II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "moneysmarts-52",
+    "name": "Money Detective II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "moneysmarts-53",
+    "name": "Coin Sense II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "moneysmarts-54",
+    "name": "Master of Money II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "moneysmarts-55",
+    "name": "Need or Want II",
+    "generator": "moneysmarts",
+    "params": {
+      "types": [
+        "needwant",
+        "action",
+        "fact"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

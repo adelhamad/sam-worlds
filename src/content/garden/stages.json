@@ -1,0 +1,844 @@
+[
+  {
+    "id": "garden-01",
+    "name": "Plant a Seed",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Watch a garden grow!",
+      "Tap or order the answer."
+    ]
+  },
+  {
+    "id": "garden-02",
+    "name": "Roots & Stem",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "garden-03",
+    "name": "Green Leaves",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "garden-04",
+    "name": "Sunlight & Water",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "garden-05",
+    "name": "Fruit or Veg?",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "garden-06",
+    "name": "Pretty Flowers",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "garden-07",
+    "name": "Seed to Sprout",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "garden-08",
+    "name": "Tall Stem",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "garden-09",
+    "name": "Drink Up",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "garden-10",
+    "name": "Veggie Patch",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "garden-11",
+    "name": "Life of a Plant",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "garden-12",
+    "name": "Garden Parts",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "garden-13",
+    "name": "Growing Up",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "garden-14",
+    "name": "Fruit Basket",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "garden-15",
+    "name": "Soil & Sun",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "garden-16",
+    "name": "Plant Detective",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "garden-17",
+    "name": "In the Garden",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "garden-18",
+    "name": "Master Gardener",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "garden-19",
+    "name": "Plant a Seed II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "garden-20",
+    "name": "Roots & Stem II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "garden-21",
+    "name": "Green Leaves II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "garden-22",
+    "name": "Sunlight & Water II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "garden-23",
+    "name": "Fruit or Veg? II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "garden-24",
+    "name": "Pretty Flowers II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "garden-25",
+    "name": "Seed to Sprout II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "garden-26",
+    "name": "Tall Stem II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "garden-27",
+    "name": "Drink Up II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "garden-28",
+    "name": "Veggie Patch II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "garden-29",
+    "name": "Life of a Plant II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "garden-30",
+    "name": "Garden Parts II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "garden-31",
+    "name": "Growing Up II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "garden-32",
+    "name": "Fruit Basket II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "garden-33",
+    "name": "Soil & Sun II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "garden-34",
+    "name": "Plant Detective II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "garden-35",
+    "name": "In the Garden II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "garden-36",
+    "name": "Master Gardener II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "garden-37",
+    "name": "Plant a Seed II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "garden-38",
+    "name": "Roots & Stem II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "garden-39",
+    "name": "Green Leaves II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "garden-40",
+    "name": "Sunlight & Water II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "garden-41",
+    "name": "Fruit or Veg? II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "garden-42",
+    "name": "Pretty Flowers II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "garden-43",
+    "name": "Seed to Sprout II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "garden-44",
+    "name": "Tall Stem II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "garden-45",
+    "name": "Drink Up II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "garden-46",
+    "name": "Veggie Patch II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "garden-47",
+    "name": "Life of a Plant II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "garden-48",
+    "name": "Garden Parts II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "garden-49",
+    "name": "Growing Up II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "garden-50",
+    "name": "Fruit Basket II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "garden-51",
+    "name": "Soil & Sun II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "garden-52",
+    "name": "Plant Detective II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "garden-53",
+    "name": "In the Garden II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "garden-54",
+    "name": "Master Gardener II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "garden-55",
+    "name": "Plant a Seed II",
+    "generator": "garden",
+    "params": {
+      "types": [
+        "part",
+        "sort",
+        "need",
+        "cycle"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

@@ -1,0 +1,844 @@
+[
+  {
+    "id": "bugs-01",
+    "name": "Tiny Critters",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Explore the world of bugs!",
+      "Tap or order the answer."
+    ]
+  },
+  {
+    "id": "bugs-02",
+    "name": "Busy Bee",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "bugs-03",
+    "name": "Butterfly Wings",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "bugs-04",
+    "name": "Eight-Legged",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "bugs-05",
+    "name": "Ladybug Spots",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "bugs-06",
+    "name": "Ant Colony",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "bugs-07",
+    "name": "Caterpillar",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "bugs-08",
+    "name": "Six Legs",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "bugs-09",
+    "name": "Bug Facts",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "bugs-10",
+    "name": "Honey Makers",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "bugs-11",
+    "name": "Pollen Power",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "bugs-12",
+    "name": "Spider Web",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "bugs-13",
+    "name": "Life of a Butterfly",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "bugs-14",
+    "name": "Count the Legs",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "bugs-15",
+    "name": "Minibeasts",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "bugs-16",
+    "name": "Bug Detective",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "bugs-17",
+    "name": "In the Grass",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "bugs-18",
+    "name": "Master of Bugs",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "bugs-19",
+    "name": "Tiny Critters II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "bugs-20",
+    "name": "Busy Bee II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "bugs-21",
+    "name": "Butterfly Wings II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "bugs-22",
+    "name": "Eight-Legged II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "bugs-23",
+    "name": "Ladybug Spots II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "bugs-24",
+    "name": "Ant Colony II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "bugs-25",
+    "name": "Caterpillar II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "bugs-26",
+    "name": "Six Legs II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "bugs-27",
+    "name": "Bug Facts II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "bugs-28",
+    "name": "Honey Makers II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "bugs-29",
+    "name": "Pollen Power II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "bugs-30",
+    "name": "Spider Web II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "bugs-31",
+    "name": "Life of a Butterfly II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "bugs-32",
+    "name": "Count the Legs II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "bugs-33",
+    "name": "Minibeasts II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "bugs-34",
+    "name": "Bug Detective II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "bugs-35",
+    "name": "In the Grass II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "bugs-36",
+    "name": "Master of Bugs II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "bugs-37",
+    "name": "Tiny Critters II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "bugs-38",
+    "name": "Busy Bee II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "bugs-39",
+    "name": "Butterfly Wings II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "bugs-40",
+    "name": "Eight-Legged II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "bugs-41",
+    "name": "Ladybug Spots II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "bugs-42",
+    "name": "Ant Colony II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "bugs-43",
+    "name": "Caterpillar II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "bugs-44",
+    "name": "Six Legs II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "bugs-45",
+    "name": "Bug Facts II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "bugs-46",
+    "name": "Honey Makers II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "bugs-47",
+    "name": "Pollen Power II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "bugs-48",
+    "name": "Spider Web II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "bugs-49",
+    "name": "Life of a Butterfly II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "bugs-50",
+    "name": "Count the Legs II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "bugs-51",
+    "name": "Minibeasts II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "bugs-52",
+    "name": "Bug Detective II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "bugs-53",
+    "name": "In the Grass II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "bugs-54",
+    "name": "Master of Bugs II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "bugs-55",
+    "name": "Tiny Critters II",
+    "generator": "bugs",
+    "params": {
+      "types": [
+        "identify",
+        "fact",
+        "count",
+        "cycle"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

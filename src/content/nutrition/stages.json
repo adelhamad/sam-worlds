@@ -1,0 +1,813 @@
+[
+  {
+    "id": "nutrition-01",
+    "name": "Food Groups",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Build a healthy plate!",
+      "Tap the right answer."
+    ]
+  },
+  {
+    "id": "nutrition-02",
+    "name": "Fruits & Veggies",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "nutrition-03",
+    "name": "Grains",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "nutrition-04",
+    "name": "Protein Power",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "nutrition-05",
+    "name": "Dairy Day",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "nutrition-06",
+    "name": "From the Farm",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "nutrition-07",
+    "name": "Where Food Comes",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "nutrition-08",
+    "name": "Milk from Cows",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "nutrition-09",
+    "name": "Honey from Bees",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "nutrition-10",
+    "name": "Strong Bones",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "nutrition-11",
+    "name": "Quick Energy",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "nutrition-12",
+    "name": "Vitamins!",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "nutrition-13",
+    "name": "Healthy Plate",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "nutrition-14",
+    "name": "Eat the Rainbow",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "nutrition-15",
+    "name": "Drink Water",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "nutrition-16",
+    "name": "Food Detective",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "nutrition-17",
+    "name": "Plate It Up",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "nutrition-18",
+    "name": "Master of Meals",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "nutrition-19",
+    "name": "Food Groups II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "nutrition-20",
+    "name": "Fruits & Veggies II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "nutrition-21",
+    "name": "Grains II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "nutrition-22",
+    "name": "Protein Power II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "nutrition-23",
+    "name": "Dairy Day II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "nutrition-24",
+    "name": "From the Farm II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "nutrition-25",
+    "name": "Where Food Comes II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "nutrition-26",
+    "name": "Milk from Cows II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "nutrition-27",
+    "name": "Honey from Bees II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "nutrition-28",
+    "name": "Strong Bones II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "nutrition-29",
+    "name": "Quick Energy II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "nutrition-30",
+    "name": "Vitamins! II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "nutrition-31",
+    "name": "Healthy Plate II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "nutrition-32",
+    "name": "Eat the Rainbow II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "nutrition-33",
+    "name": "Drink Water II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "nutrition-34",
+    "name": "Food Detective II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "nutrition-35",
+    "name": "Plate It Up II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "nutrition-36",
+    "name": "Master of Meals II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "nutrition-37",
+    "name": "Food Groups II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "nutrition-38",
+    "name": "Fruits & Veggies II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "nutrition-39",
+    "name": "Grains II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "nutrition-40",
+    "name": "Protein Power II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "nutrition-41",
+    "name": "Dairy Day II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "nutrition-42",
+    "name": "From the Farm II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "nutrition-43",
+    "name": "Where Food Comes II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "nutrition-44",
+    "name": "Milk from Cows II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "nutrition-45",
+    "name": "Honey from Bees II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "nutrition-46",
+    "name": "Strong Bones II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "nutrition-47",
+    "name": "Quick Energy II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "nutrition-48",
+    "name": "Vitamins! II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "nutrition-49",
+    "name": "Healthy Plate II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "nutrition-50",
+    "name": "Eat the Rainbow II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "nutrition-51",
+    "name": "Drink Water II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "nutrition-52",
+    "name": "Food Detective II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "nutrition-53",
+    "name": "Plate It Up II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "nutrition-54",
+    "name": "Master of Meals II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "nutrition-55",
+    "name": "Food Groups II",
+    "generator": "nutrition",
+    "params": {
+      "types": [
+        "group",
+        "source",
+        "function"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

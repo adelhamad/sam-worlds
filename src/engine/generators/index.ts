@@ -41,6 +41,16 @@ import { generateHelpers, type HelpersParams } from "./helpers";
 import { generateAnimals, type AnimalsParams } from "./animals";
 import { generateGreen, type GreenParams } from "./green";
 import { generateCalendar, type CalendarParams } from "./calendar";
+import { generateOcean, type OceanParams } from "./ocean";
+import { generateGarden, type GardenParams } from "./garden";
+import { generateNutrition, type NutritionParams } from "./nutrition";
+import { generateColors, type ColorsParams } from "./colors";
+import { generateCultures, type CulturesParams } from "./cultures";
+import { generateTransport, type TransportParams } from "./transport";
+import { generateMoneySmarts, type MoneySmartsParams } from "./moneysmarts";
+import { generateBugs, type BugsParams } from "./bugs";
+import { generateMachines, type MachinesParams } from "./machines";
+import { generatePatterns, type PatternsParams } from "./patterns";
 import type { GenContext, GeneratorParams, Question } from "./types";
 
 export type GeneratorId =
@@ -85,7 +95,17 @@ export type GeneratorId =
   | "helpers"
   | "animals"
   | "green"
-  | "calendar";
+  | "calendar"
+  | "ocean"
+  | "garden"
+  | "nutrition"
+  | "colors"
+  | "cultures"
+  | "transport"
+  | "moneysmarts"
+  | "bugs"
+  | "machines"
+  | "patterns";
 
 /** Generator registry — one entry per id (params are cast per generator). */
 type GenFn = (params: GeneratorParams, rng: () => number, ctx: GenContext) => Question;
@@ -135,6 +155,16 @@ const GENERATORS: Record<GeneratorId, GenFn> = {
   animals: cast<AnimalsParams>(generateAnimals),
   green: cast<GreenParams>(generateGreen),
   calendar: cast<CalendarParams>(generateCalendar),
+  ocean: cast<OceanParams>(generateOcean),
+  garden: cast<GardenParams>(generateGarden),
+  nutrition: cast<NutritionParams>(generateNutrition),
+  colors: cast<ColorsParams>(generateColors),
+  cultures: cast<CulturesParams>(generateCultures),
+  transport: cast<TransportParams>(generateTransport),
+  moneysmarts: cast<MoneySmartsParams>(generateMoneySmarts),
+  bugs: cast<BugsParams>(generateBugs),
+  machines: cast<MachinesParams>(generateMachines),
+  patterns: cast<PatternsParams>(generatePatterns),
 };
 
 function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, ctx: GenContext): Question {

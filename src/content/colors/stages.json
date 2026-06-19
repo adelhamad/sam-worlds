@@ -1,0 +1,813 @@
+[
+  {
+    "id": "colors-01",
+    "name": "Red + Yellow",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Mix and match the colors!",
+      "Tap the right answer."
+    ]
+  },
+  {
+    "id": "colors-02",
+    "name": "Make Green",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "colors-03",
+    "name": "Make Purple",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "colors-04",
+    "name": "Sky Blue",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "colors-05",
+    "name": "Color of Grass",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "colors-06",
+    "name": "Sunny Yellow",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "colors-07",
+    "name": "Warm Colors",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "colors-08",
+    "name": "Cool Colors",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "colors-09",
+    "name": "Pink Mix",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "colors-10",
+    "name": "Grey Mix",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "colors-11",
+    "name": "Rainbow Things",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "colors-12",
+    "name": "Color Match",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "colors-13",
+    "name": "Paint Pots",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "colors-14",
+    "name": "What Color?",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "colors-15",
+    "name": "Warm or Cool",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "colors-16",
+    "name": "Color Detective",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "colors-17",
+    "name": "In the Color Lab",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "colors-18",
+    "name": "Master of Colors",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "colors-19",
+    "name": "Red + Yellow II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "colors-20",
+    "name": "Make Green II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "colors-21",
+    "name": "Make Purple II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "colors-22",
+    "name": "Sky Blue II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "colors-23",
+    "name": "Color of Grass II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "colors-24",
+    "name": "Sunny Yellow II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "colors-25",
+    "name": "Warm Colors II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "colors-26",
+    "name": "Cool Colors II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "colors-27",
+    "name": "Pink Mix II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "colors-28",
+    "name": "Grey Mix II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "colors-29",
+    "name": "Rainbow Things II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "colors-30",
+    "name": "Color Match II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "colors-31",
+    "name": "Paint Pots II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "colors-32",
+    "name": "What Color? II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "colors-33",
+    "name": "Warm or Cool II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "colors-34",
+    "name": "Color Detective II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "colors-35",
+    "name": "In the Color Lab II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "colors-36",
+    "name": "Master of Colors II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "colors-37",
+    "name": "Red + Yellow II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "colors-38",
+    "name": "Make Green II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "colors-39",
+    "name": "Make Purple II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "colors-40",
+    "name": "Sky Blue II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "colors-41",
+    "name": "Color of Grass II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "colors-42",
+    "name": "Sunny Yellow II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "colors-43",
+    "name": "Warm Colors II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "colors-44",
+    "name": "Cool Colors II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "colors-45",
+    "name": "Pink Mix II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "colors-46",
+    "name": "Grey Mix II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "colors-47",
+    "name": "Rainbow Things II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "colors-48",
+    "name": "Color Match II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "colors-49",
+    "name": "Paint Pots II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "colors-50",
+    "name": "What Color? II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "colors-51",
+    "name": "Warm or Cool II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "colors-52",
+    "name": "Color Detective II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "colors-53",
+    "name": "In the Color Lab II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "colors-54",
+    "name": "Master of Colors II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "colors-55",
+    "name": "Red + Yellow II",
+    "generator": "colors",
+    "params": {
+      "types": [
+        "mix",
+        "object",
+        "temp"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

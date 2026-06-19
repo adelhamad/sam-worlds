@@ -54,6 +54,16 @@ const PLANET_HUES: Record<string, string> = {
   animals: "#fb923c",
   green: "#4ade80",
   calendar: "#a78bfa",
+  ocean: "#0ea5e9",
+  garden: "#65a30d",
+  nutrition: "#f87171",
+  colors: "#e879f9",
+  cultures: "#2dd4bf",
+  transport: "#fb7185",
+  moneysmarts: "#facc15",
+  bugs: "#a3e635",
+  machines: "#94a3b8",
+  patterns: "#c084fc",
 };
 
 export function Hub() {

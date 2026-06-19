@@ -5,6 +5,8 @@ import { WORLDS } from "../content/worlds";
 const OPEN_BY_DEFAULT = new Set([
   "space", "dinos", "weather", "phonics", "idioms",
   "manners", "safety", "helpers", "animals", "green", "calendar",
+  "ocean", "garden", "nutrition", "colors", "cultures",
+  "transport", "moneysmarts", "bugs", "machines", "patterns",
 ]);
 
 export function withWorldDefaults(stored?: Record<string, boolean>): Record<string, boolean> {
