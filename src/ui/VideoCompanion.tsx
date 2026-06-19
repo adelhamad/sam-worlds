@@ -27,7 +27,7 @@ export function VideoCompanion() {
   const resize = useRef<{ sx: number; sw: number } | null>(null);
 
   const ids = useMemo(() => urls.map(youTubeId).filter((x): x is string => Boolean(x)), [urls]);
-  const [seed] = useState(() => Math.floor(Math.random() * 1000));
+  const [vid, setVid] = useState(() => Math.floor(Math.random() * 1000));
   const hidden = pathname === "/" || pathname.startsWith("/parent");
   const active = enabled && ids.length > 0 && !hidden;
 
@@ -48,8 +48,9 @@ export function VideoCompanion() {
   }, [active]);
 
   if (!active) return null;
-  const src = embedUrl(ids[seed % ids.length]);
+  const src = embedUrl(ids[((vid % ids.length) + ids.length) % ids.length]);
   const h = Math.round((size * 9) / 16);
+  const many = ids.length > 1;
 
   function onDragDown(e: React.PointerEvent) {
     const r = (e.currentTarget.parentElement as HTMLElement).getBoundingClientRect();
@@ -98,7 +99,11 @@ export function VideoCompanion() {
         {!audioOnly && (
           <>
             <div className="video-shield" onPointerDown={onDragDown} onPointerMove={onDragMove} onPointerUp={onDragUp} />
-            <button className="video-toggle" aria-label="hide video, keep music" onClick={() => setAudioOnly(true)}>🙈</button>
+            <div className="video-bar">
+              {many && <button className="video-ctl" aria-label="previous video" onClick={() => setVid((v) => v - 1)}>◀</button>}
+              <button className="video-ctl" aria-label="hide video, keep music" onClick={() => setAudioOnly(true)}>🙈</button>
+              {many && <button className="video-ctl" aria-label="next video" onClick={() => setVid((v) => v + 1)}>▶</button>}
+            </div>
             <div className="video-resize" onPointerDown={onResizeDown} onPointerMove={onResizeMove} onPointerUp={onResizeUp} />
           </>
         )}

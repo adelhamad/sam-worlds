@@ -98,6 +98,7 @@ export interface GameStore extends PetSlice {
   setWorldHidden: (worldId: string, hidden: boolean) => void;
   showAllWorlds: () => void;
   toggleFavorite: (worldId: string) => void;
+  setFavoriteOrder: (ids: string[]) => void;
   setVideoEnabled: (on: boolean) => void;
   toggleVideo: () => void;
   setVideoMode: (mode: "corner" | "background") => void;

@@ -1686,15 +1686,18 @@ body {
   font-weight: 600;
   font-size: 0.8rem;
 }
-/* keep a row's controls clustered on the right so they never cram or wrap */
+/* keep a row's controls clustered on the right with clear spacing */
 .parent-row-ctrls {
   display: flex;
-  gap: 8px;
+  gap: 12px;
   align-items: center;
+  justify-content: flex-end;
   flex: 0 0 auto;
+  flex-wrap: wrap;
 }
 .btn-compact {
-  padding: 9px 12px;
+  padding: 9px 14px;
+  min-height: 44px;
   font-size: 0.95rem;
   white-space: nowrap;
 }
@@ -2552,6 +2555,34 @@ body {
   border-bottom-right-radius: 12px;
   z-index: 3;
 }
+/* small overlay toolbar at the top of the player (takes no layout space) */
+.video-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 4px;
+  background: linear-gradient(180deg, rgba(7, 15, 34, 0.7), transparent);
+  z-index: 3;
+}
+.video-ctl {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(7, 15, 34, 0.82);
+  color: #fff;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.video-ctl:active { transform: scale(0.9); }
 .video-music-pill {
   position: fixed;
   top: max(10px, env(safe-area-inset-top));
@@ -2570,3 +2601,12 @@ body {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
 }
 .video-music-pill:active { transform: translateX(-50%) scale(0.96); }
+
+/* dragging a favorite chip to reorder */
+.mini-chip { touch-action: none; }
+.mini-chip-drag {
+  opacity: 0.85;
+  transform: scale(1.06);
+  border-color: var(--cyan);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}

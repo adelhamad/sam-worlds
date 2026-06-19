@@ -73,5 +73,12 @@ export function worldAdminActions(set: Set, get: Get) {
       persistSettings(get);
       logEvent("hub.favorite", { worldId, on: !has });
     },
+
+    /** Drag-and-drop reorder of the Favorites row. */
+    setFavoriteOrder: (ids: string[]) => {
+      set({ favoriteWorlds: ids });
+      persistSettings(get);
+      logEvent("hub.favReorder", {});
+    },
   };
 }

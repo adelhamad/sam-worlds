@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGame } from "../state/store";
 import { completedInWorld, focusWorldIn, WORLDS, type WorldDef } from "../content/worlds";
@@ -87,6 +87,70 @@ function MiniRow({ title, worlds, progress, gates, onOpen }: {
   );
 }
 
+/** Favorites row you can drag-and-drop to rearrange (touch + mouse). The parent
+ * gives it a key based on the favorite SET, so it resets only on add/remove. */
+function FavoritesRow({ worlds, gates, onOpen, onReorder }: {
+  worlds: WorldDef[]; gates: Gates; onOpen: (w: WorldDef) => void; onReorder: (ids: string[]) => void;
+}) {
+  const [order, setOrder] = useState(worlds);
+  const [draggingId, setDraggingId] = useState<string | null>(null);
+  const rowRef = useRef<HTMLDivElement>(null);
+  const dragRef = useRef<string | null>(null);
+  const moved = useRef(false);
+
+  function down(e: React.PointerEvent, w: WorldDef) {
+    dragRef.current = w.id;
+    moved.current = false;
+    setDraggingId(w.id);
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+  }
+  function move(e: React.PointerEvent) {
+    if (!dragRef.current || !rowRef.current) return;
+    moved.current = true;
+    const chips = [...rowRef.current.querySelectorAll(".mini-chip")];
+    let target = order.length - 1;
+    for (let i = 0; i < chips.length; i++) {
+      const r = chips[i].getBoundingClientRect();
+      if (e.clientX < r.left + r.width / 2) { target = i; break; }
+    }
+    const from = order.findIndex((w) => w.id === dragRef.current);
+    if (from !== -1 && from !== target) {
+      const next = [...order];
+      const [m] = next.splice(from, 1);
+      next.splice(target, 0, m);
+      setOrder(next);
+    }
+  }
+  function up(w: WorldDef) {
+    const wasDrag = moved.current;
+    dragRef.current = null;
+    setDraggingId(null);
+    if (wasDrag) onReorder(order.map((o) => o.id));
+    else onOpen(w);
+  }
+
+  return (
+    <div className="mini-row-block">
+      <div className="mini-row-title">⭐ Favorites <small className="dim">· drag to reorder</small></div>
+      <div className="mini-row" ref={rowRef}>
+        {order.map((w) => (
+          <button
+            key={w.id}
+            className={`mini-chip ${draggingId === w.id ? "mini-chip-drag" : ""}`}
+            disabled={!gates[w.id]}
+            onPointerDown={(e) => down(e, w)}
+            onPointerMove={move}
+            onPointerUp={() => up(w)}
+          >
+            <span className="mini-chip-icon">{w.icon}</span>
+            <span className="mini-chip-name">{w.name}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function WorldGrid() {
   const navigate = useNavigate();
   const progress = useGame((s) => s.progress);
@@ -95,6 +159,7 @@ export function WorldGrid() {
   const recentWorlds = useGame((s) => s.recentWorlds);
   const favoriteWorlds = useGame((s) => s.favoriteWorlds);
   const toggleFavorite = useGame((s) => s.toggleFavorite);
+  const setFavoriteOrder = useGame((s) => s.setFavoriteOrder);
   const [search, setSearch] = useState("");
 
   const visible = WORLDS.filter((w) => !hiddenWorlds[w.id]);
@@ -150,7 +215,13 @@ export function WorldGrid() {
             <MiniRow title="▶ Recently played" worlds={recent} progress={progress} gates={enabledWorlds} onOpen={open} />
           )}
           {favs.length > 0 && (
-            <MiniRow title="⭐ Favorites" worlds={favs} progress={progress} gates={enabledWorlds} onOpen={open} />
+            <FavoritesRow
+              key={favs.map((w) => w.id).sort().join(",")}
+              worlds={favs}
+              gates={enabledWorlds}
+              onOpen={open}
+              onReorder={setFavoriteOrder}
+            />
           )}
           {GALAXIES.map((g) => {
             const ws = visible.filter((w) => categoryOf(w.id) === g.key);
