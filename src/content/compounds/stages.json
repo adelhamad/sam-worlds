@@ -1,0 +1,776 @@
+[
+  {
+    "id": "compounds-01",
+    "name": "Sun + Flower",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Join the words!",
+      "Tap the answer."
+    ]
+  },
+  {
+    "id": "compounds-02",
+    "name": "Rain + Bow",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "compounds-03",
+    "name": "Join Them Up",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "compounds-04",
+    "name": "Finish the Word",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "compounds-05",
+    "name": "Two Make One",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "compounds-06",
+    "name": "Word Glue",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "compounds-07",
+    "name": "Compound Fun",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "compounds-08",
+    "name": "Build a Word",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "compounds-09",
+    "name": "Word Joiner",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "compounds-10",
+    "name": "Master of Words",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "compounds-11",
+    "name": "Sun + Flower II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "compounds-12",
+    "name": "Rain + Bow II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "compounds-13",
+    "name": "Join Them Up II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "compounds-14",
+    "name": "Finish the Word II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "compounds-15",
+    "name": "Two Make One II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "compounds-16",
+    "name": "Word Glue II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "compounds-17",
+    "name": "Compound Fun II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "compounds-18",
+    "name": "Build a Word II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "compounds-19",
+    "name": "Word Joiner II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "compounds-20",
+    "name": "Master of Words II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "compounds-21",
+    "name": "Sun + Flower II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "compounds-22",
+    "name": "Rain + Bow II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "compounds-23",
+    "name": "Join Them Up II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "compounds-24",
+    "name": "Finish the Word II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "compounds-25",
+    "name": "Two Make One II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "compounds-26",
+    "name": "Word Glue II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "compounds-27",
+    "name": "Compound Fun II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "compounds-28",
+    "name": "Build a Word II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "compounds-29",
+    "name": "Word Joiner II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "compounds-30",
+    "name": "Master of Words II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "compounds-31",
+    "name": "Sun + Flower II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "compounds-32",
+    "name": "Rain + Bow II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "compounds-33",
+    "name": "Join Them Up II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "compounds-34",
+    "name": "Finish the Word II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "compounds-35",
+    "name": "Two Make One II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "compounds-36",
+    "name": "Word Glue II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "compounds-37",
+    "name": "Compound Fun II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "compounds-38",
+    "name": "Build a Word II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "compounds-39",
+    "name": "Word Joiner II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "compounds-40",
+    "name": "Master of Words II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "compounds-41",
+    "name": "Sun + Flower II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "compounds-42",
+    "name": "Rain + Bow II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "compounds-43",
+    "name": "Join Them Up II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "compounds-44",
+    "name": "Finish the Word II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "compounds-45",
+    "name": "Two Make One II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "compounds-46",
+    "name": "Word Glue II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "compounds-47",
+    "name": "Compound Fun II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "compounds-48",
+    "name": "Build a Word II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "compounds-49",
+    "name": "Word Joiner II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "compounds-50",
+    "name": "Master of Words II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "compounds-51",
+    "name": "Sun + Flower II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "compounds-52",
+    "name": "Rain + Bow II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "compounds-53",
+    "name": "Join Them Up II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "compounds-54",
+    "name": "Finish the Word II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "compounds-55",
+    "name": "Two Make One II",
+    "generator": "compounds",
+    "params": {
+      "types": [
+        "join",
+        "missing"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

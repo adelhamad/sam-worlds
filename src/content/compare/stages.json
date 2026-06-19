@@ -1,0 +1,844 @@
+[
+  {
+    "id": "compare-01",
+    "name": "Greater Number",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "More or less?",
+      "Tap or order."
+    ]
+  },
+  {
+    "id": "compare-02",
+    "name": "Smaller Number",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "compare-03",
+    "name": "More or Less",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "compare-04",
+    "name": "The Right Sign",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "compare-05",
+    "name": "Big to Small",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "compare-06",
+    "name": "Order Up",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "compare-07",
+    "name": "Compare It",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "compare-08",
+    "name": "Most & Least",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "compare-09",
+    "name": "Number Lineup",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "compare-10",
+    "name": "Master of Numbers",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "compare-11",
+    "name": "Greater Number II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "compare-12",
+    "name": "Smaller Number II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "compare-13",
+    "name": "More or Less II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "compare-14",
+    "name": "The Right Sign II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "compare-15",
+    "name": "Big to Small II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "compare-16",
+    "name": "Order Up II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "compare-17",
+    "name": "Compare It II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "compare-18",
+    "name": "Most & Least II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "compare-19",
+    "name": "Number Lineup II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "compare-20",
+    "name": "Master of Numbers II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "compare-21",
+    "name": "Greater Number II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "compare-22",
+    "name": "Smaller Number II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "compare-23",
+    "name": "More or Less II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "compare-24",
+    "name": "The Right Sign II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "compare-25",
+    "name": "Big to Small II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "compare-26",
+    "name": "Order Up II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "compare-27",
+    "name": "Compare It II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "compare-28",
+    "name": "Most & Least II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "compare-29",
+    "name": "Number Lineup II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "compare-30",
+    "name": "Master of Numbers II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "compare-31",
+    "name": "Greater Number II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "compare-32",
+    "name": "Smaller Number II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "compare-33",
+    "name": "More or Less II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "compare-34",
+    "name": "The Right Sign II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "compare-35",
+    "name": "Big to Small II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "compare-36",
+    "name": "Order Up II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "compare-37",
+    "name": "Compare It II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "compare-38",
+    "name": "Most & Least II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "compare-39",
+    "name": "Number Lineup II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "compare-40",
+    "name": "Master of Numbers II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "compare-41",
+    "name": "Greater Number II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "compare-42",
+    "name": "Smaller Number II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "compare-43",
+    "name": "More or Less II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "compare-44",
+    "name": "The Right Sign II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "compare-45",
+    "name": "Big to Small II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "compare-46",
+    "name": "Order Up II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "compare-47",
+    "name": "Compare It II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "compare-48",
+    "name": "Most & Least II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "compare-49",
+    "name": "Number Lineup II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "compare-50",
+    "name": "Master of Numbers II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "compare-51",
+    "name": "Greater Number II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "compare-52",
+    "name": "Smaller Number II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "compare-53",
+    "name": "More or Less II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "compare-54",
+    "name": "The Right Sign II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "compare-55",
+    "name": "Big to Small II",
+    "generator": "compare",
+    "params": {
+      "types": [
+        "greater",
+        "smaller",
+        "sign",
+        "order"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

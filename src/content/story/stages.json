@@ -1,0 +1,813 @@
+[
+  {
+    "id": "story-01",
+    "name": "Story Words",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Read between the lines!",
+      "Tap or order."
+    ]
+  },
+  {
+    "id": "story-02",
+    "name": "Who & Where",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "story-03",
+    "name": "Story Order",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "story-04",
+    "name": "The Character",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "story-05",
+    "name": "The Setting",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "story-06",
+    "name": "Beginning Middle End",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "story-07",
+    "name": "The Author",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "story-08",
+    "name": "Fiction Fun",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "story-09",
+    "name": "Story Parts",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "story-10",
+    "name": "Master Storyteller",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "story-11",
+    "name": "Story Words II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "story-12",
+    "name": "Who & Where II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "story-13",
+    "name": "Story Order II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "story-14",
+    "name": "The Character II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "story-15",
+    "name": "The Setting II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "story-16",
+    "name": "Beginning Middle End II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "story-17",
+    "name": "The Author II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "story-18",
+    "name": "Fiction Fun II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "story-19",
+    "name": "Story Parts II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "story-20",
+    "name": "Master Storyteller II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "story-21",
+    "name": "Story Words II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "story-22",
+    "name": "Who & Where II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "story-23",
+    "name": "Story Order II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "story-24",
+    "name": "The Character II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "story-25",
+    "name": "The Setting II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "story-26",
+    "name": "Beginning Middle End II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "story-27",
+    "name": "The Author II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "story-28",
+    "name": "Fiction Fun II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "story-29",
+    "name": "Story Parts II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "story-30",
+    "name": "Master Storyteller II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "story-31",
+    "name": "Story Words II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "story-32",
+    "name": "Who & Where II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "story-33",
+    "name": "Story Order II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "story-34",
+    "name": "The Character II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "story-35",
+    "name": "The Setting II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "story-36",
+    "name": "Beginning Middle End II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "story-37",
+    "name": "The Author II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "story-38",
+    "name": "Fiction Fun II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "story-39",
+    "name": "Story Parts II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "story-40",
+    "name": "Master Storyteller II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "story-41",
+    "name": "Story Words II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "story-42",
+    "name": "Who & Where II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "story-43",
+    "name": "Story Order II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "story-44",
+    "name": "The Character II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "story-45",
+    "name": "The Setting II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "story-46",
+    "name": "Beginning Middle End II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "story-47",
+    "name": "The Author II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "story-48",
+    "name": "Fiction Fun II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "story-49",
+    "name": "Story Parts II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "story-50",
+    "name": "Master Storyteller II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "story-51",
+    "name": "Story Words II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "story-52",
+    "name": "Who & Where II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "story-53",
+    "name": "Story Order II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "story-54",
+    "name": "The Character II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "story-55",
+    "name": "The Setting II",
+    "generator": "story",
+    "params": {
+      "types": [
+        "term",
+        "who",
+        "order"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

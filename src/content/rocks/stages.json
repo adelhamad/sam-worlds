@@ -1,0 +1,813 @@
+[
+  {
+    "id": "rocks-01",
+    "name": "Sparkly Gems",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Dig into geology!",
+      "Tap the answer."
+    ]
+  },
+  {
+    "id": "rocks-02",
+    "name": "Volcano Blast",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "rocks-03",
+    "name": "Rock Facts",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "rocks-04",
+    "name": "Lava Flow",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "rocks-05",
+    "name": "Earth Layers",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "rocks-06",
+    "name": "Mineral Match",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "rocks-07",
+    "name": "Dig Deep",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "rocks-08",
+    "name": "Crystal Clear",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "rocks-09",
+    "name": "Rock Hound",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "rocks-10",
+    "name": "Master of Rocks",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "rocks-11",
+    "name": "Sparkly Gems II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "rocks-12",
+    "name": "Volcano Blast II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "rocks-13",
+    "name": "Rock Facts II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "rocks-14",
+    "name": "Lava Flow II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "rocks-15",
+    "name": "Earth Layers II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "rocks-16",
+    "name": "Mineral Match II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "rocks-17",
+    "name": "Dig Deep II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "rocks-18",
+    "name": "Crystal Clear II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "rocks-19",
+    "name": "Rock Hound II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "rocks-20",
+    "name": "Master of Rocks II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "rocks-21",
+    "name": "Sparkly Gems II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "rocks-22",
+    "name": "Volcano Blast II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "rocks-23",
+    "name": "Rock Facts II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "rocks-24",
+    "name": "Lava Flow II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "rocks-25",
+    "name": "Earth Layers II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "rocks-26",
+    "name": "Mineral Match II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "rocks-27",
+    "name": "Dig Deep II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "rocks-28",
+    "name": "Crystal Clear II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "rocks-29",
+    "name": "Rock Hound II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "rocks-30",
+    "name": "Master of Rocks II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "rocks-31",
+    "name": "Sparkly Gems II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "rocks-32",
+    "name": "Volcano Blast II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "rocks-33",
+    "name": "Rock Facts II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "rocks-34",
+    "name": "Lava Flow II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "rocks-35",
+    "name": "Earth Layers II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "rocks-36",
+    "name": "Mineral Match II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "rocks-37",
+    "name": "Dig Deep II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "rocks-38",
+    "name": "Crystal Clear II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "rocks-39",
+    "name": "Rock Hound II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "rocks-40",
+    "name": "Master of Rocks II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "rocks-41",
+    "name": "Sparkly Gems II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "rocks-42",
+    "name": "Volcano Blast II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "rocks-43",
+    "name": "Rock Facts II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "rocks-44",
+    "name": "Lava Flow II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "rocks-45",
+    "name": "Earth Layers II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "rocks-46",
+    "name": "Mineral Match II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "rocks-47",
+    "name": "Dig Deep II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "rocks-48",
+    "name": "Crystal Clear II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "rocks-49",
+    "name": "Rock Hound II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "rocks-50",
+    "name": "Master of Rocks II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "rocks-51",
+    "name": "Sparkly Gems II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "rocks-52",
+    "name": "Volcano Blast II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "rocks-53",
+    "name": "Rock Facts II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "rocks-54",
+    "name": "Lava Flow II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "rocks-55",
+    "name": "Earth Layers II",
+    "generator": "rocks",
+    "params": {
+      "types": [
+        "gem",
+        "volcano",
+        "fact"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

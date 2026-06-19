@@ -1,0 +1,813 @@
+[
+  {
+    "id": "instruments-01",
+    "name": "String Sounds",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Make some music!",
+      "Tap the answer."
+    ]
+  },
+  {
+    "id": "instruments-02",
+    "name": "Blow the Horn",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "instruments-03",
+    "name": "Bang the Drum",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "instruments-04",
+    "name": "Press the Keys",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "instruments-05",
+    "name": "Instrument Family",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "instruments-06",
+    "name": "How to Play",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "instruments-07",
+    "name": "Shake & Tap",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "instruments-08",
+    "name": "Music Match",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "instruments-09",
+    "name": "Band Together",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "instruments-10",
+    "name": "Master of Music",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "instruments-11",
+    "name": "String Sounds II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "instruments-12",
+    "name": "Blow the Horn II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "instruments-13",
+    "name": "Bang the Drum II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "instruments-14",
+    "name": "Press the Keys II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "instruments-15",
+    "name": "Instrument Family II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "instruments-16",
+    "name": "How to Play II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "instruments-17",
+    "name": "Shake & Tap II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "instruments-18",
+    "name": "Music Match II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "instruments-19",
+    "name": "Band Together II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "instruments-20",
+    "name": "Master of Music II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "instruments-21",
+    "name": "String Sounds II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "instruments-22",
+    "name": "Blow the Horn II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "instruments-23",
+    "name": "Bang the Drum II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "instruments-24",
+    "name": "Press the Keys II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "instruments-25",
+    "name": "Instrument Family II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "instruments-26",
+    "name": "How to Play II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "instruments-27",
+    "name": "Shake & Tap II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "instruments-28",
+    "name": "Music Match II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "instruments-29",
+    "name": "Band Together II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "instruments-30",
+    "name": "Master of Music II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "instruments-31",
+    "name": "String Sounds II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "instruments-32",
+    "name": "Blow the Horn II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "instruments-33",
+    "name": "Bang the Drum II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "instruments-34",
+    "name": "Press the Keys II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "instruments-35",
+    "name": "Instrument Family II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "instruments-36",
+    "name": "How to Play II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "instruments-37",
+    "name": "Shake & Tap II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "instruments-38",
+    "name": "Music Match II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "instruments-39",
+    "name": "Band Together II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "instruments-40",
+    "name": "Master of Music II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "instruments-41",
+    "name": "String Sounds II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "instruments-42",
+    "name": "Blow the Horn II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "instruments-43",
+    "name": "Bang the Drum II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "instruments-44",
+    "name": "Press the Keys II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "instruments-45",
+    "name": "Instrument Family II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "instruments-46",
+    "name": "How to Play II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "instruments-47",
+    "name": "Shake & Tap II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "instruments-48",
+    "name": "Music Match II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "instruments-49",
+    "name": "Band Together II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "instruments-50",
+    "name": "Master of Music II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "instruments-51",
+    "name": "String Sounds II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "instruments-52",
+    "name": "Blow the Horn II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "instruments-53",
+    "name": "Bang the Drum II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "instruments-54",
+    "name": "Press the Keys II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "instruments-55",
+    "name": "Instrument Family II",
+    "generator": "instruments",
+    "params": {
+      "types": [
+        "family",
+        "play",
+        "which"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

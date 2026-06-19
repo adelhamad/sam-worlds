@@ -1,0 +1,776 @@
+[
+  {
+    "id": "family-01",
+    "name": "My Parents",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Your family tree!",
+      "Tap the answer."
+    ]
+  },
+  {
+    "id": "family-02",
+    "name": "Brothers & Sisters",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "family-03",
+    "name": "Grandparents",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "family-04",
+    "name": "Aunts & Uncles",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "family-05",
+    "name": "Cousins",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "family-06",
+    "name": "Family Match",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "family-07",
+    "name": "Who Am I",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "family-08",
+    "name": "The Family Tree",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "family-09",
+    "name": "Relatives",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "family-10",
+    "name": "Master of Family",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "family-11",
+    "name": "My Parents II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "family-12",
+    "name": "Brothers & Sisters II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "family-13",
+    "name": "Grandparents II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "family-14",
+    "name": "Aunts & Uncles II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "family-15",
+    "name": "Cousins II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "family-16",
+    "name": "Family Match II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "family-17",
+    "name": "Who Am I II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "family-18",
+    "name": "The Family Tree II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "family-19",
+    "name": "Relatives II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "family-20",
+    "name": "Master of Family II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "family-21",
+    "name": "My Parents II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "family-22",
+    "name": "Brothers & Sisters II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "family-23",
+    "name": "Grandparents II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "family-24",
+    "name": "Aunts & Uncles II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "family-25",
+    "name": "Cousins II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "family-26",
+    "name": "Family Match II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "family-27",
+    "name": "Who Am I II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "family-28",
+    "name": "The Family Tree II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "family-29",
+    "name": "Relatives II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "family-30",
+    "name": "Master of Family II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "family-31",
+    "name": "My Parents II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "family-32",
+    "name": "Brothers & Sisters II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "family-33",
+    "name": "Grandparents II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "family-34",
+    "name": "Aunts & Uncles II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "family-35",
+    "name": "Cousins II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "family-36",
+    "name": "Family Match II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "family-37",
+    "name": "Who Am I II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "family-38",
+    "name": "The Family Tree II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "family-39",
+    "name": "Relatives II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "family-40",
+    "name": "Master of Family II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "family-41",
+    "name": "My Parents II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "family-42",
+    "name": "Brothers & Sisters II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "family-43",
+    "name": "Grandparents II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "family-44",
+    "name": "Aunts & Uncles II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "family-45",
+    "name": "Cousins II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "family-46",
+    "name": "Family Match II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "family-47",
+    "name": "Who Am I II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "family-48",
+    "name": "The Family Tree II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "family-49",
+    "name": "Relatives II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "family-50",
+    "name": "Master of Family II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "family-51",
+    "name": "My Parents II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "family-52",
+    "name": "Brothers & Sisters II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "family-53",
+    "name": "Grandparents II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "family-54",
+    "name": "Aunts & Uncles II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "family-55",
+    "name": "Cousins II",
+    "generator": "family",
+    "params": {
+      "types": [
+        "close",
+        "extended"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

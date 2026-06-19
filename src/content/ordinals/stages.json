@@ -1,0 +1,813 @@
+[
+  {
+    "id": "ordinals-01",
+    "name": "First Place",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "1st, 2nd, 3rd!",
+      "Tap or type."
+    ]
+  },
+  {
+    "id": "ordinals-02",
+    "name": "Second & Third",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "ordinals-03",
+    "name": "Race Ranks",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "ordinals-04",
+    "name": "Who's Next",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "ordinals-05",
+    "name": "In the Line",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "ordinals-06",
+    "name": "Top Spot",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "ordinals-07",
+    "name": "Count the Spots",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "ordinals-08",
+    "name": "Line Up",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "ordinals-09",
+    "name": "Rank It",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "ordinals-10",
+    "name": "Master of Ranks",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "ordinals-11",
+    "name": "First Place II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "ordinals-12",
+    "name": "Second & Third II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "ordinals-13",
+    "name": "Race Ranks II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "ordinals-14",
+    "name": "Who's Next II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "ordinals-15",
+    "name": "In the Line II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "ordinals-16",
+    "name": "Top Spot II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "ordinals-17",
+    "name": "Count the Spots II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "ordinals-18",
+    "name": "Line Up II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "ordinals-19",
+    "name": "Rank It II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "ordinals-20",
+    "name": "Master of Ranks II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "ordinals-21",
+    "name": "First Place II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "ordinals-22",
+    "name": "Second & Third II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "ordinals-23",
+    "name": "Race Ranks II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "ordinals-24",
+    "name": "Who's Next II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "ordinals-25",
+    "name": "In the Line II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "ordinals-26",
+    "name": "Top Spot II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "ordinals-27",
+    "name": "Count the Spots II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "ordinals-28",
+    "name": "Line Up II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "ordinals-29",
+    "name": "Rank It II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "ordinals-30",
+    "name": "Master of Ranks II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "ordinals-31",
+    "name": "First Place II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "ordinals-32",
+    "name": "Second & Third II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "ordinals-33",
+    "name": "Race Ranks II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "ordinals-34",
+    "name": "Who's Next II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "ordinals-35",
+    "name": "In the Line II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "ordinals-36",
+    "name": "Top Spot II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "ordinals-37",
+    "name": "Count the Spots II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "ordinals-38",
+    "name": "Line Up II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "ordinals-39",
+    "name": "Rank It II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "ordinals-40",
+    "name": "Master of Ranks II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "ordinals-41",
+    "name": "First Place II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "ordinals-42",
+    "name": "Second & Third II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "ordinals-43",
+    "name": "Race Ranks II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "ordinals-44",
+    "name": "Who's Next II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "ordinals-45",
+    "name": "In the Line II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "ordinals-46",
+    "name": "Top Spot II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "ordinals-47",
+    "name": "Count the Spots II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "ordinals-48",
+    "name": "Line Up II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "ordinals-49",
+    "name": "Rank It II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "ordinals-50",
+    "name": "Master of Ranks II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "ordinals-51",
+    "name": "First Place II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "ordinals-52",
+    "name": "Second & Third II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "ordinals-53",
+    "name": "Race Ranks II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "ordinals-54",
+    "name": "Who's Next II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "ordinals-55",
+    "name": "In the Line II",
+    "generator": "ordinals",
+    "params": {
+      "types": [
+        "word",
+        "position",
+        "front"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

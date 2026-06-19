@@ -1,0 +1,776 @@
+[
+  {
+    "id": "synonyms-01",
+    "name": "Same Word",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Hear it, sound it!",
+      "Same or opposite?"
+    ]
+  },
+  {
+    "id": "synonyms-02",
+    "name": "Opposite Word",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "synonyms-03",
+    "name": "Word Twins",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "synonyms-04",
+    "name": "Big & Large",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "synonyms-05",
+    "name": "Hot & Cold",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "synonyms-06",
+    "name": "Match the Meaning",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "synonyms-07",
+    "name": "Twin Words",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "synonyms-08",
+    "name": "Find the Pair",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "synonyms-09",
+    "name": "Word Match",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "synonyms-10",
+    "name": "Master of Words",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "synonyms-11",
+    "name": "Same Word II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "synonyms-12",
+    "name": "Opposite Word II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "synonyms-13",
+    "name": "Word Twins II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "synonyms-14",
+    "name": "Big & Large II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "synonyms-15",
+    "name": "Hot & Cold II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "synonyms-16",
+    "name": "Match the Meaning II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "synonyms-17",
+    "name": "Twin Words II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "synonyms-18",
+    "name": "Find the Pair II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "synonyms-19",
+    "name": "Word Match II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "synonyms-20",
+    "name": "Master of Words II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "synonyms-21",
+    "name": "Same Word II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "synonyms-22",
+    "name": "Opposite Word II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "synonyms-23",
+    "name": "Word Twins II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "synonyms-24",
+    "name": "Big & Large II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "synonyms-25",
+    "name": "Hot & Cold II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "synonyms-26",
+    "name": "Match the Meaning II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "synonyms-27",
+    "name": "Twin Words II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "synonyms-28",
+    "name": "Find the Pair II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "synonyms-29",
+    "name": "Word Match II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "synonyms-30",
+    "name": "Master of Words II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "synonyms-31",
+    "name": "Same Word II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "synonyms-32",
+    "name": "Opposite Word II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "synonyms-33",
+    "name": "Word Twins II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "synonyms-34",
+    "name": "Big & Large II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "synonyms-35",
+    "name": "Hot & Cold II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "synonyms-36",
+    "name": "Match the Meaning II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "synonyms-37",
+    "name": "Twin Words II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "synonyms-38",
+    "name": "Find the Pair II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "synonyms-39",
+    "name": "Word Match II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "synonyms-40",
+    "name": "Master of Words II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "synonyms-41",
+    "name": "Same Word II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "synonyms-42",
+    "name": "Opposite Word II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "synonyms-43",
+    "name": "Word Twins II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "synonyms-44",
+    "name": "Big & Large II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "synonyms-45",
+    "name": "Hot & Cold II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "synonyms-46",
+    "name": "Match the Meaning II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "synonyms-47",
+    "name": "Twin Words II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "synonyms-48",
+    "name": "Find the Pair II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "synonyms-49",
+    "name": "Word Match II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "synonyms-50",
+    "name": "Master of Words II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "synonyms-51",
+    "name": "Same Word II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "synonyms-52",
+    "name": "Opposite Word II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "synonyms-53",
+    "name": "Word Twins II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "synonyms-54",
+    "name": "Big & Large II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "synonyms-55",
+    "name": "Hot & Cold II",
+    "generator": "synonyms",
+    "params": {
+      "types": [
+        "synonym",
+        "antonym"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

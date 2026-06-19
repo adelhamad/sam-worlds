@@ -1,0 +1,776 @@
+[
+  {
+    "id": "riddles-01",
+    "name": "What Am I",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Crack the riddles!",
+      "Tap the answer."
+    ]
+  },
+  {
+    "id": "riddles-02",
+    "name": "Tricky Clues",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "riddles-03",
+    "name": "What Has",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "riddles-04",
+    "name": "Brain Teaser",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "riddles-05",
+    "name": "Think Hard",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "riddles-06",
+    "name": "Mystery Object",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "riddles-07",
+    "name": "Riddle Me",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "riddles-08",
+    "name": "Clever Clues",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "riddles-09",
+    "name": "Puzzle Pro",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "riddles-10",
+    "name": "Master of Riddles",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "riddles-11",
+    "name": "What Am I II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "riddles-12",
+    "name": "Tricky Clues II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "riddles-13",
+    "name": "What Has II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "riddles-14",
+    "name": "Brain Teaser II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "riddles-15",
+    "name": "Think Hard II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "riddles-16",
+    "name": "Mystery Object II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "riddles-17",
+    "name": "Riddle Me II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "riddles-18",
+    "name": "Clever Clues II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "riddles-19",
+    "name": "Puzzle Pro II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "riddles-20",
+    "name": "Master of Riddles II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "riddles-21",
+    "name": "What Am I II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "riddles-22",
+    "name": "Tricky Clues II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "riddles-23",
+    "name": "What Has II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "riddles-24",
+    "name": "Brain Teaser II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "riddles-25",
+    "name": "Think Hard II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "riddles-26",
+    "name": "Mystery Object II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "riddles-27",
+    "name": "Riddle Me II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "riddles-28",
+    "name": "Clever Clues II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "riddles-29",
+    "name": "Puzzle Pro II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "riddles-30",
+    "name": "Master of Riddles II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "riddles-31",
+    "name": "What Am I II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "riddles-32",
+    "name": "Tricky Clues II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "riddles-33",
+    "name": "What Has II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "riddles-34",
+    "name": "Brain Teaser II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "riddles-35",
+    "name": "Think Hard II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "riddles-36",
+    "name": "Mystery Object II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "riddles-37",
+    "name": "Riddle Me II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "riddles-38",
+    "name": "Clever Clues II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "riddles-39",
+    "name": "Puzzle Pro II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "riddles-40",
+    "name": "Master of Riddles II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "riddles-41",
+    "name": "What Am I II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "riddles-42",
+    "name": "Tricky Clues II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "riddles-43",
+    "name": "What Has II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "riddles-44",
+    "name": "Brain Teaser II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "riddles-45",
+    "name": "Think Hard II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "riddles-46",
+    "name": "Mystery Object II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "riddles-47",
+    "name": "Riddle Me II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "riddles-48",
+    "name": "Clever Clues II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "riddles-49",
+    "name": "Puzzle Pro II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "riddles-50",
+    "name": "Master of Riddles II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "riddles-51",
+    "name": "What Am I II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "riddles-52",
+    "name": "Tricky Clues II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "riddles-53",
+    "name": "What Has II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "riddles-54",
+    "name": "Brain Teaser II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "riddles-55",
+    "name": "Think Hard II",
+    "generator": "riddles",
+    "params": {
+      "types": [
+        "riddle",
+        "whathas"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

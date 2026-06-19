@@ -1,0 +1,776 @@
+[
+  {
+    "id": "landforms-01",
+    "name": "Tall Mountain",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Explore the Earth!",
+      "Tap the answer."
+    ]
+  },
+  {
+    "id": "landforms-02",
+    "name": "Flowing River",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "landforms-03",
+    "name": "Lonely Island",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "landforms-04",
+    "name": "Dry Desert",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "landforms-05",
+    "name": "Erupting Volcano",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "landforms-06",
+    "name": "Deep Valley",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "landforms-07",
+    "name": "Sandy Beach",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "landforms-08",
+    "name": "Land & Water",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "landforms-09",
+    "name": "Landform Match",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "landforms-10",
+    "name": "Master of Landforms",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "landforms-11",
+    "name": "Tall Mountain II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "landforms-12",
+    "name": "Flowing River II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "landforms-13",
+    "name": "Lonely Island II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "landforms-14",
+    "name": "Dry Desert II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "landforms-15",
+    "name": "Erupting Volcano II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "landforms-16",
+    "name": "Deep Valley II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "landforms-17",
+    "name": "Sandy Beach II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "landforms-18",
+    "name": "Land & Water II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "landforms-19",
+    "name": "Landform Match II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "landforms-20",
+    "name": "Master of Landforms II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "landforms-21",
+    "name": "Tall Mountain II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "landforms-22",
+    "name": "Flowing River II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "landforms-23",
+    "name": "Lonely Island II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "landforms-24",
+    "name": "Dry Desert II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "landforms-25",
+    "name": "Erupting Volcano II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "landforms-26",
+    "name": "Deep Valley II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "landforms-27",
+    "name": "Sandy Beach II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "landforms-28",
+    "name": "Land & Water II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "landforms-29",
+    "name": "Landform Match II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "landforms-30",
+    "name": "Master of Landforms II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "landforms-31",
+    "name": "Tall Mountain II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "landforms-32",
+    "name": "Flowing River II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "landforms-33",
+    "name": "Lonely Island II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "landforms-34",
+    "name": "Dry Desert II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "landforms-35",
+    "name": "Erupting Volcano II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "landforms-36",
+    "name": "Deep Valley II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "landforms-37",
+    "name": "Sandy Beach II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "landforms-38",
+    "name": "Land & Water II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "landforms-39",
+    "name": "Landform Match II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "landforms-40",
+    "name": "Master of Landforms II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "landforms-41",
+    "name": "Tall Mountain II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "landforms-42",
+    "name": "Flowing River II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "landforms-43",
+    "name": "Lonely Island II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "landforms-44",
+    "name": "Dry Desert II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "landforms-45",
+    "name": "Erupting Volcano II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "landforms-46",
+    "name": "Deep Valley II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "landforms-47",
+    "name": "Sandy Beach II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "landforms-48",
+    "name": "Land & Water II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "landforms-49",
+    "name": "Landform Match II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "landforms-50",
+    "name": "Master of Landforms II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "landforms-51",
+    "name": "Tall Mountain II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "landforms-52",
+    "name": "Flowing River II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "landforms-53",
+    "name": "Lonely Island II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "landforms-54",
+    "name": "Dry Desert II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "landforms-55",
+    "name": "Erupting Volcano II",
+    "generator": "landforms",
+    "params": {
+      "types": [
+        "identify",
+        "desc"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

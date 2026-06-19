@@ -1,0 +1,813 @@
+[
+  {
+    "id": "pets-01",
+    "name": "Furry Friends",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Care for pets!",
+      "Tap the answer."
+    ]
+  },
+  {
+    "id": "pets-02",
+    "name": "Care for Pets",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26
+  },
+  {
+    "id": "pets-03",
+    "name": "Good Pets",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 29
+  },
+  {
+    "id": "pets-04",
+    "name": "Feed & Water",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 31
+  },
+  {
+    "id": "pets-05",
+    "name": "Pet or Wild",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34
+  },
+  {
+    "id": "pets-06",
+    "name": "Be Kind",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36
+  },
+  {
+    "id": "pets-07",
+    "name": "Pet Needs",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 39
+  },
+  {
+    "id": "pets-08",
+    "name": "Vet Visit",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 41
+  },
+  {
+    "id": "pets-09",
+    "name": "Happy Pets",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 44
+  },
+  {
+    "id": "pets-10",
+    "name": "Master of Pets",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 46
+  },
+  {
+    "id": "pets-11",
+    "name": "Furry Friends II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 48
+  },
+  {
+    "id": "pets-12",
+    "name": "Care for Pets II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 51
+  },
+  {
+    "id": "pets-13",
+    "name": "Good Pets II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 53
+  },
+  {
+    "id": "pets-14",
+    "name": "Feed & Water II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 56
+  },
+  {
+    "id": "pets-15",
+    "name": "Pet or Wild II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 58
+  },
+  {
+    "id": "pets-16",
+    "name": "Be Kind II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 61
+  },
+  {
+    "id": "pets-17",
+    "name": "Pet Needs II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 63
+  },
+  {
+    "id": "pets-18",
+    "name": "Vet Visit II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 66
+  },
+  {
+    "id": "pets-19",
+    "name": "Happy Pets II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 68
+  },
+  {
+    "id": "pets-20",
+    "name": "Master of Pets II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 71
+  },
+  {
+    "id": "pets-21",
+    "name": "Furry Friends II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 73
+  },
+  {
+    "id": "pets-22",
+    "name": "Care for Pets II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 75
+  },
+  {
+    "id": "pets-23",
+    "name": "Good Pets II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 78
+  },
+  {
+    "id": "pets-24",
+    "name": "Feed & Water II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 80
+  },
+  {
+    "id": "pets-25",
+    "name": "Pet or Wild II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 83
+  },
+  {
+    "id": "pets-26",
+    "name": "Be Kind II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 85
+  },
+  {
+    "id": "pets-27",
+    "name": "Pet Needs II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 88
+  },
+  {
+    "id": "pets-28",
+    "name": "Vet Visit II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 90
+  },
+  {
+    "id": "pets-29",
+    "name": "Happy Pets II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 93
+  },
+  {
+    "id": "pets-30",
+    "name": "Master of Pets II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 95
+  },
+  {
+    "id": "pets-31",
+    "name": "Furry Friends II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 98
+  },
+  {
+    "id": "pets-32",
+    "name": "Care for Pets II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 100
+  },
+  {
+    "id": "pets-33",
+    "name": "Good Pets II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 102
+  },
+  {
+    "id": "pets-34",
+    "name": "Feed & Water II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 105
+  },
+  {
+    "id": "pets-35",
+    "name": "Pet or Wild II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 107
+  },
+  {
+    "id": "pets-36",
+    "name": "Be Kind II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 110
+  },
+  {
+    "id": "pets-37",
+    "name": "Pet Needs II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 112
+  },
+  {
+    "id": "pets-38",
+    "name": "Vet Visit II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 115
+  },
+  {
+    "id": "pets-39",
+    "name": "Happy Pets II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 117
+  },
+  {
+    "id": "pets-40",
+    "name": "Master of Pets II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 120
+  },
+  {
+    "id": "pets-41",
+    "name": "Furry Friends II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 122
+  },
+  {
+    "id": "pets-42",
+    "name": "Care for Pets II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 124
+  },
+  {
+    "id": "pets-43",
+    "name": "Good Pets II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 127
+  },
+  {
+    "id": "pets-44",
+    "name": "Feed & Water II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 7,
+    "mechanic": "gate-run",
+    "payout": 129
+  },
+  {
+    "id": "pets-45",
+    "name": "Pet or Wild II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 132
+  },
+  {
+    "id": "pets-46",
+    "name": "Be Kind II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 134
+  },
+  {
+    "id": "pets-47",
+    "name": "Pet Needs II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 137
+  },
+  {
+    "id": "pets-48",
+    "name": "Vet Visit II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 139
+  },
+  {
+    "id": "pets-49",
+    "name": "Happy Pets II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 142
+  },
+  {
+    "id": "pets-50",
+    "name": "Master of Pets II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 144
+  },
+  {
+    "id": "pets-51",
+    "name": "Furry Friends II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 146
+  },
+  {
+    "id": "pets-52",
+    "name": "Care for Pets II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 149
+  },
+  {
+    "id": "pets-53",
+    "name": "Good Pets II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 151
+  },
+  {
+    "id": "pets-54",
+    "name": "Feed & Water II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 154
+  },
+  {
+    "id": "pets-55",
+    "name": "Pet or Wild II",
+    "generator": "pets",
+    "params": {
+      "types": [
+        "care",
+        "goodpet",
+        "match"
+      ]
+    },
+    "questions": 8,
+    "mechanic": "gate-run",
+    "payout": 156
+  }
+]

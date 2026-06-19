@@ -51,6 +51,26 @@ import { generateMoneySmarts, type MoneySmartsParams } from "./moneysmarts";
 import { generateBugs, type BugsParams } from "./bugs";
 import { generateMachines, type MachinesParams } from "./machines";
 import { generatePatterns, type PatternsParams } from "./patterns";
+import { generateSynonyms, type SynonymsParams } from "./synonyms";
+import { generatePunctuation, type PunctuationParams } from "./punctuation";
+import { generateStory, type StoryParams } from "./story";
+import { generateCompare, type CompareParams } from "./compare";
+import { generateData, type DataParams } from "./data";
+import { generateRoman, type RomanParams } from "./roman";
+import { generateRocks, type RocksParams } from "./rocks";
+import { generateHabitats, type HabitatsParams } from "./habitats";
+import { generateTown, type TownParams } from "./town";
+import { generateInstruments, type InstrumentsParams } from "./instruments";
+import { generateLandforms, type LandformsParams } from "./landforms";
+import { generateChef, type ChefParams } from "./chef";
+import { generateRiddles, type RiddlesParams } from "./riddles";
+import { generateSports, type SportsParams } from "./sports";
+import { generateCompounds, type CompoundsParams } from "./compounds";
+import { generateBirds, type BirdsParams } from "./birds";
+import { generateThenNow, type ThenNowParams } from "./thennow";
+import { generateOrdinals, type OrdinalsParams } from "./ordinals";
+import { generateFamily, type FamilyParams } from "./family";
+import { generatePets, type PetsParams } from "./pets";
 import type { GenContext, GeneratorParams, Question } from "./types";
 
 export type GeneratorId =
@@ -105,7 +125,27 @@ export type GeneratorId =
   | "moneysmarts"
   | "bugs"
   | "machines"
-  | "patterns";
+  | "patterns"
+  | "synonyms"
+  | "punctuation"
+  | "story"
+  | "compare"
+  | "data"
+  | "roman"
+  | "rocks"
+  | "habitats"
+  | "town"
+  | "instruments"
+  | "landforms"
+  | "chef"
+  | "riddles"
+  | "sports"
+  | "compounds"
+  | "birds"
+  | "thennow"
+  | "ordinals"
+  | "family"
+  | "pets";
 
 /** Generator registry — one entry per id (params are cast per generator). */
 type GenFn = (params: GeneratorParams, rng: () => number, ctx: GenContext) => Question;
@@ -165,6 +205,26 @@ const GENERATORS: Record<GeneratorId, GenFn> = {
   bugs: cast<BugsParams>(generateBugs),
   machines: cast<MachinesParams>(generateMachines),
   patterns: cast<PatternsParams>(generatePatterns),
+  synonyms: cast<SynonymsParams>(generateSynonyms),
+  punctuation: cast<PunctuationParams>(generatePunctuation),
+  story: cast<StoryParams>(generateStory),
+  compare: cast<CompareParams>(generateCompare),
+  data: cast<DataParams>(generateData),
+  roman: cast<RomanParams>(generateRoman),
+  rocks: cast<RocksParams>(generateRocks),
+  habitats: cast<HabitatsParams>(generateHabitats),
+  town: cast<TownParams>(generateTown),
+  instruments: cast<InstrumentsParams>(generateInstruments),
+  landforms: cast<LandformsParams>(generateLandforms),
+  chef: cast<ChefParams>(generateChef),
+  riddles: cast<RiddlesParams>(generateRiddles),
+  sports: cast<SportsParams>(generateSports),
+  compounds: cast<CompoundsParams>(generateCompounds),
+  birds: cast<BirdsParams>(generateBirds),
+  thennow: cast<ThenNowParams>(generateThenNow),
+  ordinals: cast<OrdinalsParams>(generateOrdinals),
+  family: cast<FamilyParams>(generateFamily),
+  pets: cast<PetsParams>(generatePets),
 };
 
 function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, ctx: GenContext): Question {
