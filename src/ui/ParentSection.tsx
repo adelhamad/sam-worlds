@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { useGame } from "../state/store";
 import { completedInWorld, WORLDS } from "../content/worlds";
@@ -118,6 +118,30 @@ function TiltControls() {
   );
 }
 
+/** A panel whose body can be folded away — keeps the long Parent Section tidy. */
+function Collapsible({ title, subtitle, children, defaultOpen = false }: {
+  title: string;
+  subtitle?: string;
+  children: ReactNode;
+  defaultOpen?: boolean;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <section className="panel parent-block">
+      <button className="parent-collapse" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+        <h2>{title}</h2>
+        <span className="parent-collapse-icon">{open ? "▾" : "▸"}</span>
+      </button>
+      {open && (
+        <div className="parent-collapse-body">
+          {subtitle && <p className="dim">{subtitle}</p>}
+          {children}
+        </div>
+      )}
+    </section>
+  );
+}
+
 /** YouTube companion: curated videos that play during the game to draw him in. */
 function VideoControls() {
   const enabled = useGame((s) => s.videoEnabled);
@@ -128,63 +152,72 @@ function VideoControls() {
   const addUrl = useGame((s) => s.addVideoUrl);
   const removeUrl = useGame((s) => s.removeVideoUrl);
   const [input, setInput] = useState("");
-  const valid = youTubeId(input) !== null;
+  const pid = youTubeId(input);
+  const typed = input.trim().length > 0;
+  const thumb = (vid: string) => `https://img.youtube.com/vi/${vid}/mqdefault.jpg`;
+
+  function add() {
+    if (!pid) return;
+    addUrl(input);
+    setInput("");
+  }
+
+  let preview: ReactNode = null;
+  if (pid) {
+    preview = (
+      <div className="video-preview">
+        <img className="video-thumb" src={thumb(pid)} alt="video preview" />
+        <button className="btn btn-primary" onClick={add}>➕ Add this video</button>
+      </div>
+    );
+  } else if (typed) {
+    preview = <p className="shop-note">Hmm, that doesn't look like a YouTube link yet.</p>;
+  }
 
   return (
-    <section className="panel parent-block">
-      <h2>📺 Video companion</h2>
-      <p className="dim">
-        Plays his favorite YouTube videos in a small movable corner player during the game, to
-        slowly pull his attention into playing. He can drag it but can't open YouTube.
-      </p>
+    <Collapsible
+      title="📺 Video companion"
+      subtitle="Plays his favorite YouTube videos in a small movable corner player during the game, to gently pull his attention into playing. He can drag it but can't open YouTube."
+    >
       <div className="parent-row">
         <button className={`btn ${enabled ? "btn-primary" : "btn-secondary"}`} onClick={() => setEnabled(!enabled)}>
-          {enabled ? "✅ On" : "⬜ Off"}
+          {enabled ? "✅ Companion on" : "⬜ Companion off"}
         </button>
+        <span className="parent-world-name">Visibility {opacity}%</span>
+        <input type="range" min={20} max={100} step={5} value={opacity} onChange={(e) => setOpacity(Number(e.target.value))} />
       </div>
-      <div className="parent-row">
-        <span className="parent-world-name">Visibility: {opacity}%</span>
+
+      <div className="video-add">
+        <label className="dim">Add a video — paste a YouTube link, then tap Add:</label>
         <input
-          type="range"
-          min={20}
-          max={100}
-          step={5}
-          value={opacity}
-          onChange={(e) => setOpacity(Number(e.target.value))}
-        />
-      </div>
-      <div className="parent-row">
-        <input
-          className="parent-input"
-          placeholder="Paste a YouTube link…"
+          className="parent-input video-input"
+          placeholder="youtube.com/watch?v=…   or   youtu.be/…"
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && add()}
+          autoComplete="off"
         />
-        <button
-          className={`btn ${valid ? "btn-primary" : "btn-disabled"}`}
-          onClick={() => {
-            if (valid) {
-              addUrl(input);
-              setInput("");
-            }
-          }}
-        >
-          Add
-        </button>
+        {preview}
       </div>
+
       {urls.length === 0 ? (
-        <p className="dim">No videos yet.</p>
+        <p className="dim">No videos added yet.</p>
       ) : (
-        urls.map((u) => (
-          <div key={u} className="parent-row parent-history-row">
-            <span className="video-url">{u}</span>
-            <button className="btn btn-secondary" onClick={() => removeUrl(u)}>
-              ✕
-            </button>
-          </div>
-        ))
+        <div className="video-grid">
+          {urls.map((u) => {
+            const vid = youTubeId(u);
+            return (
+              <div key={u} className="video-card">
+                {vid && <img className="video-thumb" src={thumb(vid)} alt="saved video" />}
+                <button className="btn btn-danger video-remove" aria-label="remove video" onClick={() => removeUrl(u)}>
+                  ✕
+                </button>
+              </div>
+            );
+          })}
+        </div>
       )}
-    </section>
+    </Collapsible>
   );
 }
 
@@ -198,12 +231,10 @@ function AccessControls() {
   const hiddenCount = WORLDS.filter((w) => hiddenWorlds[w.id]).length;
 
   return (
-    <section className="panel parent-block">
-      <h2>🌍 Worlds</h2>
-      <p className="dim">
-        Hide worlds to declutter Sam's base (all are shown by default). A locked world stays
-        visible but can't be opened.
-      </p>
+    <Collapsible
+      title={`🌍 Worlds (${WORLDS.length})`}
+      subtitle="Hide worlds to declutter Sam's base (all are shown by default). A locked world stays visible but can't be opened."
+    >
       {hiddenCount > 0 && (
         <div className="parent-row">
           <span className="parent-world-name">
@@ -239,7 +270,7 @@ function AccessControls() {
           </div>
         );
       })}
-    </section>
+    </Collapsible>
   );
 }
 
@@ -362,9 +393,10 @@ function ParentControls() {
         </div>
       </section>
 
-      <section className="panel parent-block">
-        <h2>🌍 World progress</h2>
-        <p className="dim">Set how many levels count as completed — e.g. roll him back from 20 to 10.</p>
+      <Collapsible
+        title={`📈 World progress (${WORLDS.length})`}
+        subtitle="Set how many levels count as completed — e.g. roll him back from 20 to 10."
+      >
         {WORLDS.map((w) => {
           const done = completedInWorld(w, progress);
           const value = worldInputs[w.id] ?? String(done);
@@ -394,7 +426,7 @@ function ParentControls() {
             </div>
           );
         })}
-      </section>
+      </Collapsible>
 
       <AccessControls />
 

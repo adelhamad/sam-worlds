@@ -2255,3 +2255,52 @@ body {
   100% { transform: translateY(-14px); opacity: 0; }
 }
 .stage-pet-goal { color: var(--cyan); font-size: 0.78rem; font-weight: 600; }
+
+/* ── Parent: collapsible sections ───────────────────────────────────── */
+.parent-collapse {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+  text-align: left;
+}
+.parent-collapse h2 { margin: 0; }
+.parent-collapse-icon { font-size: 1.1rem; color: var(--text-dim); padding-left: 10px; }
+.parent-collapse-body { margin-top: 12px; }
+
+/* ── Parent: video companion add UI ─────────────────────────────────── */
+.video-add { margin: 12px 0; display: flex; flex-direction: column; gap: 8px; }
+.video-input { width: 100%; }
+.video-preview { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.video-thumb {
+  width: 120px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid var(--panel-edge);
+  background: var(--night-deep);
+}
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+.video-card { position: relative; }
+.video-card .video-thumb { width: 100%; }
+.video-remove {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 30px;
+  height: 30px;
+  min-width: 0;
+  padding: 0;
+  border-radius: 999px;
+  line-height: 1;
+}
