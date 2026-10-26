@@ -24,6 +24,7 @@ import { ChoiceButtons } from "../../ui/inputs/ChoiceButtons";
 import { TraceCanvas } from "../../ui/inputs/TraceCanvas";
 import { StagePet } from "../../ui/PetCompanion";
 import { GeoMap } from "../../ui/GeoMap";
+import { StatCompare, type StatPair } from "../../ui/StatCompare";
 import { VideoToggle } from "../../ui/VideoToggle";
 import { CircuitDiagram } from "../../ui/inputs/CircuitDiagram";
 import type { Node as CircuitNode } from "../../engine/generators/logicCircuit";
@@ -362,7 +363,7 @@ interface QuestionCardProps {
 function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onReveal, canAffordReveal }: QuestionCardProps) {
   const missLocked = busy && session.lastAnswer === "wrong";
   return (
-    <div className={`question-card panel ${interactive ? "q-wide" : ""}`}>
+    <div className={`question-card panel ${interactive ? "q-wide" : ""} ${q.payload?.statNote ? "q-stat" : ""}`}>
       <div className="q-progress">
         {STR.question(session.index + 1, session.questions.length)}
         <StagePet correctCount={session.correctCount} />
@@ -373,10 +374,7 @@ function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onRevea
           {STR.lookExample} <b>{session.workedExample}</b>
         </div>
       )}
-      {typeof q.payload?.bigSymbol === "string" && <div className="big-symbol">{q.payload.bigSymbol}</div>}
-      {typeof q.payload?.mapCode === "string" && (
-        <GeoMap code={q.payload.mapCode} style={q.payload.mapStyle as "outline" | "pin" | "world"} />
-      )}
+      <GeoStatMedia q={q} />
       {q.payload?.tree && q.inputMode !== "toggle" ? (
         <CircuitDiagram tree={q.payload.tree as CircuitNode} lamp="unknown" />
       ) : null}
@@ -409,6 +407,19 @@ function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onRevea
         </button>
       )}
     </div>
+  );
+}
+
+function GeoStatMedia({ q }: { q: Question }) {
+  return (
+    <>
+      {typeof q.payload?.bigSymbol === "string" && <div className="big-symbol">{q.payload.bigSymbol}</div>}
+      {typeof q.payload?.mapCode === "string" && (
+        <GeoMap code={q.payload.mapCode} style={q.payload.mapStyle as "outline" | "pin" | "world"} />
+      )}
+      {q.payload?.statPair && <StatCompare pair={q.payload.statPair as unknown as StatPair} />}
+      {typeof q.payload?.statNote === "string" && <div className="stat-note">{q.payload.statNote}</div>}
+    </>
   );
 }
 

@@ -1,0 +1,1322 @@
+[
+  {
+    "id": "areaatlas-01",
+    "name": "Area Launch",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "ARE:estimate",
+        "SAU:estimate",
+        "EGY:estimate",
+        "FRA:estimate",
+        "JPN:estimate",
+        "USA:estimate",
+        "BRA:estimate",
+        "AUS:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Read a country's land area.",
+      "Pick the closest size!"
+    ]
+  },
+  {
+    "id": "areaatlas-02",
+    "name": "Measure 2",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "LUX:estimate",
+        "TTO:estimate",
+        "BRN:estimate",
+        "BHS:estimate",
+        "GMB:estimate",
+        "LBN:estimate",
+        "JAM:estimate",
+        "QAT:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Read a country's land area.",
+      "Pick the closest size!"
+    ]
+  },
+  {
+    "id": "areaatlas-03",
+    "name": "Measure 3",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "VUT:estimate",
+        "MNE:estimate",
+        "TLS:estimate",
+        "KWT:estimate",
+        "FJI:estimate",
+        "SVN:estimate",
+        "SLV:estimate",
+        "BLZ:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Read a country's land area.",
+      "Pick the closest size!"
+    ]
+  },
+  {
+    "id": "areaatlas-04",
+    "name": "Measure 4",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "DJI:estimate",
+        "RWA:estimate",
+        "MKD:estimate",
+        "ALB:estimate",
+        "HTI:estimate",
+        "SLB:estimate",
+        "GNQ:estimate",
+        "GNB:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Read a country's land area.",
+      "Pick the closest size!"
+    ]
+  },
+  {
+    "id": "areaatlas-05",
+    "name": "Measure 5",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "ARM:estimate",
+        "LSO:estimate",
+        "BEL:estimate",
+        "MDA:estimate",
+        "BTN:estimate",
+        "CHE:estimate",
+        "DNK:estimate",
+        "EST:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Read a country's land area.",
+      "Pick the closest size!"
+    ]
+  },
+  {
+    "id": "areaatlas-06",
+    "name": "Measure 6",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "SVK:estimate",
+        "DOM:estimate",
+        "CRI:estimate",
+        "BIH:estimate",
+        "TGO:estimate",
+        "HRV:estimate",
+        "LVA:estimate",
+        "LTU:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Read a country's land area.",
+      "Pick the closest size!"
+    ]
+  },
+  {
+    "id": "areaatlas-07",
+    "name": "Measure 7",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "IRL:estimate",
+        "GEO:estimate",
+        "SLE:estimate",
+        "PAN:estimate",
+        "CZE:estimate",
+        "AUT:estimate",
+        "AZE:estimate",
+        "SRB:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Read a country's land area.",
+      "Pick the closest size!"
+    ]
+  },
+  {
+    "id": "areaatlas-08",
+    "name": "Measure 8",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "JOR:estimate",
+        "HUN:estimate",
+        "PRT:estimate",
+        "MWI:estimate",
+        "LBR:estimate",
+        "KOR:estimate",
+        "ISL:estimate",
+        "CUB:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Read a country's land area.",
+      "Pick the closest size!"
+    ]
+  },
+  {
+    "id": "areaatlas-09",
+    "name": "Measure 9",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "GTM:estimate",
+        "BGR:estimate",
+        "HND:estimate",
+        "NIC:estimate",
+        "PRK:estimate",
+        "ERI:estimate",
+        "GRC:estimate",
+        "BGD:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Read a country's land area.",
+      "Pick the closest size!"
+    ]
+  },
+  {
+    "id": "areaatlas-10",
+    "name": "Measure 10",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "TJK:estimate",
+        "NPL:estimate",
+        "TUN:estimate",
+        "SUR:estimate",
+        "URY:estimate",
+        "KHM:estimate",
+        "SYR:estimate",
+        "KGZ:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Read a country's land area.",
+      "Pick the closest size!"
+    ]
+  },
+  {
+    "id": "areaatlas-11",
+    "name": "Measure 11",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "SEN:estimate",
+        "UGA:estimate",
+        "BLR:estimate",
+        "GUY:estimate",
+        "GHA:estimate",
+        "ROU:estimate",
+        "LAO:estimate",
+        "GBR:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Read a country's land area.",
+      "Pick the closest size!"
+    ]
+  },
+  {
+    "id": "areaatlas-12",
+    "name": "Measure 12",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "GIN:estimate",
+        "ECU:estimate",
+        "GAB:estimate",
+        "NZL:estimate",
+        "BFA:estimate",
+        "ITA:estimate",
+        "PHL:estimate",
+        "FIN:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Read a country's land area.",
+      "Pick the closest size!"
+    ]
+  },
+  {
+    "id": "areaatlas-13",
+    "name": "Measure 13",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "POL:estimate",
+        "OMN:estimate",
+        "VNM:estimate",
+        "COG:estimate",
+        "DEU:estimate",
+        "NOR:estimate",
+        "ZWE:estimate",
+        "PRY:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Read a country's land area.",
+      "Pick the closest size!"
+    ]
+  },
+  {
+    "id": "areaatlas-14",
+    "name": "Measure 14",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "SWE:estimate",
+        "IRQ:estimate",
+        "UZB:estimate",
+        "MAR:estimate",
+        "PNG:estimate",
+        "TKM:estimate",
+        "CMR:estimate",
+        "ESP:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Read a country's land area.",
+      "Pick the closest size!"
+    ]
+  },
+  {
+    "id": "areaatlas-15",
+    "name": "Measure 15",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "THA:estimate",
+        "YEM:estimate",
+        "BWA:estimate",
+        "UKR:estimate",
+        "KEN:estimate",
+        "MDG:estimate",
+        "CAF:estimate",
+        "SOM:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Read a country's land area.",
+      "Pick the closest size!"
+    ]
+  },
+  {
+    "id": "areaatlas-16",
+    "name": "Measure 16",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "AFG:estimate",
+        "CHL:estimate",
+        "ZMB:estimate",
+        "PAK:estimate",
+        "MOZ:estimate",
+        "NAM:estimate",
+        "VEN:estimate",
+        "NGA:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Read a country's land area.",
+      "Pick the closest size!"
+    ]
+  },
+  {
+    "id": "areaatlas-17",
+    "name": "Measure 17",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "MRT:estimate",
+        "COL:estimate",
+        "ETH:estimate",
+        "MLI:estimate",
+        "AGO:estimate",
+        "TCD:estimate",
+        "NER:estimate",
+        "PER:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Read a country's land area.",
+      "Pick the closest size!"
+    ]
+  },
+  {
+    "id": "areaatlas-18",
+    "name": "Measure 18",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "MNG:estimate",
+        "IRN:estimate",
+        "LBY:estimate",
+        "SDN:estimate",
+        "MEX:estimate",
+        "COD:estimate",
+        "DZA:estimate",
+        "KAZ:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Read a country's land area.",
+      "Pick the closest size!"
+    ]
+  },
+  {
+    "id": "areaatlas-19",
+    "name": "2\u00d7 Land 1",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "SWE:SYR:ratio2",
+        "BTN:GEO:ratio2",
+        "UKR:VNM:ratio2",
+        "BIH:PRT:ratio2",
+        "GHA:GTM:ratio2",
+        "FIN:TUN:ratio2",
+        "EGY:FRA:ratio2",
+        "HRV:ERI:ratio2"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-20",
+    "name": "2\u00d7 Land 2",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "FIN:KEN:ratio2",
+        "GAB:ESP:ratio2",
+        "BRN:LBN:ratio2",
+        "BIH:RWA:ratio2",
+        "MOZ:NOR:ratio2",
+        "HRV:CUB:ratio2",
+        "PAN:TJK:ratio2",
+        "DOM:SRB:ratio2"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-21",
+    "name": "2\u00d7 Land 3",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "BLR:SWE:ratio2",
+        "AFG:TCD:ratio2",
+        "GAB:GRC:ratio2",
+        "BGR:KGZ:ratio2",
+        "NAM:PRY:ratio2",
+        "AUT:SUR:ratio2",
+        "SLV:CHE:ratio2",
+        "BIH:MKD:ratio2"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-22",
+    "name": "2\u00d7 Land 4",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "ITA:YEM:ratio2",
+        "DNK:JOR:ratio2",
+        "HUN:SEN:ratio2",
+        "ROU:UZB:ratio2",
+        "ARG:PER:ratio2",
+        "GAB:THA:ratio2",
+        "GIN:TKM:ratio2",
+        "ETH:UKR:ratio2"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-23",
+    "name": "2\u00d7 Land 5",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "JPN:URY:ratio2",
+        "GHA:ESP:ratio2",
+        "BGD:GEO:ratio2",
+        "KGZ:COG:ratio2",
+        "FRA:PHL:ratio2",
+        "MDG:OMN:ratio2",
+        "MKD:QAT:ratio2",
+        "GTM:KGZ:ratio2"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-24",
+    "name": "2\u00d7 Land 6",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "LVA:LSO:ratio2",
+        "GIN:NIC:ratio2",
+        "BWA:NER:ratio2",
+        "COG:TUN:ratio2",
+        "SLB:TGO:ratio2",
+        "GUY:MWI:ratio2",
+        "COL:UKR:ratio2",
+        "CMR:GIN:ratio2"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-25",
+    "name": "2\u00d7 Land 7",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "LAO:SWE:ratio2",
+        "KHM:HUN:ratio2",
+        "UZB:VEN:ratio2",
+        "GRC:LAO:ratio2",
+        "BEL:TLS:ratio2",
+        "PNG:VEN:ratio2",
+        "LTU:TJK:ratio2",
+        "LAO:PNG:ratio2"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-26",
+    "name": "2\u00d7 Land 8",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "SWE:ZMB:ratio2",
+        "BIH:CUB:ratio2",
+        "BLR:GTM:ratio2",
+        "ROU:TKM:ratio2",
+        "KHM:PRT:ratio2",
+        "AGO:KAZ:ratio2",
+        "GIN:YEM:ratio2",
+        "BLZ:SVK:ratio2"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-27",
+    "name": "2\u00d7 Land 9",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "COD:MLI:ratio2",
+        "POL:UKR:ratio2",
+        "HND:ROU:ratio2",
+        "GMB:TTO:ratio2",
+        "NIC:ROU:ratio2",
+        "JPN:MOZ:ratio2",
+        "ALB:CRI:ratio2",
+        "CAF:FIN:ratio2"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-28",
+    "name": "3\u00d7 Land 1",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "HND:VNM:ratio3",
+        "LBR:PHL:ratio3",
+        "KHM:HRV:ratio3",
+        "POL:KOR:ratio3",
+        "HUN:NZL:ratio3",
+        "CZE:SLB:ratio3",
+        "JOR:NZL:ratio3",
+        "FRA:IRN:ratio3"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-29",
+    "name": "3\u00d7 Land 2",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "NER:TKM:ratio3",
+        "BGD:SWE:ratio3",
+        "CAF:SDN:ratio3",
+        "GUY:MDG:ratio3",
+        "GTM:VNM:ratio3",
+        "ETH:JPN:ratio3",
+        "SLV:LTU:ratio3",
+        "FIN:HUN:ratio3"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-30",
+    "name": "3\u00d7 Land 3",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "EST:GRC:ratio3",
+        "CHL:GIN:ratio3",
+        "HND:JPN:ratio3",
+        "NAM:POL:ratio3",
+        "EST:NIC:ratio3",
+        "ISL:ITA:ratio3",
+        "ECU:ZMB:ratio3",
+        "BGD:PRY:ratio3"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-31",
+    "name": "3\u00d7 Land 4",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "NIC:NOR:ratio3",
+        "NZL:ZMB:ratio3",
+        "AUT:MKD:ratio3",
+        "GEO:SEN:ratio3",
+        "THA:URY:ratio3",
+        "ERI:CHE:ratio3",
+        "FJI:TGO:ratio3",
+        "MWI:MDA:ratio3"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-32",
+    "name": "3\u00d7 Land 5",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "LSO:MWI:ratio3",
+        "DZA:VEN:ratio3",
+        "SUR:UZB:ratio3",
+        "KEN:SDN:ratio3",
+        "GUY:IRL:ratio3",
+        "MWI:OMN:ratio3",
+        "NPL:SWE:ratio3",
+        "ITA:LBR:ratio3"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-33",
+    "name": "3\u00d7 Land 6",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "DZA:AUS:ratio3",
+        "CAF:GUY:ratio3",
+        "ARG:NAM:ratio3",
+        "CHE:VUT:ratio3",
+        "ALB:HUN:ratio3",
+        "FRA:UGA:ratio3",
+        "AUT:LSO:ratio3",
+        "KHM:FRA:ratio3"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-34",
+    "name": "3\u00d7 Land 7",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "FRA:LBY:ratio3",
+        "GRC:JPN:ratio3",
+        "COL:JPN:ratio3",
+        "AGO:MAR:ratio3",
+        "ARM:AUT:ratio3",
+        "PAN:RWA:ratio3",
+        "BLR:MDG:ratio3",
+        "BFA:MOZ:ratio3"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-35",
+    "name": "3\u00d7 Land 8",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "AUT:GNB:ratio3",
+        "GNB:MWI:ratio3",
+        "HND:ITA:ratio3",
+        "MNE:CHE:ratio3",
+        "MRT:NOR:ratio3",
+        "EGY:POL:ratio3",
+        "AZE:LSO:ratio3",
+        "JOR:SLB:ratio3"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-36",
+    "name": "3\u00d7 Land 9",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "TCD:UZB:ratio3",
+        "PNG:SUR:ratio3",
+        "PRT:GBR:ratio3",
+        "RWA:SLE:ratio3",
+        "CHL:GAB:ratio3",
+        "PER:UZB:ratio3",
+        "BGD:DNK:ratio3",
+        "UGA:ARE:ratio3"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-37",
+    "name": "5\u00d7 Land 1",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "DEU:SDN:ratio5",
+        "MKD:TTO:ratio5",
+        "BTN:KHM:ratio5",
+        "BWA:NIC:ratio5",
+        "KGZ:VEN:ratio5",
+        "HND:THA:ratio5",
+        "CUB:SVN:ratio5",
+        "KHM:CHE:ratio5"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-38",
+    "name": "5\u00d7 Land 2",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "FIN:IRN:ratio5",
+        "PNG:PRT:ratio5",
+        "EST:SEN:ratio5",
+        "HUN:IRQ:ratio5",
+        "NAM:URY:ratio5",
+        "HUN:TKM:ratio5",
+        "HRV:ITA:ratio5",
+        "CRI:QAT:ratio5"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-39",
+    "name": "5\u00d7 Land 3",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "NZL:TGO:ratio5",
+        "EST:ROU:ratio5",
+        "BHS:CRI:ratio5",
+        "GTM:KEN:ratio5",
+        "GRC:MDG:ratio5",
+        "TCD:LAO:ratio5",
+        "BLR:DNK:ratio5",
+        "TLS:ARE:ratio5"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-40",
+    "name": "5\u00d7 Land 4",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "NOR:SLE:ratio5",
+        "BGR:SVN:ratio5",
+        "DJI:HND:ratio5",
+        "BWA:IND:ratio5",
+        "BLR:CHE:ratio5",
+        "MWI:THA:ratio5",
+        "CUB:ESP:ratio5",
+        "MDA:SYR:ratio5"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-41",
+    "name": "5\u00d7 Land 5",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "LTU:MNE:ratio5",
+        "IRQ:JOR:ratio5",
+        "BHS:SVK:ratio5",
+        "IRN:NOR:ratio5",
+        "BGR:YEM:ratio5",
+        "GNQ:NPL:ratio5",
+        "GHA:MLI:ratio5",
+        "COD:PNG:ratio5"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-42",
+    "name": "5\u00d7 Land 6",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "FRA:HND:ratio5",
+        "PRY:SLE:ratio5",
+        "IRN:COG:ratio5",
+        "AUS:MNG:ratio5",
+        "LSO:SUR:ratio5",
+        "BIH:ROU:ratio5",
+        "ARM:TTO:ratio5",
+        "GUY:MRT:ratio5"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-43",
+    "name": "5\u00d7 Land 7",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "CZE:PRY:ratio5",
+        "JPN:SDN:ratio5",
+        "BGR:SLV:ratio5",
+        "AGO:GBR:ratio5",
+        "HND:SVN:ratio5",
+        "LVA:MNE:ratio5",
+        "ROU:SVK:ratio5",
+        "AFG:GRC:ratio5"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-44",
+    "name": "5\u00d7 Land 8",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "PRT:THA:ratio5",
+        "CMR:KOR:ratio5",
+        "BWA:PRK:ratio5",
+        "BRA:SDN:ratio5",
+        "HUN:KWT:ratio5",
+        "BHS:HRV:ratio5",
+        "HUN:PNG:ratio5",
+        "CAF:TJK:ratio5"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-45",
+    "name": "5\u00d7 Land 9",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "DZA:TKM:ratio5",
+        "CMR:LBR:ratio5",
+        "BLZ:HND:ratio5",
+        "NER:ROU:ratio5",
+        "AGO:GIN:ratio5",
+        "NIC:MKD:ratio5",
+        "LSO:TUN:ratio5",
+        "LBR:TKM:ratio5"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-46",
+    "name": "10\u00d7 Land 1",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "PRK:PER:ratio10",
+        "ECU:SLB:ratio10",
+        "COD:GHA:ratio10",
+        "ERI:QAT:ratio10",
+        "DZA:LAO:ratio10",
+        "BEL:BFA:ratio10",
+        "HRV:YEM:ratio10",
+        "AUS:PAK:ratio10"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-47",
+    "name": "10\u00d7 Land 2",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "DJI:ECU:ratio10",
+        "TGO:YEM:ratio10",
+        "SAU:SEN:ratio10",
+        "SRB:VEN:ratio10",
+        "AZE:MOZ:ratio10",
+        "PRK:VUT:ratio10",
+        "DJI:ROU:ratio10",
+        "CRI:TKM:ratio10"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-48",
+    "name": "10\u00d7 Land 3",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "LBR:MRT:ratio10",
+        "LBR:VEN:ratio10",
+        "ARM:POL:ratio10",
+        "ALB:GBR:ratio10",
+        "NER:TJK:ratio10",
+        "CHN:MRT:ratio10",
+        "DZA:GIN:ratio10",
+        "HTI:POL:ratio10"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-49",
+    "name": "10\u00d7 Land 4",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "GNB:OMN:ratio10",
+        "COL:ERI:ratio10",
+        "MEX:SEN:ratio10",
+        "ISL:MRT:ratio10",
+        "DOM:IRQ:ratio10",
+        "IND:OMN:ratio10",
+        "JOR:NAM:ratio10",
+        "EST:TKM:ratio10"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-50",
+    "name": "10\u00d7 Land 5",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "GNB:ITA:ratio10",
+        "BGR:ETH:ratio10",
+        "BRA:PAK:ratio10",
+        "MNE:NPL:ratio10",
+        "MLI:NIC:ratio10",
+        "COL:ISL:ratio10",
+        "COD:GIN:ratio10",
+        "COD:GUY:ratio10"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-51",
+    "name": "10\u00d7 Land 6",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "BGD:MNE:ratio10",
+        "AUS:ZMB:ratio10",
+        "NGA:USA:ratio10",
+        "DOM:PNG:ratio10",
+        "CUB:QAT:ratio10",
+        "DOM:YEM:ratio10",
+        "BHS:KOR:ratio10",
+        "CHL:PAN:ratio10"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-52",
+    "name": "10\u00d7 Land 7",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "DOM:TTO:ratio10",
+        "GNQ:VNM:ratio10",
+        "CHL:CZE:ratio10",
+        "DZA:GAB:ratio10",
+        "JAM:PRK:ratio10",
+        "ARG:FIN:ratio10",
+        "GEO:SOM:ratio10",
+        "BFA:LSO:ratio10"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-53",
+    "name": "10\u00d7 Land 8",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "JPN:MDA:ratio10",
+        "FIN:GNB:ratio10",
+        "SOM:ARE:ratio10",
+        "COD:ROU:ratio10",
+        "PAK:ARE:ratio10",
+        "NPL:PER:ratio10",
+        "LBN:KOR:ratio10",
+        "NIC:PER:ratio10"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-54",
+    "name": "10\u00d7 Land 9",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "COL:PRK:ratio10",
+        "MNG:NPL:ratio10",
+        "SLV:SEN:ratio10",
+        "BEL:PHL:ratio10",
+        "GUY:RWA:ratio10",
+        "JAM:NIC:ratio10",
+        "LAO:SAU:ratio10",
+        "MDA:OMN:ratio10"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  },
+  {
+    "id": "areaatlas-55",
+    "name": "10\u00d7 Land 10",
+    "generator": "areaatlas",
+    "params": {
+      "items": [
+        "BTN:NOR:ratio10",
+        "IRN:SYR:ratio10",
+        "BHS:GTM:ratio10",
+        "SLV:ROU:ratio10",
+        "ARG:OMN:ratio10",
+        "MDA:COG:ratio10",
+        "COD:ECU:ratio10",
+        "CAF:LTU:ratio10"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Compare the land-area numbers.",
+      "How many times bigger?"
+    ]
+  }
+]

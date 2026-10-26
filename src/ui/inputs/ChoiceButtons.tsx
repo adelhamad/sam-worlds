@@ -28,6 +28,7 @@ export function ChoiceButtons({ question, disabled, onSubmit }: Props) {
   const chord = Boolean(question.payload?.chord);
   const listenFirst = Boolean(question.payload?.listenFirst);
   const mapChoices = question.payload?.mapChoices as string[] | undefined;
+  const statChoices = Boolean(question.payload?.statChoices);
 
   useEffect(() => {
     if (listenFirst && play?.length) {
@@ -47,7 +48,7 @@ export function ChoiceButtons({ question, disabled, onSubmit }: Props) {
       )}
       <div className="choices">
         {question.choices.map((c, index) => (
-          <button key={c} className={`btn choice ${big ? "choice-big" : ""} ${mapChoices ? "choice-map" : ""}`} disabled={disabled} onClick={() => onSubmit(c)} aria-label={mapChoices ? STR.geo.mapOption(index + 1) : undefined}>
+          <button key={c} className={`btn choice ${big ? "choice-big" : ""} ${mapChoices ? "choice-map" : ""} ${statChoices ? "choice-stat" : ""}`} disabled={disabled} onClick={() => onSubmit(c)} aria-label={mapChoices ? STR.geo.mapOption(index + 1) : undefined}>
             {mapChoices ? <GeoMap code={mapChoices[index]} miniature /> : c}
           </button>
         ))}

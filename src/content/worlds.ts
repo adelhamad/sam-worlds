@@ -7,6 +7,7 @@ import type { StageDef } from "./types";
 const PRECISE_STAGE_TITLES = new Set([
   "numberforge", "melody", "logic", "robot", "time", "cipher", "builder",
   "algebra", "placevalue", "measure", "capitals", "countrymaps",
+  "landduel", "areaatlas", "population",
 ]);
 const MIXED_TYPE_WORLDS = new Set(["melody", "cipher", "builder", "algebra", "placevalue", "measure"]);
 

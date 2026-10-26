@@ -435,6 +435,12 @@ function ParentControls() {
         })}
       </Collapsible>
 
+      <Collapsible title="🌍 Country data" subtitle="Offline data used by Land League, Area Atlas, and People Planet.">
+        <p className="dim">Land area: FAOSTAT / FAO via World Bank, 2024 (Nicaragua: 2023).
+          Population: World Bank World Development Indicators, 2024, drawing on UN and national statistics.
+          Licensed CC BY 4.0; source details are bundled with the game data.</p>
+      </Collapsible>
+
       <Collapsible
         title={`🧠 Question history (${seenQuestionKeys.filter((key) => key.startsWith("visible:")).length})`}
         subtitle="A question stays used after Sam sees it, even on a later level or replay. Clear this only if you want old questions to appear again."

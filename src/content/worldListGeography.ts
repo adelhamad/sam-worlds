@@ -1,5 +1,8 @@
 import capitalStages from "./capitals/stages.json";
 import mapStages from "./countrymaps/stages.json";
+import landDuelStages from "./landduel/stages.json";
+import areaAtlasStages from "./areaatlas/stages.json";
+import populationStages from "./population/stages.json";
 import type { StageDef } from "./types";
 import type { WorldDef } from "./worldList";
 
@@ -26,6 +29,42 @@ export const GEOGRAPHY_WORLDS: WorldDef[] = [
       { stage: 40, name: "Outline Expert", icon: "🗺️" },
       { stage: 50, name: "Map Detective", icon: "✨" },
       { stage: 55, name: "Master of Maps", icon: "🏆" },
+    ],
+  },
+  {
+    id: "landduel", name: "Land League", icon: "⚖️", tagline: "See which countries cover more ground!",
+    stages: landDuelStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Land Lookout", icon: "🔎" },
+      { stage: 20, name: "Size Scout", icon: "📏" },
+      { stage: 30, name: "Land Judge", icon: "⚖️" },
+      { stage: 40, name: "Podium Pilot", icon: "🥇" },
+      { stage: 50, name: "Size Champion", icon: "🌍" },
+      { stage: 55, name: "Master of Land", icon: "🏆" },
+    ],
+  },
+  {
+    id: "areaatlas", name: "Area Atlas", icon: "📐", tagline: "Measure the land inside each country!",
+    stages: areaAtlasStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "Area Reader", icon: "📐" },
+      { stage: 20, name: "Measure Maker", icon: "📏" },
+      { stage: 30, name: "Double Discoverer", icon: "✌️" },
+      { stage: 40, name: "Scale Solver", icon: "🔢" },
+      { stage: 50, name: "Area Expert", icon: "🗺️" },
+      { stage: 55, name: "Master of Area", icon: "🏆" },
+    ],
+  },
+  {
+    id: "population", name: "People Planet", icon: "👥", tagline: "Explore how many people live in each country!",
+    stages: populationStages as StageDef[],
+    milestones: [
+      { stage: 10, name: "People Counter", icon: "👥" },
+      { stage: 20, name: "Crowd Scout", icon: "🔎" },
+      { stage: 30, name: "Population Pilot", icon: "🌎" },
+      { stage: 40, name: "Crowd Compass", icon: "🧭" },
+      { stage: 50, name: "People Expert", icon: "✨" },
+      { stage: 55, name: "Master of People", icon: "🏆" },
     ],
   },
 ];
