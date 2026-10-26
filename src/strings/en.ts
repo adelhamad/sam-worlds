@@ -15,6 +15,8 @@ export const STR = {
   workshop: "Workshop",
   trophyShelf: "Trophy Shelf",
   trophyEmpty: "Your first trophy is waiting…",
+  trophyCount: (count: number) => `${count} ${count === 1 ? "trophy" : "trophies"}`,
+  viewAll: "View all",
   comingSoon: "Soon",
   almostLook: "Almost — look at this.",
   lookExample: "Look:",

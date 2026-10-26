@@ -9,6 +9,7 @@ import { CouponWallet } from "./CouponWallet";
 import { DailyGiftBanner } from "./DailyGift";
 import { PetCompanion } from "./PetCompanion";
 import { TreasureVault } from "./TreasureVault";
+import { TrophyShelf } from "./TrophyShelf";
 import { WorldGrid } from "./HubWorlds";
 import { VideoToggle } from "./VideoToggle";
 import { vaultProgress } from "../engine/economy/gifts";
@@ -17,7 +18,6 @@ export function Hub() {
   const navigate = useNavigate();
   const starDust = useGame((s) => s.starDust);
   const progress = useGame((s) => s.progress);
-  const badges = useGame((s) => s.badges);
   const soundOn = useGame((s) => s.soundOn);
   const musicOn = useGame((s) => s.musicOn);
   const toggleSound = useGame((s) => s.toggleSound);
@@ -111,21 +111,7 @@ export function Hub() {
           <span className="tile-name">Treasure Vault</span>
           <span className="tile-sub">{vault.owned}/{vault.total} collected ✨</span>
         </button>
-        <div className="tile tile-static">
-          <span className="tile-icon">🏆</span>
-          <span className="tile-name">{STR.trophyShelf}</span>
-          {badges.length === 0 ? (
-            <span className="tile-sub">{STR.trophyEmpty}</span>
-          ) : (
-            <span className="tile-trophies">
-              {badges.map((b) => (
-                <span key={b.badgeId} title={`${b.name} — ${new Date(b.earnedAt).toLocaleDateString()}`}>
-                  {b.icon}
-                </span>
-              ))}
-            </span>
-          )}
-        </div>
+        <TrophyShelf />
       </div>
 
       {shopOpen && <Workshop onClose={() => setShopOpen(false)} />}
