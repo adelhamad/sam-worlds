@@ -47,8 +47,8 @@ export function generateNutrition(params: NutritionParams, rng: RNG, ctx: GenCon
   const type = ctx.easier ? params.types[0] : pick(rng, params.types);
   if (type === "source") {
     const [emoji, food, src] = pick(rng, SOURCE);
-    const wrong = shuffle(rng, SOURCE.filter((s) => s[2] !== src)).slice(0, 3);
-    return { id: id(), prompt: `Where does food come from?  ${food} …`, answer: src, choices: shuffle(rng, [src, ...wrong.map(([, , s]) => s)]), hint: "Think about farms and animals.", inputMode: "choices", dedupeKey: `source-${food}`, payload: { bigSymbol: emoji } };
+    const wrong = shuffle(rng, [...new Set(SOURCE.map(([, , source]) => source).filter((source) => source !== src))]).slice(0, 3);
+    return { id: id(), prompt: `Where does food come from?  ${food} …`, answer: src, choices: shuffle(rng, [src, ...wrong]), hint: "Think about farms and animals.", inputMode: "choices", dedupeKey: `source-${food}`, payload: { bigSymbol: emoji } };
   }
   if (type === "function") {
     const [p, a, w] = pick(rng, FUNCTION);

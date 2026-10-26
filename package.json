@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "lint": "eslint .",
-    "check": "bun run lint && bun run build",
+    "audit:questions": "bun scripts/audit-questions.ts",
+    "check": "bun run lint && bun run audit:questions && bun run build",
     "preview": "vite preview",
     "icons": "bun scripts/make-icons.ts"
   },

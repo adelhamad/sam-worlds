@@ -82,6 +82,9 @@ import { generateChance, type ChanceParams } from "./chance";
 import { generateSigns, type SignsParams } from "./signs";
 import { generateInventors, type InventorsParams } from "./inventors";
 import { generateCalm, type CalmParams } from "./calm";
+import { generateCapitals } from "./capitals";
+import { generateCountryMaps } from "./countryMaps";
+import type { GeographyParams } from "./geography";
 import type { GenContext, GeneratorParams, Question } from "./types";
 
 export type GeneratorId =
@@ -167,7 +170,9 @@ export type GeneratorId =
   | "chance"
   | "signs"
   | "inventors"
-  | "calm";
+  | "calm"
+  | "capitals"
+  | "countrymaps";
 
 /** Generator registry — one entry per id (params are cast per generator). */
 type GenFn = (params: GeneratorParams, rng: () => number, ctx: GenContext) => Question;
@@ -258,6 +263,8 @@ const GENERATORS: Record<GeneratorId, GenFn> = {
   signs: cast<SignsParams>(generateSigns),
   inventors: cast<InventorsParams>(generateInventors),
   calm: cast<CalmParams>(generateCalm),
+  capitals: cast<GeographyParams>(generateCapitals),
+  countrymaps: cast<GeographyParams>(generateCountryMaps),
 };
 
 function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, ctx: GenContext): Question {
@@ -265,17 +272,13 @@ function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, c
 }
 
 /**
- * The thing that makes one question genuinely the same as another: the
- * generator's own `dedupeKey` when it sets one (the real subject — a note, a
- * maze, a word), otherwise the full visible content (prompt + answer + payload
- * + choices). A generic prompt like "Read the note!" therefore does NOT count
- * as a repeat as long as the note behind it differs.
+ * A generator's subject key catches randomized presentations of the same
+ * task; the visible key catches repeats whose distractors were reshuffled.
+ * Choice order is not part of the question.
  */
-function questionKey(q: Question): string {
-  if (q.dedupeKey) return q.dedupeKey;
-  const payload = q.payload ? JSON.stringify(q.payload) : "";
-  const choices = q.choices.length ? q.choices.join(",") : "";
-  return `${q.prompt}|${q.answer}|${payload}|${choices}`;
+export function questionKeys(q: Question): string[] {
+  const visible = `visible:${JSON.stringify([q.prompt, q.answer, q.payload ?? null])}`;
+  return q.dedupeKey ? [`subject:${q.dedupeKey}`, visible] : [visible];
 }
 
 /**
@@ -289,22 +292,23 @@ export function generateQuestionSet(
   count: number,
   seed: number,
   ctx: GenContext,
+  excluded: Iterable<string> = [],
 ): Question[] {
   const rng = mulberry32(seed);
   const out: Question[] = [];
-  const seen = new Set<string>();
+  const seen = new Set(excluded);
   // Stop once the pool looks exhausted: a long run of consecutive draws that
   // are all duplicates means there's nothing new left to find.
   let sinceNew = 0;
   const giveUpAfter = Math.max(120, count * 40);
   while (out.length < count && sinceNew < giveUpAfter) {
     const q = dispatch(id, params, rng, ctx);
-    const key = questionKey(q);
-    if (seen.has(key)) {
+    const keys = questionKeys(q);
+    if (keys.some((key) => seen.has(key))) {
       sinceNew++;
       continue;
     }
-    seen.add(key);
+    keys.forEach((key) => seen.add(key));
     sinceNew = 0;
     out.push({ ...q, id: `${id}-${seed}-${out.length}` });
   }

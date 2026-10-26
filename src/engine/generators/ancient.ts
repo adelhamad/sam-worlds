@@ -11,6 +11,7 @@ const CIVS: Array<[string, string, string]> = [
   ["🧱", "Ancient China", "built the Great Wall and invented paper"],
   ["⛵", "the Vikings", "sailed longboats and were brave explorers"],
   ["🏰", "the Middle Ages", "had knights, castles, and grand tales"],
+  ["🌞", "the Maya", "built pyramids to track the Sun and seasons"],
 ];
 
 // [question, answer, wrongs]

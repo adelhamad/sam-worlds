@@ -1,0 +1,1318 @@
+[
+  {
+    "id": "capitals-01",
+    "name": "First Flight",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "ARE:capital",
+        "SAU:capital",
+        "EGY:capital",
+        "FRA:capital",
+        "JPN:capital",
+        "USA:capital",
+        "BRA:capital",
+        "AUS:capital"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-02",
+    "name": "Asia Capital Call 1",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "AFG:capital",
+        "ARM:capital",
+        "AZE:capital",
+        "BGD:capital",
+        "BTN:capital",
+        "BRN:capital",
+        "KHM:capital",
+        "CHN:capital"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-03",
+    "name": "Asia Capital Call 2",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "GEO:capital",
+        "IND:capital",
+        "IRN:capital",
+        "IRQ:capital",
+        "JOR:capital",
+        "KAZ:capital",
+        "KWT:capital",
+        "KGZ:capital"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-04",
+    "name": "Asia Capital Call 3",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "LAO:capital",
+        "LBN:capital",
+        "MNG:capital",
+        "NPL:capital",
+        "PRK:capital",
+        "OMN:capital",
+        "PAK:capital",
+        "PHL:capital"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-05",
+    "name": "Asia Capital Call 4",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "QAT:capital",
+        "KOR:capital",
+        "SYR:capital",
+        "TJK:capital",
+        "THA:capital",
+        "TLS:capital",
+        "TKM:capital",
+        "UZB:capital"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-06",
+    "name": "Africa Capital Call 1",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "DZA:capital",
+        "AGO:capital",
+        "BWA:capital",
+        "BFA:capital",
+        "CMR:capital",
+        "CAF:capital",
+        "TCD:capital",
+        "COD:capital"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-07",
+    "name": "Africa Capital Call 2",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "DJI:capital",
+        "GNQ:capital",
+        "ERI:capital",
+        "ETH:capital",
+        "GAB:capital",
+        "GMB:capital",
+        "GHA:capital",
+        "GIN:capital"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-08",
+    "name": "Africa Capital Call 3",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "GNB:capital",
+        "KEN:capital",
+        "LSO:capital",
+        "LBR:capital",
+        "LBY:capital",
+        "MDG:capital",
+        "MWI:capital",
+        "MLI:capital"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-09",
+    "name": "Africa Capital Call 4",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "MRT:capital",
+        "MAR:capital",
+        "MOZ:capital",
+        "NAM:capital",
+        "NER:capital",
+        "NGA:capital",
+        "COG:capital",
+        "RWA:capital"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-10",
+    "name": "Africa Capital Call 5",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "SEN:capital",
+        "SLE:capital",
+        "SOM:capital",
+        "SDN:capital",
+        "TGO:capital",
+        "TUN:capital",
+        "UGA:capital",
+        "ZMB:capital"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-11",
+    "name": "Europe Capital Call 1",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "ALB:capital",
+        "AUT:capital",
+        "BLR:capital",
+        "BEL:capital",
+        "BIH:capital",
+        "BGR:capital",
+        "HRV:capital",
+        "CZE:capital"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-12",
+    "name": "Europe Capital Call 2",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "DNK:capital",
+        "EST:capital",
+        "FIN:capital",
+        "DEU:capital",
+        "GRC:capital",
+        "HUN:capital",
+        "ISL:capital",
+        "IRL:capital"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-13",
+    "name": "Europe Capital Call 3",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "ITA:capital",
+        "LVA:capital",
+        "LTU:capital",
+        "LUX:capital",
+        "MDA:capital",
+        "MNE:capital",
+        "MKD:capital",
+        "NOR:capital"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-14",
+    "name": "Europe Capital Call 4",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "POL:capital",
+        "PRT:capital",
+        "ROU:capital",
+        "SRB:capital",
+        "SVK:capital",
+        "SVN:capital",
+        "ESP:capital",
+        "SWE:capital"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-15",
+    "name": "North America Capital Call 1",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "BHS:capital",
+        "BLZ:capital",
+        "CAN:capital",
+        "CRI:capital",
+        "CUB:capital",
+        "DOM:capital",
+        "SLV:capital",
+        "GTM:capital"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-16",
+    "name": "South America Capital Call 1",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "ARG:capital",
+        "CHL:capital",
+        "COL:capital",
+        "ECU:capital",
+        "GUY:capital",
+        "PRY:capital",
+        "PER:capital",
+        "SUR:capital"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-17",
+    "name": "Asia City Clue 1",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "AFG:reverse",
+        "ARM:reverse",
+        "AZE:reverse",
+        "BGD:reverse",
+        "BTN:reverse",
+        "BRN:reverse",
+        "KHM:reverse",
+        "CHN:reverse"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-18",
+    "name": "Asia City Clue 2",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "GEO:reverse",
+        "IND:reverse",
+        "IRN:reverse",
+        "IRQ:reverse",
+        "JPN:reverse",
+        "JOR:reverse",
+        "KAZ:reverse",
+        "KWT:reverse"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-19",
+    "name": "Asia City Clue 3",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "KGZ:reverse",
+        "LAO:reverse",
+        "LBN:reverse",
+        "MNG:reverse",
+        "NPL:reverse",
+        "PRK:reverse",
+        "OMN:reverse",
+        "PAK:reverse"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-20",
+    "name": "Asia City Clue 4",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "PHL:reverse",
+        "QAT:reverse",
+        "SAU:reverse",
+        "KOR:reverse",
+        "SYR:reverse",
+        "TJK:reverse",
+        "THA:reverse",
+        "TLS:reverse"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-21",
+    "name": "Africa City Clue 1",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "DZA:reverse",
+        "AGO:reverse",
+        "BWA:reverse",
+        "BFA:reverse",
+        "CMR:reverse",
+        "CAF:reverse",
+        "TCD:reverse",
+        "COD:reverse"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-22",
+    "name": "Africa City Clue 2",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "DJI:reverse",
+        "EGY:reverse",
+        "GNQ:reverse",
+        "ERI:reverse",
+        "ETH:reverse",
+        "GAB:reverse",
+        "GMB:reverse",
+        "GHA:reverse"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-23",
+    "name": "Africa City Clue 3",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "GIN:reverse",
+        "GNB:reverse",
+        "KEN:reverse",
+        "LSO:reverse",
+        "LBR:reverse",
+        "LBY:reverse",
+        "MDG:reverse",
+        "MWI:reverse"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-24",
+    "name": "Africa City Clue 4",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "MLI:reverse",
+        "MRT:reverse",
+        "MAR:reverse",
+        "MOZ:reverse",
+        "NAM:reverse",
+        "NER:reverse",
+        "NGA:reverse",
+        "COG:reverse"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-25",
+    "name": "Africa City Clue 5",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "RWA:reverse",
+        "SEN:reverse",
+        "SLE:reverse",
+        "SOM:reverse",
+        "SDN:reverse",
+        "TGO:reverse",
+        "TUN:reverse",
+        "UGA:reverse"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-26",
+    "name": "Europe City Clue 1",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "ALB:reverse",
+        "AUT:reverse",
+        "BLR:reverse",
+        "BEL:reverse",
+        "BIH:reverse",
+        "BGR:reverse",
+        "HRV:reverse",
+        "CZE:reverse"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-27",
+    "name": "Europe City Clue 2",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "DNK:reverse",
+        "EST:reverse",
+        "FIN:reverse",
+        "FRA:reverse",
+        "DEU:reverse",
+        "GRC:reverse",
+        "HUN:reverse",
+        "ISL:reverse"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-28",
+    "name": "Europe City Clue 3",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "IRL:reverse",
+        "ITA:reverse",
+        "LVA:reverse",
+        "LTU:reverse",
+        "LUX:reverse",
+        "MDA:reverse",
+        "MNE:reverse",
+        "MKD:reverse"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-29",
+    "name": "Europe City Clue 4",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "NOR:reverse",
+        "POL:reverse",
+        "PRT:reverse",
+        "ROU:reverse",
+        "SRB:reverse",
+        "SVK:reverse",
+        "SVN:reverse",
+        "ESP:reverse"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-30",
+    "name": "North America City Clue 1",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "BHS:reverse",
+        "BLZ:reverse",
+        "CAN:reverse",
+        "CRI:reverse",
+        "CUB:reverse",
+        "DOM:reverse",
+        "SLV:reverse",
+        "GTM:reverse"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-31",
+    "name": "North America City Clue 2",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "HTI:reverse",
+        "HND:reverse",
+        "JAM:reverse",
+        "MEX:reverse",
+        "NIC:reverse",
+        "PAN:reverse",
+        "TTO:reverse",
+        "USA:reverse"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-32",
+    "name": "South America City Clue 1",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "ARG:reverse",
+        "BRA:reverse",
+        "CHL:reverse",
+        "COL:reverse",
+        "ECU:reverse",
+        "GUY:reverse",
+        "PRY:reverse",
+        "PER:reverse"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-33",
+    "name": "Asia Capital Pin 1",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "AFG:pin",
+        "ARM:pin",
+        "AZE:pin",
+        "BGD:pin",
+        "BTN:pin",
+        "BRN:pin",
+        "KHM:pin",
+        "CHN:pin"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-34",
+    "name": "Asia Capital Pin 2",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "GEO:pin",
+        "IND:pin",
+        "IRN:pin",
+        "IRQ:pin",
+        "JPN:pin",
+        "JOR:pin",
+        "KAZ:pin",
+        "KWT:pin"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-35",
+    "name": "Asia Capital Pin 3",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "KGZ:pin",
+        "LAO:pin",
+        "LBN:pin",
+        "MNG:pin",
+        "NPL:pin",
+        "PRK:pin",
+        "OMN:pin",
+        "PAK:pin"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-36",
+    "name": "Asia Capital Pin 4",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "PHL:pin",
+        "QAT:pin",
+        "SAU:pin",
+        "KOR:pin",
+        "SYR:pin",
+        "TJK:pin",
+        "THA:pin",
+        "TLS:pin"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-37",
+    "name": "Africa Capital Pin 1",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "DZA:pin",
+        "AGO:pin",
+        "BWA:pin",
+        "BFA:pin",
+        "CMR:pin",
+        "CAF:pin",
+        "TCD:pin",
+        "COD:pin"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-38",
+    "name": "Africa Capital Pin 2",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "EGY:pin",
+        "ERI:pin",
+        "ETH:pin",
+        "GAB:pin",
+        "GMB:pin",
+        "GHA:pin",
+        "GIN:pin",
+        "GNB:pin"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-39",
+    "name": "Africa Capital Pin 3",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "KEN:pin",
+        "LSO:pin",
+        "LBR:pin",
+        "MDG:pin",
+        "MWI:pin",
+        "MLI:pin",
+        "MRT:pin",
+        "MAR:pin"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-40",
+    "name": "Africa Capital Pin 4",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "MOZ:pin",
+        "NAM:pin",
+        "NER:pin",
+        "NGA:pin",
+        "RWA:pin",
+        "SEN:pin",
+        "SOM:pin",
+        "SDN:pin"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-41",
+    "name": "Europe Capital Pin 1",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "ALB:pin",
+        "AUT:pin",
+        "BLR:pin",
+        "BEL:pin",
+        "BIH:pin",
+        "BGR:pin",
+        "HRV:pin",
+        "CZE:pin"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-42",
+    "name": "Europe Capital Pin 2",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "DNK:pin",
+        "EST:pin",
+        "FIN:pin",
+        "FRA:pin",
+        "DEU:pin",
+        "GRC:pin",
+        "HUN:pin",
+        "ISL:pin"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-43",
+    "name": "Europe Capital Pin 3",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "IRL:pin",
+        "ITA:pin",
+        "LVA:pin",
+        "LTU:pin",
+        "LUX:pin",
+        "MDA:pin",
+        "MNE:pin",
+        "MKD:pin"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-44",
+    "name": "Europe Capital Pin 4",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "NOR:pin",
+        "POL:pin",
+        "PRT:pin",
+        "ROU:pin",
+        "SRB:pin",
+        "SVK:pin",
+        "SVN:pin",
+        "ESP:pin"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-45",
+    "name": "North America Capital Pin 1",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "BLZ:pin",
+        "CAN:pin",
+        "CRI:pin",
+        "CUB:pin",
+        "DOM:pin",
+        "SLV:pin",
+        "GTM:pin",
+        "HTI:pin"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-46",
+    "name": "South America Capital Pin 1",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "ARG:pin",
+        "BRA:pin",
+        "CHL:pin",
+        "COL:pin",
+        "ECU:pin",
+        "GUY:pin",
+        "PRY:pin",
+        "PER:pin"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-47",
+    "name": "World Tour 1",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "VNM:capital",
+        "YEM:capital",
+        "ZWE:capital",
+        "CHE:capital",
+        "UKR:capital",
+        "GBR:capital",
+        "HTI:capital"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-48",
+    "name": "World Tour 2",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "HND:capital",
+        "JAM:capital",
+        "MEX:capital",
+        "NIC:capital",
+        "PAN:capital",
+        "TTO:capital",
+        "URY:capital",
+        "VEN:capital"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-49",
+    "name": "World Tour 3",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "FJI:capital",
+        "NZL:capital",
+        "PNG:capital",
+        "SLB:capital",
+        "VUT:capital",
+        "TKM:reverse",
+        "ARE:reverse"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-50",
+    "name": "World Tour 4",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "UZB:reverse",
+        "VNM:reverse",
+        "YEM:reverse",
+        "ZMB:reverse",
+        "ZWE:reverse",
+        "SWE:reverse",
+        "CHE:reverse",
+        "UKR:reverse"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-51",
+    "name": "World Tour 5",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "GBR:reverse",
+        "SUR:reverse",
+        "URY:reverse",
+        "VEN:reverse",
+        "AUS:reverse",
+        "FJI:reverse",
+        "NZL:reverse"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-52",
+    "name": "World Tour 6",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "PNG:reverse",
+        "SLB:reverse",
+        "VUT:reverse",
+        "TKM:pin",
+        "ARE:pin",
+        "UZB:pin",
+        "VNM:pin",
+        "YEM:pin"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-53",
+    "name": "World Tour 7",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "TGO:pin",
+        "TUN:pin",
+        "UGA:pin",
+        "ZMB:pin",
+        "ZWE:pin",
+        "SWE:pin",
+        "CHE:pin"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-54",
+    "name": "World Tour 8",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "UKR:pin",
+        "GBR:pin",
+        "HND:pin",
+        "JAM:pin",
+        "MEX:pin",
+        "NIC:pin",
+        "PAN:pin",
+        "TTO:pin"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "capitals-55",
+    "name": "World Tour 9",
+    "generator": "capitals",
+    "params": {
+      "items": [
+        "USA:pin",
+        "SUR:pin",
+        "VEN:pin",
+        "AUS:pin",
+        "FJI:pin",
+        "NZL:pin",
+        "PNG:pin",
+        "SLB:pin"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  }
+]

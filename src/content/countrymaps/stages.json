@@ -1,0 +1,1326 @@
+[
+  {
+    "id": "countrymaps-01",
+    "name": "First Flight",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "ARE:outline",
+        "SAU:outline",
+        "EGY:outline",
+        "FRA:outline",
+        "JPN:outline",
+        "USA:outline",
+        "BRA:outline",
+        "AUS:outline"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-02",
+    "name": "Asia Shape Scout 1",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "AFG:outline",
+        "ARM:outline",
+        "AZE:outline",
+        "BGD:outline",
+        "BTN:outline",
+        "BRN:outline",
+        "KHM:outline",
+        "CHN:outline"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-03",
+    "name": "Asia Shape Scout 2",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "GEO:outline",
+        "IND:outline",
+        "IRN:outline",
+        "IRQ:outline",
+        "JOR:outline",
+        "KAZ:outline",
+        "KWT:outline",
+        "KGZ:outline"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-04",
+    "name": "Asia Shape Scout 3",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "LAO:outline",
+        "LBN:outline",
+        "MNG:outline",
+        "NPL:outline",
+        "PRK:outline",
+        "OMN:outline",
+        "PAK:outline",
+        "PHL:outline"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-05",
+    "name": "Asia Shape Scout 4",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "QAT:outline",
+        "KOR:outline",
+        "SYR:outline",
+        "TJK:outline",
+        "THA:outline",
+        "TLS:outline",
+        "TKM:outline",
+        "UZB:outline"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-06",
+    "name": "Africa Shape Scout 1",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "DZA:outline",
+        "AGO:outline",
+        "BWA:outline",
+        "BFA:outline",
+        "CMR:outline",
+        "CAF:outline",
+        "TCD:outline",
+        "COD:outline"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-07",
+    "name": "Africa Shape Scout 2",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "DJI:outline",
+        "GNQ:outline",
+        "ERI:outline",
+        "ETH:outline",
+        "GAB:outline",
+        "GMB:outline",
+        "GHA:outline",
+        "GIN:outline"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-08",
+    "name": "Africa Shape Scout 3",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "GNB:outline",
+        "KEN:outline",
+        "LSO:outline",
+        "LBR:outline",
+        "LBY:outline",
+        "MDG:outline",
+        "MWI:outline",
+        "MLI:outline"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-09",
+    "name": "Africa Shape Scout 4",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "MRT:outline",
+        "MAR:outline",
+        "MOZ:outline",
+        "NAM:outline",
+        "NER:outline",
+        "NGA:outline",
+        "COG:outline",
+        "RWA:outline"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-10",
+    "name": "Africa Shape Scout 5",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "SEN:outline",
+        "SLE:outline",
+        "SOM:outline",
+        "SDN:outline",
+        "TGO:outline",
+        "TUN:outline",
+        "UGA:outline",
+        "ZMB:outline"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-11",
+    "name": "Europe Shape Scout 1",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "ALB:outline",
+        "AUT:outline",
+        "BLR:outline",
+        "BEL:outline",
+        "BIH:outline",
+        "BGR:outline",
+        "HRV:outline",
+        "CZE:outline"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-12",
+    "name": "Europe Shape Scout 2",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "DNK:outline",
+        "EST:outline",
+        "FIN:outline",
+        "DEU:outline",
+        "GRC:outline",
+        "HUN:outline",
+        "ISL:outline",
+        "IRL:outline"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-13",
+    "name": "Europe Shape Scout 3",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "ITA:outline",
+        "LVA:outline",
+        "LTU:outline",
+        "LUX:outline",
+        "MDA:outline",
+        "MNE:outline",
+        "MKD:outline",
+        "NOR:outline"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-14",
+    "name": "Europe Shape Scout 4",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "POL:outline",
+        "PRT:outline",
+        "ROU:outline",
+        "SRB:outline",
+        "SVK:outline",
+        "SVN:outline",
+        "ESP:outline",
+        "SWE:outline"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-15",
+    "name": "North America Shape Scout 1",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "BHS:outline",
+        "BLZ:outline",
+        "CAN:outline",
+        "CRI:outline",
+        "CUB:outline",
+        "DOM:outline",
+        "SLV:outline",
+        "GTM:outline"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-16",
+    "name": "South America Shape Scout 1",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "ARG:outline",
+        "CHL:outline",
+        "COL:outline",
+        "ECU:outline",
+        "GUY:outline",
+        "PRY:outline",
+        "PER:outline",
+        "SUR:outline"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-17",
+    "name": "Asia World Locator 1",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "AFG:locate",
+        "ARM:locate",
+        "AZE:locate",
+        "BGD:locate",
+        "BTN:locate",
+        "BRN:locate",
+        "KHM:locate",
+        "CHN:locate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-18",
+    "name": "Asia World Locator 2",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "GEO:locate",
+        "IND:locate",
+        "IRN:locate",
+        "IRQ:locate",
+        "JPN:locate",
+        "JOR:locate",
+        "KAZ:locate",
+        "KWT:locate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-19",
+    "name": "Asia World Locator 3",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "KGZ:locate",
+        "LAO:locate",
+        "LBN:locate",
+        "MNG:locate",
+        "NPL:locate",
+        "PRK:locate",
+        "OMN:locate",
+        "PAK:locate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-20",
+    "name": "Asia World Locator 4",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "PHL:locate",
+        "QAT:locate",
+        "SAU:locate",
+        "KOR:locate",
+        "SYR:locate",
+        "TJK:locate",
+        "THA:locate",
+        "TLS:locate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-21",
+    "name": "Africa World Locator 1",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "DZA:locate",
+        "AGO:locate",
+        "BWA:locate",
+        "BFA:locate",
+        "CMR:locate",
+        "CAF:locate",
+        "TCD:locate",
+        "COD:locate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-22",
+    "name": "Africa World Locator 2",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "DJI:locate",
+        "EGY:locate",
+        "GNQ:locate",
+        "ERI:locate",
+        "ETH:locate",
+        "GAB:locate",
+        "GMB:locate",
+        "GHA:locate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-23",
+    "name": "Africa World Locator 3",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "GIN:locate",
+        "GNB:locate",
+        "KEN:locate",
+        "LSO:locate",
+        "LBR:locate",
+        "LBY:locate",
+        "MDG:locate",
+        "MWI:locate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-24",
+    "name": "Africa World Locator 4",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "MLI:locate",
+        "MRT:locate",
+        "MAR:locate",
+        "MOZ:locate",
+        "NAM:locate",
+        "NER:locate",
+        "NGA:locate",
+        "COG:locate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-25",
+    "name": "Africa World Locator 5",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "RWA:locate",
+        "SEN:locate",
+        "SLE:locate",
+        "SOM:locate",
+        "SDN:locate",
+        "TGO:locate",
+        "TUN:locate",
+        "UGA:locate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-26",
+    "name": "Europe World Locator 1",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "ALB:locate",
+        "AUT:locate",
+        "BLR:locate",
+        "BEL:locate",
+        "BIH:locate",
+        "BGR:locate",
+        "HRV:locate",
+        "CZE:locate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-27",
+    "name": "Europe World Locator 2",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "DNK:locate",
+        "EST:locate",
+        "FIN:locate",
+        "FRA:locate",
+        "DEU:locate",
+        "GRC:locate",
+        "HUN:locate",
+        "ISL:locate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-28",
+    "name": "Europe World Locator 3",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "IRL:locate",
+        "ITA:locate",
+        "LVA:locate",
+        "LTU:locate",
+        "LUX:locate",
+        "MDA:locate",
+        "MNE:locate",
+        "MKD:locate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-29",
+    "name": "Europe World Locator 4",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "NOR:locate",
+        "POL:locate",
+        "PRT:locate",
+        "ROU:locate",
+        "SRB:locate",
+        "SVK:locate",
+        "SVN:locate",
+        "ESP:locate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-30",
+    "name": "North America World Locator 1",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "BHS:locate",
+        "BLZ:locate",
+        "CAN:locate",
+        "CRI:locate",
+        "CUB:locate",
+        "DOM:locate",
+        "SLV:locate",
+        "GTM:locate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-31",
+    "name": "North America World Locator 2",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "HTI:locate",
+        "HND:locate",
+        "JAM:locate",
+        "MEX:locate",
+        "NIC:locate",
+        "PAN:locate",
+        "TTO:locate",
+        "USA:locate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-32",
+    "name": "South America World Locator 1",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "ARG:locate",
+        "BRA:locate",
+        "CHL:locate",
+        "COL:locate",
+        "ECU:locate",
+        "GUY:locate",
+        "PRY:locate",
+        "PER:locate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-33",
+    "name": "Asia Map Match 1",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "AFG:select",
+        "ARM:select",
+        "AZE:select",
+        "BGD:select",
+        "BTN:select",
+        "BRN:select",
+        "KHM:select",
+        "CHN:select"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-34",
+    "name": "Asia Map Match 2",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "GEO:select",
+        "IND:select",
+        "IRN:select",
+        "IRQ:select",
+        "JPN:select",
+        "JOR:select",
+        "KAZ:select",
+        "KWT:select"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-35",
+    "name": "Asia Map Match 3",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "KGZ:select",
+        "LAO:select",
+        "LBN:select",
+        "MNG:select",
+        "NPL:select",
+        "PRK:select",
+        "OMN:select",
+        "PAK:select"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-36",
+    "name": "Asia Map Match 4",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "PHL:select",
+        "QAT:select",
+        "SAU:select",
+        "KOR:select",
+        "SYR:select",
+        "TJK:select",
+        "THA:select",
+        "TLS:select"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-37",
+    "name": "Africa Map Match 1",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "DZA:select",
+        "AGO:select",
+        "BWA:select",
+        "BFA:select",
+        "CMR:select",
+        "CAF:select",
+        "TCD:select",
+        "COD:select"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-38",
+    "name": "Africa Map Match 2",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "DJI:select",
+        "EGY:select",
+        "GNQ:select",
+        "ERI:select",
+        "ETH:select",
+        "GAB:select",
+        "GMB:select",
+        "GHA:select"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-39",
+    "name": "Africa Map Match 3",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "GIN:select",
+        "GNB:select",
+        "KEN:select",
+        "LSO:select",
+        "LBR:select",
+        "LBY:select",
+        "MDG:select",
+        "MWI:select"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-40",
+    "name": "Africa Map Match 4",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "MLI:select",
+        "MRT:select",
+        "MAR:select",
+        "MOZ:select",
+        "NAM:select",
+        "NER:select",
+        "NGA:select",
+        "COG:select"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-41",
+    "name": "Africa Map Match 5",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "RWA:select",
+        "SEN:select",
+        "SLE:select",
+        "SOM:select",
+        "SDN:select",
+        "TGO:select",
+        "TUN:select",
+        "UGA:select"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-42",
+    "name": "Europe Map Match 1",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "ALB:select",
+        "AUT:select",
+        "BLR:select",
+        "BEL:select",
+        "BIH:select",
+        "BGR:select",
+        "HRV:select",
+        "CZE:select"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-43",
+    "name": "Europe Map Match 2",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "DNK:select",
+        "EST:select",
+        "FIN:select",
+        "FRA:select",
+        "DEU:select",
+        "GRC:select",
+        "HUN:select",
+        "ISL:select"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-44",
+    "name": "Europe Map Match 3",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "IRL:select",
+        "ITA:select",
+        "LVA:select",
+        "LTU:select",
+        "LUX:select",
+        "MDA:select",
+        "MNE:select",
+        "MKD:select"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-45",
+    "name": "Europe Map Match 4",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "NOR:select",
+        "POL:select",
+        "PRT:select",
+        "ROU:select",
+        "SRB:select",
+        "SVK:select",
+        "SVN:select",
+        "ESP:select"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-46",
+    "name": "North America Map Match 1",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "BHS:select",
+        "BLZ:select",
+        "CAN:select",
+        "CRI:select",
+        "CUB:select",
+        "DOM:select",
+        "SLV:select",
+        "GTM:select"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-47",
+    "name": "North America Map Match 2",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "HTI:select",
+        "HND:select",
+        "JAM:select",
+        "MEX:select",
+        "NIC:select",
+        "PAN:select",
+        "TTO:select",
+        "USA:select"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-48",
+    "name": "South America Map Match 1",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "ARG:select",
+        "BRA:select",
+        "CHL:select",
+        "COL:select",
+        "ECU:select",
+        "GUY:select",
+        "PRY:select",
+        "PER:select"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-49",
+    "name": "World Tour 1",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "VNM:outline",
+        "YEM:outline",
+        "ZWE:outline",
+        "CHE:outline",
+        "UKR:outline",
+        "GBR:outline",
+        "HTI:outline",
+        "HND:outline"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-50",
+    "name": "World Tour 2",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "JAM:outline",
+        "MEX:outline",
+        "NIC:outline",
+        "PAN:outline",
+        "TTO:outline",
+        "URY:outline",
+        "VEN:outline",
+        "FJI:outline",
+        "NZL:outline"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-51",
+    "name": "World Tour 3",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "PNG:outline",
+        "SLB:outline",
+        "VUT:outline",
+        "TKM:locate",
+        "ARE:locate",
+        "UZB:locate",
+        "VNM:locate",
+        "YEM:locate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-52",
+    "name": "World Tour 4",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "ZMB:locate",
+        "ZWE:locate",
+        "SWE:locate",
+        "CHE:locate",
+        "UKR:locate",
+        "GBR:locate",
+        "SUR:locate",
+        "URY:locate",
+        "VEN:locate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-53",
+    "name": "World Tour 5",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "AUS:locate",
+        "FJI:locate",
+        "NZL:locate",
+        "PNG:locate",
+        "SLB:locate",
+        "VUT:locate",
+        "TKM:select",
+        "ARE:select"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-54",
+    "name": "World Tour 6",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "UZB:select",
+        "VNM:select",
+        "YEM:select",
+        "ZMB:select",
+        "ZWE:select",
+        "SWE:select",
+        "CHE:select",
+        "UKR:select",
+        "GBR:select"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  },
+  {
+    "id": "countrymaps-55",
+    "name": "World Tour 7",
+    "generator": "countrymaps",
+    "params": {
+      "items": [
+        "SUR:select",
+        "URY:select",
+        "VEN:select",
+        "AUS:select",
+        "FJI:select",
+        "NZL:select",
+        "PNG:select",
+        "SLB:select",
+        "VUT:select"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Follow the clues.",
+      "Explore a new place!"
+    ]
+  }
+]

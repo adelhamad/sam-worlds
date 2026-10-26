@@ -84,7 +84,7 @@ function genCoinValue(rng: RNG, coins: (typeof COINS)[number][]): Question {
 /** "3 dimes = ? ¢" — count coins of one kind. */
 function genCountSame(rng: RNG, coins: (typeof COINS)[number][], max: number): Question {
   const coin = pick(rng, coins);
-  const n = randInt(rng, 2, Math.max(2, Math.min(6, Math.floor(max / coin.value))));
+  const n = randInt(rng, 2, Math.max(2, Math.min(10, Math.floor(max / coin.value))));
   const total = n * coin.value;
   return {
     id: id(),

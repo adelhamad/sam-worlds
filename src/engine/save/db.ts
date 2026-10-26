@@ -6,6 +6,8 @@ export interface ProfileRow {
   name: string;
   createdAt: number;
   lastSeenAt: number;
+  /** Every question actually shown to the child, across levels and replays. */
+  seenQuestionKeys?: string[];
 }
 export interface EconomyRow {
   id: number;
@@ -23,6 +25,8 @@ export interface SessionRow {
   stageId: string;
   seed: number;
   questions: Question[];
+  /** Questions already shown, including ones discarded after a miss. */
+  seenQuestionKeys?: string[];
   index: number;
   correctCount: number;
   firstTryMisses: number;

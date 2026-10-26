@@ -12,7 +12,7 @@ const OPEN_BY_DEFAULT = new Set([
   "landforms", "chef", "riddles", "sports", "compounds",
   "birds", "thennow", "ordinals", "family", "pets", "trace",
   "stars", "ancient", "myths", "maps", "homophones",
-  "symmetry", "chance", "signs", "inventors", "calm",
+  "symmetry", "chance", "signs", "inventors", "calm", "capitals", "countrymaps",
 ]);
 
 export function withWorldDefaults(stored?: Record<string, boolean>): Record<string, boolean> {
