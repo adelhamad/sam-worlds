@@ -20,7 +20,7 @@ export function CouponWallet() {
   return (
     <>
       <section className="panel coupon-wallet">
-        <h2>🎟️ {STR.daddyRewards}</h2>
+        <h2>🎟️ {STR.daddyRewards} <span className="coupon-count">{active.length}</span></h2>
         <div className="coupon-row">
           {active.map((c) => {
             const item = itemById(c.itemId);
