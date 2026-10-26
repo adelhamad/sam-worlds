@@ -33,6 +33,7 @@ export const WORLD_CATEGORY: Record<string, string> = {
   // world / geography
   atlas: "world", flags: "world", directions: "world", cultures: "world", transport: "world", landforms: "world",
   ancient: "world", capitals: "world", countrymaps: "world",
+  landduel: "world", areaatlas: "world", population: "world",
   // life skills
   feelings: "life", manners: "life", safety: "life", helpers: "life", green: "life", nutrition: "life",
   moneysmarts: "life", town: "life", chef: "life", thennow: "life", family: "life", pets: "life", calm: "life",

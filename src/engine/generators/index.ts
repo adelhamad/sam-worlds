@@ -84,6 +84,9 @@ import { generateInventors, type InventorsParams } from "./inventors";
 import { generateCalm, type CalmParams } from "./calm";
 import { generateCapitals } from "./capitals";
 import { generateCountryMaps } from "./countryMaps";
+import { generateLandDuel } from "./landDuel";
+import { generateAreaAtlas } from "./areaAtlas";
+import { generatePopulationWorld } from "./populationWorld";
 import type { GeographyParams } from "./geography";
 import type { GenContext, GeneratorParams, Question } from "./types";
 
@@ -172,7 +175,10 @@ export type GeneratorId =
   | "inventors"
   | "calm"
   | "capitals"
-  | "countrymaps";
+  | "countrymaps"
+  | "landduel"
+  | "areaatlas"
+  | "population";
 
 /** Generator registry — one entry per id (params are cast per generator). */
 type GenFn = (params: GeneratorParams, rng: () => number, ctx: GenContext) => Question;
@@ -265,6 +271,9 @@ const GENERATORS: Record<GeneratorId, GenFn> = {
   calm: cast<CalmParams>(generateCalm),
   capitals: cast<GeographyParams>(generateCapitals),
   countrymaps: cast<GeographyParams>(generateCountryMaps),
+  landduel: cast<GeographyParams>(generateLandDuel),
+  areaatlas: cast<GeographyParams>(generateAreaAtlas),
+  population: cast<GeographyParams>(generatePopulationWorld),
 };
 
 function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, ctx: GenContext): Question {

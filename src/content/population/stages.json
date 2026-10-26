@@ -1,0 +1,1322 @@
+[
+  {
+    "id": "population-01",
+    "name": "People Launch",
+    "generator": "population",
+    "params": {
+      "items": [
+        "ARE:estimate",
+        "SAU:estimate",
+        "EGY:estimate",
+        "FRA:estimate",
+        "JPN:estimate",
+        "USA:estimate",
+        "BRA:estimate",
+        "AUS:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Population means people living there.",
+      "Choose the closest number!"
+    ]
+  },
+  {
+    "id": "population-02",
+    "name": "Count 2",
+    "generator": "population",
+    "params": {
+      "items": [
+        "VUT:estimate",
+        "ISL:estimate",
+        "BHS:estimate",
+        "BLZ:estimate",
+        "BRN:estimate",
+        "MNE:estimate",
+        "SUR:estimate",
+        "LUX:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Population means people living there.",
+      "Choose the closest number!"
+    ]
+  },
+  {
+    "id": "population-03",
+    "name": "Count 3",
+    "generator": "population",
+    "params": {
+      "items": [
+        "BTN:estimate",
+        "SLB:estimate",
+        "GUY:estimate",
+        "FJI:estimate",
+        "DJI:estimate",
+        "TTO:estimate",
+        "EST:estimate",
+        "TLS:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Population means people living there.",
+      "Choose the closest number!"
+    ]
+  },
+  {
+    "id": "population-04",
+    "name": "Count 4",
+    "generator": "population",
+    "params": {
+      "items": [
+        "MKD:estimate",
+        "LVA:estimate",
+        "GNQ:estimate",
+        "SVN:estimate",
+        "GNB:estimate",
+        "LSO:estimate",
+        "ALB:estimate",
+        "MDA:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Population means people living there.",
+      "Choose the closest number!"
+    ]
+  },
+  {
+    "id": "population-05",
+    "name": "Count 5",
+    "generator": "population",
+    "params": {
+      "items": [
+        "BWA:estimate",
+        "GAB:estimate",
+        "GMB:estimate",
+        "JAM:estimate",
+        "QAT:estimate",
+        "LTU:estimate",
+        "NAM:estimate",
+        "ARM:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Population means people living there.",
+      "Choose the closest number!"
+    ]
+  },
+  {
+    "id": "population-06",
+    "name": "Count 6",
+    "generator": "population",
+    "params": {
+      "items": [
+        "BIH:estimate",
+        "URY:estimate",
+        "MNG:estimate",
+        "ERI:estimate",
+        "GEO:estimate",
+        "HRV:estimate",
+        "PAN:estimate",
+        "KWT:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Population means people living there.",
+      "Choose the closest number!"
+    ]
+  },
+  {
+    "id": "population-07",
+    "name": "Count 7",
+    "generator": "population",
+    "params": {
+      "items": [
+        "CRI:estimate",
+        "MRT:estimate",
+        "OMN:estimate",
+        "NZL:estimate",
+        "CAF:estimate",
+        "IRL:estimate",
+        "SVK:estimate",
+        "NOR:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Population means people living there.",
+      "Choose the closest number!"
+    ]
+  },
+  {
+    "id": "population-08",
+    "name": "Count 8",
+    "generator": "population",
+    "params": {
+      "items": [
+        "LBR:estimate",
+        "FIN:estimate",
+        "LBN:estimate",
+        "DNK:estimate",
+        "COG:estimate",
+        "SLV:estimate",
+        "BGR:estimate",
+        "SRB:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Population means people living there.",
+      "Choose the closest number!"
+    ]
+  },
+  {
+    "id": "population-09",
+    "name": "Count 9",
+    "generator": "population",
+    "params": {
+      "items": [
+        "NIC:estimate",
+        "PRY:estimate",
+        "KGZ:estimate",
+        "LBY:estimate",
+        "TKM:estimate",
+        "LAO:estimate",
+        "TGO:estimate",
+        "SLE:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Population means people living there.",
+      "Choose the closest number!"
+    ]
+  },
+  {
+    "id": "population-10",
+    "name": "Count 10",
+    "generator": "population",
+    "params": {
+      "items": [
+        "CHE:estimate",
+        "BLR:estimate",
+        "AUT:estimate",
+        "HUN:estimate",
+        "AZE:estimate",
+        "GRC:estimate",
+        "SWE:estimate",
+        "PNG:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Population means people living there.",
+      "Choose the closest number!"
+    ]
+  },
+  {
+    "id": "population-11",
+    "name": "Count 11",
+    "generator": "population",
+    "params": {
+      "items": [
+        "TJK:estimate",
+        "PRT:estimate",
+        "HND:estimate",
+        "CZE:estimate",
+        "CUB:estimate",
+        "DOM:estimate",
+        "JOR:estimate",
+        "HTI:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Population means people living there.",
+      "Choose the closest number!"
+    ]
+  },
+  {
+    "id": "population-12",
+    "name": "Count 12",
+    "generator": "population",
+    "params": {
+      "items": [
+        "BEL:estimate",
+        "TUN:estimate",
+        "RWA:estimate",
+        "GIN:estimate",
+        "ZWE:estimate",
+        "KHM:estimate",
+        "ECU:estimate",
+        "GTM:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Population means people living there.",
+      "Choose the closest number!"
+    ]
+  },
+  {
+    "id": "population-13",
+    "name": "Count 13",
+    "generator": "population",
+    "params": {
+      "items": [
+        "SEN:estimate",
+        "SOM:estimate",
+        "ROU:estimate",
+        "CHL:estimate",
+        "TCD:estimate",
+        "KAZ:estimate",
+        "ZMB:estimate",
+        "MWI:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Population means people living there.",
+      "Choose the closest number!"
+    ]
+  },
+  {
+    "id": "population-14",
+    "name": "Count 14",
+    "generator": "population",
+    "params": {
+      "items": [
+        "BFA:estimate",
+        "MLI:estimate",
+        "SYR:estimate",
+        "PRK:estimate",
+        "NER:estimate",
+        "VEN:estimate",
+        "CMR:estimate",
+        "NPL:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Population means people living there.",
+      "Choose the closest number!"
+    ]
+  },
+  {
+    "id": "population-15",
+    "name": "Count 15",
+    "generator": "population",
+    "params": {
+      "items": [
+        "MDG:estimate",
+        "PER:estimate",
+        "GHA:estimate",
+        "MOZ:estimate",
+        "UZB:estimate",
+        "POL:estimate",
+        "UKR:estimate",
+        "AGO:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Population means people living there.",
+      "Choose the closest number!"
+    ]
+  },
+  {
+    "id": "population-16",
+    "name": "Count 16",
+    "generator": "population",
+    "params": {
+      "items": [
+        "MAR:estimate",
+        "YEM:estimate",
+        "CAN:estimate",
+        "AFG:estimate",
+        "ARG:estimate",
+        "IRQ:estimate",
+        "DZA:estimate",
+        "ESP:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Population means people living there.",
+      "Choose the closest number!"
+    ]
+  },
+  {
+    "id": "population-17",
+    "name": "Count 17",
+    "generator": "population",
+    "params": {
+      "items": [
+        "UGA:estimate",
+        "SDN:estimate",
+        "KOR:estimate",
+        "COL:estimate",
+        "KEN:estimate",
+        "ITA:estimate",
+        "GBR:estimate",
+        "THA:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Population means people living there.",
+      "Choose the closest number!"
+    ]
+  },
+  {
+    "id": "population-18",
+    "name": "Count 18",
+    "generator": "population",
+    "params": {
+      "items": [
+        "DEU:estimate",
+        "IRN:estimate",
+        "VNM:estimate",
+        "COD:estimate",
+        "PHL:estimate",
+        "MEX:estimate",
+        "ETH:estimate",
+        "BGD:estimate"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Population means people living there.",
+      "Choose the closest number!"
+    ]
+  },
+  {
+    "id": "population-19",
+    "name": "More People 1",
+    "generator": "population",
+    "params": {
+      "items": [
+        "ARE:SAU:more",
+        "EGY:USA:more",
+        "FRA:BRA:more",
+        "JPN:AUS:more",
+        "SAU:JPN:more",
+        "BRA:AUS:more",
+        "ARE:EGY:more",
+        "FRA:USA:more"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-20",
+    "name": "More People 2",
+    "generator": "population",
+    "params": {
+      "items": [
+        "IRQ:QAT:more",
+        "CHL:GNB:more",
+        "SWE:TLS:more",
+        "ITA:NGA:more",
+        "HRV:VEN:more",
+        "FIN:SEN:more",
+        "JAM:SLE:more",
+        "TCD:NOR:more"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-21",
+    "name": "More People 3",
+    "generator": "population",
+    "params": {
+      "items": [
+        "MEX:SAU:more",
+        "DNK:DJI:more",
+        "BEL:USA:more",
+        "LBR:TTO:more",
+        "COD:RWA:more",
+        "MKD:OMN:more",
+        "COL:TJK:more",
+        "BHS:GNQ:more"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-22",
+    "name": "More People 4",
+    "generator": "population",
+    "params": {
+      "items": [
+        "QAT:SYR:more",
+        "KWT:SAU:more",
+        "COD:SLE:more",
+        "COD:GHA:more",
+        "NPL:URY:more",
+        "CZE:ISL:more",
+        "LBN:VEN:more",
+        "GHA:ZMB:more"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-23",
+    "name": "More People 5",
+    "generator": "population",
+    "params": {
+      "items": [
+        "BGD:COG:more",
+        "MOZ:GBR:more",
+        "PER:SLE:more",
+        "CHL:TKM:more",
+        "MNE:NAM:more",
+        "CZE:MDA:more",
+        "AZE:SOM:more",
+        "HRV:FJI:more"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-24",
+    "name": "More People 6",
+    "generator": "population",
+    "params": {
+      "items": [
+        "LBN:PRT:more",
+        "LBR:UKR:more",
+        "ARG:IRL:more",
+        "DJI:ZMB:more",
+        "GNQ:GUY:more",
+        "MDA:PNG:more",
+        "GMB:TKM:more",
+        "CAN:IRL:more"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-25",
+    "name": "More People 7",
+    "generator": "population",
+    "params": {
+      "items": [
+        "BLR:NPL:more",
+        "SLB:VUT:more",
+        "GUY:NAM:more",
+        "AUS:LSO:more",
+        "BLR:ZWE:more",
+        "GIN:NZL:more",
+        "MRT:TJK:more",
+        "PAK:SLE:more"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-26",
+    "name": "More People 8",
+    "generator": "population",
+    "params": {
+      "items": [
+        "DEU:ESP:more",
+        "AGO:ZWE:more",
+        "CUB:OMN:more",
+        "ARM:MNE:more",
+        "HND:LBN:more",
+        "BGD:SLV:more",
+        "AGO:BGR:more",
+        "ARM:UKR:more"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-27",
+    "name": "More People 9",
+    "generator": "population",
+    "params": {
+      "items": [
+        "BEL:MDA:more",
+        "MNE:SEN:more",
+        "TCD:DJI:more",
+        "DNK:GUY:more",
+        "SAU:TGO:more",
+        "AZE:COD:more",
+        "BFA:UGA:more",
+        "GEO:UGA:more"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-28",
+    "name": "More People 10",
+    "generator": "population",
+    "params": {
+      "items": [
+        "ECU:ERI:more",
+        "CHL:YEM:more",
+        "CAN:JPN:more",
+        "DJI:NPL:more",
+        "POL:SVN:more",
+        "CUB:SDN:more",
+        "FIN:SAU:more",
+        "BIH:TTO:more"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-29",
+    "name": "More People 11",
+    "generator": "population",
+    "params": {
+      "items": [
+        "HRV:PHL:more",
+        "GIN:ESP:more",
+        "GTM:PER:more",
+        "JAM:TLS:more",
+        "DEU:ROU:more",
+        "CMR:SWE:more",
+        "USA:ZMB:more",
+        "HND:SOM:more"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-30",
+    "name": "More People 12",
+    "generator": "population",
+    "params": {
+      "items": [
+        "TCD:LBN:more",
+        "BEL:KEN:more",
+        "BHS:SLB:more",
+        "BRA:CHL:more",
+        "ALB:PNG:more",
+        "CHL:ARE:more",
+        "JPN:SLE:more",
+        "JAM:MOZ:more"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-31",
+    "name": "More People 13",
+    "generator": "population",
+    "params": {
+      "items": [
+        "KAZ:SLE:more",
+        "BGD:RWA:more",
+        "GRC:KEN:more",
+        "KHM:MKD:more",
+        "SVK:ZWE:more",
+        "ARM:GBR:more",
+        "COD:ROU:more",
+        "NAM:SRB:more"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-32",
+    "name": "More People 14",
+    "generator": "population",
+    "params": {
+      "items": [
+        "ALB:BRN:more",
+        "CUB:PER:more",
+        "IRQ:TJK:more",
+        "TCD:IRQ:more",
+        "HUN:MAR:more",
+        "COD:LBN:more",
+        "ARG:PRT:more",
+        "CUB:DJI:more"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-33",
+    "name": "More People 15",
+    "generator": "population",
+    "params": {
+      "items": [
+        "DOM:KGZ:more",
+        "DZA:LBN:more",
+        "PNG:TTO:more",
+        "FJI:GAB:more",
+        "DOM:MDG:more",
+        "CAF:SDN:more",
+        "BGD:SWE:more",
+        "DZA:LBR:more"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-34",
+    "name": "More People 16",
+    "generator": "population",
+    "params": {
+      "items": [
+        "BRA:GHA:more",
+        "GNQ:PRY:more",
+        "SYR:UGA:more",
+        "ETH:PRK:more",
+        "AFG:KAZ:more",
+        "AFG:MDA:more",
+        "JPN:UGA:more",
+        "KHM:SLB:more"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-35",
+    "name": "More People 17",
+    "generator": "population",
+    "params": {
+      "items": [
+        "IRQ:LAO:more",
+        "ECU:JAM:more",
+        "BTN:GIN:more",
+        "BWA:MLI:more",
+        "AUS:BWA:more",
+        "ERI:JOR:more",
+        "TUN:VNM:more",
+        "BGR:ARE:more"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-36",
+    "name": "More People 18",
+    "generator": "population",
+    "params": {
+      "items": [
+        "CHL:JPN:more",
+        "ITA:PRK:more",
+        "BFA:DEU:more",
+        "CMR:LBY:more",
+        "GMB:KAZ:more",
+        "CHL:FRA:more",
+        "CMR:IRQ:more",
+        "KAZ:SWE:more"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-37",
+    "name": "Fewer People 1",
+    "generator": "population",
+    "params": {
+      "items": [
+        "COD:OMN:fewer",
+        "AZE:NZL:fewer",
+        "SRB:TLS:fewer",
+        "DJI:MOZ:fewer",
+        "BRN:SLV:fewer",
+        "GRC:SRB:fewer",
+        "PAN:CHE:fewer",
+        "CHL:MRT:fewer"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-38",
+    "name": "Fewer People 2",
+    "generator": "population",
+    "params": {
+      "items": [
+        "MDG:PAN:fewer",
+        "IRN:UKR:fewer",
+        "COG:YEM:fewer",
+        "LBR:ESP:fewer",
+        "KAZ:PHL:fewer",
+        "PAK:PRT:fewer",
+        "BFA:MKD:fewer",
+        "DOM:FJI:fewer"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-39",
+    "name": "Fewer People 3",
+    "generator": "population",
+    "params": {
+      "items": [
+        "PRY:THA:fewer",
+        "TCD:GEO:fewer",
+        "TTO:ARE:fewer",
+        "IRQ:PNG:fewer",
+        "BLZ:HTI:fewer",
+        "BGD:KHM:fewer",
+        "NGA:UGA:fewer",
+        "EST:HTI:fewer"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-40",
+    "name": "Fewer People 4",
+    "generator": "population",
+    "params": {
+      "items": [
+        "LVA:NAM:fewer",
+        "MDG:SOM:fewer",
+        "GHA:JOR:fewer",
+        "LUX:RWA:fewer",
+        "FRA:NAM:fewer",
+        "NZL:MKD:fewer",
+        "EGY:FRA:fewer",
+        "PNG:SLB:fewer"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-41",
+    "name": "Fewer People 5",
+    "generator": "population",
+    "params": {
+      "items": [
+        "CZE:ESP:fewer",
+        "COD:DOM:fewer",
+        "ERI:GHA:fewer",
+        "AZE:ECU:fewer",
+        "EGY:GHA:fewer",
+        "DEU:OMN:fewer",
+        "ARM:CAF:fewer",
+        "CAF:GBR:fewer"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-42",
+    "name": "Fewer People 6",
+    "generator": "population",
+    "params": {
+      "items": [
+        "GIN:KGZ:fewer",
+        "CRI:MDA:fewer",
+        "GMB:ROU:fewer",
+        "GUY:HTI:fewer",
+        "HUN:THA:fewer",
+        "GUY:LAO:fewer",
+        "ITA:MRT:fewer",
+        "NGA:PER:fewer"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-43",
+    "name": "Fewer People 7",
+    "generator": "population",
+    "params": {
+      "items": [
+        "PAK:PNG:fewer",
+        "ECU:HND:fewer",
+        "BIH:LVA:fewer",
+        "ARM:LBR:fewer",
+        "SWE:VEN:fewer",
+        "CUB:ZWE:fewer",
+        "JPN:SEN:fewer",
+        "JOR:VNM:fewer"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-44",
+    "name": "Fewer People 8",
+    "generator": "population",
+    "params": {
+      "items": [
+        "LSO:TKM:fewer",
+        "KAZ:LBY:fewer",
+        "JPN:TKM:fewer",
+        "EGY:IRL:fewer",
+        "BGR:SWE:fewer",
+        "CHL:PNG:fewer",
+        "COD:NPL:fewer",
+        "CHL:GMB:fewer"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-45",
+    "name": "Fewer People 9",
+    "generator": "population",
+    "params": {
+      "items": [
+        "NER:TGO:fewer",
+        "CZE:FRA:fewer",
+        "DNK:TJK:fewer",
+        "BRA:ECU:fewer",
+        "KWT:LVA:fewer",
+        "AUS:RWA:fewer",
+        "CHL:MNG:fewer",
+        "LBY:TTO:fewer"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-46",
+    "name": "Fewer People 10",
+    "generator": "population",
+    "params": {
+      "items": [
+        "AUS:LBY:fewer",
+        "CUB:DNK:fewer",
+        "SVK:TTO:fewer",
+        "CUB:MRT:fewer",
+        "MDG:SWE:fewer",
+        "SOM:ESP:fewer",
+        "HUN:ISL:fewer",
+        "CHL:SLB:fewer"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-47",
+    "name": "Fewer People 11",
+    "generator": "population",
+    "params": {
+      "items": [
+        "LVA:SAU:fewer",
+        "OMN:PHL:fewer",
+        "MLI:TGO:fewer",
+        "MLI:NGA:fewer",
+        "JPN:ARE:fewer",
+        "GIN:NAM:fewer",
+        "HND:LTU:fewer",
+        "EST:GAB:fewer"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-48",
+    "name": "Fewer People 12",
+    "generator": "population",
+    "params": {
+      "items": [
+        "GIN:SVK:fewer",
+        "HND:MLI:fewer",
+        "SLV:GNQ:fewer",
+        "FJI:RWA:fewer",
+        "PNG:COG:fewer",
+        "CHL:IRN:fewer",
+        "KOR:TGO:fewer",
+        "HRV:GAB:fewer"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-49",
+    "name": "Fewer People 13",
+    "generator": "population",
+    "params": {
+      "items": [
+        "HUN:MNE:fewer",
+        "IRN:USA:fewer",
+        "KHM:LBN:fewer",
+        "CZE:PER:fewer",
+        "GRC:ZMB:fewer",
+        "ERI:THA:fewer",
+        "SLV:SUR:fewer",
+        "BTN:OMN:fewer"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-50",
+    "name": "Fewer People 14",
+    "generator": "population",
+    "params": {
+      "items": [
+        "UKR:URY:fewer",
+        "BEL:UGA:fewer",
+        "CHN:THA:fewer",
+        "BIH:UKR:fewer",
+        "POL:SLE:fewer",
+        "CAN:CHE:fewer",
+        "HUN:SAU:fewer",
+        "DEU:MLI:fewer"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-51",
+    "name": "Fewer People 15",
+    "generator": "population",
+    "params": {
+      "items": [
+        "TCD:CRI:fewer",
+        "EGY:KOR:fewer",
+        "DEU:IRQ:fewer",
+        "THA:URY:fewer",
+        "PRK:NOR:fewer",
+        "IRN:SEN:fewer",
+        "BLZ:MKD:fewer",
+        "MNG:SOM:fewer"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-52",
+    "name": "Fewer People 16",
+    "generator": "population",
+    "params": {
+      "items": [
+        "AFG:BGD:fewer",
+        "KOR:USA:fewer",
+        "IRQ:KGZ:fewer",
+        "MAR:PRT:fewer",
+        "AGO:THA:fewer",
+        "LTU:SRB:fewer",
+        "AUT:PRK:fewer",
+        "MWI:SAU:fewer"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-53",
+    "name": "Fewer People 17",
+    "generator": "population",
+    "params": {
+      "items": [
+        "PAK:ESP:fewer",
+        "DZA:ARE:fewer",
+        "BTN:GRC:fewer",
+        "FRA:ROU:fewer",
+        "LTU:SOM:fewer",
+        "BTN:LVA:fewer",
+        "KHM:TLS:fewer",
+        "FJI:PRK:fewer"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-54",
+    "name": "Fewer People 18",
+    "generator": "population",
+    "params": {
+      "items": [
+        "TGO:TTO:fewer",
+        "BWA:GRC:fewer",
+        "TTO:VUT:fewer",
+        "LBY:MAR:fewer",
+        "LVA:SVK:fewer",
+        "TCD:MEX:fewer",
+        "GUY:URY:fewer",
+        "BTN:NAM:fewer"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  },
+  {
+    "id": "population-55",
+    "name": "Fewer People 19",
+    "generator": "population",
+    "params": {
+      "items": [
+        "AUS:SWE:fewer",
+        "GMB:LAO:fewer",
+        "HTI:KGZ:fewer",
+        "COL:KWT:fewer",
+        "BHS:BIH:fewer",
+        "ESP:USA:fewer",
+        "ITA:SOM:fewer",
+        "HRV:KEN:fewer"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Compare two countries.",
+      "Think about how many people live there!"
+    ]
+  }
+]

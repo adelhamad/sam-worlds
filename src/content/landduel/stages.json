@@ -1,0 +1,1322 @@
+[
+  {
+    "id": "landduel-01",
+    "name": "Land Launch",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "ARE:EGY:larger",
+        "ARE:FRA:larger",
+        "ARE:JPN:larger",
+        "SAU:BRA:larger",
+        "SAU:USA:larger",
+        "EGY:AUS:larger",
+        "FRA:BRA:larger",
+        "JPN:USA:larger"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-02",
+    "name": "Larger 2",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "MDA:TKM:larger",
+        "BIH:ZWE:larger",
+        "GNB:KEN:larger",
+        "MEX:SLE:larger",
+        "TUN:VUT:larger",
+        "BHS:DOM:larger",
+        "BGR:DJI:larger",
+        "PNG:SAU:larger"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-03",
+    "name": "Larger 3",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "BEL:POL:larger",
+        "SDN:UKR:larger",
+        "NER:OMN:larger",
+        "IRL:MAR:larger",
+        "DEU:MEX:larger",
+        "BEL:FIN:larger",
+        "LBR:MKD:larger",
+        "KAZ:GBR:larger"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-04",
+    "name": "Larger 4",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "AUT:MAR:larger",
+        "LAO:LTU:larger",
+        "JPN:PRK:larger",
+        "LTU:ESP:larger",
+        "MNG:PRY:larger",
+        "AZE:TTO:larger",
+        "ARG:ROU:larger",
+        "AUS:ZWE:larger"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-05",
+    "name": "Larger 5",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "HRV:NZL:larger",
+        "ETH:ITA:larger",
+        "CUB:ZMB:larger",
+        "FJI:ISL:larger",
+        "LUX:TLS:larger",
+        "GTM:PER:larger",
+        "ARM:ESP:larger",
+        "SLV:HND:larger"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 12,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-06",
+    "name": "Larger 6",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "KGZ:MLI:larger",
+        "LAO:VUT:larger",
+        "GHA:SLB:larger",
+        "AFG:IRL:larger",
+        "ALB:AZE:larger",
+        "AFG:BTN:larger",
+        "BHS:BIH:larger",
+        "MEX:TKM:larger"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-07",
+    "name": "Larger 7",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "QAT:GBR:larger",
+        "ARE:VNM:larger",
+        "GMB:HND:larger",
+        "ERI:FRA:larger",
+        "MLI:UGA:larger",
+        "DOM:NZL:larger",
+        "LBY:SUR:larger",
+        "ARG:PHL:larger"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-08",
+    "name": "Larger 8",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "KGZ:MNE:larger",
+        "GAB:SDN:larger",
+        "MKD:YEM:larger",
+        "LSO:NIC:larger",
+        "JOR:PAK:larger",
+        "GRC:KWT:larger",
+        "GIN:LBN:larger",
+        "KGZ:CHE:larger"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-09",
+    "name": "Larger 9",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "SRB:ZWE:larger",
+        "BLR:NAM:larger",
+        "LVA:PAK:larger",
+        "CHL:MKD:larger",
+        "SVK:YEM:larger",
+        "ETH:GTM:larger",
+        "SOM:CHE:larger",
+        "ECU:SVN:larger"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-10",
+    "name": "Larger 10",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "ERI:MDG:larger",
+        "BEL:OMN:larger",
+        "IRQ:PAN:larger",
+        "SLV:LUX:larger",
+        "ESP:SUR:larger",
+        "ETH:SVK:larger",
+        "BGD:SLB:larger",
+        "GNQ:HUN:larger"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 13,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-11",
+    "name": "Larger 11",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "HTI:JOR:larger",
+        "BFA:JOR:larger",
+        "GEO:ZWE:larger",
+        "CMR:LBY:larger",
+        "RWA:URY:larger",
+        "GUY:MLI:larger",
+        "GNB:LUX:larger",
+        "AZE:COG:larger"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-12",
+    "name": "Larger 12",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "HTI:YEM:larger",
+        "SDN:SWE:larger",
+        "BEL:PNG:larger",
+        "COD:PHL:larger",
+        "SLV:SWE:larger",
+        "CZE:THA:larger",
+        "AUT:EGY:larger",
+        "DNK:TTO:larger"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-13",
+    "name": "Larger 13",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "KWT:SLE:larger",
+        "FRA:RWA:larger",
+        "NPL:VUT:larger",
+        "BRN:KOR:larger",
+        "GTM:LBY:larger",
+        "AZE:NOR:larger",
+        "LTU:UGA:larger",
+        "QAT:UGA:larger"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-14",
+    "name": "Larger 14",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "BEL:MOZ:larger",
+        "ARM:SWE:larger",
+        "CMR:CAN:larger",
+        "ITA:SRB:larger",
+        "AUS:CMR:larger",
+        "BWA:KHM:larger",
+        "SUR:TLS:larger",
+        "LBR:PNG:larger"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-15",
+    "name": "Larger 15",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "BRN:SVK:larger",
+        "ECU:JAM:larger",
+        "BWA:GEO:larger",
+        "MAR:TGO:larger",
+        "BGR:COG:larger",
+        "BEL:NIC:larger",
+        "BLR:BEL:larger",
+        "LTU:MNG:larger"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 14,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-16",
+    "name": "Larger 16",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "IRN:ITA:larger",
+        "KAZ:SEN:larger",
+        "LTU:ROU:larger",
+        "BGD:BWA:larger",
+        "CHE:UGA:larger",
+        "IRL:MNE:larger",
+        "QAT:SEN:larger",
+        "ESP:ARE:larger"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-17",
+    "name": "Larger 17",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "BLZ:FIN:larger",
+        "LBY:THA:larger",
+        "IND:IRQ:larger",
+        "MEX:ROU:larger",
+        "MWI:SLB:larger",
+        "LAO:NGA:larger",
+        "CZE:PER:larger",
+        "LBN:LUX:larger"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-18",
+    "name": "Larger 18",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "SVK:VEN:larger",
+        "PRY:USA:larger",
+        "HTI:SRB:larger",
+        "CRI:GUY:larger",
+        "MWI:TTO:larger",
+        "ARE:ZMB:larger",
+        "FJI:JOR:larger",
+        "SAU:ESP:larger"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-19",
+    "name": "Smaller 1",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "GTM:ESP:smaller",
+        "KGZ:YEM:smaller",
+        "NAM:TJK:smaller",
+        "DNK:COG:smaller",
+        "CMR:GHA:smaller",
+        "EGY:MWI:smaller",
+        "MWI:SWE:smaller",
+        "BWA:SVK:smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-20",
+    "name": "Smaller 2",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "LBY:MWI:smaller",
+        "BGD:FIN:smaller",
+        "CHN:IND:smaller",
+        "ARM:GIN:smaller",
+        "AUS:SAU:smaller",
+        "GEO:VNM:smaller",
+        "SLV:VNM:smaller",
+        "CUB:MNG:smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 15,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-21",
+    "name": "Smaller 3",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "LSO:QAT:smaller",
+        "AFG:SRB:smaller",
+        "NIC:CHE:smaller",
+        "BLR:GMB:smaller",
+        "CHN:KEN:smaller",
+        "NOR:URY:smaller",
+        "KHM:JPN:smaller",
+        "IND:PAK:smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-22",
+    "name": "Smaller 4",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "EST:PRY:smaller",
+        "SLV:YEM:smaller",
+        "MDG:PER:smaller",
+        "BFA:MNE:smaller",
+        "BGR:SDN:smaller",
+        "CZE:TUN:smaller",
+        "DOM:OMN:smaller",
+        "ARM:BGD:smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-23",
+    "name": "Smaller 5",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "CMR:HTI:smaller",
+        "IRQ:MEX:smaller",
+        "GMB:LAO:smaller",
+        "ERI:NER:smaller",
+        "FIN:KAZ:smaller",
+        "SOM:VNM:smaller",
+        "MAR:ARE:smaller",
+        "BGR:COL:smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-24",
+    "name": "Smaller 6",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "CAN:IRQ:smaller",
+        "CUB:MDA:smaller",
+        "CUB:SWE:smaller",
+        "FIN:IRL:smaller",
+        "CAF:NER:smaller",
+        "KWT:TGO:smaller",
+        "BWA:HND:smaller",
+        "DZA:FIN:smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-25",
+    "name": "Smaller 7",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "TGO:UKR:smaller",
+        "GAB:KAZ:smaller",
+        "DZA:KOR:smaller",
+        "FRA:KAZ:smaller",
+        "COL:DNK:smaller",
+        "SRB:UGA:smaller",
+        "BRA:UKR:smaller",
+        "BTN:JAM:smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 16,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-26",
+    "name": "Smaller 8",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "AGO:EST:smaller",
+        "ARG:KEN:smaller",
+        "BRA:COD:smaller",
+        "KEN:UGA:smaller",
+        "GNB:UGA:smaller",
+        "SAU:YEM:smaller",
+        "CAN:PAK:smaller",
+        "BLZ:YEM:smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-27",
+    "name": "Smaller 9",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "GNQ:UGA:smaller",
+        "GNQ:TKM:smaller",
+        "GBR:ZMB:smaller",
+        "ALB:IRL:smaller",
+        "EST:SRB:smaller",
+        "HRV:PER:smaller",
+        "KAZ:KGZ:smaller",
+        "LVA:NOR:smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-28",
+    "name": "Smaller 10",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "CZE:ITA:smaller",
+        "AUT:VNM:smaller",
+        "AUT:RWA:smaller",
+        "AUT:PRY:smaller",
+        "LSO:POL:smaller",
+        "NIC:SDN:smaller",
+        "HUN:TLS:smaller",
+        "ARM:MOZ:smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-29",
+    "name": "Smaller 11",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "KEN:LAO:smaller",
+        "BEL:UGA:smaller",
+        "ARG:GUY:smaller",
+        "GNQ:MNE:smaller",
+        "AZE:BLR:smaller",
+        "BRA:MRT:smaller",
+        "EST:MLI:smaller",
+        "PRY:TGO:smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-30",
+    "name": "Smaller 12",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "ARM:GMB:smaller",
+        "PRK:CHE:smaller",
+        "BFA:KAZ:smaller",
+        "ROU:SDN:smaller",
+        "DEU:USA:smaller",
+        "GNB:PNG:smaller",
+        "FRA:KOR:smaller",
+        "DNK:ITA:smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 17,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-31",
+    "name": "Smaller 13",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "JOR:MNG:smaller",
+        "AFG:DZA:smaller",
+        "CMR:FJI:smaller",
+        "COL:GRC:smaller",
+        "ARM:HND:smaller",
+        "BLR:MNG:smaller",
+        "LBY:MDG:smaller",
+        "AGO:ZWE:smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-32",
+    "name": "Smaller 14",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "CMR:MRT:smaller",
+        "BRA:COL:smaller",
+        "DJI:GMB:smaller",
+        "GNB:HUN:smaller",
+        "BLR:THA:smaller",
+        "DNK:MOZ:smaller",
+        "SLB:SWE:smaller",
+        "ECU:HUN:smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-33",
+    "name": "Smaller 15",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "GIN:MRT:smaller",
+        "AFG:ARG:smaller",
+        "FRA:HTI:smaller",
+        "MLI:UKR:smaller",
+        "DNK:NZL:smaller",
+        "DJI:UZB:smaller",
+        "ERI:MDA:smaller",
+        "ARG:MRT:smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-34",
+    "name": "Smaller 16",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "EGY:COG:smaller",
+        "KAZ:NOR:smaller",
+        "NIC:PHL:smaller",
+        "BGD:NZL:smaller",
+        "ECU:JOR:smaller",
+        "BFA:ZMB:smaller",
+        "GHA:ARE:smaller",
+        "AUT:JAM:smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-35",
+    "name": "Smaller 17",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "SRB:CHE:smaller",
+        "BRN:MKD:smaller",
+        "NIC:VNM:smaller",
+        "NIC:NGA:smaller",
+        "GIN:SDN:smaller",
+        "FIN:NAM:smaller",
+        "CAF:SUR:smaller",
+        "HRV:MKD:smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-36",
+    "name": "Smaller 18",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "BFA:NAM:smaller",
+        "MAR:TUN:smaller",
+        "HTI:ESP:smaller",
+        "DNK:ESP:smaller",
+        "NER:UKR:smaller",
+        "BLZ:UGA:smaller",
+        "OMN:SRB:smaller",
+        "ARE:UZB:smaller"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Compare two countries.",
+      "Choose the land size winner!"
+    ]
+  },
+  {
+    "id": "landduel-37",
+    "name": "Podium 1",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "NER:UZB:HRV:order",
+        "ZMB:SUR:MWI:order",
+        "ECU:SUR:AZE:order",
+        "IRN:GIN:GRC:order",
+        "SAU:NER:HND:order",
+        "COD:KGZ:NIC:order",
+        "COD:MOZ:JOR:order",
+        "ZMB:PNG:SVK:order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Put three countries in order.",
+      "Biggest land first!"
+    ]
+  },
+  {
+    "id": "landduel-38",
+    "name": "Podium 2",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "ZWE:GBR:KWT:order",
+        "ETH:IRQ:TGO:order",
+        "SWE:HTI:FJI:order",
+        "KHM:RWA:BHS:order",
+        "MOZ:GBR:MWI:order",
+        "ITA:JOR:EST:order",
+        "BFA:KHM:FJI:order",
+        "TCD:FRA:TGO:order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Put three countries in order.",
+      "Biggest land first!"
+    ]
+  },
+  {
+    "id": "landduel-39",
+    "name": "Podium 3",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "ARG:YEM:PRK:order",
+        "ETH:VNM:TJK:order",
+        "KGZ:ISL:LBN:order",
+        "SOM:GAB:TGO:order",
+        "HRV:BEL:LBN:order",
+        "MNG:BWA:TUN:order",
+        "JPN:CZE:DOM:order",
+        "TKM:SYR:BEL:order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Put three countries in order.",
+      "Biggest land first!"
+    ]
+  },
+  {
+    "id": "landduel-40",
+    "name": "Podium 4",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "IND:YEM:URY:order",
+        "USA:EGY:THA:order",
+        "BTN:MKD:MNE:order",
+        "AFG:COG:BLZ:order",
+        "AFG:NOR:LAO:order",
+        "ZWE:NPL:ARM:order",
+        "COD:ESP:ISL:order",
+        "UKR:GUY:LSO:order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 19,
+    "intro": [
+      "Put three countries in order.",
+      "Biggest land first!"
+    ]
+  },
+  {
+    "id": "landduel-41",
+    "name": "Podium 5",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "BFA:KOR:TLS:order",
+        "GUY:ARE:MNE:order",
+        "CHL:AZE:DNK:order",
+        "ISL:DNK:VUT:order",
+        "TUN:AUT:BHS:order",
+        "SOM:GUY:LBR:order",
+        "KHM:DNK:SVN:order",
+        "GAB:BGD:AUT:order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Put three countries in order.",
+      "Biggest land first!"
+    ]
+  },
+  {
+    "id": "landduel-42",
+    "name": "Podium 6",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "GBR:CUB:SLV:order",
+        "PER:BLR:EST:order",
+        "FRA:ROU:BLZ:order",
+        "POL:SUR:DNK:order",
+        "NER:BLR:MWI:order",
+        "DZA:PNG:PRK:order",
+        "IND:THA:BFA:order",
+        "SOM:SEN:CUB:order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Put three countries in order.",
+      "Biggest land first!"
+    ]
+  },
+  {
+    "id": "landduel-43",
+    "name": "Podium 7",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "TCD:YEM:VNM:order",
+        "NOR:BGR:IRL:order",
+        "PAK:OMN:SYR:order",
+        "FIN:SRB:RWA:order",
+        "COG:KHM:ALB:order",
+        "COD:THA:AUT:order",
+        "CAF:JOR:BEL:order",
+        "PNG:NIC:MDA:order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Put three countries in order.",
+      "Biggest land first!"
+    ]
+  },
+  {
+    "id": "landduel-44",
+    "name": "Podium 8",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "VEN:PHL:TUN:order",
+        "PNG:BFA:HTI:order",
+        "MRT:ECU:TGO:order",
+        "ROU:NPL:IRL:order",
+        "CAN:ETH:ZWE:order",
+        "DEU:ROU:FJI:order",
+        "VEN:ROU:CHE:order",
+        "JPN:BLR:SVK:order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Put three countries in order.",
+      "Biggest land first!"
+    ]
+  },
+  {
+    "id": "landduel-45",
+    "name": "Podium 9",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "UZB:KHM:JOR:order",
+        "COG:HUN:CRI:order",
+        "NOR:ARE:BEL:order",
+        "POL:RWA:VUT:order",
+        "ESP:POL:NPL:order",
+        "MEX:NAM:SRB:order",
+        "CHL:KHM:TGO:order",
+        "COL:UZB:TGO:order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Put three countries in order.",
+      "Biggest land first!"
+    ]
+  },
+  {
+    "id": "landduel-46",
+    "name": "Podium 10",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "MEX:AGO:YEM:order",
+        "CAN:SOM:COG:order",
+        "ESP:SRB:DJI:order",
+        "SAU:IRQ:ERI:order",
+        "PER:SOM:ROU:order",
+        "DZA:TCD:PAK:order",
+        "POL:BLZ:QAT:order",
+        "GIN:LVA:BLZ:order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Put three countries in order.",
+      "Biggest land first!"
+    ]
+  },
+  {
+    "id": "landduel-47",
+    "name": "Podium 11",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "TKM:HRV:RWA:order",
+        "VEN:MAR:HND:order",
+        "NPL:SRB:TGO:order",
+        "TCD:CAF:ISL:order",
+        "TJK:PRT:TGO:order",
+        "UGA:LBR:SLV:order",
+        "BLR:HUN:SLB:order",
+        "TCD:TKM:JOR:order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Put three countries in order.",
+      "Biggest land first!"
+    ]
+  },
+  {
+    "id": "landduel-48",
+    "name": "Podium 12",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "NER:KHM:ISL:order",
+        "DZA:POL:HUN:order",
+        "AGO:ZMB:SRB:order",
+        "MRT:COG:KOR:order",
+        "PER:NAM:YEM:order",
+        "KEN:BGD:HTI:order",
+        "TJK:EST:JAM:order",
+        "EGY:SOM:BLR:order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Put three countries in order.",
+      "Biggest land first!"
+    ]
+  },
+  {
+    "id": "landduel-49",
+    "name": "Podium 13",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "GBR:SLE:MKD:order",
+        "DEU:TJK:SVN:order",
+        "FRA:HRV:SLB:order",
+        "OMN:SEN:HRV:order",
+        "FRA:KGZ:SVN:order",
+        "AGO:JPN:GEO:order",
+        "SDN:ITA:IRL:order",
+        "VEN:KEN:PAN:order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Put three countries in order.",
+      "Biggest land first!"
+    ]
+  },
+  {
+    "id": "landduel-50",
+    "name": "Podium 14",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "ETH:AFG:PRK:order",
+        "NER:GRC:PAN:order",
+        "PRY:BIH:GNQ:order",
+        "SDN:MDG:COG:order",
+        "MLI:PNG:URY:order",
+        "NGA:GAB:CHE:order",
+        "PRY:TUN:MDA:order",
+        "DEU:JOR:DJI:order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 21,
+    "intro": [
+      "Put three countries in order.",
+      "Biggest land first!"
+    ]
+  },
+  {
+    "id": "landduel-51",
+    "name": "Podium 15",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "UGA:HUN:TGO:order",
+        "ECU:PRT:CRI:order",
+        "ARG:TKM:PRT:order",
+        "NGA:BGD:DOM:order",
+        "ARG:ZMB:GAB:order",
+        "OMN:HND:HTI:order",
+        "PAK:GBR:GEO:order",
+        "IRN:VNM:HUN:order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Put three countries in order.",
+      "Biggest land first!"
+    ]
+  },
+  {
+    "id": "landduel-52",
+    "name": "Podium 16",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "BLR:LVA:GNQ:order",
+        "PER:THA:POL:order",
+        "NOR:AUT:SVK:order",
+        "NOR:NPL:LTU:order",
+        "FRA:MWI:DJI:order",
+        "BLR:BGR:RWA:order",
+        "PNG:BLR:GRC:order",
+        "CMR:VNM:BTN:order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Put three countries in order.",
+      "Biggest land first!"
+    ]
+  },
+  {
+    "id": "landduel-53",
+    "name": "Podium 17",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "SWE:GHA:BIH:order",
+        "VEN:NZL:BTN:order",
+        "MAR:SVK:MKD:order",
+        "CMR:BLR:MDA:order",
+        "SWE:KGZ:BTN:order",
+        "SAU:ROU:PAN:order",
+        "EGY:MDG:HND:order",
+        "SEN:LTU:LSO:order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Put three countries in order.",
+      "Biggest land first!"
+    ]
+  },
+  {
+    "id": "landduel-54",
+    "name": "Podium 18",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "YEM:HND:IRL:order",
+        "GHA:SLE:SVK:order",
+        "TCD:OMN:KHM:order",
+        "ZMB:AUT:DNK:order",
+        "ARG:VEN:GHA:order",
+        "ESP:ROU:BEL:order",
+        "BWA:LBR:DNK:order",
+        "VEN:JPN:BIH:order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Put three countries in order.",
+      "Biggest land first!"
+    ]
+  },
+  {
+    "id": "landduel-55",
+    "name": "Podium 19",
+    "generator": "landduel",
+    "params": {
+      "items": [
+        "VEN:KHM:SLE:order",
+        "SLE:SVN:VUT:order",
+        "MOZ:PRY:SRB:order",
+        "SUR:CZE:GNB:order",
+        "YEM:COG:NIC:order",
+        "BFA:BIH:ARM:order",
+        "NZL:CZE:QAT:order",
+        "AUS:MOZ:TKM:order"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Put three countries in order.",
+      "Biggest land first!"
+    ]
+  }
+]
