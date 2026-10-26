@@ -4,6 +4,8 @@
 // tricolors) so it stays tricky.
 import { pick, shuffle, type RNG } from "../rng";
 import type { GenContext, Question } from "./types";
+import { COUNTRIES, flagEmoji, otherCountries, pickFact, type GeographyParams } from "./geography";
+import { STR } from "../../strings/en";
 
 type Flag = [string, string]; // [emoji, country]
 
@@ -31,14 +33,16 @@ const SIMILAR: Flag[][] = [
   [["🇦🇺", "Australia"], ["🇳🇿", "New Zealand"], ["🇬🇧", "United Kingdom"], ["🇫🇯", "Fiji"]],
 ];
 
-export interface FlagsParams {
+interface LegacyFlagsParams {
   pools: Array<"iconic" | "wider" | "similar">;
   modes: Array<"toCountry" | "toFlag">;
 }
+export type FlagsParams = LegacyFlagsParams | GeographyParams;
 
 let qid = 0;
 
 export function generateFlags(params: FlagsParams, rng: RNG, ctx: GenContext): Question {
+  if ("items" in params) return generateCountryFlag(params, rng, ctx);
   const pool = ctx.easier ? "iconic" : pick(rng, params.pools);
   const mode = pick(rng, params.modes);
 
@@ -77,5 +81,47 @@ export function generateFlags(params: FlagsParams, rng: RNG, ctx: GenContext): Q
     inputMode: "choices",
     dedupeKey: `tocountry-${country}`,
     payload: { bigSymbol: emoji },
+  };
+}
+
+function generateCountryFlag(params: GeographyParams, rng: RNG, ctx: GenContext): Question {
+  const { country, mode } = pickFact(params, rng);
+  const flag = flagEmoji(country.iso2);
+  if (mode === "toContinent") {
+    const continents = [...new Set(COUNTRIES.map((item) => item.continent))];
+    const others = shuffle(rng, continents.filter((item) => item !== country.continent)).slice(0, 3);
+    return {
+      id: `fl${++qid}`,
+      prompt: STR.geo.flagContinentPrompt,
+      answer: country.continent,
+      choices: shuffle(rng, [country.continent, ...others]),
+      hint: STR.geo.flagContinentHint(country.name),
+      inputMode: "choices",
+      dedupeKey: `flag-${country.code}-${mode}`,
+      payload: { bigSymbol: flag },
+    };
+  }
+  const others = otherCountries(country, rng, ctx, params.items);
+  if (mode === "toFlag") {
+    return {
+      id: `fl${++qid}`,
+      prompt: STR.geo.countryFlagPrompt(country.name),
+      answer: flag,
+      choices: shuffle(rng, [flag, ...others.map((item) => flagEmoji(item.iso2))]),
+      hint: STR.geo.flagHint(country.name),
+      inputMode: "choices",
+      dedupeKey: `flag-${country.code}-${mode}`,
+      payload: { bigChoices: true },
+    };
+  }
+  return {
+    id: `fl${++qid}`,
+    prompt: STR.geo.flagCountryPrompt,
+    answer: country.name,
+    choices: shuffle(rng, [country.name, ...others.map((item) => item.name)]),
+    hint: STR.geo.flagCountryHint(country.name[0]),
+    inputMode: "choices",
+    dedupeKey: `flag-${country.code}-${mode}`,
+    payload: { bigSymbol: flag },
   };
 }

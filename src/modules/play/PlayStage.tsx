@@ -23,6 +23,7 @@ import { OrderCards } from "../../ui/inputs/OrderCards";
 import { ChoiceButtons } from "../../ui/inputs/ChoiceButtons";
 import { TraceCanvas } from "../../ui/inputs/TraceCanvas";
 import { StagePet } from "../../ui/PetCompanion";
+import { GeoMap } from "../../ui/GeoMap";
 import { VideoToggle } from "../../ui/VideoToggle";
 import { CircuitDiagram } from "../../ui/inputs/CircuitDiagram";
 import type { Node as CircuitNode } from "../../engine/generators/logicCircuit";
@@ -41,7 +42,7 @@ interface VerdictDeps {
 interface SubmitDeps extends VerdictDeps {
   busy: boolean;
   shownAt: number;
-  answer: (v: string) => "correct" | "wrong" | "again" | null;
+  answer: (v: string) => "correct" | "wrong" | "again" | "exhausted" | null;
 }
 
 /** Full answer pipeline: guard, think-first gate, then verdict animation. */
@@ -58,7 +59,7 @@ function handleSubmit(value: string, d: SubmitDeps): void {
 }
 
 /** Animate + sequence the response to an answer verdict. */
-function applyVerdict(res: "correct" | "wrong" | "again" | null, d: VerdictDeps): void {
+function applyVerdict(res: "correct" | "wrong" | "again" | "exhausted" | null, d: VerdictDeps): void {
   if (res === "wrong") {
     sfx.wrong();
     d.scene?.wrongShake();
@@ -163,12 +164,12 @@ export function PlayStage() {
   }, [shownQid]);
 
   const seed = liveSession?.seed;
+  const questionCount = liveSession?.questions.length;
   useEffect(() => {
-    if (!stage || !worldEnabled || seed === undefined || !hostRef.current) return;
+    if (!stage || !worldEnabled || seed === undefined || questionCount === undefined || !hostRef.current) return;
     let cancelled = false;
-    const liveQuestions = useGame.getState().session?.questions.length ?? stage.questions;
     const resumeIndex = useGame.getState().session?.index ?? 0;
-    void GateRunScene.create(hostRef.current, liveQuestions, reducedMotion()).then((scene) => {
+    void GateRunScene.create(hostRef.current, questionCount, reducedMotion()).then((scene) => {
       if (cancelled) {
         scene.destroy();
         return;
@@ -181,7 +182,7 @@ export function PlayStage() {
       sceneRef.current?.destroy();
       sceneRef.current = null;
     };
-  }, [stage, seed, worldEnabled]);
+  }, [stage, seed, questionCount, worldEnabled]);
 
   useEffect(() => {
     if (!result) return;
@@ -280,15 +281,23 @@ export function PlayStage() {
             nextStage
               ? () => {
                   sfx.tap();
-                  startStage(nextStage.id);
-                  navigate(`/play/${nextStage.id}`);
+                  for (const candidate of world.stages.slice(idx + 1)) {
+                    startStage(candidate.id);
+                    if (useGame.getState().session?.questions.length) {
+                      navigate(`/play/${candidate.id}`);
+                      return;
+                    }
+                  }
+                  clearSession();
+                  navigate(`/world/${world.id}`);
                 }
               : () => {
                   sfx.tap();
-                  startStage(stageId);
+                  clearSession();
+                  navigate(`/world/${world.id}`);
                 }
           }
-          nextLabel={nextStage ? `${STR.nextStage} →` : STR.playAgain}
+          nextLabel={nextStage ? `${STR.nextStage} →` : STR.backToMap}
         />
       )}
     </div>
@@ -365,6 +374,9 @@ function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onRevea
         </div>
       )}
       {typeof q.payload?.bigSymbol === "string" && <div className="big-symbol">{q.payload.bigSymbol}</div>}
+      {typeof q.payload?.mapCode === "string" && (
+        <GeoMap code={q.payload.mapCode} style={q.payload.mapStyle as "outline" | "pin" | "world"} />
+      )}
       {q.payload?.tree && q.inputMode !== "toggle" ? (
         <CircuitDiagram tree={q.payload.tree as CircuitNode} lamp="unknown" />
       ) : null}
@@ -406,6 +418,7 @@ interface CelebrationProps {
     payout: number;
     firstTime: boolean;
     perfect: boolean;
+    noQuestions: boolean;
     newBadge: { icon: string; name: string } | null;
     surprise: { icon: string; name: string; rarity: string } | null;
   };
@@ -420,17 +433,18 @@ function Celebration({ result, tease, onBackToMap, onNext, nextLabel }: Celebrat
     <div className="overlay celebration">
       <div className="panel celebration-card">
         <h2>{STR.stageComplete}</h2>
-        <div className="stars-row">
+        {result.noQuestions && <p className="dim">{STR.noQuestions}</p>}
+        {!result.noQuestions && <div className="stars-row">
           {[1, 2, 3].map((s) => (
             <span key={s} className={`big-star ${s <= result.stars ? "lit" : ""}`} style={{ animationDelay: `${s * 250}ms` }}>
               ⭐
             </span>
           ))}
-        </div>
+        </div>}
         {result.perfect && <div className="perfect-banner">🌟 {STR.perfectRun}</div>}
-        <div className="payout">
+        {!result.noQuestions && <div className="payout">
           +{result.payout} ✨ {!result.firstTime && <small>({STR.replayNote})</small>}
-        </div>
+        </div>}
         {result.newBadge && (
           <div className="badge-banner">
             <span className="badge-icon">{result.newBadge.icon}</span>
@@ -448,7 +462,7 @@ function Celebration({ result, tease, onBackToMap, onNext, nextLabel }: Celebrat
             </span>
           </div>
         )}
-        <p className="mission-tease">“{tease}”</p>
+        {!result.noQuestions && <p className="mission-tease">“{tease}”</p>}
         <div className="celebration-actions">
           <button className="btn btn-secondary" onClick={onBackToMap}>
             {STR.backToMap}

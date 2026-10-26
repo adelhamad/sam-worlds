@@ -1,8 +1,8 @@
 // Rule 1+3+5 miss transition (docs/ANSWER_INTEGRITY.md): discard the missed
 // question, regenerate a fresh same-difficulty one, scaffold, detect guessing.
 import { db, logEvent } from "../engine/save/db";
-import { generateQuestionSet } from "../engine/generators";
-import { DEFAULT_RATING, difficultyFromRating } from "../engine/difficulty/skillRating";
+import { generateQuestionSet, questionKeys } from "../engine/generators";
+import { DEFAULT_RATING, stageDifficulty } from "../engine/difficulty/skillRating";
 import { isRapidGuessing, workedExample } from "../engine/answers/answerEngine";
 import { STR } from "../strings/en";
 import { newSeed } from "../engine/rng";
@@ -15,11 +15,19 @@ export function withReplacedQuestion(
   params: Parameters<typeof generateQuestionSet>[1],
   difficulty: number,
   easier: boolean,
-): Session["questions"] {
-  const [replacement] = generateQuestionSet(generator, params, 1, newSeed(), { difficulty, easier });
+  globalSeen: Iterable<string> = [],
+): Session | null {
+  const sessionSeen = s.seenQuestionKeys ?? s.questions.flatMap(questionKeys);
+  const seen = new Set([...globalSeen, ...sessionSeen]);
+  const [replacement] = generateQuestionSet(generator, params, 1, newSeed(), { difficulty, easier }, seen);
+  if (!replacement) return null;
   const questions = [...s.questions];
   questions[s.index] = replacement;
-  return questions;
+  return { ...s, questions, seenQuestionKeys: [...sessionSeen, ...questionKeys(replacement)] };
+}
+
+export function replacementDifficulty(stageProgress: number, rating: number, easier: boolean): number {
+  return Math.max(0, stageDifficulty(stageProgress, rating) - (easier ? 0.15 : 0));
 }
 
 export function missTransition(
@@ -29,7 +37,9 @@ export function missTransition(
   ratings: Record<string, number>,
   q: Session["questions"][number],
   firstAttemptInSlot: boolean,
-): Session {
+  stageProgress: number,
+  globalSeen: Iterable<string> = [],
+): Session | null {
   const wrongStamps = [...s.wrongStamps, Date.now()];
   const rapid = isRapidGuessing(wrongStamps);
   const missStreak = firstAttemptInSlot ? s.missStreak + 1 : s.missStreak;
@@ -40,10 +50,11 @@ export function missTransition(
     void db.skillRatings.put({ skill, rating: ratings[skill] });
     logEvent("guess.rapid", { stageId: s.stageId, skill });
   }
-  const difficulty = easier ? 0 : difficultyFromRating(ratings[skill] ?? DEFAULT_RATING);
+  const difficulty = replacementDifficulty(stageProgress, ratings[skill] ?? DEFAULT_RATING, easier);
+  const replaced = withReplacedQuestion(s, stage.generator, stage.params, difficulty, easier, globalSeen);
+  if (!replaced) return null;
   return {
-    ...s,
-    questions: withReplacedQuestion(s, stage.generator, stage.params, difficulty, easier),
+    ...replaced,
     wrongStamps,
     lastAnswer: "wrong",
     // Choice questions are tap-guessable: demand 2 correct in a row.

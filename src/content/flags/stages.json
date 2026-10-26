@@ -4,11 +4,15 @@
     "name": "First Colors",
     "generator": "flags",
     "params": {
-      "pools": [
-        "iconic"
-      ],
-      "modes": [
-        "toCountry"
+      "items": [
+        "ARE:toCountry",
+        "SAU:toCountry",
+        "EGY:toCountry",
+        "FRA:toCountry",
+        "JPN:toCountry",
+        "USA:toCountry",
+        "BRA:toCountry",
+        "AUS:toCountry"
       ]
     },
     "questions": 6,
@@ -24,11 +28,15 @@
     "name": "Red and White",
     "generator": "flags",
     "params": {
-      "pools": [
-        "iconic"
-      ],
-      "modes": [
-        "toCountry"
+      "items": [
+        "AFG:toCountry",
+        "ARM:toCountry",
+        "AZE:toCountry",
+        "BGD:toCountry",
+        "BTN:toCountry",
+        "BRN:toCountry",
+        "KHM:toCountry",
+        "CHN:toCountry"
       ]
     },
     "questions": 6,
@@ -40,11 +48,15 @@
     "name": "Sun and Stars",
     "generator": "flags",
     "params": {
-      "pools": [
-        "iconic"
-      ],
-      "modes": [
-        "toCountry"
+      "items": [
+        "GEO:toCountry",
+        "IND:toCountry",
+        "IRN:toCountry",
+        "IRQ:toCountry",
+        "JOR:toCountry",
+        "KAZ:toCountry",
+        "KWT:toCountry",
+        "KGZ:toCountry"
       ]
     },
     "questions": 6,
@@ -56,11 +68,15 @@
     "name": "Banner Basics",
     "generator": "flags",
     "params": {
-      "pools": [
-        "iconic"
-      ],
-      "modes": [
-        "toCountry"
+      "items": [
+        "LAO:toCountry",
+        "LBN:toCountry",
+        "MNG:toCountry",
+        "NPL:toCountry",
+        "PRK:toCountry",
+        "OMN:toCountry",
+        "PAK:toCountry",
+        "PHL:toCountry"
       ]
     },
     "questions": 6,
@@ -72,11 +88,15 @@
     "name": "Crescent and Cross",
     "generator": "flags",
     "params": {
-      "pools": [
-        "iconic"
-      ],
-      "modes": [
-        "toCountry"
+      "items": [
+        "QAT:toCountry",
+        "KOR:toCountry",
+        "SYR:toCountry",
+        "TJK:toCountry",
+        "THA:toCountry",
+        "TLS:toCountry",
+        "TKM:toCountry",
+        "UZB:toCountry"
       ]
     },
     "questions": 6,
@@ -88,11 +108,15 @@
     "name": "Maple and More",
     "generator": "flags",
     "params": {
-      "pools": [
-        "iconic"
-      ],
-      "modes": [
-        "toCountry"
+      "items": [
+        "DZA:toCountry",
+        "AGO:toCountry",
+        "BWA:toCountry",
+        "BFA:toCountry",
+        "CMR:toCountry",
+        "CAF:toCountry",
+        "TCD:toCountry",
+        "COD:toCountry"
       ]
     },
     "questions": 6,
@@ -104,11 +128,15 @@
     "name": "Bold Banners",
     "generator": "flags",
     "params": {
-      "pools": [
-        "iconic"
-      ],
-      "modes": [
-        "toCountry"
+      "items": [
+        "DJI:toCountry",
+        "GNQ:toCountry",
+        "ERI:toCountry",
+        "ETH:toCountry",
+        "GAB:toCountry",
+        "GMB:toCountry",
+        "GHA:toCountry",
+        "GIN:toCountry"
       ]
     },
     "questions": 6,
@@ -120,11 +148,15 @@
     "name": "The Color Gate",
     "generator": "flags",
     "params": {
-      "pools": [
-        "iconic"
-      ],
-      "modes": [
-        "toCountry"
+      "items": [
+        "GNB:toCountry",
+        "KEN:toCountry",
+        "LSO:toCountry",
+        "LBR:toCountry",
+        "LBY:toCountry",
+        "MDG:toCountry",
+        "MWI:toCountry",
+        "MLI:toCountry"
       ]
     },
     "questions": 6,
@@ -136,13 +168,15 @@
     "name": "Flag Finder",
     "generator": "flags",
     "params": {
-      "pools": [
-        "iconic",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "MRT:toCountry",
+        "MAR:toCountry",
+        "MOZ:toCountry",
+        "NAM:toCountry",
+        "NER:toCountry",
+        "NGA:toCountry",
+        "COG:toCountry",
+        "RWA:toCountry"
       ]
     },
     "questions": 6,
@@ -154,13 +188,15 @@
     "name": "Two Ways",
     "generator": "flags",
     "params": {
-      "pools": [
-        "iconic",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "SEN:toCountry",
+        "SLE:toCountry",
+        "SOM:toCountry",
+        "SDN:toCountry",
+        "TGO:toCountry",
+        "TUN:toCountry",
+        "UGA:toCountry",
+        "ZMB:toCountry"
       ]
     },
     "questions": 8,
@@ -172,13 +208,15 @@
     "name": "Name the Land",
     "generator": "flags",
     "params": {
-      "pools": [
-        "iconic",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "ALB:toCountry",
+        "AUT:toCountry",
+        "BLR:toCountry",
+        "BEL:toCountry",
+        "BIH:toCountry",
+        "BGR:toCountry",
+        "HRV:toCountry",
+        "CZE:toCountry"
       ]
     },
     "questions": 6,
@@ -190,13 +228,15 @@
     "name": "Find the Flag",
     "generator": "flags",
     "params": {
-      "pools": [
-        "iconic",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "DNK:toCountry",
+        "EST:toCountry",
+        "FIN:toCountry",
+        "DEU:toCountry",
+        "GRC:toCountry",
+        "HUN:toCountry",
+        "ISL:toCountry",
+        "IRL:toCountry"
       ]
     },
     "questions": 6,
@@ -208,13 +248,15 @@
     "name": "Wider World",
     "generator": "flags",
     "params": {
-      "pools": [
-        "iconic",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "ITA:toCountry",
+        "LVA:toCountry",
+        "LTU:toCountry",
+        "LUX:toCountry",
+        "MDA:toCountry",
+        "MNE:toCountry",
+        "MKD:toCountry",
+        "NOR:toCountry"
       ]
     },
     "questions": 6,
@@ -226,13 +268,15 @@
     "name": "Desert Flags",
     "generator": "flags",
     "params": {
-      "pools": [
-        "iconic",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "POL:toCountry",
+        "PRT:toCountry",
+        "ROU:toCountry",
+        "SRB:toCountry",
+        "SVK:toCountry",
+        "SVN:toCountry",
+        "ESP:toCountry",
+        "SWE:toCountry"
       ]
     },
     "questions": 6,
@@ -244,13 +288,15 @@
     "name": "Ocean Flags",
     "generator": "flags",
     "params": {
-      "pools": [
-        "iconic",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "BHS:toCountry",
+        "BLZ:toCountry",
+        "CAN:toCountry",
+        "CRI:toCountry",
+        "CUB:toCountry",
+        "DOM:toCountry",
+        "SLV:toCountry",
+        "GTM:toCountry"
       ]
     },
     "questions": 6,
@@ -262,13 +308,15 @@
     "name": "The Banner Gate",
     "generator": "flags",
     "params": {
-      "pools": [
-        "iconic",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "ARG:toCountry",
+        "CHL:toCountry",
+        "COL:toCountry",
+        "ECU:toCountry",
+        "GUY:toCountry",
+        "PRY:toCountry",
+        "PER:toCountry",
+        "SUR:toCountry"
       ]
     },
     "questions": 6,
@@ -280,12 +328,15 @@
     "name": "Far Lands",
     "generator": "flags",
     "params": {
-      "pools": [
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "AFG:toFlag",
+        "ARM:toFlag",
+        "AZE:toFlag",
+        "BGD:toFlag",
+        "BTN:toFlag",
+        "BRN:toFlag",
+        "KHM:toFlag",
+        "CHN:toFlag"
       ]
     },
     "questions": 6,
@@ -297,12 +348,15 @@
     "name": "New Horizons",
     "generator": "flags",
     "params": {
-      "pools": [
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "GEO:toFlag",
+        "IND:toFlag",
+        "IRN:toFlag",
+        "IRQ:toFlag",
+        "JPN:toFlag",
+        "JOR:toFlag",
+        "KAZ:toFlag",
+        "KWT:toFlag"
       ]
     },
     "questions": 6,
@@ -314,12 +368,15 @@
     "name": "Southern Skies",
     "generator": "flags",
     "params": {
-      "pools": [
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "KGZ:toFlag",
+        "LAO:toFlag",
+        "LBN:toFlag",
+        "MNG:toFlag",
+        "NPL:toFlag",
+        "PRK:toFlag",
+        "OMN:toFlag",
+        "PAK:toFlag"
       ]
     },
     "questions": 6,
@@ -331,12 +388,15 @@
     "name": "Eastern Stars",
     "generator": "flags",
     "params": {
-      "pools": [
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "PHL:toFlag",
+        "QAT:toFlag",
+        "SAU:toFlag",
+        "KOR:toFlag",
+        "SYR:toFlag",
+        "TJK:toFlag",
+        "THA:toFlag",
+        "TLS:toFlag"
       ]
     },
     "questions": 8,
@@ -348,12 +408,15 @@
     "name": "Old Friends",
     "generator": "flags",
     "params": {
-      "pools": [
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "DZA:toFlag",
+        "AGO:toFlag",
+        "BWA:toFlag",
+        "BFA:toFlag",
+        "CMR:toFlag",
+        "CAF:toFlag",
+        "TCD:toFlag",
+        "COD:toFlag"
       ]
     },
     "questions": 6,
@@ -365,12 +428,15 @@
     "name": "Rare Sights",
     "generator": "flags",
     "params": {
-      "pools": [
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "DJI:toFlag",
+        "EGY:toFlag",
+        "GNQ:toFlag",
+        "ERI:toFlag",
+        "ETH:toFlag",
+        "GAB:toFlag",
+        "GMB:toFlag",
+        "GHA:toFlag"
       ]
     },
     "questions": 6,
@@ -382,12 +448,15 @@
     "name": "Globe Trotter",
     "generator": "flags",
     "params": {
-      "pools": [
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "GIN:toFlag",
+        "GNB:toFlag",
+        "KEN:toFlag",
+        "LSO:toFlag",
+        "LBR:toFlag",
+        "LBY:toFlag",
+        "MDG:toFlag",
+        "MWI:toFlag"
       ]
     },
     "questions": 6,
@@ -399,12 +468,15 @@
     "name": "The Atlas Gate",
     "generator": "flags",
     "params": {
-      "pools": [
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "MLI:toFlag",
+        "MRT:toFlag",
+        "MAR:toFlag",
+        "MOZ:toFlag",
+        "NAM:toFlag",
+        "NER:toFlag",
+        "NGA:toFlag",
+        "COG:toFlag"
       ]
     },
     "questions": 6,
@@ -416,13 +488,15 @@
     "name": "Tricky Tricolors",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "RWA:toFlag",
+        "SEN:toFlag",
+        "SLE:toFlag",
+        "SOM:toFlag",
+        "SDN:toFlag",
+        "TGO:toFlag",
+        "TUN:toFlag",
+        "UGA:toFlag"
       ]
     },
     "questions": 6,
@@ -434,13 +508,15 @@
     "name": "Nordic Crosses",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "ALB:toFlag",
+        "AUT:toFlag",
+        "BLR:toFlag",
+        "BEL:toFlag",
+        "BIH:toFlag",
+        "BGR:toFlag",
+        "HRV:toFlag",
+        "CZE:toFlag"
       ]
     },
     "questions": 6,
@@ -452,13 +528,15 @@
     "name": "Twin Flags",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "DNK:toFlag",
+        "EST:toFlag",
+        "FIN:toFlag",
+        "FRA:toFlag",
+        "DEU:toFlag",
+        "GRC:toFlag",
+        "HUN:toFlag",
+        "ISL:toFlag"
       ]
     },
     "questions": 6,
@@ -470,13 +548,15 @@
     "name": "Almost the Same",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "IRL:toFlag",
+        "ITA:toFlag",
+        "LVA:toFlag",
+        "LTU:toFlag",
+        "LUX:toFlag",
+        "MDA:toFlag",
+        "MNE:toFlag",
+        "MKD:toFlag"
       ]
     },
     "questions": 6,
@@ -488,13 +568,15 @@
     "name": "Sharp Eyes",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "NOR:toFlag",
+        "POL:toFlag",
+        "PRT:toFlag",
+        "ROU:toFlag",
+        "SRB:toFlag",
+        "SVK:toFlag",
+        "SVN:toFlag",
+        "ESP:toFlag"
       ]
     },
     "questions": 6,
@@ -506,13 +588,15 @@
     "name": "Expert Eyes",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "BHS:toFlag",
+        "BLZ:toFlag",
+        "CAN:toFlag",
+        "CRI:toFlag",
+        "CUB:toFlag",
+        "DOM:toFlag",
+        "SLV:toFlag",
+        "GTM:toFlag"
       ]
     },
     "questions": 8,
@@ -524,13 +608,15 @@
     "name": "Master of Banners",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "HTI:toFlag",
+        "HND:toFlag",
+        "JAM:toFlag",
+        "MEX:toFlag",
+        "NIC:toFlag",
+        "PAN:toFlag",
+        "TTO:toFlag",
+        "USA:toFlag"
       ]
     },
     "questions": 6,
@@ -542,13 +628,15 @@
     "name": "The Flag Crown",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "ARG:toFlag",
+        "BRA:toFlag",
+        "CHL:toFlag",
+        "COL:toFlag",
+        "ECU:toFlag",
+        "GUY:toFlag",
+        "PRY:toFlag",
+        "PER:toFlag"
       ]
     },
     "questions": 8,
@@ -560,13 +648,15 @@
     "name": "Twin Tricolors",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "AFG:toContinent",
+        "ARM:toContinent",
+        "AZE:toContinent",
+        "BGD:toContinent",
+        "BTN:toContinent",
+        "BRN:toContinent",
+        "KHM:toContinent",
+        "CHN:toContinent"
       ]
     },
     "questions": 6,
@@ -578,13 +668,15 @@
     "name": "Crossed Banners",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "GEO:toContinent",
+        "IND:toContinent",
+        "IRN:toContinent",
+        "IRQ:toContinent",
+        "JPN:toContinent",
+        "JOR:toContinent",
+        "KAZ:toContinent",
+        "KWT:toContinent"
       ]
     },
     "questions": 6,
@@ -596,13 +688,15 @@
     "name": "Stripe Detective",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "KGZ:toContinent",
+        "LAO:toContinent",
+        "LBN:toContinent",
+        "MNG:toContinent",
+        "NPL:toContinent",
+        "PRK:toContinent",
+        "OMN:toContinent",
+        "PAK:toContinent"
       ]
     },
     "questions": 6,
@@ -614,13 +708,15 @@
     "name": "The Lookalikes",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "PHL:toContinent",
+        "QAT:toContinent",
+        "SAU:toContinent",
+        "KOR:toContinent",
+        "SYR:toContinent",
+        "TJK:toContinent",
+        "THA:toContinent",
+        "TLS:toContinent"
       ]
     },
     "questions": 6,
@@ -632,13 +728,15 @@
     "name": "Crescent Hunt",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "DZA:toContinent",
+        "AGO:toContinent",
+        "BWA:toContinent",
+        "BFA:toContinent",
+        "CMR:toContinent",
+        "CAF:toContinent",
+        "TCD:toContinent",
+        "COD:toContinent"
       ]
     },
     "questions": 6,
@@ -650,13 +748,15 @@
     "name": "Star Spotters",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "DJI:toContinent",
+        "EGY:toContinent",
+        "GNQ:toContinent",
+        "ERI:toContinent",
+        "ETH:toContinent",
+        "GAB:toContinent",
+        "GMB:toContinent",
+        "GHA:toContinent"
       ]
     },
     "questions": 6,
@@ -668,13 +768,15 @@
     "name": "Southern Banners",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "GIN:toContinent",
+        "GNB:toContinent",
+        "KEN:toContinent",
+        "LSO:toContinent",
+        "LBR:toContinent",
+        "LBY:toContinent",
+        "MDG:toContinent",
+        "MWI:toContinent"
       ]
     },
     "questions": 6,
@@ -686,13 +788,15 @@
     "name": "Banner Gate II",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "MLI:toContinent",
+        "MRT:toContinent",
+        "MAR:toContinent",
+        "MOZ:toContinent",
+        "NAM:toContinent",
+        "NER:toContinent",
+        "NGA:toContinent",
+        "COG:toContinent"
       ]
     },
     "questions": 8,
@@ -704,13 +808,15 @@
     "name": "Nordic Trial",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "RWA:toContinent",
+        "SEN:toContinent",
+        "SLE:toContinent",
+        "SOM:toContinent",
+        "SDN:toContinent",
+        "TGO:toContinent",
+        "TUN:toContinent",
+        "UGA:toContinent"
       ]
     },
     "questions": 6,
@@ -722,13 +828,15 @@
     "name": "Desert Colors",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "ALB:toContinent",
+        "AUT:toContinent",
+        "BLR:toContinent",
+        "BEL:toContinent",
+        "BIH:toContinent",
+        "BGR:toContinent",
+        "HRV:toContinent",
+        "CZE:toContinent"
       ]
     },
     "questions": 6,
@@ -740,13 +848,15 @@
     "name": "Island Flags",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "DNK:toContinent",
+        "EST:toContinent",
+        "FIN:toContinent",
+        "FRA:toContinent",
+        "DEU:toContinent",
+        "GRC:toContinent",
+        "HUN:toContinent",
+        "ISL:toContinent"
       ]
     },
     "questions": 6,
@@ -758,13 +868,15 @@
     "name": "The Close Call",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar",
-        "wider"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "IRL:toContinent",
+        "ITA:toContinent",
+        "LVA:toContinent",
+        "LTU:toContinent",
+        "LUX:toContinent",
+        "MDA:toContinent",
+        "MNE:toContinent",
+        "MKD:toContinent"
       ]
     },
     "questions": 6,
@@ -776,12 +888,15 @@
     "name": "Flag Storm",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "NOR:toContinent",
+        "POL:toContinent",
+        "PRT:toContinent",
+        "ROU:toContinent",
+        "SRB:toContinent",
+        "SVK:toContinent",
+        "SVN:toContinent",
+        "ESP:toContinent"
       ]
     },
     "questions": 6,
@@ -793,12 +908,15 @@
     "name": "Eagle Eyes",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "BHS:toContinent",
+        "BLZ:toContinent",
+        "CAN:toContinent",
+        "CRI:toContinent",
+        "CUB:toContinent",
+        "DOM:toContinent",
+        "SLV:toContinent",
+        "GTM:toContinent"
       ]
     },
     "questions": 6,
@@ -810,12 +928,15 @@
     "name": "Master Banners",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "HTI:toContinent",
+        "HND:toContinent",
+        "JAM:toContinent",
+        "MEX:toContinent",
+        "NIC:toContinent",
+        "PAN:toContinent",
+        "TTO:toContinent",
+        "USA:toContinent"
       ]
     },
     "questions": 6,
@@ -827,12 +948,15 @@
     "name": "The Twin Test",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "ARG:toContinent",
+        "BRA:toContinent",
+        "CHL:toContinent",
+        "COL:toContinent",
+        "ECU:toContinent",
+        "GUY:toContinent",
+        "PRY:toContinent",
+        "PER:toContinent"
       ]
     },
     "questions": 6,
@@ -844,12 +968,15 @@
     "name": "World Salute",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "VNM:toCountry",
+        "YEM:toCountry",
+        "ZWE:toCountry",
+        "CHE:toCountry",
+        "UKR:toCountry",
+        "GBR:toCountry",
+        "HTI:toCountry",
+        "HND:toCountry"
       ]
     },
     "questions": 6,
@@ -861,12 +988,16 @@
     "name": "Final Colors",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "JAM:toCountry",
+        "MEX:toCountry",
+        "NIC:toCountry",
+        "PAN:toCountry",
+        "TTO:toCountry",
+        "URY:toCountry",
+        "VEN:toCountry",
+        "FJI:toCountry",
+        "NZL:toCountry"
       ]
     },
     "questions": 8,
@@ -878,12 +1009,15 @@
     "name": "Banner Legends",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "PNG:toCountry",
+        "SLB:toCountry",
+        "VUT:toCountry",
+        "TKM:toFlag",
+        "ARE:toFlag",
+        "UZB:toFlag",
+        "VNM:toFlag",
+        "YEM:toFlag"
       ]
     },
     "questions": 6,
@@ -895,12 +1029,16 @@
     "name": "Grand Parade",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "ZMB:toFlag",
+        "ZWE:toFlag",
+        "SWE:toFlag",
+        "CHE:toFlag",
+        "UKR:toFlag",
+        "GBR:toFlag",
+        "SUR:toFlag",
+        "URY:toFlag",
+        "VEN:toFlag"
       ]
     },
     "questions": 6,
@@ -912,12 +1050,15 @@
     "name": "The Last Flag",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "AUS:toFlag",
+        "FJI:toFlag",
+        "NZL:toFlag",
+        "PNG:toFlag",
+        "SLB:toFlag",
+        "VUT:toFlag",
+        "TKM:toContinent",
+        "ARE:toContinent"
       ]
     },
     "questions": 6,
@@ -929,12 +1070,16 @@
     "name": "Flag Supreme",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "UZB:toContinent",
+        "VNM:toContinent",
+        "YEM:toContinent",
+        "ZMB:toContinent",
+        "ZWE:toContinent",
+        "SWE:toContinent",
+        "CHE:toContinent",
+        "UKR:toContinent",
+        "GBR:toContinent"
       ]
     },
     "questions": 6,
@@ -946,12 +1091,16 @@
     "name": "Keeper of Colors",
     "generator": "flags",
     "params": {
-      "pools": [
-        "similar"
-      ],
-      "modes": [
-        "toCountry",
-        "toFlag"
+      "items": [
+        "SUR:toContinent",
+        "URY:toContinent",
+        "VEN:toContinent",
+        "AUS:toContinent",
+        "FJI:toContinent",
+        "NZL:toContinent",
+        "PNG:toContinent",
+        "SLB:toContinent",
+        "VUT:toContinent"
       ]
     },
     "questions": 8,

@@ -1,6 +1,6 @@
 // Cipher Bay — decode secret messages, typed letter by letter.
 // Word pool mixes space words with Minecraft favorites.
-import { pick, type RNG } from "../rng";
+import { pick, shuffle, type RNG } from "../rng";
 import type { GenContext, Question } from "./types";
 
 export interface CipherParams {
@@ -60,10 +60,7 @@ export function generateCipher(params: CipherParams, rng: RNG, ctx: GenContext):
     map[ch] = symbols.splice(Math.floor(rng() * symbols.length), 1)[0];
   }
   const encoded = [...word].map((ch) => map[ch]).join(" ");
-  const legend = letters
-    .map((ch) => `${map[ch]}=${ch}`)
-    .sort(() => 0.5 - rng())
-    .join("  ");
+  const legend = shuffle(rng, letters.map((ch) => `${map[ch]}=${ch}`)).join("  ");
   return q(word, type, `Decode: ${encoded}`, "Match each symbol in the legend.", { legend });
 }
 

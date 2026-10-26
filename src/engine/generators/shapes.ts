@@ -100,18 +100,19 @@ function genCorners(rng: RNG): Question {
   };
 }
 
-/** "Which shape has 3 sides?" */
+/** Name the pictured shape — side counts alone cannot distinguish a square from a rectangle. */
 function genNameShape(rng: RNG): Question {
-  const s = pick(rng, SHAPES_2D.filter((x) => x.sides > 0));
+  const s = pick(rng, SHAPES_2D);
   const others = shuffle(rng, SHAPES_2D.filter((x) => x.name !== s.name)).slice(0, 3);
   return {
     id: id(),
-    prompt: `Which shape\nhas ${s.sides} sides?`,
+    prompt: "What shape is this?",
     answer: s.name,
     choices: shuffle(rng, [s.name, ...others.map((o) => o.name)]),
     inputMode: "choices",
-    hint: `Triangle 3, square & rectangle 4, pentagon 5, hexagon 6.`,
+    hint: `Trace the outline of the ${s.name}.`,
     dedupeKey: `ns-${s.name}`,
+    payload: { bigSymbol: s.emoji },
   };
 }
 

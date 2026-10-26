@@ -24,7 +24,7 @@ export function generateCompounds(params: CompoundsParams, rng: RNG, ctx: GenCon
   const type = ctx.easier ? params.types[0] : pick(rng, params.types);
   const [w1, w2, compound] = pick(rng, COMPOUNDS);
   if (type === "missing") {
-    const wrong = shuffle(rng, COMPOUNDS.map((c) => c[1]).filter((w) => w !== w2)).slice(0, 3);
+    const wrong = shuffle(rng, [...new Set(COMPOUNDS.map((c) => c[1]).filter((w) => w !== w2))]).slice(0, 3);
     return {
       id: id(),
       prompt: `Finish the compound word:  ${w1} + ___ = ${compound}`,

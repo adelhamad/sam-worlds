@@ -1,9 +1,26 @@
 import { WORLDS as BASE_WORLDS, type WorldDef } from "./worldList";
 import { EXTRA_WORLDS } from "./worldListExtra";
 import { EXTRA_WORLDS2 } from "./worldListExtra2";
+import { GEOGRAPHY_WORLDS } from "./worldListGeography";
 import type { StageDef } from "./types";
 
-export const WORLDS: WorldDef[] = [...BASE_WORLDS, ...EXTRA_WORLDS, ...EXTRA_WORLDS2];
+const PRECISE_STAGE_TITLES = new Set([
+  "numberforge", "melody", "logic", "robot", "time", "cipher", "builder",
+  "algebra", "placevalue", "measure", "capitals", "countrymaps",
+]);
+const MIXED_TYPE_WORLDS = new Set(["melody", "cipher", "builder", "algebra", "placevalue", "measure"]);
+
+// Legacy fact worlds name many stages after one example, even though their
+// generator draws from the entire topic. Show an accurate chapter title.
+export const WORLDS: WorldDef[] = [...BASE_WORLDS, ...EXTRA_WORLDS, ...EXTRA_WORLDS2, ...GEOGRAPHY_WORLDS]
+  .map((world) => ({
+    ...world,
+    stages: world.stages.map((stage, index) => {
+      const mixed = MIXED_TYPE_WORLDS.has(world.id) && Array.isArray(stage.params.types) && stage.params.types.length > 1;
+      return PRECISE_STAGE_TITLES.has(world.id) && !mixed ? stage :
+        { ...stage, name: `${world.name} ${index + 1}` };
+    }),
+  }));
 export type { WorldDef };
 
 export interface BadgeDef {

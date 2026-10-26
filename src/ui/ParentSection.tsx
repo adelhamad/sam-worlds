@@ -353,8 +353,11 @@ function ParentControls() {
   const setStarDust = useGame((s) => s.setStarDust);
   const setWorldProgress = useGame((s) => s.setWorldProgress);
   const resetAll = useGame((s) => s.resetAll);
+  const seenQuestionKeys = useGame((s) => s.seenQuestionKeys);
+  const clearSeenQuestions = useGame((s) => s.clearSeenQuestions);
   const [dustInput, setDustInput] = useState(String(starDust));
   const [confirmReset, setConfirmReset] = useState(false);
+  const [confirmQuestionReset, setConfirmQuestionReset] = useState(false);
   const [worldInputs, setWorldInputs] = useState<Record<string, string>>({});
 
   return (
@@ -430,6 +433,20 @@ function ParentControls() {
             </div>
           );
         })}
+      </Collapsible>
+
+      <Collapsible
+        title={`🧠 Question history (${seenQuestionKeys.filter((key) => key.startsWith("visible:")).length})`}
+        subtitle="A question stays used after Sam sees it, even on a later level or replay. Clear this only if you want old questions to appear again."
+      >
+        {confirmQuestionReset ? (
+          <div className="parent-row">
+            <button className="btn btn-secondary" onClick={() => setConfirmQuestionReset(false)}>Cancel</button>
+            <button className="btn btn-danger" onClick={() => { clearSeenQuestions(); setConfirmQuestionReset(false); }}>Clear question history</button>
+          </div>
+        ) : (
+          <button className="btn btn-secondary" onClick={() => setConfirmQuestionReset(true)}>Reset question history…</button>
+        )}
       </Collapsible>
 
       <AccessControls />

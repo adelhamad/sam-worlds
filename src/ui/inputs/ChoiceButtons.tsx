@@ -3,6 +3,8 @@ import type { Question } from "../../engine/generators/types";
 import { playPitch } from "../../engine/feedback/audio";
 import { freq } from "../../engine/music/theory";
 import { StaffNote } from "./StaffNote";
+import { GeoMap } from "../GeoMap";
+import { STR } from "../../strings/en";
 
 interface Props {
   question: Question;
@@ -25,6 +27,7 @@ export function ChoiceButtons({ question, disabled, onSubmit }: Props) {
   const play = question.payload?.play as string[] | undefined;
   const chord = Boolean(question.payload?.chord);
   const listenFirst = Boolean(question.payload?.listenFirst);
+  const mapChoices = question.payload?.mapChoices as string[] | undefined;
 
   useEffect(() => {
     if (listenFirst && play?.length) {
@@ -43,9 +46,9 @@ export function ChoiceButtons({ question, disabled, onSubmit }: Props) {
         </button>
       )}
       <div className="choices">
-        {question.choices.map((c) => (
-          <button key={c} className={`btn choice ${big ? "choice-big" : ""}`} disabled={disabled} onClick={() => onSubmit(c)}>
-            {c}
+        {question.choices.map((c, index) => (
+          <button key={c} className={`btn choice ${big ? "choice-big" : ""} ${mapChoices ? "choice-map" : ""}`} disabled={disabled} onClick={() => onSubmit(c)} aria-label={mapChoices ? STR.geo.mapOption(index + 1) : undefined}>
+            {mapChoices ? <GeoMap code={mapChoices[index]} miniature /> : c}
           </button>
         ))}
       </div>
