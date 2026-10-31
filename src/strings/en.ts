@@ -108,7 +108,8 @@ export const STR = {
     feedback: {
       goal: "Goal scored!",
       gateOpen: "The gate is open!",
-      crateDown: "Crate clear!",
+      crateCrash: "Tower crash!",
+      miss: "Try another shot!",
       bounce: "Pineapple is flying!",
       landed: "Safe landing!",
       fruitHome: "Friend found!",
@@ -141,7 +142,7 @@ export const STR = {
     discardClip: "Discard clip",
     showStages: [
       { title: "Beach Gate", subtitle: "Open the gate. Bring Pineapple home.", steps: ["Kick the ball into the glowing switch.", "Carry Pineapple to the green home circle."], tips: ["Swipe from the ball toward the red button.", "The gate is open. Drag Pineapple into the green circle."] },
-      { title: "Crate Escape", subtitle: "Clear crates. Reveal a goal.", steps: ["Drag a crate off its red circle.", "Drag another crate away.", "Clear the last red circle.", "Kick the ball into the gold goal!"], tips: ["Follow the glowing path from a crate.", "Find another crate on a red circle.", "Move the last crate to unlock the goal.", "Swipe from the ball toward the gold ring."] },
+      { title: "Crate Crash", subtitle: "Topple the tower. Reveal a goal.", steps: ["Hit the crate tower with the ball!", "Kick the ball into the gold goal!"], tips: ["Tap the glowing ball to topple the tower.", "Tap the returned ball to score."] },
       { title: "Sky Bounce", subtitle: "Launch, then land.", steps: ["Slide the blue pad under Pineapple.", "Carry Pineapple to the landing zone."], tips: ["Drag the pad along the glowing path.", "Drag Pineapple into the green circle."] },
       { title: "Fruit Friends", subtitle: "Meet, then find home.", steps: ["Bring the fruit friends together.", "Bring a friend into the new green circle.", "Bring the other friend home."], tips: ["Grab either friend and drop them beside the other.", "The green home circle is open now.", "Bring the second friend to the same circle."] },
       { title: "Bumper Alley", subtitle: "Ring bumpers. Reveal a goal.", steps: ["Kick the ball into a glowing bumper.", "Hit the other bumper.", "Kick the ball into the gold goal!"], tips: ["Swipe from the ball toward an orange bumper.", "Follow the path to the bumper that has not rung yet.", "Aim the returned ball into the new gold ring."] },

@@ -9,8 +9,9 @@ export const stageLayouts: Layout[] = [
   { characters: [['pineapple', 2.65, -1.2]], props: [['ball', 0, 0.7, 0.6]] },
   { characters: [], props: [
     ['ball', 0, 0.7, 0.6],
-    ['crate', -1.8, 0.6, -1.2, true],
-    ['crate', -2.8, 0.6, -2.1, true], ['crate', -3.5, 0.6, -0.6, true],
+    ['crate', 0.7, 0.6, -2.1, true],
+    ['crate', 0.7, 1.8, -2.1, true],
+    ['crate', 0.7, 3.0, -2.1, true],
   ] },
   { characters: [['pineapple', 1.2, 0.7]], props: [['launchpad', -1, 0.14, 0.1]] },
   { characters: [['pineapple', -2.4, 0], ['watermelon', 2.4, 0]], props: [] },

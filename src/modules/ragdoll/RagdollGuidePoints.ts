@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import type { RagdollCharacter } from './RagdollCharacter';
 import type { Prop } from './RagdollProps';
-import { gateSwitch, gateHome, crateGoal, landingGoal, fruitGoal, bumperGoal, safeGoal, fanTarget, windLane, windGoal, finalGoal } from './RagdollGoals';
+import { gateSwitch, gateHome, crateTower, crateGoal, landingGoal, fruitGoal, bumperGoal, safeGoal, fanTarget, windLane, windGoal, finalGoal } from './RagdollGoals';
 
 export interface GuideWorld { from: THREE.Vector3; to: THREE.Vector3 }
 export interface GuideScreen { width: number; height: number; from: { x: number; y: number }; to: { x: number; y: number } }
@@ -28,14 +28,7 @@ function windGuide(step: number, props: Prop[], ball?: Prop): GuideWorld | undef
 export function guideWorld(stage: number, step: number, props: Prop[], characters: RagdollCharacter[], seen: ReadonlySet<Prop | RagdollCharacter>): GuideWorld | undefined {
   const ball = props.find(prop => prop.kind === 'ball');
   if (stage === 0) return step === 0 ? pair(propPoint(ball), targetPoint(gateSwitch)) : pair(friendPoint(characters[0]), targetPoint(gateHome));
-  if (stage === 1) {
-    if (step < 3) {
-      const crate = props.find(prop => prop.kind === 'crate' && !seen.has(prop));
-      const start = propPoint(crate);
-      return pair(start, start?.clone().add(new THREE.Vector3(3.5, 0, -0.5)));
-    }
-    return pair(propPoint(ball), targetPoint(crateGoal));
-  }
+  if (stage === 1) return pair(propPoint(ball), targetPoint(step === 0 ? crateTower : crateGoal));
   if (stage === 2) return step === 0 ? pair(propPoint(props.find(prop => prop.kind === 'launchpad')), friendGround(characters[0])) : pair(friendPoint(characters[0]), targetPoint(landingGoal));
   if (stage === 3) {
     const friends = characters.filter(character => character.kind === 'pineapple' || character.kind === 'watermelon');

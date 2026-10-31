@@ -6,7 +6,7 @@ export interface ChallengeResult { progress: ChallengeProgress; advanced: boolea
 
 export const challengeActions: ChallengeAction[][] = [
   ['kick', 'grab'],
-  ['move', 'move', 'move', 'kick'],
+  ['kick', 'kick'],
   ['move', 'grab'],
   ['grab', 'grab', 'grab'],
   ['kick', 'kick', 'kick'],
@@ -17,7 +17,7 @@ export const challengeActions: ChallengeAction[][] = [
 
 const checks: Array<Array<(event: SceneEvent) => boolean>> = [
   [e => e.type === 'gateOpen', e => e.type === 'rescue'],
-  [e => e.type === 'crateDown', e => e.type === 'crateDown', e => e.type === 'crateDown', e => e.type === 'goal'],
+  [e => e.type === 'crateCrash', e => e.type === 'goal'],
   [e => e.type === 'bounce', e => e.type === 'landed'],
   [e => e.type === 'friendsMeet', e => e.type === 'fruitHome', e => e.type === 'fruitHome'],
   [e => e.type === 'bumperHit', e => e.type === 'bumperHit', e => e.type === 'goal'],

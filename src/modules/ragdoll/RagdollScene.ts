@@ -13,7 +13,7 @@ import { guideToScreen, type GuideScreen } from './RagdollGuidePoints';
 export type { CharacterKind } from './RagdollCharacter';
 export type { ObjectKind } from './RagdollProps';
 export type RagdollTool = 'grab' | 'kick' | 'move' | 'delete' | 'place-character' | 'place-object';
-export interface SceneEvent { type: 'select' | 'spawn' | 'kick' | 'impact' | 'defeat' | 'delete' | 'grab' | 'release' | 'move' | 'bounce' | 'bump' | 'glasses' | 'collide' | 'party' | 'goal' | 'gateOpen' | 'crateDown' | 'fruitHome' | 'friendsMeet' | 'bumperHit' | 'rescue' | 'landed' | 'bridgeReady' | 'fanReady' | 'windBoost'; character?: boolean; glasses?: boolean; kind?: string; part?: string; airborne?: boolean }
+export interface SceneEvent { type: 'select' | 'spawn' | 'kick' | 'impact' | 'defeat' | 'delete' | 'grab' | 'release' | 'move' | 'bounce' | 'bump' | 'glasses' | 'collide' | 'party' | 'goal' | 'gateOpen' | 'crateCrash' | 'miss' | 'fruitHome' | 'friendsMeet' | 'bumperHit' | 'rescue' | 'landed' | 'bridgeReady' | 'fanReady' | 'windBoost'; character?: boolean; glasses?: boolean; kind?: string; part?: string; airborne?: boolean }
 interface Hit { character?: RagdollCharacter; part?: RagdollPart; prop?: Prop; point: THREE.Vector3 }
 
 function disposeGroup(group: THREE.Object3D) {

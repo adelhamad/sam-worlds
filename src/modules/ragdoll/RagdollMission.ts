@@ -5,7 +5,7 @@ import type { Prop } from './RagdollProps';
 import type { SceneEvent } from './RagdollScene';
 import { RagdollGate } from './RagdollGate';
 import { guideWorld, type GuideWorld } from './RagdollGuidePoints';
-import { gateSwitch, gateHome, crateGoal, landingGoal, fruitGoal, bumperGoal, safeGoal, fanTarget, windGoal, finalGoal } from './RagdollGoals';
+import { gateSwitch, gateHome, crateTower, crateGoal, landingGoal, fruitGoal, bumperGoal, safeGoal, fanTarget, windGoal, finalGoal } from './RagdollGoals';
 
 type Emit = (event: SceneEvent) => void;
 interface Marker { group: THREE.Group; ring: THREE.Mesh; material: THREE.MeshBasicMaterial }
@@ -31,7 +31,8 @@ export class RagdollMission {
   private homeMarker?: Marker;
   private fruitFriends: RagdollCharacter[] = [];
   private seen = new Set<Prop | RagdollCharacter>();
-  private crateStart = new Map<Prop, CANNON.Vec3>();
+  private armTime = 0;
+  private crateResetAt = 0;
   private padStart?: CANNON.Vec3;
   private armed = false;
   private done = false;
@@ -51,7 +52,7 @@ export class RagdollMission {
     this.fanReady = false; this.windUsed = false;
     this.goalMarker = undefined; this.landingMarker = undefined; this.safeMarker = undefined;
     this.meetMarker = undefined; this.homeMarker = undefined;
-    this.seen.clear(); this.crateStart.clear(); this.padStart = undefined; this.fruitFriends = [];
+    this.seen.clear(); this.armTime = 0; this.crateResetAt = 0; this.padStart = undefined; this.fruitFriends = [];
     this.gate?.dispose(); this.gate = undefined;
     for (const marker of this.markers) {
       this.scene.remove(marker.group);
@@ -80,10 +81,7 @@ export class RagdollMission {
       this.goalUnlocked = true;
     }
     if (stage === 1) {
-      for (const crate of props.filter(prop => prop.kind === 'crate')) {
-        this.crateStart.set(crate, crate.body.position.clone());
-        this.markers.push(makeMarker(this.scene, crate.body.position.x, crate.body.position.z, 0xff796d, 0.78));
-      }
+      this.markers.push(makeMarker(this.scene, ...crateTower, 0xff796d, 1.25));
       this.goalMarker = makeMarker(this.scene, ...crateGoal, 0xffb936);
       this.goalMarker.group.visible = false; this.markers.push(this.goalMarker);
     }
@@ -123,7 +121,7 @@ export class RagdollMission {
     }
   }
 
-  arm() { this.armed = true; }
+  arm() { this.armed = true; this.armTime = performance.now(); }
 
   guide(step: number, props: Prop[], characters: RagdollCharacter[]): GuideWorld | undefined {
     return guideWorld(this.stage, step, props, characters, this.seen);
@@ -209,13 +207,13 @@ export class RagdollMission {
       marker.ring.scale.set(pulse, pulse, pulse);
       marker.material.opacity = 0.68 + (Math.sin(now * 0.004) + 1) * 0.14;
     }
-    this.updateStageMechanics(props, characters);
+    this.updateStageMechanics(now, props, characters);
   }
 
-  private updateStageMechanics(props: Prop[], characters: RagdollCharacter[]) {
+  private updateStageMechanics(now: number, props: Prop[], characters: RagdollCharacter[]) {
     if (this.goalUnlocked) this.checkBallGoal(props);
     if (this.stage === 0 && this.gate?.isOpen) this.checkGateRescue(characters);
-    if (this.stage === 1 && this.armed) this.checkCrates();
+    if (this.stage === 1) this.checkCrateCrash(now, props);
     if (this.stage === 2 && !this.bounced) this.checkBounce(props, characters);
     if (this.stage === 2 && this.bounced) this.checkLanding(characters);
     if (this.stage === 3 && !this.friendsMet) this.checkFriendsMeet();
@@ -264,19 +262,30 @@ export class RagdollMission {
     this.resetBall(ball);
   }
 
-  private checkCrates() {
-    for (const [crate, start] of this.crateStart) {
-      if (this.seen.has(crate)) continue;
-      const body = crate.body;
-      const moved = body.position.distanceTo(start) > 0.48;
-      const tipped = body.quaternion.vmult(new CANNON.Vec3(0, 1, 0)).y < 0.72;
-      if (!moved && !tipped) continue;
-      this.seen.add(crate);
-      this.emit({ type: 'crateDown', kind: 'crate' });
-      if (this.seen.size === this.crateStart.size) {
-        this.goalUnlocked = true;
-        if (this.goalMarker) this.goalMarker.group.visible = true;
-      }
+  private checkCrateCrash(now: number, props: Prop[]) {
+    const ball = props.find(prop => prop.kind === 'ball');
+    if (!ball) return;
+    if (this.crateResetAt && now >= this.crateResetAt) {
+      this.resetBall(ball);
+      this.crateResetAt = 0;
+    }
+    if (!this.armed || this.goalUnlocked) return;
+    const crates = props.filter(prop => prop.kind === 'crate');
+    const base = crates[0]?.body.position;
+    if (!base) return;
+    const close = Math.hypot(ball.body.position.x - base.x, ball.body.position.z - base.z) < 1.5;
+    if (close && Math.abs(ball.body.position.y - base.y) < 1.2 && ball.body.velocity.length() > 0.5) {
+      this.goalUnlocked = true;
+      this.markers[0].group.visible = false;
+      if (this.goalMarker) this.goalMarker.group.visible = true;
+      const impulses = [new CANNON.Vec3(-4, 3, 1), new CANNON.Vec3(4, 4, -1), new CANNON.Vec3(-1, 5, -4)];
+      crates.forEach((crate, index) => { crate.body.wakeUp(); crate.body.applyImpulse(impulses[index % impulses.length]); });
+      this.crateResetAt = now + 900;
+      this.emit({ type: 'crateCrash', kind: 'crate' });
+    } else if (now - this.armTime > 5000) {
+      this.resetBall(ball);
+      this.armed = false;
+      this.emit({ type: 'miss', kind: 'ball' });
     }
   }
 

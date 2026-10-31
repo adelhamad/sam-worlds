@@ -124,6 +124,11 @@ export function RagdollGame() {
         }
       }
       if (modeRef.current === "show") {
+        if (event.type === 'miss') {
+          setCheer(copy.feedback.miss);
+          window.clearTimeout(cheerTimeout.current);
+          cheerTimeout.current = window.setTimeout(() => setCheer(""), 1800);
+        }
         const result = advanceChallenge(challengeRef.current, event);
         if (result.progress !== challengeRef.current) {
           challengeRef.current = result.progress;

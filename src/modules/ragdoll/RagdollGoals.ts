@@ -1,6 +1,7 @@
 export const gateSwitch = [-2.2, -1.7] as const;
 export const gateHome = [-2.7, -2.5] as const;
-export const crateGoal = [0, -3] as const;
+export const crateTower = [0.7, -2.1] as const;
+export const crateGoal = [-2.4, -3] as const;
 export const landingGoal = [-2.5, -1.5] as const;
 export const fruitGoal = [-2, -2] as const;
 export const bumperGoal = [-2.5, -3.4] as const;
