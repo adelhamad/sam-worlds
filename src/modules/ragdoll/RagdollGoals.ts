@@ -1,0 +1,11 @@
+export const gateSwitch = [-2.2, -1.7] as const;
+export const gateHome = [-2.7, -2.5] as const;
+export const crateGoal = [0, -3] as const;
+export const landingGoal = [-2.5, -1.5] as const;
+export const fruitGoal = [-2, -2] as const;
+export const bumperGoal = [-2.5, -3.4] as const;
+export const safeGoal = [1.6, 0] as const;
+export const fanTarget = [0, 2] as const;
+export const windLane = [0, -2] as const;
+export const windGoal = [0, -4.2] as const;
+export const finalGoal = [-2.4, -2.2] as const;

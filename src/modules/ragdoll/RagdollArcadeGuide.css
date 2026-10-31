@@ -1,0 +1,10 @@
+.ragdoll-arcade-guide { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.ragdoll-guide-outline { fill: none; stroke: rgba(255, 255, 255, .95); stroke-width: 12; stroke-linecap: round; stroke-dasharray: 13 12; }
+.ragdoll-guide-path { fill: none; stroke: #ffba38; stroke-width: 6; stroke-linecap: round; stroke-dasharray: 13 12; animation: ragdoll-guide-march 1s linear infinite; filter: drop-shadow(0 2px 3px rgba(29, 62, 75, .3)); }
+.ragdoll-guide-source { fill: rgba(95, 222, 245, .16); stroke: #36c8eb; stroke-width: 5; animation: ragdoll-guide-pulse 1.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.ragdoll-guide-target { fill: rgba(255, 190, 57, .17); stroke: #ffba38; stroke-width: 5; animation: ragdoll-guide-pulse 1.6s ease-in-out infinite .3s; transform-box: fill-box; transform-origin: center; }
+.ragdoll-guide-target-core { fill: #fff; stroke: #e99120; stroke-width: 3; }
+.ragdoll-guide-label { fill: #643600; stroke: #fffdf4; stroke-width: 5; paint-order: stroke fill; font: 900 15px "Trebuchet MS", system-ui, sans-serif; letter-spacing: .04em; }
+@keyframes ragdoll-guide-march { to { stroke-dashoffset: -25; } }
+@keyframes ragdoll-guide-pulse { 50% { transform: scale(1.22); opacity: .75; } }
+@media (prefers-reduced-motion: reduce) { .ragdoll-guide-path, .ragdoll-guide-source, .ragdoll-guide-target { animation: none; } }

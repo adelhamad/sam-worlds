@@ -1,16 +1,16 @@
 # Sam's Ragdoll Quest: first playtest
 
-The first test is whether Sam chooses to keep playing. There is no lesson or quiz. Open **Ragdoll Quest** and hand him the device at the stage map. Let him choose a stage without explaining the tools unless he asks.
+The first test is whether Sam chooses to keep playing. There is no lesson or quiz. Open **Ragdoll Quest** and hand him the device. The next unfinished mission starts at once. Watch whether he follows the glowing path without an adult explaining the controls.
 
 ## What is in the game
 
-The eight stages ask Sam to score three ball goals; clear three crates to uncover a goal and score; slide a bounce pad under Pineapple, then carry him to a landing ring; bring the fruit friends together to reveal their home circle, then carry both there; ring two bumpers to uncover a goal and score; cover spikes with a crate, then carry a friend to safety; move a wind fan behind a ball, kick it through the airflow, and score; and score before Party Blast. The playground changes color and scenery with each stage, and only mission targets have goal rings. Each step advances when the action happens in the playground. Sam can replay any stage or open **Free play** to place characters and props, grab, aim and kick, move, delete, pause, use slow motion, and record a local clip. Completed stages are marked on the map and saved on this device.
+The eight missions ask Sam to hit a switch with the ball to open a gate, then carry Pineapple home; clear three crates to uncover a goal and score; slide a bounce pad under Pineapple, then carry him to a landing ring; bring the fruit friends together to reveal their home circle, then carry both there; ring two bumpers to uncover a goal and score; cover spikes with a crate, then carry a friend to safety; move a wind fan behind a ball, kick it through the airflow, and score; and score before Party Blast. During missions, the game selects the needed action and draws a path from toy to target. Sam can tap the highlighted ball for a guided kick or swipe to aim himself. Successful steps add points, change the playground, and show the next move; a cleared mission starts the next one after a short celebration. **Stages** opens the map or **Free play**, where all building and recording tools remain available. Completion marks save on this device; the arcade score lasts for this visit.
 
 ## Ten-minute session
 
-1. Watch which stage Sam picks and how long it takes him to touch the playground.
-2. Let him solve the stage. Note whether he understands why the next target appears after moving the crate, pad, or ball. Watch whether the highlighted action, ring, and short hint are enough without adult help.
-3. After he clears a stage, see whether he chooses **Next stage**, replays it, switches from **Stages**, or stops.
+1. Watch how long it takes Sam to touch the first highlighted toy and whether he follows the path to its target.
+2. Let him solve the mission. Note if the path, changing world, and short prompt lead him without adult help. Watch whether he tries again after a miss.
+3. After he clears a mission, see whether he stays for the next one, replays it, switches from **Stages**, or stops.
 4. Around minute six, let him find **Free play**. Watch whether he invents a scene or uses Party Blast.
 5. If he is still playing, point out **Record** once. Clips save to the device only after **Save video**.
 

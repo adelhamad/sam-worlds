@@ -6,7 +6,7 @@ type PropSpawn = [ObjectKind, number, number, number, boolean?];
 interface Layout { characters: CharacterSpawn[]; props: PropSpawn[] }
 
 export const stageLayouts: Layout[] = [
-  { characters: [['classic', 1.7, 0.7]], props: [['ball', 0, 0.7, 0.6]] },
+  { characters: [['pineapple', 2.65, -1.2]], props: [['ball', 0, 0.7, 0.6]] },
   { characters: [], props: [
     ['ball', 0, 0.7, 0.6],
     ['crate', -1.8, 0.6, -1.2, true],

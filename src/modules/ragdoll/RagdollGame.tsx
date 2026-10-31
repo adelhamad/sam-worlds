@@ -10,6 +10,7 @@ import { RagdollShow } from "./RagdollShow";
 import { RagdollRecorder } from "./RagdollRecorder";
 import { RagdollIcon } from "./RagdollIcon";
 import { RagdollPlaytest } from "./RagdollPlaytest";
+import { RagdollArcadeGuide } from "./RagdollArcadeGuide";
 import "./RagdollGame.css";
 import "./RagdollShow.css";
 
@@ -66,6 +67,10 @@ function CharacterPreview({ kind }: { kind: CharacterKind }) {
 export function RagdollGame() {
   const hostRef = useRef<HTMLDivElement>(null);
   const completedShows = useGame((state) => state.ragdollShowsCompleted);
+  const [initialStage] = useState(() => {
+    const next = copy.showStages.findIndex((_, index) => !useGame.getState().ragdollShowsCompleted.includes(index));
+    return next < 0 ? 0 : next;
+  });
   const soundOn = useGame((state) => state.soundOn);
   const toggleSound = useGame((state) => state.toggleSound);
   const sceneRef = useRef<RagdollScene | null>(null);
@@ -81,11 +86,12 @@ export function RagdollGame() {
   const [wearingGlasses, setWearingGlasses] = useState(false);
   const [resetOpen, setResetOpen] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
-  const [showMenuOpen, setShowMenuOpen] = useState(true);
+  const [showMenuOpen, setShowMenuOpen] = useState(false);
   const [mode, setMode] = useState<"show" | "free">("show");
   const modeRef = useRef<"show" | "free">("show");
-  const challengeRef = useRef(firstStep(0));
-  const [challenge, setChallenge] = useState(firstStep(0));
+  const challengeRef = useRef(firstStep(initialStage));
+  const [challenge, setChallenge] = useState(firstStep(initialStage));
+  const [score, setScore] = useState(0);
   const [cheer, setCheer] = useState("");
   const cheerTimeout = useRef<number | undefined>(undefined);
   const [selectedSkin, setSelectedSkin] = useState<CharacterKind>("classic");
@@ -124,6 +130,9 @@ export function RagdollGame() {
           setChallenge(result.progress);
         }
         if (result.advanced) {
+          const points = result.finishedStage ? 300 : 100;
+          setScore(value => value + points);
+          sceneRef.current?.setMissionStep(result.progress.step);
           playtest.step(result.progress.step + (result.finishedStage ? 1 : 0), event.type);
           sceneRef.current?.celebrate();
           if (result.finishedStage) {
@@ -135,7 +144,7 @@ export function RagdollGame() {
               activateForStep(challengeActions[result.progress.stage][result.progress.step]);
           });
           const line = copy.feedback[event.type as keyof typeof copy.feedback] ?? "Stage cleared!";
-          setCheer(line);
+          setCheer(`${line} +${points}`);
           window.clearTimeout(cheerTimeout.current);
           cheerTimeout.current = window.setTimeout(() => setCheer(""), 1800);
         }
@@ -143,15 +152,19 @@ export function RagdollGame() {
     });
     sceneRef.current = scene;
     scene.setTool("kick");
-    scene.loadShow(0);
+    scene.loadShow(initialStage);
+    scene.setMissionStep(0);
+    activateForStep(challengeActions[initialStage][0]);
+    const startPlaytest = requestAnimationFrame(() => playtest.start("stage", initialStage));
     return () => {
+      cancelAnimationFrame(startPlaytest);
       sceneRef.current = null;
       playtest.end();
       scene.dispose();
       unduckMusic();
       window.clearTimeout(cheerTimeout.current);
     };
-  }, [activateForStep]);
+  }, [activateForStep, initialStage]);
 
   useEffect(() => {
     if (!resetOpen) return;
@@ -223,7 +236,7 @@ export function RagdollGame() {
     sceneRef.current?.setObject(kind);
   }
 
-  function startStage(index: number) {
+  const startStage = useCallback((index: number) => {
     playtestRef.current.end();
     const next = firstStep(index);
     challengeRef.current = next;
@@ -238,9 +251,20 @@ export function RagdollGame() {
     setSlowMo(false);
     sceneRef.current?.setSlowMotion(false);
     sceneRef.current?.loadShow(index);
+    sceneRef.current?.setMissionStep(0);
     playtestRef.current.start("stage", index);
     activateForStep(challengeActions[index][0]);
-  }
+  }, [activateForStep]);
+
+  useEffect(() => {
+    if (mode !== "show" || !challenge.complete || showMenuOpen) return;
+    const nextStage = challenge.stage + 1;
+    const timer = window.setTimeout(() => {
+      if (nextStage < copy.showStages.length) startStage(nextStage);
+      else { playtestRef.current.end(); setShowMenuOpen(true); }
+    }, 5500);
+    return () => window.clearTimeout(timer);
+  }, [challenge.complete, challenge.stage, mode, showMenuOpen, startStage]);
 
   function freePlay() {
     playtestRef.current.end();
@@ -290,6 +314,7 @@ export function RagdollGame() {
       challengeRef.current = next;
       setChallenge(next);
       sceneRef.current?.loadShow(challenge.stage);
+      sceneRef.current?.setMissionStep(0);
     } else sceneRef.current?.reset();
     playtestRef.current.start(mode === "show" ? "stage" : "free", mode === "show" ? challenge.stage : undefined);
     sceneRef.current?.setTool(mode === "show" ? "kick" : "grab");
@@ -326,7 +351,7 @@ export function RagdollGame() {
         </div>
       </header>
 
-      <RagdollRecorder sceneRef={sceneRef} />
+      {mode === "free" && <RagdollRecorder sceneRef={sceneRef} />}
 
       {helpOpen && (
         <aside className="ragdoll-help">
@@ -338,10 +363,11 @@ export function RagdollGame() {
         </aside>
       )}
 
-      <RagdollShow progress={challenge} completed={completedShows} mode={mode} menuOpen={showMenuOpen} cheer={cheer} onAction={challengeAction} onStage={startStage} onFree={freePlay} onMenuClose={() => setShowMenuOpen(false)} onMenuOpen={() => setShowMenuOpen(true)} />
+      <RagdollShow progress={challenge} completed={completedShows} score={score} mode={mode} menuOpen={showMenuOpen} cheer={cheer} onAction={challengeAction} onStage={startStage} onFree={freePlay} onMenuClose={() => setShowMenuOpen(false)} onMenuOpen={() => setShowMenuOpen(true)} />
+      <RagdollArcadeGuide sceneRef={sceneRef} progress={challenge} active={mode === "show" && !showMenuOpen && !challenge.complete} />
 
-      <div className="ragdoll-controls">
-        {mode === "free" && !showMenuOpen && <button type="button" className="ragdoll-party-button" onClick={() => { unlockAudio(); sceneRef.current?.partyBlast(); }} disabled={paused} title={copy.partyHint}><RagdollIcon name="party" /> {copy.party}</button>}
+      {mode === "free" && <div className="ragdoll-controls">
+        {!showMenuOpen && <button type="button" className="ragdoll-party-button" onClick={() => { unlockAudio(); sceneRef.current?.partyBlast(); }} disabled={paused} title={copy.partyHint}><RagdollIcon name="party" /> {copy.party}</button>}
         <div className="ragdoll-hint" role="status"><RagdollIcon name="help" size={17} />{hint}</div>
         {palette && (
           <section className="ragdoll-palette" aria-label={palette === "characters" ? copy.characters : copy.objects}>
@@ -378,7 +404,7 @@ export function RagdollGame() {
             <button type="button" ref={resetButtonRef} className="ragdoll-dock-button ragdoll-dock-button--reset" onClick={() => setResetOpen(true)}><span className="ragdoll-tool-icon" aria-hidden="true"><RagdollIcon name="reset" /></span><span>{copy.reset}</span></button>
           </div>
         </nav>
-      </div>
+      </div>}
 
       {resetOpen && <div className="ragdoll-modal-backdrop" role="presentation"><div ref={resetDialogRef} className="ragdoll-modal" role="alertdialog" aria-modal="true" aria-labelledby="ragdoll-reset-title" aria-describedby="ragdoll-reset-body"><div className="ragdoll-modal-symbol" aria-hidden="true"><RagdollIcon name="reset" size={38} /></div><h2 id="ragdoll-reset-title">{copy.resetTitle}</h2><p id="ragdoll-reset-body">{copy.resetBody}</p><div className="ragdoll-modal-actions"><button type="button" className="ragdoll-modal-cancel" onClick={() => setResetOpen(false)}>{copy.cancel}</button><button type="button" className="ragdoll-modal-confirm" onClick={resetPlayground}>{copy.confirmReset}</button></div></div></div>}
     </main>

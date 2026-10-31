@@ -31,7 +31,7 @@ export function persistSettings(get: () => GameStore): void {
     petFedAt: s.petFedAt,
     petBornAt: s.petBornAt,
     ragdollShowsCompleted: s.ragdollShowsCompleted,
-    ragdollStagesVersion: 2,
+    ragdollStagesVersion: 3,
   });
 }
 
@@ -85,6 +85,7 @@ export function settingsState(settings: SettingsRow | undefined) {
     recentWorlds: settings?.recentWorlds ?? [],
     favoriteWorlds: settings?.favoriteWorlds ?? [],
     ragdollShowsCompleted: (settings?.ragdollShowsCompleted ?? []).map(index =>
-      settings?.ragdollStagesVersion === 2 || index < 6 ? index : index + 1),
+      (settings?.ragdollStagesVersion ?? 1) >= 2 || index < 6 ? index : index + 1)
+      .filter(index => (settings?.ragdollStagesVersion ?? 1) >= 3 || index !== 0),
   };
 }
