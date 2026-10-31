@@ -101,6 +101,12 @@ export class RagdollScene {
   setSlowMotion(enabled: boolean) { this.slowMo = enabled; }
   setGuideVisible(visible: boolean) { this.guide.show(visible); }
   setMuted(muted: boolean) { this.sound.muted = muted; }
+  captureStream() {
+    const stream = this.renderer.domElement.captureStream(30);
+    stream.addTrack(this.sound.captureTrack());
+    return stream;
+  }
+  stopCapture() { this.sound.stopCapture(); }
   toggleGlasses() {
     if (!this.selected) return;
     setGlasses(this.selected, !this.selected.glasses);

@@ -7,6 +7,7 @@ import { useGame } from "../../state/store";
 import { RagdollScene, type CharacterKind, type ObjectKind, type RagdollTool } from "./RagdollScene";
 import { advanceChallenge, challengeActions, firstStep, type ChallengeAction } from "./RagdollChallenges";
 import { RagdollShow } from "./RagdollShow";
+import { RagdollRecorder } from "./RagdollRecorder";
 import "./RagdollGame.css";
 import "./RagdollShow.css";
 
@@ -311,12 +312,15 @@ export function RagdollGame() {
         </div>
       </header>
 
+      <RagdollRecorder sceneRef={sceneRef} />
+
       {helpOpen && (
         <aside className="ragdoll-help">
           <div className="ragdoll-help-title"><strong>{copy.howToPlay}</strong><button type="button" onClick={() => setHelpOpen(false)} aria-label={copy.close}>×</button></div>
           <p>{copy.cameraHint}</p>
           <p>{copy.grabHint}</p>
           <p>{copy.kickHint}</p>
+          <p>{copy.recordHint}</p>
         </aside>
       )}
 

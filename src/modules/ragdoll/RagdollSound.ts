@@ -1,7 +1,26 @@
 export type SoundName = 'spawn' | 'kick' | 'impact' | 'defeat' | 'bounce' | 'cheer';
 export class RagdollSound {
   private context?: AudioContext;
+  private recordingOutput?: MediaStreamAudioDestinationNode;
+  private recordingSilence?: ConstantSourceNode;
   muted = false;
+  captureTrack() {
+    this.context ??= new AudioContext();
+    if (this.context.state === 'suspended') void this.context.resume();
+    this.recordingOutput = this.context.createMediaStreamDestination();
+    this.recordingSilence = this.context.createConstantSource();
+    this.recordingSilence.offset.value = 0;
+    this.recordingSilence.connect(this.recordingOutput);
+    this.recordingSilence.start();
+    return this.recordingOutput.stream.getAudioTracks()[0];
+  }
+  stopCapture() {
+    this.recordingSilence?.stop();
+    this.recordingSilence?.disconnect();
+    this.recordingSilence = undefined;
+    this.recordingOutput?.stream.getTracks().forEach(track => track.stop());
+    this.recordingOutput = undefined;
+  }
   play(name: SoundName) {
     if (this.muted) return;
     try {
@@ -20,8 +39,10 @@ export class RagdollSound {
       gain.gain.setValueAtTime(0.0001, now);
       gain.gain.exponentialRampToValueAtTime(name === 'defeat' ? 0.055 : 0.085, now + 0.012);
       gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
-      osc.connect(gain); gain.connect(ctx.destination); osc.start(now); osc.stop(now + duration + 0.01);
+      osc.connect(gain); gain.connect(ctx.destination);
+      if (this.recordingOutput) gain.connect(this.recordingOutput);
+      osc.start(now); osc.stop(now + duration + 0.01);
     } catch { /* Browsers may disable audio until interaction. */ }
   }
-  dispose() { if (this.context) void this.context.close(); }
+  dispose() { this.stopCapture(); if (this.context) void this.context.close(); }
 }
