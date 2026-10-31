@@ -11,6 +11,7 @@ export const challengeActions: ChallengeAction[][] = [
   ['grab', 'grab', 'grab'],
   ['kick', 'kick', 'kick'],
   ['move', 'grab'],
+  ['move', 'kick', 'kick'],
   ['kick', 'party'],
 ];
 
@@ -21,6 +22,7 @@ const checks: Array<Array<(event: SceneEvent) => boolean>> = [
   [e => e.type === 'friendsMeet', e => e.type === 'fruitHome', e => e.type === 'fruitHome'],
   [e => e.type === 'bumperHit', e => e.type === 'bumperHit', e => e.type === 'goal'],
   [e => e.type === 'bridgeReady', e => e.type === 'rescue'],
+  [e => e.type === 'fanReady', e => e.type === 'windBoost', e => e.type === 'goal'],
   [e => e.type === 'goal', e => e.type === 'party'],
 ];
 

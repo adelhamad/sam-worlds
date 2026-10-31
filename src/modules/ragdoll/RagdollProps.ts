@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import * as CANNON from 'cannon-es';
 
-export type ObjectKind = 'crate' | 'spikes' | 'ball' | 'bumper' | 'launchpad';
+export type ObjectKind = 'crate' | 'spikes' | 'ball' | 'bumper' | 'launchpad' | 'fan';
 export interface Prop { kind: ObjectKind; body: CANNON.Body; mesh: THREE.Group; lastTrigger: number; covered?: boolean }
 
 function paint(color: number) {
@@ -14,6 +14,26 @@ function box(w: number, h: number, d: number, color: number) {
 function cylinder(top: number, bottom: number, height: number, color: number) {
   const mesh = new THREE.Mesh(new THREE.CylinderGeometry(top, bottom, height, 20), paint(color));
   mesh.castShadow = true; mesh.receiveShadow = true; return mesh;
+}
+function makeFan(mesh: THREE.Group): CANNON.Shape {
+  const base = box(0.92, 0.18, 0.7, 0x3585a9); base.position.y = -0.73; mesh.add(base);
+  const pole = cylinder(0.09, 0.13, 1.25, 0x4aabc5); pole.position.y = -0.07; mesh.add(pole);
+  const cage = new THREE.Mesh(new THREE.TorusGeometry(0.64, 0.1, 9, 32), paint(0x267799));
+  cage.position.set(0, 0.22, -0.12); mesh.add(cage);
+  const blades = new THREE.Group(); blades.name = 'fan-blades'; blades.position.set(0, 0.22, -0.17);
+  for (let i = 0; i < 4; i++) {
+    const blade = box(0.2, 0.56, 0.07, 0x89e8f2);
+    blade.position.y = 0.25;
+    const arm = new THREE.Group(); arm.rotation.z = i * Math.PI / 2; arm.add(blade); blades.add(arm);
+  }
+  blades.add(new THREE.Mesh(new THREE.SphereGeometry(0.15, 10, 8), paint(0xffd569)));
+  mesh.add(blades);
+  for (let i = 1; i <= 3; i++) {
+    const arrow = new THREE.Mesh(new THREE.ConeGeometry(0.19, 0.42, 3),
+      new THREE.MeshBasicMaterial({ color: 0x66ddec, transparent: true, opacity: 0.66 }));
+    arrow.rotation.x = -Math.PI / 2; arrow.position.set(0, -0.75, -0.76 * i); mesh.add(arrow);
+  }
+  return new CANNON.Box(new CANNON.Vec3(0.45, 0.78, 0.3));
 }
 
 export function createProp(world: CANNON.World, scene: THREE.Scene, kind: ObjectKind, x: number, y: number, z: number, dynamic = false): Prop {
@@ -47,6 +67,8 @@ export function createProp(world: CANNON.World, scene: THREE.Scene, kind: Object
     mesh.add(cylinder(0.54, 0.7, 0.34, 0xf87783));
     const top = cylinder(0.62, 0.62, 0.14, 0xffd76f); top.position.y = 0.23; mesh.add(top);
     shape = new CANNON.Cylinder(0.54, 0.7, 0.42, 16);
+  } else if (kind === 'fan') {
+    shape = makeFan(mesh);
   } else {
     mesh.add(cylinder(0.9, 1.05, 0.22, 0x4689dd));
     const top = cylinder(0.76, 0.76, 0.07, 0x8ae9f7); top.position.y = 0.14; mesh.add(top);

@@ -1,4 +1,4 @@
-type IconName = 'stages' | 'help' | 'sound' | 'mute' | 'kick' | 'grab' | 'move' | 'delete' | 'characters' | 'objects' | 'glasses' | 'slow' | 'pause' | 'play' | 'reset' | 'party' | 'check' | 'arrow' | 'close' | 'ball' | 'crate' | 'spikes' | 'bumper' | 'launchpad';
+type IconName = 'stages' | 'help' | 'sound' | 'mute' | 'kick' | 'grab' | 'move' | 'delete' | 'characters' | 'objects' | 'glasses' | 'slow' | 'pause' | 'play' | 'reset' | 'party' | 'check' | 'arrow' | 'close' | 'ball' | 'crate' | 'spikes' | 'bumper' | 'launchpad' | 'fan';
 
 const paths: Record<IconName, string> = {
   stages: 'M4 4h16v16H4z M8 8h3v3H8z M14 8h3v3h-3z M8 14h3v3H8z M14 14h3v3h-3z',
@@ -25,6 +25,7 @@ const paths: Record<IconName, string> = {
   spikes: 'M2 20 7 5l5 15L17 5l5 15H2Z',
   bumper: 'M4 14h16v5H4z M6 14V9h12v5 M8 9V6h8v3',
   launchpad: 'M3 18h18v3H3z M6 14h12v4H6z M12 11V2 M8 6l4-4 4 4',
+  fan: 'M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z M11 10c-2-5-1-7 2-7 3 0 3 4 1 7 M14 11c5-2 7-1 7 2 0 3-4 3-7 1 M11 14c-3 4-5 5-7 3-2-2 0-5 6-5 M3 22h18',
 };
 
 export function RagdollIcon({ name, size = 24 }: { name: IconName; size?: number }) {

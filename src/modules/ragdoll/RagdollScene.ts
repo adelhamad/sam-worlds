@@ -7,11 +7,12 @@ import { createProp, type ObjectKind, type Prop } from './RagdollProps';
 import { applyPartyBlast } from './RagdollParty';
 import { RagdollMission } from './RagdollMission';
 import { RagdollAim } from './RagdollAim';
+import { updateFans } from './RagdollFan';
 import { freePlayLayout, stageLayouts } from './RagdollStageSetup';
 export type { CharacterKind } from './RagdollCharacter';
 export type { ObjectKind } from './RagdollProps';
 export type RagdollTool = 'grab' | 'kick' | 'move' | 'delete' | 'place-character' | 'place-object';
-export interface SceneEvent { type: 'select' | 'spawn' | 'kick' | 'impact' | 'defeat' | 'delete' | 'grab' | 'release' | 'move' | 'bounce' | 'bump' | 'glasses' | 'collide' | 'party' | 'goal' | 'crateDown' | 'fruitHome' | 'friendsMeet' | 'bumperHit' | 'rescue' | 'landed' | 'bridgeReady'; character?: boolean; glasses?: boolean; kind?: string; part?: string; airborne?: boolean }
+export interface SceneEvent { type: 'select' | 'spawn' | 'kick' | 'impact' | 'defeat' | 'delete' | 'grab' | 'release' | 'move' | 'bounce' | 'bump' | 'glasses' | 'collide' | 'party' | 'goal' | 'crateDown' | 'fruitHome' | 'friendsMeet' | 'bumperHit' | 'rescue' | 'landed' | 'bridgeReady' | 'fanReady' | 'windBoost'; character?: boolean; glasses?: boolean; kind?: string; part?: string; airborne?: boolean }
 interface Hit { character?: RagdollCharacter; part?: RagdollPart; prop?: Prop; point: THREE.Vector3 }
 
 function disposeGroup(group: THREE.Object3D) {
@@ -279,6 +280,7 @@ export class RagdollScene {
     if (control) this.world.removeBody(control);
     this.drag = undefined;
     if (dropPoint && hit.character) this.mission.tryDrop(hit.character, dropPoint);
+    if (dropPoint && hit.prop) this.mission.tryPlace(hit.prop, dropPoint);
     if (hit.part) this.onEvent?.({ type: 'release', character: true, kind: hit.character?.kind, part: hit.part.name });
   }
   private place(event: PointerEvent) {
@@ -290,6 +292,7 @@ export class RagdollScene {
       if (this.objectKind === 'crate') y = 0.6;
       if (this.objectKind === 'ball') y = 0.7;
       if (this.objectKind === 'bumper') y = 0.22;
+      if (this.objectKind === 'fan') y = 0.85;
       if (this.objectKind === 'crate') {
         const under = this.props.filter(p => p.kind === 'crate' && Math.abs(p.mesh.position.x - x) < 0.52 && Math.abs(p.mesh.position.z - z) < 0.52);
         if (under.length) y = Math.max(...under.map(p => p.mesh.position.y)) + 1.2;
@@ -400,6 +403,7 @@ export class RagdollScene {
         this.onEvent?.({ type: 'move', kind: p.kind });
       }
       this.world.step(1 / 60, dt, 3);
+      if (updateFans(this.props, now, dt)) { this.sound.play('bounce'); this.mission.windBoosted(); }
       for (const c of this.characters) stabilizeCharacter(c, this.drag?.hit.character === c ? this.drag.hit.part?.body : undefined);
       this.sync(); this.checkCollisions(); this.mission.update(now, this.props, this.characters); this.animateStars(dt);
     }

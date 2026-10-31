@@ -12,6 +12,8 @@ const landingGoal: readonly [number, number] = [-2.5, -1.5];
 const fruitGoal: readonly [number, number] = [-2, -2];
 const bumperGoal: readonly [number, number] = [-2.5, -3.4];
 const safeGoal: readonly [number, number] = [1.6, 0];
+const fanTarget: readonly [number, number] = [0, 2];
+const windGoal: readonly [number, number] = [0, -4.2];
 
 function makeMarker(scene: THREE.Scene, x: number, z: number, color: number, radius = 1.05): Marker {
   const group = new THREE.Group();
@@ -43,12 +45,15 @@ export class RagdollMission {
   private bounced = false;
   private bridgeReady = false;
   private friendsMet = false;
+  private fanReady = false;
+  private windUsed = false;
 
   constructor(private scene: THREE.Scene, private emit: Emit) {}
 
   clear() {
     this.stage = -1; this.goalIndex = 0; this.armed = false; this.done = false;
     this.goalUnlocked = false; this.bounced = false; this.bridgeReady = false; this.friendsMet = false;
+    this.fanReady = false; this.windUsed = false;
     this.goalMarker = undefined; this.landingMarker = undefined; this.safeMarker = undefined;
     this.meetMarker = undefined; this.homeMarker = undefined;
     this.seen.clear(); this.crateStart.clear(); this.padStart = undefined; this.fruitFriends = [];
@@ -104,12 +109,34 @@ export class RagdollMission {
       this.safeMarker.group.visible = false; this.markers.push(this.safeMarker);
     }
     if (stage === 6) {
+      this.markers.push(makeMarker(this.scene, ...fanTarget, 0x45c9ec, 1.05));
+      this.goalMarker = makeMarker(this.scene, ...windGoal, 0xffb936);
+      this.goalMarker.group.visible = false; this.markers.push(this.goalMarker);
+    }
+    if (stage === 7) {
       this.goalMarker = makeMarker(this.scene, -2.4, -2.2, 0xffb936);
       this.markers.push(this.goalMarker); this.goalUnlocked = true;
     }
   }
 
   arm() { this.armed = true; }
+
+  windBoosted() {
+    if (this.stage !== 6 || !this.fanReady || this.windUsed) return;
+    this.windUsed = true; this.goalUnlocked = true;
+    if (this.goalMarker) this.goalMarker.group.visible = true;
+    this.emit({ type: 'windBoost', kind: 'fan' });
+  }
+
+  tryPlace(prop: Prop, point: THREE.Vector3) {
+    if (this.stage !== 6 || this.fanReady || prop.kind !== 'fan' || !this.inTarget(point, ...fanTarget)) return;
+    prop.body.position.x = fanTarget[0]; prop.body.position.z = fanTarget[1];
+    prop.mesh.position.x = fanTarget[0]; prop.mesh.position.z = fanTarget[1];
+    prop.body.aabbNeedsUpdate = true;
+    this.fanReady = true;
+    if (this.markers[0]) this.markers[0].group.visible = false;
+    this.emit({ type: 'fanReady', kind: 'fan' });
+  }
 
   tryDrop(character: RagdollCharacter, point: THREE.Vector3) {
     if (this.done) return;
@@ -163,7 +190,7 @@ export class RagdollMission {
 
   update(now: number, props: Prop[], characters: RagdollCharacter[]) {
     if (this.stage < 0 || this.done) return;
-    if ([0, 1, 4, 6].includes(this.stage)) this.returnLostBall(props);
+    if ([0, 1, 4, 6, 7].includes(this.stage)) this.returnLostBall(props);
     for (const marker of this.markers) {
       const pulse = 1 + Math.sin(now * 0.004) * 0.075;
       marker.ring.scale.set(pulse, pulse, pulse);
@@ -186,7 +213,7 @@ export class RagdollMission {
     if (!ball || !marker) return;
     const dx = ball.body.position.x - marker.group.position.x;
     const dz = ball.body.position.z - marker.group.position.z;
-    if (dx * dx + dz * dz > 1.05 * 1.05 || ball.body.position.y > 1.6) return;
+    if (dx * dx + dz * dz > 1.05 * 1.05 || ball.body.position.y > (this.stage === 6 ? 2.3 : 1.6)) return;
     this.goalIndex++;
     this.emit({ type: 'goal', kind: 'ball' });
     if (this.stage === 0 && this.goalIndex < ballGoals.length) {
@@ -299,4 +326,5 @@ export class RagdollMission {
     this.done = true;
     this.emit({ type: 'rescue', character: true });
   }
+
 }

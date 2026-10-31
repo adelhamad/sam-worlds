@@ -59,6 +59,11 @@ export function makePlacementGhost(kind: string): THREE.Group {
   } else if (kind === 'ball') {
     const ball = new THREE.Mesh(new THREE.SphereGeometry(0.48, 12, 8), paint(0xffa349));
     ball.position.y = 0.7; ghost.add(ball);
+  } else if (kind === 'fan') {
+    box(0.9, 0.18, 0.7, 0x3585a9, 0, 0.12);
+    box(0.15, 1.2, 0.2, 0x4aabc5, 0, 0.72);
+    const ring = new THREE.Mesh(new THREE.TorusGeometry(0.62, 0.11, 8, 20), paint(0x267799));
+    ring.position.y = 1.07; ghost.add(ring);
   } else if (kind === 'bumper' || kind === 'launchpad') {
     const radius = kind === 'bumper' ? 0.65 : 0.95;
     const pad = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius, 0.3, 16), paint(kind === 'bumper' ? 0xf87783 : 0x4689dd));

@@ -16,6 +16,7 @@ export const stageLayouts: Layout[] = [
   { characters: [['pineapple', -2.4, 0], ['watermelon', 2.4, 0]], props: [] },
   { characters: [], props: [['ball', 0, 0.7, 0.6], ['bumper', -1.9, 0.22, -1.5], ['bumper', -3.3, 0.22, -2.7]] },
   { characters: [['red', -3.2, 0.2]], props: [['spikes', -1.4, 0.14, 0], ['crate', -1.4, 0.6, -2.5]] },
+  { characters: [['pineapple', -3, -0.7]], props: [['ball', 0, 0.7, 0.6], ['fan', 2.6, 0.85, 1.2]] },
   { characters: [['pineapple', 2, 0.3], ['watermelon', 3.2, -0.8]], props: [
     ['ball', 0, 0.7, 0.6], ['launchpad', -4.2, 0.14, -1.4],
   ] },
@@ -26,5 +27,6 @@ export const freePlayLayout: Layout = {
   props: [
     ['ball', 2.1, 0.7, 0.5], ['crate', -2.5, 0.6, -2.5],
     ['bumper', 2.7, 0.22, -2.5], ['launchpad', -0.5, 0.14, -3],
+    ['fan', -3.6, 0.85, 2.4],
   ],
 };

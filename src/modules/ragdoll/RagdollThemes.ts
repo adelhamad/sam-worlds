@@ -7,6 +7,7 @@ const palettes = [
   { ground: 0xc6e3b0, rim: 0x70b789, sky: 0xb9e5ee }, // orchard
   { ground: 0xbfa7a0, rim: 0xe17e66, sky: 0xf3c4a6 }, // volcano
   { ground: 0xf0c996, rim: 0xd49b71, sky: 0xf8d7b5 }, // canyon
+  { ground: 0xc7e9dc, rim: 0x55b6bd, sky: 0x9ed9f0 }, // wind works
   { ground: 0xd8d4f1, rim: 0xa284ca, sky: 0xd8d8fa }, // festival
 ] as const;
 
@@ -55,6 +56,17 @@ function festival(group: THREE.Group, x: number, z: number) {
     column.rotation.z = (i - 1.5) * 0.08;
   }
 }
+function windmill(group: THREE.Group, x: number, z: number) {
+  add(group, new THREE.CylinderGeometry(0.18, 0.3, 3, 8), 0xf6f3d3, x, 1.5, z);
+  const hub = add(group, new THREE.SphereGeometry(0.26, 10, 8), 0x4da6b8, x, 3.1, z);
+  for (let i = 0; i < 4; i++) {
+    const blade = add(group, new THREE.BoxGeometry(0.35, 1.2, 0.1), 0xffffff, x, 3.78, z);
+    blade.position.x = x + Math.sin(i * Math.PI / 2) * 0.68;
+    blade.position.y = 3.1 + Math.cos(i * Math.PI / 2) * 0.68;
+    blade.rotation.z = -i * Math.PI / 2;
+  }
+  hub.position.z += 0.11;
+}
 
 function makeLandmarks(index: number) {
   const group = new THREE.Group();
@@ -66,6 +78,7 @@ function makeLandmarks(index: number) {
     else if (index === 3) tree(group, x, z, false, true);
     else if (index === 4) volcano(group, x, z);
     else if (index === 5) canyon(group, x, z);
+    else if (index === 6) windmill(group, x, z);
     else festival(group, x, z);
   }
   return group;

@@ -4,7 +4,7 @@ The first test is whether Sam chooses to keep playing. There is no lesson or qui
 
 ## What is in the game
 
-The seven stages ask Sam to score three ball goals; clear three crates to uncover a goal and score; slide a bounce pad under Pineapple, then carry him to a landing ring; bring the fruit friends together to reveal their home circle, then carry both there; ring two bumpers to uncover a goal and score; cover spikes with a crate, then carry a friend to safety; and score before Party Blast. The playground changes color and scenery with each stage, and only mission targets have goal rings. Each step advances when the action happens in the playground. Sam can replay any stage or open **Free play** to place characters and props, grab, aim and kick, move, delete, pause, use slow motion, and record a local clip. Completed stages are marked on the map and saved on this device.
+The eight stages ask Sam to score three ball goals; clear three crates to uncover a goal and score; slide a bounce pad under Pineapple, then carry him to a landing ring; bring the fruit friends together to reveal their home circle, then carry both there; ring two bumpers to uncover a goal and score; cover spikes with a crate, then carry a friend to safety; move a wind fan behind a ball, kick it through the airflow, and score; and score before Party Blast. The playground changes color and scenery with each stage, and only mission targets have goal rings. Each step advances when the action happens in the playground. Sam can replay any stage or open **Free play** to place characters and props, grab, aim and kick, move, delete, pause, use slow motion, and record a local clip. Completed stages are marked on the map and saved on this device.
 
 ## Ten-minute session
 

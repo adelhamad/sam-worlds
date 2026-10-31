@@ -81,8 +81,9 @@ export interface SettingsRow {
   petStageIdx?: number;
   petFedAt?: number;
   petBornAt?: number;
-  /** Completed Ragdoll Stunt Show acts (replayable, parent-resettable). */
+  /** Completed Ragdoll Quest stages (replayable, parent-resettable). */
   ragdollShowsCompleted?: number[];
+  ragdollStagesVersion?: number;
 }
 export interface CouponRow {
   id?: number;

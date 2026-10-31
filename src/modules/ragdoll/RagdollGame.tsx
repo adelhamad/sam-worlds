@@ -30,6 +30,7 @@ const objects: { kind: ObjectKind; label: string }[] = [
   { kind: "ball", label: copy.ball },
   { kind: "bumper", label: copy.bumper },
   { kind: "launchpad", label: copy.launchpad },
+  { kind: "fan", label: copy.fan },
 ];
 const tools: { key: MainTool; label: string; hint: string }[] = [
   { key: "grab", label: copy.grab, hint: copy.grabHint },
