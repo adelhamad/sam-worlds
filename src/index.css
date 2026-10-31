@@ -446,6 +446,60 @@ body {
 }
 
 /* ---------- hub bottom tiles ---------- */
+.sandbox-portal {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: clamp(22px, 4vw, 36px);
+  border: 1px solid #6e6bc7;
+  border-radius: 24px;
+  background: radial-gradient(circle at 88% 20%, rgba(173, 156, 255, .28), transparent 35%),
+    linear-gradient(125deg, #20215c, #151638 70%);
+  box-shadow: 0 14px 35px rgba(3, 5, 32, .24), inset 0 1px rgba(255, 255, 255, .13);
+}
+.sandbox-portal::after {
+  content: "✦  ◉  ✦";
+  position: absolute;
+  z-index: -1;
+  right: 6%;
+  top: -28px;
+  color: rgba(190, 175, 255, .12);
+  font-size: clamp(100px, 19vw, 200px);
+  letter-spacing: -.3em;
+  white-space: nowrap;
+  transform: rotate(-15deg);
+  pointer-events: none;
+}
+.sandbox-portal-copy {
+  max-width: 540px;
+}
+.sandbox-portal-eyebrow {
+  color: #c8b9ff;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .2em;
+}
+.sandbox-portal h2 {
+  margin: 7px 0;
+  color: #fff;
+  font-size: clamp(25px, 4vw, 38px);
+}
+.sandbox-portal p {
+  margin: 0;
+  color: #d1d1ee;
+  line-height: 1.5;
+}
+.sandbox-portal-button {
+  background: linear-gradient(135deg, #e2c5ff, #a18cff);
+  color: #211943;
+  flex-shrink: 0;
+}
+
 .hub-bottom {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));

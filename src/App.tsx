@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { HashRouter, Route, Routes, useLocation } from "react-router-dom";
 import { useGame } from "./state/store";
 import { TitleScreen } from "./ui/TitleScreen";
@@ -7,6 +7,8 @@ import { WorldMap } from "./modules/play/WorldMap";
 import { PlayStage } from "./modules/play/PlayStage";
 import { ParentSection } from "./ui/ParentSection";
 import { VideoCompanion } from "./ui/VideoCompanion";
+
+const RagdollGame = lazy(() => import("./modules/ragdoll/RagdollGame").then(({ RagdollGame }) => ({ default: RagdollGame })));
 
 /** Each screen starts at the top — no inherited scroll position. */
 function ScrollToTop() {
@@ -91,6 +93,7 @@ export default function App() {
         <Route path="/hub" element={<Hub />} />
         <Route path="/world/:worldId" element={<WorldMap />} />
         <Route path="/play/:stageId" element={<PlayStage />} />
+        <Route path="/ragdoll" element={<Suspense fallback={<div className="boot-splash" role="status">{STR.ragdoll.loading}</div>}><RagdollGame /></Suspense>} />
         <Route path="/parent" element={<ParentSection />} />
       </Routes>
     </HashRouter>

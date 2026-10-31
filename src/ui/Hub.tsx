@@ -84,6 +84,24 @@ export function Hub() {
 
       <CouponWallet />
 
+      <section className="sandbox-portal" aria-labelledby="sandbox-portal-title">
+        <div className="sandbox-portal-copy">
+          <span className="sandbox-portal-eyebrow">{STR.ragdoll.kicker}</span>
+          <h2 id="sandbox-portal-title">{STR.ragdoll.title}</h2>
+          <p>{STR.ragdoll.description}</p>
+        </div>
+        <button
+          className="btn sandbox-portal-button"
+          onClick={() => {
+            unlockAudio();
+            sfx.tap();
+            navigate("/ragdoll");
+          }}
+        >
+          {STR.ragdoll.enter} <span aria-hidden="true">↗</span>
+        </button>
+      </section>
+
       <WorldGrid />
 
       <div className="hub-bottom">
