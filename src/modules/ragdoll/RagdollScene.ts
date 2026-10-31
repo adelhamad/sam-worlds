@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import * as CANNON from 'cannon-es';
 import { createCharacter, removeCharacter, setGlasses, stabilizeCharacter, type CharacterKind, type RagdollCharacter, type RagdollPart } from './RagdollCharacter';
 import { RagdollSound } from './RagdollSound';
-import { createGuideRing, decoratePlayground, makePlacementGhost } from './RagdollWorld';
+import { decoratePlayground, makePlacementGhost } from './RagdollWorld';
 import { createProp, type ObjectKind, type Prop } from './RagdollProps';
 import { applyPartyBlast } from './RagdollParty';
 import { RagdollMission } from './RagdollMission';
@@ -11,7 +11,7 @@ import { freePlayLayout, stageLayouts } from './RagdollStageSetup';
 export type { CharacterKind } from './RagdollCharacter';
 export type { ObjectKind } from './RagdollProps';
 export type RagdollTool = 'grab' | 'kick' | 'move' | 'delete' | 'place-character' | 'place-object';
-export interface SceneEvent { type: 'select' | 'spawn' | 'kick' | 'impact' | 'defeat' | 'delete' | 'grab' | 'release' | 'move' | 'bounce' | 'bump' | 'glasses' | 'collide' | 'party' | 'goal' | 'crateDown' | 'fruitHome' | 'bumperHit' | 'rescue'; character?: boolean; glasses?: boolean; kind?: string; part?: string; airborne?: boolean }
+export interface SceneEvent { type: 'select' | 'spawn' | 'kick' | 'impact' | 'defeat' | 'delete' | 'grab' | 'release' | 'move' | 'bounce' | 'bump' | 'glasses' | 'collide' | 'party' | 'goal' | 'crateDown' | 'fruitHome' | 'bumperHit' | 'rescue' | 'landed' | 'bridgeReady'; character?: boolean; glasses?: boolean; kind?: string; part?: string; airborne?: boolean }
 interface Hit { character?: RagdollCharacter; part?: RagdollPart; prop?: Prop; point: THREE.Vector3 }
 
 function disposeGroup(group: THREE.Object3D) {
@@ -53,9 +53,7 @@ export class RagdollScene {
   private sound = new RagdollSound();
   private lastImpact = 0;
   private lastCharacterCollision = 0;
-  private guide: ReturnType<typeof createGuideRing>;
   private mission = new RagdollMission(this.scene, event => this.onEvent?.(event));
-  private stageIndex = -1;
   private aim = new RagdollAim<Hit>(this.scene, event => this.groundPoint(event));
 
   constructor(private container: HTMLElement, private onEvent?: (event: SceneEvent) => void) {
@@ -80,7 +78,6 @@ export class RagdollScene {
       lineMaterial.transparent = true; lineMaterial.opacity = 0.25;
     }
     this.scene.add(grid); decoratePlayground(this.scene);
-    this.guide = createGuideRing(this.scene);
     this.scene.add(new THREE.HemisphereLight(0xffffff, 0x88a8b5, 2.2));
     const sun = new THREE.DirectionalLight(0xffffff, 3.2);
     sun.position.set(-6, 12, 8); sun.castShadow = true;
@@ -118,14 +115,13 @@ export class RagdollScene {
     this.onEvent?.({ type: 'glasses', character: true, glasses: !!this.selected.glasses, kind: this.selected.kind });
   }
   loadShow(index: number) {
-    this.reset(false); this.stageIndex = index;
-    this.angle = 0.65; this.elevation = 0.5; this.distance = 9.5; this.updateCamera();
+    this.reset(false);
+    this.angle = 0.65; this.elevation = 0.5; this.distance = index === 5 ? 11.5 : 9.5; this.updateCamera();
     const layout = stageLayouts[index];
     for (const [kind, x, z] of layout.characters) this.spawnCharacter(kind, x, z, false);
     for (const [kind, x, y, z, dynamic] of layout.props) this.spawnProp(kind, x, y, z, dynamic);
     for (const character of this.characters) for (const part of character.parts) part.body.sleep();
     this.mission.start(index, this.props);
-    this.guide.show(false);
   }
   enterFreePlay() {
     this.reset(false);
@@ -137,15 +133,13 @@ export class RagdollScene {
   celebrate() { this.sound.play('cheer'); this.burst(new THREE.Vector3(0, 2.5, 0), 0xffd86a); }
   partyBlast() {
     if (this.paused) return;
-    this.guide.show(false);
     applyPartyBlast(this.characters);
     this.burst(new THREE.Vector3(-1.2, 2.4, 0), 0xff8cac);
     this.burst(new THREE.Vector3(1.2, 2.4, 0), 0x7de7ed);
     this.sound.play('cheer'); this.onEvent?.({ type: 'party' });
   }
   reset(withStarter = true) {
-    this.endDrag(); this.aim.clear(); this.mission.clear(); this.stageIndex = -1;
-    this.guide.show(false);
+    this.endDrag(); this.aim.clear(); this.mission.clear();
     for (const c of this.characters) {
       for (const p of c.parts) this.meshTargets.delete(p.mesh);
       removeCharacter(this.world, this.scene, c);
@@ -173,7 +167,6 @@ export class RagdollScene {
     this.characters = []; this.props = []; this.meshTargets.clear();
     for (const star of this.stars) { this.scene.remove(star.mesh); disposeGroup(star.mesh); }
     this.stars = []; this.clearGhost(); this.sound.dispose();
-    this.guide.dispose();
     this.scene.traverse(o => { if (o instanceof THREE.Mesh) {
       o.geometry.dispose(); (Array.isArray(o.material) ? o.material : [o.material]).forEach(m => m.dispose());
     } });
@@ -251,7 +244,6 @@ export class RagdollScene {
       this.sound.play('kick'); this.onEvent?.({ type: 'kick', kind: 'ball' }); return;
     }
     if (!hit.character || !hit.part) return;
-    this.guide.show(false);
     for (const p of hit.character.parts) {
       p.body.wakeUp();
       p.body.applyImpulse(new CANNON.Vec3(direction.x * 1.8 * power, 2.4, direction.z * 1.8 * power));
@@ -277,12 +269,13 @@ export class RagdollScene {
     this.onEvent?.({ type: 'grab', character: true, kind: hit.character?.kind, part: hit.part.name, airborne });
     this.renderer.domElement.setPointerCapture(event.pointerId);
   }
-  private endDrag() {
+  private endDrag(dropPoint?: THREE.Vector3) {
     if (!this.drag) return;
     const { hit, constraint, control } = this.drag;
     if (constraint) this.world.removeConstraint(constraint);
     if (control) this.world.removeBody(control);
     this.drag = undefined;
+    if (dropPoint && hit.character) this.mission.tryDrop(hit.character, dropPoint);
     if (hit.part) this.onEvent?.({ type: 'release', character: true, kind: hit.character?.kind, part: hit.part.name });
   }
   private place(event: PointerEvent) {
@@ -368,7 +361,7 @@ export class RagdollScene {
     this.pointer.delete(event.pointerId);
     if (this.pointer.size < 2) this.pinchDistance = undefined;
     if (this.orbitPointer === event.pointerId) this.orbitPointer = undefined;
-    if (this.drag) this.endDrag();
+    if (this.drag) this.endDrag(event.type === 'pointercancel' ? undefined : this.groundPoint(event) ?? undefined);
     if (this.renderer.domElement.hasPointerCapture(event.pointerId)) this.renderer.domElement.releasePointerCapture(event.pointerId);
   };
   private wheel = (event: WheelEvent) => {
@@ -386,8 +379,6 @@ export class RagdollScene {
     const realDt = Math.min((now - this.lastFrame) / 1000, 0.05); this.lastFrame = now;
     const dt = realDt * (this.slowMo ? 0.36 : 1);
     if (!this.paused) {
-      const guideTarget = this.stageIndex === 0 ? this.props.find(p => p.kind === 'ball')?.body.position : this.characters[0]?.parts[0]?.body.position;
-      if (guideTarget) this.guide.update(guideTarget.x, guideTarget.z, now);
       if (this.drag?.control) {
         const p = this.drag.control.position, t = this.drag.target;
         const dx = t.x - p.x, dy = t.y - p.y, dz = t.z - p.z;
@@ -439,12 +430,11 @@ export class RagdollScene {
     const reach = prop.kind === 'crate' ? 0.95 : 1.05;
     if (dx > reach || dz > reach) return;
     const dy = Math.abs(b.position.y - prop.body.position.y);
-    if (prop.kind === 'spikes' && !c.defeated && dy < 0.62) { this.defeat(c); return; }
+    if (prop.kind === 'spikes' && !prop.covered && !c.defeated && dy < 0.62) { this.defeat(c); return; }
     if (prop.kind === 'launchpad' && dy < 0.85 && performance.now() - prop.lastTrigger > 900) {
       prop.lastTrigger = performance.now();
       for (const part of c.parts) part.body.applyImpulse(new CANNON.Vec3(0, 4.2, 0));
       this.sound.play('bounce'); this.burst(prop.mesh.position, 0x52d7eb);
-      this.onEvent?.({ type: 'bounce', character: true, kind: c.kind });
     }
     if (prop.kind === 'bumper' && dy < 0.8 && performance.now() - prop.lastTrigger > 700) {
       prop.lastTrigger = performance.now();

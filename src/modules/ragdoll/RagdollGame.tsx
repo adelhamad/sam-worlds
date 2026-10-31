@@ -125,7 +125,7 @@ export function RagdollGame() {
             if (modeRef.current === "show" && challengeRef.current === result.progress)
               activateForStep(challengeActions[result.progress.stage][result.progress.step]);
           });
-          const line = copy.cheer[(result.progress.stage + result.progress.step) % copy.cheer.length];
+          const line = copy.feedback[event.type as keyof typeof copy.feedback] ?? "Stage cleared!";
           setCheer(line);
           window.clearTimeout(cheerTimeout.current);
           cheerTimeout.current = window.setTimeout(() => setCheer(""), 1800);

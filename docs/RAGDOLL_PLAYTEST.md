@@ -4,12 +4,12 @@ The first test is whether Sam chooses to keep playing. There is no lesson or qui
 
 ## What is in the game
 
-The seven stages have different goals: score three ball goals, clear three crate circles, slide a bounce pad under a friend, bring two fruit friends into a circle, hit two bumpers with the ball, carry a friend to safety, and score before Party Blast. A stage clears only when its goal happens in the playground. Sam can replay any stage or open **Free play** to place characters and props, grab, aim and kick, move, delete, pause, use slow motion, and record a local clip. Completed stages are marked on the map and saved on this device.
+The seven stages ask Sam to score three ball goals; clear three crates to uncover a goal and score; slide a bounce pad under Pineapple, then carry him to a landing ring; bring both fruit friends into one circle; ring two bumpers to uncover a goal and score; cover spikes with a crate, then carry a friend to safety; and score before Party Blast. Each step advances when the action happens in the playground. Sam can replay any stage or open **Free play** to place characters and props, grab, aim and kick, move, delete, pause, use slow motion, and record a local clip. Completed stages are marked on the map and saved on this device.
 
 ## Ten-minute session
 
 1. Watch which stage Sam picks and how long it takes him to touch the playground.
-2. Let him solve the stage. Note whether the highlighted action, ring, and short hint make the goal clear without adult help.
+2. Let him solve the stage. Note whether he understands why the next target appears after moving the crate, pad, or ball. Watch whether the highlighted action, ring, and short hint are enough without adult help.
 3. After he clears a stage, see whether he chooses **Next stage**, replays it, switches from **Stages**, or stops.
 4. Around minute six, let him find **Free play**. Watch whether he invents a scene or uses Party Blast.
 5. If he is still playing, point out **Record** once. Clips save to the device only after **Save video**.

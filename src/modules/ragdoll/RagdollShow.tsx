@@ -45,7 +45,7 @@ export function RagdollShow({ progress, completed, mode, menuOpen, cheer, onActi
         </div>
       </> : <>
         <p className="ragdoll-show-prompt">{stage.steps[progress.step]}</p>
-        <p className="ragdoll-show-tip">{stage.tip}</p>
+        <p className="ragdoll-show-tip">{stage.tips[progress.step]}</p>
         <div className="ragdoll-show-actions">
           <button type="button" className="ragdoll-show-primary" onClick={() => onAction(action)}><RagdollIcon name={actionIcon} size={17} />{action === 'party' ? copy.party : `Use ${copy[action]}`}</button>
           <button type="button" onClick={() => onStage(progress.stage)}>{copy.showAgain}</button>

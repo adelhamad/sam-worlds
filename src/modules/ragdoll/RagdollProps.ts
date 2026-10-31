@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import * as CANNON from 'cannon-es';
 
 export type ObjectKind = 'crate' | 'spikes' | 'ball' | 'bumper' | 'launchpad';
-export interface Prop { kind: ObjectKind; body: CANNON.Body; mesh: THREE.Group; lastTrigger: number }
+export interface Prop { kind: ObjectKind; body: CANNON.Body; mesh: THREE.Group; lastTrigger: number; covered?: boolean }
 
 function paint(color: number) {
   return new THREE.MeshStandardMaterial({ color, roughness: 0.62, metalness: 0.04 });
