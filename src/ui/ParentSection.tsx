@@ -7,6 +7,7 @@ import { clearAxisMaps, requestTiltPermission } from "../engine/sensors";
 import { TiltCalibrator } from "./TiltCalibrator";
 import { GiftControls, RewardHistory } from "./ParentRewards";
 import { PetControls } from "./ParentPet";
+import { ParentRagdoll } from "./ParentRagdoll";
 import { persona } from "../persona.config";
 import { testCheer, timedRemindersSupported } from "../engine/notify/reminders";
 
@@ -458,6 +459,8 @@ function ParentControls() {
       <AccessControls />
 
       <PetControls />
+
+      <ParentRagdoll />
 
       <GiftControls />
 

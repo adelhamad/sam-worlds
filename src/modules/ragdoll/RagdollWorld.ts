@@ -4,6 +4,21 @@ function material(color: number) { return new THREE.MeshStandardMaterial({ color
 export function decoratePlayground(scene: THREE.Scene) {
   const island = new THREE.Mesh(new THREE.CylinderGeometry(29, 30, 0.42, 64), material(0xb9d9bb));
   island.position.y = -0.21; island.receiveShadow = true; scene.add(island);
+  for (const [x, z, color] of [[-5, -1, 0xffedb3], [4, -5, 0xc8e6ff], [-3, 5, 0xffd8e5]] as const) {
+    const spot = new THREE.Mesh(new THREE.CircleGeometry(2.4, 36), new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.65, depthWrite: false }));
+    spot.rotation.x = -Math.PI / 2; spot.position.set(x, 0.009, z); scene.add(spot);
+  }
+  const arch = new THREE.Mesh(new THREE.TorusGeometry(1.8, 0.18, 12, 44), material(0xffcc61));
+  arch.position.set(-5, 2.1, -7); arch.castShadow = true; scene.add(arch);
+  for (const x of [-6.7, -3.3]) {
+    const foot = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.35, 0.55, 12), material(0xf27e8e));
+    foot.position.set(x, 0.28, -7); scene.add(foot);
+  }
+  for (let i = 0; i < 13; i++) {
+    const x = -9 + i * 1.5;
+    const flag = new THREE.Mesh(new THREE.ConeGeometry(0.43, 0.75, 3), material([0xffcc61, 0xf58d9a, 0x8edbd4, 0xbeb0eb][i % 4]));
+    flag.rotation.z = Math.PI; flag.position.set(x, 6.3 + Math.cos(i / 2) * 0.3, -10); scene.add(flag);
+  }
   const rim = new THREE.Mesh(new THREE.TorusGeometry(29, 0.22, 8, 72), material(0x74c9af));
   rim.rotation.x = Math.PI / 2; rim.position.y = 0.015; scene.add(rim);
   for (let i = 0; i < 14; i++) {
@@ -52,6 +67,13 @@ export function makePlacementGhost(kind: string): THREE.Group {
       const cone = new THREE.Mesh(new THREE.ConeGeometry(0.18, 0.5, 5), paint(0x9266c1));
       cone.position.set(x, 0.38, z); ghost.add(cone);
     }
+  } else if (kind === 'ball') {
+    const ball = new THREE.Mesh(new THREE.SphereGeometry(0.48, 12, 8), paint(0xffa349));
+    ball.position.y = 0.7; ghost.add(ball);
+  } else if (kind === 'bumper' || kind === 'launchpad') {
+    const radius = kind === 'bumper' ? 0.65 : 0.95;
+    const pad = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius, 0.3, 16), paint(kind === 'bumper' ? 0xf87783 : 0x4689dd));
+    pad.position.y = 0.17; ghost.add(pad);
   } else {
     const shirt = ({ classic: 0x596cf2, red: 0xeb555b, green: 0x36b878, yellow: 0xffc444, pineapple: 0x4daaa0, watermelon: 0xf2638b } as Record<string, number>)[kind] ?? 0x596cf2;
     let head = 0xf1b881;

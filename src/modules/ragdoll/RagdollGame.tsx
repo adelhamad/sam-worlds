@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import { STR } from "../../strings/en";
 import { duckMusic, unduckMusic } from "../../engine/feedback/music";
 import { unlockAudio } from "../../engine/feedback/audio";
+import { useGame } from "../../state/store";
 import { RagdollScene, type CharacterKind, type ObjectKind, type RagdollTool } from "./RagdollScene";
+import { advanceChallenge, challengeActions, firstStep, type ChallengeAction } from "./RagdollChallenges";
+import { RagdollShow } from "./RagdollShow";
 import "./RagdollGame.css";
+import "./RagdollShow.css";
 
 type Palette = "characters" | "objects" | null;
 type MainTool = Extract<RagdollTool, "grab" | "kick" | "move" | "delete">;
@@ -21,6 +25,9 @@ const characters: { kind: CharacterKind; label: string }[] = [
 const objects: { kind: ObjectKind; label: string; icon: string }[] = [
   { kind: "crate", label: copy.crate, icon: "▣" },
   { kind: "spikes", label: copy.spikes, icon: "▲" },
+  { kind: "ball", label: copy.ball, icon: "●" },
+  { kind: "bumper", label: copy.bumper, icon: "◉" },
+  { kind: "launchpad", label: copy.launchpad, icon: "⏫" },
 ];
 const tools: { key: MainTool; label: string; icon: string; hint: string }[] = [
   { key: "grab", label: copy.grab, icon: "✋", hint: copy.grabHint },
@@ -47,17 +54,28 @@ function CharacterPreview({ kind }: { kind: CharacterKind }) {
 
 export function RagdollGame() {
   const hostRef = useRef<HTMLDivElement>(null);
+  const completedShows = useGame((state) => state.ragdollShowsCompleted);
+  const soundOn = useGame((state) => state.soundOn);
+  const toggleSound = useGame((state) => state.toggleSound);
   const sceneRef = useRef<RagdollScene | null>(null);
   const resetButtonRef = useRef<HTMLButtonElement>(null);
+  const showButtonRef = useRef<HTMLButtonElement>(null);
   const resetDialogRef = useRef<HTMLDivElement>(null);
-  const [tool, setTool] = useState<RagdollTool>("grab");
+  const [tool, setTool] = useState<RagdollTool>("kick");
   const [palette, setPalette] = useState<Palette>(null);
   const [paused, setPaused] = useState(false);
-  const [muted, setMuted] = useState(false);
+  const [slowMo, setSlowMo] = useState(false);
   const [selectedCharacter, setSelectedCharacter] = useState(false);
   const [wearingGlasses, setWearingGlasses] = useState(false);
   const [resetOpen, setResetOpen] = useState(false);
-  const [helpOpen, setHelpOpen] = useState(true);
+  const [helpOpen, setHelpOpen] = useState(false);
+  const [showMenuOpen, setShowMenuOpen] = useState(false);
+  const [mode, setMode] = useState<"show" | "free">("show");
+  const modeRef = useRef<"show" | "free">("show");
+  const challengeRef = useRef(firstStep(0));
+  const [challenge, setChallenge] = useState(firstStep(0));
+  const [cheer, setCheer] = useState("");
+  const cheerTimeout = useRef<number | undefined>(undefined);
   const [selectedSkin, setSelectedSkin] = useState<CharacterKind>("classic");
   const [selectedObject, setSelectedObject] = useState<ObjectKind>("crate");
 
@@ -71,16 +89,34 @@ export function RagdollGame() {
         setWearingGlasses(Boolean(event.glasses));
       }
       if (event.type === "delete" || event.type === "defeat") {
-        setSelectedCharacter(false);
-        setWearingGlasses(false);
+        if (event.character) {
+          setSelectedCharacter(false);
+          setWearingGlasses(false);
+        }
+      }
+      if (modeRef.current === "show") {
+        const result = advanceChallenge(challengeRef.current, event);
+        if (result.progress !== challengeRef.current) {
+          challengeRef.current = result.progress;
+          setChallenge(result.progress);
+        }
+        if (result.advanced) {
+          sceneRef.current?.celebrate();
+          if (result.finishedStage) useGame.getState().completeRagdollShow(result.progress.stage);
+          const line = copy.cheer[(result.progress.stage + result.progress.step) % copy.cheer.length];
+          setCheer(line);
+          window.clearTimeout(cheerTimeout.current);
+          cheerTimeout.current = window.setTimeout(() => setCheer(""), 1800);
+        }
       }
     });
     sceneRef.current = scene;
-    scene.setTool("grab");
+    scene.setTool("kick");
     return () => {
       sceneRef.current = null;
       scene.dispose();
       unduckMusic();
+      window.clearTimeout(cheerTimeout.current);
     };
   }, []);
 
@@ -114,6 +150,25 @@ export function RagdollGame() {
     };
   }, [resetOpen]);
 
+  useEffect(() => { sceneRef.current?.setMuted(!soundOn); }, [soundOn]);
+
+  useEffect(() => {
+    if (!showMenuOpen) return;
+    const dialog = document.querySelector<HTMLElement>(".ragdoll-show-menu");
+    const showButton = showButtonRef.current;
+    dialog?.querySelector<HTMLButtonElement>("button")?.focus();
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { setShowMenuOpen(false); return; }
+      if (event.key !== "Tab" || !dialog) return;
+      const buttons = Array.from(dialog.querySelectorAll<HTMLButtonElement>("button"));
+      const first = buttons[0], last = buttons.at(-1);
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => { window.removeEventListener("keydown", onKeyDown); showButton?.focus(); };
+  }, [showMenuOpen]);
+
   function chooseTool(next: MainTool) {
     unlockAudio();
     setTool(next);
@@ -135,6 +190,53 @@ export function RagdollGame() {
     sceneRef.current?.setObject(kind);
   }
 
+  function startStage(index: number) {
+    const next = firstStep(index);
+    challengeRef.current = next;
+    setChallenge(next);
+    modeRef.current = "show";
+    setMode("show");
+    setShowMenuOpen(false);
+    setHelpOpen(false);
+    setCheer("");
+    setPaused(false);
+    sceneRef.current?.setPaused(false);
+    setSlowMo(false);
+    sceneRef.current?.setSlowMotion(false);
+    sceneRef.current?.loadShow(index);
+    activateForStep(challengeActions[index][0], index);
+  }
+
+  function freePlay() {
+    modeRef.current = "free";
+    setMode("free");
+    setShowMenuOpen(false);
+    setCheer("");
+  }
+
+  function challengeAction(action: ChallengeAction) {
+    if (action === "characters") {
+      chooseCharacter(challenge.stage === 2 ? "pineapple" : "red");
+      setPalette("characters");
+    } else if (action === "objects") {
+      chooseObject("ball");
+      setPalette("objects");
+    } else if (action === "glasses") {
+      if (selectedCharacter) sceneRef.current?.toggleGlasses();
+      else chooseTool("grab");
+    } else chooseTool(action);
+  }
+
+  function activateForStep(action: ChallengeAction, stage: number) {
+    if (action === "characters") {
+      chooseCharacter(stage === 2 ? "pineapple" : "red");
+      setPalette("characters");
+    } else if (action === "objects") {
+      chooseObject("ball");
+      setPalette("objects");
+    } else if (action !== "glasses") chooseTool(action);
+  }
+
   function togglePause() {
     const next = !paused;
     setPaused(next);
@@ -142,20 +244,32 @@ export function RagdollGame() {
   }
 
   function toggleMute() {
-    const next = !muted;
-    setMuted(next);
-    sceneRef.current?.setMuted(next);
+    unlockAudio();
+    toggleSound();
+  }
+
+  function toggleSlowMo() {
+    const next = !slowMo;
+    setSlowMo(next);
+    sceneRef.current?.setSlowMotion(next);
   }
 
   function resetPlayground() {
-    sceneRef.current?.reset();
-    sceneRef.current?.setTool("grab");
-    setTool("grab");
+    if (mode === "show") {
+      const next = firstStep(challenge.stage);
+      challengeRef.current = next;
+      setChallenge(next);
+      sceneRef.current?.loadShow(challenge.stage);
+    } else sceneRef.current?.reset();
+    sceneRef.current?.setTool(mode === "show" ? "kick" : "grab");
+    setTool(mode === "show" ? "kick" : "grab");
     setPalette(null);
     setSelectedCharacter(false);
     setWearingGlasses(false);
     setPaused(false);
     sceneRef.current?.setPaused(false);
+    setSlowMo(false);
+    sceneRef.current?.setSlowMotion(false);
     setResetOpen(false);
   }
 
@@ -177,8 +291,9 @@ export function RagdollGame() {
           <h1>{copy.title}</h1>
         </div>
         <div className="ragdoll-top-actions">
+          <button type="button" ref={showButtonRef} className="ragdoll-circle" onClick={() => { setShowMenuOpen(true); setHelpOpen(false); }} aria-label={copy.showMenu} title={copy.showMenu}>★</button>
           <button type="button" className="ragdoll-circle" onClick={() => setHelpOpen((value) => !value)} aria-label={copy.howToPlay} aria-expanded={helpOpen}>?</button>
-          <button type="button" className="ragdoll-circle" onClick={toggleMute} aria-label={muted ? copy.unmute : copy.mute} title={muted ? copy.unmute : copy.mute}>{muted ? "♪̸" : "♫"}</button>
+          <button type="button" className="ragdoll-circle" onClick={toggleMute} aria-label={soundOn ? copy.mute : copy.unmute} title={soundOn ? copy.mute : copy.unmute}>{soundOn ? "♫" : "♪̸"}</button>
         </div>
       </header>
 
@@ -190,6 +305,8 @@ export function RagdollGame() {
           <p>{copy.kickHint}</p>
         </aside>
       )}
+
+      <RagdollShow progress={challenge} completed={completedShows} mode={mode} menuOpen={showMenuOpen} cheer={cheer} onAction={challengeAction} onStage={startStage} onFree={freePlay} onMenuClose={() => setShowMenuOpen(false)} />
 
       <div className="ragdoll-controls">
         <div className="ragdoll-hint" role="status"><span aria-hidden="true">✦</span>{hint}</div>
@@ -223,6 +340,7 @@ export function RagdollGame() {
           <span className="ragdoll-dock-divider" aria-hidden="true" />
           <div className="ragdoll-dock-group ragdoll-dock-group--actions">
             <button type="button" className={`ragdoll-dock-button ${wearingGlasses ? "is-active" : ""}`} onClick={() => { sceneRef.current?.toggleGlasses(); setWearingGlasses((value) => !value); }} disabled={!selectedCharacter} aria-pressed={wearingGlasses} title={selectedCharacter ? copy.glasses : copy.glassHint}><span className="ragdoll-tool-icon" aria-hidden="true">◉</span><span>{copy.glasses}</span></button>
+            <button type="button" className={`ragdoll-dock-button ${slowMo ? "is-active" : ""}`} onClick={toggleSlowMo} aria-pressed={slowMo}><span className="ragdoll-tool-icon" aria-hidden="true">◴</span><span>{slowMo ? copy.normalSpeed : copy.slowMo}</span></button>
             <button type="button" className="ragdoll-dock-button" onClick={togglePause} aria-pressed={paused}><span className="ragdoll-tool-icon" aria-hidden="true">{paused ? "▶" : "Ⅱ"}</span><span>{paused ? copy.play : copy.pause}</span></button>
             <button type="button" ref={resetButtonRef} className="ragdoll-dock-button ragdoll-dock-button--reset" onClick={() => setResetOpen(true)}><span className="ragdoll-tool-icon" aria-hidden="true">↺</span><span>{copy.reset}</span></button>
           </div>

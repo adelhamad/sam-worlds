@@ -30,6 +30,7 @@ export function persistSettings(get: () => GameStore): void {
     petStageIdx: s.petStageIdx,
     petFedAt: s.petFedAt,
     petBornAt: s.petBornAt,
+    ragdollShowsCompleted: s.ragdollShowsCompleted,
   });
 }
 
@@ -82,5 +83,6 @@ export function settingsState(settings: SettingsRow | undefined) {
     hiddenWorlds: settings?.hiddenWorlds ?? {},
     recentWorlds: settings?.recentWorlds ?? [],
     favoriteWorlds: settings?.favoriteWorlds ?? [],
+    ragdollShowsCompleted: settings?.ragdollShowsCompleted ?? [],
   };
 }

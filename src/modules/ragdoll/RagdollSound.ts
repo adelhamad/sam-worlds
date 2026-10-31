@@ -1,4 +1,4 @@
-export type SoundName = 'spawn' | 'kick' | 'impact' | 'defeat';
+export type SoundName = 'spawn' | 'kick' | 'impact' | 'defeat' | 'bounce' | 'cheer';
 export class RagdollSound {
   private context?: AudioContext;
   muted = false;
@@ -12,6 +12,7 @@ export class RagdollSound {
       const params: Record<SoundName, [OscillatorType, number, number, number]> = {
         spawn: ['sine', 340, 550, 0.14], kick: ['triangle', 205, 95, 0.20],
         impact: ['sine', 130, 70, 0.09], defeat: ['triangle', 460, 185, 0.38],
+        bounce: ['sine', 260, 640, 0.24], cheer: ['triangle', 440, 880, 0.38],
       };
       const [wave, start, end, duration] = params[name];
       osc.type = wave; osc.frequency.setValueAtTime(start, now);

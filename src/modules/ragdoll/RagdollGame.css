@@ -302,14 +302,13 @@
   .ragdoll-dock-group { display: contents; }
   .ragdoll-dock-divider { display: none; }
   .ragdoll-dock-button { min-height: 59px; min-width: 0; width: 100%; padding: 3px 1px; font-size: 10px; }
-  .ragdoll-dock-group--actions .ragdoll-dock-button:nth-child(2) { grid-column: 4; }
   .ragdoll-tool-icon { font-size: 23px; }
   .ragdoll-hint { min-height: 32px; padding: 5px 10px; font-size: 12px; }
 }
 
 @media (max-width: 380px) {
   .ragdoll-heading h1 { font-size: 12px; }
-  .ragdoll-top-actions .ragdoll-circle:first-child { display: none; }
+  .ragdoll-top-actions .ragdoll-circle:nth-child(2) { display: none; }
 }
 
 @media (max-height: 500px) and (orientation: landscape) {

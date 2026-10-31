@@ -14,6 +14,7 @@ import { giftActions } from "./gifts";
 import { petActions, petInitial, type PetSlice } from "./pet";
 import { videoActions } from "./video";
 import { worldAdminActions } from "./worldAdmin";
+import { ragdollActions } from "./ragdoll";
 import { couponActions } from "./coupons";
 import { drawTreasure, type DailyGift, type Treasure, treasureById } from "../engine/economy/gifts";
 import { persona } from "../persona.config";
@@ -68,6 +69,7 @@ export interface GameStore extends PetSlice {
   recentWorlds: string[];
   /** Worlds the child has starred, newest first (hub Favorites row). */
   favoriteWorlds: string[];
+  ragdollShowsCompleted: number[];
   videoEnabled: boolean;
   videoMode: "corner" | "background";
   videoOpacity: number;
@@ -102,6 +104,8 @@ export interface GameStore extends PetSlice {
   showAllWorlds: () => void;
   toggleFavorite: (worldId: string) => void;
   setFavoriteOrder: (ids: string[]) => void;
+  completeRagdollShow: (index: number) => void;
+  resetRagdollShows: () => void;
   setVideoEnabled: (on: boolean) => void;
   toggleVideo: () => void;
   setVideoMode: (mode: "corner" | "background") => void;
@@ -170,6 +174,7 @@ export const useGame = create<GameStore>((set, get) => ({
   enabledWorlds: withWorldDefaults(),
   hiddenWorlds: {},
   recentWorlds: [], favoriteWorlds: [],
+  ragdollShowsCompleted: [],
   videoEnabled: false, videoMode: "corner", videoOpacity: 80, videoUrls: [], videoAudioOnly: false, videoSize: 280,
   gifts: [], lastGiftDay: null, giftStreak: 0, giftBestStreak: 0,
   ...petInitial,
@@ -457,6 +462,7 @@ export const useGame = create<GameStore>((set, get) => ({
   },
 
   ...worldAdminActions(set, get),
+  ...ragdollActions(set, get),
 
   ...giftActions(set, get),
   ...petActions(set, get),
