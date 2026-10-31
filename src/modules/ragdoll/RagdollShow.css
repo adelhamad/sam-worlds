@@ -20,7 +20,7 @@
 .ragdoll-show-actions--playing button { flex: 0 1 auto; }
 .ragdoll-show-actions--playing .ragdoll-show-party { flex: 1; }
 .ragdoll-show-autonext { margin: 0 0 10px; color: #47747a; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; }
-.ragdoll-show-autonext span { display: block; height: 5px; margin-top: 5px; border-radius: 4px; background: #45c694; transform-origin: left; animation: ragdoll-next 5.5s linear forwards; }
+.ragdoll-show-autonext span { display: block; height: 5px; margin-top: 5px; border-radius: 4px; background: #45c694; transform-origin: left; animation: ragdoll-next 2.8s linear forwards; }
 @keyframes ragdoll-next { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 .ragdoll-complete-art { display: block; width: 116px; max-height: 105px; object-fit: contain; margin: -14px auto 4px; }
 .ragdoll-show-cheer { position: absolute; z-index: 3; left: 50%; top: 19%; transform: translateX(-50%); padding: 12px 22px; border-radius: 40px; background: #fff5bf; color: #6d4214; box-shadow: 0 8px 20px rgba(98, 61, 27, .24); font: 900 22px "Trebuchet MS", system-ui, sans-serif; white-space: nowrap; pointer-events: none; animation: ragdoll-cheer .3s ease-out both; }

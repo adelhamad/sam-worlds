@@ -262,7 +262,7 @@ export function RagdollGame() {
     const timer = window.setTimeout(() => {
       if (nextStage < copy.showStages.length) startStage(nextStage);
       else { playtestRef.current.end(); setShowMenuOpen(true); }
-    }, 5500);
+    }, 2800);
     return () => window.clearTimeout(timer);
   }, [challenge.complete, challenge.stage, mode, showMenuOpen, startStage]);
 

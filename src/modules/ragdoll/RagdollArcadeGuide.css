@@ -5,6 +5,11 @@
 .ragdoll-guide-target { fill: rgba(255, 190, 57, .17); stroke: #ffba38; stroke-width: 5; animation: ragdoll-guide-pulse 1.6s ease-in-out infinite .3s; transform-box: fill-box; transform-origin: center; }
 .ragdoll-guide-target-core { fill: #fff; stroke: #e99120; stroke-width: 3; }
 .ragdoll-guide-label { fill: #643600; stroke: #fffdf4; stroke-width: 5; paint-order: stroke fill; font: 900 15px "Trebuchet MS", system-ui, sans-serif; letter-spacing: .04em; }
+.ragdoll-guide-source-label { fill: #113f70; stroke: #fff; }
+.ragdoll-guide-tap-hand { filter: drop-shadow(1px 3px 2px rgba(20, 62, 91, .3)); transform-box: fill-box; transform-origin: 14px 8px; animation: ragdoll-guide-tap 1.45s ease-in-out infinite; }
+.ragdoll-guide-drag-hand { filter: drop-shadow(1px 3px 2px rgba(20, 62, 91, .3)); }
+.ragdoll-guide-static-hand { display: none; }
 @keyframes ragdoll-guide-march { to { stroke-dashoffset: -25; } }
 @keyframes ragdoll-guide-pulse { 50% { transform: scale(1.22); opacity: .75; } }
-@media (prefers-reduced-motion: reduce) { .ragdoll-guide-path, .ragdoll-guide-source, .ragdoll-guide-target { animation: none; } }
+@keyframes ragdoll-guide-tap { 50% { transform: translate(-5px, -5px) scale(.88); } }
+@media (prefers-reduced-motion: reduce) { .ragdoll-guide-path, .ragdoll-guide-source, .ragdoll-guide-target, .ragdoll-guide-tap-hand { animation: none; } .ragdoll-guide-drag-hand { display: none; } .ragdoll-guide-static-hand { display: block; } }
