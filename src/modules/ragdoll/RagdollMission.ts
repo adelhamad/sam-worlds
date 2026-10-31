@@ -9,6 +9,7 @@ interface Marker { group: THREE.Group; ring: THREE.Mesh; material: THREE.MeshBas
 const ballGoals: ReadonlyArray<readonly [number, number]> = [[-2.2, -1.7], [-3, -1.2], [-2.5, -3.2]];
 const crateGoal: readonly [number, number] = [0, -3];
 const landingGoal: readonly [number, number] = [-2.5, -1.5];
+const fruitGoal: readonly [number, number] = [-2, -2];
 const bumperGoal: readonly [number, number] = [-2.5, -3.4];
 const safeGoal: readonly [number, number] = [1.6, 0];
 
@@ -30,6 +31,9 @@ export class RagdollMission {
   private goalMarker?: Marker;
   private landingMarker?: Marker;
   private safeMarker?: Marker;
+  private meetMarker?: Marker;
+  private homeMarker?: Marker;
+  private fruitFriends: RagdollCharacter[] = [];
   private seen = new Set<Prop | RagdollCharacter>();
   private crateStart = new Map<Prop, CANNON.Vec3>();
   private padStart?: CANNON.Vec3;
@@ -38,14 +42,16 @@ export class RagdollMission {
   private goalUnlocked = false;
   private bounced = false;
   private bridgeReady = false;
+  private friendsMet = false;
 
   constructor(private scene: THREE.Scene, private emit: Emit) {}
 
   clear() {
     this.stage = -1; this.goalIndex = 0; this.armed = false; this.done = false;
-    this.goalUnlocked = false; this.bounced = false; this.bridgeReady = false;
+    this.goalUnlocked = false; this.bounced = false; this.bridgeReady = false; this.friendsMet = false;
     this.goalMarker = undefined; this.landingMarker = undefined; this.safeMarker = undefined;
-    this.seen.clear(); this.crateStart.clear(); this.padStart = undefined;
+    this.meetMarker = undefined; this.homeMarker = undefined;
+    this.seen.clear(); this.crateStart.clear(); this.padStart = undefined; this.fruitFriends = [];
     for (const marker of this.markers) {
       this.scene.remove(marker.group);
       marker.group.traverse(object => {
@@ -58,7 +64,7 @@ export class RagdollMission {
     this.markers = [];
   }
 
-  start(stage: number, props: Prop[]) {
+  start(stage: number, props: Prop[], characters: RagdollCharacter[]) {
     this.clear(); this.stage = stage;
     if (stage === 0) {
       this.goalMarker = makeMarker(this.scene, ...ballGoals[0], 0xffb936);
@@ -78,7 +84,13 @@ export class RagdollMission {
       this.landingMarker = makeMarker(this.scene, ...landingGoal, 0x43c98e, 1.8);
       this.landingMarker.group.visible = false; this.markers.push(this.landingMarker);
     }
-    if (stage === 3) this.markers.push(makeMarker(this.scene, 0, 0, 0x43c98e, 1.8));
+    if (stage === 3) {
+      this.fruitFriends = characters.filter(friend => this.isFruit(friend)).slice(0, 2);
+      this.meetMarker = makeMarker(this.scene, 2.4, 0, 0xffb936, 1.2);
+      this.homeMarker = makeMarker(this.scene, ...fruitGoal, 0x43c98e, 1.8);
+      this.homeMarker.group.visible = false;
+      this.markers.push(this.meetMarker, this.homeMarker);
+    }
     if (stage === 4) {
       for (const bumper of props.filter(prop => prop.kind === 'bumper'))
         this.markers.push(makeMarker(this.scene, bumper.body.position.x, bumper.body.position.z, 0xff9a65, 0.9));
@@ -105,8 +117,14 @@ export class RagdollMission {
       this.snapCharacter(character, ...landingGoal);
       this.done = true;
       this.emit({ type: 'landed', character: true, kind: character.kind });
-    } else if (this.stage === 3 && !this.seen.has(character) && this.inTarget(point, 0, 0)) {
-      this.snapCharacter(character, 0, 0);
+    } else if (this.stage === 3 && !this.friendsMet && this.fruitFriends.includes(character)) {
+      const other = this.fruitFriends.find(friend => friend !== character);
+      const otherPos = other?.parts[0].body.position;
+      if (!otherPos || !this.inTarget(point, otherPos.x, otherPos.z)) return;
+      this.snapCharacter(character, otherPos.x - 0.8, otherPos.z);
+      this.unlockFriends();
+    } else if (this.stage === 3 && this.friendsMet && this.fruitFriends.includes(character) && !this.seen.has(character) && this.inTarget(point, ...fruitGoal)) {
+      this.snapCharacter(character, ...fruitGoal);
       this.seen.add(character);
       this.emit({ type: 'fruitHome', character: true, kind: character.kind });
       if (this.seen.size >= 2) this.done = true;
@@ -121,6 +139,10 @@ export class RagdollMission {
     return Math.hypot(point.x - x, point.z - z) < 2;
   }
 
+  private isFruit(character: RagdollCharacter) {
+    return character.kind === 'pineapple' || character.kind === 'watermelon';
+  }
+
   private snapCharacter(character: RagdollCharacter, x: number, z: number) {
     const torso = character.parts[0].body.position;
     const dx = x - torso.x, dz = z - torso.z;
@@ -129,6 +151,14 @@ export class RagdollMission {
       part.body.velocity.setZero(); part.body.angularVelocity.setZero();
       part.body.aabbNeedsUpdate = true; part.body.wakeUp();
     }
+  }
+
+  private unlockFriends() {
+    if (this.friendsMet) return;
+    this.friendsMet = true;
+    if (this.meetMarker) this.meetMarker.group.visible = false;
+    if (this.homeMarker) this.homeMarker.group.visible = true;
+    this.emit({ type: 'friendsMeet', character: true });
   }
 
   update(now: number, props: Prop[], characters: RagdollCharacter[]) {
@@ -143,7 +173,8 @@ export class RagdollMission {
     if (this.stage === 1 && this.armed) this.checkCrates();
     if (this.stage === 2 && !this.bounced) this.checkBounce(props, characters);
     if (this.stage === 2 && this.bounced) this.checkLanding(characters);
-    if (this.stage === 3) this.checkFruit(characters);
+    if (this.stage === 3 && !this.friendsMet) this.checkFriendsMeet();
+    if (this.stage === 3 && this.friendsMet) this.checkFruit();
     if (this.stage === 4 && !this.goalUnlocked) this.checkBumpers(props);
     if (this.stage === 5 && !this.bridgeReady) this.checkBridge(props);
     if (this.stage === 5 && this.bridgeReady) this.checkRescue(characters);
@@ -214,15 +245,22 @@ export class RagdollMission {
     this.emit({ type: 'landed', character: true });
   }
 
-  private checkFruit(characters: RagdollCharacter[]) {
-    for (const character of characters) {
+  private checkFruit() {
+    for (const character of this.fruitFriends) {
       if (this.seen.has(character)) continue;
       const pos = character.parts[0].body.position;
-      if (Math.hypot(pos.x, pos.z) > 2.1) continue;
+      if (Math.hypot(pos.x - fruitGoal[0], pos.z - fruitGoal[1]) > 1.8) continue;
       this.seen.add(character);
       this.emit({ type: 'fruitHome', character: true, kind: character.kind });
       if (this.seen.size >= 2) this.done = true;
     }
+  }
+
+  private checkFriendsMeet() {
+    const a = this.fruitFriends[0]?.parts[0].body.position;
+    const b = this.fruitFriends[1]?.parts[0].body.position;
+    if (a && b && Math.hypot(a.x - b.x, a.z - b.z) < 1.4 && Math.abs(a.y - b.y) < 1.4)
+      this.unlockFriends();
   }
 
   private checkBridge(props: Prop[]) {

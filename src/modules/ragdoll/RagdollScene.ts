@@ -11,7 +11,7 @@ import { freePlayLayout, stageLayouts } from './RagdollStageSetup';
 export type { CharacterKind } from './RagdollCharacter';
 export type { ObjectKind } from './RagdollProps';
 export type RagdollTool = 'grab' | 'kick' | 'move' | 'delete' | 'place-character' | 'place-object';
-export interface SceneEvent { type: 'select' | 'spawn' | 'kick' | 'impact' | 'defeat' | 'delete' | 'grab' | 'release' | 'move' | 'bounce' | 'bump' | 'glasses' | 'collide' | 'party' | 'goal' | 'crateDown' | 'fruitHome' | 'bumperHit' | 'rescue' | 'landed' | 'bridgeReady'; character?: boolean; glasses?: boolean; kind?: string; part?: string; airborne?: boolean }
+export interface SceneEvent { type: 'select' | 'spawn' | 'kick' | 'impact' | 'defeat' | 'delete' | 'grab' | 'release' | 'move' | 'bounce' | 'bump' | 'glasses' | 'collide' | 'party' | 'goal' | 'crateDown' | 'fruitHome' | 'friendsMeet' | 'bumperHit' | 'rescue' | 'landed' | 'bridgeReady'; character?: boolean; glasses?: boolean; kind?: string; part?: string; airborne?: boolean }
 interface Hit { character?: RagdollCharacter; part?: RagdollPart; prop?: Prop; point: THREE.Vector3 }
 
 function disposeGroup(group: THREE.Object3D) {
@@ -55,6 +55,7 @@ export class RagdollScene {
   private lastCharacterCollision = 0;
   private mission = new RagdollMission(this.scene, event => this.onEvent?.(event));
   private aim = new RagdollAim<Hit>(this.scene, event => this.groundPoint(event));
+  private setTheme!: (stage: number) => void;
 
   constructor(private container: HTMLElement, private onEvent?: (event: SceneEvent) => void) {
     this.scene.background = new THREE.Color(0xaee4ff);
@@ -77,7 +78,7 @@ export class RagdollScene {
     for (const lineMaterial of Array.isArray(grid.material) ? grid.material : [grid.material]) {
       lineMaterial.transparent = true; lineMaterial.opacity = 0.25;
     }
-    this.scene.add(grid); decoratePlayground(this.scene);
+    this.scene.add(grid); this.setTheme = decoratePlayground(this.scene);
     this.scene.add(new THREE.HemisphereLight(0xffffff, 0x88a8b5, 2.2));
     const sun = new THREE.DirectionalLight(0xffffff, 3.2);
     sun.position.set(-6, 12, 8); sun.castShadow = true;
@@ -116,15 +117,17 @@ export class RagdollScene {
   }
   loadShow(index: number) {
     this.reset(false);
+    this.setTheme(index);
     this.angle = 0.65; this.elevation = 0.5; this.distance = index === 5 ? 11.5 : 9.5; this.updateCamera();
     const layout = stageLayouts[index];
     for (const [kind, x, z] of layout.characters) this.spawnCharacter(kind, x, z, false);
     for (const [kind, x, y, z, dynamic] of layout.props) this.spawnProp(kind, x, y, z, dynamic);
     for (const character of this.characters) for (const part of character.parts) part.body.sleep();
-    this.mission.start(index, this.props);
+    this.mission.start(index, this.props, this.characters);
   }
   enterFreePlay() {
     this.reset(false);
+    this.setTheme(6);
     for (const [kind, x, z] of freePlayLayout.characters) this.spawnCharacter(kind, x, z, false);
     for (const [kind, x, y, z] of freePlayLayout.props) this.spawnProp(kind, x, y, z);
     for (const character of this.characters) for (const part of character.parts) part.body.sleep();
