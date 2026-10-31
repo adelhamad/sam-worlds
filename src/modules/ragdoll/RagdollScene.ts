@@ -123,7 +123,7 @@ export class RagdollScene {
     this.angle = 0.65; this.elevation = 0.5; this.distance = index === 0 || index === 5 ? 11.5 : 9.5; this.updateCamera();
     const layout = stageLayouts[index];
     for (const [kind, x, z] of layout.characters) this.spawnCharacter(kind, x, z, false);
-    for (const [kind, x, y, z, dynamic] of layout.props) this.spawnProp(kind, x, y, z, dynamic);
+    for (const [kind, x, y, z, dynamic, color] of layout.props) this.spawnProp(kind, x, y, z, dynamic, color);
     for (const character of this.characters) for (const part of character.parts) part.body.sleep();
     this.mission.start(index, this.props, this.characters);
   }
@@ -218,8 +218,8 @@ export class RagdollScene {
     if (sound) { this.sound.play('spawn'); this.onEvent?.({ type: 'spawn', character: true, kind }); }
     return c;
   }
-  private spawnProp(kind: ObjectKind, x: number, y: number, z: number, dynamic = false) {
-    const prop = createProp(this.world, this.scene, kind, x, y, z, dynamic); this.props.push(prop);
+  private spawnProp(kind: ObjectKind, x: number, y: number, z: number, dynamic = false, color?: number) {
+    const prop = createProp(this.world, this.scene, kind, x, y, z, dynamic, color); this.props.push(prop);
     this.meshTargets.set(prop.mesh, { prop, point: new THREE.Vector3() });
     this.sound.play('spawn'); this.onEvent?.({ type: 'spawn', kind }); return prop;
   }

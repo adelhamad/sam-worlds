@@ -15,6 +15,19 @@ function cylinder(top: number, bottom: number, height: number, color: number) {
   const mesh = new THREE.Mesh(new THREE.CylinderGeometry(top, bottom, height, 20), paint(color));
   mesh.castShadow = true; mesh.receiveShadow = true; return mesh;
 }
+function makeCrate(mesh: THREE.Group, color?: number): CANNON.Shape {
+  mesh.add(box(1.2, 1.2, 1.2, color ?? 0xd99d62));
+  const stripeColor = color ? new THREE.Color(color).multiplyScalar(0.72).getHex() : 0xb97640;
+  for (const dx of [-0.45, 0.45]) {
+    const stripe = box(0.09, 1.22, 1.23, stripeColor);
+    stripe.position.x = dx; mesh.add(stripe);
+  }
+  for (const dy of [-0.48, 0.48]) {
+    const band = box(1.2, 0.07, 0.04, stripeColor);
+    band.position.set(0, dy, 0.61); mesh.add(band);
+  }
+  return new CANNON.Box(new CANNON.Vec3(0.6, 0.6, 0.6));
+}
 function makeFan(mesh: THREE.Group): CANNON.Shape {
   const base = box(0.92, 0.18, 0.7, 0x3585a9); base.position.y = -0.73; mesh.add(base);
   const pole = cylinder(0.09, 0.13, 1.25, 0x4aabc5); pole.position.y = -0.07; mesh.add(pole);
@@ -36,17 +49,12 @@ function makeFan(mesh: THREE.Group): CANNON.Shape {
   return new CANNON.Box(new CANNON.Vec3(0.45, 0.78, 0.3));
 }
 
-export function createProp(world: CANNON.World, scene: THREE.Scene, kind: ObjectKind, x: number, y: number, z: number, dynamic = false): Prop {
+export function createProp(world: CANNON.World, scene: THREE.Scene, kind: ObjectKind, x: number, y: number, z: number, dynamic = false, color?: number): Prop {
   const mesh = new THREE.Group();
   let shape: CANNON.Shape;
   let mass = 0;
   if (kind === 'crate') {
-    mesh.add(box(1.2, 1.2, 1.2, 0xd99d62));
-    for (const dx of [-0.45, 0.45]) {
-      const stripe = box(0.09, 1.22, 1.23, 0xb97640);
-      stripe.position.x = dx; mesh.add(stripe);
-    }
-    shape = new CANNON.Box(new CANNON.Vec3(0.6, 0.6, 0.6));
+    shape = makeCrate(mesh, color);
     if (dynamic) mass = 0.85;
   } else if (kind === 'spikes') {
     mesh.add(box(1.4, 0.18, 1.4, 0xa8a4dd));

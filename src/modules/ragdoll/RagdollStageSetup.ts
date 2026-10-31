@@ -2,16 +2,16 @@ import type { CharacterKind } from './RagdollCharacter';
 import type { ObjectKind } from './RagdollProps';
 
 type CharacterSpawn = [CharacterKind, number, number];
-type PropSpawn = [ObjectKind, number, number, number, boolean?];
+type PropSpawn = [ObjectKind, number, number, number, boolean?, number?];
 interface Layout { characters: CharacterSpawn[]; props: PropSpawn[] }
 
 export const stageLayouts: Layout[] = [
   { characters: [['pineapple', 2.65, -1.2]], props: [['ball', 0, 0.7, 0.6]] },
   { characters: [], props: [
     ['ball', 0, 0.7, 0.6],
-    ['crate', 0.7, 0.6, -2.1, true],
-    ['crate', 0.7, 1.8, -2.1, true],
-    ['crate', 0.7, 3.0, -2.1, true],
+    ['crate', 0.7, 0.6, -2.1, true, 0xffb668],
+    ['crate', 0.7, 1.8, -2.1, true, 0x5dcdd1],
+    ['crate', 0.7, 3.0, -2.1, true, 0xf590ac],
   ] },
   { characters: [['pineapple', 1.2, 0.7]], props: [['launchpad', -1, 0.14, 0.1]] },
   { characters: [['pineapple', -2.4, 0], ['watermelon', 2.4, 0]], props: [] },
