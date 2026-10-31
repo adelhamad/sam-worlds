@@ -1,6 +1,6 @@
 import type { SceneEvent } from './RagdollScene';
 
-export type ChallengeAction = 'kick' | 'grab' | 'characters' | 'objects' | 'glasses' | 'move' | 'delete';
+export type ChallengeAction = 'kick' | 'grab' | 'characters' | 'objects' | 'glasses' | 'move' | 'delete' | 'party';
 export interface ChallengeProgress { stage: number; step: number; count: number; complete: boolean }
 export interface ChallengeResult { progress: ChallengeProgress; advanced: boolean; finishedStage: boolean }
 
@@ -11,6 +11,7 @@ export const challengeActions: ChallengeAction[][] = [
   ['glasses', 'characters', 'kick'],
   ['kick', 'kick', 'move'],
   ['kick', 'grab', 'delete'],
+  ['characters', 'party', 'kick'],
 ];
 
 export function firstStep(stage: number): ChallengeProgress {
@@ -26,6 +27,7 @@ const checks: Array<Array<(event: SceneEvent) => boolean>> = [
   [e => e.type === 'glasses' && !!e.glasses, e => e.type === 'spawn' && !!e.character, e => e.type === 'collide'],
   [e => e.type === 'kick' && !!e.character, e => e.type === 'bump', e => e.type === 'move' && e.kind === 'bumper'],
   [e => e.type === 'kick' && !!e.character, e => e.type === 'grab' && !!e.airborne, e => e.type === 'delete' && e.kind === 'spikes'],
+  [e => e.type === 'spawn' && (e.kind === 'pineapple' || e.kind === 'watermelon'), e => e.type === 'party', e => e.type === 'kick' && e.kind === 'ball'],
 ];
 function matches(progress: ChallengeProgress, event: SceneEvent): boolean {
   return checks[progress.stage]?.[progress.step]?.(event) ?? false;

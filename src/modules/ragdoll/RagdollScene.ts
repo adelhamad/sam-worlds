@@ -2,12 +2,13 @@ import * as THREE from 'three';
 import * as CANNON from 'cannon-es';
 import { createCharacter, removeCharacter, setGlasses, stabilizeCharacter, type CharacterKind, type RagdollCharacter, type RagdollPart } from './RagdollCharacter';
 import { RagdollSound } from './RagdollSound';
-import { decoratePlayground, makePlacementGhost } from './RagdollWorld';
+import { createGuideRing, decoratePlayground, makePlacementGhost } from './RagdollWorld';
 import { createProp, type ObjectKind, type Prop } from './RagdollProps';
+import { applyPartyBlast } from './RagdollParty';
 export type { CharacterKind } from './RagdollCharacter';
 export type { ObjectKind } from './RagdollProps';
 export type RagdollTool = 'grab' | 'kick' | 'move' | 'delete' | 'place-character' | 'place-object';
-export interface SceneEvent { type: 'select' | 'spawn' | 'kick' | 'impact' | 'defeat' | 'delete' | 'grab' | 'release' | 'move' | 'bounce' | 'bump' | 'glasses' | 'collide'; character?: boolean; glasses?: boolean; kind?: string; part?: string; airborne?: boolean }
+export interface SceneEvent { type: 'select' | 'spawn' | 'kick' | 'impact' | 'defeat' | 'delete' | 'grab' | 'release' | 'move' | 'bounce' | 'bump' | 'glasses' | 'collide' | 'party'; character?: boolean; glasses?: boolean; kind?: string; part?: string; airborne?: boolean }
 interface Hit { character?: RagdollCharacter; part?: RagdollPart; prop?: Prop; point: THREE.Vector3 }
 
 function disposeGroup(group: THREE.Object3D) {
@@ -49,6 +50,7 @@ export class RagdollScene {
   private sound = new RagdollSound();
   private lastImpact = 0;
   private lastCharacterCollision = 0;
+  private guide: ReturnType<typeof createGuideRing>;
 
   constructor(private container: HTMLElement, private onEvent?: (event: SceneEvent) => void) {
     this.scene.background = new THREE.Color(0xaee4ff);
@@ -72,6 +74,7 @@ export class RagdollScene {
       lineMaterial.transparent = true; lineMaterial.opacity = 0.25;
     }
     this.scene.add(grid); decoratePlayground(this.scene);
+    this.guide = createGuideRing(this.scene);
     this.scene.add(new THREE.HemisphereLight(0xffffff, 0x88a8b5, 2.2));
     const sun = new THREE.DirectionalLight(0xffffff, 3.2);
     sun.position.set(-6, 12, 8); sun.castShadow = true;
@@ -96,6 +99,7 @@ export class RagdollScene {
   setObject(kind: ObjectKind) { this.objectKind = kind; this.setTool('place-object'); }
   setPaused(paused: boolean) { this.paused = paused; }
   setSlowMotion(enabled: boolean) { this.slowMo = enabled; }
+  setGuideVisible(visible: boolean) { this.guide.show(visible); }
   setMuted(muted: boolean) { this.sound.muted = muted; }
   toggleGlasses() {
     if (!this.selected) return;
@@ -125,12 +129,27 @@ export class RagdollScene {
     } else if (index === 5) {
       this.spawnProp('spikes', -2.7, 0.14, -2.7);
       this.spawnProp('spikes', -4.2, 0.14, -3.8);
+    } else if (index === 6) {
+      this.spawnCharacter('red', -1.1, 0, false);
+      this.spawnCharacter('watermelon', 1.1, 0.2, false);
+      this.spawnProp('ball', 2, 0.7, -1.7);
+      this.spawnProp('launchpad', -2.4, 0.14, -2.4);
     }
+    this.guide.show(index === 0);
     if (index === 3) this.select({ character: this.characters[0], point: new THREE.Vector3() });
   }
   celebrate() { this.sound.play('cheer'); this.burst(new THREE.Vector3(0, 2.5, 0), 0xffd86a); }
+  partyBlast() {
+    if (this.paused) return;
+    this.guide.show(false);
+    applyPartyBlast(this.characters);
+    this.burst(new THREE.Vector3(-1.2, 2.4, 0), 0xff8cac);
+    this.burst(new THREE.Vector3(1.2, 2.4, 0), 0x7de7ed);
+    this.sound.play('cheer'); this.onEvent?.({ type: 'party' });
+  }
   reset() {
     this.endDrag();
+    this.guide.show(false);
     for (const c of this.characters) {
       for (const p of c.parts) this.meshTargets.delete(p.mesh);
       removeCharacter(this.world, this.scene, c);
@@ -158,6 +177,7 @@ export class RagdollScene {
     this.characters = []; this.props = []; this.meshTargets.clear();
     for (const star of this.stars) { this.scene.remove(star.mesh); disposeGroup(star.mesh); }
     this.stars = []; this.clearGhost(); this.sound.dispose();
+    this.guide.dispose();
     this.scene.traverse(o => { if (o instanceof THREE.Mesh) {
       o.geometry.dispose(); (Array.isArray(o.material) ? o.material : [o.material]).forEach(m => m.dispose());
     } });
@@ -165,13 +185,14 @@ export class RagdollScene {
   }
   private resize() {
     const w = Math.max(1, this.container.clientWidth), h = Math.max(1, this.container.clientHeight);
-    this.camera.aspect = w / h; this.camera.updateProjectionMatrix(); this.renderer.setSize(w, h, false);
+    this.camera.aspect = w / h; this.camera.updateProjectionMatrix(); this.renderer.setSize(w, h, false); this.updateCamera();
   }
   private updateCamera() {
     const ce = Math.cos(this.elevation);
-    this.camera.position.set(this.target.x + this.distance * Math.sin(this.angle) * ce,
-      Math.max(1.5, this.target.y + this.distance * Math.sin(this.elevation)),
-      this.target.z + this.distance * Math.cos(this.angle) * ce);
+    const distance = this.distance * Math.max(1, 0.75 / this.camera.aspect);
+    this.camera.position.set(this.target.x + distance * Math.sin(this.angle) * ce,
+      Math.max(1.5, this.target.y + distance * Math.sin(this.elevation)),
+      this.target.z + distance * Math.cos(this.angle) * ce);
     this.camera.lookAt(this.target);
   }
   private ray(event: PointerEvent) {
@@ -232,6 +253,7 @@ export class RagdollScene {
       this.sound.play('kick'); this.onEvent?.({ type: 'kick', kind: 'ball' }); return;
     }
     if (!hit.character || !hit.part) return;
+    this.guide.show(false);
     for (const p of hit.character.parts) {
       p.body.wakeUp();
       p.body.applyImpulse(new CANNON.Vec3(direction.x * 1.8, 2.4, direction.z * 1.8));
@@ -358,6 +380,8 @@ export class RagdollScene {
     const realDt = Math.min((now - this.lastFrame) / 1000, 0.05); this.lastFrame = now;
     const dt = realDt * (this.slowMo ? 0.36 : 1);
     if (!this.paused) {
+      const first = this.characters[0]?.parts[0]?.body.position;
+      if (first) this.guide.update(first.x, first.z, now);
       if (this.drag?.control) {
         const p = this.drag.control.position, t = this.drag.target;
         const dx = t.x - p.x, dy = t.y - p.y, dz = t.z - p.z;

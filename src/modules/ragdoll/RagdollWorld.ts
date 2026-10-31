@@ -1,5 +1,23 @@
 import * as THREE from 'three';
 
+export function createGuideRing(scene: THREE.Scene) {
+  const material = new THREE.MeshBasicMaterial({ color: 0xffc849, transparent: true, opacity: 0.78, depthWrite: false });
+  const mesh = new THREE.Mesh(new THREE.TorusGeometry(0.82, 0.065, 8, 44), material);
+  mesh.rotation.x = Math.PI / 2;
+  mesh.position.y = 0.07;
+  scene.add(mesh);
+  return {
+    show: (visible: boolean) => { mesh.visible = visible; },
+    update: (x: number, z: number, time: number) => {
+      mesh.position.x = x; mesh.position.z = z;
+      const pulse = 1 + Math.sin(time * 0.005) * 0.12;
+      mesh.scale.set(pulse, pulse, pulse);
+      material.opacity = 0.62 + (Math.sin(time * 0.005) + 1) * 0.13;
+    },
+    dispose: () => { scene.remove(mesh); mesh.geometry.dispose(); material.dispose(); },
+  };
+}
+
 function material(color: number) { return new THREE.MeshStandardMaterial({ color, roughness: 0.95 }); }
 export function decoratePlayground(scene: THREE.Scene) {
   const island = new THREE.Mesh(new THREE.CylinderGeometry(29, 30, 0.42, 64), material(0xb9d9bb));

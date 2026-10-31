@@ -7,7 +7,7 @@ type Get = () => GameStore;
 export function ragdollActions(set: Set, get: Get) {
   return {
     completeRagdollShow: (index: number) => {
-      if (!Number.isInteger(index) || index < 0 || index >= 6) return;
+      if (!Number.isInteger(index) || index < 0 || index >= 7) return;
       const current = get().ragdollShowsCompleted;
       if (current.includes(index)) return;
       set({ ragdollShowsCompleted: [...current, index].sort((a, b) => a - b) });

@@ -143,6 +143,22 @@
   gap: 9px;
 }
 
+.ragdoll-party-button {
+  align-self: flex-end;
+  min-height: 48px;
+  padding: 9px 18px;
+  border: 2px solid #fff;
+  border-radius: 16px;
+  background: #ff6387;
+  color: #fff;
+  box-shadow: 0 5px 0 #c83d67, 0 10px 22px rgba(107, 28, 67, .25);
+  font: 900 17px "Trebuchet MS", system-ui, sans-serif;
+  cursor: pointer;
+}
+.ragdoll-party-button:active { transform: translateY(3px); box-shadow: 0 2px 0 #c83d67; }
+.ragdoll-party-button:disabled { opacity: .6; cursor: not-allowed; }
+.ragdoll-party-button span { color: #ffe687; font-size: 21px; }
+
 .ragdoll-hint {
   min-height: 38px;
   max-width: 100%;
@@ -293,6 +309,7 @@
   .ragdoll-heading-icon { display: none; }
   .ragdoll-help { top: 69px; right: 8px; }
   .ragdoll-controls { bottom: max(9px, env(safe-area-inset-bottom)); width: calc(100% - 14px); gap: 6px; }
+  .ragdoll-party-button { min-height: 43px; padding: 7px 12px; font-size: 14px; }
   .ragdoll-palette { padding: 7px 9px 9px; }
   .ragdoll-palette-heading { display: block; padding-bottom: 5px; }
   .ragdoll-palette-heading span { display: none; }

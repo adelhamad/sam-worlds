@@ -6,7 +6,7 @@ The first test is about whether Sam *chooses to keep playing*. There is no lesso
 
 1. Give him 2 minutes to explore the first stunt. Note whether he notices the character and acts without help.
 2. If he completes it, let him choose the next stunt himself. Do not steer him toward a particular skill.
-3. Around minute 6, show **Stunts → Make my own fun**. Watch whether he invents a scene with characters and toys.
+3. Around minute 6, show **Stunts → Make my own fun**. Watch whether he invents a scene with characters and toys or tries **Party Blast!**.
 4. Stop when he wants to stop. Ask: “What should we add?” and “Which stunt would you play again?”
 
 Record only observations, not a score: time to first action; which tool he discovers; whether he replays or asks for another stunt; which moment makes him laugh, concentrate, or leave; any point where he needs adult help. A screenshot or a few words are enough. No analytics are collected.

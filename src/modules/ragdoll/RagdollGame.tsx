@@ -36,6 +36,16 @@ const tools: { key: MainTool; label: string; icon: string; hint: string }[] = [
   { key: "delete", label: copy.delete, icon: "⌫", hint: copy.deleteHint },
 ];
 
+function suggestedCharacter(stage: number): CharacterKind {
+  if (stage === 2) return "pineapple";
+  if (stage === 6) return "watermelon";
+  return "red";
+}
+
+function partyAvailable(mode: "show" | "free", stage: number, step: number, menuOpen: boolean): boolean {
+  return !menuOpen && (mode === "free" || (stage === 6 && step > 0));
+}
+
 function CharacterPreview({ kind }: { kind: CharacterKind }) {
   return (
     <span className={`ragdoll-mini ragdoll-mini--${kind}`} aria-hidden="true">
@@ -212,11 +222,12 @@ export function RagdollGame() {
     setMode("free");
     setShowMenuOpen(false);
     setCheer("");
+    sceneRef.current?.setGuideVisible(false);
   }
 
   function challengeAction(action: ChallengeAction) {
     if (action === "characters") {
-      chooseCharacter(challenge.stage === 2 ? "pineapple" : "red");
+      chooseCharacter(suggestedCharacter(challenge.stage));
       setPalette("characters");
     } else if (action === "objects") {
       chooseObject("ball");
@@ -224,17 +235,20 @@ export function RagdollGame() {
     } else if (action === "glasses") {
       if (selectedCharacter) sceneRef.current?.toggleGlasses();
       else chooseTool("grab");
+    } else if (action === "party") {
+      unlockAudio();
+      sceneRef.current?.partyBlast();
     } else chooseTool(action);
   }
 
   function activateForStep(action: ChallengeAction, stage: number) {
     if (action === "characters") {
-      chooseCharacter(stage === 2 ? "pineapple" : "red");
+      chooseCharacter(suggestedCharacter(stage));
       setPalette("characters");
     } else if (action === "objects") {
       chooseObject("ball");
       setPalette("objects");
-    } else if (action !== "glasses") chooseTool(action);
+    } else if (action !== "glasses" && action !== "party") chooseTool(action);
   }
 
   function togglePause() {
@@ -309,6 +323,7 @@ export function RagdollGame() {
       <RagdollShow progress={challenge} completed={completedShows} mode={mode} menuOpen={showMenuOpen} cheer={cheer} onAction={challengeAction} onStage={startStage} onFree={freePlay} onMenuClose={() => setShowMenuOpen(false)} />
 
       <div className="ragdoll-controls">
+        {partyAvailable(mode, challenge.stage, challenge.step, showMenuOpen) && <button type="button" className="ragdoll-party-button" onClick={() => { unlockAudio(); sceneRef.current?.partyBlast(); }} disabled={paused} title={copy.partyHint}><span aria-hidden="true">✦</span> {copy.party}</button>}
         <div className="ragdoll-hint" role="status"><span aria-hidden="true">✦</span>{hint}</div>
         {palette && (
           <section className="ragdoll-palette" aria-label={palette === "characters" ? copy.characters : copy.objects}>
