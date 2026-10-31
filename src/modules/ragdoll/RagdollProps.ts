@@ -16,7 +16,7 @@ function cylinder(top: number, bottom: number, height: number, color: number) {
   mesh.castShadow = true; mesh.receiveShadow = true; return mesh;
 }
 
-export function createProp(world: CANNON.World, scene: THREE.Scene, kind: ObjectKind, x: number, y: number, z: number): Prop {
+export function createProp(world: CANNON.World, scene: THREE.Scene, kind: ObjectKind, x: number, y: number, z: number, dynamic = false): Prop {
   const mesh = new THREE.Group();
   let shape: CANNON.Shape;
   let mass = 0;
@@ -27,6 +27,7 @@ export function createProp(world: CANNON.World, scene: THREE.Scene, kind: Object
       stripe.position.x = dx; mesh.add(stripe);
     }
     shape = new CANNON.Box(new CANNON.Vec3(0.6, 0.6, 0.6));
+    if (dynamic) mass = 0.85;
   } else if (kind === 'spikes') {
     mesh.add(box(1.4, 0.18, 1.4, 0xa8a4dd));
     for (const dx of [-0.43, 0, 0.43]) for (const dz of [-0.43, 0, 0.43]) {
@@ -56,8 +57,8 @@ export function createProp(world: CANNON.World, scene: THREE.Scene, kind: Object
   mesh.position.set(x, y, z); scene.add(mesh);
   const body = new CANNON.Body({ mass, shape });
   body.position.set(x, y, z);
-  body.linearDamping = kind === 'ball' ? 0.14 : 0;
-  body.angularDamping = kind === 'ball' ? 0.12 : 0;
+  body.linearDamping = mass ? 0.14 : 0;
+  body.angularDamping = mass ? 0.12 : 0;
   world.addBody(body);
   return { kind, body, mesh, lastTrigger: 0 };
 }

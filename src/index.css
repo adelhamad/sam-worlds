@@ -463,16 +463,15 @@ body {
   box-shadow: 0 14px 35px rgba(3, 5, 32, .24), inset 0 1px rgba(255, 255, 255, .13);
 }
 .sandbox-portal::after {
-  content: "✦  ◉  ✦";
+  content: "";
   position: absolute;
   z-index: -1;
-  right: 6%;
-  top: -28px;
-  color: rgba(190, 175, 255, .12);
-  font-size: clamp(100px, 19vw, 200px);
-  letter-spacing: -.3em;
-  white-space: nowrap;
-  transform: rotate(-15deg);
+  right: 17%;
+  bottom: -33px;
+  width: 195px;
+  height: 195px;
+  background: url('/ragdoll/fruit-friends.png') center / contain no-repeat;
+  opacity: .48;
   pointer-events: none;
 }
 .sandbox-portal-copy {

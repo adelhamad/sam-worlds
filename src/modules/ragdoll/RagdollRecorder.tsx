@@ -95,7 +95,7 @@ export function RagdollRecorder({ sceneRef }: { sceneRef: RefObject<RagdollScene
         const url = URL.createObjectURL(blob);
         urlRef.current = url;
         const extension = type.includes('mp4') ? 'mp4' : 'webm';
-        setClip({ url, name: `sams-stunt-${Date.now()}.${extension}` });
+        setClip({ url, name: `sams-quest-${Date.now()}.${extension}` });
       };
       recorder.start();
       setSeconds(0);

@@ -5,10 +5,13 @@ import { RagdollSound } from './RagdollSound';
 import { createGuideRing, decoratePlayground, makePlacementGhost } from './RagdollWorld';
 import { createProp, type ObjectKind, type Prop } from './RagdollProps';
 import { applyPartyBlast } from './RagdollParty';
+import { RagdollMission } from './RagdollMission';
+import { RagdollAim } from './RagdollAim';
+import { freePlayLayout, stageLayouts } from './RagdollStageSetup';
 export type { CharacterKind } from './RagdollCharacter';
 export type { ObjectKind } from './RagdollProps';
 export type RagdollTool = 'grab' | 'kick' | 'move' | 'delete' | 'place-character' | 'place-object';
-export interface SceneEvent { type: 'select' | 'spawn' | 'kick' | 'impact' | 'defeat' | 'delete' | 'grab' | 'release' | 'move' | 'bounce' | 'bump' | 'glasses' | 'collide' | 'party'; character?: boolean; glasses?: boolean; kind?: string; part?: string; airborne?: boolean }
+export interface SceneEvent { type: 'select' | 'spawn' | 'kick' | 'impact' | 'defeat' | 'delete' | 'grab' | 'release' | 'move' | 'bounce' | 'bump' | 'glasses' | 'collide' | 'party' | 'goal' | 'crateDown' | 'fruitHome' | 'bumperHit' | 'rescue'; character?: boolean; glasses?: boolean; kind?: string; part?: string; airborne?: boolean }
 interface Hit { character?: RagdollCharacter; part?: RagdollPart; prop?: Prop; point: THREE.Vector3 }
 
 function disposeGroup(group: THREE.Object3D) {
@@ -51,6 +54,9 @@ export class RagdollScene {
   private lastImpact = 0;
   private lastCharacterCollision = 0;
   private guide: ReturnType<typeof createGuideRing>;
+  private mission = new RagdollMission(this.scene, event => this.onEvent?.(event));
+  private stageIndex = -1;
+  private aim = new RagdollAim<Hit>(this.scene, event => this.groundPoint(event));
 
   constructor(private container: HTMLElement, private onEvent?: (event: SceneEvent) => void) {
     this.scene.background = new THREE.Color(0xaee4ff);
@@ -99,12 +105,10 @@ export class RagdollScene {
   setObject(kind: ObjectKind) { this.objectKind = kind; this.setTool('place-object'); }
   setPaused(paused: boolean) { this.paused = paused; }
   setSlowMotion(enabled: boolean) { this.slowMo = enabled; }
-  setGuideVisible(visible: boolean) { this.guide.show(visible); }
   setMuted(muted: boolean) { this.sound.muted = muted; }
   captureStream() {
     const stream = this.renderer.domElement.captureStream(30);
-    stream.addTrack(this.sound.captureTrack());
-    return stream;
+    stream.addTrack(this.sound.captureTrack()); return stream;
   }
   stopCapture() { this.sound.stopCapture(); }
   toggleGlasses() {
@@ -114,35 +118,21 @@ export class RagdollScene {
     this.onEvent?.({ type: 'glasses', character: true, glasses: !!this.selected.glasses, kind: this.selected.kind });
   }
   loadShow(index: number) {
-    this.reset();
+    this.reset(false); this.stageIndex = index;
     this.angle = 0.65; this.elevation = 0.5; this.distance = 9.5; this.updateCamera();
-    if (index === 1) {
-      this.spawnProp('crate', -2.4, 0.6, -2.3);
-      this.spawnProp('crate', -2.4, 1.8, -2.3);
-      this.spawnProp('bumper', -4.2, 0.22, -3.2);
-    } else if (index === 2) {
-      this.spawnProp('launchpad', -1.8, 0.14, -1.8);
-      this.spawnProp('bumper', -3.5, 0.22, -3.1);
-      this.spawnCharacter('pineapple', 1.15, 0.2, false);
-    } else if (index === 3) {
-      this.spawnCharacter('watermelon', -1.3, -0.2, false);
-      this.spawnProp('ball', 2.3, 0.6, -1.4);
-      this.spawnProp('launchpad', -3, 0.14, -2.2);
-    } else if (index === 4) {
-      this.spawnProp('bumper', -1.7, 0.22, -1.9);
-      this.spawnProp('bumper', -3.5, 0.22, -2.7);
-      this.spawnProp('ball', 2.2, 0.7, -1.2);
-    } else if (index === 5) {
-      this.spawnProp('spikes', -2.7, 0.14, -2.7);
-      this.spawnProp('spikes', -4.2, 0.14, -3.8);
-    } else if (index === 6) {
-      this.spawnCharacter('red', -1.1, 0, false);
-      this.spawnCharacter('watermelon', 1.1, 0.2, false);
-      this.spawnProp('ball', 2, 0.7, -1.7);
-      this.spawnProp('launchpad', -2.4, 0.14, -2.4);
-    }
-    this.guide.show(index === 0);
-    if (index === 3) this.select({ character: this.characters[0], point: new THREE.Vector3() });
+    const layout = stageLayouts[index];
+    for (const [kind, x, z] of layout.characters) this.spawnCharacter(kind, x, z, false);
+    for (const [kind, x, y, z, dynamic] of layout.props) this.spawnProp(kind, x, y, z, dynamic);
+    for (const character of this.characters) for (const part of character.parts) part.body.sleep();
+    this.mission.start(index, this.props);
+    this.guide.show(false);
+  }
+  enterFreePlay() {
+    this.reset(false);
+    for (const [kind, x, z] of freePlayLayout.characters) this.spawnCharacter(kind, x, z, false);
+    for (const [kind, x, y, z] of freePlayLayout.props) this.spawnProp(kind, x, y, z);
+    for (const character of this.characters) for (const part of character.parts) part.body.sleep();
+    this.angle = 0.65; this.elevation = 0.5; this.distance = 10.5; this.updateCamera();
   }
   celebrate() { this.sound.play('cheer'); this.burst(new THREE.Vector3(0, 2.5, 0), 0xffd86a); }
   partyBlast() {
@@ -153,8 +143,8 @@ export class RagdollScene {
     this.burst(new THREE.Vector3(1.2, 2.4, 0), 0x7de7ed);
     this.sound.play('cheer'); this.onEvent?.({ type: 'party' });
   }
-  reset() {
-    this.endDrag();
+  reset(withStarter = true) {
+    this.endDrag(); this.aim.clear(); this.mission.clear(); this.stageIndex = -1;
     this.guide.show(false);
     for (const c of this.characters) {
       for (const p of c.parts) this.meshTargets.delete(p.mesh);
@@ -164,13 +154,13 @@ export class RagdollScene {
     this.characters = []; this.props = []; this.selected = undefined;
     for (const star of this.stars) { this.scene.remove(star.mesh); disposeGroup(star.mesh); }
     this.stars = [];
-    this.spawnCharacter('classic', 0, 0, false);
+    if (withStarter) this.spawnCharacter('classic', 0, 0, false);
     this.onEvent?.({ type: 'select', character: false });
   }
   dispose() {
     if (this.disposed) return;
     this.disposed = true;
-    cancelAnimationFrame(this.frame); this.endDrag(); this.resizeObserver.disconnect();
+    cancelAnimationFrame(this.frame); this.endDrag(); this.aim.clear(); this.mission.clear(); this.resizeObserver.disconnect();
     const canvas = this.renderer.domElement;
     canvas.removeEventListener('pointerdown', this.pointerDown);
     canvas.removeEventListener('pointermove', this.pointerMove);
@@ -230,8 +220,8 @@ export class RagdollScene {
     if (sound) { this.sound.play('spawn'); this.onEvent?.({ type: 'spawn', character: true, kind }); }
     return c;
   }
-  private spawnProp(kind: ObjectKind, x: number, y: number, z: number) {
-    const prop = createProp(this.world, this.scene, kind, x, y, z); this.props.push(prop);
+  private spawnProp(kind: ObjectKind, x: number, y: number, z: number, dynamic = false) {
+    const prop = createProp(this.world, this.scene, kind, x, y, z, dynamic); this.props.push(prop);
     this.meshTargets.set(prop.mesh, { prop, point: new THREE.Vector3() });
     this.sound.play('spawn'); this.onEvent?.({ type: 'spawn', kind }); return prop;
   }
@@ -251,21 +241,23 @@ export class RagdollScene {
     this.selected = hit?.character;
     this.onEvent?.({ type: 'select', character: !!hit?.character, glasses: !!hit?.character?.glasses, kind: hit?.character?.kind });
   }
-  private kick(hit: Hit) {
-    const direction = new THREE.Vector3().subVectors(hit.point, this.camera.position).setY(0).normalize();
+  private kick(hit: Hit, aimed?: THREE.Vector3, power = 1) {
+    this.mission.arm();
+    const direction = aimed?.clone() ?? new THREE.Vector3().subVectors(hit.point, this.camera.position).setY(0).normalize();
     if (direction.lengthSq() < 0.01) direction.set(0, 0, -1);
     if (hit.prop?.kind === 'ball') {
-      hit.prop.body.applyImpulse(new CANNON.Vec3(direction.x * 4, 3.5, direction.z * 4));
+      hit.prop.body.wakeUp();
+      hit.prop.body.applyImpulse(new CANNON.Vec3(direction.x * 6 * power, 1.7 + power * 0.8, direction.z * 6 * power));
       this.sound.play('kick'); this.onEvent?.({ type: 'kick', kind: 'ball' }); return;
     }
     if (!hit.character || !hit.part) return;
     this.guide.show(false);
     for (const p of hit.character.parts) {
       p.body.wakeUp();
-      p.body.applyImpulse(new CANNON.Vec3(direction.x * 1.8, 2.4, direction.z * 1.8));
+      p.body.applyImpulse(new CANNON.Vec3(direction.x * 1.8 * power, 2.4, direction.z * 1.8 * power));
     }
     const offset = hit.point.clone().sub(new THREE.Vector3(hit.part.body.position.x, hit.part.body.position.y, hit.part.body.position.z));
-    hit.part.body.applyImpulse(new CANNON.Vec3(direction.x * 7, 8, direction.z * 7),
+    hit.part.body.applyImpulse(new CANNON.Vec3(direction.x * 7 * power, 5.5, direction.z * 7 * power),
       new CANNON.Vec3(offset.x, offset.y, offset.z));
     this.sound.play('kick'); this.onEvent?.({ type: 'kick', character: true, kind: hit.character.kind });
   }
@@ -274,6 +266,7 @@ export class RagdollScene {
     const plane = new THREE.Plane().setFromNormalAndCoplanarPoint(normal, hit.point);
     const target = hit.point.clone(); this.drag = { hit, plane, target };
     if (!hit.part) return;
+    for (const part of hit.character?.parts ?? []) part.body.wakeUp();
     const control = new CANNON.Body({ mass: 0, type: CANNON.Body.KINEMATIC });
     control.position.set(target.x, target.y, target.z); this.world.addBody(control);
     const local = hit.part.body.pointToLocalFrame(new CANNON.Vec3(target.x, target.y, target.z));
@@ -314,7 +307,7 @@ export class RagdollScene {
     if (this.pointer.size > 1) {
       const points = [...this.pointer.values()];
       this.pinchDistance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
-      this.orbitPointer = event.pointerId; this.renderer.domElement.setPointerCapture(event.pointerId); this.endDrag(); return;
+      this.orbitPointer = event.pointerId; this.renderer.domElement.setPointerCapture(event.pointerId); this.endDrag(); this.aim.clear(); return;
     }
     if (event.button === 2 || event.shiftKey) {
       this.orbitPointer = event.pointerId; this.renderer.domElement.setPointerCapture(event.pointerId); return;
@@ -332,7 +325,11 @@ export class RagdollScene {
     }
     this.select(hit);
     if (!hit) return;
-    if (this.tool === 'kick') this.kick(hit);
+    if (this.tool === 'kick') {
+      const position = hit.prop?.body.position ?? hit.part?.body.position;
+      if (!position || !this.aim.begin(hit, event, new THREE.Vector3(position.x, position.y, position.z))) this.kick(hit);
+      else this.renderer.domElement.setPointerCapture(event.pointerId);
+    }
     if (this.tool === 'grab' || this.tool === 'move') this.beginDrag(hit, event);
   };
   private pointerMove = (event: PointerEvent) => {
@@ -353,6 +350,7 @@ export class RagdollScene {
       this.elevation = THREE.MathUtils.clamp(this.elevation + (event.clientY - old.y) * 0.005, 0.13, 1.35);
       this.updateCamera(); return;
     }
+    if (this.aim.activeId === event.pointerId) { this.aim.update(event); return; }
     if (this.drag) {
       const point = this.ray(event).intersectPlane(this.drag.plane, new THREE.Vector3());
       if (point) this.drag.target.copy(point).clamp(new THREE.Vector3(-28, 0.12, -28), new THREE.Vector3(28, 14, 28));
@@ -365,6 +363,8 @@ export class RagdollScene {
     }
   };
   private pointerUp = (event: PointerEvent) => {
+    const aimed = this.aim.finish(event);
+    if (aimed && event.type !== 'pointercancel') this.kick(aimed.hit, aimed.direction, aimed.power);
     this.pointer.delete(event.pointerId);
     if (this.pointer.size < 2) this.pinchDistance = undefined;
     if (this.orbitPointer === event.pointerId) this.orbitPointer = undefined;
@@ -386,8 +386,8 @@ export class RagdollScene {
     const realDt = Math.min((now - this.lastFrame) / 1000, 0.05); this.lastFrame = now;
     const dt = realDt * (this.slowMo ? 0.36 : 1);
     if (!this.paused) {
-      const first = this.characters[0]?.parts[0]?.body.position;
-      if (first) this.guide.update(first.x, first.z, now);
+      const guideTarget = this.stageIndex === 0 ? this.props.find(p => p.kind === 'ball')?.body.position : this.characters[0]?.parts[0]?.body.position;
+      if (guideTarget) this.guide.update(guideTarget.x, guideTarget.z, now);
       if (this.drag?.control) {
         const p = this.drag.control.position, t = this.drag.target;
         const dx = t.x - p.x, dy = t.y - p.y, dz = t.z - p.z;
@@ -398,6 +398,7 @@ export class RagdollScene {
         this.drag.control.velocity.setZero();
       }
       if (this.drag?.hit.prop) {
+        this.mission.arm();
         const p = this.drag.hit.prop;
         p.mesh.position.set(this.drag.target.x, p.mesh.position.y, this.drag.target.z);
         p.body.position.set(p.mesh.position.x, p.mesh.position.y, p.mesh.position.z);
@@ -406,13 +407,13 @@ export class RagdollScene {
       }
       this.world.step(1 / 60, dt, 3);
       for (const c of this.characters) stabilizeCharacter(c, this.drag?.hit.character === c ? this.drag.hit.part?.body : undefined);
-      this.sync(); this.checkCollisions(); this.animateStars(dt);
+      this.sync(); this.checkCollisions(); this.mission.update(now, this.props, this.characters); this.animateStars(dt);
     }
     this.renderer.render(this.scene, this.camera);
     this.frame = requestAnimationFrame(this.animate);
   };
   private sync() {
-    for (const prop of this.props) if (prop.kind === 'ball' && this.drag?.hit.prop !== prop) {
+    for (const prop of this.props) if (prop.body.mass > 0 && this.drag?.hit.prop !== prop) {
       prop.mesh.position.set(prop.body.position.x, prop.body.position.y, prop.body.position.z);
       prop.mesh.quaternion.set(prop.body.quaternion.x, prop.body.quaternion.y, prop.body.quaternion.z, prop.body.quaternion.w);
     }

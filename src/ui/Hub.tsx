@@ -98,7 +98,7 @@ export function Hub() {
             navigate("/ragdoll");
           }}
         >
-          {STR.ragdoll.enter} <span aria-hidden="true">↗</span>
+          {STR.ragdoll.enter}
         </button>
       </section>
 

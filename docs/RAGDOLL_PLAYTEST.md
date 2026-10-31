@@ -1,23 +1,17 @@
-# Sam's Stunt Show: first playtest
+# Sam's Ragdoll Quest: first playtest
 
-The first test is about whether Sam *chooses to keep playing*. There is no lesson or quiz in this version. Let him hold the device and start at **First Flight**. Do not explain the tools unless he asks; the yellow action button and the next short prompt should guide him.
+The first test is whether Sam chooses to keep playing. There is no lesson or quiz. Open **Ragdoll Quest** and hand him the device at the stage map. Let him choose a stage without explaining the tools unless he asks.
+
+## What is in the game
+
+The seven stages have different goals: score three ball goals, clear three crate circles, slide a bounce pad under a friend, bring two fruit friends into a circle, hit two bumpers with the ball, carry a friend to safety, and score before Party Blast. A stage clears only when its goal happens in the playground. Sam can replay any stage or open **Free play** to place characters and props, grab, aim and kick, move, delete, pause, use slow motion, and record a local clip. Completed stages are marked on the map and saved on this device.
 
 ## Ten-minute session
 
-1. Give him 2 minutes to explore the first stunt. Note whether he notices the character and acts without help.
-2. If he completes it, let him choose the next stunt himself. Do not steer him toward a particular skill.
-3. Around minute 6, show **Stunts → Make my own fun**. Watch whether he invents a scene with characters and toys or tries **Party Blast!**.
-4. If he is still playing, point out **Record** once and ask whether he wants to film a stunt. Watch whether he can stop, preview, and save the clip. Clips are saved to the device only when **Save video** is tapped.
-5. Stop when he wants to stop. Ask: “What should we add?” and “Which stunt would you play again?”
+1. Watch which stage Sam picks and how long it takes him to touch the playground.
+2. Let him solve the stage. Note whether the highlighted action, ring, and short hint make the goal clear without adult help.
+3. After he clears a stage, see whether he chooses **Next stage**, replays it, switches from **Stages**, or stops.
+4. Around minute six, let him find **Free play**. Watch whether he invents a scene or uses Party Blast.
+5. If he is still playing, point out **Record** once. Clips save to the device only after **Save video**.
 
-Record only observations, not a score: time to first action; which tool he discovers; whether he replays or asks for another stunt; which moment makes him laugh, concentrate, or leave; any point where he needs adult help. A screenshot or a few words are enough. No analytics are collected.
-
-## What to change next
-
-- If he ignores the prompts but builds scenes, expand free-play toys and character reactions.
-- If he likes finishing stunts, add more short, physical challenges and recognizable show themes.
-- If he struggles to select the character, enlarge the target or add a guided first gesture.
-- If making videos is what keeps him playing, prioritize a simple local clip gallery and easier camera framing.
-- If he finishes the show and asks for more, then trial a small educational layer inside a stunt (for example, predict which ramp sends the ball farther). Keep it optional until the playtest shows it adds interest.
-
-Completed stunts keep a ★ in the menu. The Parent Section can view and reset those marks for a fresh test.
+Record observations, not a score: first action, stages he chooses or repeats, moments of laughter or concentration, where he needs help, and when he leaves. Ask what he would add. Those observations should drive the next change; a completed stage by itself does not prove the game is engaging.
