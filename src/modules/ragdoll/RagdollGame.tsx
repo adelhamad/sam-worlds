@@ -9,6 +9,7 @@ import { advanceChallenge, challengeActions, firstStep, type ChallengeAction } f
 import { RagdollShow } from "./RagdollShow";
 import { RagdollRecorder } from "./RagdollRecorder";
 import { RagdollIcon } from "./RagdollIcon";
+import { RagdollPlaytest } from "./RagdollPlaytest";
 import "./RagdollGame.css";
 import "./RagdollShow.css";
 
@@ -68,6 +69,7 @@ export function RagdollGame() {
   const soundOn = useGame((state) => state.soundOn);
   const toggleSound = useGame((state) => state.toggleSound);
   const sceneRef = useRef<RagdollScene | null>(null);
+  const playtestRef = useRef(new RagdollPlaytest());
   const resetButtonRef = useRef<HTMLButtonElement>(null);
   const showButtonRef = useRef<HTMLButtonElement>(null);
   const resetDialogRef = useRef<HTMLDivElement>(null);
@@ -102,7 +104,9 @@ export function RagdollGame() {
     const host = hostRef.current;
     if (!host) return;
     duckMusic();
+    const playtest = playtestRef.current;
     const scene = new RagdollScene(host, (event) => {
+      playtest.action(event);
       if (event.type === "select") {
         setSelectedCharacter(Boolean(event.character));
         setWearingGlasses(Boolean(event.glasses));
@@ -120,8 +124,12 @@ export function RagdollGame() {
           setChallenge(result.progress);
         }
         if (result.advanced) {
+          playtest.step(result.progress.step + (result.finishedStage ? 1 : 0), event.type);
           sceneRef.current?.celebrate();
-          if (result.finishedStage) useGame.getState().completeRagdollShow(result.progress.stage);
+          if (result.finishedStage) {
+            playtest.clear();
+            useGame.getState().completeRagdollShow(result.progress.stage);
+          }
           else queueMicrotask(() => {
             if (modeRef.current === "show" && challengeRef.current === result.progress)
               activateForStep(challengeActions[result.progress.stage][result.progress.step]);
@@ -138,6 +146,7 @@ export function RagdollGame() {
     scene.loadShow(0);
     return () => {
       sceneRef.current = null;
+      playtest.end();
       scene.dispose();
       unduckMusic();
       window.clearTimeout(cheerTimeout.current);
@@ -215,6 +224,7 @@ export function RagdollGame() {
   }
 
   function startStage(index: number) {
+    playtestRef.current.end();
     const next = firstStep(index);
     challengeRef.current = next;
     setChallenge(next);
@@ -228,15 +238,18 @@ export function RagdollGame() {
     setSlowMo(false);
     sceneRef.current?.setSlowMotion(false);
     sceneRef.current?.loadShow(index);
+    playtestRef.current.start("stage", index);
     activateForStep(challengeActions[index][0]);
   }
 
   function freePlay() {
+    playtestRef.current.end();
     modeRef.current = "free";
     setMode("free");
     setShowMenuOpen(false);
     setCheer("");
     sceneRef.current?.enterFreePlay();
+    playtestRef.current.start("free");
     setTool("grab");
     setPalette(null);
     sceneRef.current?.setTool("grab");
@@ -271,12 +284,14 @@ export function RagdollGame() {
   }
 
   function resetPlayground() {
+    playtestRef.current.end();
     if (mode === "show") {
       const next = firstStep(challenge.stage);
       challengeRef.current = next;
       setChallenge(next);
       sceneRef.current?.loadShow(challenge.stage);
     } else sceneRef.current?.reset();
+    playtestRef.current.start(mode === "show" ? "stage" : "free", mode === "show" ? challenge.stage : undefined);
     sceneRef.current?.setTool(mode === "show" ? "kick" : "grab");
     setTool(mode === "show" ? "kick" : "grab");
     setPalette(null);

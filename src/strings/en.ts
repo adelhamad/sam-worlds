@@ -97,6 +97,8 @@ export const STR = {
     showFinished: "You cleared the whole world!",
     parentTitle: "Sam's Ragdoll Quest",
     parentDescription: "Completed stages stay marked so Sam can replay his favorites. Reset only these marks below.",
+    parentActivityTitle: "Recent Ragdoll Quest play",
+    parentActivityDescription: "Shows the last eight sessions from the past 30 days, saved on this device. Actions and progress cannot tell us whether Sam enjoyed playing. Watch where he asks for help or chooses to replay.",
     parentReset: "Reset stage marks",
     parentConfirm: "Yes, reset stage marks",
     parentCancel: "Cancel",

@@ -15,3 +15,5 @@ The eight stages ask Sam to score three ball goals; clear three crates to uncove
 5. If he is still playing, point out **Record** once. Clips save to the device only after **Save video**.
 
 Record observations, not a score: first action, stages he chooses or repeats, moments of laughter or concentration, where he needs help, and when he leaves. Ask what he would add. Those observations should drive the next change; a completed stage by itself does not prove the game is engaging.
+
+Afterward, open **Parent Section → Recent Ragdoll Quest play** on the same device. It shows the last eight attempts from the past 30 days, their first direct action, and how far each stage progressed. **Copy summary** can be pasted alongside your observations. The activity record does not measure enjoyment or attentive play.

@@ -1,0 +1,16 @@
+.ragdoll-parent-heading, .ragdoll-parent-activity-heading { display: flex; align-items: center; gap: 10px; }
+.ragdoll-parent h2.ragdoll-parent-heading { justify-content: flex-start; }
+.ragdoll-parent > button { align-self: flex-start; }
+.ragdoll-parent-heading img { width: 36px; height: 36px; object-fit: contain; }
+.ragdoll-parent-stages { display: flex; flex-wrap: wrap; gap: 8px; }
+.ragdoll-parent-stages > span { display: inline-flex; align-items: center; gap: 6px; padding: 5px 9px 5px 5px; border: 1px solid var(--line, #64748b); border-radius: 999px; font-size: .85rem; }
+.ragdoll-parent-stages > span.is-complete { border-color: #2ea68f; background: rgba(46, 166, 143, .12); }
+.ragdoll-parent-mark { display: grid; place-items: center; width: 23px; height: 23px; border-radius: 50%; background: rgba(128, 148, 171, .22); font-size: .75rem; font-weight: 800; }
+.ragdoll-parent-stages .is-complete .ragdoll-parent-mark { background: #2ea68f; color: #fff; }
+.ragdoll-parent-activity { border-top: 1px solid var(--line, #64748b); padding-top: 16px; margin-top: 8px; }
+.ragdoll-parent-activity-heading { justify-content: space-between; flex-wrap: wrap; }
+.ragdoll-parent-activity-heading h3 { margin: 0; }
+.ragdoll-parent-runs { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 8px; }
+.ragdoll-parent-runs li { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; padding: 10px 12px; border-radius: 12px; background: rgba(128, 148, 171, .12); font-size: .85rem; }
+.ragdoll-parent-runs li strong { min-width: 130px; }
+.ragdoll-parent-runs li span:nth-child(2) { color: var(--text-dim); }
