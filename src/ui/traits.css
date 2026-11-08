@@ -115,13 +115,7 @@
   width: min(100%, 480px);
   margin: 0 auto 12px;
 }
-.trait-lesson-note {
-  text-align: left;
-  padding-bottom: 16px;
-  margin-bottom: 16px;
-  border-bottom: 1px solid var(--text-dim);
-}
-/* Teaching and questions share normal page scrolling, not a clipped inner card. */
+/* Questions use normal page scrolling so long answers remain reachable. */
 .stage-play[data-world="traits"] {
   height: auto;
   min-height: 100dvh;
@@ -136,64 +130,14 @@
   max-height: none;
   overflow: visible;
 }
-.trait-lesson-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-.trait-lesson-heading h2 {
-  margin: 0;
-  font-size: 20px;
+.trait-question-label strong {
+  font-size: 18px;
   color: var(--amber);
 }
-.trait-lesson-definitions,
-.trait-lesson-reminder {
+.trait-question-label p {
   font-size: 16px;
   line-height: 1.5;
-  margin: 8px 0 0;
-}
-.trait-lesson-example {
-  display: grid;
-  grid-template-columns: 96px minmax(0, 1fr);
-  align-items: center;
-  gap: 16px;
-  margin-top: 16px;
-}
-.trait-lesson-example figure {
-  margin: 0;
-}
-.trait-lesson-example img {
-  display: block;
-  width: 100%;
-  height: 80px;
-  object-fit: contain;
-  border-radius: 12px;
-}
-.trait-lesson-example figcaption {
-  font-size: 14px;
-  line-height: 1.4;
-  margin-top: 4px;
-  overflow-wrap: anywhere;
-}
-.trait-lesson-example dl {
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.5;
-}
-.trait-lesson-example dl div + div {
-  margin-top: 8px;
-}
-.trait-lesson-example dt {
-  font-weight: 700;
-}
-.trait-lesson-example dd {
-  margin: 0;
-}
-.trait-lesson-your-turn {
-  font-size: 18px;
-  font-weight: 700;
-  margin: 0 0 12px;
+  margin: 4px 0 12px;
 }
 .trait-question-photos figure {
   margin: 0;
