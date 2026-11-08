@@ -10,6 +10,7 @@ import { STR } from "../src/strings/en";
 import { auditTraitsResume } from "./audit-traits-resume";
 import { auditTraitsLanguage, checkTraitsLanguage } from "./audit-traits-language";
 import { auditTraitsMedia, checkTraitsMedia } from "./audit-traits-media";
+import { auditTraitsLesson } from "./audit-traits-lesson";
 
 const MODES = ["spot", "origin", "concept", "job", "feature", "pair"];
 const adaptations = new Map(ADAPTATIONS.map((item) => [item.id, item]));
@@ -241,7 +242,7 @@ function checkStages(stages: Stage[], failures: string[]): void {
 
 /** Traits-only structural, factual and fresh-question checks for the shared audit. */
 export function auditTraits(): string[] {
-  const failures: string[] = [...auditTraitsResume(), ...auditTraitsLanguage(), ...auditTraitsMedia()];
+  const failures: string[] = [...auditTraitsResume(), ...auditTraitsLanguage(), ...auditTraitsMedia(), ...auditTraitsLesson()];
   const world = WORLDS.find((entry) => entry.id === "traits");
   if (!world || world.stages.length !== 55) failures.push("traits: expected 55 stages");
   checkBanks(failures);

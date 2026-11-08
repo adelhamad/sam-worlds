@@ -111,7 +111,7 @@ The child-facing text now uses direct questions and concrete examples:
 - “Match the job to a trait” → “What helps a duck swim?”
 - Other changes use everyday situations: “What can happen after a haircut?”
 
-There are no vocabulary lectures above questions. Each body-part question uses
+Each body-part question uses
 its own reviewed alternatives instead of the repeated mud/trick pair. Origin
 questions have 48 distinct concrete example answers instead of repeatedly
 selecting the same three category labels. The six existing activity types,
@@ -130,6 +130,28 @@ unchanged, so a reload does not redraw their choices. No save reset is needed.
 Content version 3 adds pictures and expands older saved multiple-choice questions
 to four options without moving the correct answer. Matching-card roles remain
 unchanged; current-version questions still resume exactly as saved.
+
+## Trait and adaptation labels in every lesson
+
+Every lesson now has a visible, read-aloud teaching note inside the play screen,
+not just the map guide or optional help. It defines both words in simple English
+and labels one pictured example **Trait** and **Also an adaptation**. The same
+inherited feature receives both labels; its helpful job explains why it is an
+adaptation. The note does not claim every inherited trait is an adaptation.
+
+The example prefers a subject from the lesson's reviewed adaptation pool, with
+reviewed fallback examples for concept and origin lessons. It excludes every
+subject pictured in the active question and any example whose trait or job
+supplies a displayed answer or matching card. “Your turn” separates teaching
+from the scored question. Learning and acquired changes are not relabeled as
+adaptations.
+
+`traitLessonExample` is deterministic and consumes no gameplay RNG. It reads
+current content at render time, so existing saves get the note without redrawing
+their question, migrating their payload, or resetting progress. Stage IDs, pools,
+choices, rewards, shared grading, and Parent Section controls are unchanged.
+`scripts/audit-traits-lesson.ts` checks example coverage, isolation, determinism,
+and non-mutation across every authored task and both difficulty variants.
 
 ### Implementation verification, 2026-11-08
 
