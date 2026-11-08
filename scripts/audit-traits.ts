@@ -2,7 +2,7 @@ import { ADAPTATIONS, OBSERVATIONS } from "../src/content/traits/examples";
 import { CONCEPTS } from "../src/content/traits/concepts";
 import { TRAIT_CHANGE_EVENTS } from "../src/content/traits/changes";
 import { overlappingTraits } from "../src/content/traits/pairing";
-import { WORLDS } from "../src/content/worlds";
+import legacyStages from "../src/content/traits/legacyStages.json";
 import { workedExample } from "../src/engine/answers/answerEngine";
 import { generateQuestionSet, questionKeys } from "../src/engine/generators";
 import type { Question } from "../src/engine/generators/types";
@@ -11,12 +11,13 @@ import { auditTraitsResume } from "./audit-traits-resume";
 import { auditTraitsLanguage, checkTraitsLanguage } from "./audit-traits-language";
 import { auditTraitsMedia, checkTraitsMedia } from "./audit-traits-media";
 import { auditTraitsLabels } from "./audit-traits-labels";
+import { auditTraitDetective } from "./audit-trait-detective";
 
 const MODES = ["spot", "origin", "concept", "job", "feature", "pair"];
 const adaptations = new Map(ADAPTATIONS.map((item) => [item.id, item]));
 const observations = new Map(OBSERVATIONS.map((item) => [item.id, item]));
 const concepts = new Map(CONCEPTS.map((item) => [item.id, item]));
-type Stage = (typeof WORLDS)[number]["stages"][number];
+type Stage = (typeof legacyStages)[number];
 type Adaptation = (typeof ADAPTATIONS)[number];
 interface AuthoredTask {
   prompt: string;
@@ -157,7 +158,7 @@ function checkPair(question: Question, ordered: string[], label: string, failure
 function checkToken(stage: Stage, token: string, task: AuthoredTask, failures: string[]): void {
   for (const easier of [false, true]) {
     const label = `${stage.id} ${token} easier=${easier}`;
-    const [question] = generateQuestionSet(stage.generator, { items: [token] }, 1, 509,
+    const [question] = generateQuestionSet("traits", { items: [token] }, 1, 509,
       { difficulty: 0.5, easier });
     if (!question) {
       failures.push(`${label}: no authored question`);
@@ -191,13 +192,13 @@ function checkSequentialRun(stages: Stage[], seed: number, easier: boolean, fail
     const label = `${stage.id} sequential seed=${seed} easier=${easier}`;
     const context = { difficulty: index / Math.max(1, stages.length - 1), easier };
     try {
-      const initial = generateQuestionSet(stage.generator, stage.params, 6, seed + index, context, globalSeen);
+      const initial = generateQuestionSet("traits", stage.params, 6, seed + index, context, globalSeen);
       if (initial.length !== 6) failures.push(`${label}: ${initial.length}/6 initial questions`);
       claimQuestions(initial, globalSeen, easier, label, failures);
       // Both variants must retain two fresh tasks after the same initial six.
       for (const replacementEasier of [false, true]) {
         const excluded = new Set(globalSeen);
-        const replacements = generateQuestionSet(stage.generator, stage.params, 2, seed + index + 101,
+        const replacements = generateQuestionSet("traits", stage.params, 2, seed + index + 101,
           { ...context, easier: replacementEasier }, excluded);
         const replacementLabel = `${label} replacements easier=${replacementEasier}`;
         if (replacements.length !== 2) failures.push(`${replacementLabel}: ${replacements.length}/2 fresh questions`);
@@ -240,13 +241,12 @@ function checkStages(stages: Stage[], failures: string[]): void {
   if (tokens.size !== 808) failures.push(`traits: expected 808 authored tasks, got ${tokens.size}`);
 }
 
-/** Traits-only structural, factual and fresh-question checks for the shared audit. */
+/** Preserve full legacy coverage alongside the active detective curriculum. */
 export function auditTraits(): string[] {
-  const failures: string[] = [...auditTraitsResume(), ...auditTraitsLanguage(), ...auditTraitsMedia(), ...auditTraitsLabels()];
-  const world = WORLDS.find((entry) => entry.id === "traits");
-  if (!world || world.stages.length !== 55) failures.push("traits: expected 55 stages");
+  const failures: string[] = [...auditTraitsResume(), ...auditTraitsLanguage(), ...auditTraitsMedia(), ...auditTraitsLabels(), ...auditTraitDetective()];
+  if (legacyStages.length !== 55) failures.push("legacy traits: expected 55 stages");
   checkBanks(failures);
-  const stages = world?.stages ?? [];
+  const stages = legacyStages;
   checkStages(stages, failures);
   for (const seed of [37, 12345]) {
     for (const easier of [false, true]) checkSequentialRun(stages, seed, easier, failures);

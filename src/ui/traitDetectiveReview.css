@@ -1,0 +1,12 @@
+.detective-review h2 { color: var(--amber); margin: 0; font-size: 26px; }
+.detective-review-cards { display: grid; gap: 16px; text-align: left; }
+.detective-review-cards article { display: flex; align-items: start; gap: 16px; padding-block: 12px; border-bottom: 1px solid var(--text-dim); }
+.detective-review-cards img { width: 80px; height: 80px; object-fit: contain; flex-shrink: 0; border-radius: 12px; }
+.detective-review-cards h3 { margin: 0 0 6px; font-size: 18px; }
+.detective-review-cards strong { color: var(--amber); }
+.detective-review-cards p { margin: 8px 0 0; line-height: 1.5; }
+.detective-review-reason { text-align: left; line-height: 1.6; font-size: 18px; white-space: pre-line; }
+.detective-review .input-actions { flex-wrap: wrap; }
+.detective-review-stamps { padding: 16px; background: var(--night-deep); border-radius: 12px; }
+.detective-review-stamps h3, .detective-review-stamps p { margin: 0 0 8px; }
+.detective-review-stamps strong { color: var(--amber); }

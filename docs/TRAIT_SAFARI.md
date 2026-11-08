@@ -1,182 +1,157 @@
-# Trait Safari: Grade 2 content review
+# Trait Safari: evidence through play
 
-## Teaching contract
+## User story and learning contract
 
-- A **trait** is a feature of a living thing. Traits can reflect inheritance,
-  surroundings, or both; this world starts with observable body features.
-- An **adaptation is also a trait**, not its opposite: an inherited trait that
-  helps survival or reproduction in particular surroundings.
-- Learned responses come from experience. Injuries, grooming, mud, and growing
-  conditions do not create new inherited adaptations through need or practice.
-- Young can resemble their parents without being exact copies. Avoid human
-  appearance predictions, simplistic genetics, and value judgments about traits.
-- A feature's appearance alone does not prove its adaptive function. Helpful
-  traits do not guarantee survival, and help depends on the surroundings.
+As a young detective, I notice a feature, use clues to place it in a trait family,
+compare its job in different places, and explain which labels the evidence supports.
+The learning difference is reasoning about feature, inheritance, function, and
+environment—not animal-name trivia or picture recognition.
 
-This is introductory structure/function work for a seven-year-old, not a claim
-of alignment with a particular school's curriculum. Detailed natural-selection
-mechanisms and genetics are intentionally out of scope.
+One world makes inclusion explicit: **every adaptation is a trait; not every
+trait is an adaptation**. Separate worlds could suggest competing categories.
+Nested collections and selecting both labels teach the relationship. The opening
+scope is **body traits**; behavior and physiology can also be traits/adaptations.
+A practiced skill outside this body-trait collection does not mean behavior can
+never be a trait.
 
-## Activities and freshness
+An adaptation is an inherited trait shaped over many generations that helps
+survival or reproduction. A useful effect alone does not establish that history;
+known cases rely on reviewed science records. Individuals do not acquire inherited
+adaptations because they need them. “Help not known” means missing evidence, not
+“not an adaptation.” “Changed during life” is a separate group inside body traits:
+a scar is a changed feature, not a new inherited adaptation. A helmet can help
+without being a body trait.
 
-The 55 chapters progress from noticing body traits, to inheritance/learning/body
-changes, to checking the trait/adaptation relationship, to feature/function
-matching. Later chapters construct two trait–job matches with four cards.
-The requested first organism makes the order explicit; the two jobs and traits
-must differ. Reversing a pair is not counted as a new question.
+This is a research-backed **design hypothesis** for Grade 1–2 foundations with
+Grade 3 extensions. Child learning and transfer have not been tested for this
+implementation. Completion and old stars are not certification of new mastery.
 
-Each chapter asks six questions from its own authored pool. Foundation pools
-contain at least twelve tasks; two-organism pools contain sixteen. Seeded draws,
-semantic deduplication, replacement on a miss, scoring, and saves use the shared
-engine. Standard multiple-choice questions offer four distinct choices; gentler
-questions offer three. Gentler constructed matching
-adds a concrete first-pair hint. Solved explanations support the shared worked
-example scaffold. Read-aloud includes the prompt and answer cards.
+## Journey and activities
 
-These are finite, reviewed facts—not an unlimited supply of new science.
-Previously seen tasks stay excluded across chapters and replays, just like the
-rest of the app. Once a pool is exhausted, the shared engine shortens/skips it;
-it must not manufacture freshness by changing punctuation or option order.
-Existing stage IDs, badge IDs, and database versions are unchanged.
+The map offers three guided, unscored cases: turtle shell, rabbit fur, and helmet.
+The turtle explicitly asks for both trait and adaptation membership; rabbit fur
+models missing evidence; the helmet separates useful objects from body traits.
+Local corrective feedback precedes independent stage work.
 
-## Science sources
+| Activity | Child action | Authored tasks |
+| --- | --- | ---: |
+| Notice | Place three clues inside/outside body traits. | 168 |
+| Sort | Place three cards in the nested trait family or outside it. | 239 |
+| Origins | Distinguish parents, practice, and life changes using three clues. | 167 |
+| Compare | Explore two scenes each for two organisms; classify four scene clues. | 66 |
+| Connect | Select supported labels and classify four evidence cards. | 20 |
+| **Total** | **Semantic tasks, not shuffle variants.** | **660** |
 
-Individual feature/function examples carry source URLs in
-`src/content/traits/examples.ts`. Definitions and misconception checks draw on:
+Chapters 1–8 introduce notice, 9–22 sort, 23–30 origins, 31–34 compare,
+and 35 connect. Chapters 36–55 mix activities; compare returns from chapter 38
+and connect from chapter 48 for later retrieval. Each chapter has 12 authored
+tasks and retains its existing six-question session setting. Several cards can
+share a destination; empty destinations are valid.
 
-- [NHGRI: Trait](https://www.genome.gov/genetics-glossary/Trait)
-- [UC Berkeley: Adaptation](https://evolution.berkeley.edu/evolution-101/mechanisms-the-processes-of-evolution/adaptation/)
-- [UC Berkeley: K–2 teaching pitfalls](https://evolution.berkeley.edu/teach-evolution/teaching-guides/teaching-guides-k-2/avoid-common-teaching-pitfalls/)
-- [UC Berkeley: Evolution misconceptions](https://evolution.berkeley.edu/teach-evolution/misconceptions-about-evolution/)
-- [NGSS 1-LS1-1: Structure/function foundation](https://www.nextgenscience.org/pe/1-ls1-1-molecules-organisms-structures-and-processes)
-- [NGSS 3-LS3-1: Later inheritance/variation progression](https://www.nextgenscience.org/pe/3-ls3-1-heredity-inheritance-and-variation-traits)
+Connect provides two independent multi-select stamps: **Trait** and **Adaptation**.
+The 20 cases comprise 12 known adaptations and eight inherited traits with
+insufficient adaptation evidence. All four clues must be placed as inheritance,
+helpful-job evidence, or insufficient evidence. Known cases require both stamps;
+unknown cases support Trait alone without asserting “not an adaptation.”
+Appearance and naming are insufficient evidence. This is constrained evidence
+construction, not a measure of freely generated scientific explanation.
 
-## Pictures, not emoji clues
+Compare uses all 66 unordered pairs of 12 habitat cases. Scene controls keep the
+feature constant and change context; every scene must be explored before Check.
+These are labeled models, not measured survival results or invented numerical
+experiments. “Job not happening here” means that job is not being used, not that
+the feature is harmful. A known adaptation remains an adaptation when its job
+is unnecessary in another place.
 
-The map field guide uses a real turtle photograph and a nested trait/adaptation
-diagram. All 808 authored tasks have reference pictures drawn from 73 real
-photographs bundled locally. Every task is also explicit in text. No science answer
-depends on recognizing an emoji. Existing shared reward/navigation symbols are
-unchanged.
+## Implementation contracts
 
-Image generation was unavailable in the implementation session: the model
-catalog returned no image models and no image API key was configured. The
-alternative is verified photographs, not simulated generated assets: 70 from
-Wikimedia Commons and three from iNaturalist. `src/content/traits/photoCatalog.ts`
-combines the original `images.ts` records with `photosAnimals.ts`,
-`photosPlants.ts`, and `photosExamples.ts`. Each records photographer, original
-URL, license, license URL, alt text, and resize/conversion changes. The field guide's
-photo credits include those details without adding outbound navigation to the
-child's game. Source/provenance sidecars travel with the WebP copies.
+- `src/content/traits/detectiveCurriculum.ts` deterministically builds live
+  `stages.json`; canonical tokens sort subject IDs, so reversing cards is not new content.
+- `detectiveCards.ts`, `habitatCases.ts`, and `detectiveTypes.ts` hold sourced
+  clues, classifications, origins, scenes, boards, and solutions. Adaptation
+  classification is separate from a habitat scene's `helps` flag.
+- `src/engine/generators/traitDetective.ts` produces the `trait-detective`
+  input mode and JSON-serializable `Question.payload.traitDetective` board.
+  `detectiveAnswer` sorts placement keys into a stable answer, including stamps.
+- `src/ui/inputs/TraitDetective.tsx` uses tap-select/tap-place and explicit Check.
+  Exploration and rearrangement are not submitted mistakes.
 
-Stable subject IDs in `pictureMap.ts` select pictures, rather than guesses from
-display names. Captions name the subject without explaining the answer. Origin
-questions show the subjects of every displayed choice, deduplicated by subject;
-two-organism matching shows both subjects. These are reference pictures, not
-claims to document the hypothetical event in a question. Injury examples use
-ordinary, unharmed subjects.
+## Feedback, persistence, and migration
 
-WebP is included in the PWA precache so the pictures work offline. No new runtime
-network dependency, account, analytics, or persisted feature state was added.
-Parent controls remain registry-driven, including enable/hide and progress
-editing for the new world.
+`PlayStage.tsx` and `TraitDetectiveReview.tsx` show an unscored explanation of
+the submitted case, including incorrect placements when available, then wait
+for Next case (or completion). Correct scoring and progression are committed
+**before** review appears, preventing reload from scoring that answer twice.
+On a miss, the shared engine prepares a fresh replacement; review keeps it hidden
+behind the discarded case's explanation until Next. Correction is not another
+scored attempt at that discarded case.
 
-## Verification
+No new persisted state or database version is introduced. Full questions and
+committed progress remain saved through the shared session. **Partial placements,
+stamp selections, scene exploration, guided discovery, and review are local UI
+state and reset on reload**, like existing input widgets. Reload can skip a review
+already shown and resume the committed next/replacement question. This limitation
+means an unfinished board is not fully restored.
 
-`bun run check` runs lint, the existing all-world question audit plus
-`scripts/audit-traits.ts`, TypeScript, and the production/PWA build. The stricter
-traits audit checks every authored answer, sources and IDs, paired-card
-uniqueness, complete sequential chapter sessions, and fresh normal/gentler
-replacements after excluding the initial session. It also checks solved
-explanations through the shared answer helper.
-`scripts/audit-traits-media.ts` additionally checks all picture mappings, all
-73 local WebP files and their licensing metadata, and all-choice subject coverage.
+The 55 stage IDs, ordering, payout and skill fields, milestone identities, and
+existing progress remain intact. Parent Section enable/hide/access and progress
+controls continue through the unchanged world registry. Existing stars retain
+their original progression meaning, not evidence of passing the new curriculum.
 
-To regenerate unreleased chapter data after a deliberate content review:
-`bun scripts/build-traits-stages.ts`. Review the output; do not reorder released
-IDs or casually regenerate progression referenced by saves.
+The original **808 legacy tasks** are archived in
+`src/content/traits/legacyStages.json`. Existing current-copy legacy sessions
+resume their saved question and choices rather than becoming detective questions;
+older copy migrations retain their established behavior. `traitSessionParams`
+recognizes the saved `traits:` dedupe token and supplies archived stage parameters
+to `missTransition`, so even a legacy miss draws from its original pool.
+Fresh detective questions use `traits-detective:` keys. This new namespace permits
+genuinely new tasks without resetting seen history; finite pools still exhaust
+under the shared freshness policy.
 
-For wording-only changes to released chapters, use
-`bun scripts/build-traits-stages.ts --refresh-copy`. This updates names and help
-text while keeping every published task pool, ID, payout, and skill unchanged.
+## Photographs and legal credits
 
-## Plain-language follow-up
+Retain all 73 locally bundled reference photographs, WebP files, provenance
+sidecars, and existing credits UI. `photoCatalog.ts` combines `images.ts`,
+`photosAnimals.ts`, `photosPlants.ts`, and `photosExamples.ts`. Metadata includes
+photographer, original URL, license and license URL, alt text, and resize/conversion
+changes: 70 Commons photographs and three iNaturalist photographs. Reference
+photos do not purport to show hypothetical injuries or scene outcomes. Text
+provides the science clues. WebP remains included in PWA precaching, with no
+runtime image-service dependency.
 
-Parent feedback showed that the original wording was too abstract for age seven.
-The child-facing text now uses direct questions and concrete examples:
+## Audit and verification instructions
 
-- “beaver: match the body trait” → “Which part does a beaver have?”
-- “strong chisel-shaped front teeth” → “big front teeth”
-- Explanation: “A beaver has big front teeth. This helps it bite through wood.”
-- “Match the job to a trait” → “What helps a duck swim?”
-- Other changes use everyday situations: “What can happen after a haircut?”
+Run `bun run check` for lint, all-world question audits, TypeScript, and the
+production/PWA build. Review `scripts/audit-trait-detective.ts` and the
+`audit-traits*.ts` scripts for curriculum/answers, legacy compatibility, language,
+labels, resume behavior, and media provenance checks.
 
-Each body-part question uses
-its own reviewed alternatives instead of the repeated mud/trick pair. Origin
-questions have 48 distinct concrete example answers instead of repeatedly
-selecting the same three category labels. The six existing activity types,
-photographs, learning goals, and anti-guessing rules remain intact.
+Regenerate live content with `bun scripts/build-trait-detective.ts`. It reads
+the archive and should be idempotent: run twice and inspect `git diff` to confirm
+the second run adds no changes. The old `bun scripts/build-traits-stages.ts`
+(including `--refresh-copy`) now writes **only `legacyStages.json`**, not the live
+detective manifest. Archive changes require deliberate compatibility review.
 
-`scripts/audit-traits-language.ts` guards against the rejected wording, long
-choices, vocabulary banners, duplicate origin examples, and low answer-choice
-variety. `scripts/audit-traits-resume.ts` covers all six activity types and the
-exact rejected beaver example as a saved-question regression.
+Browser QA should exercise all five activities, both stamp outcomes, misses and
+Next, correct-answer reload without duplicate credit, legacy reload and miss,
+partial-board reload, parent controls, keyboard/touch access, phone scrolling,
+and offline photographs/credits. These are verification instructions, not claims
+that commands or browser checks have passed for this revision.
 
-Old in-progress questions refresh on hydration using their existing subject
-token. The question ID, correct-answer position, shuffled pair roles, progress,
-seed, score, and history are retained; obsolete banners and speech are replaced
-together with the answer text. Current-copy questions are versioned and resume
-unchanged, so a reload does not redraw their choices. No save reset is needed.
-Content version 3 adds pictures and expands older saved multiple-choice questions
-to four options without moving the correct answer. Matching-card roles remain
-unchanged; current-version questions still resume exactly as saved.
+## Research basis
 
-## Labels on the actual question
+See `reports/Teaching traits through discovery.md`; its three proposed investigation
+strands are implemented here as five activities. Sources support the scientific
+and instructional rationale, not app efficacy:
 
-Each question has a short label beside its own picture and prompt identifying
-what it asks about: traits, adaptations, inherited traits, learned skills, or
-changed traits. Body-part/function questions identify the inherited feature as
-both a trait and an adaptation; the helpful job is not itself a body part.
-Concept questions have individually reviewed labels. Being inherited alone or
-having a visible color does not prove a trait is an adaptation.
+- [NGSS 1-LS1-1](https://www.nextgenscience.org/pe/1-ls1-1-molecules-organisms-structures-and-processes): structure/function foundations.
+- [NGSS 3-LS4-3](https://www.nextgenscience.org/pe/3-ls4-3-biological-evolution-unity-and-diversity): evidence-based habitat arguments.
+- [NGSS 3-LS3-2](https://www.nextgenscience.org/pe/3-ls3-2-heredity-inheritance-and-variation-traits): environmental influence on traits.
+- [Berkeley: Adaptation](https://evolution.berkeley.edu/evolution-101/mechanisms-the-processes-of-evolution/adaptation/) and [qualifying as an adaptation](https://evolution.berkeley.edu/qualifying-as-an-adaptation/): inherited history and limits of appearance/benefit alone.
+- [IES practice guide](https://ies.ed.gov/ncee/wwc/practiceguide/1): visual/verbal representations, explanatory questions, and retrieval.
+- [Kelemen et al., 2014](https://pubmed.ncbi.nlm.nih.gov/24503874/): children aged 5–8 learned/generalized causal explanations in a picture-storybook study; this does not validate this touchscreen implementation.
 
-There is no separate teaching example or unrelated example photograph above
-questions. The question's existing read-aloud button reads its label and short
-explanation along with the prompt and choices. Safari retains normal page
-scrolling so all answers remain reachable.
-
-Labels are derived from the active subject token at render time, including
-resumed and replacement questions. No question redraw, RNG use, payload
-migration, progress reset, or new persisted feature is needed. Stage IDs, pools,
-choices, rewards, shared grading, and Parent Section controls are unchanged.
-`scripts/audit-traits-labels.ts` checks coverage and speech across all authored
-tasks, classification regressions, and preservation of saved question data.
-
-### Implementation verification, 2026-11-08
-
-- `bun run check` passed: 88 worlds, 48,400 seeded sessions, 302,730 questions,
-  plus TypeScript and the production/PWA build. The existing audit still reports
-  2,833 exhausted and 131 shortened **legacy** levels; every new Safari chapter
-  fills its six-question session in the strict sequential audit.
-- Safari-specific audit passed for 55 chapters and 808 distinct authored tasks,
-  including normal/gentler replacements and all authored answers.
-- Real browser checks exercised fresh questions and locked input after a miss,
-  a repeated-miss solved explanation, exact question restore after reload,
-  completion and sequential unlock, and constructed four-card submission.
-  A run with misses paid 16 Star Dust; a first-try run at the same base payout
-  paid 22 and showed Perfect Run.
-- Parent Section displayed visibility, access, and progress controls. A parent
-  lock remained enforced after reloading the world route.
-- Desktop (1280px) and phone (390px) screenshots were reviewed independently.
-  The reviewer's speaker-target finding was corrected and scored resolved:
-  the measured target is 48×48px; phone scroll width equals viewport width.
-- With network access blocked in the browser, an uncached probe failed while
-  all 73 local photographs returned HTTP 200 through the service worker.
-- All 73 image provenance checks passed, and all 73 photographs decoded in the
-  browser without broken images. No new runtime image service is used.
-- Version-2 saved-question migration gained a beaver picture and fourth option
-  while retaining its ID, correct-answer position, seed, score, history, and
-  question index. Reload retained the current question, choices, and picture.
-- Pictured four-choice submission, replacement after a miss with locked input,
-  and four-card matching submission passed in the browser. Desktop, tablet,
-  and phone layouts were inspected; the 390px phone has no horizontal overflow.
+Future child evaluation should separate reading/touch difficulty and adult help
+from independent inclusion, causal reasoning, changed-context predictions, and
+later unfamiliar-case retrieval. Neither a mastery threshold nor the specific
+fresh-case-after-miss policy is validated here.

@@ -1,6 +1,6 @@
 import { OBSERVATIONS } from "../src/content/traits/examples";
 import { CONCEPTS } from "../src/content/traits/concepts";
-import { WORLDS } from "../src/content/worlds";
+import legacyStages from "../src/content/traits/legacyStages.json";
 import { generateQuestionSet } from "../src/engine/generators";
 import { refreshTraitsQuestion } from "../src/engine/generators/refreshTraits";
 import { traitQuestionLabel } from "../src/engine/generators/traitQuestionLabel";
@@ -57,7 +57,8 @@ function checkQuestion(question: Question, token: string, failures: string[]): v
 export function auditTraitsLabels(): string[] {
   const failures: string[] = [];
   const tokens = new Set<string>();
-  for (const stage of WORLDS.find((world) => world.id === "traits")?.stages ?? []) {
+  // Saved legacy sessions retain every released label and spoken explanation.
+  for (const stage of legacyStages) {
     for (const token of stage.params.items as string[]) tokens.add(token);
   }
   if (tokens.size !== 808) failures.push(`traits labels: expected 808 authored tasks, got ${tokens.size}`);
