@@ -1,4 +1,5 @@
-import { TRAIT_IMAGES, type TraitImageKey } from "../content/traits/images";
+import { TRAIT_IMAGES } from "../content/traits/images";
+import { TRAIT_PHOTOS } from "../content/traits/photoCatalog";
 import { STR } from "../strings/en";
 import { speak } from "../engine/feedback/speech";
 import { Link } from "react-router-dom";
@@ -46,35 +47,11 @@ export function TraitGuide({ stageId }: { stageId: string }) {
       </details>
       <details className="trait-photo-credits">
         <summary>{text.photoCredits}</summary>
-        {Object.entries(TRAIT_IMAGES).map(([id, image]) => <p key={id}>
-          {image.caption} · {image.credit} · {image.license}
+        {Object.entries(TRAIT_PHOTOS).map(([id, image]) => <p key={id}>
+          {image.label} · {image.credit} · {image.license}
           <br />{image.sourceUrl}<br />{image.licenseUrl}
         </p>)}
       </details>
     </section>
   );
-}
-
-// Exact aliases only: a painted turtle must not illustrate a sea turtle's
-// flippers, nor a katydid stand in for an unrelated leaf insect.
-const photoAliases: Record<string, TraitImageKey> = {
-  turtle: "turtle", paintedturtle: "turtle", duck: "duck", mallardduck: "duck",
-  cactus: "cactus", polarbear: "polarBear", katydid: "katydid", giraffe: "giraffe",
-};
-
-export function TraitPhotos({ organisms }: { organisms: unknown }) {
-  if (!Array.isArray(organisms)) return null;
-  const images = organisms.flatMap((organism) => {
-    if (typeof organism !== "string") return [];
-    const name = organism.toLowerCase().replace(/^(a|an|the) /, "").replace(/[^a-z]/g, "");
-    const id = photoAliases[name];
-    return id ? [{ id, image: TRAIT_IMAGES[id] }] : [];
-  });
-  if (!images.length) return null;
-  return <div className="trait-question-photos">
-    {images.map(({ id, image }, index) => <figure key={`${id}-${index}`}>
-      <img src={image.src} alt={image.alt} width="320" height="240" />
-      <figcaption>{image.caption}</figcaption>
-    </figure>)}
-  </div>;
 }

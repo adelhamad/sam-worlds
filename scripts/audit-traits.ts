@@ -9,6 +9,7 @@ import type { Question } from "../src/engine/generators/types";
 import { STR } from "../src/strings/en";
 import { auditTraitsResume } from "./audit-traits-resume";
 import { auditTraitsLanguage, checkTraitsLanguage } from "./audit-traits-language";
+import { auditTraitsMedia, checkTraitsMedia } from "./audit-traits-media";
 
 const MODES = ["spot", "origin", "concept", "job", "feature", "pair"];
 const adaptations = new Map(ADAPTATIONS.map((item) => [item.id, item]));
@@ -65,7 +66,7 @@ function checkBanks(failures: string[]): void {
 }
 
 function checkDistractors(label: string, answer: string, distractors: string[], failures: string[]): void {
-  if (!Array.isArray(distractors) || distractors.length < 2 || !distractors.every(nonblank) ||
+  if (!Array.isArray(distractors) || distractors.length < 3 || !distractors.every(nonblank) ||
       distractors.includes(answer) || new Set(distractors).size !== distractors.length) {
     failures.push(`traits ${label}: invalid distractor bank`);
   }
@@ -126,14 +127,21 @@ function authoredTask(token: string): AuthoredTask {
   return { prompt, answer, semanticKey: JSON.stringify([prompt, answer]) };
 }
 
-function checkQuestion(question: Question, label: string, failures: string[]): void {
+function checkQuestion(question: Question, easier: boolean, label: string, failures: string[]): void {
   checkTraitsLanguage(question, label, failures);
+  const token = question.dedupeKey?.replace(/^traits:/, "");
+  if (!token || question.dedupeKey !== `traits:${token}`) failures.push(`${label}: missing stable traits task key`);
+  else checkTraitsMedia(question, token, label, failures);
+  if (question.payload?.traitsCopyVersion !== 3) failures.push(`${label}: expected traits copy version 3`);
   if (![question.prompt, question.answer, question.hint].every(nonblank)) failures.push(`${label}: blank question content`);
   if (!workedExample(question).trim()) failures.push(`${label}: missing shared worked example`);
   if (question.inputMode === "choices") {
-    if (question.choices.length < 2 || !question.choices.every(nonblank) ||
+    const count = easier ? 3 : 4;
+    if (question.choices.length !== count || !question.choices.every(nonblank) ||
         question.choices.filter((choice) => choice === question.answer).length !== 1 ||
-        new Set(question.choices).size !== question.choices.length) failures.push(`${label}: invalid single-choice answers`);
+        new Set(question.choices).size !== question.choices.length) {
+      failures.push(`${label}: expected ${count} unique choices (one correct, ${count - 1} distinct wrong)`);
+    }
   }
 }
 
@@ -154,7 +162,9 @@ function checkToken(stage: Stage, token: string, task: AuthoredTask, failures: s
       failures.push(`${label}: no authored question`);
       continue;
     }
-    checkQuestion(question, label, failures);
+    checkQuestion(question, easier, label, failures);
+    // The shared set builder assigns seed/index IDs; the subject token stays stable.
+    if (question.id !== "traits-509-0" || question.dedupeKey !== `traits:${token}`) failures.push(`${label}: authored task identity changed`);
     if (question.answer !== task.answer || question.prompt !== task.prompt) failures.push(`${label}: wrong authored prompt or answer`);
     if (task.ordered) checkPair(question, task.ordered, label, failures);
     else if (question.inputMode !== "choices") failures.push(`${label}: expected single-choice matching`);
@@ -165,9 +175,9 @@ function taskKeys(question: Question): string[] {
   return [...questionKeys(question), `task:${JSON.stringify([question.prompt, question.answer])}`];
 }
 
-function claimQuestions(questions: Question[], seen: Set<string>, label: string, failures: string[]): void {
+function claimQuestions(questions: Question[], seen: Set<string>, easier: boolean, label: string, failures: string[]): void {
   for (const question of questions) {
-    checkQuestion(question, label, failures);
+    checkQuestion(question, easier, label, failures);
     const keys = taskKeys(question);
     if (keys.some((key) => seen.has(key))) failures.push(`${label}: repeated semantic task or token`);
     keys.forEach((key) => seen.add(key));
@@ -182,7 +192,7 @@ function checkSequentialRun(stages: Stage[], seed: number, easier: boolean, fail
     try {
       const initial = generateQuestionSet(stage.generator, stage.params, 6, seed + index, context, globalSeen);
       if (initial.length !== 6) failures.push(`${label}: ${initial.length}/6 initial questions`);
-      claimQuestions(initial, globalSeen, label, failures);
+      claimQuestions(initial, globalSeen, easier, label, failures);
       // Both variants must retain two fresh tasks after the same initial six.
       for (const replacementEasier of [false, true]) {
         const excluded = new Set(globalSeen);
@@ -190,7 +200,7 @@ function checkSequentialRun(stages: Stage[], seed: number, easier: boolean, fail
           { ...context, easier: replacementEasier }, excluded);
         const replacementLabel = `${label} replacements easier=${replacementEasier}`;
         if (replacements.length !== 2) failures.push(`${replacementLabel}: ${replacements.length}/2 fresh questions`);
-        claimQuestions(replacements, excluded, replacementLabel, failures);
+        claimQuestions(replacements, excluded, replacementEasier, replacementLabel, failures);
       }
     } catch (error) {
       failures.push(`${label}: ${String(error)}`);
@@ -226,11 +236,12 @@ function checkStages(stages: Stage[], failures: string[]): void {
     }
   }
   for (const mode of MODES) if (!modes.has(mode)) failures.push(`traits: unused mode ${mode}`);
+  if (tokens.size !== 808) failures.push(`traits: expected 808 authored tasks, got ${tokens.size}`);
 }
 
 /** Traits-only structural, factual and fresh-question checks for the shared audit. */
 export function auditTraits(): string[] {
-  const failures: string[] = [...auditTraitsResume(), ...auditTraitsLanguage()];
+  const failures: string[] = [...auditTraitsResume(), ...auditTraitsLanguage(), ...auditTraitsMedia()];
   const world = WORLDS.find((entry) => entry.id === "traits");
   if (!world || world.stages.length !== 55) failures.push("traits: expected 55 stages");
   checkBanks(failures);

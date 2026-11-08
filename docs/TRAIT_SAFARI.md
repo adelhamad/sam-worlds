@@ -28,7 +28,8 @@ must differ. Reversing a pair is not counted as a new question.
 Each chapter asks six questions from its own authored pool. Foundation pools
 contain at least twelve tasks; two-organism pools contain sixteen. Seeded draws,
 semantic deduplication, replacement on a miss, scoring, and saves use the shared
-engine. Gentler matching reduces the choice count; gentler constructed matching
+engine. Standard multiple-choice questions offer four distinct choices; gentler
+questions offer three. Gentler constructed matching
 adds a concrete first-pair hint. Solved explanations support the shared worked
 example scaffold. Read-aloud includes the prompt and answer cards.
 
@@ -53,18 +54,27 @@ Individual feature/function examples carry source URLs in
 ## Pictures, not emoji clues
 
 The map field guide uses a real turtle photograph and a nested trait/adaptation
-diagram. Six real organism photographs are bundled locally; question pictures
-are supplementary, and every task is explicit in text. No science answer
+diagram. All 808 authored tasks have reference pictures drawn from 73 real
+photographs bundled locally. Every task is also explicit in text. No science answer
 depends on recognizing an emoji. Existing shared reward/navigation symbols are
 unchanged.
 
 Image generation was unavailable in the implementation session: the model
 catalog returned no image models and no image API key was configured. The
-alternative is verified Wikimedia Commons photographs, not simulated generated
-assets. `src/content/traits/images.ts` records photographer, original URL,
-license, license URL, alt text, and resize/conversion changes. The field guide's
+alternative is verified photographs, not simulated generated assets: 70 from
+Wikimedia Commons and three from iNaturalist. `src/content/traits/photoCatalog.ts`
+combines the original `images.ts` records with `photosAnimals.ts`,
+`photosPlants.ts`, and `photosExamples.ts`. Each records photographer, original
+URL, license, license URL, alt text, and resize/conversion changes. The field guide's
 photo credits include those details without adding outbound navigation to the
 child's game. Source/provenance sidecars travel with the WebP copies.
+
+Stable subject IDs in `pictureMap.ts` select pictures, rather than guesses from
+display names. Captions name the subject without explaining the answer. Origin
+questions show the subjects of every displayed choice, deduplicated by subject;
+two-organism matching shows both subjects. These are reference pictures, not
+claims to document the hypothetical event in a question. Injury examples use
+ordinary, unharmed subjects.
 
 WebP is included in the PWA precache so the pictures work offline. No new runtime
 network dependency, account, analytics, or persisted feature state was added.
@@ -79,6 +89,8 @@ traits audit checks every authored answer, sources and IDs, paired-card
 uniqueness, complete sequential chapter sessions, and fresh normal/gentler
 replacements after excluding the initial session. It also checks solved
 explanations through the shared answer helper.
+`scripts/audit-traits-media.ts` additionally checks all picture mappings, all
+73 local WebP files and their licensing metadata, and all-choice subject coverage.
 
 To regenerate unreleased chapter data after a deliberate content review:
 `bun scripts/build-traits-stages.ts`. Review the output; do not reorder released
@@ -115,6 +127,9 @@ token. The question ID, correct-answer position, shuffled pair roles, progress,
 seed, score, and history are retained; obsolete banners and speech are replaced
 together with the answer text. Current-copy questions are versioned and resume
 unchanged, so a reload does not redraw their choices. No save reset is needed.
+Content version 3 adds pictures and expands older saved multiple-choice questions
+to four options without moving the correct answer. Matching-card roles remain
+unchanged; current-version questions still resume exactly as saved.
 
 ### Implementation verification, 2026-11-08
 
@@ -135,5 +150,12 @@ unchanged, so a reload does not redraw their choices. No save reset is needed.
   The reviewer's speaker-target finding was corrected and scored resolved:
   the measured target is 48×48px; phone scroll width equals viewport width.
 - With network access blocked in the browser, an uncached probe failed while
-  all six local photographs returned HTTP 200 through the service worker.
-- All six image provenance checks passed. No new runtime image service is used.
+  all 73 local photographs returned HTTP 200 through the service worker.
+- All 73 image provenance checks passed, and all 73 photographs decoded in the
+  browser without broken images. No new runtime image service is used.
+- Version-2 saved-question migration gained a beaver picture and fourth option
+  while retaining its ID, correct-answer position, seed, score, history, and
+  question index. Reload retained the current question, choices, and picture.
+- Pictured four-choice submission, replacement after a miss with locked input,
+  and four-card matching submission passed in the browser. Desktop, tablet,
+  and phone layouts were inspected; the 390px phone has no horizontal overflow.

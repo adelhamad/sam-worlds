@@ -28,7 +28,7 @@ import { StatCompare, type StatPair } from "../../ui/StatCompare";
 import { VideoToggle } from "../../ui/VideoToggle";
 import { CircuitDiagram } from "../../ui/inputs/CircuitDiagram";
 import type { Node as CircuitNode } from "../../engine/generators/logicCircuit";
-import { TraitPhotos } from "../../ui/TraitGuide";
+import { TraitPhotos } from "../../ui/TraitPhotos";
 
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const THINK_MS = 1200;
@@ -376,7 +376,7 @@ function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onRevea
         </div>
       )}
       <GeoStatMedia q={q} />
-      <TraitPhotos organisms={q.payload?.traitOrganisms} />
+      <TraitPhotos pictureIds={q.payload?.traitPictureIds} />
       {q.payload?.tree && q.inputMode !== "toggle" ? (
         <CircuitDiagram tree={q.payload.tree as CircuitNode} lamp="unknown" />
       ) : null}

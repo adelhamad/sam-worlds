@@ -1,5 +1,6 @@
 import { mulberry32 } from "../rng";
 import { generateTraits, TRAITS_COPY_VERSION } from "./traits";
+import { withTraitPictures } from "./traitPictures";
 import type { Question } from "./types";
 
 const REFRESH_SEED = 20261108;
@@ -30,12 +31,13 @@ function savedToken(question: Question): string | null {
 function refreshedChoices(old: Question, fresh: Question): string[] | null {
   const count = old.choices?.length;
   if (old.inputMode !== "choices" || fresh.inputMode !== "choices" ||
-      ![2, 3].includes(count) || !strings(old.choices, count) || !strings(fresh.choices, count)) return null;
+      ![2, 3, 4].includes(count) || !strings(old.choices, count) ||
+      !strings(fresh.choices, fresh.choices.length) || fresh.choices.length < count) return null;
   const answerIndex = old.choices.indexOf(old.answer);
   if (answerIndex < 0 || !fresh.choices.includes(fresh.answer)) return null;
   const distractors = fresh.choices.filter((choice) => choice !== fresh.answer);
   let nextDistractor = 0;
-  return old.choices.map((_, index) => index === answerIndex ? fresh.answer : distractors[nextDistractor++]);
+  return fresh.choices.map((_, index) => index === answerIndex ? fresh.answer : distractors[nextDistractor++]);
 }
 
 function refreshedItems(old: Question, fresh: Question): string[] | null {
@@ -68,14 +70,14 @@ export function refreshTraitsQuestion(question: Question): Question {
     }
     const notes = Array.isArray(payload.listRows) ? payload.listRows : [];
     payload.speechText = [fresh.prompt, ...notes, ...cards].join(". ");
-    return {
+    return withTraitPictures({
       ...question,
       prompt: fresh.prompt,
       answer: fresh.answer,
       choices: pair ? [] : cards,
       hint: fresh.hint,
       payload,
-    };
+    });
   } catch {
     // An obsolete token or incomplete save must never prevent resuming a stage.
     return question;
