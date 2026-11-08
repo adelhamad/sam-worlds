@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { db, logEvent, type BadgeRow, type CouponRow, type ProgressRow, type SessionRow } from "../engine/save/db";
 import { clearBackup, requestPersistentStorage, restoreBackupIfNeeded } from "../engine/save/backup";
 import { generateQuestionSet, questionKeys } from "../engine/generators";
+import { refreshTraitsQuestion } from "../engine/generators/refreshTraits";
 import { DEFAULT_RATING, stageDifficulty } from "../engine/difficulty/skillRating";
 import { starsForResult } from "../engine/progress/stars";
 import { weightedPayout } from "../engine/answers/answerEngine";
@@ -227,6 +228,8 @@ export const useGame = create<GameStore>((set, get) => ({
         session: sessionRow
           ? {
               ...sessionRow,
+              questions: stageById(sessionRow.stageId)?.generator === "traits"
+                ? sessionRow.questions.map(refreshTraitsQuestion) : sessionRow.questions,
               wrongStamps: sessionRow.wrongStamps ?? [],
               proveLeft: sessionRow.proveLeft ?? 0,
               lastAnswer: null,

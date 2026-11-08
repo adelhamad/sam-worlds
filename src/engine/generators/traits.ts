@@ -1,11 +1,13 @@
 import { ADAPTATIONS, OBSERVATIONS } from "../../content/traits/examples";
 import { CONCEPTS } from "../../content/traits/concepts";
-import { TRAIT_WORDS } from "../../content/traits/vocabulary";
+import { TRAIT_CHANGE_EVENTS } from "../../content/traits/changes";
 import { STR } from "../../strings/en";
 import { pick, shuffle, type RNG } from "../rng";
 import type { GenContext, Question } from "./types";
 
 export interface TraitsParams { items: string[] }
+// Bump for intentional copy migrations; current questions resume exactly as saved.
+export const TRAITS_COPY_VERSION = 2;
 export type TraitMode = "spot" | "origin" | "concept" | "job" | "feature" | "pair";
 const adaptations = new Map(ADAPTATIONS.map((item) => [item.id, item]));
 const observations = new Map(OBSERVATIONS.map((item) => [item.id, item]));
@@ -30,11 +32,13 @@ function traitQuestion(params: TraitsParams, rng: RNG, ctx: GenContext): Questio
   if (mode === "origin") {
     const item = observations.get(id);
     if (!item) throw new Error(`Unknown trait observation: ${id}`);
-    const answer = STR.traits.origins[item.kind];
-    return { ...base, prompt: STR.traits.origin(item.subject, item.detail), answer,
-      choices: choices(answer, Object.values(STR.traits.origins).filter((label) => label !== answer), rng, ctx),
-      hint: item.hint, inputMode: "choices", payload: { listRows: [STR.traits.originNote],
-        workedExample: `${item.detail}: ${answer}. ${item.hint}` } };
+    const answer = item.example;
+    const otherKinds = Object.keys(STR.traits.origins).filter((kind) => kind !== item.kind);
+    const distractors = otherKinds.map((kind) => pick(rng, OBSERVATIONS.filter((other) => other.kind === kind)).example);
+    const prompt = item.kind === "acquired" ? STR.traits.changePrompt(TRAIT_CHANGE_EVENTS[item.id]) : STR.traits.originPrompts[item.kind];
+    return { ...base, prompt, answer,
+      choices: choices(answer, distractors, rng, ctx), hint: item.hint, inputMode: "choices",
+      payload: { workedExample: item.hint } };
   }
   if (mode === "concept") {
     const item = concepts.get(id);
@@ -58,7 +62,7 @@ function traitQuestion(params: TraitsParams, rng: RNG, ctx: GenContext): Questio
   if (!["spot", "job", "feature"].includes(mode)) throw new Error(`Unknown trait task: ${token}`);
   const answer = mode === "job" ? item.job : item.trait;
   let prompt = STR.traits.spot(item.organism);
-  let distractors: readonly string[] = STR.traits.spotDistractors;
+  let distractors: readonly string[] = item.distractorTraits;
   if (mode === "job") {
     prompt = STR.traits.job(item.organism, item.trait);
     distractors = item.distractorJobs;
@@ -67,16 +71,13 @@ function traitQuestion(params: TraitsParams, rng: RNG, ctx: GenContext): Questio
     distractors = item.distractorTraits;
   }
   return { ...base, prompt, answer, choices: choices(answer, distractors, rng, ctx),
-    hint: mode === "spot" ? STR.traits.spotHint : explanation, inputMode: "choices",
+    hint: explanation, inputMode: "choices",
     payload: { workedExample: explanation, traitOrganisms: [item.organism] } };
 }
 
 export function generateTraits(params: TraitsParams, rng: RNG, ctx: GenContext): Question {
   const question = traitQuestion(params, rng, ctx);
   const cards = question.inputMode === "order" ? question.payload?.items as string[] : question.choices;
-  const ids = question.dedupeKey?.split(":").slice(2) ?? [];
-  const existingNotes = (question.payload?.listRows as string[] | undefined) ?? [];
-  const notes = [...new Set([...existingNotes, ...ids.flatMap((id) => TRAIT_WORDS[id] ? [TRAIT_WORDS[id]] : [])])];
   return { ...question, payload: { ...question.payload,
-    listRows: notes, speechText: [question.prompt, ...notes, ...cards].join(". ") } };
+    traitsCopyVersion: TRAITS_COPY_VERSION, speechText: [question.prompt, ...cards].join(". ") } };
 }

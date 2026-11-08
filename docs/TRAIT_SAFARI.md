@@ -84,6 +84,38 @@ To regenerate unreleased chapter data after a deliberate content review:
 `bun scripts/build-traits-stages.ts`. Review the output; do not reorder released
 IDs or casually regenerate progression referenced by saves.
 
+For wording-only changes to released chapters, use
+`bun scripts/build-traits-stages.ts --refresh-copy`. This updates names and help
+text while keeping every published task pool, ID, payout, and skill unchanged.
+
+## Plain-language follow-up
+
+Parent feedback showed that the original wording was too abstract for age seven.
+The child-facing text now uses direct questions and concrete examples:
+
+- “beaver: match the body trait” → “Which part does a beaver have?”
+- “strong chisel-shaped front teeth” → “big front teeth”
+- Explanation: “A beaver has big front teeth. This helps it bite through wood.”
+- “Match the job to a trait” → “What helps a duck swim?”
+- Other changes use everyday situations: “What can happen after a haircut?”
+
+There are no vocabulary lectures above questions. Each body-part question uses
+its own reviewed alternatives instead of the repeated mud/trick pair. Origin
+questions have 48 distinct concrete example answers instead of repeatedly
+selecting the same three category labels. The six existing activity types,
+photographs, learning goals, and anti-guessing rules remain intact.
+
+`scripts/audit-traits-language.ts` guards against the rejected wording, long
+choices, vocabulary banners, duplicate origin examples, and low answer-choice
+variety. `scripts/audit-traits-resume.ts` covers all six activity types and the
+exact rejected beaver example as a saved-question regression.
+
+Old in-progress questions refresh on hydration using their existing subject
+token. The question ID, correct-answer position, shuffled pair roles, progress,
+seed, score, and history are retained; obsolete banners and speech are replaced
+together with the answer text. Current-copy questions are versioned and resume
+unchanged, so a reload does not redraw their choices. No save reset is needed.
+
 ### Implementation verification, 2026-11-08
 
 - `bun run check` passed: 88 worlds, 48,400 seeded sessions, 302,730 questions,
