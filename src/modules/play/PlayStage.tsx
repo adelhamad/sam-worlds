@@ -29,6 +29,7 @@ import { VideoToggle } from "../../ui/VideoToggle";
 import { CircuitDiagram } from "../../ui/inputs/CircuitDiagram";
 import type { Node as CircuitNode } from "../../engine/generators/logicCircuit";
 import { TraitPhotos } from "../../ui/TraitPhotos";
+import { TraitLessonNote } from "../../ui/TraitLessonNote";
 
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const THINK_MS = 1200;
@@ -267,6 +268,7 @@ export function PlayStage() {
           onSubmit={submit}
           onReveal={doReveal}
           canAffordReveal={starDust >= REVEAL_COST}
+          traitLessonItems={stage.params.items as string[] | undefined}
         />
       )}
 
@@ -359,9 +361,10 @@ interface QuestionCardProps {
   onSubmit: (v: string) => void;
   onReveal: () => void;
   canAffordReveal: boolean;
+  traitLessonItems?: string[];
 }
 
-function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onReveal, canAffordReveal }: QuestionCardProps) {
+function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onReveal, canAffordReveal, traitLessonItems }: QuestionCardProps) {
   const missLocked = busy && session.lastAnswer === "wrong";
   return (
     <div className={`question-card panel ${interactive ? "q-wide" : ""} ${q.payload?.statNote ? "q-stat" : ""}`}>
@@ -369,6 +372,7 @@ function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onRevea
         {STR.question(session.index + 1, session.questions.length)}
         <StagePet correctCount={session.correctCount} />
       </div>
+      <TraitLessonNote items={traitLessonItems} question={q} />
       {session.companionLine && <div className="q-companion">🤖 {session.companionLine}</div>}
       {session.workedExample && (
         <div className="q-worked">
