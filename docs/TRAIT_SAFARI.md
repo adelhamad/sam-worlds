@@ -131,27 +131,26 @@ Content version 3 adds pictures and expands older saved multiple-choice question
 to four options without moving the correct answer. Matching-card roles remain
 unchanged; current-version questions still resume exactly as saved.
 
-## Trait and adaptation labels in every lesson
+## Labels on the actual question
 
-Every lesson now has a visible, read-aloud teaching note inside the play screen,
-not just the map guide or optional help. It defines both words in simple English
-and labels one pictured example **Trait** and **Also an adaptation**. The same
-inherited feature receives both labels; its helpful job explains why it is an
-adaptation. The note does not claim every inherited trait is an adaptation.
+Each question has a short label beside its own picture and prompt identifying
+what it asks about: traits, adaptations, inherited traits, learned skills, or
+changed traits. Body-part/function questions identify the inherited feature as
+both a trait and an adaptation; the helpful job is not itself a body part.
+Concept questions have individually reviewed labels. Being inherited alone or
+having a visible color does not prove a trait is an adaptation.
 
-The example prefers a subject from the lesson's reviewed adaptation pool, with
-reviewed fallback examples for concept and origin lessons. It excludes every
-subject pictured in the active question and any example whose trait or job
-supplies a displayed answer or matching card. “Your turn” separates teaching
-from the scored question. Learning and acquired changes are not relabeled as
-adaptations.
+There is no separate teaching example or unrelated example photograph above
+questions. The question's existing read-aloud button reads its label and short
+explanation along with the prompt and choices. Safari retains normal page
+scrolling so all answers remain reachable.
 
-`traitLessonExample` is deterministic and consumes no gameplay RNG. It reads
-current content at render time, so existing saves get the note without redrawing
-their question, migrating their payload, or resetting progress. Stage IDs, pools,
+Labels are derived from the active subject token at render time, including
+resumed and replacement questions. No question redraw, RNG use, payload
+migration, progress reset, or new persisted feature is needed. Stage IDs, pools,
 choices, rewards, shared grading, and Parent Section controls are unchanged.
-`scripts/audit-traits-lesson.ts` checks example coverage, isolation, determinism,
-and non-mutation across every authored task and both difficulty variants.
+`scripts/audit-traits-labels.ts` checks coverage and speech across all authored
+tasks, classification regressions, and preservation of saved question data.
 
 ### Implementation verification, 2026-11-08
 

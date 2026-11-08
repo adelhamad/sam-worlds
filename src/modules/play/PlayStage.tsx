@@ -29,7 +29,8 @@ import { VideoToggle } from "../../ui/VideoToggle";
 import { CircuitDiagram } from "../../ui/inputs/CircuitDiagram";
 import type { Node as CircuitNode } from "../../engine/generators/logicCircuit";
 import { TraitPhotos } from "../../ui/TraitPhotos";
-import { TraitLessonNote } from "../../ui/TraitLessonNote";
+import { TraitQuestionLabel } from "../../ui/TraitQuestionLabel";
+import { traitQuestionSpeech } from "../../engine/generators/traitQuestionSpeech";
 
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const THINK_MS = 1200;
@@ -268,7 +269,6 @@ export function PlayStage() {
           onSubmit={submit}
           onReveal={doReveal}
           canAffordReveal={starDust >= REVEAL_COST}
-          traitLessonItems={stage.params.items as string[] | undefined}
         />
       )}
 
@@ -361,10 +361,9 @@ interface QuestionCardProps {
   onSubmit: (v: string) => void;
   onReveal: () => void;
   canAffordReveal: boolean;
-  traitLessonItems?: string[];
 }
 
-function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onReveal, canAffordReveal, traitLessonItems }: QuestionCardProps) {
+function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onReveal, canAffordReveal }: QuestionCardProps) {
   const missLocked = busy && session.lastAnswer === "wrong";
   return (
     <div className={`question-card panel ${interactive ? "q-wide" : ""} ${q.payload?.statNote ? "q-stat" : ""}`}>
@@ -372,7 +371,6 @@ function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onRevea
         {STR.question(session.index + 1, session.questions.length)}
         <StagePet correctCount={session.correctCount} />
       </div>
-      <TraitLessonNote items={traitLessonItems} question={q} />
       {session.companionLine && <div className="q-companion">🤖 {session.companionLine}</div>}
       {session.workedExample && (
         <div className="q-worked">
@@ -381,6 +379,7 @@ function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onRevea
       )}
       <GeoStatMedia q={q} />
       <TraitPhotos pictureIds={q.payload?.traitPictureIds} />
+      <TraitQuestionLabel question={q} />
       {q.payload?.tree && q.inputMode !== "toggle" ? (
         <CircuitDiagram tree={q.payload.tree as CircuitNode} lamp="unknown" />
       ) : null}
@@ -400,7 +399,7 @@ function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onRevea
       )}
       <div className={`q-prompt ${interactive ? "q-prompt-sm" : ""} ${praise ? "q-correct" : ""}`}>
         {q.prompt}
-        <button className="speak-btn" aria-label="read aloud" onClick={() => speak(typeof q.payload?.speechText === "string" ? q.payload.speechText : q.prompt)}>🔊</button>
+        <button className="speak-btn" aria-label="read aloud" onClick={() => speak(traitQuestionSpeech(q))}>🔊</button>
       </div>
       {praise && <div className="q-praise">{praise}</div>}
       {!praise && missLocked && <div className="q-retry">{STR.almostLook}</div>}
