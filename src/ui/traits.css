@@ -130,6 +130,14 @@
   max-height: none;
   overflow: visible;
 }
+.stage-play[data-world="traits"] .question-card:has(.trait-detective),
+.stage-play[data-world="traits"] .detective-review {
+  width: min(1080px, calc(100% - 28px));
+}
+.stage-play[data-world="traits"] .pixi-host {
+  height: 100dvh;
+  bottom: auto;
+}
 .trait-question-label strong {
   font-size: 18px;
   color: var(--amber);

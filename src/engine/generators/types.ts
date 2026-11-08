@@ -11,6 +11,7 @@ export type InputMode =
   | "launch" // aim the cannon, then FIRE (Builder's Reach)
   | "order" // tap cards into sequence (Living Planet / Atlas)
   | "canvas" // draw/trace the answer on a canvas (Trace It)
+  | "trait-detective" // construct a classification from several evidence cards
   | "choices"; // true matching questions only (rule 1 still applies)
 
 export interface Question {

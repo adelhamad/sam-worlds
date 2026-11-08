@@ -1,0 +1,202 @@
+.trait-discovery {
+  margin-top: 24px;
+  line-height: 1.5;
+}
+.discovery-scope {
+  max-width: 65ch;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+.discovery-heading,
+.discovery-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.discovery-heading {
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.discovery-heading h3 {
+  margin: 0;
+}
+.trait-discovery .btn {
+  min-height: 48px;
+  white-space: normal;
+  font-size: 16px;
+}
+.trait-discovery :focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 4px;
+}
+.discovery-evidence {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+}
+.discovery-evidence figure {
+  margin: 0;
+}
+.discovery-evidence img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 240px;
+  object-fit: contain;
+  background: var(--night-deep);
+  border-radius: 12px;
+}
+.discovery-evidence figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.discovery-evidence h4 {
+  margin: 0 0 12px;
+  font-size: 22px;
+  text-wrap: balance;
+}
+.discovery-evidence p {
+  margin: 8px 0;
+}
+.discovery-clue-label {
+  color: var(--amber);
+  font-weight: 700;
+}
+.discovery-instruction {
+  margin: 24px 0 12px;
+  font-weight: 700;
+}
+/* This border is the lesson: both interior places remain body traits. */
+.discovery-family {
+  border: 3px solid var(--amber);
+  border-radius: 18px;
+  padding: 18px;
+}
+.discovery-family > h3 {
+  margin: 0;
+  font-size: 25px;
+  color: var(--amber);
+}
+.discovery-family > p {
+  margin: 0 0 16px;
+}
+.discovery-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.discovery-zone {
+  min-width: 0;
+  padding: 16px;
+}
+.discovery-zone h4 {
+  margin: 0;
+  font-size: 18px;
+}
+.discovery-zone p {
+  margin: 4px 0 12px;
+  font-size: 14px;
+}
+.discovery-zone-adaptation {
+  border: 2px solid var(--amber);
+  border-radius: 12px;
+  background: var(--night-deep);
+}
+.discovery-zone-outside {
+  margin-top: 16px;
+  border-top: 1px dashed var(--text-dim);
+}
+.discovery-collection {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.discovery-collection li {
+  padding: 10px 0;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.discovery-collection li[aria-current="true"] {
+  color: var(--amber);
+}
+.discovery-place {
+  width: 100%;
+  margin-top: 8px;
+}
+.trait-discovery button[aria-pressed="true"] {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+.trait-discovery button[aria-pressed="true"]:focus-visible {
+  outline-width: 4px;
+}
+.discovery-feedback p {
+  margin: 16px 0;
+  max-width: 65ch;
+}
+.discovery-membership {
+  border: 0;
+  padding: 0;
+  margin: 20px 0;
+  min-width: 0;
+}
+.discovery-membership legend {
+  font-weight: 700;
+  padding: 0 0 12px;
+}
+.discovery-next {
+  margin-top: 12px;
+}
+.discovery-next:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.discovery-roadmap {
+  margin-top: 32px;
+  border-top: 1px solid var(--text-dim);
+  padding-top: 16px;
+}
+.discovery-roadmap ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  list-style: none;
+  padding: 0;
+}
+.discovery-roadmap li {
+  flex: 1 1 130px;
+}
+.discovery-roadmap strong {
+  display: block;
+  color: var(--amber);
+}
+.discovery-roadmap span {
+  font-variant-numeric: tabular-nums;
+  font-size: 14px;
+}
+.discovery-roadmap p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+@media (max-width: 560px) {
+  .discovery-evidence,
+  .discovery-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .discovery-evidence {
+    gap: 16px;
+  }
+  .discovery-evidence img {
+    max-height: 190px;
+  }
+  .discovery-family {
+    padding: 12px;
+  }
+  .discovery-zone {
+    padding: 12px;
+  }
+}

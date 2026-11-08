@@ -1,0 +1,114 @@
+.trait-detective {
+  width: 100%;
+  color: var(--text);
+  text-align: left;
+  font-size: 17px;
+  line-height: 1.5;
+}
+.trait-detective * { box-sizing: border-box; }
+.trait-detective h2, .trait-detective h3, .trait-detective p { margin: 0; }
+.trait-detective button {
+  min-height: 48px;
+  font: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+  overflow-wrap: anywhere;
+}
+.trait-detective button:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
+.trait-detective button:disabled { cursor: default; }
+.trait-detective ::selection { color: var(--night-deep); background: var(--amber); }
+.td-heading { display: flex; align-items: start; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.td-heading h2 { font-size: clamp(24px, 4vw, 32px); color: var(--amber); line-height: 1.2; }
+.td-heading h3 { margin-top: 8px; font-size: 20px; }
+.td-instruction { margin-top: 12px !important; max-width: 65ch; }
+.td-listen { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 12px; background: transparent; color: var(--text); border: 1px solid var(--text-dim); border-radius: 10px; }
+.td-listen svg { flex-shrink: 0; }
+.td-sort-help { display: flex; flex-direction: column; gap: 2px; margin-block: 24px 12px; }
+.td-sort-help > span, .td-model, .td-unchanged, .td-seen { color: var(--text-dim); font-size: 15px; }
+.td-tray { padding-block: 12px; border-block: 1px solid var(--text-dim); }
+.td-tray-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.td-tray-heading h3 { font-size: 19px; }
+.td-tray-heading > span { font-size: 15px; color: var(--text-dim); }
+.td-clues { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.td-clue { min-width: 0; background: var(--night-deep); border: 1px solid var(--text-dim); border-radius: 12px; overflow: visible; }
+.td-clue-pick { display: flex; align-items: start; gap: 12px; padding: 12px; width: 100%; text-align: left; background: transparent; border: 2px solid transparent; border-radius: 12px; color: var(--text); }
+.td-clue-pick[aria-pressed="true"] { border-color: var(--amber); background: var(--night); }
+.td-clue-pick img, .td-same-trait img { width: 88px; height: 88px; object-fit: contain; flex-shrink: 0; border-radius: 8px; background: var(--night); }
+.td-clue-copy { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.td-clue-copy strong { font-size: 18px; line-height: 1.3; }
+.td-clue-copy > span { font-size: 16px; line-height: 1.45; }
+.td-clue > .td-listen { margin: 0 12px 10px; border-color: transparent; font-size: 15px; }
+.td-selection { min-height: 48px; padding-block: 12px; color: var(--amber); }
+.td-destinations { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px; align-items: start; }
+.td-destinations.td-nested { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+.td-traits { min-width: 0; margin: 0; padding: 16px; border: 2px solid var(--amber); border-radius: 16px; }
+.td-traits legend { padding-inline: 8px; font-size: 18px; font-weight: 800; color: var(--amber); }
+.td-traits > p { margin-bottom: 16px; font-size: 16px; }
+.td-traits-zones { display: grid; gap: 16px; }
+.td-zone { min-width: 0; border: 1px dashed var(--text-dim); border-radius: 12px; padding: 12px; }
+.td-destination { display: flex; flex-direction: column; gap: 4px; text-align: left; width: 100%; padding: 12px; border: 2px solid var(--cyan); border-radius: 10px; color: var(--text); background: var(--night); }
+.td-destination strong { font-size: 19px; }
+.td-destination span { font-size: 15px; }
+.td-destination:disabled { border-color: transparent; background: transparent; }
+.td-zone-clues { display: grid; gap: 12px; margin-top: 12px; }
+.td-zone .td-clue-pick { flex-wrap: wrap; }
+.td-empty { padding: 16px 4px; color: var(--text-dim); font-size: 15px; text-align: center; }
+.td-reminder { margin-top: 16px !important; }
+.td-footer { margin-top: 24px; border-top: 1px solid var(--text-dim); padding-top: 16px; }
+.td-footer > p { font-size: 16px; margin-bottom: 12px; }
+.td-footer > p > span { display: block; margin-top: 4px; }
+.td-actions { display: flex; gap: 12px; justify-content: space-between; flex-wrap: wrap; }
+.td-actions .btn { flex: 1 1 180px; }
+.td-habitats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-block: 16px 24px; }
+.td-model { margin-top: 16px !important; }
+.td-habitat { min-width: 0; }
+.td-habitat h3 { font-size: 21px; color: var(--amber); }
+.td-explore { font-size: 16px; margin-block: 4px 12px !important; }
+.td-places { display: flex; gap: 8px; }
+.td-places button { flex: 1; padding: 10px; border: 2px solid var(--text-dim); border-radius: 10px 10px 0 0; background: var(--night-deep); color: var(--text); text-align: left; }
+.td-places button[aria-pressed="true"] { border-color: var(--amber); background: var(--night); }
+.td-seen { display: block; font-size: 13px; }
+.td-scene { padding-block: 16px; border-bottom: 1px solid var(--text-dim); }
+.td-same-trait { display: flex; align-items: center; gap: 12px; }
+.td-unchanged { margin-block: 12px !important; }
+.td-scene [aria-live] p { margin-top: 4px; }
+.td-scene > .td-listen { margin-top: 12px; }
+.td-claim { display: flex; align-items: start; gap: 16px; margin-top: 20px; padding-block: 16px; border-block: 1px solid var(--text-dim); }
+.td-claim > img { width: 88px; height: 88px; flex-shrink: 0; object-fit: contain; border-radius: 8px; }
+.td-claim > div { min-width: 0; }
+.td-claim h3 { font-size: 21px; color: var(--amber); }
+.td-claim p { margin-block: 8px 12px; }
+.td-stamps { min-width: 0; border: 0; border-top: 1px solid var(--text-dim); margin: 28px 0 0; padding: 16px 0 0; }
+.td-stamps legend { padding-right: 12px; font-size: 21px; font-weight: 700; color: var(--amber); }
+.td-stamp-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-block: 16px; }
+.td-stamp-buttons button { flex: 1 1 140px; min-height: 56px; padding: 12px 16px; border: 2px dashed var(--text-dim); border-radius: 12px; background: var(--night-deep); color: var(--text); font-weight: 700; }
+.td-stamp-buttons button[aria-pressed="true"] { border: 2px solid var(--amber); background: var(--night); color: var(--amber); }
+.td-stamp-buttons button:disabled { opacity: 0.7; }
+.td-inline-destinations { display: none; }
+@media (max-width: 619px) {
+  .td-inline-destinations { display: grid; gap: 8px; padding: 12px; border-top: 1px solid var(--text-dim); }
+  .td-inline-destinations > strong { font-size: 16px; }
+  .td-inline-destinations button { display: flex; flex-direction: column; gap: 4px; min-height: 48px; padding: 12px; text-align: left; border: 2px solid var(--cyan); border-radius: 10px; background: var(--night); color: var(--text); }
+  .td-inline-destinations button > span { font-size: 15px; }
+  .td-inline-destinations button > .td-inline-membership { color: var(--amber); font-size: 14px; }
+}
+@media (hover: hover) {
+  .trait-detective button:not(:disabled):hover { background-color: var(--night); }
+  .td-clue-pick:not(:disabled):hover { border-color: var(--amber); }
+}
+@media (min-width: 1000px) {
+  .td-clues { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .td-traits-zones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 650px) {
+  .td-clues, .td-habitats, .td-destinations.td-nested { grid-template-columns: minmax(0, 1fr); }
+  .td-traits { padding: 12px; }
+  .td-zone .td-clue-pick { flex-wrap: nowrap; }
+}
+@media (max-width: 360px) {
+  .td-clue-pick img, .td-same-trait img { width: 72px; height: 72px; }
+  .td-zone .td-clue-pick { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trait-detective *, .trait-detective *::before, .trait-detective *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

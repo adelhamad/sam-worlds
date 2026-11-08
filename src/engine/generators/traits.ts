@@ -3,10 +3,11 @@ import { CONCEPTS } from "../../content/traits/concepts";
 import { TRAIT_CHANGE_EVENTS } from "../../content/traits/changes";
 import { STR } from "../../strings/en";
 import { withTraitPictures } from "./traitPictures";
+import { generateTraitDetective } from "./traitDetective";
 import { pick, shuffle, type RNG } from "../rng";
 import type { GenContext, Question } from "./types";
 
-export interface TraitsParams { items: string[] }
+export interface TraitsParams { items: string[]; pedagogy?: number }
 // Bump for intentional copy migrations; current questions resume exactly as saved.
 export const TRAITS_COPY_VERSION = 3;
 export type TraitMode = "spot" | "origin" | "concept" | "job" | "feature" | "pair";
@@ -83,6 +84,7 @@ function traitQuestion(params: TraitsParams, rng: RNG, ctx: GenContext): Questio
 }
 
 export function generateTraits(params: TraitsParams, rng: RNG, ctx: GenContext): Question {
+  if (params.pedagogy === 1) return generateTraitDetective(params, rng, ctx);
   const question = traitQuestion(params, rng, ctx);
   const cards = question.inputMode === "order" ? question.payload?.items as string[] : question.choices;
   return withTraitPictures({ ...question, payload: { ...question.payload,

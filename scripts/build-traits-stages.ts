@@ -59,7 +59,8 @@ for (let index = 0; index < pairChapters; index++) {
     STR.traits.pairIntro, "traits-connections");
 }
 
-const path = new URL("../src/content/traits/stages.json", import.meta.url);
+// Legacy authoring only. The detective curriculum has its own builder.
+const path = new URL("../src/content/traits/legacyStages.json", import.meta.url);
 let output = stages;
 if (Bun.argv.includes("--refresh-copy")) {
   const published = await Bun.file(path).json() as StageDef[];

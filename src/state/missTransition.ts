@@ -8,6 +8,7 @@ import { STR } from "../strings/en";
 import { newSeed } from "../engine/rng";
 import type { stageById } from "../content/worlds";
 import type { Session } from "./store";
+import { traitSessionParams } from "../engine/generators/traitSessionParams";
 
 export function withReplacedQuestion(
   s: Session,
@@ -19,7 +20,8 @@ export function withReplacedQuestion(
 ): Session | null {
   const sessionSeen = s.seenQuestionKeys ?? s.questions.flatMap(questionKeys);
   const seen = new Set([...globalSeen, ...sessionSeen]);
-  const [replacement] = generateQuestionSet(generator, params, 1, newSeed(), { difficulty, easier }, seen);
+  const pinnedParams = generator === "traits" ? traitSessionParams(s.stageId, s.questions[s.index], params) : params;
+  const [replacement] = generateQuestionSet(generator, pinnedParams, 1, newSeed(), { difficulty, easier }, seen);
   if (!replacement) return null;
   const questions = [...s.questions];
   questions[s.index] = replacement;

@@ -18,7 +18,7 @@ export function checkTraitsLanguage(question: Question, label: string, failures:
   }
 }
 
-/** Guard the concrete examples and varied choices requested by Sam's parent. */
+/** Guard legacy concrete examples and varied choices for saved sessions. */
 export function auditTraitsLanguage(): string[] {
   const failures: string[] = [];
   const wrongPairs = new Set<string>();

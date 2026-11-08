@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useGame, REVEAL_COST } from "../../state/store";
+import { useGame, REVEAL_COST, type Session } from "../../state/store";
 import { completedInWorld, stageById, stageIndexInWorld, worldOfStage } from "../../content/worlds";
 import { cliffhanger } from "../../engine/missions/missions";
 import { MISS_LOCK_MS } from "../../engine/answers/answerEngine";
@@ -23,14 +23,15 @@ import { OrderCards } from "../../ui/inputs/OrderCards";
 import { ChoiceButtons } from "../../ui/inputs/ChoiceButtons";
 import { TraceCanvas } from "../../ui/inputs/TraceCanvas";
 import { StagePet } from "../../ui/PetCompanion";
-import { GeoMap } from "../../ui/GeoMap";
-import { StatCompare, type StatPair } from "../../ui/StatCompare";
+import { GeoStatMedia } from "./GeoStatMedia";
 import { VideoToggle } from "../../ui/VideoToggle";
 import { CircuitDiagram } from "../../ui/inputs/CircuitDiagram";
 import type { Node as CircuitNode } from "../../engine/generators/logicCircuit";
 import { TraitPhotos } from "../../ui/TraitPhotos";
 import { TraitQuestionLabel } from "../../ui/TraitQuestionLabel";
 import { traitQuestionSpeech } from "../../engine/generators/traitQuestionSpeech";
+import { TraitDetective } from "../../ui/inputs/TraitDetective";
+import { TraitDetectiveReview, type DetectiveReview } from "../../ui/TraitDetectiveReview";
 
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const THINK_MS = 1200;
@@ -41,6 +42,7 @@ interface VerdictDeps {
   setBusy: (b: boolean) => void;
   setPraise: (p: string | null) => void;
   advance: () => void;
+  onReview?: (correct: boolean) => void;
 }
 
 interface SubmitDeps extends VerdictDeps {
@@ -69,6 +71,7 @@ function applyVerdict(res: "correct" | "wrong" | "again" | "exhausted" | null, d
     d.scene?.wrongShake();
     d.setBusy(true);
     setTimeout(() => d.setBusy(false), MISS_LOCK_MS);
+    d.onReview?.(false);
     return;
   }
   if (res !== "correct" && res !== "again") return;
@@ -76,6 +79,12 @@ function applyVerdict(res: "correct" | "wrong" | "again" | "exhausted" | null, d
   sfx.correct();
   const advancing = res === "correct";
   if (advancing) d.scene?.openGate(d.gateIndex);
+  if (d.onReview) {
+    // Commit progress before feedback: reload must not score this answer twice.
+    if (advancing) d.advance();
+    d.onReview(true);
+    return;
+  }
   d.setPraise(advancing ? pickPraise() : STR.proveAgain);
   d.setBusy(true);
   setTimeout(() => {
@@ -95,6 +104,37 @@ function resultFanfare(result: { newBadge: unknown; perfect: boolean }): void {
   else sfx.stageComplete();
 }
 
+function detectiveReviewHandler(q: Question | null | undefined, stageId: string, show: (review: DetectiveReview) => void, submitted?: string) {
+  return q?.inputMode === "trait-detective" ? (correct: boolean) => {
+    show({ question: q, correct, stageId, submitted });
+    window.scrollTo(0, 0);
+  } : undefined;
+}
+
+function reviewForStage(review: DetectiveReview | null, stageId: string) {
+  return review?.stageId === stageId ? review : null;
+}
+
+function currentQuestion(session: Session | null) {
+  return session?.questions[session.index] ?? null;
+}
+
+function stageResult(session: Session | null, stageId: string) {
+  return session?.stageId === stageId ? session.result : null;
+}
+
+function isInteractive(q: Question | null) {
+  return Boolean(q?.inputMode && q.inputMode !== "numpad");
+}
+
+function QuestionPrompt({ q, interactive, praise }: { q: Question; interactive: boolean; praise: string | null }) {
+  if (q.inputMode === "trait-detective") return null;
+  return <div className={`q-prompt ${interactive ? "q-prompt-sm" : ""} ${praise ? "q-correct" : ""}`}>
+    {q.prompt}
+    <button className="speak-btn" aria-label="read aloud" onClick={() => speak(traitQuestionSpeech(q))}>🔊</button>
+  </div>;
+}
+
 function AnswerInput({ q, disabled, onSubmit }: { q: Question; disabled: boolean; onSubmit: (v: string) => void }) {
   const props = { question: q, disabled, onSubmit };
   switch (q.inputMode ?? "numpad") {
@@ -112,6 +152,8 @@ function AnswerInput({ q, disabled, onSubmit }: { q: Question; disabled: boolean
       return <Launcher {...props} />;
     case "order":
       return <OrderCards {...props} />;
+    case "trait-detective":
+      return <TraitDetective {...props} />;
     case "choices":
       return <ChoiceButtons {...props} />;
     case "canvas":
@@ -142,9 +184,11 @@ export function PlayStage() {
   const [busy, setBusy] = useState(false);
   const [praise, setPraise] = useState<string | null>(null);
   const [helpOpen, setHelpOpen] = useState(false);
+  const [storedReview, setReview] = useState<DetectiveReview | null>(null);
+  const review = reviewForStage(storedReview, stageId);
 
   const liveSession = session && session.stageId === stageId && !session.result ? session : null;
-  const result = session && session.stageId === stageId ? session.result : null;
+  const result = stageResult(session, stageId);
 
   const worldEnabled = useGame((s) => Boolean(world && s.enabledWorlds[world.id]));
 
@@ -189,10 +233,10 @@ export function PlayStage() {
   }, [stage, seed, questionCount, worldEnabled]);
 
   useEffect(() => {
-    if (!result) return;
+    if (!result || review) return;
     sceneRef.current?.celebrate();
     resultFanfare(result);
-  }, [result]);
+  }, [result, review]);
 
   if (!stage || !world) {
     return (
@@ -206,7 +250,7 @@ export function PlayStage() {
   }
   if (!worldEnabled) return <LockedScreen />;
 
-  const q = liveSession ? liveSession.questions[liveSession.index] : null;
+  const q = currentQuestion(liveSession);
 
   function submit(value: string) {
     if (!liveSession) return;
@@ -219,6 +263,7 @@ export function PlayStage() {
       setBusy,
       setPraise,
       advance,
+      onReview: detectiveReviewHandler(q, stageId, setReview, value),
     });
   }
 
@@ -234,6 +279,12 @@ export function PlayStage() {
     if (res === "revealed") {
       sfx.tap();
       sceneRef.current?.openGate(liveSession?.index ?? 0);
+      const showReview = detectiveReviewHandler(q, stageId, setReview);
+      if (showReview) {
+        advance();
+        showReview(false);
+        return;
+      }
       setBusy(true);
       setTimeout(() => {
         setBusy(false);
@@ -244,7 +295,7 @@ export function PlayStage() {
 
   const idx = stageIndexInWorld(stageId);
   const nextStage = idx >= 0 ? world.stages[idx + 1] : undefined;
-  const interactive = q && q.inputMode && q.inputMode !== "numpad";
+  const interactive = isInteractive(q);
 
   return (
     <div className="screen stage-play" data-world={world.id}>
@@ -259,7 +310,8 @@ export function PlayStage() {
         setHelpOpen={setHelpOpen}
       />
 
-      {liveSession && q && (
+      {review && <TraitDetectiveReview review={review} disabled={busy} finished={Boolean(result)} onNext={() => { setReview(null); window.scrollTo(0, 0); }} />}
+      {liveSession && q && !review && (
         <QuestionCard
           session={liveSession}
           q={q}
@@ -272,7 +324,7 @@ export function PlayStage() {
         />
       )}
 
-      {result && (
+      {result && !review && (
         <Celebration
           result={result}
           tease={cliffhanger(world.id, completedInWorld(world, progress))}
@@ -397,10 +449,7 @@ function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onRevea
           ))}
         </div>
       )}
-      <div className={`q-prompt ${interactive ? "q-prompt-sm" : ""} ${praise ? "q-correct" : ""}`}>
-        {q.prompt}
-        <button className="speak-btn" aria-label="read aloud" onClick={() => speak(traitQuestionSpeech(q))}>🔊</button>
-      </div>
+      <QuestionPrompt q={q} interactive={interactive} praise={praise} />
       {praise && <div className="q-praise">{praise}</div>}
       {!praise && missLocked && <div className="q-retry">{STR.almostLook}</div>}
       {session.revealed && <div className="q-reveal">{STR.revealAnswer} <b>{q.answer}</b></div>}
@@ -412,19 +461,6 @@ function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onRevea
         </button>
       )}
     </div>
-  );
-}
-
-function GeoStatMedia({ q }: { q: Question }) {
-  return (
-    <>
-      {typeof q.payload?.bigSymbol === "string" && <div className="big-symbol">{q.payload.bigSymbol}</div>}
-      {typeof q.payload?.mapCode === "string" && (
-        <GeoMap code={q.payload.mapCode} style={q.payload.mapStyle as "outline" | "pin" | "world"} />
-      )}
-      {q.payload?.statPair && <StatCompare pair={q.payload.statPair as unknown as StatPair} />}
-      {typeof q.payload?.statNote === "string" && <div className="stat-note">{q.payload.statNote}</div>}
-    </>
   );
 }
 
