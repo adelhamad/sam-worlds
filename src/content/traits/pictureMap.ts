@@ -1,0 +1,50 @@
+// Stable content IDs, not display-name guesses: every subject gets its own photo.
+export const ADAPTATION_PICTURES: Record<string, string> = {
+  "duck-feet": "duck", "trout-gills": "trout", "dolphin-blowhole": "dolphin",
+  "elephant-trunk": "elephant", "giraffe-neck": "giraffe", "woodpecker-beak": "woodpecker",
+  "hummingbird-bill": "hummingbird", "anteater-tongue": "anteater", "whale-baleen": "whale",
+  "eagle-beak": "eagle", "beaver-teeth": "beaver", "walrus-tusks": "walrus",
+  "camel-feet": "camel", "polar-bear-soles": "polar-bear", "fennec-ears": "fennec",
+  "otter-fur": "otter", "porcupine-quills": "porcupine", "tortoise-shell": "tortoise",
+  "stick-insect-shape": "stick-insect", "skunk-glands": "skunk", "octopus-suckers": "octopus",
+  "gecko-pads": "gecko", "bat-wings": "bat", "mole-nose": "star-nosed-mole",
+  "snail-tongue": "pond-snail", "chameleon-tail": "chameleon", "kangaroo-pouch": "kangaroo",
+  "pelican-pouch": "pelican", "owl-feathers": "owl", "cat-tongue": "cat",
+  "camel-eyelashes": "camel", "mole-rat-teeth": "mole-rat", "saguaro-stem": "saguaro",
+  "water-lily-leaves": "water-lily", "red-mangrove-roots": "red-mangrove",
+  "black-mangrove-roots": "black-mangrove", "ivy-roots": "ivy", "dandelion-seeds": "dandelion",
+  "burdock-burrs": "burdock", "coconut-husk": "coconut", "flytrap-leaves": "flytrap",
+  "acacia-thorns": "acacia", "bromeliad-cup": "bromeliad", "staghorn-fronds": "staghorn",
+  "impatiens-pods": "impatiens", "pine-needles": "pine", "lotus-leaves": "lotus", "onion-bulb": "onion",
+};
+
+export const OBSERVATION_PICTURES: Record<string, string> = {
+  "inherited-kitten": "kitten", "inherited-puppy": "puppy", "inherited-duck": "duck",
+  "inherited-cactus": "cactus", "inherited-oak": "oak", "inherited-maple": "maple",
+  "inherited-fish": "trout", "inherited-bird": "robin", "inherited-snail": "pond-snail",
+  "inherited-turtle": "turtle", "inherited-elephant": "elephant", "inherited-rabbit": "rabbit",
+  "inherited-zebra": "zebra", "inherited-spider": "garden-spider", "inherited-porcupine": "porcupine",
+  "inherited-kangaroo": "kangaroo", "learned-dog-sit": "dog", "learned-dog-fetch": "dog",
+  "learned-parrot": "parrot", "learned-horse": "horse", "learned-reading": "child",
+  "learned-piano": "child", "learned-bike": "child", "learned-swimming": "child",
+  "learned-shoes": "child", "learned-drawing": "child", "learned-signing": "child",
+  "learned-juggling": "child", "learned-knitting": "child", "learned-chess": "child",
+  "learned-whistle": "child", "learned-cat-cue": "cat", "acquired-muddy-dog": "dog",
+  "acquired-haircut": "child", "acquired-scrape": "child", "acquired-scar": "child",
+  "acquired-cat-grooming": "cat", "acquired-dog-claws": "dog", "acquired-wet-dog": "dog",
+  "acquired-leaf-hole": "cabbage", "acquired-tree-scar": "tree", "acquired-bent-stem": "sunflower",
+  "acquired-missing-leaf": "rose", "acquired-torn-ear": "rabbit", "acquired-broken-branch": "tomato",
+  "acquired-petal-damage": "flower", "acquired-dusty-leaves": "houseplant", "acquired-stained-fur": "dog",
+};
+
+export const CONCEPT_PICTURES: Record<string, string[]> = {
+  "trait-meaning": ["rabbit"], "adaptation-meaning": ["duck"], "shell-both-labels": ["turtle"],
+  "inheritance-source": ["puppy"], "learned-cue": ["dog"], "acquired-scar": ["cat"],
+  "environment-growth": ["bean"], "offspring-variation": ["kitten", "cat"],
+  "traits-appear-later": ["flower"], "camouflage-context": ["katydid"], "fur-warmth": ["fox"],
+  "no-instant-transformation": ["duck"], "need-alone": ["rabbit"], "generations": ["puppy"],
+  "color-evidence": ["blue-beetle"], "leaf-shape-function": ["katydid", "robin"],
+  "feature-versus-function": ["turtle"], "helpful-learning": ["dog"], "clothing-versus-body": ["child"],
+  "inherited-behavior": ["garden-spider"], "protection-limits": ["turtle"],
+  "reproduction": ["bee", "flower"], "test-camouflage": ["katydid", "robin"], "parent-teaching": ["puppy", "dog"],
+};

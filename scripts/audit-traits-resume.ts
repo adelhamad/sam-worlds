@@ -1,7 +1,7 @@
 import { ADAPTATIONS, OBSERVATIONS } from "../src/content/traits/examples";
 import { CONCEPTS } from "../src/content/traits/concepts";
 import { refreshTraitsQuestion, traitsCopySeed } from "../src/engine/generators/refreshTraits";
-import { generateTraits } from "../src/engine/generators/traits";
+import { generateTraits, TRAITS_COPY_VERSION } from "../src/engine/generators/traits";
 import type { Question } from "../src/engine/generators/types";
 import { mulberry32 } from "../src/engine/rng";
 import type { SessionRow } from "../src/engine/save/db";
@@ -17,12 +17,22 @@ function oldCopy(token: string, count: number, answerIndex: number): Question {
     id: "saved-question-unchanged", dedupeKey: `traits:${token}`, inputMode: "choices",
     prompt: "Old difficult prompt", hint: "Old difficult hint", answer: "Old correct answer",
     choices: Array.from({ length: count }, (_, index) => index === answerIndex ? "Old correct answer" : `Old distractor ${index}`),
-    payload: { listRows: ["Old reading note"], workedExample: "Old explanation",
+    payload: { traitsCopyVersion: 2, listRows: ["Old reading note"], workedExample: "Old explanation",
       speechText: "Old speech", traitOrganisms: ["Old organism"], unrelated: { keep: true } },
   };
 }
 
+function checkPictures(refreshed: Question, expected: Question, label: string, failures: string[]): void {
+  const pictures = refreshed.payload?.traitPictureIds;
+  const expectedPictures = expected.payload?.traitPictureIds as string[];
+  if (refreshed.payload?.traitsCopyVersion !== TRAITS_COPY_VERSION || !Array.isArray(pictures) ||
+      JSON.stringify([...pictures].sort()) !== JSON.stringify([...expectedPictures].sort())) {
+    failures.push(`${label}: saved question did not gain all subject pictures`);
+  }
+}
+
 function checkCommon(old: Question, refreshed: Question, expected: Question, label: string, failures: string[]): void {
+  checkPictures(refreshed, expected, label, failures);
   if (refreshed.id !== old.id || refreshed.dedupeKey !== old.dedupeKey || refreshed.inputMode !== old.inputMode) {
     failures.push(`${label}: question identity or input mode changed`);
   }
@@ -44,7 +54,7 @@ function checkCommon(old: Question, refreshed: Question, expected: Question, lab
 }
 
 function checkChoices(token: string, failures: string[]): void {
-  for (const count of [2, 3]) {
+  for (const count of [2, 3, 4]) {
     for (let answerIndex = 0; answerIndex < count; answerIndex++) {
       const label = `traits resume ${token} choices=${count} answer=${answerIndex}`;
       const old = oldCopy(token, count, answerIndex);
@@ -54,7 +64,7 @@ function checkChoices(token: string, failures: string[]): void {
       checkCommon(old, refreshed, expected, label, failures);
       const expectedWrong = expected.choices.filter((choice) => choice !== expected.answer);
       const actualWrong = refreshed.choices.filter((choice) => choice !== refreshed.answer);
-      if (refreshed.choices.length !== count || refreshed.choices.indexOf(refreshed.answer) !== answerIndex ||
+      if (refreshed.choices.length !== expected.choices.length || refreshed.choices.indexOf(refreshed.answer) !== answerIndex ||
           JSON.stringify(actualWrong) !== JSON.stringify(expectedWrong)) failures.push(`${label}: choices redrawn incorrectly`);
       if (JSON.stringify(old) !== before) failures.push(`${label}: saved question mutated`);
     }
@@ -138,7 +148,8 @@ function checkScreenshotRegression(failures: string[]): void {
   const refreshed = refreshTraitsQuestion(old);
   if (refreshed.prompt !== "Which part does a beaver have?" ||
       /chisel|match the body trait/i.test(JSON.stringify(refreshed)) ||
-      refreshed.payload?.listRows !== undefined || refreshed.choices.indexOf(refreshed.answer) !== 1) {
+      refreshed.payload?.listRows !== undefined || refreshed.choices.indexOf(refreshed.answer) !== 1 ||
+      refreshed.choices.length !== 4 || !Array.isArray(refreshed.payload?.traitPictureIds)) {
     failures.push("traits resume: the parent's confusing beaver screenshot can still return");
   }
 }

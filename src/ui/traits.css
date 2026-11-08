@@ -108,26 +108,47 @@
   margin-bottom: 10px;
 }
 .trait-question-photos {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   justify-content: center;
   gap: 12px;
-  margin-bottom: 16px;
+  width: min(100%, 480px);
+  margin: 0 auto 12px;
 }
 .trait-question-photos figure {
   margin: 0;
-  width: min(42%, 220px);
+  min-width: 0;
 }
 .trait-question-photos img {
   display: block;
   width: 100%;
-  height: auto;
-  max-height: 150px;
+  height: 112px;
   object-fit: contain;
   border-radius: 12px;
 }
 .trait-question-photos figcaption {
   margin-top: 6px;
   font-size: 16px;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+.trait-photos-1 {
+  grid-template-columns: minmax(0, 240px);
+}
+.trait-photos-1 img {
+  height: 144px;
+}
+.trait-photos-3,
+.trait-photos-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.trait-photos-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.trait-photos-3 img,
+.trait-photos-4 img {
+  height: 84px;
 }
 .trait-emblem {
   display: inline-block;

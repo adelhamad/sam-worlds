@@ -2,12 +2,13 @@ import { ADAPTATIONS, OBSERVATIONS } from "../../content/traits/examples";
 import { CONCEPTS } from "../../content/traits/concepts";
 import { TRAIT_CHANGE_EVENTS } from "../../content/traits/changes";
 import { STR } from "../../strings/en";
+import { withTraitPictures } from "./traitPictures";
 import { pick, shuffle, type RNG } from "../rng";
 import type { GenContext, Question } from "./types";
 
 export interface TraitsParams { items: string[] }
 // Bump for intentional copy migrations; current questions resume exactly as saved.
-export const TRAITS_COPY_VERSION = 2;
+export const TRAITS_COPY_VERSION = 3;
 export type TraitMode = "spot" | "origin" | "concept" | "job" | "feature" | "pair";
 const adaptations = new Map(ADAPTATIONS.map((item) => [item.id, item]));
 const observations = new Map(OBSERVATIONS.map((item) => [item.id, item]));
@@ -20,7 +21,15 @@ function adaptation(id: string) {
 }
 
 function choices(answer: string, distractors: readonly string[], rng: RNG, ctx: GenContext): string[] {
-  return shuffle(rng, [answer, ...shuffle(rng, distractors).slice(0, ctx.easier ? 1 : 2)]);
+  const unique = [...new Set(distractors)].filter((choice) => choice !== answer);
+  return shuffle(rng, [answer, ...shuffle(rng, unique).slice(0, ctx.easier ? 2 : 3)]);
+}
+
+function originDistractors(kind: string, rng: RNG): string[] {
+  const groups = Object.keys(STR.traits.origins).filter((other) => other !== kind)
+    .map((other) => shuffle(rng, OBSERVATIONS.filter((item) => item.kind === other)));
+  // Both other kinds appear; a second distinct example supplies option four.
+  return [groups[0][0].example, groups[1][0].example, pick(rng, groups)[1].example];
 }
 
 /** Authored science facts, seeded matching; shared engine owns all grading. */
@@ -33,8 +42,7 @@ function traitQuestion(params: TraitsParams, rng: RNG, ctx: GenContext): Questio
     const item = observations.get(id);
     if (!item) throw new Error(`Unknown trait observation: ${id}`);
     const answer = item.example;
-    const otherKinds = Object.keys(STR.traits.origins).filter((kind) => kind !== item.kind);
-    const distractors = otherKinds.map((kind) => pick(rng, OBSERVATIONS.filter((other) => other.kind === kind)).example);
+    const distractors = originDistractors(item.kind, rng);
     const prompt = item.kind === "acquired" ? STR.traits.changePrompt(TRAIT_CHANGE_EVENTS[item.id]) : STR.traits.originPrompts[item.kind];
     return { ...base, prompt, answer,
       choices: choices(answer, distractors, rng, ctx), hint: item.hint, inputMode: "choices",
@@ -56,7 +64,6 @@ function traitQuestion(params: TraitsParams, rng: RNG, ctx: GenContext): Questio
     return { ...base, prompt: STR.traits.pair(item.organism, other.organism),
       answer: ordered.join(" → "), choices: [], hint: ctx.easier ? explanation : STR.traits.pairHint,
       inputMode: "order", payload: { items: shuffle(rng, ordered), arrow: "→",
-        traitOrganisms: [item.organism, other.organism],
         workedExample: `${explanation} ${STR.traits.link(other.organism, other.trait, other.job)}` } };
   }
   if (!["spot", "job", "feature"].includes(mode)) throw new Error(`Unknown trait task: ${token}`);
@@ -72,12 +79,12 @@ function traitQuestion(params: TraitsParams, rng: RNG, ctx: GenContext): Questio
   }
   return { ...base, prompt, answer, choices: choices(answer, distractors, rng, ctx),
     hint: explanation, inputMode: "choices",
-    payload: { workedExample: explanation, traitOrganisms: [item.organism] } };
+    payload: { workedExample: explanation } };
 }
 
 export function generateTraits(params: TraitsParams, rng: RNG, ctx: GenContext): Question {
   const question = traitQuestion(params, rng, ctx);
   const cards = question.inputMode === "order" ? question.payload?.items as string[] : question.choices;
-  return { ...question, payload: { ...question.payload,
-    traitsCopyVersion: TRAITS_COPY_VERSION, speechText: [question.prompt, ...cards].join(". ") } };
+  return withTraitPictures({ ...question, payload: { ...question.payload,
+    traitsCopyVersion: TRAITS_COPY_VERSION, speechText: [question.prompt, ...cards].join(". ") } });
 }
