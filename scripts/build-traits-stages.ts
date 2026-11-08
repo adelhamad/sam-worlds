@@ -29,14 +29,14 @@ if (ADAPTATIONS.length < 48 || OBSERVATIONS.length < 48 || CONCEPTS.length < 24)
   throw new Error("Review and complete the curated science bank before building chapters");
 }
 
-band("Spot Body Traits", ADAPTATIONS.map((item) => `spot:${item.id}`), 4, STR.traits.spotIntro, "traits-observe");
+band("Animal and Plant Parts", ADAPTATIONS.map((item) => `spot:${item.id}`), 4, STR.traits.spotIntro, "traits-observe");
 // Mix origins within every chapter, rather than letting answer position or
 // chapter number reveal the category.
 const origins = shuffle(mulberry32(20261108), OBSERVATIONS.map((item) => `origin:${item.id}`));
-band("Where Traits Come From", origins, 4, STR.traits.originIntro, "traits-origins");
+band("Parents, Practice, and Changes", origins, 4, STR.traits.originIntro, "traits-origins");
 band("Traits and Adaptations", CONCEPTS.map((item) => `concept:${item.id}`), 2, STR.traits.conceptIntro, "traits-concepts");
-band("Helpful Body Parts", ADAPTATIONS.map((item) => `job:${item.id}`), 4, STR.traits.jobIntro, "traits-functions");
-band("Find the Helpful Trait", ADAPTATIONS.map((item) => `feature:${item.id}`), 4, STR.traits.jobIntro, "traits-functions");
+band("How Parts Help", ADAPTATIONS.map((item) => `job:${item.id}`), 4, STR.traits.jobIntro, "traits-functions");
+band("Find the Right Part", ADAPTATIONS.map((item) => `feature:${item.id}`), 4, STR.traits.jobIntro, "traits-functions");
 
 // Comparing TWO distinct trait/function links is a constructed task, not a
 // rephrasing or a reshuffle of a one-fact question. Never count reversed pairs
@@ -55,9 +55,18 @@ const shuffledPairs = shuffle(mulberry32(20261109), pairs);
 const pairChapters = 55 - stages.length;
 if (shuffledPairs.length < pairChapters * 16) throw new Error("Not enough distinct nature comparisons");
 for (let index = 0; index < pairChapters; index++) {
-  chapter(`Build Nature Matches ${index + 1}`, shuffledPairs.slice(index * 16, (index + 1) * 16),
+  chapter(`Help Two Living Things ${index + 1}`, shuffledPairs.slice(index * 16, (index + 1) * 16),
     STR.traits.pairIntro, "traits-connections");
 }
 
-await Bun.write(new URL("../src/content/traits/stages.json", import.meta.url), `${JSON.stringify(stages, null, 2)}\n`);
-console.log(`Built ${stages.length} Trait Safari chapters; ${stages.reduce((sum, stage) => sum + (stage.params.items as string[]).length, 0)} distinct tasks.`);
+const path = new URL("../src/content/traits/stages.json", import.meta.url);
+let output = stages;
+if (Bun.argv.includes("--refresh-copy")) {
+  const published = await Bun.file(path).json() as StageDef[];
+  output = published.map((stage, index) => {
+    if (stage.id !== stages[index]?.id) throw new Error("Copy refresh must preserve published chapter IDs");
+    return { ...stage, name: stages[index].name, intro: stages[index].intro };
+  });
+}
+await Bun.write(path, `${JSON.stringify(output, null, 2)}\n`);
+console.log(`Built ${output.length} Trait Safari chapters; ${output.reduce((sum, stage) => sum + (stage.params.items as string[]).length, 0)} distinct tasks.`);

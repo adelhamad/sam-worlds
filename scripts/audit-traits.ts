@@ -1,11 +1,14 @@
 import { ADAPTATIONS, OBSERVATIONS } from "../src/content/traits/examples";
 import { CONCEPTS } from "../src/content/traits/concepts";
+import { TRAIT_CHANGE_EVENTS } from "../src/content/traits/changes";
 import { overlappingTraits } from "../src/content/traits/pairing";
 import { WORLDS } from "../src/content/worlds";
 import { workedExample } from "../src/engine/answers/answerEngine";
 import { generateQuestionSet, questionKeys } from "../src/engine/generators";
 import type { Question } from "../src/engine/generators/types";
 import { STR } from "../src/strings/en";
+import { auditTraitsResume } from "./audit-traits-resume";
+import { auditTraitsLanguage, checkTraitsLanguage } from "./audit-traits-language";
 
 const MODES = ["spot", "origin", "concept", "job", "feature", "pair"];
 const adaptations = new Map(ADAPTATIONS.map((item) => [item.id, item]));
@@ -47,7 +50,7 @@ function checkBank<T extends { id: string }>(
 function checkBanks(failures: string[]): void {
   checkBank("adaptations", ADAPTATIONS,
     (item) => [item.organism, item.trait, item.job, item.place, item.source], failures);
-  checkBank("observations", OBSERVATIONS, (item) => [item.subject, item.detail, item.hint], failures);
+  checkBank("observations", OBSERVATIONS, (item) => [item.subject, item.detail, item.example, item.hint], failures);
   checkBank("concepts", CONCEPTS, (item) => [item.prompt, item.answer, item.hint, item.explanation], failures);
   for (const item of ADAPTATIONS) {
     if (!sourceUrl(item.source)) failures.push(`traits ${item.id}: invalid source URL`);
@@ -56,6 +59,7 @@ function checkBanks(failures: string[]): void {
   }
   for (const item of OBSERVATIONS) {
     if (!Object.hasOwn(STR.traits.origins, item.kind)) failures.push(`traits ${item.id}: invalid origin ${item.kind}`);
+    if (item.kind === "acquired" && !TRAIT_CHANGE_EVENTS[item.id]) failures.push(`traits ${item.id}: missing everyday situation`);
   }
   for (const item of CONCEPTS) checkDistractors(item.id, item.answer, item.distractors, failures);
 }
@@ -78,7 +82,9 @@ function adaptationKey(item: Adaptation): string {
 }
 
 function pairTask(first: Adaptation, second: Adaptation): AuthoredTask {
-  if (first.id === second.id || first.trait === second.trait || first.job === second.job) {
+  // Animal names stay on the part cards: two animals can both have big front
+  // teeth while using them differently. Identical job cards are still ambiguous.
+  if (first.id === second.id || first.job === second.job) {
     throw new Error(`ambiguous pair ${first.id}:${second.id}`);
   }
   if (overlappingTraits(first.id, second.id)) {
@@ -104,8 +110,8 @@ function authoredTask(token: string): AuthoredTask {
   if (mode === "origin") {
     const item = observations.get(id);
     if (!item) throw new Error(`unknown observation ${id}`);
-    prompt = STR.traits.origin(item.subject, item.detail);
-    answer = STR.traits.origins[item.kind];
+    prompt = item.kind === "acquired" ? STR.traits.changePrompt(TRAIT_CHANGE_EVENTS[item.id]) : STR.traits.originPrompts[item.kind];
+    answer = item.example;
   } else if (mode === "concept") {
     const item = concepts.get(id);
     if (!item) throw new Error(`unknown concept ${id}`);
@@ -121,6 +127,7 @@ function authoredTask(token: string): AuthoredTask {
 }
 
 function checkQuestion(question: Question, label: string, failures: string[]): void {
+  checkTraitsLanguage(question, label, failures);
   if (![question.prompt, question.answer, question.hint].every(nonblank)) failures.push(`${label}: blank question content`);
   if (!workedExample(question).trim()) failures.push(`${label}: missing shared worked example`);
   if (question.inputMode === "choices") {
@@ -223,7 +230,7 @@ function checkStages(stages: Stage[], failures: string[]): void {
 
 /** Traits-only structural, factual and fresh-question checks for the shared audit. */
 export function auditTraits(): string[] {
-  const failures: string[] = [];
+  const failures: string[] = [...auditTraitsResume(), ...auditTraitsLanguage()];
   const world = WORLDS.find((entry) => entry.id === "traits");
   if (!world || world.stages.length !== 55) failures.push("traits: expected 55 stages");
   checkBanks(failures);
