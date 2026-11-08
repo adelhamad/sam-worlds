@@ -30,6 +30,7 @@ export const WORLD_CATEGORY: Record<string, string> = {
   living: "science", body: "science", physics: "science", chemistry: "science", elements: "science",
   space: "science", dinos: "science", weather: "science", animals: "science", ocean: "science",
   garden: "science", bugs: "science", machines: "science", rocks: "science", habitats: "science", birds: "science",
+  traits: "science",
   // world / geography
   atlas: "world", flags: "world", directions: "world", cultures: "world", transport: "world", landforms: "world",
   ancient: "world", capitals: "world", countrymaps: "world",

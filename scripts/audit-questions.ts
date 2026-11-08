@@ -3,9 +3,10 @@ import { generateQuestionSet } from "../src/engine/generators";
 import type { Question } from "../src/engine/generators/types";
 import { COUNTRY_BY_CODE, COUNTRIES, flagEmoji } from "../src/engine/generators/geography";
 import { STATS_BY_CODE, areaLabel, countryLabel, populationLabel, rankedCountry } from "../src/engine/generators/countryStats";
+import { auditTraits } from "./audit-traits";
 
 const SEEDS = [1, 3, 7, 37, 101, 509, 1009, 12345, 54321, 99991];
-const failures: string[] = [];
+const failures: string[] = auditTraits();
 const stageIds = new Set<string>();
 let sessions = 0;
 let questionsChecked = 0;
@@ -231,8 +232,8 @@ for (const world of WORLDS) {
       if (identity.some((key) => globalSeen.has(key))) failures.push(`${stage.id}: seen in an earlier level`);
       identity.forEach((key) => globalSeen.add(key));
     }
-    if (["capitals", "countrymaps", "flags", "landduel", "areaatlas", "population"].includes(world.id) && set.length !== stage.questions) {
-      failures.push(`${stage.id}: geography level cannot fill six questions in sequence`);
+    if (["capitals", "countrymaps", "flags", "landduel", "areaatlas", "population", "traits"].includes(world.id) && set.length !== stage.questions) {
+      failures.push(`${stage.id}: authored level cannot fill six questions in sequence`);
     }
   }
 }

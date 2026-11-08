@@ -1,0 +1,1800 @@
+[
+  {
+    "id": "traits-01",
+    "name": "Spot Body Traits 1",
+    "generator": "traits",
+    "skill": "traits-observe",
+    "params": {
+      "items": [
+        "spot:duck-feet",
+        "spot:trout-gills",
+        "spot:dolphin-blowhole",
+        "spot:elephant-trunk",
+        "spot:giraffe-neck",
+        "spot:woodpecker-beak",
+        "spot:hummingbird-bill",
+        "spot:anteater-tongue",
+        "spot:whale-baleen",
+        "spot:eagle-beak",
+        "spot:beaver-teeth",
+        "spot:walrus-tusks"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "A trait is a living thing's feature.",
+      "Look for a body part or covering.",
+      "A learned trick is different."
+    ]
+  },
+  {
+    "id": "traits-02",
+    "name": "Spot Body Traits 2",
+    "generator": "traits",
+    "skill": "traits-observe",
+    "params": {
+      "items": [
+        "spot:camel-feet",
+        "spot:polar-bear-soles",
+        "spot:fennec-ears",
+        "spot:otter-fur",
+        "spot:porcupine-quills",
+        "spot:tortoise-shell",
+        "spot:stick-insect-shape",
+        "spot:skunk-glands",
+        "spot:octopus-suckers",
+        "spot:gecko-pads",
+        "spot:bat-wings",
+        "spot:mole-nose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "A trait is a living thing's feature.",
+      "Look for a body part or covering.",
+      "A learned trick is different."
+    ]
+  },
+  {
+    "id": "traits-03",
+    "name": "Spot Body Traits 3",
+    "generator": "traits",
+    "skill": "traits-observe",
+    "params": {
+      "items": [
+        "spot:snail-tongue",
+        "spot:chameleon-tail",
+        "spot:kangaroo-pouch",
+        "spot:pelican-pouch",
+        "spot:owl-feathers",
+        "spot:cat-tongue",
+        "spot:camel-eyelashes",
+        "spot:mole-rat-teeth",
+        "spot:saguaro-stem",
+        "spot:water-lily-leaves",
+        "spot:red-mangrove-roots",
+        "spot:black-mangrove-roots"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "A trait is a living thing's feature.",
+      "Look for a body part or covering.",
+      "A learned trick is different."
+    ]
+  },
+  {
+    "id": "traits-04",
+    "name": "Spot Body Traits 4",
+    "generator": "traits",
+    "skill": "traits-observe",
+    "params": {
+      "items": [
+        "spot:ivy-roots",
+        "spot:dandelion-seeds",
+        "spot:burdock-burrs",
+        "spot:coconut-husk",
+        "spot:flytrap-leaves",
+        "spot:acacia-thorns",
+        "spot:bromeliad-cup",
+        "spot:staghorn-fronds",
+        "spot:impatiens-pods",
+        "spot:pine-needles",
+        "spot:lotus-leaves",
+        "spot:onion-bulb"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 18,
+    "intro": [
+      "A trait is a living thing's feature.",
+      "Look for a body part or covering.",
+      "A learned trick is different."
+    ]
+  },
+  {
+    "id": "traits-05",
+    "name": "Where Traits Come From 1",
+    "generator": "traits",
+    "skill": "traits-origins",
+    "params": {
+      "items": [
+        "origin:acquired-haircut",
+        "origin:learned-swimming",
+        "origin:inherited-oak",
+        "origin:inherited-cactus",
+        "origin:inherited-porcupine",
+        "origin:acquired-scar",
+        "origin:learned-shoes",
+        "origin:inherited-turtle",
+        "origin:inherited-zebra",
+        "origin:inherited-kitten",
+        "origin:learned-whistle",
+        "origin:acquired-bent-stem"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Inherited traits come from parents.",
+      "Learning comes from practice and experience.",
+      "Mud can change how fur looks."
+    ]
+  },
+  {
+    "id": "traits-06",
+    "name": "Where Traits Come From 2",
+    "generator": "traits",
+    "skill": "traits-origins",
+    "params": {
+      "items": [
+        "origin:learned-reading",
+        "origin:inherited-snail",
+        "origin:learned-chess",
+        "origin:inherited-bird",
+        "origin:inherited-elephant",
+        "origin:acquired-torn-ear",
+        "origin:learned-dog-sit",
+        "origin:inherited-maple",
+        "origin:learned-drawing",
+        "origin:inherited-duck",
+        "origin:learned-piano",
+        "origin:learned-signing"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Inherited traits come from parents.",
+      "Learning comes from practice and experience.",
+      "Mud can change how fur looks."
+    ]
+  },
+  {
+    "id": "traits-07",
+    "name": "Where Traits Come From 3",
+    "generator": "traits",
+    "skill": "traits-origins",
+    "params": {
+      "items": [
+        "origin:acquired-petal-damage",
+        "origin:acquired-missing-leaf",
+        "origin:acquired-wet-dog",
+        "origin:learned-knitting",
+        "origin:learned-parrot",
+        "origin:acquired-tree-scar",
+        "origin:inherited-fish",
+        "origin:acquired-leaf-hole",
+        "origin:learned-cat-cue",
+        "origin:acquired-dusty-leaves",
+        "origin:inherited-rabbit",
+        "origin:acquired-muddy-dog"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Inherited traits come from parents.",
+      "Learning comes from practice and experience.",
+      "Mud can change how fur looks."
+    ]
+  },
+  {
+    "id": "traits-08",
+    "name": "Where Traits Come From 4",
+    "generator": "traits",
+    "skill": "traits-origins",
+    "params": {
+      "items": [
+        "origin:acquired-stained-fur",
+        "origin:inherited-spider",
+        "origin:acquired-scrape",
+        "origin:inherited-puppy",
+        "origin:acquired-dog-claws",
+        "origin:learned-bike",
+        "origin:learned-juggling",
+        "origin:learned-dog-fetch",
+        "origin:learned-horse",
+        "origin:acquired-cat-grooming",
+        "origin:acquired-broken-branch",
+        "origin:inherited-kangaroo"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "Inherited traits come from parents.",
+      "Learning comes from practice and experience.",
+      "Mud can change how fur looks."
+    ]
+  },
+  {
+    "id": "traits-09",
+    "name": "Traits and Adaptations 1",
+    "generator": "traits",
+    "skill": "traits-concepts",
+    "params": {
+      "items": [
+        "concept:trait-meaning",
+        "concept:adaptation-meaning",
+        "concept:shell-both-labels",
+        "concept:inheritance-source",
+        "concept:learned-cue",
+        "concept:acquired-scar",
+        "concept:environment-growth",
+        "concept:offspring-variation",
+        "concept:traits-appear-later",
+        "concept:camouflage-context",
+        "concept:fur-warmth",
+        "concept:no-instant-transformation"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 20,
+    "intro": [
+      "An adaptation is also a trait.",
+      "It is inherited and helps in its surroundings.",
+      "Learning comes from practice and experience."
+    ]
+  },
+  {
+    "id": "traits-10",
+    "name": "Traits and Adaptations 2",
+    "generator": "traits",
+    "skill": "traits-concepts",
+    "params": {
+      "items": [
+        "concept:need-alone",
+        "concept:generations",
+        "concept:color-evidence",
+        "concept:leaf-shape-function",
+        "concept:feature-versus-function",
+        "concept:helpful-learning",
+        "concept:clothing-versus-body",
+        "concept:inherited-behavior",
+        "concept:protection-limits",
+        "concept:reproduction",
+        "concept:test-camouflage",
+        "concept:parent-teaching"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "An adaptation is also a trait.",
+      "It is inherited and helps in its surroundings.",
+      "Learning comes from practice and experience."
+    ]
+  },
+  {
+    "id": "traits-11",
+    "name": "Helpful Body Parts 1",
+    "generator": "traits",
+    "skill": "traits-functions",
+    "params": {
+      "items": [
+        "job:duck-feet",
+        "job:trout-gills",
+        "job:dolphin-blowhole",
+        "job:elephant-trunk",
+        "job:giraffe-neck",
+        "job:woodpecker-beak",
+        "job:hummingbird-bill",
+        "job:anteater-tongue",
+        "job:whale-baleen",
+        "job:eagle-beak",
+        "job:beaver-teeth",
+        "job:walrus-tusks"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Match a body trait with its job.",
+      "These inherited traits are adaptations.",
+      "They help where the living thing lives."
+    ]
+  },
+  {
+    "id": "traits-12",
+    "name": "Helpful Body Parts 2",
+    "generator": "traits",
+    "skill": "traits-functions",
+    "params": {
+      "items": [
+        "job:camel-feet",
+        "job:polar-bear-soles",
+        "job:fennec-ears",
+        "job:otter-fur",
+        "job:porcupine-quills",
+        "job:tortoise-shell",
+        "job:stick-insect-shape",
+        "job:skunk-glands",
+        "job:octopus-suckers",
+        "job:gecko-pads",
+        "job:bat-wings",
+        "job:mole-nose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Match a body trait with its job.",
+      "These inherited traits are adaptations.",
+      "They help where the living thing lives."
+    ]
+  },
+  {
+    "id": "traits-13",
+    "name": "Helpful Body Parts 3",
+    "generator": "traits",
+    "skill": "traits-functions",
+    "params": {
+      "items": [
+        "job:snail-tongue",
+        "job:chameleon-tail",
+        "job:kangaroo-pouch",
+        "job:pelican-pouch",
+        "job:owl-feathers",
+        "job:cat-tongue",
+        "job:camel-eyelashes",
+        "job:mole-rat-teeth",
+        "job:saguaro-stem",
+        "job:water-lily-leaves",
+        "job:red-mangrove-roots",
+        "job:black-mangrove-roots"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Match a body trait with its job.",
+      "These inherited traits are adaptations.",
+      "They help where the living thing lives."
+    ]
+  },
+  {
+    "id": "traits-14",
+    "name": "Helpful Body Parts 4",
+    "generator": "traits",
+    "skill": "traits-functions",
+    "params": {
+      "items": [
+        "job:ivy-roots",
+        "job:dandelion-seeds",
+        "job:burdock-burrs",
+        "job:coconut-husk",
+        "job:flytrap-leaves",
+        "job:acacia-thorns",
+        "job:bromeliad-cup",
+        "job:staghorn-fronds",
+        "job:impatiens-pods",
+        "job:pine-needles",
+        "job:lotus-leaves",
+        "job:onion-bulb"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 22,
+    "intro": [
+      "Match a body trait with its job.",
+      "These inherited traits are adaptations.",
+      "They help where the living thing lives."
+    ]
+  },
+  {
+    "id": "traits-15",
+    "name": "Find the Helpful Trait 1",
+    "generator": "traits",
+    "skill": "traits-functions",
+    "params": {
+      "items": [
+        "feature:duck-feet",
+        "feature:trout-gills",
+        "feature:dolphin-blowhole",
+        "feature:elephant-trunk",
+        "feature:giraffe-neck",
+        "feature:woodpecker-beak",
+        "feature:hummingbird-bill",
+        "feature:anteater-tongue",
+        "feature:whale-baleen",
+        "feature:eagle-beak",
+        "feature:beaver-teeth",
+        "feature:walrus-tusks"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Match a body trait with its job.",
+      "These inherited traits are adaptations.",
+      "They help where the living thing lives."
+    ]
+  },
+  {
+    "id": "traits-16",
+    "name": "Find the Helpful Trait 2",
+    "generator": "traits",
+    "skill": "traits-functions",
+    "params": {
+      "items": [
+        "feature:camel-feet",
+        "feature:polar-bear-soles",
+        "feature:fennec-ears",
+        "feature:otter-fur",
+        "feature:porcupine-quills",
+        "feature:tortoise-shell",
+        "feature:stick-insect-shape",
+        "feature:skunk-glands",
+        "feature:octopus-suckers",
+        "feature:gecko-pads",
+        "feature:bat-wings",
+        "feature:mole-nose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Match a body trait with its job.",
+      "These inherited traits are adaptations.",
+      "They help where the living thing lives."
+    ]
+  },
+  {
+    "id": "traits-17",
+    "name": "Find the Helpful Trait 3",
+    "generator": "traits",
+    "skill": "traits-functions",
+    "params": {
+      "items": [
+        "feature:snail-tongue",
+        "feature:chameleon-tail",
+        "feature:kangaroo-pouch",
+        "feature:pelican-pouch",
+        "feature:owl-feathers",
+        "feature:cat-tongue",
+        "feature:camel-eyelashes",
+        "feature:mole-rat-teeth",
+        "feature:saguaro-stem",
+        "feature:water-lily-leaves",
+        "feature:red-mangrove-roots",
+        "feature:black-mangrove-roots"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Match a body trait with its job.",
+      "These inherited traits are adaptations.",
+      "They help where the living thing lives."
+    ]
+  },
+  {
+    "id": "traits-18",
+    "name": "Find the Helpful Trait 4",
+    "generator": "traits",
+    "skill": "traits-functions",
+    "params": {
+      "items": [
+        "feature:ivy-roots",
+        "feature:dandelion-seeds",
+        "feature:burdock-burrs",
+        "feature:coconut-husk",
+        "feature:flytrap-leaves",
+        "feature:acacia-thorns",
+        "feature:bromeliad-cup",
+        "feature:staghorn-fronds",
+        "feature:impatiens-pods",
+        "feature:pine-needles",
+        "feature:lotus-leaves",
+        "feature:onion-bulb"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Match a body trait with its job.",
+      "These inherited traits are adaptations.",
+      "They help where the living thing lives."
+    ]
+  },
+  {
+    "id": "traits-19",
+    "name": "Build Nature Matches 1",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:elephant-trunk:whale-baleen",
+        "pair:whale-baleen:stick-insect-shape",
+        "pair:woodpecker-beak:bat-wings",
+        "pair:skunk-glands:coconut-husk",
+        "pair:elephant-trunk:burdock-burrs",
+        "pair:burdock-burrs:impatiens-pods",
+        "pair:hummingbird-bill:snail-tongue",
+        "pair:duck-feet:saguaro-stem",
+        "pair:woodpecker-beak:chameleon-tail",
+        "pair:otter-fur:skunk-glands",
+        "pair:mole-nose:coconut-husk",
+        "pair:anteater-tongue:bromeliad-cup",
+        "pair:eagle-beak:camel-eyelashes",
+        "pair:eagle-beak:octopus-suckers",
+        "pair:eagle-beak:water-lily-leaves",
+        "pair:polar-bear-soles:bat-wings"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 24,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-20",
+    "name": "Build Nature Matches 2",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:burdock-burrs:pine-needles",
+        "pair:otter-fur:water-lily-leaves",
+        "pair:trout-gills:coconut-husk",
+        "pair:dandelion-seeds:staghorn-fronds",
+        "pair:mole-rat-teeth:bromeliad-cup",
+        "pair:duck-feet:onion-bulb",
+        "pair:ivy-roots:staghorn-fronds",
+        "pair:stick-insect-shape:gecko-pads",
+        "pair:polar-bear-soles:saguaro-stem",
+        "pair:burdock-burrs:acacia-thorns",
+        "pair:acacia-thorns:lotus-leaves",
+        "pair:polar-bear-soles:otter-fur",
+        "pair:elephant-trunk:camel-eyelashes",
+        "pair:polar-bear-soles:skunk-glands",
+        "pair:duck-feet:trout-gills",
+        "pair:snail-tongue:coconut-husk"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-21",
+    "name": "Build Nature Matches 3",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:porcupine-quills:owl-feathers",
+        "pair:walrus-tusks:fennec-ears",
+        "pair:tortoise-shell:ivy-roots",
+        "pair:woodpecker-beak:fennec-ears",
+        "pair:skunk-glands:owl-feathers",
+        "pair:skunk-glands:pelican-pouch",
+        "pair:octopus-suckers:onion-bulb",
+        "pair:mole-nose:camel-eyelashes",
+        "pair:kangaroo-pouch:pine-needles",
+        "pair:camel-feet:bat-wings",
+        "pair:cat-tongue:dandelion-seeds",
+        "pair:whale-baleen:skunk-glands",
+        "pair:tortoise-shell:octopus-suckers",
+        "pair:eagle-beak:mole-nose",
+        "pair:woodpecker-beak:impatiens-pods",
+        "pair:elephant-trunk:water-lily-leaves"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-22",
+    "name": "Build Nature Matches 4",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:anteater-tongue:kangaroo-pouch",
+        "pair:duck-feet:camel-feet",
+        "pair:kangaroo-pouch:red-mangrove-roots",
+        "pair:porcupine-quills:bat-wings",
+        "pair:hummingbird-bill:whale-baleen",
+        "pair:otter-fur:red-mangrove-roots",
+        "pair:walrus-tusks:octopus-suckers",
+        "pair:duck-feet:skunk-glands",
+        "pair:burdock-burrs:staghorn-fronds",
+        "pair:camel-feet:chameleon-tail",
+        "pair:stick-insect-shape:cat-tongue",
+        "pair:tortoise-shell:camel-eyelashes",
+        "pair:camel-feet:red-mangrove-roots",
+        "pair:woodpecker-beak:camel-feet",
+        "pair:pelican-pouch:ivy-roots",
+        "pair:dolphin-blowhole:pine-needles"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-23",
+    "name": "Build Nature Matches 5",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:saguaro-stem:coconut-husk",
+        "pair:elephant-trunk:eagle-beak",
+        "pair:water-lily-leaves:bromeliad-cup",
+        "pair:giraffe-neck:tortoise-shell",
+        "pair:elephant-trunk:camel-feet",
+        "pair:gecko-pads:burdock-burrs",
+        "pair:otter-fur:pelican-pouch",
+        "pair:porcupine-quills:snail-tongue",
+        "pair:camel-feet:skunk-glands",
+        "pair:fennec-ears:coconut-husk",
+        "pair:hummingbird-bill:staghorn-fronds",
+        "pair:black-mangrove-roots:coconut-husk",
+        "pair:eagle-beak:bromeliad-cup",
+        "pair:hummingbird-bill:red-mangrove-roots",
+        "pair:dolphin-blowhole:beaver-teeth",
+        "pair:mole-nose:onion-bulb"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-24",
+    "name": "Build Nature Matches 6",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:cat-tongue:flytrap-leaves",
+        "pair:camel-feet:burdock-burrs",
+        "pair:mole-rat-teeth:flytrap-leaves",
+        "pair:skunk-glands:pine-needles",
+        "pair:tortoise-shell:onion-bulb",
+        "pair:octopus-suckers:burdock-burrs",
+        "pair:otter-fur:camel-eyelashes",
+        "pair:woodpecker-beak:cat-tongue",
+        "pair:bat-wings:onion-bulb",
+        "pair:chameleon-tail:saguaro-stem",
+        "pair:cat-tongue:camel-eyelashes",
+        "pair:kangaroo-pouch:water-lily-leaves",
+        "pair:saguaro-stem:black-mangrove-roots",
+        "pair:walrus-tusks:pine-needles",
+        "pair:hummingbird-bill:kangaroo-pouch",
+        "pair:anteater-tongue:camel-eyelashes"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 26,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-25",
+    "name": "Build Nature Matches 7",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:staghorn-fronds:impatiens-pods",
+        "pair:walrus-tusks:skunk-glands",
+        "pair:hummingbird-bill:camel-feet",
+        "pair:saguaro-stem:ivy-roots",
+        "pair:mole-rat-teeth:lotus-leaves",
+        "pair:dolphin-blowhole:snail-tongue",
+        "pair:gecko-pads:lotus-leaves",
+        "pair:stick-insect-shape:mole-nose",
+        "pair:water-lily-leaves:lotus-leaves",
+        "pair:bat-wings:water-lily-leaves",
+        "pair:walrus-tusks:onion-bulb",
+        "pair:duck-feet:beaver-teeth",
+        "pair:black-mangrove-roots:impatiens-pods",
+        "pair:eagle-beak:fennec-ears",
+        "pair:flytrap-leaves:bromeliad-cup",
+        "pair:camel-feet:lotus-leaves"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 28,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-26",
+    "name": "Build Nature Matches 8",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:beaver-teeth:flytrap-leaves",
+        "pair:snail-tongue:acacia-thorns",
+        "pair:kangaroo-pouch:burdock-burrs",
+        "pair:woodpecker-beak:whale-baleen",
+        "pair:ivy-roots:lotus-leaves",
+        "pair:tortoise-shell:acacia-thorns",
+        "pair:duck-feet:burdock-burrs",
+        "pair:kangaroo-pouch:pelican-pouch",
+        "pair:trout-gills:woodpecker-beak",
+        "pair:eagle-beak:chameleon-tail",
+        "pair:polar-bear-soles:red-mangrove-roots",
+        "pair:woodpecker-beak:snail-tongue",
+        "pair:giraffe-neck:walrus-tusks",
+        "pair:elephant-trunk:saguaro-stem",
+        "pair:whale-baleen:walrus-tusks",
+        "pair:mole-nose:dandelion-seeds"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 28,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-27",
+    "name": "Build Nature Matches 9",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:stick-insect-shape:ivy-roots",
+        "pair:whale-baleen:gecko-pads",
+        "pair:elephant-trunk:flytrap-leaves",
+        "pair:chameleon-tail:acacia-thorns",
+        "pair:camel-feet:onion-bulb",
+        "pair:duck-feet:water-lily-leaves",
+        "pair:trout-gills:ivy-roots",
+        "pair:giraffe-neck:flytrap-leaves",
+        "pair:bat-wings:ivy-roots",
+        "pair:anteater-tongue:beaver-teeth",
+        "pair:red-mangrove-roots:impatiens-pods",
+        "pair:walrus-tusks:tortoise-shell",
+        "pair:polar-bear-soles:owl-feathers",
+        "pair:whale-baleen:chameleon-tail",
+        "pair:gecko-pads:cat-tongue",
+        "pair:dolphin-blowhole:camel-feet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 28,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-28",
+    "name": "Build Nature Matches 10",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:owl-feathers:pine-needles",
+        "pair:polar-bear-soles:pelican-pouch",
+        "pair:water-lily-leaves:black-mangrove-roots",
+        "pair:hummingbird-bill:bat-wings",
+        "pair:snail-tongue:owl-feathers",
+        "pair:mole-nose:ivy-roots",
+        "pair:beaver-teeth:polar-bear-soles",
+        "pair:tortoise-shell:stick-insect-shape",
+        "pair:burdock-burrs:lotus-leaves",
+        "pair:bromeliad-cup:pine-needles",
+        "pair:water-lily-leaves:acacia-thorns",
+        "pair:porcupine-quills:skunk-glands",
+        "pair:polar-bear-soles:flytrap-leaves",
+        "pair:duck-feet:cat-tongue",
+        "pair:trout-gills:camel-feet",
+        "pair:whale-baleen:staghorn-fronds"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 28,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-29",
+    "name": "Build Nature Matches 11",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:owl-feathers:cat-tongue",
+        "pair:lotus-leaves:onion-bulb",
+        "pair:kangaroo-pouch:mole-rat-teeth",
+        "pair:elephant-trunk:skunk-glands",
+        "pair:black-mangrove-roots:dandelion-seeds",
+        "pair:anteater-tongue:water-lily-leaves",
+        "pair:camel-feet:fennec-ears",
+        "pair:beaver-teeth:chameleon-tail",
+        "pair:giraffe-neck:mole-rat-teeth",
+        "pair:red-mangrove-roots:lotus-leaves",
+        "pair:hummingbird-bill:chameleon-tail",
+        "pair:otter-fur:impatiens-pods",
+        "pair:duck-feet:staghorn-fronds",
+        "pair:dolphin-blowhole:camel-eyelashes",
+        "pair:polar-bear-soles:coconut-husk",
+        "pair:duck-feet:dolphin-blowhole"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 28,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-30",
+    "name": "Build Nature Matches 12",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:bat-wings:black-mangrove-roots",
+        "pair:pelican-pouch:black-mangrove-roots",
+        "pair:mole-rat-teeth:acacia-thorns",
+        "pair:polar-bear-soles:ivy-roots",
+        "pair:walrus-tusks:snail-tongue",
+        "pair:giraffe-neck:cat-tongue",
+        "pair:duck-feet:ivy-roots",
+        "pair:walrus-tusks:bromeliad-cup",
+        "pair:dolphin-blowhole:red-mangrove-roots",
+        "pair:bat-wings:owl-feathers",
+        "pair:duck-feet:stick-insect-shape",
+        "pair:dolphin-blowhole:gecko-pads",
+        "pair:kangaroo-pouch:impatiens-pods",
+        "pair:snail-tongue:red-mangrove-roots",
+        "pair:anteater-tongue:coconut-husk",
+        "pair:bat-wings:pine-needles"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 30,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-31",
+    "name": "Build Nature Matches 13",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:water-lily-leaves:staghorn-fronds",
+        "pair:dolphin-blowhole:pelican-pouch",
+        "pair:giraffe-neck:whale-baleen",
+        "pair:chameleon-tail:coconut-husk",
+        "pair:eagle-beak:coconut-husk",
+        "pair:camel-feet:coconut-husk",
+        "pair:flytrap-leaves:lotus-leaves",
+        "pair:mole-nose:saguaro-stem",
+        "pair:chameleon-tail:staghorn-fronds",
+        "pair:walrus-tusks:staghorn-fronds",
+        "pair:dolphin-blowhole:elephant-trunk",
+        "pair:polar-bear-soles:gecko-pads",
+        "pair:eagle-beak:mole-rat-teeth",
+        "pair:gecko-pads:bromeliad-cup",
+        "pair:elephant-trunk:pine-needles",
+        "pair:giraffe-neck:onion-bulb"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 30,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-32",
+    "name": "Build Nature Matches 14",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:dolphin-blowhole:flytrap-leaves",
+        "pair:bat-wings:snail-tongue",
+        "pair:dolphin-blowhole:fennec-ears",
+        "pair:dandelion-seeds:lotus-leaves",
+        "pair:woodpecker-beak:red-mangrove-roots",
+        "pair:red-mangrove-roots:onion-bulb",
+        "pair:otter-fur:bat-wings",
+        "pair:anteater-tongue:mole-rat-teeth",
+        "pair:impatiens-pods:onion-bulb",
+        "pair:polar-bear-soles:stick-insect-shape",
+        "pair:octopus-suckers:black-mangrove-roots",
+        "pair:walrus-tusks:saguaro-stem",
+        "pair:mole-rat-teeth:saguaro-stem",
+        "pair:dolphin-blowhole:otter-fur",
+        "pair:walrus-tusks:ivy-roots",
+        "pair:eagle-beak:dandelion-seeds"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 30,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-33",
+    "name": "Build Nature Matches 15",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:whale-baleen:pelican-pouch",
+        "pair:trout-gills:onion-bulb",
+        "pair:bat-wings:lotus-leaves",
+        "pair:gecko-pads:flytrap-leaves",
+        "pair:stick-insect-shape:staghorn-fronds",
+        "pair:skunk-glands:red-mangrove-roots",
+        "pair:cat-tongue:water-lily-leaves",
+        "pair:hummingbird-bill:pelican-pouch",
+        "pair:whale-baleen:beaver-teeth",
+        "pair:camel-feet:snail-tongue",
+        "pair:hummingbird-bill:octopus-suckers",
+        "pair:eagle-beak:otter-fur",
+        "pair:anteater-tongue:lotus-leaves",
+        "pair:mole-nose:water-lily-leaves",
+        "pair:trout-gills:dolphin-blowhole",
+        "pair:polar-bear-soles:mole-rat-teeth"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 30,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-34",
+    "name": "Build Nature Matches 16",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:otter-fur:bromeliad-cup",
+        "pair:giraffe-neck:otter-fur",
+        "pair:giraffe-neck:skunk-glands",
+        "pair:anteater-tongue:flytrap-leaves",
+        "pair:saguaro-stem:water-lily-leaves",
+        "pair:eagle-beak:tortoise-shell",
+        "pair:gecko-pads:bat-wings",
+        "pair:polar-bear-soles:black-mangrove-roots",
+        "pair:camel-feet:acacia-thorns",
+        "pair:beaver-teeth:camel-feet",
+        "pair:polar-bear-soles:fennec-ears",
+        "pair:polar-bear-soles:octopus-suckers",
+        "pair:anteater-tongue:impatiens-pods",
+        "pair:gecko-pads:mole-rat-teeth",
+        "pair:beaver-teeth:tortoise-shell",
+        "pair:otter-fur:kangaroo-pouch"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 30,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-35",
+    "name": "Build Nature Matches 17",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:elephant-trunk:octopus-suckers",
+        "pair:whale-baleen:coconut-husk",
+        "pair:eagle-beak:skunk-glands",
+        "pair:red-mangrove-roots:bromeliad-cup",
+        "pair:elephant-trunk:ivy-roots",
+        "pair:polar-bear-soles:mole-nose",
+        "pair:fennec-ears:acacia-thorns",
+        "pair:bat-wings:mole-rat-teeth",
+        "pair:beaver-teeth:mole-rat-teeth",
+        "pair:fennec-ears:stick-insect-shape",
+        "pair:giraffe-neck:hummingbird-bill",
+        "pair:otter-fur:gecko-pads",
+        "pair:ivy-roots:burdock-burrs",
+        "pair:duck-feet:fennec-ears",
+        "pair:cat-tongue:onion-bulb",
+        "pair:eagle-beak:red-mangrove-roots"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 32,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-36",
+    "name": "Build Nature Matches 18",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:cat-tongue:black-mangrove-roots",
+        "pair:otter-fur:onion-bulb",
+        "pair:dandelion-seeds:coconut-husk",
+        "pair:hummingbird-bill:impatiens-pods",
+        "pair:whale-baleen:polar-bear-soles",
+        "pair:staghorn-fronds:onion-bulb",
+        "pair:anteater-tongue:whale-baleen",
+        "pair:tortoise-shell:owl-feathers",
+        "pair:woodpecker-beak:octopus-suckers",
+        "pair:fennec-ears:snail-tongue",
+        "pair:chameleon-tail:pelican-pouch",
+        "pair:giraffe-neck:octopus-suckers",
+        "pair:walrus-tusks:bat-wings",
+        "pair:fennec-ears:pine-needles",
+        "pair:gecko-pads:impatiens-pods",
+        "pair:bat-wings:pelican-pouch"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 32,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-37",
+    "name": "Build Nature Matches 19",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:dolphin-blowhole:polar-bear-soles",
+        "pair:hummingbird-bill:polar-bear-soles",
+        "pair:dandelion-seeds:acacia-thorns",
+        "pair:beaver-teeth:skunk-glands",
+        "pair:beaver-teeth:stick-insect-shape",
+        "pair:chameleon-tail:dandelion-seeds",
+        "pair:skunk-glands:chameleon-tail",
+        "pair:saguaro-stem:burdock-burrs",
+        "pair:snail-tongue:water-lily-leaves",
+        "pair:camel-eyelashes:ivy-roots",
+        "pair:anteater-tongue:otter-fur",
+        "pair:snail-tongue:black-mangrove-roots",
+        "pair:woodpecker-beak:saguaro-stem",
+        "pair:anteater-tongue:eagle-beak",
+        "pair:impatiens-pods:pine-needles",
+        "pair:beaver-teeth:mole-nose"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 32,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-38",
+    "name": "Build Nature Matches 20",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:chameleon-tail:onion-bulb",
+        "pair:camel-eyelashes:flytrap-leaves",
+        "pair:skunk-glands:bat-wings",
+        "pair:saguaro-stem:flytrap-leaves",
+        "pair:duck-feet:porcupine-quills",
+        "pair:walrus-tusks:kangaroo-pouch",
+        "pair:woodpecker-beak:pelican-pouch",
+        "pair:pine-needles:onion-bulb",
+        "pair:beaver-teeth:kangaroo-pouch",
+        "pair:hummingbird-bill:coconut-husk",
+        "pair:elephant-trunk:impatiens-pods",
+        "pair:red-mangrove-roots:staghorn-fronds",
+        "pair:pelican-pouch:impatiens-pods",
+        "pair:fennec-ears:dandelion-seeds",
+        "pair:fennec-ears:camel-eyelashes",
+        "pair:mole-rat-teeth:ivy-roots"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 32,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-39",
+    "name": "Build Nature Matches 21",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:woodpecker-beak:walrus-tusks",
+        "pair:whale-baleen:bromeliad-cup",
+        "pair:beaver-teeth:octopus-suckers",
+        "pair:walrus-tusks:cat-tongue",
+        "pair:eagle-beak:black-mangrove-roots",
+        "pair:mole-nose:flytrap-leaves",
+        "pair:otter-fur:black-mangrove-roots",
+        "pair:chameleon-tail:owl-feathers",
+        "pair:anteater-tongue:cat-tongue",
+        "pair:tortoise-shell:staghorn-fronds",
+        "pair:gecko-pads:mole-nose",
+        "pair:owl-feathers:black-mangrove-roots",
+        "pair:stick-insect-shape:chameleon-tail",
+        "pair:giraffe-neck:camel-eyelashes",
+        "pair:flytrap-leaves:acacia-thorns",
+        "pair:ivy-roots:pine-needles"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 32,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-40",
+    "name": "Build Nature Matches 22",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:woodpecker-beak:ivy-roots",
+        "pair:burdock-burrs:flytrap-leaves",
+        "pair:coconut-husk:pine-needles",
+        "pair:beaver-teeth:saguaro-stem",
+        "pair:chameleon-tail:flytrap-leaves",
+        "pair:kangaroo-pouch:coconut-husk",
+        "pair:camel-feet:polar-bear-soles",
+        "pair:fennec-ears:porcupine-quills",
+        "pair:stick-insect-shape:camel-eyelashes",
+        "pair:camel-eyelashes:onion-bulb",
+        "pair:black-mangrove-roots:ivy-roots",
+        "pair:otter-fur:staghorn-fronds",
+        "pair:eagle-beak:beaver-teeth",
+        "pair:saguaro-stem:dandelion-seeds",
+        "pair:snail-tongue:saguaro-stem",
+        "pair:saguaro-stem:acacia-thorns"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-41",
+    "name": "Build Nature Matches 23",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:tortoise-shell:skunk-glands",
+        "pair:duck-feet:acacia-thorns",
+        "pair:trout-gills:impatiens-pods",
+        "pair:elephant-trunk:cat-tongue",
+        "pair:stick-insect-shape:black-mangrove-roots",
+        "pair:skunk-glands:gecko-pads",
+        "pair:hummingbird-bill:otter-fur",
+        "pair:woodpecker-beak:acacia-thorns",
+        "pair:hummingbird-bill:pine-needles",
+        "pair:fennec-ears:mole-nose",
+        "pair:polar-bear-soles:staghorn-fronds",
+        "pair:skunk-glands:kangaroo-pouch",
+        "pair:snail-tongue:staghorn-fronds",
+        "pair:trout-gills:porcupine-quills",
+        "pair:camel-feet:kangaroo-pouch",
+        "pair:pelican-pouch:bromeliad-cup"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-42",
+    "name": "Build Nature Matches 24",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:otter-fur:acacia-thorns",
+        "pair:pelican-pouch:red-mangrove-roots",
+        "pair:porcupine-quills:dandelion-seeds",
+        "pair:coconut-husk:onion-bulb",
+        "pair:owl-feathers:red-mangrove-roots",
+        "pair:dolphin-blowhole:coconut-husk",
+        "pair:tortoise-shell:pelican-pouch",
+        "pair:giraffe-neck:burdock-burrs",
+        "pair:beaver-teeth:acacia-thorns",
+        "pair:woodpecker-beak:otter-fur",
+        "pair:otter-fur:stick-insect-shape",
+        "pair:giraffe-neck:lotus-leaves",
+        "pair:walrus-tusks:dandelion-seeds",
+        "pair:whale-baleen:porcupine-quills",
+        "pair:trout-gills:cat-tongue",
+        "pair:gecko-pads:saguaro-stem"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-43",
+    "name": "Build Nature Matches 25",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:dolphin-blowhole:octopus-suckers",
+        "pair:elephant-trunk:red-mangrove-roots",
+        "pair:snail-tongue:lotus-leaves",
+        "pair:saguaro-stem:pine-needles",
+        "pair:bat-wings:camel-eyelashes",
+        "pair:trout-gills:kangaroo-pouch",
+        "pair:giraffe-neck:camel-feet",
+        "pair:camel-feet:otter-fur",
+        "pair:woodpecker-beak:staghorn-fronds",
+        "pair:hummingbird-bill:tortoise-shell",
+        "pair:trout-gills:fennec-ears",
+        "pair:coconut-husk:bromeliad-cup",
+        "pair:dolphin-blowhole:bromeliad-cup",
+        "pair:trout-gills:snail-tongue",
+        "pair:beaver-teeth:burdock-burrs",
+        "pair:anteater-tongue:owl-feathers"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-44",
+    "name": "Build Nature Matches 26",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:bromeliad-cup:onion-bulb",
+        "pair:eagle-beak:pelican-pouch",
+        "pair:dandelion-seeds:onion-bulb",
+        "pair:dolphin-blowhole:porcupine-quills",
+        "pair:anteater-tongue:camel-feet",
+        "pair:tortoise-shell:chameleon-tail",
+        "pair:beaver-teeth:pelican-pouch",
+        "pair:acacia-thorns:onion-bulb",
+        "pair:elephant-trunk:onion-bulb",
+        "pair:porcupine-quills:coconut-husk",
+        "pair:bromeliad-cup:lotus-leaves",
+        "pair:woodpecker-beak:gecko-pads",
+        "pair:kangaroo-pouch:camel-eyelashes",
+        "pair:dandelion-seeds:pine-needles",
+        "pair:anteater-tongue:porcupine-quills",
+        "pair:duck-feet:otter-fur"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 34,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-45",
+    "name": "Build Nature Matches 27",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:pelican-pouch:saguaro-stem",
+        "pair:stick-insect-shape:skunk-glands",
+        "pair:elephant-trunk:owl-feathers",
+        "pair:gecko-pads:pelican-pouch",
+        "pair:trout-gills:bromeliad-cup",
+        "pair:camel-feet:saguaro-stem",
+        "pair:cat-tongue:staghorn-fronds",
+        "pair:beaver-teeth:lotus-leaves",
+        "pair:eagle-beak:ivy-roots",
+        "pair:stick-insect-shape:acacia-thorns",
+        "pair:hummingbird-bill:burdock-burrs",
+        "pair:duck-feet:camel-eyelashes",
+        "pair:hummingbird-bill:acacia-thorns",
+        "pair:woodpecker-beak:water-lily-leaves",
+        "pair:camel-feet:cat-tongue",
+        "pair:dolphin-blowhole:hummingbird-bill"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-46",
+    "name": "Build Nature Matches 28",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:otter-fur:octopus-suckers",
+        "pair:octopus-suckers:cat-tongue",
+        "pair:skunk-glands:cat-tongue",
+        "pair:water-lily-leaves:red-mangrove-roots",
+        "pair:tortoise-shell:lotus-leaves",
+        "pair:trout-gills:tortoise-shell",
+        "pair:whale-baleen:camel-eyelashes",
+        "pair:camel-eyelashes:acacia-thorns",
+        "pair:otter-fur:burdock-burrs",
+        "pair:walrus-tusks:red-mangrove-roots",
+        "pair:trout-gills:burdock-burrs",
+        "pair:staghorn-fronds:pine-needles",
+        "pair:walrus-tusks:chameleon-tail",
+        "pair:porcupine-quills:mole-nose",
+        "pair:beaver-teeth:porcupine-quills",
+        "pair:mole-rat-teeth:black-mangrove-roots"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-47",
+    "name": "Build Nature Matches 29",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:porcupine-quills:pelican-pouch",
+        "pair:camel-eyelashes:pine-needles",
+        "pair:anteater-tongue:stick-insect-shape",
+        "pair:otter-fur:porcupine-quills",
+        "pair:kangaroo-pouch:black-mangrove-roots",
+        "pair:trout-gills:bat-wings",
+        "pair:fennec-ears:burdock-burrs",
+        "pair:bat-wings:burdock-burrs",
+        "pair:chameleon-tail:camel-eyelashes",
+        "pair:trout-gills:pine-needles",
+        "pair:eagle-beak:gecko-pads",
+        "pair:skunk-glands:mole-rat-teeth",
+        "pair:duck-feet:tortoise-shell",
+        "pair:mole-rat-teeth:water-lily-leaves",
+        "pair:tortoise-shell:mole-nose",
+        "pair:walrus-tusks:camel-feet"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-48",
+    "name": "Build Nature Matches 30",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:giraffe-neck:stick-insect-shape",
+        "pair:fennec-ears:gecko-pads",
+        "pair:stick-insect-shape:pine-needles",
+        "pair:anteater-tongue:ivy-roots",
+        "pair:trout-gills:lotus-leaves",
+        "pair:camel-eyelashes:dandelion-seeds",
+        "pair:woodpecker-beak:dandelion-seeds",
+        "pair:beaver-teeth:gecko-pads",
+        "pair:otter-fur:tortoise-shell",
+        "pair:tortoise-shell:bromeliad-cup",
+        "pair:elephant-trunk:mole-rat-teeth",
+        "pair:whale-baleen:ivy-roots",
+        "pair:duck-feet:eagle-beak",
+        "pair:duck-feet:anteater-tongue",
+        "pair:saguaro-stem:red-mangrove-roots",
+        "pair:elephant-trunk:walrus-tusks"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-49",
+    "name": "Build Nature Matches 31",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:mole-nose:snail-tongue",
+        "pair:octopus-suckers:bat-wings",
+        "pair:hummingbird-bill:dandelion-seeds",
+        "pair:porcupine-quills:onion-bulb",
+        "pair:snail-tongue:flytrap-leaves",
+        "pair:camel-feet:flytrap-leaves",
+        "pair:burdock-burrs:onion-bulb",
+        "pair:giraffe-neck:coconut-husk",
+        "pair:snail-tongue:dandelion-seeds",
+        "pair:water-lily-leaves:dandelion-seeds",
+        "pair:dolphin-blowhole:staghorn-fronds",
+        "pair:acacia-thorns:bromeliad-cup",
+        "pair:giraffe-neck:red-mangrove-roots",
+        "pair:walrus-tusks:burdock-burrs",
+        "pair:dolphin-blowhole:eagle-beak",
+        "pair:duck-feet:bat-wings"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 36,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-50",
+    "name": "Build Nature Matches 32",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:ivy-roots:bromeliad-cup",
+        "pair:duck-feet:walrus-tusks",
+        "pair:camel-feet:pine-needles",
+        "pair:black-mangrove-roots:lotus-leaves",
+        "pair:snail-tongue:pine-needles",
+        "pair:dolphin-blowhole:anteater-tongue",
+        "pair:woodpecker-beak:lotus-leaves",
+        "pair:snail-tongue:onion-bulb",
+        "pair:tortoise-shell:cat-tongue",
+        "pair:octopus-suckers:camel-eyelashes",
+        "pair:dolphin-blowhole:stick-insect-shape",
+        "pair:woodpecker-beak:mole-rat-teeth",
+        "pair:snail-tongue:pelican-pouch",
+        "pair:cat-tongue:bromeliad-cup",
+        "pair:camel-eyelashes:coconut-husk",
+        "pair:gecko-pads:dandelion-seeds"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 38,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-51",
+    "name": "Build Nature Matches 33",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:hummingbird-bill:walrus-tusks",
+        "pair:elephant-trunk:bat-wings",
+        "pair:trout-gills:octopus-suckers",
+        "pair:skunk-glands:saguaro-stem",
+        "pair:bat-wings:bromeliad-cup",
+        "pair:woodpecker-beak:porcupine-quills",
+        "pair:beaver-teeth:fennec-ears",
+        "pair:whale-baleen:kangaroo-pouch",
+        "pair:hummingbird-bill:ivy-roots",
+        "pair:red-mangrove-roots:burdock-burrs",
+        "pair:mole-nose:black-mangrove-roots",
+        "pair:fennec-ears:owl-feathers",
+        "pair:trout-gills:chameleon-tail",
+        "pair:giraffe-neck:fennec-ears",
+        "pair:dolphin-blowhole:kangaroo-pouch",
+        "pair:black-mangrove-roots:onion-bulb"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 38,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-52",
+    "name": "Build Nature Matches 34",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:camel-feet:impatiens-pods",
+        "pair:dolphin-blowhole:walrus-tusks",
+        "pair:owl-feathers:staghorn-fronds",
+        "pair:owl-feathers:ivy-roots",
+        "pair:tortoise-shell:dandelion-seeds",
+        "pair:tortoise-shell:snail-tongue",
+        "pair:owl-feathers:bromeliad-cup",
+        "pair:tortoise-shell:flytrap-leaves",
+        "pair:walrus-tusks:stick-insect-shape",
+        "pair:beaver-teeth:owl-feathers",
+        "pair:elephant-trunk:coconut-husk",
+        "pair:anteater-tongue:polar-bear-soles",
+        "pair:octopus-suckers:owl-feathers",
+        "pair:fennec-ears:flytrap-leaves",
+        "pair:beaver-teeth:cat-tongue",
+        "pair:porcupine-quills:water-lily-leaves"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 38,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-53",
+    "name": "Build Nature Matches 35",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:beaver-teeth:walrus-tusks",
+        "pair:stick-insect-shape:octopus-suckers",
+        "pair:hummingbird-bill:onion-bulb",
+        "pair:camel-eyelashes:lotus-leaves",
+        "pair:giraffe-neck:beaver-teeth",
+        "pair:bat-wings:staghorn-fronds",
+        "pair:hummingbird-bill:stick-insect-shape",
+        "pair:impatiens-pods:lotus-leaves",
+        "pair:pelican-pouch:water-lily-leaves",
+        "pair:dolphin-blowhole:chameleon-tail",
+        "pair:duck-feet:coconut-husk",
+        "pair:dolphin-blowhole:woodpecker-beak",
+        "pair:polar-bear-soles:pine-needles",
+        "pair:pelican-pouch:camel-eyelashes",
+        "pair:walrus-tusks:polar-bear-soles",
+        "pair:mole-nose:mole-rat-teeth"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 38,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-54",
+    "name": "Build Nature Matches 36",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:ivy-roots:coconut-husk",
+        "pair:duck-feet:dandelion-seeds",
+        "pair:giraffe-neck:owl-feathers",
+        "pair:owl-feathers:flytrap-leaves",
+        "pair:fennec-ears:bromeliad-cup",
+        "pair:trout-gills:acacia-thorns",
+        "pair:giraffe-neck:snail-tongue",
+        "pair:octopus-suckers:mole-nose",
+        "pair:duck-feet:kangaroo-pouch",
+        "pair:mole-nose:owl-feathers",
+        "pair:mole-rat-teeth:pine-needles",
+        "pair:gecko-pads:kangaroo-pouch",
+        "pair:elephant-trunk:anteater-tongue",
+        "pair:hummingbird-bill:flytrap-leaves",
+        "pair:otter-fur:ivy-roots",
+        "pair:dolphin-blowhole:skunk-glands"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 38,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  },
+  {
+    "id": "traits-55",
+    "name": "Build Nature Matches 37",
+    "generator": "traits",
+    "skill": "traits-connections",
+    "params": {
+      "items": [
+        "pair:whale-baleen:eagle-beak",
+        "pair:beaver-teeth:otter-fur",
+        "pair:pelican-pouch:flytrap-leaves",
+        "pair:mole-nose:cat-tongue",
+        "pair:octopus-suckers:dandelion-seeds",
+        "pair:mole-rat-teeth:red-mangrove-roots",
+        "pair:duck-feet:black-mangrove-roots",
+        "pair:burdock-burrs:coconut-husk",
+        "pair:skunk-glands:bromeliad-cup",
+        "pair:skunk-glands:burdock-burrs",
+        "pair:black-mangrove-roots:flytrap-leaves",
+        "pair:kangaroo-pouch:staghorn-fronds",
+        "pair:ivy-roots:onion-bulb",
+        "pair:giraffe-neck:woodpecker-beak",
+        "pair:fennec-ears:water-lily-leaves",
+        "pair:beaver-teeth:onion-bulb"
+      ]
+    },
+    "questions": 6,
+    "mechanic": "gate-run",
+    "payout": 40,
+    "intro": [
+      "Build two matches with four cards.",
+      "First living thing: trait, then job.",
+      "Next living thing: trait, then job."
+    ]
+  }
+]

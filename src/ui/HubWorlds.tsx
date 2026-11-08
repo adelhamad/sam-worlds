@@ -4,6 +4,8 @@ import { useGame } from "../state/store";
 import { completedInWorld, focusWorldIn, WORLDS, type WorldDef } from "../content/worlds";
 import { categoryOf } from "../content/categories";
 import { sfx, unlockAudio } from "../engine/feedback/audio";
+import { TRAIT_IMAGES } from "../content/traits/images";
+import "./traits.css";
 
 // The worlds aren't sorted into tabs — they're scattered across the universe as
 // themed "galaxies" you scroll through and explore.
@@ -36,6 +38,7 @@ const PLANET_HUES: Record<string, string> = {
   symmetry: "#f0abfc", chance: "#fb7185", signs: "#fbbf24", inventors: "#7dd3fc", calm: "#86efac",
   capitals: "#ffd166", countrymaps: "#41d9c5",
   landduel: "#f6a35c", areaatlas: "#ad9cff", population: "#ff8c9b",
+  traits: "#78a864",
 };
 
 type Progress = Record<string, { completed: boolean }>;
@@ -52,7 +55,7 @@ function WorldTile({ w, done, on, focused, fav, onOpen, onFav }: {
         onClick={() => { unlockAudio(); onOpen(); }}
       >
         <span className="planet-ball" style={{ "--hue": PLANET_HUES[w.id] } as React.CSSProperties}>
-          <span className="planet-icon">{w.icon}</span>
+          <span className="planet-icon">{w.id === "traits" ? <img className="trait-emblem" src={TRAIT_IMAGES.turtle.src} alt="" /> : w.icon}</span>
         </span>
         <span className="planet-name">{w.name}</span>
         <span className={`planet-chip ${!on || done === 0 ? "dim-chip" : ""}`}>

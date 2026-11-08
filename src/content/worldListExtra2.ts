@@ -31,8 +31,10 @@ import chanceStages from "./chance/stages.json";
 import signsStages from "./signs/stages.json";
 import inventorsStages from "./inventors/stages.json";
 import calmStages from "./calm/stages.json";
+import traitsStages from "./traits/stages.json";
 import type { StageDef } from "./types";
 import type { WorldDef } from "./worldList";
+import { STR } from "../strings/en";
 
 function ms(a: string, b: string, c: string, d: string, e: string, icons: string[]): WorldDef["milestones"] {
   return [
@@ -77,4 +79,16 @@ export const EXTRA_WORLDS2: WorldDef[] = [
   { id: "signs", name: "Hand Signs", icon: "🤟", tagline: "Talk with your hands!", stages: signsStages as StageDef[], milestones: ms("Wave Hello", "Thumbs Up", "Quiet Sign", "Gesture Pro", "Sign Reader", ["👋", "👍", "🤫", "👌", "🤟", "🏆", "Master of Signs"]) },
   { id: "inventors", name: "Great Minds", icon: "🧑‍🔬", tagline: "Inventors & their big ideas!", stages: inventorsStages as StageDef[], milestones: ms("Idea Spotter", "Bulb Brightener", "Flight Fan", "Science Star", "Genius Pal", ["💡", "🍎", "✈️", "🔬", "🌟", "🏆", "Master of Great Minds"]) },
   { id: "calm", name: "Calm Corner", icon: "🧘", tagline: "Breathe, relax & feel calm!", stages: calmStages as StageDef[], milestones: ms("Deep Breather", "Calm Counter", "Break Taker", "Kind Heart", "Peaceful Pro", ["🌬️", "🔟", "⏸️", "💛", "🕊️", "🏆", "Master of Calm"]) },
+  {
+    id: "traits", name: STR.traits.worldName, icon: "🐢", tagline: STR.traits.tagline,
+    stages: traitsStages as StageDef[],
+    milestones: [
+      { stage: 10, name: STR.traits.milestones[0], icon: "🔎" },
+      { stage: 20, name: STR.traits.milestones[1], icon: "🐾" },
+      { stage: 30, name: STR.traits.milestones[2], icon: "🌿" },
+      { stage: 40, name: STR.traits.milestones[3], icon: "🪶" },
+      { stage: 50, name: STR.traits.milestones[4], icon: "🔬" },
+      { stage: 55, name: STR.traits.milestones[5], icon: "🏆" },
+    ],
+  },
 ];
