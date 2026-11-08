@@ -37,7 +37,7 @@ export default defineConfig({
         importScripts: ["notify-sw.js"],
         // mp3s are deliberately NOT precached (first load stays light);
         // each track is cached the first time it plays.
-        globPatterns: ["**/*.{js,css,html,png,svg,woff2}"],
+        globPatterns: ["**/*.{js,css,html,png,svg,webp,woff2}"],
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
         runtimeCaching: [
           {

@@ -28,6 +28,7 @@ import { StatCompare, type StatPair } from "../../ui/StatCompare";
 import { VideoToggle } from "../../ui/VideoToggle";
 import { CircuitDiagram } from "../../ui/inputs/CircuitDiagram";
 import type { Node as CircuitNode } from "../../engine/generators/logicCircuit";
+import { TraitPhotos } from "../../ui/TraitGuide";
 
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const THINK_MS = 1200;
@@ -244,12 +245,12 @@ export function PlayStage() {
   const interactive = q && q.inputMode && q.inputMode !== "numpad";
 
   return (
-    <div className="screen stage-play">
+    <div className="screen stage-play" data-world={world.id}>
       <div className="pixi-host" ref={hostRef} />
 
       <StageHeader
         worldId={world.id}
-        title={`${world.icon} ${stage.name}`}
+        title={`${world.id === "traits" ? "" : world.icon} ${stage.name}`.trim()}
         starDust={starDust}
         intro={stage.intro}
         helpOpen={helpOpen}
@@ -375,6 +376,7 @@ function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onRevea
         </div>
       )}
       <GeoStatMedia q={q} />
+      <TraitPhotos organisms={q.payload?.traitOrganisms} />
       {q.payload?.tree && q.inputMode !== "toggle" ? (
         <CircuitDiagram tree={q.payload.tree as CircuitNode} lamp="unknown" />
       ) : null}
@@ -394,7 +396,7 @@ function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onRevea
       )}
       <div className={`q-prompt ${interactive ? "q-prompt-sm" : ""} ${praise ? "q-correct" : ""}`}>
         {q.prompt}
-        <button className="speak-btn" aria-label="read aloud" onClick={() => speak(q.prompt)}>🔊</button>
+        <button className="speak-btn" aria-label="read aloud" onClick={() => speak(typeof q.payload?.speechText === "string" ? q.payload.speechText : q.prompt)}>🔊</button>
       </div>
       {praise && <div className="q-praise">{praise}</div>}
       {!praise && missLocked && <div className="q-retry">{STR.almostLook}</div>}

@@ -39,6 +39,7 @@ export function weightedPayout(
  * where the hint carries the scaffold instead.
  */
 export function workedExample(q: Question): string {
+  if (typeof q.payload?.workedExample === "string") return q.payload.workedExample;
   if (q.prompt.includes("▢")) return q.prompt.replace("▢", q.answer);
   if (q.prompt.includes("= ?")) return q.prompt.replace("= ?", `= ${q.answer}`);
   return "";

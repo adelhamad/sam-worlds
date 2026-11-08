@@ -1,4 +1,5 @@
 import { persona } from "../../persona.config";
+import { STR } from "../../strings/en";
 
 // Story pointer per world: a beat every ~10 stages; sessions end on a tease.
 export interface StoryBeat {
@@ -21,6 +22,7 @@ const NUMBER_FORGE: StoryBeat[] = [
 
 const WORLD_BEATS: Record<string, StoryBeat[]> = {
   numberforge: NUMBER_FORGE,
+  traits: [...STR.traits.story],
   melody: [
     { afterStage: 0, text: "A great engine that runs on music sits silent.", tease: "Play back its first echo…" },
     { afterStage: 10, text: "The engine hums along with you now.", tease: "It wants chords — real harmony…" },

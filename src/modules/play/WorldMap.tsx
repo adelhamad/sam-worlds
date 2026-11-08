@@ -4,6 +4,8 @@ import { worldById } from "../../content/worlds";
 import { sfx } from "../../engine/feedback/audio";
 import type { StageDef } from "../../content/types";
 import { LockedScreen } from "../../ui/LockedScreen";
+import { TraitGuide } from "../../ui/TraitGuide";
+import { TRAIT_IMAGES } from "../../content/traits/images";
 
 function nodeStars(completed: boolean | undefined, bestStars: number | undefined, unlocked: boolean): string {
   if (completed) return "⭐".repeat(bestStars ?? 1);
@@ -42,17 +44,18 @@ export function WorldMap() {
   }
 
   return (
-    <div className="screen world-map">
+    <div className={`screen world-map ${world.id === "traits" ? "traits-map" : ""}`}>
       <header className="hub-header">
         <Link to="/hub" className="btn btn-secondary" onClick={() => sfx.tap()}>
           ← Base
         </Link>
         <h1>
-          {world.icon} {world.name}
+          {world.id === "traits" ? <img className="trait-emblem" src={TRAIT_IMAGES.turtle.src} alt="" /> : world.icon} {world.name}
         </h1>
         <span className="dust-counter">✨ {starDust}</span>
       </header>
 
+      {world.id === "traits" && <TraitGuide stageId={world.stages[lastUnlocked].id} />}
       <div className="map-path">
         {rows.map((row, ri) => (
           <div key={ri} className="map-row">
