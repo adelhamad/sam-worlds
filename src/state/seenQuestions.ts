@@ -5,7 +5,7 @@ import type { Question } from "../engine/generators/types";
 
 /** Remember only questions actually displayed, including abandoned attempts. */
 export function recordSeenQuestion(existing: string[], question?: Question): string[] {
-  if (!question) return existing;
+  if (!question || question.repeatable) return existing;
   const keys = questionKeys(question);
   const fresh = keys.filter((key) => !existing.includes(key));
   if (!fresh.length) return existing;

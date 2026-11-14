@@ -1,0 +1,132 @@
+/* World Tour — shared visual language. Everything is scoped under `.tour` so the
+   rest of the game keeps its own look. Chunky, tactile, friendly: rounded heavy
+   type, flat colours with a thick bottom edge that presses down on tap.
+   Cyan stays reserved for interactives/rewards (project rule). The "almost"
+   colour is warm amber — a miss is never red and never says "wrong". */
+@import "@fontsource-variable/nunito";
+
+.tour {
+  --t-font: "Nunito Variable", "Trebuchet MS", system-ui, sans-serif;
+  --t-bg: #0a1730;
+  --t-surface: #132448;
+  --t-surface-2: #1b3160;
+  --t-line: #2c4a86;
+  --t-line-deep: #1c3364;
+  --t-ink: #f2f6ff;
+  --t-ink-dim: #9fb3de;
+  --t-go: #22d3ee; /* primary interactive */
+  --t-go-deep: #0e8fa6;
+  --t-go-ink: #03222b;
+  --t-yes: #7bdc4a; /* correct */
+  --t-yes-deep: #4da424;
+  --t-yes-ink: #0d2b05;
+  --t-almost: #ffb454; /* a miss: warm, never red */
+  --t-almost-deep: #c47a1e;
+  --t-almost-ink: #2e1a02;
+  --t-pogo: #8b6cff; /* mascot violet */
+  --t-pogo-deep: #5b3fd6;
+  --t-gold: #ffd166;
+  --t-gold-deep: #c9962b;
+  --t-radius: 18px;
+  --t-edge: 5px; /* thickness of the pressable bottom edge */
+
+  font-family: var(--t-font);
+  font-weight: 700;
+  color: var(--t-ink);
+}
+
+/* ---------- chunky button ---------- */
+.tour .tbtn {
+  font: inherit;
+  font-weight: 900;
+  font-size: 19px;
+  letter-spacing: 0.02em;
+  min-height: 56px;
+  min-width: 56px;
+  padding: 10px 22px;
+  border: none;
+  border-radius: var(--t-radius);
+  border-bottom: var(--t-edge) solid var(--t-line-deep);
+  background: var(--t-surface-2);
+  color: var(--t-ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: transform 0.06s ease, border-bottom-width 0.06s ease, filter 0.12s ease;
+}
+.tour .tbtn:active:not(:disabled) {
+  transform: translateY(calc(var(--t-edge) - 1px));
+  border-bottom-width: 1px;
+  margin-bottom: calc(var(--t-edge) - 1px);
+}
+.tour .tbtn-go { background: var(--t-go); border-bottom-color: var(--t-go-deep); color: var(--t-go-ink); }
+.tour .tbtn-yes { background: var(--t-yes); border-bottom-color: var(--t-yes-deep); color: var(--t-yes-ink); }
+.tour .tbtn-almost { background: var(--t-almost); border-bottom-color: var(--t-almost-deep); color: var(--t-almost-ink); }
+.tour .tbtn-ghost { background: transparent; border: 2px solid var(--t-line); border-bottom-width: var(--t-edge); color: var(--t-ink-dim); }
+.tour .tbtn-wide { width: 100%; text-transform: uppercase; }
+.tour .tbtn:disabled { background: var(--t-surface-2); border-bottom-color: var(--t-line-deep); color: #6f84b5; cursor: default; }
+
+/* ---------- selectable tile (option cards, chunk tiles, pair cards) ---------- */
+.tour .ttile {
+  font: inherit;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--t-ink);
+  min-height: 56px;
+  min-width: 56px;
+  padding: 10px 14px;
+  background: var(--t-surface);
+  border: 2px solid var(--t-line);
+  border-bottom-width: var(--t-edge);
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.06s ease, background 0.12s ease, border-color 0.12s ease;
+}
+.tour .ttile:active:not(:disabled) { transform: translateY(3px); }
+.tour .ttile.is-selected { background: #0f3a55; border-color: var(--t-go); color: #d7f8ff; }
+.tour .ttile.is-right { background: #1d4a1a; border-color: var(--t-yes); color: #dcffcb; animation: t-pop 0.32s ease; }
+.tour .ttile.is-miss { background: #4a3413; border-color: var(--t-almost); animation: t-shake 0.4s ease; }
+.tour .ttile.is-done { opacity: 0.38; pointer-events: none; }
+.tour .ttile:disabled { cursor: default; }
+
+/* ---------- flag glyph ---------- */
+.tour .tflag { display: inline-block; line-height: 1; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)); }
+
+/* ---------- shared motion ---------- */
+@keyframes t-pop {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+@keyframes t-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-7px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(3px); }
+}
+@keyframes t-rise {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+@keyframes t-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tour *, .tour *::before, .tour *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,477 @@
+/* Lesson rewards — the live Star Dust meter and its flying tokens, the gift
+   inside the lesson, Pogo's cheer near the end, and the completion screen's
+   bonus lines / unit road. Scoped and prefixed like lesson.css (which holds the
+   shared `tl-` keyframes used here: tl-fade, tl-glow, tl-wiggle, tl-stamp-in…). */
+
+/* ---------- Star Dust meter (top bar) ---------- */
+.tour .tl-dust { flex: 0 0 auto; }
+.tour .tl-dust-body {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 36px;
+  min-width: 62px;
+  padding: 0 12px 0 9px;
+  border-radius: 999px;
+  background: #0b2a3c;
+  border: 2px solid var(--t-go);
+  color: #c9f6ff;
+  font-size: 19px;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+.tour .tl-dust-icon { font-size: 17px; line-height: 1; }
+.tour .tl-dust-body.is-bump { animation: tl-dust-bump 0.52s var(--tl-spring); }
+@keyframes tl-dust-bump {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.3); background: #14607f; color: #fff; }
+  100% { transform: scale(1); }
+}
+.tour .tl-dust-ring {
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  border: 3px solid var(--t-go);
+  opacity: 0;
+  pointer-events: none;
+  animation: tl-dust-ring 0.62s ease-out;
+}
+@keyframes tl-dust-ring {
+  0% { opacity: 0.9; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.75); }
+}
+
+/* a "+N ✨" token: pops where the dust was earned, then arcs up into the chip.
+   The outer box travels sideways, the inner one up — together a curve. */
+.tour .tl-token {
+  position: absolute;
+  z-index: 45;
+  left: 50%;
+  top: 60%;
+  opacity: 0;
+  pointer-events: none;
+}
+.tour .tl-token-in {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--t-go);
+  border-bottom: 4px solid var(--t-go-deep);
+  color: var(--t-go-ink);
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.15;
+  white-space: nowrap;
+  box-shadow: 0 0 24px rgba(34, 211, 238, 0.6), 0 8px 18px rgba(2, 6, 18, 0.45);
+  transform: translate(-50%, -50%);
+}
+/* solved after a hint: it still banks — just a smaller, quieter token */
+.tour .tl-token.is-small .tl-token-in {
+  padding: 3px 10px;
+  border-bottom-width: 3px;
+  background: #9ddfec;
+  font-size: 16px;
+  box-shadow: 0 6px 14px rgba(2, 6, 18, 0.4);
+}
+.tour .tl-token.is-flying { animation: tl-token-x 0.9s linear both; }
+.tour .tl-token.is-flying .tl-token-in { animation: tl-token-y 0.9s linear both; }
+@keyframes tl-token-x {
+  0% { opacity: 0; transform: translateX(0); }
+  8% { opacity: 1; }
+  46% { transform: translateX(0); animation-timing-function: cubic-bezier(0.5, 0, 0.9, 0.6); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(var(--tl-dx, 0px)); }
+}
+@keyframes tl-token-y {
+  0% { transform: translate(-50%, -50%) scale(0.2) rotate(-14deg); animation-timing-function: cubic-bezier(0.2, 0.9, 0.3, 1.3); }
+  20% { transform: translate(-50%, calc(-50% - 30px)) scale(1.14) rotate(4deg); }
+  46% { transform: translate(-50%, calc(-50% - 22px)) scale(1) rotate(0deg); animation-timing-function: cubic-bezier(0.3, 0.55, 0.6, 1); }
+  100% { transform: translate(-50%, calc(-50% + var(--tl-dy, -200px))) scale(0.42) rotate(0deg); }
+}
+
+/* ---------- interludes: shown in place of the next question ---------- */
+.tour.tour-lesson > .tl-break {
+  width: 100%;
+  max-width: var(--tl-max);
+  margin-inline: auto;
+  padding-inline: var(--tl-gutter);
+}
+.tour .tl-break {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.tour.tour-lesson .tl-break > .tour-confetti { z-index: 3; }
+
+/* ---------- the gift ---------- */
+.tour .tl-gift-title {
+  margin: 0;
+  font-size: clamp(28px, 7.8vw, 42px);
+  font-weight: 900;
+  line-height: 1.05;
+  text-align: center;
+  color: var(--t-gold);
+  text-shadow: 0 3px 0 var(--t-gold-deep), 0 8px 20px rgba(0, 0, 0, 0.4);
+  animation: tl-title-in 0.5s var(--tl-spring) 0.05s both;
+}
+.tour .tl-gift-stage {
+  position: relative;
+  flex: 0 0 auto;
+  width: var(--tl-gift-size);
+  height: calc(var(--tl-gift-size) * 1.42);
+  animation: tl-gift-arrive 0.6s var(--tl-spring) both;
+}
+@keyframes tl-gift-arrive {
+  from { opacity: 0; transform: translateY(46px) scale(0.7); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.tour .tl-gift-glow {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  width: 210%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 209, 102, 0.3) 0%, rgba(255, 111, 165, 0.15) 40%, transparent 68%);
+  animation: tl-glow 2.4s ease-in-out infinite;
+}
+.tour .tl-gift-pogo { position: absolute; left: 0; top: 0; }
+.tour .tl-gift-box {
+  position: absolute;
+  left: 50%;
+  top: 45.8%;
+  width: 76%;
+  aspect-ratio: 1;
+  translate: -50% 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transform-origin: 50% 88%;
+  animation: tl-gift-wiggle 1.5s ease-in-out 0.7s infinite;
+}
+.tour .tl-gift-box::after { content: ""; position: absolute; inset: -16px; } /* a generous target */
+.tour .tl-gift-box:disabled { cursor: default; }
+.tour .tl-gift-box:focus-visible { outline: 3px solid var(--t-go); outline-offset: 6px; border-radius: 18px; }
+.tour .tl-gift-svg { display: block; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 8px 14px rgba(2, 6, 18, 0.45)); }
+@keyframes tl-gift-wiggle {
+  0%, 52%, 100% { transform: rotate(0deg) scale(1); }
+  60% { transform: rotate(-9deg) scale(1.07); }
+  70% { transform: rotate(8deg) scale(1.07); }
+  80% { transform: rotate(-5deg) scale(1.03); }
+  90% { transform: rotate(3deg) scale(1); }
+}
+.tour .tl-gift-shine { opacity: 0; filter: blur(3px); }
+.tour .tl-gift-lid { transform-box: fill-box; transform-origin: 50% 100%; }
+.tour .tl-gift.is-open .tl-gift-box { animation: tl-gift-pop 0.5s var(--tl-spring) both; }
+@keyframes tl-gift-pop {
+  0% { transform: scale(1); }
+  28% { transform: scale(1.2, 0.82); }
+  58% { transform: scale(0.93, 1.1); }
+  100% { transform: scale(1); }
+}
+.tour .tl-gift.is-open .tl-gift-lid { animation: tl-gift-lid 0.75s cubic-bezier(0.2, 0.8, 0.3, 1) both; }
+@keyframes tl-gift-lid {
+  0% { opacity: 1; transform: translate(0, 0) rotate(0deg); }
+  65% { opacity: 1; }
+  100% { opacity: 0; transform: translate(40px, -84px) rotate(44deg); }
+}
+.tour .tl-gift.is-open .tl-gift-shine { animation: tl-gift-shine 0.9s ease-in-out 0.1s infinite alternate both; }
+@keyframes tl-gift-shine {
+  from { opacity: 0.55; }
+  to { opacity: 1; }
+}
+/* stars shoot up out of the open box */
+.tour .tl-gift-stars { position: absolute; left: 50%; top: 70%; width: 0; height: 0; pointer-events: none; --tl-reach: calc(var(--tl-gift-size) * 0.92); }
+.tour .tl-gift-stars i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-style: normal;
+  font-size: calc(var(--tl-gift-size) * 0.15);
+  line-height: 1;
+  color: var(--t-gold);
+  text-shadow: 0 0 12px rgba(255, 209, 102, 0.9);
+  opacity: 0;
+  animation: tl-spark 1.25s cubic-bezier(0.15, 0.7, 0.3, 1) both;
+}
+.tour .tl-gift-stars i:nth-child(3n + 1) { color: #fff; }
+.tour .tl-gift-stars i:nth-child(4n + 2) { color: #ff9cc4; text-shadow: 0 0 12px rgba(255, 134, 179, 0.9); }
+/* one slot under the stage: "Tap to open!", then the prize */
+.tour .tl-gift-note {
+  margin: 0;
+  min-height: 52px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: clamp(20px, 5.6vw, 26px);
+  font-weight: 900;
+  color: var(--t-ink);
+}
+.tour .tl-gift-hint { animation: tl-gift-hint 1.5s ease-in-out 0.7s infinite; }
+@keyframes tl-gift-hint {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+.tour .tl-gift-prize {
+  font-size: clamp(34px, 10vw, 50px);
+  line-height: 1;
+  color: #e9fbff;
+  text-shadow: 0 3px 0 var(--t-go-deep), 0 0 26px rgba(34, 211, 238, 0.85);
+  animation: tl-gift-prize 0.6s var(--tl-spring) 0.1s both;
+}
+@keyframes tl-gift-prize {
+  from { opacity: 0; transform: translateY(-40px) scale(0.3); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.tour .tl-gift-go { visibility: hidden; }
+.tour .tl-gift-go.is-shown { visibility: visible; animation: tl-ready 0.4s var(--tl-spring) 0.25s both; }
+
+/* ---------- Pogo's cheer ---------- */
+.tour .tl-cheer {
+  gap: 30px;
+  padding-block: 0 8vh;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.tour .tl-cheer-bubble {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  max-width: 100%;
+  padding: 14px 26px 16px;
+  border-radius: 28px;
+  background: #f4f7ff;
+  color: #16234f;
+  box-shadow: 0 5px 0 #aebce6, 0 16px 30px rgba(2, 6, 18, 0.45);
+  transform-origin: 50% 120%;
+  animation: tl-cheer-bubble 0.42s var(--tl-spring) 0.4s both;
+}
+.tour .tl-cheer-bubble::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 11px);
+  bottom: -9px;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  background: inherit;
+  box-shadow: 4px 4px 0 #aebce6;
+  transform: rotate(45deg);
+}
+.tour .tl-cheer-bubble b { font-size: clamp(27px, 7.6vw, 40px); font-weight: 900; line-height: 1.1; text-wrap: balance; }
+.tour .tl-cheer-bubble span { font-size: clamp(20px, 5.6vw, 27px); font-weight: 900; color: var(--t-pogo-deep); }
+@keyframes tl-cheer-bubble {
+  from { opacity: 0; transform: scale(0.4) rotate(-6deg); }
+  to { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+.tour .tl-cheer-hero { position: relative; flex: 0 0 auto; display: grid; place-items: center; }
+.tour .tl-cheer-glow {
+  position: absolute;
+  width: 230%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 209, 102, 0.36) 0%, rgba(139, 108, 255, 0.24) 40%, transparent 68%);
+  animation: tl-cheer-glow 0.5s ease-out 0.25s both, tl-glow 1.8s ease-in-out 0.75s infinite;
+}
+@keyframes tl-cheer-glow {
+  from { opacity: 0; transform: scale(0.3); }
+  to { opacity: 1; transform: scale(1); }
+}
+.tour .tl-cheer-pogo {
+  position: relative;
+  display: block;
+  transform-origin: 50% 100%;
+  animation: tl-cheer-in 0.72s cubic-bezier(0.25, 0.8, 0.3, 1) both;
+}
+/* in from the bottom-left corner, one big bounce, then he lands */
+@keyframes tl-cheer-in {
+  0% { transform: translate(-75vw, 34vh) rotate(-34deg) scale(0.6); }
+  48% { transform: translate(5%, -20%) rotate(9deg) scale(1.14); }
+  68% { transform: translate(0, 3%) rotate(-3deg) scale(1.05, 0.93); }
+  84% { transform: translate(0, -6%) rotate(1deg) scale(0.98, 1.04); }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+}
+.tour .tl-cheer-sparks { position: absolute; inset: 0; pointer-events: none; }
+.tour .tl-cheer-sparks i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-style: normal;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--t-gold);
+  text-shadow: 0 0 12px rgba(255, 209, 102, 0.9);
+  opacity: 0;
+  animation: tl-spark-out 0.7s cubic-bezier(0.15, 0.7, 0.3, 1) both, tl-spark-twinkle 0.8s ease-in-out infinite alternate;
+  /* each spark keeps its own beat: out first, then its twinkle */
+  animation-delay: var(--tl-sd, 0ms), calc(var(--tl-sd, 0ms) * 3 + 0.7s);
+}
+.tour .tl-cheer-sparks i:nth-child(3n) { color: #fff; font-size: 21px; }
+.tour .tl-cheer-sparks i:nth-child(4n + 1) { color: #ff9cc4; text-shadow: 0 0 12px rgba(255, 134, 179, 0.9); }
+/* the cheer's sparks fly out and stay, twinkling around Pogo */
+@keyframes tl-spark-out {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2) rotate(-90deg); }
+  30% { opacity: 1; }
+  100% {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--tl-sx) * var(--tl-reach)), calc(-50% + var(--tl-sy) * var(--tl-reach))) scale(1) rotate(0deg);
+  }
+}
+@keyframes tl-spark-twinkle {
+  from {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--tl-sx) * var(--tl-reach)), calc(-50% + var(--tl-sy) * var(--tl-reach))) scale(1) rotate(0deg);
+  }
+  to {
+    opacity: 0.6;
+    transform: translate(calc(-50% + var(--tl-sx) * var(--tl-reach)), calc(-50% + var(--tl-sy) * var(--tl-reach))) scale(0.66) rotate(40deg);
+  }
+}
+/* a one-shot burst (the gift's stars) */
+@keyframes tl-spark {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2) rotate(0deg); }
+  22% { opacity: 1; }
+  68% { opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--tl-sx) * var(--tl-reach)), calc(-50% + var(--tl-sy) * var(--tl-reach))) scale(1.25) rotate(120deg);
+  }
+}
+/* he hops off to the right; the next question slides in behind him */
+.tour .tl-cheer.is-leaving .tl-cheer-pogo { animation: tl-cheer-out 0.25s ease-in both; }
+@keyframes tl-cheer-out {
+  from { opacity: 1; transform: translate(0, 0) rotate(0deg) scale(1); }
+  to { opacity: 0; transform: translate(62vw, -8vh) rotate(24deg) scale(0.7); }
+}
+.tour .tl-cheer.is-leaving .tl-cheer-bubble { animation: tl-cheer-fade 0.2s ease both; }
+.tour .tl-cheer.is-leaving .tl-cheer-glow, .tour .tl-cheer.is-leaving .tl-cheer-sparks { animation: tl-cheer-fade 0.2s ease both; }
+@keyframes tl-cheer-fade { from { opacity: 1; } to { opacity: 0; } }
+
+/* the progress bar celebrates with him */
+.tour .tl-bar.is-cheering { animation: tl-bar-cheer 0.72s ease-in-out 3; }
+.tour .tl-bar.is-cheering .tl-bar-fill { animation: tl-fill-cheer 0.72s ease-in-out 3; }
+@keyframes tl-bar-cheer {
+  0%, 100% { transform: scaleY(1); box-shadow: inset 0 3px 0 rgba(4, 10, 26, 0.35), 0 0 0 0 rgba(123, 220, 74, 0); }
+  50% { transform: scaleY(1.24); box-shadow: inset 0 3px 0 rgba(4, 10, 26, 0.35), 0 0 0 5px rgba(123, 220, 74, 0.3), 0 0 26px rgba(123, 220, 74, 0.75); }
+}
+@keyframes tl-fill-cheer {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.32); }
+}
+
+/* ---------- lesson complete: bonus lines + the unit's road ---------- */
+.tour .tl-bonus {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  animation: t-fade-up 0.45s ease 1.2s both;
+}
+.tour .tl-bonus-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(255, 209, 102, 0.12);
+  border: 2px solid var(--t-gold-deep);
+  color: #ffe9b0;
+  font-size: 16px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+.tour .tl-bonus-line.is-gift { background: rgba(255, 111, 165, 0.14); border-color: #d94c86; color: #ffd3e4; }
+
+.tour .tl-unit { --tl-unit-hue: var(--t-gold); }
+.tour .tl-unit-icon { color: var(--tl-unit-hue); }
+.tour .tl-unit-road { display: flex; align-items: center; }
+.tour .tl-unit-pip {
+  position: relative;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--t-surface-2);
+  border: 3px solid var(--t-line);
+  color: var(--t-ink-dim);
+  font-style: normal;
+  font-size: 17px;
+  font-weight: 900;
+}
+.tour .tl-unit-pip + .tl-unit-pip, .tour .tl-unit-chest { margin-left: 20px; }
+/* the stretch of road before each stop: lit once the stop before it is done */
+.tour .tl-unit-pip + .tl-unit-pip::before, .tour .tl-unit-chest::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 5px);
+  width: 16px;
+  height: 5px;
+  margin-top: -2.5px;
+  border-radius: 999px;
+  background: var(--t-line);
+}
+.tour .tl-unit-pip.is-on { background: var(--tl-unit-hue); border-color: rgba(4, 10, 26, 0.3); color: #0a1730; }
+.tour .tl-unit-pip.is-on + .tl-unit-pip::before, .tour .tl-unit-pip.is-on + .tl-unit-chest::before { background: var(--tl-unit-hue); }
+.tour .tl-unit-pip.is-here { box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2); }
+.tour .tl-unit-pip.is-fresh { animation: tl-stamp-in 0.5s var(--tl-spring) 1.15s both; }
+.tour .tl-unit-chest { position: relative; flex: 0 0 auto; font-size: 34px; line-height: 1; filter: grayscale(0.85) opacity(0.55); }
+.tour .tl-unit-chest.is-ready { filter: none; animation: tl-wiggle 1.6s ease-in-out 1.6s infinite; }
+
+/* ---------- sizes ---------- */
+@media (min-width: 700px) and (min-height: 900px) {
+  .tour .tl-dust-body { height: 42px; min-width: 76px; padding: 0 16px 0 12px; font-size: 22px; }
+  .tour .tl-dust-icon { font-size: 20px; }
+  .tour .tl-token-in { font-size: 30px; padding: 8px 18px; }
+  .tour .tl-token.is-small .tl-token-in { font-size: 19px; padding: 4px 12px; }
+  .tour .tl-break { gap: 20px; }
+  .tour .tl-cheer { gap: 46px; }
+  .tour .tl-cheer-sparks i { font-size: 36px; }
+  .tour .tl-cheer-sparks i:nth-child(3n) { font-size: 26px; }
+  .tour .tl-bonus-line { font-size: 19px; padding: 7px 18px; }
+  .tour .tl-unit-pip { width: 50px; height: 50px; font-size: 21px; }
+  .tour .tl-unit-pip + .tl-unit-pip, .tour .tl-unit-chest { margin-left: 28px; }
+  .tour .tl-unit-pip + .tl-unit-pip::before, .tour .tl-unit-chest::before { width: 22px; right: calc(100% + 6px); }
+  .tour .tl-unit-chest { font-size: 42px; }
+}
+@media (max-width: 380px) {
+  .tour .tl-top { gap: 7px; }
+  .tour .tl-dust-body { min-width: 54px; padding: 0 9px 0 7px; font-size: 17px; }
+}
+@media (max-height: 640px) {
+  .tour .tl-cheer { gap: 18px; padding-bottom: 4vh; }
+}
+
+/* ---------- reduced motion ----------
+   The app switches every animation off (index.css), so anything that only
+   becomes visible through a keyframe needs its end state spelled out here:
+   Pogo still shows up with his sparkles, and an opened gift still looks open. */
+@media (prefers-reduced-motion: reduce) {
+  .tour .tl-cheer-sparks i {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--tl-sx) * var(--tl-reach)), calc(-50% + var(--tl-sy) * var(--tl-reach)));
+  }
+  .tour .tl-gift.is-open .tl-gift-lid { opacity: 0; }
+  .tour .tl-gift.is-open .tl-gift-shine { opacity: 0.9; }
+}

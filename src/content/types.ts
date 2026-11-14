@@ -7,7 +7,7 @@ export interface StageDef {
   generator: GeneratorId;
   params: GeneratorParams;
   questions: number;
-  mechanic: "gate-run";
+  mechanic: "gate-run" | "tour";
   payout: number;
   /** Skill family for adaptive difficulty (defaults to generator id). */
   skill?: string;

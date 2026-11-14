@@ -30,6 +30,10 @@ export function persistSettings(get: () => GameStore): void {
     petStageIdx: s.petStageIdx,
     petFedAt: s.petFedAt,
     petBornAt: s.petBornAt,
+    tourStamps: s.tourStamps,
+    tourChests: s.tourChests,
+    tourDays: s.tourDays,
+    tourLastDay: s.tourLastDay,
   });
 }
 
@@ -72,12 +76,23 @@ function petSettings(s: SettingsRow | undefined) {
   };
 }
 
+/** World Tour defaults: passport stamps, opened chests, tour days. */
+function tourSettings(s: SettingsRow | undefined) {
+  return {
+    tourStamps: s?.tourStamps ?? {},
+    tourChests: s?.tourChests ?? [],
+    tourDays: s?.tourDays ?? 0,
+    tourLastDay: s?.tourLastDay ?? null,
+  };
+}
+
 /** Stored settings row → state slice, with all defaults in one place. */
 export function settingsState(settings: SettingsRow | undefined) {
   return {
     ...scalarSettings(settings),
     ...giftSettings(settings),
     ...petSettings(settings),
+    ...tourSettings(settings),
     enabledWorlds: withWorldDefaults(settings?.enabledWorlds),
     hiddenWorlds: settings?.hiddenWorlds ?? {},
     recentWorlds: settings?.recentWorlds ?? [],

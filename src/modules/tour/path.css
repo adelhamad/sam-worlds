@@ -1,0 +1,745 @@
+/* Pogo's courses — the lesson path. One winding dotted trail on deep-space navy;
+   every unit paints its nodes and banner in its own hue. Tokens come from
+   tour-base.css (`.tour`). */
+
+.tour-path {
+  --tp-ink: #06102a;
+  gap: 0;
+  padding-top: 0;
+  background-color: var(--t-bg);
+  background-image:
+    radial-gradient(1.5px 1.5px at 22px 34px, rgba(255, 255, 255, 0.75) 50%, transparent 51%),
+    radial-gradient(1px 1px at 141px 92px, rgba(255, 255, 255, 0.55) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 236px 188px, rgba(190, 210, 255, 0.6) 50%, transparent 51%),
+    radial-gradient(1px 1px at 83px 247px, rgba(255, 255, 255, 0.45) 50%, transparent 51%),
+    radial-gradient(2px 2px at 301px 301px, rgba(255, 236, 190, 0.5) 50%, transparent 51%),
+    radial-gradient(1px 1px at 187px 12px, rgba(255, 255, 255, 0.4) 50%, transparent 51%),
+    radial-gradient(ellipse 90% 520px at 50% 0, rgba(91, 63, 214, 0.28), transparent 70%);
+  background-size: 340px 340px, 340px 340px, 340px 340px, 340px 340px, 340px 340px, 340px 340px, 100% 100%;
+  background-repeat: repeat, repeat, repeat, repeat, repeat, repeat, no-repeat;
+  padding-bottom: max(56px, env(safe-area-inset-bottom));
+}
+
+/* ---------- sticky top bar ---------- */
+.tour-path .tp-bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 calc(-1 * max(16px, env(safe-area-inset-left)));
+  padding: max(10px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 10px max(16px, env(safe-area-inset-left));
+  background: rgba(10, 23, 48, 0.9);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--t-line-deep);
+}
+.tour-path .tp-back {
+  min-height: 48px;
+  min-width: 48px;
+  padding: 6px 14px;
+  font-size: 16px;
+  border-radius: 14px;
+  --t-edge: 4px;
+  color: var(--t-ink);
+  flex: none;
+}
+.tour-path .tp-title {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tour-path .tp-title-inline {
+  display: none;
+  margin: 18px 0 0;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+}
+/* With a course switch in the bar, the title always sits under it. */
+.tour-path.has-switch .tp-title-inline { display: block; }
+
+/* ---------- course switch ---------- */
+.tour-path .tp-switch {
+  flex: none;
+  display: flex;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 16px;
+  background: var(--t-surface);
+  box-shadow: inset 0 0 0 2px var(--t-line-deep);
+}
+.tour-path .tp-switch-seg {
+  position: relative;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1;
+  min-height: 48px;
+  min-width: 48px;
+  padding: 0 16px 0 12px;
+  border: none;
+  border-radius: 16px;
+  background: none;
+  color: var(--t-ink-dim);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.06s ease, color 0.12s ease;
+}
+.tour-path .tp-switch-seg:not(.is-active):active { transform: translateY(2px); }
+.tour-path .tp-switch-seg:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.tour-path .tp-switch-seg.is-active {
+  background: var(--t-pogo);
+  color: #fff;
+  box-shadow: inset 0 -4px 0 var(--t-pogo-deep);
+  cursor: default;
+}
+.tour-path .tp-switch-icon { width: 28px; height: 28px; display: grid; place-items: center; line-height: 1; }
+.tour-path .tp-switch-seg:not(.is-active) .tp-switch-icon { opacity: 0.85; }
+.tour-path .tp-switch-swap { display: none; }
+
+.tour-path .tp-chips {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  flex: none;
+}
+.tour-path .tp-chip {
+  font: inherit;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 1;
+  min-height: 48px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 14px;
+  white-space: nowrap;
+  background: var(--t-surface);
+  border: 2px solid var(--t-line-deep);
+  color: var(--t-ink);
+}
+.tour-path .tp-chip-dust { color: var(--t-go); border-color: rgba(34, 211, 238, 0.4); }
+.tour-path .tp-chip-day { color: var(--t-almost); }
+.tour-path .tp-day-short,
+.tour-path .tp-dust-short { display: none; }
+/* Chess set chip: the king as a dark stamp on the cyan button. */
+.tour-path .tp-chip-piece { height: 24px; display: inline-grid; place-items: center; line-height: 1; filter: brightness(0); opacity: 0.82; }
+.tour-path .tp-chip-pass {
+  cursor: pointer;
+  touch-action: manipulation;
+  color: var(--t-go-ink);
+  background: var(--t-go);
+  border: none;
+  border-bottom: 4px solid var(--t-go-deep);
+  transition: transform 0.06s ease, border-bottom-width 0.06s ease;
+}
+.tour-path .tp-chip-pass:active { transform: translateY(3px); border-bottom-width: 1px; margin-bottom: 3px; }
+
+/* ---------- the trail ---------- */
+.tour-path .tp-trail {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  margin: 22px auto 0;
+  flex: none;
+}
+.tour-path .tp-trail-svg {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+.tour-path .tp-trail-line {
+  fill: none;
+  stroke: rgba(159, 179, 222, 0.26);
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 0.1 21;
+}
+.tour-path .tp-trail-line.is-walked { stroke: #ffe7a3; }
+
+/* A zero-size anchor at a node's centre; its children hang off that point. */
+.tour-path .tp-anchor {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: 3;
+  --hue-deep: color-mix(in srgb, var(--hue) 60%, #06102a);
+  --hue-ink: color-mix(in srgb, var(--hue) 18%, #06102a);
+}
+
+/* ---------- lesson node ---------- */
+.tour-path .tp-node {
+  position: absolute;
+  left: -40px;
+  top: -40px;
+  width: 80px;
+  height: 72px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--hue);
+  background-image: radial-gradient(ellipse 60% 42% at 36% 24%, rgba(255, 255, 255, 0.5), transparent 70%);
+  box-shadow: 0 8px 0 var(--hue-deep), 0 14px 18px rgba(0, 0, 0, 0.4);
+  color: var(--hue-ink);
+  font: inherit;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.07s ease, box-shadow 0.07s ease;
+}
+.tour-path .tp-node:active {
+  transform: translateY(6px);
+  box-shadow: 0 2px 0 var(--hue-deep), 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+.tour-path .tp-node:focus-visible,
+.tour-path .tp-chest-btn:focus-visible,
+.tour-path .tp-chip-pass:focus-visible,
+.tour-path .tp-close:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+.tour-path .tp-node-num { font-size: 38px; font-weight: 900; line-height: 1; }
+
+.tour-path .tp-lesson.is-current .tp-node {
+  left: -47px;
+  top: -46px;
+  width: 94px;
+  height: 84px;
+  box-shadow: 0 9px 0 var(--hue-deep), 0 0 0 6px rgba(255, 255, 255, 0.95), 0 9px 0 6px rgba(255, 255, 255, 0.55), 0 18px 26px rgba(0, 0, 0, 0.45);
+}
+.tour-path .tp-lesson.is-current .tp-node:active {
+  box-shadow: 0 3px 0 var(--hue-deep), 0 0 0 6px rgba(255, 255, 255, 0.95), 0 3px 0 6px rgba(255, 255, 255, 0.55);
+}
+.tour-path .tp-lesson.is-current .tp-node-num { font-size: 44px; }
+.tour-path .tp-ring {
+  position: absolute;
+  left: -62px;
+  top: -58px;
+  width: 124px;
+  height: 124px;
+  border-radius: 50%;
+  border: 5px solid var(--hue);
+  opacity: 0;
+  animation: tp-pulse 1.9s ease-out infinite;
+  pointer-events: none;
+}
+
+.tour-path .tp-lesson.is-locked .tp-node {
+  background: var(--t-surface-2);
+  background-image: none;
+  box-shadow: 0 8px 0 #101f44, 0 12px 16px rgba(0, 0, 0, 0.3);
+  color: #5d74a8;
+  cursor: default;
+}
+.tour-path .tp-lock {
+  position: absolute;
+  right: -6px;
+  bottom: -8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  background: var(--t-bg);
+  border: 2px solid var(--t-line-deep);
+}
+.tour-path .is-nudged { animation: tp-wobble 0.45s ease; }
+
+.tour-path .tp-stars {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  transform: translateX(-50%);
+  display: inline-flex;
+  gap: 1px;
+  padding: 2px 8px 3px;
+  border-radius: 999px;
+  background: #081330;
+  border: 2px solid var(--t-line-deep);
+  font-size: 15px;
+  line-height: 1;
+  color: #3b528a;
+  white-space: nowrap;
+}
+.tour-path .tp-stars .is-on { color: var(--t-gold); }
+
+/* START / OPEN tag that bobs above the node */
+.tour-path .tp-tag {
+  position: absolute;
+  left: 0;
+  bottom: 62px;
+  transform: translateX(-50%);
+  padding: 7px 14px 8px;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--hue-ink);
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  box-shadow: 0 4px 0 rgba(6, 16, 42, 0.35);
+  animation: tp-bob 1.25s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+.tour-path .tp-tag::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  background: inherit;
+  transform: rotate(45deg);
+  border-radius: 3px;
+}
+.tour-path .tp-tag-gold { background: var(--t-gold); color: #3a2600; bottom: 52px; }
+
+/* ---------- Pogo beside the current lesson ---------- */
+.tour-path .tp-pogo { z-index: 4; pointer-events: none; }
+.tour-path .tp-pogo-hop {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  transform: translate(-50%, -56%);
+  animation: tp-hop-in 0.6s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+}
+
+/* ---------- unit banner ---------- */
+.tour-path .tp-banner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px 10px 12px;
+  border-radius: 22px;
+  --hue-deep: color-mix(in srgb, var(--hue) 60%, #06102a);
+  --hue-ink: color-mix(in srgb, var(--hue) 16%, #06102a);
+  background: var(--hue);
+  color: var(--hue-ink);
+  box-shadow: 0 7px 0 var(--hue-deep), 0 16px 24px rgba(0, 0, 0, 0.35);
+}
+.tour-path .tp-banner-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  font-size: 34px;
+  line-height: 1;
+  background: rgba(6, 16, 42, 0.16);
+}
+/* Chess units: the piece stands in a dark window so it reads on every hue. */
+.tour-path .tp-banner-icon.has-piece {
+  background: var(--hue-ink);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.14);
+}
+.tour-path .tp-banner-text { min-width: 0; display: grid; gap: 1px; }
+.tour-path .tp-banner-kicker {
+  font-size: 12.5px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+.tour-path .tp-banner-name { margin: 0; font-size: 23px; font-weight: 900; line-height: 1.1; color: inherit; }
+.tour-path .tp-banner-blurb { margin: 0; font-size: 14.5px; font-weight: 800; line-height: 1.2; opacity: 0.82; }
+.tour-path .tp-banner-count {
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: var(--hue-ink);
+  color: var(--hue);
+  font-size: 16px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+.tour-path .tp-banner.is-locked {
+  background: color-mix(in srgb, var(--hue) 24%, var(--t-surface));
+  color: color-mix(in srgb, var(--hue) 62%, #fff);
+  box-shadow: 0 7px 0 color-mix(in srgb, var(--hue) 10%, #091430), 0 16px 24px rgba(0, 0, 0, 0.3);
+}
+.tour-path .tp-banner.is-locked .tp-banner-icon { filter: saturate(0.55); background: rgba(6, 16, 42, 0.35); }
+.tour-path .tp-banner.is-locked .tp-banner-icon.has-piece { box-shadow: none; }
+.tour-path .tp-banner.is-locked .tp-banner-icon.has-piece > * { opacity: 0.6; }
+.tour-path .tp-banner.is-locked .tp-banner-count { background: rgba(6, 16, 42, 0.5); color: inherit; }
+
+/* ---------- treasure chest ---------- */
+.tour-path .tp-chest-btn {
+  position: absolute;
+  left: -46px;
+  top: -44px;
+  width: 92px;
+  height: 88px;
+  padding: 0;
+  border: none;
+  background: none;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.45));
+}
+.tour-path .tp-chest.is-locked .tp-chest-btn { cursor: default; }
+.tour-path .tp-chest.is-locked .tp-chest-art { filter: grayscale(0.85) brightness(0.8); opacity: 0.8; }
+.tour-path .tp-chest.is-ready .tp-chest-art { animation: tp-wiggle 1.6s ease-in-out infinite; transform-origin: 50% 85%; }
+.tour-path .tp-chest-glow {
+  position: absolute;
+  left: -70px;
+  top: -70px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 209, 102, 0.6), rgba(255, 209, 102, 0) 68%);
+  animation: tp-glow 1.6s ease-in-out infinite;
+  pointer-events: none;
+}
+.tour-path .tp-souvenir {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 40px;
+  line-height: 1;
+  background: radial-gradient(circle at 35% 28%, #24407a, #0f1f44 72%);
+  border: 4px solid var(--t-gold);
+  box-shadow: 0 5px 0 var(--t-gold-deep);
+  box-sizing: border-box;
+}
+.tour-path .tp-souvenir-name {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  transform: translateX(-50%);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--t-gold);
+  white-space: nowrap;
+  padding: 2px 9px 3px;
+  border-radius: 999px;
+  background: #081330;
+  border: 2px solid var(--t-line-deep);
+}
+
+/* ---------- end of the tour ---------- */
+.tour-path .tp-finish {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  margin: 8px auto 0;
+  text-align: center;
+}
+.tour-path .tp-finish-sub { margin: 0; color: var(--t-ink-dim); font-size: 17px; font-weight: 800; }
+
+/* ---------- overlays ---------- */
+.tour-path .tp-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(4, 9, 22, 0.66);
+  animation: tp-fade 0.18s ease both;
+}
+.tour-path .tp-scrim-centre { align-items: center; padding: 12px; }
+.tour-path .tp-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--t-ink-dim);
+  font: inherit;
+  font-size: 20px;
+  font-weight: 900;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+/* lesson card */
+.tour-path .tp-sheet {
+  position: relative;
+  box-sizing: border-box;
+  width: min(100%, 520px);
+  padding: 22px 20px max(20px, env(safe-area-inset-bottom));
+  border-radius: 28px 28px 0 0;
+  background: var(--t-surface);
+  border-top: 7px solid var(--hue);
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.5);
+  display: grid;
+  gap: 8px;
+  animation: t-rise 0.3s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+}
+.tour-path .tp-sheet-kicker {
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--hue);
+}
+.tour-path .tp-sheet-name { margin: 0; padding-right: 52px; font-size: 28px; font-weight: 900; line-height: 1.1; color: var(--t-ink); }
+.tour-path .tp-sheet-flags { display: flex; align-items: center; gap: 8px; margin: 6px 0 2px; flex-wrap: wrap; }
+.tour-path .tp-sheet-flag {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: var(--t-surface-2);
+  border: 2px solid var(--t-line);
+}
+.tour-path .tp-sheet-piece { background: color-mix(in srgb, var(--hue) 14%, #0b1838); border-color: color-mix(in srgb, var(--hue) 45%, var(--t-line)); }
+.tour-path .tp-sheet-count {
+  margin-left: 4px;
+  padding: 8px 13px;
+  border-radius: 999px;
+  background: var(--t-surface-2);
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--t-ink);
+  white-space: nowrap;
+}
+.tour-path .tp-sheet-more { font-size: 30px; font-weight: 900; color: var(--t-ink-dim); line-height: 1; padding: 0 4px 12px; }
+.tour-path .tp-sheet-reward { margin: 2px 0 6px; font-size: 18px; font-weight: 900; color: var(--t-go); }
+.tour-path .tp-sheet-reward.is-replay { color: var(--t-ink-dim); font-weight: 800; }
+.tour-path .tp-sheet-go { min-height: 62px; font-size: 22px; }
+
+/* chest opening */
+.tour-path .tp-opening {
+  position: relative;
+  box-sizing: border-box;
+  width: min(100%, 420px);
+  padding: 24px 20px 20px;
+  border-radius: 28px;
+  background: var(--t-surface);
+  border: 3px solid var(--t-gold);
+  box-shadow: 0 0 0 6px rgba(255, 209, 102, 0.14), 0 24px 60px rgba(0, 0, 0, 0.6);
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  text-align: center;
+  animation: t-pop 0.3s ease both;
+}
+.tour-path .tp-opening-title { margin: 0; font-size: 25px; font-weight: 900; line-height: 1.15; color: var(--t-gold); min-height: 58px; display: grid; place-items: center; }
+.tour-path .tp-opening-stage { position: relative; width: 100%; height: 220px; display: grid; place-items: end center; }
+.tour-path .tp-opening-chest { position: relative; display: block; margin-bottom: 4px; }
+.tour-path .is-shaking .tp-opening-chest { animation: tp-shake-chest 1.15s ease-in both; transform-origin: 50% 90%; }
+.tour-path .is-open .tp-opening-chest { animation: tp-burst 0.5s cubic-bezier(0.3, 1.6, 0.5, 1) both; }
+.tour-path .tp-opening-rays {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  width: 280px;
+  height: 280px;
+  margin-left: -140px;
+  border-radius: 50%;
+  background: repeating-conic-gradient(from 0deg, rgba(255, 209, 102, 0.28) 0 12deg, transparent 12deg 30deg);
+  -webkit-mask-image: radial-gradient(circle, #000 20%, transparent 68%);
+  mask-image: radial-gradient(circle, #000 20%, transparent 68%);
+  opacity: 0;
+}
+.tour-path .is-open .tp-opening-rays { opacity: 1; animation: tp-spin 14s linear infinite; transition: opacity 0.4s ease; }
+.tour-path .tp-opening-souvenir {
+  position: absolute;
+  left: 50%;
+  bottom: 118px;
+  font-size: 68px;
+  line-height: 1;
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.45));
+  animation: tp-fly-out 0.75s cubic-bezier(0.25, 1.4, 0.5, 1) 0.1s both;
+  z-index: 2;
+}
+.tour-path .tp-opening-souvenir .tp-gold {
+  filter:
+    grayscale(1) brightness(0.62) sepia(1) saturate(3.2) brightness(1.2)
+    drop-shadow(0 3px 0 #8a5a12)
+    drop-shadow(0 0 14px rgba(255, 220, 130, 0.9));
+}
+.tour-path .tp-opening-pogo { position: absolute; right: 0; bottom: 0; }
+.tour-path .tp-opening-dust { margin: 0; font-size: 38px; font-weight: 900; line-height: 1.1; color: var(--t-go); min-height: 44px; font-variant-numeric: tabular-nums; }
+.tour-path .tp-opening-wait { color: var(--t-ink-dim); }
+
+/* toast */
+.tour-path .tp-toast {
+  position: fixed;
+  left: 50%;
+  bottom: max(26px, env(safe-area-inset-bottom));
+  z-index: 60;
+  max-width: calc(100vw - 32px);
+  padding: 12px 18px;
+  border-radius: 16px;
+  background: #fff;
+  color: #101f44;
+  font-size: 17px;
+  font-weight: 900;
+  text-align: center;
+  box-shadow: 0 5px 0 rgba(6, 16, 42, 0.45), 0 14px 30px rgba(0, 0, 0, 0.45);
+  transform: translateX(-50%);
+  animation: tp-toast 2s ease both;
+  pointer-events: none;
+}
+
+/* ---------- motion ---------- */
+@keyframes tp-pulse {
+  0% { transform: scale(0.82); opacity: 0.75; }
+  100% { transform: scale(1.22); opacity: 0; }
+}
+@keyframes tp-bob {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -7px); }
+}
+@keyframes tp-wobble {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-7deg); }
+  55% { transform: rotate(6deg); }
+  80% { transform: rotate(-3deg); }
+}
+@keyframes tp-wiggle {
+  0%, 60%, 100% { transform: rotate(0) scale(1); }
+  68% { transform: rotate(-7deg) scale(1.05); }
+  76% { transform: rotate(7deg) scale(1.05); }
+  84% { transform: rotate(-5deg) scale(1.03); }
+  92% { transform: rotate(4deg) scale(1.01); }
+}
+@keyframes tp-glow {
+  0%, 100% { transform: scale(0.85); opacity: 0.55; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+@keyframes tp-hop-in {
+  0% { opacity: 0; transform: translate(-50%, -110%) scale(0.7); }
+  100% { opacity: 1; transform: translate(-50%, -56%) scale(1); }
+}
+@keyframes tp-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes tp-shake-chest {
+  0%, 12% { transform: rotate(0); }
+  20% { transform: rotate(-5deg); }
+  28% { transform: rotate(5deg); }
+  36% { transform: rotate(-7deg); }
+  44% { transform: rotate(7deg); }
+  52% { transform: rotate(-9deg) scale(1.03); }
+  60% { transform: rotate(9deg) scale(1.04); }
+  68% { transform: rotate(-11deg) scale(1.06); }
+  76% { transform: rotate(11deg) scale(1.07); }
+  88% { transform: rotate(-6deg) scale(1.1); }
+  100% { transform: rotate(0) scale(0.94); }
+}
+@keyframes tp-burst {
+  0% { transform: scale(0.8); }
+  60% { transform: scale(1.14); }
+  100% { transform: scale(1); }
+}
+@keyframes tp-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes tp-fly-out {
+  0% { opacity: 0; transform: translate(-50%, 90px) scale(0.3) rotate(-25deg); }
+  100% { opacity: 1; transform: translate(-50%, 0) scale(1) rotate(0); }
+}
+@keyframes tp-toast {
+  0% { opacity: 0; transform: translate(-50%, 14px); }
+  10%, 82% { opacity: 1; transform: translate(-50%, 0); }
+  100% { opacity: 0; transform: translate(-50%, 6px); }
+}
+
+/* ---------- small phones ---------- */
+@media (max-width: 599px) {
+  .tour-path .tp-title { display: none; }
+  .tour-path .tp-title-inline { display: block; }
+  .tour-path .tp-bar { gap: 6px; }
+  .tour-path .tp-chip { font-size: 15px; padding: 0 9px; gap: 4px; }
+  .tour-path .tp-back { padding: 6px 12px; }
+  .tour-path .tp-banner-name { font-size: 20px; }
+  .tour-path .tp-banner-blurb { font-size: 13.5px; }
+  .tour-path .tp-banner-icon { width: 52px; height: 52px; font-size: 30px; border-radius: 16px; }
+
+  /* The switch shrinks to one button: the way to the other course. */
+  .tour-path .tp-switch { margin: 0; background: none; box-shadow: none; }
+  .tour-path .tp-switch-seg.is-active,
+  .tour-path .tp-switch-name { display: none; }
+  .tour-path .tp-switch-seg {
+    width: 52px;
+    padding: 0 0 4px;
+    justify-content: center;
+    border-radius: 14px;
+    background: var(--t-pogo);
+    color: #fff;
+    box-shadow: inset 0 -4px 0 var(--t-pogo-deep);
+  }
+  .tour-path .tp-switch-seg:not(.is-active) .tp-switch-icon { opacity: 1; }
+  .tour-path .tp-switch-swap {
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #fff;
+    color: var(--t-pogo-deep);
+    font-size: 13px;
+    font-weight: 900;
+    line-height: 1;
+    box-shadow: 0 2px 0 rgba(6, 16, 42, 0.4);
+  }
+}
+@media (min-width: 600px) {
+  .tour-path .tp-scrim:not(.tp-scrim-centre) { padding-bottom: 28px; }
+  .tour-path .tp-sheet { border-radius: 28px; }
+}
+
+/* tour-base.css already flattens animations for reduced motion; these keep the
+   pieces that would otherwise end up invisible or lost. */
+@media (prefers-reduced-motion: reduce) {
+  .tour-path .tp-toast { animation: none; }
+  .tour-path .tp-ring { animation: none; opacity: 0.55; }
+  .tour-path .is-open .tp-opening-rays { animation: none; }
+}
+
+/* Narrow phones: the back button keeps its arrow, the word goes. */
+@media (max-width: 419px) {
+  .tour-path .tp-back-word { display: none; }
+  .tour-path .tp-back { padding: 6px; font-size: 20px; }
+  /* …and the day chip keeps its flame and number. */
+  .tour-path.has-switch .tp-day-long { display: none; }
+  .tour-path.has-switch .tp-day-short { display: inline; }
+  .tour-path.has-switch .tp-dust-long { display: none; }
+  .tour-path.has-switch .tp-dust-short { display: inline; }
+  .tour-path.has-switch .tp-chip { padding: 0 8px; }
+  .tour-path.has-switch .tp-chips { gap: 5px; }
+}

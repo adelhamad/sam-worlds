@@ -34,13 +34,13 @@ export const WORLD_CATEGORY: Record<string, string> = {
   // world / geography
   atlas: "world", flags: "world", directions: "world", cultures: "world", transport: "world", landforms: "world",
   ancient: "world", capitals: "world", countrymaps: "world",
-  landduel: "world", areaatlas: "world", population: "world",
+  landduel: "world", areaatlas: "world", population: "world", tour: "world",
   // life skills
   feelings: "life", manners: "life", safety: "life", helpers: "life", green: "life", nutrition: "life",
   moneysmarts: "life", town: "life", chef: "life", thennow: "life", family: "life", pets: "life", calm: "life",
   // creative / play
   melody: "creative", logic: "creative", robot: "creative", builder: "creative", craft: "creative",
-  colors: "creative", instruments: "creative", riddles: "creative", sports: "creative", trace: "creative", myths: "creative",
+  colors: "creative", instruments: "creative", riddles: "creative", sports: "creative", trace: "creative", myths: "creative", chess: "creative",
 };
 
 export function categoryOf(worldId: string): string {

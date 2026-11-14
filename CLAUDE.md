@@ -24,6 +24,7 @@ Personal PWA learning game for Sam (7). Full spec lives in `SAMS_GAME_PLAN.md` �
 - `src/ui/` — shared screens (hub, title, workshop).
 - `src/state/store.ts` — single Zustand store; every meaningful action also persists to Dexie (fire-and-forget `void db...put(...)`).
 - `src/strings/en.ts` + `src/persona.config.ts` — every player-facing string goes through these (name-aware, future Arabic toggle).
+- **Pogo's courses** (Duolingo-style lesson paths with mascot Pogo: World Tour = geography, Chess Camp = chess) — read `docs/POGO_COURSES.md` before touching `src/**/tour/` or `src/**/chess/`. Lessons are ordinary stages of worlds `tour` / `chess`; strings live in `src/strings/tour.ts` and `src/strings/chess.ts`; styles are scoped under a `.tour` root class.
 
 ## Stack gotchas
 

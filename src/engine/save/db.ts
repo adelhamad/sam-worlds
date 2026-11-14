@@ -81,6 +81,11 @@ export interface SettingsRow {
   petStageIdx?: number;
   petFedAt?: number;
   petBornAt?: number;
+  /** World Tour (rides this row too): passport stamps, chests, tour days. */
+  tourStamps?: Record<string, number>;
+  tourChests?: string[];
+  tourDays?: number;
+  tourLastDay?: string | null;
 }
 export interface CouponRow {
   id?: number;

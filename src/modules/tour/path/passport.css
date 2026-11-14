@@ -1,0 +1,196 @@
+/* World Tour — Sam's passport. A little book: violet cover with gold lettering,
+   navy pages, round inked stamps. Lives inside the path screen (`.tour-path`). */
+
+.tour-path .pp-book {
+  position: relative;
+  box-sizing: border-box;
+  width: min(100%, 640px);
+  max-height: calc(100vh - 24px);
+  max-height: calc(100dvh - 24px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 26px;
+  background: var(--t-surface);
+  border: 3px solid var(--t-pogo-deep);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  animation: tp-book-in 0.28s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+}
+@keyframes tp-book-in {
+  from { opacity: 0; transform: translateY(26px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- cover ---------- */
+.tour-path .pp-cover {
+  position: relative;
+  flex: none;
+  padding: 16px 68px 14px 20px;
+  background:
+    radial-gradient(ellipse 70% 120% at 100% 0, rgba(255, 209, 102, 0.18), transparent 60%),
+    linear-gradient(160deg, #4a32b8, #2e1f80);
+  border-bottom: 3px solid var(--t-gold-deep);
+}
+.tour-path .pp-cover .tp-close { background: rgba(6, 16, 42, 0.35); color: #fff; }
+.tour-path .pp-cover-kicker {
+  font-size: 12.5px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--t-gold);
+}
+.tour-path .pp-title { margin: 2px 0 0; font-size: 27px; font-weight: 900; line-height: 1.1; color: #fff; }
+.tour-path .pp-count { margin: 8px 0 6px; font-size: 22px; font-weight: 900; color: var(--t-gold); font-variant-numeric: tabular-nums; }
+.tour-path .pp-bar {
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(6, 16, 42, 0.5);
+  overflow: hidden;
+  margin-right: -48px;
+}
+.tour-path .pp-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--t-gold-deep), var(--t-gold));
+  transform-origin: 0 50%;
+  transition: transform 0.5s ease;
+  min-width: 14px;
+}
+.tour-path .pp-how { margin: 8px -48px 0 0; font-size: 14px; font-weight: 800; color: #cfc6ff; }
+
+/* ---------- pages ---------- */
+.tour-path .pp-pages {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 16px 16px 26px;
+  display: grid;
+  gap: 20px;
+}
+.tour-path .pp-pages h3 { margin: 0; font-size: 18px; font-weight: 900; color: var(--t-ink); }
+
+.tour-path .pp-souvenirs { display: grid; gap: 10px; }
+.tour-path .pp-souvenir-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px 14px; justify-items: center; }
+.tour-path .pp-souvenir {
+  width: 100%;
+  max-width: 64px;
+  aspect-ratio: 1;
+  min-height: 48px;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 2px dashed var(--t-line);
+  background: rgba(6, 16, 42, 0.35);
+  font-size: 30px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+/* Not found yet: just the outline of the keepsake. */
+.tour-path .pp-souvenir span { filter: brightness(0) invert(0.32); opacity: 0.8; }
+.tour-path .pp-souvenir.is-owned {
+  border: 3px solid var(--t-gold);
+  background: radial-gradient(circle at 35% 28%, #24407a, #0f1f44 72%);
+  box-shadow: 0 4px 0 var(--t-gold-deep);
+}
+.tour-path .pp-souvenir.is-owned span { filter: none; opacity: 1; }
+
+.tour-path .pp-unit { display: grid; gap: 10px; }
+.tour-path .pp-unit-head { display: flex; align-items: center; gap: 8px; }
+.tour-path .pp-unit-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  font-size: 21px;
+  line-height: 1;
+  background: color-mix(in srgb, var(--hue) 26%, transparent);
+}
+.tour-path .pp-unit-head h3 { flex: 1; min-width: 0; }
+.tour-path .pp-unit-count {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--hue);
+  background: color-mix(in srgb, var(--hue) 16%, transparent);
+  font-variant-numeric: tabular-nums;
+}
+.tour-path .pp-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+
+.tour-path .pp-tile {
+  position: relative;
+  aspect-ratio: 1;
+  min-height: 56px;
+  padding: 0;
+  border-radius: 16px;
+  font: inherit;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  background: rgba(6, 16, 42, 0.35);
+  border: 2px solid var(--t-line-deep);
+  color: var(--t-ink);
+  transition: transform 0.08s ease;
+}
+.tour-path .pp-tile:active { transform: scale(0.94); }
+.tour-path .pp-tile.is-unknown {
+  border-style: dashed;
+  color: #48609a;
+  font-size: 26px;
+  font-weight: 900;
+}
+.tour-path .pp-tile.is-started { align-content: center; gap: 5px; }
+.tour-path .pp-faint { opacity: 0.5; filter: grayscale(0.55); }
+.tour-path .pp-dots { display: inline-flex; gap: 4px; }
+.tour-path .pp-dots i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2b4278;
+}
+.tour-path .pp-dots i.is-on { background: var(--hue); }
+
+.tour-path .pp-tile.is-stamped {
+  background: color-mix(in srgb, var(--hue) 9%, rgba(6, 16, 42, 0.35));
+  border-color: color-mix(in srgb, var(--hue) 34%, var(--t-line-deep));
+}
+/* The inked stamp: a double ring pressed on a little crooked. */
+.tour-path .pp-stamp {
+  position: relative;
+  width: 80%;
+  max-width: 76px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 3px solid var(--hue);
+  background: color-mix(in srgb, var(--hue) 20%, transparent);
+  transform: rotate(var(--tilt, -4deg));
+  box-sizing: border-box;
+}
+.tour-path .pp-stamp::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  border: 2px dotted color-mix(in srgb, var(--hue) 75%, transparent);
+}
+
+.tour-path .tp-toast.pp-toast { z-index: 70; }
+
+@media (min-width: 600px) {
+  .tour-path .pp-cover { padding: 20px 76px 16px 26px; }
+  .tour-path .pp-title { font-size: 32px; }
+  .tour-path .pp-pages { padding: 20px 24px 30px; gap: 24px; }
+  .tour-path .pp-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+  .tour-path .pp-souvenir-row { grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 12px; }
+}
