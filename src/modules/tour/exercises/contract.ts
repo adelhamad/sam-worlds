@@ -1,10 +1,11 @@
 // Contract between the lesson screen (shell) and the exercise widgets.
 import type { Question } from "../../../engine/generators/types";
+import { chessPayload } from "../../../engine/chess/types";
 import { tourPayload } from "../../../engine/tour/types";
 
-/** True for kinds that submit by themselves (no CHECK button): pairs. */
+/** True for kinds that submit by themselves (no CHECK button): pairs and chess missions. */
 export function selfSubmitting(question: Question): boolean {
-  return tourPayload(question)?.tour === "pairs";
+  return tourPayload(question)?.tour === "pairs" || chessPayload(question)?.tour === "chess-mission";
 }
 
 export interface ExerciseProps {

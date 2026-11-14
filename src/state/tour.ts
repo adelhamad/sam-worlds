@@ -4,7 +4,7 @@
 // `progress` table (tour lessons are ordinary stages).
 import { db, logEvent } from "../engine/save/db";
 import { todayKey } from "../engine/economy/gifts";
-import { tourUnitById, unitComplete } from "../content/tour/units";
+import { courseById, courseUnitById, unitComplete } from "../content/courses";
 import { persistSettings } from "./settings";
 import type { GameStore } from "./store";
 
@@ -17,7 +17,7 @@ export const STAMP_GOAL = 3;
 export interface TourSlice {
   /** First-try correct answers per country code. `>= STAMP_GOAL` = stamped. */
   tourStamps: Record<string, number>;
-  /** Unit ids whose treasure chest has been opened. */
+  /** Unit ids (of any course) whose treasure chest has been opened. */
   tourChests: string[];
   /** Distinct days with a finished lesson. Only ever grows — never a streak to lose. */
   tourDays: number;
@@ -33,6 +33,8 @@ export interface TourSlice {
   setTourDays: (days: number) => void;
   resetTourPassport: () => void;
   resetTourChests: () => void;
+  /** Close the chests of one course only (the other course keeps its keepsakes). */
+  resetCourseChests: (courseId: string) => void;
 }
 
 export const tourInitial = {
@@ -64,7 +66,7 @@ export function tourActions(set: Set, get: Get) {
 
     tourOpenChest: (unitId: string): number => {
       const s = get();
-      const unit = tourUnitById(unitId);
+      const unit = courseUnitById(unitId);
       if (!unit || s.tourChests.includes(unitId) || !unitComplete(unit, s.progress)) return 0;
       const starDust = s.starDust + unit.chestDust;
       set({ starDust, tourChests: [...s.tourChests, unitId], hasSave: true });
@@ -99,6 +101,15 @@ export function tourActions(set: Set, get: Get) {
       set({ tourChests: [] });
       persistSettings(get);
       logEvent("parent.resetTourChests", {});
+    },
+
+    resetCourseChests: (courseId: string) => {
+      const course = courseById(courseId);
+      if (!course) return;
+      const unitIds = course.units.map((unit) => unit.id);
+      set({ tourChests: get().tourChests.filter((id) => !unitIds.includes(id)) });
+      persistSettings(get);
+      logEvent("parent.resetCourseChests", { courseId });
     },
   };
 }

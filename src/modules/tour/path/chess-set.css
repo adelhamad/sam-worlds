@@ -1,0 +1,125 @@
+/* Chess Camp keepsakes: the golden figurine and the display shelf ("Sam's
+   Chess Set"). The sheet itself reuses the passport's book (passport.css). */
+
+/* Any piece art turned into a gold figurine: flatten it to light and shade,
+   pour gold over it, then give it a dark-gold base edge and a warm glow. */
+.tour .tp-gold {
+  display: inline-grid;
+  place-items: center;
+  line-height: 1;
+  filter:
+    grayscale(1) brightness(0.62) sepia(1) saturate(3.2) brightness(1.16)
+    drop-shadow(0 2px 0 #8a5a12)
+    drop-shadow(0 0 7px rgba(255, 209, 102, 0.55));
+}
+.tour .tp-keepsake-emoji { display: inline-block; line-height: 1; }
+
+/* ---------- the sheet ---------- */
+.tour-path .cs-book { width: min(100%, 520px); }
+.tour-path .pp-pages.cs-case {
+  gap: 6px;
+  padding: 8px 14px 16px;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0, rgba(139, 108, 255, 0.16), transparent 70%),
+    var(--t-surface);
+}
+
+/* One shelf: three keepsakes standing on a wooden plank, name plates below. */
+.tour-path .cs-shelf {
+  --figure: 70px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 6px;
+  padding-top: 10px;
+}
+.tour-path .cs-shelf::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(10px + var(--figure) + 12px);
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #c98a4c, #9a5a26);
+  box-shadow: 0 5px 0 #5a3111, 0 12px 14px rgba(0, 0, 0, 0.4);
+}
+
+.tour-path .cs-slot {
+  position: relative;
+  min-width: 0;
+  padding: 0 0 8px;
+  border: none;
+  background: none;
+  font: inherit;
+  color: var(--t-ink);
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  border-radius: 16px;
+}
+.tour-path .cs-slot:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.tour-path .cs-figure {
+  position: relative;
+  height: var(--figure);
+  display: grid;
+  place-items: end center;
+  transform-origin: 50% 100%;
+  transition: transform 0.12s ease;
+}
+.tour-path .cs-slot:active .cs-figure { transform: scale(0.92); }
+.tour-path .cs-pedestal {
+  position: relative;
+  width: 62px;
+  height: 12px;
+  border-radius: 9px 9px 3px 3px;
+  background: #22386b;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.08);
+}
+.tour-path .cs-name {
+  margin-top: 26px;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.15;
+  text-align: center;
+  color: #5d74a8;
+}
+
+/* Not found yet: only the shadow of the keepsake. */
+.tour-path .cs-slot:not(.is-owned) .cs-figure {
+  filter: brightness(0) invert(0.46) sepia(1) hue-rotate(185deg) saturate(1.5);
+  opacity: 0.6;
+}
+
+.tour-path .cs-slot.is-owned .cs-figure::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 96px;
+  height: 96px;
+  margin-left: -48px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--hue) 34%, transparent), transparent 66%);
+  pointer-events: none;
+}
+.tour-path .cs-slot.is-owned .cs-figure > * { position: relative; animation: cs-settle 0.5s cubic-bezier(0.3, 1.5, 0.5, 1) both; }
+.tour-path .cs-slot.is-owned .cs-pedestal {
+  background: linear-gradient(180deg, #ffe29a, var(--t-gold-deep));
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.55);
+}
+.tour-path .cs-slot.is-owned .cs-name { color: var(--t-gold); }
+
+@keyframes cs-settle {
+  from { opacity: 0; transform: translateY(-14px) scale(0.8); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (min-width: 600px) {
+  .tour-path .pp-pages.cs-case { gap: 10px; padding: 12px 26px 22px; }
+  .tour-path .cs-shelf { --figure: 76px; gap: 0 12px; }
+  .tour-path .cs-name { font-size: 15px; }
+}

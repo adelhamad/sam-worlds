@@ -89,6 +89,8 @@ import { generateAreaAtlas } from "./areaAtlas";
 import { generatePopulationWorld } from "./populationWorld";
 import { generateTraits, type TraitsParams } from "./traits";
 import { generateTour, planTourLesson } from "../tour/planner";
+import { generateChess, planChessLesson } from "../chess/planner";
+import type { ChessParams } from "../chess/types";
 import type { TourParams } from "../tour/types";
 import type { GeographyParams } from "./geography";
 import type { GenContext, GeneratorParams, Question } from "./types";
@@ -183,7 +185,8 @@ export type GeneratorId =
   | "areaatlas"
   | "population"
   | "traits"
-  | "tour";
+  | "tour"
+  | "chess";
 
 /** Generator registry — one entry per id (params are cast per generator). */
 type GenFn = (params: GeneratorParams, rng: () => number, ctx: GenContext) => Question;
@@ -281,6 +284,7 @@ const GENERATORS: Record<GeneratorId, GenFn> = {
   population: cast<GeographyParams>(generatePopulationWorld),
   traits: cast<TraitsParams>(generateTraits),
   tour: cast<TourParams>(generateTour),
+  chess: cast<ChessParams>(generateChess),
 };
 
 function dispatch(id: GeneratorId, params: GeneratorParams, rng: () => number, ctx: GenContext): Question {
@@ -310,8 +314,9 @@ export function generateQuestionSet(
   ctx: GenContext,
   excluded: Iterable<string> = [],
 ): Question[] {
-  // World Tour plans a balanced lesson as a whole instead of drawing one by one.
+  // Courses plan a balanced lesson as a whole instead of drawing one by one.
   if (id === "tour") return planTourLesson(params as unknown as TourParams, count, seed, ctx, excluded);
+  if (id === "chess") return planChessLesson(params as unknown as ChessParams, count, seed, ctx, excluded);
   const rng = mulberry32(seed);
   const out: Question[] = [];
   const seen = new Set(excluded);

@@ -1,10 +1,13 @@
 // "Lesson complete!" — the full-screen celebration: confetti, Pogo cheering,
-// three stat cards that count up, passport stamps, the tour day, and any
-// trophy / treasure the store handed out. One button: back to the path.
+// three stat cards that count up, the bonuses collected on the way, passport
+// stamps (geography) or the unit's road to its chest (other courses), the tour
+// day, and any trophy / treasure the store handed out. One button: back to the path.
 import { useEffect, useState } from "react";
 import { useGame, type SessionResult } from "../../../state/store";
 import { STAMP_GOAL } from "../../../state/tour";
-import { unitComplete, unitOfStage } from "../../../content/tour/units";
+import { courseUnitOfStage, unitComplete, type Course, type CourseUnit } from "../../../content/courses";
+import type { StageDef } from "../../../content/types";
+import { perfectBonus } from "../../../engine/answers/lessonRewards";
 import { countryName } from "../../../engine/tour/countries";
 import { Flag } from "../../../ui/tour/Flag";
 import { Confetti, Pogo } from "../../../ui/tour/Pogo";
@@ -68,6 +71,47 @@ function Stats({ result, total, misses }: { result: SessionResult; total: number
   );
 }
 
+/** What came on top of the meter: the Perfect Run bonus (part of the Star Dust
+    stat) and the gift opened on the way (paid when it appeared). */
+function Bonuses({ perfect, gift }: { perfect: number; gift: number }) {
+  if (perfect <= 0 && gift <= 0) return null;
+  return (
+    <div className="tl-bonus">
+      {perfect > 0 && (
+        <span className="tl-bonus-line"><span aria-hidden="true">🌟</span> {TOUR.lesson.perfectBonus(perfect)}</span>
+      )}
+      {gift > 0 && (
+        <span className="tl-bonus-line is-gift"><span aria-hidden="true">🎁</span> {TOUR.lesson.giftLine(gift)}</span>
+      )}
+    </div>
+  );
+}
+
+/** The unit's lessons as pips on the road to its chest — this one just filled. */
+function UnitRoad({ unit, stageId, fresh }: { unit: CourseUnit; stageId: string; fresh: boolean }) {
+  const progress = useGame((s) => s.progress);
+  const index = unit.lessons.findIndex((lesson) => lesson.id === stageId);
+  const label = TOUR.lesson.lessonOf(index + 1, unit.lessons.length);
+  return (
+    <section className="tl-passport tl-unit" style={{ "--tl-unit-hue": unit.hue } as React.CSSProperties}>
+      <h3 className="tl-passport-title"><span className="tl-unit-icon" aria-hidden="true">{unit.icon}</span> {unit.name}</h3>
+      <div className="tl-unit-road" role="img" aria-label={label}>
+        {unit.lessons.map((lesson, i) => {
+          const on = Boolean(progress[lesson.id]?.completed);
+          const here = i === index;
+          return (
+            <i key={lesson.id} className={`tl-unit-pip ${on ? "is-on" : ""} ${here ? "is-here" : ""} ${here && fresh ? "is-fresh" : ""}`}>
+              {on ? "✓" : i + 1}
+            </i>
+          );
+        })}
+        <span className={`tl-unit-chest ${unitComplete(unit, progress) ? "is-ready" : ""}`}>🎁</span>
+      </div>
+      <p className="tl-passport-note">{label}</p>
+    </section>
+  );
+}
+
 /** The focus countries closest to their stamp, when no stamp landed today. */
 function nearestStamps(focus: string[], stamps: Record<string, number>): string[] {
   const open = focus.filter((code) => (stamps[code] ?? 0) < STAMP_GOAL);
@@ -115,14 +159,22 @@ function Passport({ newStamps, focus }: { newStamps: string[]; focus: string[] }
   );
 }
 
-function Extras({ result, dayNumber, chestWaiting }: { result: SessionResult; dayNumber: number | null; chestWaiting: boolean }) {
+interface ExtrasProps {
+  result: SessionResult;
+  dayNumber: number | null;
+  /** "Day 3 on tour!" for geography, "Day 3 with Pogo!" elsewhere. */
+  dayNote: string;
+  chestWaiting: boolean;
+}
+
+function Extras({ result, dayNumber, dayNote, chestWaiting }: ExtrasProps) {
   if (dayNumber === null && !result.newBadge && !result.surprise && !chestWaiting) return null;
   return (
     <div className="tl-extras">
       {dayNumber !== null && (
         <div className="tl-chip tl-chip-day">
           <span className="tl-chip-icon" aria-hidden="true">☀️</span>
-          <span><b>{TOUR.lesson.dayChip(dayNumber)}</b> {TOUR.lesson.dayNote}</span>
+          <span><b>{TOUR.lesson.dayChip(dayNumber)}</b> {dayNote}</span>
         </div>
       )}
       {result.newBadge && (
@@ -148,23 +200,28 @@ function Extras({ result, dayNumber, chestWaiting }: { result: SessionResult; da
 }
 
 interface LessonCompleteProps {
-  stageId: string;
+  course: Course;
+  stage: StageDef;
   seed: number;
   result: SessionResult;
   /** Slots in the lesson and how many were not first-try. */
   total: number;
   misses: number;
-  focus: string[];
+  /** Geography: the lesson's focus countries (passport section). Null elsewhere. */
+  focus: string[] | null;
   newStamps: string[];
   dayNumber: number | null;
+  /** Star Dust from the gift opened in this sitting (0 = none). */
+  giftDust: number;
   onContinue: () => void;
 }
 
 export function LessonComplete(props: LessonCompleteProps) {
-  const { stageId, seed, result, total, misses, focus, newStamps, dayNumber, onContinue } = props;
+  const { course, stage, seed, result, total, misses, focus, newStamps, dayNumber, giftDust, onContinue } = props;
   const compact = useCompact();
-  const unit = unitOfStage(stageId);
+  const unit = courseUnitOfStage(stage.id);
   const chestWaiting = useGame((s) => Boolean(unit && unitComplete(unit, s.progress) && !s.tourChests.includes(unit.id)));
+  const bonus = perfectBonus(result.payout, result.perfect, stage.payout, total, result.firstTime);
 
   return (
     <div className="tl-done">
@@ -182,9 +239,14 @@ export function LessonComplete(props: LessonCompleteProps) {
         {!result.noQuestions && (
           <>
             <Stats result={result} total={total} misses={misses} />
+            <Bonuses perfect={bonus} gift={giftDust} />
             {!result.firstTime && <p className="tl-done-note">{TOUR.lesson.replayNote}</p>}
-            <Passport newStamps={newStamps} focus={focus} />
-            <Extras result={result} dayNumber={dayNumber} chestWaiting={chestWaiting && result.firstTime} />
+            {focus && <Passport newStamps={newStamps} focus={focus} />}
+            {!focus && unit && <UnitRoad unit={unit} stageId={stage.id} fresh={result.firstTime} />}
+            <Extras
+              result={result} dayNumber={dayNumber} chestWaiting={chestWaiting && result.firstTime}
+              dayNote={course.id === "tour" ? TOUR.lesson.dayNote : TOUR.lesson.dayNoteGuide}
+            />
           </>
         )}
       </div>

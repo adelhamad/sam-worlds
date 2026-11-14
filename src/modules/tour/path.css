@@ -1,4 +1,4 @@
-/* World Tour — the lesson path. One winding dotted trail on deep-space navy;
+/* Pogo's courses — the lesson path. One winding dotted trail on deep-space navy;
    every unit paints its nodes and banner in its own hue. Tokens come from
    tour-base.css (`.tour`). */
 
@@ -64,6 +64,53 @@
   font-size: 24px;
   font-weight: 900;
 }
+/* With a course switch in the bar, the title always sits under it. */
+.tour-path.has-switch .tp-title-inline { display: block; }
+
+/* ---------- course switch ---------- */
+.tour-path .tp-switch {
+  flex: none;
+  display: flex;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 16px;
+  background: var(--t-surface);
+  box-shadow: inset 0 0 0 2px var(--t-line-deep);
+}
+.tour-path .tp-switch-seg {
+  position: relative;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1;
+  min-height: 48px;
+  min-width: 48px;
+  padding: 0 16px 0 12px;
+  border: none;
+  border-radius: 16px;
+  background: none;
+  color: var(--t-ink-dim);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.06s ease, color 0.12s ease;
+}
+.tour-path .tp-switch-seg:not(.is-active):active { transform: translateY(2px); }
+.tour-path .tp-switch-seg:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.tour-path .tp-switch-seg.is-active {
+  background: var(--t-pogo);
+  color: #fff;
+  box-shadow: inset 0 -4px 0 var(--t-pogo-deep);
+  cursor: default;
+}
+.tour-path .tp-switch-icon { width: 28px; height: 28px; display: grid; place-items: center; line-height: 1; }
+.tour-path .tp-switch-seg:not(.is-active) .tp-switch-icon { opacity: 0.85; }
+.tour-path .tp-switch-swap { display: none; }
+
 .tour-path .tp-chips {
   display: flex;
   align-items: center;
@@ -89,6 +136,10 @@
 }
 .tour-path .tp-chip-dust { color: var(--t-go); border-color: rgba(34, 211, 238, 0.4); }
 .tour-path .tp-chip-day { color: var(--t-almost); }
+.tour-path .tp-day-short,
+.tour-path .tp-dust-short { display: none; }
+/* Chess set chip: the king as a dark stamp on the cyan button. */
+.tour-path .tp-chip-piece { height: 24px; display: inline-grid; place-items: center; line-height: 1; filter: brightness(0); opacity: 0.82; }
 .tour-path .tp-chip-pass {
   cursor: pointer;
   touch-action: manipulation;
@@ -303,6 +354,11 @@
   line-height: 1;
   background: rgba(6, 16, 42, 0.16);
 }
+/* Chess units: the piece stands in a dark window so it reads on every hue. */
+.tour-path .tp-banner-icon.has-piece {
+  background: var(--hue-ink);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.14);
+}
 .tour-path .tp-banner-text { min-width: 0; display: grid; gap: 1px; }
 .tour-path .tp-banner-kicker {
   font-size: 12.5px;
@@ -328,6 +384,8 @@
   box-shadow: 0 7px 0 color-mix(in srgb, var(--hue) 10%, #091430), 0 16px 24px rgba(0, 0, 0, 0.3);
 }
 .tour-path .tp-banner.is-locked .tp-banner-icon { filter: saturate(0.55); background: rgba(6, 16, 42, 0.35); }
+.tour-path .tp-banner.is-locked .tp-banner-icon.has-piece { box-shadow: none; }
+.tour-path .tp-banner.is-locked .tp-banner-icon.has-piece > * { opacity: 0.6; }
 .tour-path .tp-banner.is-locked .tp-banner-count { background: rgba(6, 16, 42, 0.5); color: inherit; }
 
 /* ---------- treasure chest ---------- */
@@ -461,6 +519,18 @@
   background: var(--t-surface-2);
   border: 2px solid var(--t-line);
 }
+.tour-path .tp-sheet-piece { background: color-mix(in srgb, var(--hue) 14%, #0b1838); border-color: color-mix(in srgb, var(--hue) 45%, var(--t-line)); }
+.tour-path .tp-sheet-count {
+  margin-left: 4px;
+  padding: 8px 13px;
+  border-radius: 999px;
+  background: var(--t-surface-2);
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--t-ink);
+  white-space: nowrap;
+}
 .tour-path .tp-sheet-more { font-size: 30px; font-weight: 900; color: var(--t-ink-dim); line-height: 1; padding: 0 4px 12px; }
 .tour-path .tp-sheet-reward { margin: 2px 0 6px; font-size: 18px; font-weight: 900; color: var(--t-go); }
 .tour-path .tp-sheet-reward.is-replay { color: var(--t-ink-dim); font-weight: 800; }
@@ -510,6 +580,12 @@
   filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.45));
   animation: tp-fly-out 0.75s cubic-bezier(0.25, 1.4, 0.5, 1) 0.1s both;
   z-index: 2;
+}
+.tour-path .tp-opening-souvenir .tp-gold {
+  filter:
+    grayscale(1) brightness(0.62) sepia(1) saturate(3.2) brightness(1.2)
+    drop-shadow(0 3px 0 #8a5a12)
+    drop-shadow(0 0 14px rgba(255, 220, 130, 0.9));
 }
 .tour-path .tp-opening-pogo { position: absolute; right: 0; bottom: 0; }
 .tour-path .tp-opening-dust { margin: 0; font-size: 38px; font-weight: 900; line-height: 1.1; color: var(--t-go); min-height: 44px; font-variant-numeric: tabular-nums; }
@@ -610,6 +686,37 @@
   .tour-path .tp-banner-name { font-size: 20px; }
   .tour-path .tp-banner-blurb { font-size: 13.5px; }
   .tour-path .tp-banner-icon { width: 52px; height: 52px; font-size: 30px; border-radius: 16px; }
+
+  /* The switch shrinks to one button: the way to the other course. */
+  .tour-path .tp-switch { margin: 0; background: none; box-shadow: none; }
+  .tour-path .tp-switch-seg.is-active,
+  .tour-path .tp-switch-name { display: none; }
+  .tour-path .tp-switch-seg {
+    width: 52px;
+    padding: 0 0 4px;
+    justify-content: center;
+    border-radius: 14px;
+    background: var(--t-pogo);
+    color: #fff;
+    box-shadow: inset 0 -4px 0 var(--t-pogo-deep);
+  }
+  .tour-path .tp-switch-seg:not(.is-active) .tp-switch-icon { opacity: 1; }
+  .tour-path .tp-switch-swap {
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #fff;
+    color: var(--t-pogo-deep);
+    font-size: 13px;
+    font-weight: 900;
+    line-height: 1;
+    box-shadow: 0 2px 0 rgba(6, 16, 42, 0.4);
+  }
 }
 @media (min-width: 600px) {
   .tour-path .tp-scrim:not(.tp-scrim-centre) { padding-bottom: 28px; }
@@ -628,4 +735,11 @@
 @media (max-width: 419px) {
   .tour-path .tp-back-word { display: none; }
   .tour-path .tp-back { padding: 6px; font-size: 20px; }
+  /* …and the day chip keeps its flame and number. */
+  .tour-path.has-switch .tp-day-long { display: none; }
+  .tour-path.has-switch .tp-day-short { display: inline; }
+  .tour-path.has-switch .tp-dust-long { display: none; }
+  .tour-path.has-switch .tp-dust-short { display: inline; }
+  .tour-path.has-switch .tp-chip { padding: 0 8px; }
+  .tour-path.has-switch .tp-chips { gap: 5px; }
 }

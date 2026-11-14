@@ -1,0 +1,54 @@
+/* Chess Camp — the solved views inside the amber "Almost" sheet. Compact:
+   a small board beside one rule line, so the sheet stays under half a phone
+   screen. Prefix `ct-`. */
+.tour .ct { width: 100%; max-width: 540px; margin: 0 auto; }
+.tour .ct-split {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+}
+.tour .ct-board {
+  width: clamp(150px, 42vw, 270px);
+  padding: 3px;
+  border-radius: 13px;
+  border-bottom-width: 4px;
+  box-shadow: none;
+}
+.tour .ct-board .cb-grid { border-radius: 10px; }
+.tour .ct-board .cb-mark.is-ring,
+.tour .ct-board .cb-target,
+.tour .ct-board .cb-dot.is-ring { border-width: 3px; }
+.tour .ct-board .cb-mark { box-shadow: inset 0 -2px 0 var(--m-deep), 0 0 0 2px rgba(9, 24, 68, 0.72); }
+.tour .ct-board .cb-mark.is-missed { border-width: 3px; box-shadow: 0 0 0 2px rgba(46, 26, 2, 0.6); }
+.tour .ct-board .cb-mark.is-no { box-shadow: none; }
+.tour .ct-text { min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.tour .ct-rule { font-size: clamp(17px, 4.6vw, 21px); font-weight: 900; line-height: 1.2; text-wrap: balance; }
+.tour .ct-note { font-size: 15px; font-weight: 800; line-height: 1.25; opacity: 0.85; }
+.tour .ct-legend { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 5px; font-size: 14px; font-weight: 800; line-height: 1.15; }
+.tour .ct-legend-row { display: flex; align-items: center; gap: 8px; }
+.tour .ct-legend-dot { flex: none; box-sizing: border-box; width: 16px; height: 16px; border-radius: 50%; }
+.tour .ct-legend-dot.is-good { background: var(--t-yes); }
+.tour .ct-legend-dot.is-missed { border: 3px dashed var(--t-almost); background: rgba(255, 180, 84, 0.3); }
+.tour .ct-legend-dot.is-extra { background: #b9c0e6; }
+
+.tour .ct-count { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.tour .ct-count-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 6px; }
+.tour .ct-count-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.tour .ct-count-item b {
+  min-width: 30px;
+  padding: 1px 6px;
+  box-sizing: border-box;
+  border-radius: 999px;
+  background: var(--t-gold);
+  border-bottom: 3px solid var(--t-gold-deep);
+  color: #3a2800;
+  font-size: 18px;
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.2;
+}
+.tour .ct-sum { font-size: clamp(22px, 6vw, 28px); font-weight: 900; font-variant-numeric: tabular-nums; }
+.tour .ct-sum em { font-style: normal; color: var(--t-gold); }
+
+.tour .ct-place { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }

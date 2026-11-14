@@ -1,13 +1,16 @@
 // The lesson's answer loop. Judging, regenerate-on-miss, payouts and restore all
 // live in the store (answer / advance / revealAnswer) — this hook only decides
 // what the child SEES after each verdict: which feedback sheet, the combo, the
-// passport stamps and the tour day.
+// passport stamps, the tour day, and the two interludes that show between a
+// sheet and the next question (the mid-lesson gift and Pogo's cheer).
 import { useCallback, useRef, useState } from "react";
-import { REVEAL_COST, useGame } from "../../../state/store";
+import { REVEAL_COST, useGame, type Session } from "../../../state/store";
 import type { Question } from "../../../engine/generators/types";
+import { giftDust, lessonBreaks, type SlotTally } from "../../../engine/answers/lessonRewards";
 import { tourPayload } from "../../../engine/tour/types";
 import { unlockAudio } from "../../../engine/feedback/audio";
 import { TOUR } from "../../../strings/tour";
+import { claimLessonGift } from "./giftGuard";
 import { lessonSound } from "./lessonSound";
 
 export type SheetKind = "correct" | "again" | "almost";
@@ -30,19 +33,34 @@ export interface LessonSheet {
   slowDown: boolean;
 }
 
+/** A moment between two questions. The gift's Star Dust is already paid. */
+export type Interlude =
+  | { id: number; kind: "gift"; dust: number }
+  | { id: number; kind: "cheer"; left: number };
+
 export interface LessonFlow {
   sheet: LessonSheet | null;
+  /** Showing instead of the next question — never over a sheet. */
+  interlude: Interlude | null;
   /** First-try correct answers in a row. */
   combo: number;
   /** Stamps earned during this lesson (for the completion screen). */
   newStamps: string[];
   /** Set when this lesson was the first one finished today. */
   dayNumber: number | null;
+  /** The lesson had never been finished when this session began. */
+  firstCompletion: boolean;
+  /** Star Dust from the gift opened in this sitting (0 = none). */
+  giftCollected: number;
   submit: (value: string) => void;
   /** CONTINUE / GOT IT. */
   dismiss: () => void;
   /** Spend Star Dust to skip the slot (from the miss sheet). */
   skip: () => void;
+  /** The child opened the gift box. */
+  collectGift: () => void;
+  /** Interlude `id` is over: on to the next one, or the next question. */
+  endInterlude: (id: number) => void;
 }
 
 export const COMBO_MILESTONES = [3, 5, 8];
@@ -62,11 +80,74 @@ function celebrateIfDone(): boolean {
   return true;
 }
 
+function tallyOf(s: Session): SlotTally {
+  return { done: s.result ? s.questions.length : s.index, total: s.questions.length };
+}
+
+/** The gift and the cheer: a queue filled when a slot is committed and shown
+    one at a time once the feedback sheet is gone. */
+function useInterludes(firstCompletion: boolean) {
+  const [interlude, setInterlude] = useState<Interlude | null>(null);
+  const [giftCollected, setGiftCollected] = useState(0);
+  const queueRef = useRef<Interlude[]>([]);
+  const currentRef = useRef<Interlude | null>(null);
+  const idRef = useRef(0);
+
+  /** A slot was just committed (answered or skipped): line up what it set off.
+      Only the step that reaches a slot fires, so a restored session never
+      replays a gift — and the gift is paid right here, not when it is tapped. */
+  const settleSlot = useCallback((before: Session) => {
+    const game = useGame.getState();
+    const s = game.session;
+    if (!s) return;
+    const after = tallyOf(s);
+    const due = lessonBreaks(tallyOf(before), after);
+    if (due.gift && claimLessonGift(s.seed)) {
+      const dust = giftDust(firstCompletion);
+      game.earnDust(dust, "lesson.gift");
+      idRef.current += 1;
+      queueRef.current.push({ id: idRef.current, kind: "gift", dust });
+    }
+    if (due.cheer) {
+      idRef.current += 1;
+      queueRef.current.push({ id: idRef.current, kind: "cheer", left: after.total - after.done });
+    }
+  }, [firstCompletion]);
+
+  /** Shows the next queued interlude; false when there is none (or the lesson is over). */
+  const showNext = useCallback((): boolean => {
+    if (useGame.getState().session?.result) queueRef.current = [];
+    const next = queueRef.current.shift() ?? null;
+    currentRef.current = next;
+    setInterlude(next);
+    if (next?.kind === "gift") lessonSound.giftShow();
+    if (next?.kind === "cheer") lessonSound.cheer();
+    return next !== null;
+  }, []);
+
+  const collectGift = useCallback(() => {
+    const current = currentRef.current;
+    if (current?.kind === "gift") setGiftCollected(current.dust);
+  }, []);
+
+  const endInterlude = useCallback((id: number) => {
+    if (currentRef.current?.id !== id) return; // the timer and a tap can both call
+    if (!showNext()) lessonSound.next();
+  }, [showNext]);
+
+  const isShowing = useCallback(() => currentRef.current !== null, []);
+
+  return { interlude, giftCollected, settleSlot, showNext, collectGift, endInterlude, isShowing };
+}
+
 export function useLessonFlow(stageId: string): LessonFlow {
   const [sheet, setSheet] = useState<LessonSheet | null>(null);
   const [combo, setCombo] = useState(0);
   const [newStamps, setNewStamps] = useState<string[]>([]);
   const [dayNumber, setDayNumber] = useState<number | null>(null);
+  // Captured before the final advance() flips `progress` for this lesson.
+  const [firstCompletion] = useState(() => !useGame.getState().progress[stageId]?.completed);
+  const { interlude, giftCollected, settleSlot, showNext, collectGift, endInterlude, isShowing } = useInterludes(firstCompletion);
   // Handler-only state: a sheet is open (blocks double submits), the running
   // combo, the sheet counter / open time and which session marked its tour day.
   const openRef = useRef(false);
@@ -95,8 +176,10 @@ export function useLessonFlow(stageId: string): LessonFlow {
     setCombo(value);
   }, []);
 
-  const onCorrect = useCallback((question: Question, submitted: string, firstTry: boolean) => {
+  const onCorrect = useCallback((before: Session, question: Question, submitted: string) => {
     const game = useGame.getState();
+    const firstTry = !before.attemptMissed;
+    // Passport stamps are geography-only: chess questions carry no country codes.
     const stamps = firstTry ? game.tourCredit(tourPayload(question)?.codes ?? []) : [];
     const streak = firstTry ? comboRef.current + 1 : 0;
     setStreak(streak);
@@ -104,6 +187,7 @@ export function useLessonFlow(stageId: string): LessonFlow {
     // Commit the slot before the feedback shows: a reload during the sheet must
     // land on the next question, never score this one twice.
     game.advance();
+    settleSlot(before);
     markDayIfDone();
     if (stamps.length) setNewStamps((prev) => [...prev, ...stamps]);
     lessonSound.correct();
@@ -113,7 +197,7 @@ export function useLessonFlow(stageId: string): LessonFlow {
       kind: "correct", question, submitted, title: pickPraise(), stamps,
       comboCount: level > 0 ? streak : null, canSkip: false, slowDown: false,
     });
-  }, [markDayIfDone, setStreak, show]);
+  }, [markDayIfDone, setStreak, settleSlot, show]);
 
   const onMiss = useCallback((question: Question, submitted: string, firstTry: boolean, hadLine: boolean) => {
     const game = useGame.getState();
@@ -127,18 +211,17 @@ export function useLessonFlow(stageId: string): LessonFlow {
   }, [setStreak, show]);
 
   const submit = useCallback((value: string) => {
-    if (openRef.current) return;
+    if (openRef.current || isShowing()) return;
     const game = useGame.getState();
     const before = game.session;
     if (!before || before.stageId !== stageId || before.result) return;
     const question = before.questions[before.index];
     if (!question) return;
     unlockAudio();
-    // Capture everything BEFORE answering: the store swaps the question at once.
-    const firstTry = !before.attemptMissed;
+    // `before` is captured BEFORE answering: the store swaps the question at once.
     const verdict = game.answer(value);
-    if (verdict === "correct") onCorrect(question, value, firstTry);
-    else if (verdict === "wrong") onMiss(question, value, firstTry, Boolean(before.companionLine));
+    if (verdict === "correct") onCorrect(before, question, value);
+    else if (verdict === "wrong") onMiss(question, value, !before.attemptMissed, Boolean(before.companionLine));
     else if (verdict === "again") {
       // Right, but one more is owed — the fresh question is already in place.
       lessonSound.correct();
@@ -148,16 +231,18 @@ export function useLessonFlow(stageId: string): LessonFlow {
       });
     } else if (verdict === "exhausted") {
       // The slot was dropped: carry on with whatever the session now shows.
+      settleSlot(before);
       markDayIfDone();
-      if (!celebrateIfDone()) lessonSound.next();
+      if (!celebrateIfDone() && !showNext()) lessonSound.next();
     }
-  }, [markDayIfDone, onCorrect, onMiss, show, stageId]);
+  }, [isShowing, markDayIfDone, onCorrect, onMiss, settleSlot, show, showNext, stageId]);
 
   const close = useCallback(() => {
     openRef.current = false;
     setSheet(null);
-    if (!celebrateIfDone()) lessonSound.next();
-  }, []);
+    // The celebration screen comes first: nothing may sit on top of it.
+    if (!celebrateIfDone() && !showNext()) lessonSound.next();
+  }, [showNext]);
 
   const dismiss = useCallback(() => {
     if (openRef.current && Date.now() - openedAtRef.current >= TAP_THROUGH_MS) close();
@@ -166,11 +251,16 @@ export function useLessonFlow(stageId: string): LessonFlow {
   const skip = useCallback(() => {
     if (!openRef.current) return;
     const game = useGame.getState();
-    if (game.revealAnswer() !== "revealed") return;
+    const before = game.session;
+    if (!before || game.revealAnswer() !== "revealed") return;
     game.advance();
+    settleSlot(before); // a skipped slot is a finished slot too
     markDayIfDone();
     close();
-  }, [close, markDayIfDone]);
+  }, [close, markDayIfDone, settleSlot]);
 
-  return { sheet, combo, newStamps, dayNumber, submit, dismiss, skip };
+  return {
+    sheet, interlude, combo, newStamps, dayNumber, firstCompletion, giftCollected,
+    submit, dismiss, skip, collectGift, endInterlude,
+  };
 }

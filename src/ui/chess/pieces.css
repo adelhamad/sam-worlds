@@ -1,0 +1,46 @@
+/* Chess pieces — chunky wooden-toy look. Not scoped under `.tour` so the art
+   works anywhere (path banners, parent section). White is warm cream with a
+   brown outline; Black is deep indigo with a pale lavender outline: both read
+   on light squares, dark squares and the navy UI. */
+.chess-piece {
+  --pc-fill: #fff4dc;
+  --pc-shade: #e8c68c;
+  --pc-line: #6a4420;
+  --pc-shine: #ffffff;
+  --pc-rim: transparent;
+  display: block;
+  flex: none;
+  overflow: visible;
+}
+.chess-piece-b {
+  --pc-fill: #453e8f;
+  --pc-shade: #2b2666;
+  --pc-line: #cfc8ff;
+  --pc-shine: #8d85e6;
+  --pc-rim: #17123f;
+}
+.chess-piece-fit { width: 100%; height: 100%; }
+
+.chess-piece .pc-ground { fill: rgba(6, 10, 38, 0.22); }
+/* a dark hairline outside the pale outline keeps Black crisp on light squares */
+.chess-piece .pc-rim { fill: none; stroke: var(--pc-rim); stroke-width: 8; stroke-linejoin: round; }
+.chess-piece .pc-shade { fill: var(--pc-shade); }
+.chess-piece .pc-fill { fill: var(--pc-fill); }
+.chess-piece .pc-shine {
+  fill: none;
+  stroke: var(--pc-shine);
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  opacity: 0.85;
+}
+.chess-piece .pc-line,
+.chess-piece .pc-detail {
+  fill: none;
+  stroke: var(--pc-line);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.chess-piece .pc-line { stroke-width: 5; }
+.chess-piece .pc-detail { stroke-width: 3.6; }
+.chess-piece .pc-ball { fill: var(--pc-fill); stroke: var(--pc-line); stroke-width: 3.6; }
+.chess-piece .pc-dot { fill: var(--pc-line); }

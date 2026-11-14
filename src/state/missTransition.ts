@@ -10,6 +10,7 @@ import type { stageById } from "../content/worlds";
 import type { Session } from "./store";
 import { traitSessionParams } from "../engine/generators/traitSessionParams";
 import { tourSessionParams } from "../engine/tour/sessionParams";
+import { chessSessionParams } from "../engine/chess/sessionParams";
 
 type Generator = Parameters<typeof generateQuestionSet>[0];
 type Params = Parameters<typeof generateQuestionSet>[1];
@@ -19,6 +20,7 @@ function replacementParams(s: Session, generator: Generator, params: Params): Pa
   if (generator === "traits") return traitSessionParams(s.stageId, s.questions[s.index], params);
   // World Tour: same exercise kind, a different country ("new values, same skill").
   if (generator === "tour") return tourSessionParams(s.questions[s.index], params);
+  if (generator === "chess") return chessSessionParams(s.questions[s.index], params);
   return params;
 }
 

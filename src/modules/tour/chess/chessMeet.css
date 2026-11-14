@@ -1,0 +1,132 @@
+/* Chess Camp — the lesson's opening demo ("Meet the Rook"). The root also
+   carries the lesson shell's `.tl-meet` (flex: 1, gutters); everything else is
+   prefixed `cm-`. */
+.tour .cm {
+  --cb-max: min(440px, 100%, 43dvh);
+  box-sizing: border-box;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+/* the demo sits in the middle of the free space, the button at the bottom */
+.tour .cm > .pogo-say { align-self: stretch; flex: none; margin-top: auto; }
+.tour .cm-stage {
+  width: 100%;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.tour .cm-try {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 900;
+  color: #a5efff;
+  animation: cm-nudge 1.3s ease-in-out 2s infinite;
+}
+.tour .cm-try.is-done { visibility: hidden; }
+.tour .cm-try-dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--t-go);
+  box-shadow: inset 0 -2px 0 var(--t-go-deep);
+}
+@keyframes cm-nudge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.tour .cm-lines {
+  flex: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+  font-size: clamp(17px, 4.7vw, 22px);
+  font-weight: 800;
+  line-height: 1.2;
+}
+.tour .cm-lines li { animation: t-fade-up 0.4s ease both; animation-delay: calc(var(--i) * 0.9s + 0.5s); }
+.tour .cm-lines li:first-child { color: var(--t-gold); font-weight: 900; }
+.tour .cm-start { flex: none; margin-top: auto; min-height: 60px; font-size: 20px; letter-spacing: 0.06em; }
+
+/* ---------- piece points ---------- */
+.tour .cm-values {
+  width: 100%;
+  max-width: 460px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.tour .cm-value {
+  position: relative;
+  padding: 8px 6px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  border-radius: 20px;
+  background: var(--t-surface);
+  border: 2px solid var(--t-line);
+  border-bottom-width: var(--t-edge);
+  animation: cx-land 0.4s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+.tour .cm-value-piece { width: clamp(54px, 17vw, 92px); aspect-ratio: 1; }
+.tour .cm-value-coin {
+  box-sizing: border-box;
+  min-width: 44px;
+  height: 42px;
+  padding: 0 10px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--t-gold);
+  border-bottom: 4px solid var(--t-gold-deep);
+  color: #3a2800;
+  font-size: 25px;
+  font-weight: 900;
+  line-height: 1;
+  animation: cm-coin 0.5s cubic-bezier(0.3, 1.7, 0.5, 1) both;
+  animation-delay: calc(var(--i) * 0.65s + 0.9s);
+}
+.tour .cm-value-coin.is-king { background: #fff3c9; }
+@keyframes cm-coin {
+  from { opacity: 0; transform: scale(0) rotate(-30deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+.tour .cm-value-name { font-size: 14px; font-weight: 800; color: var(--t-ink-dim); text-transform: capitalize; }
+
+/* ---------- home squares ---------- */
+.tour .cm-home { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.tour .cm-home .cx-home.is-demo .cx-home-piece {
+  animation: cm-drop 0.5s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+  animation-delay: calc(var(--i) * 0.45s + 0.5s);
+}
+@keyframes cm-drop {
+  0% { opacity: 0; transform: translateY(-22%) scale(1.6); }
+  55% { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.tour .cm-again { min-height: 48px; padding: 6px 18px; font-size: 15px; }
+
+@media (min-width: 600px) and (min-height: 900px) {
+  .tour .cm { --cb-max: min(500px, 46dvh); gap: 18px; }
+  .tour .cm-try { font-size: 19px; }
+  .tour .cm-value-name { font-size: 17px; }
+  .tour .cm-value { padding: 14px 8px 12px; gap: 4px; }
+}
