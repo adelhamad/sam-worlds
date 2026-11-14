@@ -1,0 +1,448 @@
+/* Pogo — the World Tour mascot. Parts are <g> groups whose local origin is
+   their pivot (see Pivot in PogoArt.tsx), so every rule here is a plain
+   transform/opacity. A mood is a static POSE (declarations) plus MOTION
+   (keyframes): reduced-motion and `.pogo-still` drop the motion, keep the pose. */
+
+.pogo {
+  display: inline-block;
+  flex: none;
+  line-height: 0;
+  vertical-align: middle;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.pogo-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.pogo-svg * {
+  transform-box: view-box;
+  transform-origin: 0 0;
+}
+
+/* ---------- always alive ---------- */
+.pg-shadow { opacity: 0.45; }
+.pg-cheeks { opacity: 0.5; }
+.pg-bulb-dim { opacity: 0; }
+.pg-arm-l { transform: rotate(20deg); }
+.pg-arm-r { transform: rotate(-20deg); }
+.pg-squash { animation: pg-breathe 3.4s ease-in-out infinite; }
+.pg-antenna { animation: pg-sway 4.2s ease-in-out infinite; }
+.pg-glow { animation: pg-glow 2.6s ease-in-out infinite; }
+.pg-lid { transform: scaleY(0); animation: pg-blink 5.6s linear infinite; }
+
+@keyframes pg-breathe {
+  0%, 100% { transform: scale(1, 1); }
+  50% { transform: scale(0.982, 1.022); }
+}
+@keyframes pg-sway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(6deg); }
+}
+@keyframes pg-glow {
+  0%, 100% { transform: scale(0.86); opacity: 0.7; }
+  50% { transform: scale(1.12); opacity: 1; }
+}
+@keyframes pg-blink {
+  0%, 45%, 49%, 90%, 93%, 96%, 100% { transform: scaleY(0); }
+  47%, 91.5%, 94.5% { transform: scaleY(1); }
+}
+
+/* ---------- idle ---------- */
+.pogo-idle .pg-pupil { animation: pg-glance 9s ease-in-out infinite; }
+.pogo-idle .pg-arm-l { animation: pg-rest-l 3.4s ease-in-out infinite; }
+.pogo-idle .pg-arm-r { animation: pg-rest-r 3.4s ease-in-out infinite; }
+@keyframes pg-glance {
+  0%, 30%, 50%, 70%, 86%, 100% { transform: translate(0, 0); }
+  34%, 46% { transform: translate(4.5px, -1.5px); }
+  74%, 82% { transform: translate(-4.5px, 1px); }
+}
+@keyframes pg-rest-l {
+  0%, 100% { transform: rotate(20deg); }
+  50% { transform: rotate(25deg); }
+}
+@keyframes pg-rest-r {
+  0%, 100% { transform: rotate(-20deg); }
+  50% { transform: rotate(-25deg); }
+}
+
+/* ---------- happy: one joyful hop, then a pleased settle ---------- */
+.pogo-happy .pg-cheeks, .pogo-cheer .pg-cheeks { opacity: 0.85; }
+.pogo-happy .pg-arm-l { transform: rotate(148deg); animation: pg-yay-l 1.5s both; }
+.pogo-happy .pg-arm-r { transform: rotate(-148deg); animation: pg-yay-r 1.5s both; }
+.pogo-happy .pg-all { animation: pg-hop-y 0.95s both; }
+.pogo-happy .pg-squash { animation: pg-hop-squash 0.95s both, pg-breathe 3.4s ease-in-out 0.95s infinite; }
+.pogo-happy .pg-shadow { animation: pg-hop-shadow 0.95s both; }
+.pogo-happy .pg-antenna { animation: pg-whip 0.95s ease-out both, pg-sway 4.2s ease-in-out 0.95s infinite; }
+.pogo-happy .pg-glow { animation: pg-flash 0.95s ease-out both, pg-glow 2.6s ease-in-out 0.95s infinite; }
+.pogo-happy .pg-spark { animation: pg-spark-pop 1.1s ease-out both; }
+.pogo-happy .pg-spark-2 { animation-delay: 0.12s; }
+.pogo-happy .pg-spark-3 { animation-delay: 0.22s; }
+
+@keyframes pg-hop-y {
+  0%, 14% { transform: translateY(0); animation-timing-function: cubic-bezier(0.2, 0.7, 0.4, 1); }
+  42% { transform: translateY(-38px); animation-timing-function: cubic-bezier(0.6, 0, 0.8, 0.4); }
+  66% { transform: translateY(0); animation-timing-function: cubic-bezier(0.2, 0.7, 0.4, 1); }
+  79% { transform: translateY(-9px); animation-timing-function: cubic-bezier(0.6, 0, 0.8, 0.4); }
+  92%, 100% { transform: translateY(0); }
+}
+@keyframes pg-hop-squash {
+  0% { transform: scale(1, 1); }
+  13% { transform: scale(1.1, 0.86); }
+  28% { transform: scale(0.92, 1.1); }
+  44% { transform: scale(1, 1); }
+  62% { transform: scale(0.96, 1.05); }
+  70% { transform: scale(1.12, 0.86); }
+  82% { transform: scale(0.98, 1.03); }
+  93% { transform: scale(1.03, 0.97); }
+  100% { transform: scale(1, 1); }
+}
+@keyframes pg-hop-shadow {
+  0%, 14%, 66%, 92%, 100% { transform: scale(1); opacity: 0.45; }
+  42% { transform: scale(0.68); opacity: 0.22; }
+  79% { transform: scale(0.9); opacity: 0.36; }
+}
+@keyframes pg-yay-l {
+  0% { transform: rotate(20deg); }
+  20% { transform: rotate(162deg); }
+  36% { transform: rotate(140deg); }
+  52% { transform: rotate(156deg); }
+  100% { transform: rotate(44deg); }
+}
+@keyframes pg-yay-r {
+  0% { transform: rotate(-20deg); }
+  20% { transform: rotate(-162deg); }
+  36% { transform: rotate(-140deg); }
+  52% { transform: rotate(-156deg); }
+  100% { transform: rotate(-44deg); }
+}
+@keyframes pg-whip {
+  0% { transform: rotate(0deg); }
+  14% { transform: rotate(10deg); }
+  40% { transform: rotate(-16deg); }
+  68% { transform: rotate(12deg); }
+  84% { transform: rotate(-7deg); }
+  100% { transform: rotate(-5deg); }
+}
+@keyframes pg-flash {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  30% { transform: scale(1.9); opacity: 1; }
+  100% { transform: scale(0.86); opacity: 0.7; }
+}
+@keyframes pg-spark-pop {
+  0% { transform: scale(0) rotate(-40deg); opacity: 0; }
+  35% { transform: scale(1.25) rotate(10deg); opacity: 1; }
+  100% { transform: scale(0) rotate(60deg); opacity: 0; }
+}
+
+/* ---------- cheer: looping celebration ---------- */
+.pogo-cheer .pg-arm-l { transform: rotate(150deg); animation: pg-cheer-l 0.31s ease-in-out infinite alternate; }
+.pogo-cheer .pg-arm-r { transform: rotate(-150deg); animation: pg-cheer-r 0.31s ease-in-out -0.15s infinite alternate; }
+.pogo-cheer .pg-all { animation: pg-bounce-y 0.62s infinite; }
+.pogo-cheer .pg-squash { animation: pg-bounce-squash 0.62s infinite; }
+.pogo-cheer .pg-shadow { animation: pg-bounce-shadow 0.62s infinite; }
+.pogo-cheer .pg-tilt { animation: pg-rock 1.24s ease-in-out infinite; }
+.pogo-cheer .pg-antenna { animation: pg-sway-fast 0.62s ease-in-out infinite alternate; }
+.pogo-cheer .pg-glow { animation: pg-glow-fast 0.31s ease-in-out infinite alternate; }
+.pogo-cheer .pg-spark { animation: pg-twinkle 0.93s ease-in-out infinite; }
+.pogo-cheer .pg-spark-2 { animation-delay: -0.31s; }
+.pogo-cheer .pg-spark-3 { animation-delay: -0.62s; }
+
+@keyframes pg-bounce-y {
+  0%, 100% { transform: translateY(0); animation-timing-function: cubic-bezier(0.2, 0.7, 0.4, 1); }
+  50% { transform: translateY(-26px); animation-timing-function: cubic-bezier(0.6, 0, 0.8, 0.4); }
+}
+@keyframes pg-bounce-squash {
+  0%, 100% { transform: scale(1.1, 0.88); }
+  20% { transform: scale(0.94, 1.08); }
+  50% { transform: scale(1, 1); }
+  84% { transform: scale(0.96, 1.06); }
+}
+@keyframes pg-bounce-shadow {
+  0%, 100% { transform: scale(1.04); opacity: 0.45; }
+  50% { transform: scale(0.74); opacity: 0.25; }
+}
+@keyframes pg-rock {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+@keyframes pg-cheer-l {
+  from { transform: rotate(132deg); }
+  to { transform: rotate(166deg); }
+}
+@keyframes pg-cheer-r {
+  from { transform: rotate(-132deg); }
+  to { transform: rotate(-166deg); }
+}
+@keyframes pg-sway-fast {
+  from { transform: rotate(-14deg); }
+  to { transform: rotate(12deg); }
+}
+@keyframes pg-glow-fast {
+  from { transform: scale(0.9); opacity: 0.75; }
+  to { transform: scale(1.6); opacity: 1; }
+}
+@keyframes pg-twinkle {
+  0%, 100% { transform: scale(0.15) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1.2) rotate(45deg); opacity: 1; }
+}
+
+/* ---------- think: curious tilt, hand to cheek (never sad) ---------- */
+.pogo-think .pg-tilt { transform: rotate(-7deg); animation: pg-ponder 3.6s ease-in-out infinite; }
+.pogo-think .pg-eye-l { transform: scale(0.94); }
+.pogo-think .pg-eye-r { transform: scale(1.15); }
+.pogo-think .pg-pupil { transform: translate(3.5px, -6px); animation: pg-look-up 4.4s ease-in-out infinite; }
+.pogo-think .pg-arm-l { transform: rotate(14deg); }
+.pogo-think .pg-arm-r { transform: rotate(74deg); animation: pg-cheek-tap 1.8s ease-in-out infinite; }
+.pogo-think .pg-antenna { animation: pg-sway-small 3.6s ease-in-out infinite; }
+.pogo-think .pg-lid { animation-duration: 4.4s; }
+
+@keyframes pg-ponder {
+  0%, 100% { transform: rotate(-7deg); }
+  50% { transform: rotate(-4deg); }
+}
+@keyframes pg-look-up {
+  0%, 40%, 100% { transform: translate(3.5px, -6px); }
+  55%, 85% { transform: translate(-2px, -7px); }
+}
+@keyframes pg-cheek-tap {
+  0%, 60%, 100% { transform: rotate(74deg); }
+  70%, 90% { transform: rotate(67deg); }
+  80% { transform: rotate(74deg); }
+}
+@keyframes pg-sway-small {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(4deg); }
+}
+
+/* ---------- wave: hello! ---------- */
+.pogo-wave .pg-tilt { transform: rotate(3deg); animation: pg-lean 0.88s ease-in-out infinite alternate; }
+.pogo-wave .pg-arm-r { transform: rotate(-142deg); animation: pg-wave 0.44s ease-in-out infinite alternate; }
+.pogo-wave .pg-arm-l { animation: pg-rest-l 3.4s ease-in-out infinite; }
+@keyframes pg-wave {
+  from { transform: rotate(-162deg); }
+  to { transform: rotate(-122deg); }
+}
+@keyframes pg-lean {
+  from { transform: rotate(1.5deg); }
+  to { transform: rotate(4deg); }
+}
+
+/* ---------- talk: chatty mouth, small gestures ---------- */
+.pogo-talk .pg-mouth { animation: pg-talk 0.7s linear infinite; }
+.pogo-talk .pg-tilt { animation: pg-nod 1.4s ease-in-out infinite; }
+.pogo-talk .pg-arm-l { transform: rotate(34deg); animation: pg-gesture-l 1.4s ease-in-out infinite; }
+.pogo-talk .pg-arm-r { transform: rotate(-26deg); animation: pg-gesture-r 2.1s ease-in-out infinite; }
+@keyframes pg-talk {
+  0%, 100% { transform: scale(0.8, 0.3); }
+  18% { transform: scale(1, 1.05); }
+  36% { transform: scale(0.88, 0.5); }
+  56% { transform: scale(1.04, 1.15); }
+  78% { transform: scale(0.84, 0.35); }
+}
+@keyframes pg-nod {
+  0%, 100% { transform: rotate(-1.6deg); }
+  50% { transform: rotate(1.8deg); }
+}
+@keyframes pg-gesture-l {
+  0%, 100% { transform: rotate(24deg); }
+  50% { transform: rotate(52deg); }
+}
+@keyframes pg-gesture-r {
+  0%, 100% { transform: rotate(-20deg); }
+  50% { transform: rotate(-34deg); }
+}
+
+/* ---------- wow: startled, wide-eyed ---------- */
+.pogo-wow .pg-eye { transform: scale(1.17); }
+.pogo-wow .pg-pupil { transform: scale(0.78); }
+.pogo-wow .pg-lid { animation: none; }
+.pogo-wow .pg-arm-l { transform: rotate(64deg); animation: pg-flail-l 0.5s ease-out both; }
+.pogo-wow .pg-arm-r { transform: rotate(-64deg); animation: pg-flail-r 0.5s ease-out both; }
+.pogo-wow .pg-all { animation: pg-startle-y 0.5s both; }
+.pogo-wow .pg-squash { animation: pg-startle-squash 0.5s both, pg-breathe 2.2s ease-in-out 0.5s infinite; }
+.pogo-wow .pg-shadow { animation: pg-startle-shadow 0.5s both; }
+.pogo-wow .pg-antenna { animation: pg-quiver 0.09s ease-in-out 8 alternate; }
+.pogo-wow .pg-glow { transform: scale(1.4); animation: pg-glow-wow 0.7s ease-in-out infinite alternate; }
+
+@keyframes pg-startle-y {
+  0%, 100% { transform: translateY(0); animation-timing-function: cubic-bezier(0.2, 0.7, 0.4, 1); }
+  40% { transform: translateY(-15px); animation-timing-function: cubic-bezier(0.6, 0, 0.8, 0.4); }
+}
+@keyframes pg-startle-squash {
+  0% { transform: scale(1.06, 0.92); }
+  35% { transform: scale(0.93, 1.09); }
+  80% { transform: scale(1.04, 0.96); }
+  100% { transform: scale(1, 1); }
+}
+@keyframes pg-startle-shadow {
+  0%, 100% { transform: scale(1); opacity: 0.45; }
+  40% { transform: scale(0.84); opacity: 0.3; }
+}
+@keyframes pg-flail-l {
+  0% { transform: rotate(20deg); }
+  45% { transform: rotate(84deg); }
+  100% { transform: rotate(64deg); }
+}
+@keyframes pg-flail-r {
+  0% { transform: rotate(-20deg); }
+  45% { transform: rotate(-84deg); }
+  100% { transform: rotate(-64deg); }
+}
+@keyframes pg-quiver {
+  from { transform: rotate(-5deg); }
+  to { transform: rotate(5deg); }
+}
+@keyframes pg-glow-wow {
+  from { transform: scale(1.15); opacity: 0.8; }
+  to { transform: scale(1.6); opacity: 1; }
+}
+
+/* ---------- sleep: dozing, z z z ---------- */
+.pogo-sleep .pg-tilt { transform: rotate(-4deg); }
+.pogo-sleep .pg-arm-l { transform: rotate(9deg); }
+.pogo-sleep .pg-arm-r { transform: rotate(-9deg); }
+.pogo-sleep .pg-cheeks { opacity: 0.4; }
+.pogo-sleep .pg-bulb-dim { opacity: 0.16; }
+.pogo-sleep .pg-squash { animation: pg-snooze 4.6s ease-in-out infinite; }
+.pogo-sleep .pg-antenna { animation: pg-sway-small 4.6s ease-in-out infinite; }
+.pogo-sleep .pg-glow { opacity: 0.3; animation: pg-glow-sleep 4.6s ease-in-out infinite; }
+.pogo-sleep .pg-mouth { animation: pg-snore 4.6s ease-in-out infinite; }
+.pg-z { opacity: 0.9; }
+.pg-z-1 { transform: translate(0, 0) scale(0.55); }
+.pg-z-2 { transform: translate(13px, -20px) scale(0.8); }
+.pg-z-3 { transform: translate(29px, -45px) scale(1.1); }
+.pogo-sleep .pg-z { animation: pg-z 3.9s linear infinite; }
+.pogo-sleep .pg-z-2 { animation-delay: -1.3s; }
+.pogo-sleep .pg-z-3 { animation-delay: -2.6s; }
+
+@keyframes pg-snooze {
+  0%, 100% { transform: scale(1.025, 0.972); }
+  50% { transform: scale(0.985, 1.02); }
+}
+@keyframes pg-glow-sleep {
+  0%, 100% { transform: scale(0.7); opacity: 0.15; }
+  50% { transform: scale(1); opacity: 0.45; }
+}
+@keyframes pg-snore {
+  0%, 100% { transform: scale(0.75); }
+  50% { transform: scale(1.25); }
+}
+@keyframes pg-z {
+  0% { transform: translate(0, 0) scale(0.45); opacity: 0; }
+  18% { opacity: 0.95; }
+  70% { opacity: 0.8; }
+  100% { transform: translate(34px, -54px) scale(1.2); opacity: 0; }
+}
+
+/* ---------- speech bubble ---------- */
+.pogo-say {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+.pogo-say-top {
+  flex-direction: column-reverse;
+  gap: 8px;
+}
+.pogo-bubble {
+  position: relative;
+  min-width: 0;
+  max-width: 30em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 20px;
+  background: #f4f7ff;
+  color: #16234f;
+  box-shadow: 0 4px 0 #aebce6;
+  font-weight: 800;
+  font-size: clamp(16px, 4.3vw, 19px);
+  line-height: 1.3;
+  text-align: left;
+  animation: pogo-bubble-pop 0.34s cubic-bezier(0.2, 1.5, 0.45, 1) both;
+}
+.pogo-bubble-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+.pogo-bubble::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  background: inherit;
+  transform: rotate(45deg);
+}
+.pogo-say-right .pogo-bubble { margin-left: 6px; transform-origin: 0 58%; }
+.pogo-say-right .pogo-bubble::before { left: -7px; top: calc(58% - 8px); }
+.pogo-say-top .pogo-bubble { transform-origin: 50% 100%; text-align: center; }
+.pogo-say-top .pogo-bubble::before { left: calc(50% - 8px); bottom: -7px; box-shadow: 3px 3px 0 #aebce6; }
+@keyframes pogo-bubble-pop {
+  from { transform: scale(0.55); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ---------- confetti ---------- */
+.tour-confetti {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+}
+.tour-confetti-burst {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: 0;
+  height: 0;
+}
+.cf-x {
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: cf-x var(--cf-dur) cubic-bezier(0.12, 0.7, 0.3, 1) var(--cf-delay) both;
+}
+.cf-y {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: currentColor;
+  animation: cf-y var(--cf-dur) linear var(--cf-delay) both;
+}
+@keyframes cf-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(var(--cf-x)); }
+}
+@keyframes cf-y {
+  0% {
+    transform: translateY(0) rotate(0deg) rotateX(0deg) scale(0.3);
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.15, 0.75, 0.35, 1);
+  }
+  4% { opacity: 1; }
+  30% {
+    transform: translateY(var(--cf-up)) rotate(calc(var(--cf-spin) * 0.3)) rotateX(calc(var(--cf-flip) * 0.3)) scale(1);
+    animation-timing-function: cubic-bezier(0.45, 0, 0.85, 0.55);
+  }
+  82% { opacity: 1; }
+  100% {
+    transform: translateY(var(--cf-fall)) rotate(var(--cf-spin)) rotateX(var(--cf-flip)) scale(1);
+    opacity: 0;
+  }
+}
+
+/* ---------- stillness: keep the pose, drop the motion ---------- */
+.pogo-still .pogo-svg * { animation: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .pogo .pogo-svg *, .pogo-bubble { animation: none !important; }
+  .tour-confetti { display: none; }
+}

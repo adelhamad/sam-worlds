@@ -1,12 +1,17 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { HashRouter, Route, Routes, useLocation } from "react-router-dom";
 import { useGame } from "./state/store";
 import { TitleScreen } from "./ui/TitleScreen";
 import { Hub } from "./ui/Hub";
-import { WorldMap } from "./modules/play/WorldMap";
-import { PlayStage } from "./modules/play/PlayStage";
+import { PlayRoute, WorldRoute } from "./modules/tour/TourRedirects";
 import { ParentSection } from "./ui/ParentSection";
 import { VideoCompanion } from "./ui/VideoCompanion";
+import { TourPath } from "./modules/tour/TourPath";
+import { TourLesson } from "./modules/tour/TourLesson";
+
+// DEV-only labs for the World Tour mascot and exercise widgets.
+const PogoLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/PogoLab")) : null;
+const ExerciseLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/ExerciseLab")) : null;
 
 /** Each screen starts at the top — no inherited scroll position. */
 function ScrollToTop() {
@@ -89,8 +94,16 @@ export default function App() {
       <Routes>
         <Route path="/" element={<TitleScreen />} />
         <Route path="/hub" element={<Hub />} />
-        <Route path="/world/:worldId" element={<WorldMap />} />
-        <Route path="/play/:stageId" element={<PlayStage />} />
+        <Route path="/world/:worldId" element={<WorldRoute />} />
+        <Route path="/play/:stageId" element={<PlayRoute />} />
+        <Route path="/tour" element={<TourPath />} />
+        <Route path="/tour/lesson/:stageId" element={<TourLesson />} />
+        {PogoLab && ExerciseLab && (
+          <>
+            <Route path="/tour/lab/pogo" element={<Suspense fallback={null}><PogoLab /></Suspense>} />
+            <Route path="/tour/lab/exercises" element={<Suspense fallback={null}><ExerciseLab /></Suspense>} />
+          </>
+        )}
         <Route path="/parent" element={<ParentSection />} />
       </Routes>
     </HashRouter>

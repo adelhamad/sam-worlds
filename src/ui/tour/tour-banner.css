@@ -1,0 +1,135 @@
+/* Hub invitation to the World Tour. At home on the hub's deep navy, but with
+   Pogo's violet glow so it reads as the new, special thing. */
+
+.tour.tour-banner {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px 18px;
+  padding: 16px 20px 18px 14px;
+  border-radius: 24px;
+  margin-bottom: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  background:
+    radial-gradient(ellipse 46% 130% at 9% 55%, rgba(139, 108, 255, 0.55), transparent 70%),
+    linear-gradient(118deg, #2a1d78 0%, #1c2a6e 52%, #12305f 100%);
+  border: 3px solid var(--t-pogo);
+  box-shadow: 0 7px 0 var(--t-pogo-deep), 0 0 34px rgba(139, 108, 255, 0.45);
+  -webkit-tap-highlight-color: transparent;
+}
+.tour-banner .tb-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.5px 1.5px at 30px 22px, rgba(255, 255, 255, 0.8) 50%, transparent 51%),
+    radial-gradient(1px 1px at 112px 64px, rgba(255, 255, 255, 0.6) 50%, transparent 51%),
+    radial-gradient(2px 2px at 170px 16px, rgba(255, 236, 190, 0.6) 50%, transparent 51%),
+    radial-gradient(1px 1px at 66px 98px, rgba(255, 255, 255, 0.5) 50%, transparent 51%);
+  background-size: 210px 130px;
+  opacity: 0.7;
+}
+
+.tour-banner .tb-pogo {
+  position: relative;
+  width: 104px;
+  height: 104px;
+  display: grid;
+  place-items: center;
+}
+.tour-banner .tb-glow {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(190, 170, 255, 0.55), rgba(139, 108, 255, 0) 68%);
+  animation: tb-glow 2.6s ease-in-out infinite;
+}
+.tour-banner .tb-pogo .pogo { position: relative; }
+
+.tour-banner .tb-text { position: relative; min-width: 0; display: grid; gap: 5px; }
+.tour-banner .tb-title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  font-size: clamp(22px, 3.6vw, 30px);
+  font-weight: 900;
+  line-height: 1.1;
+  color: #fff;
+}
+.tour-banner .tb-new {
+  padding: 3px 9px 4px;
+  border-radius: 9px;
+  background: var(--t-gold);
+  color: #3a2600;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  transform: rotate(-4deg);
+  box-shadow: 0 3px 0 var(--t-gold-deep);
+}
+.tour-banner .tb-sub { margin: 0; font-size: 17px; font-weight: 800; line-height: 1.25; color: #d9d2ff; }
+.tour-banner .tb-progress { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 3px; }
+.tour-banner .tb-chip {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(6, 16, 42, 0.45);
+  border: 1.5px solid rgba(190, 170, 255, 0.35);
+  font-size: 14px;
+  font-weight: 900;
+  color: #eee9ff;
+  white-space: nowrap;
+}
+.tour-banner .tb-chip-day { color: var(--t-almost); border-color: rgba(255, 180, 84, 0.45); }
+.tour-banner .tb-meter {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(6, 16, 42, 0.5);
+  overflow: hidden;
+  margin-top: 2px;
+}
+.tour-banner .tb-meter span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--t-pogo), #c9b8ff);
+  transform-origin: 0 50%;
+}
+
+.tour-banner .tb-go {
+  position: relative;
+  min-height: 62px;
+  padding: 10px 26px;
+  font-size: 22px;
+  white-space: nowrap;
+  box-shadow: 0 0 22px rgba(34, 211, 238, 0.45);
+  animation: tb-nudge 2.8s ease-in-out infinite;
+}
+
+@keyframes tb-glow {
+  0%, 100% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+@keyframes tb-nudge {
+  0%, 82%, 100% { transform: scale(1); }
+  88% { transform: scale(1.06); }
+  94% { transform: scale(0.99); }
+}
+
+/* Phones: Pogo + words on top, the button full width below. */
+@media (max-width: 640px) {
+  .tour.tour-banner {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 12px 12px;
+    padding: 14px 14px 16px 10px;
+  }
+  .tour-banner .tb-pogo { width: 84px; height: 92px; align-self: start; }
+  .tour-banner .tb-sub { font-size: 15.5px; }
+  .tour-banner .tb-chip { font-size: 13px; padding: 4px 8px; }
+  .tour-banner .tb-go { grid-column: 1 / -1; width: 100%; }
+}

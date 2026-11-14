@@ -38,7 +38,7 @@ const PLANET_HUES: Record<string, string> = {
   symmetry: "#f0abfc", chance: "#fb7185", signs: "#fbbf24", inventors: "#7dd3fc", calm: "#86efac",
   capitals: "#ffd166", countrymaps: "#41d9c5",
   landduel: "#f6a35c", areaatlas: "#ad9cff", population: "#ff8c9b",
-  traits: "#78a864",
+  traits: "#78a864", tour: "#8b6cff",
 };
 
 type Progress = Record<string, { completed: boolean }>;

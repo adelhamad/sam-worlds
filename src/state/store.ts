@@ -13,6 +13,7 @@ import { recordSeenQuestion } from "./seenQuestions";
 import { persistSettings, settingsState } from "./settings";
 import { giftActions } from "./gifts";
 import { petActions, petInitial, type PetSlice } from "./pet";
+import { tourActions, tourInitial, type TourSlice } from "./tour";
 import { videoActions } from "./video";
 import { worldAdminActions } from "./worldAdmin";
 import { couponActions } from "./coupons";
@@ -47,7 +48,7 @@ export interface Session extends SessionRow {
 /** Star Dust it costs to reveal an answer and skip a question. */
 export const REVEAL_COST = 15;
 
-export interface GameStore extends PetSlice {
+export interface GameStore extends PetSlice, TourSlice {
   loaded: boolean;
   hasSave: boolean;
   starDust: number;
@@ -174,6 +175,7 @@ export const useGame = create<GameStore>((set, get) => ({
   videoEnabled: false, videoMode: "corner", videoOpacity: 80, videoUrls: [], videoAudioOnly: false, videoSize: 280,
   gifts: [], lastGiftDay: null, giftStreak: 0, giftBestStreak: 0,
   ...petInitial,
+  ...tourInitial,
   session: null,
 
   hydrate: async () => {
@@ -459,10 +461,9 @@ export const useGame = create<GameStore>((set, get) => ({
     return armed;
   },
 
-  ...worldAdminActions(set, get),
-
   ...giftActions(set, get),
   ...petActions(set, get),
+  ...tourActions(set, get),
   ...videoActions(set, get),
   ...worldAdminActions(set, get),
   ...couponActions(set, get),

@@ -7,6 +7,7 @@ import { STR } from "../strings/en";
 import { Workshop } from "./Workshop";
 import { CouponWallet } from "./CouponWallet";
 import { DailyGiftBanner } from "./DailyGift";
+import { TourBanner } from "./tour/TourBanner";
 import { PetCompanion } from "./PetCompanion";
 import { TreasureVault } from "./TreasureVault";
 import { TrophyShelf } from "./TrophyShelf";
@@ -63,6 +64,8 @@ export function Hub() {
           </div>
         </div>
       </section>
+
+      <TourBanner />
 
       <PetCompanion />
 

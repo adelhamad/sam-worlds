@@ -6,6 +6,10 @@ export function setMuted(m: boolean): void {
   muted = m;
 }
 
+export function isMuted(): boolean {
+  return muted;
+}
+
 /** Must be called from a user gesture once (tap anywhere). */
 export function unlockAudio(): void {
   if (!ctx) {
@@ -23,7 +27,7 @@ export function audioCtx(): AudioContext | null {
 // C major pentatonic
 const P = { C5: 523.25, D5: 587.33, E5: 659.25, G5: 783.99, A5: 880, C6: 1046.5 };
 
-function tone(freq: number, at: number, dur: number, gain = 0.12, type: OscillatorType = "sine"): void {
+export function tone(freq: number, at: number, dur: number, gain = 0.12, type: OscillatorType = "sine"): void {
   if (!ctx || muted) return;
   const t0 = ctx.currentTime + at;
   const osc = ctx.createOscillator();

@@ -4,9 +4,10 @@ import type { Question } from "../src/engine/generators/types";
 import { COUNTRY_BY_CODE, COUNTRIES, flagEmoji } from "../src/engine/generators/geography";
 import { STATS_BY_CODE, areaLabel, countryLabel, populationLabel, rankedCountry } from "../src/engine/generators/countryStats";
 import { auditTraits } from "./audit-traits";
+import { auditTour } from "./audit-tour";
 
 const SEEDS = [1, 3, 7, 37, 101, 509, 1009, 12345, 54321, 99991];
-const failures: string[] = auditTraits();
+const failures: string[] = [...auditTraits(), ...auditTour()];
 const stageIds = new Set<string>();
 let sessions = 0;
 let questionsChecked = 0;
@@ -228,6 +229,8 @@ for (const world of WORLDS) {
     if (!set.length) globallyEmpty++;
     else if (set.length < stage.questions) globallyShort++;
     for (const question of set) {
+      // Like the app (state/seenQuestions.ts): repeatable questions never enter the seen history.
+      if (question.repeatable) continue;
       const identity = keys(question);
       if (identity.some((key) => globalSeen.has(key))) failures.push(`${stage.id}: seen in an earlier level`);
       identity.forEach((key) => globalSeen.add(key));

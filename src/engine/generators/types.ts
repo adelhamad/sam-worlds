@@ -12,6 +12,7 @@ export type InputMode =
   | "order" // tap cards into sequence (Living Planet / Atlas)
   | "canvas" // draw/trace the answer on a canvas (Trace It)
   | "trait-detective" // construct a classification from several evidence cards
+  | "tour" // World Tour exercises (payload.tour picks the widget — engine/tour/types.ts)
   | "choices"; // true matching questions only (rule 1 still applies)
 
 export interface Question {
@@ -26,6 +27,11 @@ export interface Question {
    * content varies. Falls back to the prompt when omitted.
    */
   dedupeKey?: string;
+  /**
+   * Spaced-repetition modes (World Tour) revisit the same facts on purpose:
+   * repeatable questions are never written to the global seen-question history.
+   */
+  repeatable?: boolean;
   /** Defaults to "numpad" when omitted. */
   inputMode?: InputMode;
   /** Extra JSON-serializable data the input widget needs (maze, circuit, notes…). */

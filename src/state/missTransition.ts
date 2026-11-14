@@ -9,18 +9,30 @@ import { newSeed } from "../engine/rng";
 import type { stageById } from "../content/worlds";
 import type { Session } from "./store";
 import { traitSessionParams } from "../engine/generators/traitSessionParams";
+import { tourSessionParams } from "../engine/tour/sessionParams";
+
+type Generator = Parameters<typeof generateQuestionSet>[0];
+type Params = Parameters<typeof generateQuestionSet>[1];
+
+/** Some generators pin the replacement to the question it replaces. */
+function replacementParams(s: Session, generator: Generator, params: Params): Params {
+  if (generator === "traits") return traitSessionParams(s.stageId, s.questions[s.index], params);
+  // World Tour: same exercise kind, a different country ("new values, same skill").
+  if (generator === "tour") return tourSessionParams(s.questions[s.index], params);
+  return params;
+}
 
 export function withReplacedQuestion(
   s: Session,
-  generator: Parameters<typeof generateQuestionSet>[0],
-  params: Parameters<typeof generateQuestionSet>[1],
+  generator: Generator,
+  params: Params,
   difficulty: number,
   easier: boolean,
   globalSeen: Iterable<string> = [],
 ): Session | null {
   const sessionSeen = s.seenQuestionKeys ?? s.questions.flatMap(questionKeys);
   const seen = new Set([...globalSeen, ...sessionSeen]);
-  const pinnedParams = generator === "traits" ? traitSessionParams(s.stageId, s.questions[s.index], params) : params;
+  const pinnedParams = replacementParams(s, generator, params);
   const [replacement] = generateQuestionSet(generator, pinnedParams, 1, newSeed(), { difficulty, easier }, seen);
   if (!replacement) return null;
   const questions = [...s.questions];
@@ -60,7 +72,7 @@ export function missTransition(
     wrongStamps,
     lastAnswer: "wrong",
     // Choice questions are tap-guessable: demand 2 correct in a row.
-    proveLeft: q.inputMode === "choices" ? 2 : 0,
+    proveLeft: q.inputMode === "choices" || q.payload?.guessable === true ? 2 : 0,
     attemptMissed: true,
     firstTryMisses: firstAttemptInSlot ? s.firstTryMisses + 1 : s.firstTryMisses,
     missStreak: easier ? 0 : missStreak,
