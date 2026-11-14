@@ -2,7 +2,7 @@ import { useState, type CSSProperties } from "react";
 import { TOUR } from "../../../strings/tour";
 import type { LessonItem } from "./layout";
 
-/** Mix-Up (lesson 4): two crossing arrows. */
+/** Mix-Up (geography lesson 4): two crossing arrows. */
 function MixIcon() {
   return (
     <svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round">
@@ -13,7 +13,7 @@ function MixIcon() {
   );
 }
 
-/** Champion (lesson 5): a crown. */
+/** Champion (the last lesson of a unit): a crown. */
 function CrownIcon() {
   return (
     <svg viewBox="0 0 40 40" width="42" height="42" aria-hidden="true" fill="currentColor">
@@ -23,10 +23,10 @@ function CrownIcon() {
   );
 }
 
-function NodeIcon({ slot }: { slot: number }) {
-  if (slot === 3) return <MixIcon />;
-  if (slot === 4) return <CrownIcon />;
-  return <span className="tp-node-num">{slot + 1}</span>;
+function NodeIcon({ item }: { item: LessonItem }) {
+  if (item.icon === "mix") return <MixIcon />;
+  if (item.icon === "crown") return <CrownIcon />;
+  return <span className="tp-node-num">{item.slot + 1}</span>;
 }
 
 function Stars({ count }: { count: number }) {
@@ -51,7 +51,7 @@ interface LessonNodeProps {
 /** One lesson on the trail: done (stars, replayable), current (pulsing) or locked. */
 export function LessonNode({ item, amp, focus, onOpen, onLocked }: LessonNodeProps) {
   const [nudge, setNudge] = useState(0);
-  const { state, stage, slot } = item;
+  const { state, stage } = item;
   const locked = state === "locked";
   const style = {
     left: `calc(50% + ${(item.x * amp).toFixed(1)}px)`,
@@ -82,7 +82,7 @@ export function LessonNode({ item, amp, focus, onOpen, onLocked }: LessonNodePro
           }
         }}
       >
-        <NodeIcon slot={slot} />
+        <NodeIcon item={item} />
         {locked && <span className="tp-lock" aria-hidden="true">🔒</span>}
       </button>
       {state === "done" && <Stars count={item.stars} />}

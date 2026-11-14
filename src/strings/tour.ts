@@ -67,6 +67,14 @@ export const TOUR = {
     slowDown: `No rush, ${n}. ${guide} can wait!`,
     skip: (cost: number) => `Skip (${cost} ✨)`,
     lookFirst: "Look first…",
+    // Star Dust meter, the gift and Pogo's cheer
+    dustMeter: (dust: number) => `${dust} Star Dust so far`,
+    dustToken: (dust: number) => `+${dust} ✨`,
+    giftTitle: "A gift for you!",
+    giftTap: "Tap to open!",
+    giftOpen: "Open the gift",
+    cheerAlmost: `Almost there, ${n}!`,
+    cheerLeft: (left: number) => (left === 1 ? "Just 1 more!" : `Just ${left} more!`),
     // Quit sheet
     quit: "Take a break",
     quitTitle: "Take a break?",
@@ -85,11 +93,15 @@ export const TOUR = {
     statFirstTry: "First try",
     statStars: "Stars",
     replayNote: "Replays give a little Star Dust.",
+    perfectBonus: (dust: number) => `Perfect bonus +${dust} ✨`,
+    giftLine: (dust: number) => `Gift +${dust} ✨`,
+    lessonOf: (index: number, total: number) => `Lesson ${index} of ${total}`,
     newStamps: "New passport stamps!",
     stampProgress: "Passport stamps",
     stampGoal: (goal: number) => `${goal} first-try answers earn a stamp.`,
     dayChip: (day: number) => `Day ${day}`,
     dayNote: "on tour!",
+    dayNoteGuide: `with ${guide}!`,
     trophy: "New trophy!",
     surprise: "Surprise treasure!",
     chestTease: "A treasure chest is waiting on the path!",
@@ -119,7 +131,10 @@ export const TOUR = {
     close: "Close",
     // Gentle nudges
     locked: "Finish the one before!",
-    chestLocked: "Finish all 5 lessons first!",
+    chestLocked: (lessons: number) => `Finish all ${lessons} lessons first!`,
+    // Hop to the other course
+    courses: "Courses",
+    goTo: (course: string) => `Go to ${course}`,
     // Treasure chest
     chestTitle: "Treasure chest!",
     chestFound: (souvenir: string) => `You found the ${souvenir}!`,
@@ -141,19 +156,21 @@ export const TOUR = {
 
   /** Hub banner. */
   hub: {
-    banner: `${guide}'s World Tour`,
-    bannerSub: `${guide} needs a guide, ${persona.title} ${n}!`,
+    heading: `Play with ${guide}!`,
+    sub: `Pick a course, ${persona.title} ${n}!`,
+    subOne: `${guide} needs a guide, ${persona.title} ${n}!`,
     go: "Let's go!",
     newTag: "NEW",
     lessons: (done: number, total: number) => `${done}/${total} lessons`,
-    stamps: (count: number) => `${count} stamps`,
     day: (days: number) => `Day ${days}`,
   },
 
   /** Parent Section block (plain admin English). */
   parent: {
-    heading: "🛸 World Tour (trial)",
-    summary: (lessons: number, total: number, stamps: number, countries: number, chests: number, units: number, days: number) =>
-      `Lessons ${lessons}/${total} · stamps ${stamps}/${countries} · chests opened ${chests}/${units} · tour days ${days}`,
+    heading: `🛸 ${guide}'s courses`,
+    course: (lessons: number, total: number, chests: number, units: number) =>
+      `lessons ${lessons}/${total} · chests opened ${chests}/${units}`,
+    stamps: (stamps: number, countries: number) => `stamps ${stamps}/${countries}`,
+    days: (days: number) => `Tour days: ${days} (shared by all courses)`,
   },
 };

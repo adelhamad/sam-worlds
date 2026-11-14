@@ -12,6 +12,7 @@ import { TourLesson } from "./modules/tour/TourLesson";
 // DEV-only labs for the World Tour mascot and exercise widgets.
 const PogoLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/PogoLab")) : null;
 const ExerciseLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/ExerciseLab")) : null;
+const ChessLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/ChessLab")) : null;
 
 /** Each screen starts at the top — no inherited scroll position. */
 function ScrollToTop() {
@@ -98,6 +99,9 @@ export default function App() {
         <Route path="/play/:stageId" element={<PlayRoute />} />
         <Route path="/tour" element={<TourPath />} />
         <Route path="/tour/lesson/:stageId" element={<TourLesson />} />
+        <Route path="/chess" element={<TourPath />} />
+        <Route path="/chess/lesson/:stageId" element={<TourLesson />} />
+        {ChessLab && <Route path="/tour/lab/chess" element={<Suspense fallback={null}><ChessLab /></Suspense>} />}
         {PogoLab && ExerciseLab && (
           <>
             <Route path="/tour/lab/pogo" element={<Suspense fallback={null}><PogoLab /></Suspense>} />

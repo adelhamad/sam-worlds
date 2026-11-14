@@ -1,5 +1,6 @@
 import { useState, type CSSProperties } from "react";
 import { TOUR } from "../../../strings/tour";
+import { Keepsake } from "./Keepsake";
 import type { ChestItem } from "./layout";
 
 /** The treasure chest drawing — shut, or open with the gold showing. */
@@ -60,7 +61,7 @@ export function ChestNode({ item, amp, focus, onOpen, onNudge }: ChestNodeProps)
       return;
     }
     setNudge((value) => value + 1);
-    onNudge(state === "opened" ? TOUR.path.souvenirOwned(unit.souvenir.name) : TOUR.path.chestLocked);
+    onNudge(state === "opened" ? TOUR.path.souvenirOwned(unit.souvenir.name) : TOUR.path.chestLocked(unit.lessons.length));
   }
 
   return (
@@ -80,7 +81,7 @@ export function ChestNode({ item, amp, focus, onOpen, onNudge }: ChestNodeProps)
         onClick={tap}
       >
         {state === "opened" ? (
-          <span className="tp-souvenir">{unit.souvenir.icon}</span>
+          <span className="tp-souvenir"><Keepsake unit={unit} size={46} /></span>
         ) : (
           <ChestArt />
         )}

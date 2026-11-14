@@ -1,17 +1,17 @@
-// Tour lessons are ordinary stages of the "tour" world, but they use their own
-// path and lesson screens. These wrappers keep every existing link working
-// (/world/tour, /play/tour-…) by forwarding to the tour routes.
+// Course lessons (World Tour, Chess Camp) are ordinary stages of their world,
+// but they use the path and lesson screens. These wrappers keep every existing
+// link working (/world/tour, /play/chess-…) by forwarding to the course routes.
 import { Navigate, useParams } from "react-router-dom";
-import { TOUR_WORLD_ID, isTourStage, stageRoute, worldRoute } from "../../content/tour/units";
+import { courseOfStage, courseOfWorld, stageRoute, worldRoute } from "../../content/courses";
 import { PlayStage } from "../play/PlayStage";
 import { WorldMap } from "../play/WorldMap";
 
 export function WorldRoute() {
   const { worldId = "" } = useParams();
-  return worldId === TOUR_WORLD_ID ? <Navigate to={worldRoute(worldId)} replace /> : <WorldMap />;
+  return courseOfWorld(worldId) ? <Navigate to={worldRoute(worldId)} replace /> : <WorldMap />;
 }
 
 export function PlayRoute() {
   const { stageId = "" } = useParams();
-  return isTourStage(stageId) ? <Navigate to={stageRoute(stageId)} replace /> : <PlayStage />;
+  return courseOfStage(stageId) ? <Navigate to={stageRoute(stageId)} replace /> : <PlayStage />;
 }

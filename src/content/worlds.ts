@@ -2,19 +2,20 @@ import { WORLDS as BASE_WORLDS, type WorldDef } from "./worldList";
 import { EXTRA_WORLDS } from "./worldListExtra";
 import { EXTRA_WORLDS2 } from "./worldListExtra2";
 import { GEOGRAPHY_WORLDS } from "./worldListGeography";
+import { CHESS_WORLD } from "./chess/units";
 import { TOUR_WORLD } from "./tour/units";
 import type { StageDef } from "./types";
 
 const PRECISE_STAGE_TITLES = new Set([
   "numberforge", "melody", "logic", "robot", "time", "cipher", "builder",
   "algebra", "placevalue", "measure", "capitals", "countrymaps",
-  "landduel", "areaatlas", "population", "traits", "tour",
+  "landduel", "areaatlas", "population", "traits", "tour", "chess",
 ]);
 const MIXED_TYPE_WORLDS = new Set(["melody", "cipher", "builder", "algebra", "placevalue", "measure"]);
 
 // Legacy fact worlds name many stages after one example, even though their
 // generator draws from the entire topic. Show an accurate chapter title.
-export const WORLDS: WorldDef[] = [...BASE_WORLDS, ...EXTRA_WORLDS, ...EXTRA_WORLDS2, ...GEOGRAPHY_WORLDS, TOUR_WORLD]
+export const WORLDS: WorldDef[] = [...BASE_WORLDS, ...EXTRA_WORLDS, ...EXTRA_WORLDS2, ...GEOGRAPHY_WORLDS, TOUR_WORLD, CHESS_WORLD]
   .map((world) => ({
     ...world,
     stages: world.stages.map((stage, index) => {

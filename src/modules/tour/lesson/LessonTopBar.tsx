@@ -1,7 +1,8 @@
-// Top of the lesson: quit, the fat progress bar and the combo flame — plus the
-// small "Take a break?" sheet the quit button opens.
+// Top of the lesson: quit, the fat progress bar, the combo flame and the live
+// Star Dust meter — plus the small "Take a break?" sheet the quit button opens.
 import { Pogo } from "../../../ui/tour/Pogo";
 import { TOUR } from "../../../strings/tour";
+import { DustMeter } from "./DustMeter";
 
 interface TopBarProps {
   /** Slots finished so far. */
@@ -9,10 +10,15 @@ interface TopBarProps {
   total: number;
   /** First-try correct answers in a row; the flame shows from 2. */
   combo: number;
+  /** Star Dust on the meter chip, and how many tokens have landed in it. */
+  dust: number;
+  dustBumps: number;
+  /** Pogo is cheering: the bar pulses with him. */
+  cheering: boolean;
   onQuit: () => void;
 }
 
-export function LessonTopBar({ done, total, combo, onQuit }: TopBarProps) {
+export function LessonTopBar({ done, total, combo, dust, dustBumps, cheering, onQuit }: TopBarProps) {
   const percent = total > 0 ? Math.round((done / total) * 100) : 0;
   return (
     <header className="tl-top">
@@ -22,7 +28,7 @@ export function LessonTopBar({ done, total, combo, onQuit }: TopBarProps) {
         </svg>
       </button>
       <div
-        className="tl-bar" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={percent}
+        className={`tl-bar ${cheering ? "is-cheering" : ""}`} role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={percent}
       >
         <div className="tl-bar-fill" style={{ width: `${Math.max(7, percent)}%` }}>
           <span className="tl-bar-shine" />
@@ -35,6 +41,7 @@ export function LessonTopBar({ done, total, combo, onQuit }: TopBarProps) {
           {combo}
         </div>
       )}
+      <DustMeter value={dust} bumps={dustBumps} />
     </header>
   );
 }

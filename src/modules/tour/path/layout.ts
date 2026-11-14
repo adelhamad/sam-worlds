@@ -1,13 +1,16 @@
-// Geometry + state of the World Tour path. Pure: everything the screen draws
-// (banner, lesson nodes, chests, the dotted trail) is derived here from the
-// save, so the path is the same picture for the same progress.
+// Geometry + state of a course path (World Tour, Chess Camp…). Pure: everything
+// the screen draws (banner, lesson nodes, chests, the dotted trail) is derived
+// here from the course and the save, so the path is the same picture for the
+// same progress.
+import { unitComplete, type Course, type CourseUnit } from "../../../content/courses";
 import type { StageDef } from "../../../content/types";
-import { TOUR_UNITS, type TourUnit, unitComplete } from "../../../content/tour/units";
 
 export type LessonState = "done" | "current" | "locked";
 export type ChestState = "locked" | "ready" | "opened";
 
-export const LESSONS_PER_UNIT = 5;
+/** What a lesson node shows: its number, the mix-up arrows or the champion crown. */
+export type NodeIcon = "number" | "mix" | "crown";
+
 export const BANNER_H = 112;
 /** Vertical distance between two node centres. */
 const ROW = 124;
@@ -20,7 +23,7 @@ const AFTER_CHEST = 98;
 
 export interface BannerItem {
   kind: "banner";
-  unit: TourUnit;
+  unit: CourseUnit;
   unitIndex: number;
   y: number;
   done: number;
@@ -30,11 +33,12 @@ export interface BannerItem {
 
 export interface LessonItem {
   kind: "lesson";
-  unit: TourUnit;
+  unit: CourseUnit;
   unitIndex: number;
   /** 0-based slot inside the unit. */
   slot: number;
   stage: StageDef;
+  icon: NodeIcon;
   state: LessonState;
   stars: number;
   /** Horizontal offset factor, -1 … 1 (multiply by the path amplitude). */
@@ -44,7 +48,7 @@ export interface LessonItem {
 
 export interface ChestItem {
   kind: "chest";
-  unit: TourUnit;
+  unit: CourseUnit;
   unitIndex: number;
   state: ChestState;
   x: number;
@@ -56,7 +60,7 @@ export type PathItem = BannerItem | LessonItem | ChestItem;
 export interface TourPathModel {
   items: PathItem[];
   height: number;
-  /** Stage id of the lesson to play next; null once the whole tour is done. */
+  /** Stage id of the lesson to play next; null once the whole course is done. */
   currentId: string | null;
   finished: boolean;
   lessonsDone: number;
@@ -65,25 +69,31 @@ export interface TourPathModel {
 
 type Progress = Record<string, { completed: boolean; bestStars?: number }>;
 
-/** Each unit bulges to one side, alternating — a gentle winding trail. */
-function waveX(unitIndex: number, slot: number): number {
+/** Each unit bulges to one side, alternating — a gentle winding trail that ends at its chest. */
+function waveX(unitIndex: number, slot: number, lessons: number): number {
   const side = unitIndex % 2 === 0 ? 1 : -1;
-  return side * Math.sin((slot * Math.PI) / LESSONS_PER_UNIT);
+  return side * Math.sin((slot * Math.PI) / Math.max(1, lessons));
 }
 
-function chestState(unit: TourUnit, progress: Progress, chests: string[]): ChestState {
+/** The last lesson of a unit wears the crown; geography's fourth is the mix-up. */
+function nodeIcon(course: Course, unit: CourseUnit, slot: number): NodeIcon {
+  if (slot === unit.lessons.length - 1) return "crown";
+  return course.id === "tour" && slot === 3 ? "mix" : "number";
+}
+
+function chestState(unit: CourseUnit, progress: Progress, chests: string[]): ChestState {
   if (chests.includes(unit.id)) return "opened";
   return unitComplete(unit, progress) ? "ready" : "locked";
 }
 
-export function buildTourPath(progress: Progress, chests: string[]): TourPathModel {
-  const stages = TOUR_UNITS.flatMap((unit) => unit.lessons);
+export function buildTourPath(course: Course, progress: Progress, chests: string[]): TourPathModel {
+  const stages = course.units.flatMap((unit) => unit.lessons);
   const current = stages.find((stage) => !progress[stage.id]?.completed) ?? null;
   const items: PathItem[] = [];
   let cursor = 0;
   let reachedCurrent = false;
 
-  TOUR_UNITS.forEach((unit, unitIndex) => {
+  course.units.forEach((unit, unitIndex) => {
     const done = unit.lessons.filter((stage) => progress[stage.id]?.completed).length;
     items.push({ kind: "banner", unit, unitIndex, y: cursor, done, locked: reachedCurrent });
     cursor += BANNER_H + AFTER_BANNER;
@@ -99,8 +109,9 @@ export function buildTourPath(progress: Progress, chests: string[]): TourPathMod
       }
       items.push({
         kind: "lesson", unit, unitIndex, slot, stage, state,
+        icon: nodeIcon(course, unit, slot),
         stars: row?.completed ? Math.max(1, Math.min(3, row.bestStars ?? 1)) : 0,
-        x: waveX(unitIndex, slot), y: cursor,
+        x: waveX(unitIndex, slot, unit.lessons.length), y: cursor,
       });
       cursor += ROW;
     });
@@ -108,7 +119,7 @@ export function buildTourPath(progress: Progress, chests: string[]): TourPathMod
     cursor += CHEST_LIFT;
     items.push({
       kind: "chest", unit, unitIndex, state: chestState(unit, progress, chests),
-      x: waveX(unitIndex, LESSONS_PER_UNIT), y: cursor,
+      x: waveX(unitIndex, unit.lessons.length, unit.lessons.length), y: cursor,
     });
     cursor += AFTER_CHEST;
   });

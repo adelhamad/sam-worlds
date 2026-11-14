@@ -3,27 +3,16 @@
 // champion lesson, then a treasure chest. Earlier countries keep coming back
 // as review (spaced repetition). Stage ids are permanent — saves reference
 // them — so only ever APPEND units or lessons.
+import type { CourseUnit } from "../courseTypes";
 import type { StageDef } from "../types";
 import type { WorldDef } from "../worldList";
 import type { TourKind, TourParams } from "../../engine/tour/types";
 
 export const TOUR_WORLD_ID = "tour";
 
-export interface TourUnit {
-  id: string;
-  name: string;
-  icon: string;
-  /** Path colour for this unit's nodes and banner. */
-  hue: string;
-  /** One short line under the unit banner (≤ 8 simple words). */
-  blurb: string;
+export interface TourUnit extends CourseUnit {
   /** Twelve country codes in teaching order (4 + 4 + 4). */
   countries: string[];
-  lessons: StageDef[];
-  /** Star Dust inside the unit chest (deterministic). */
-  chestDust: number;
-  /** Keepsake shown once the chest is open. */
-  souvenir: { icon: string; name: string };
 }
 
 interface UnitSeed {
@@ -167,13 +156,4 @@ export function tourParams(stage: StageDef): TourParams {
 
 export function unitComplete(unit: TourUnit, progress: Record<string, { completed: boolean }>): boolean {
   return unit.lessons.every((stage) => progress[stage.id]?.completed);
-}
-
-/** In-app routes: tour stages use the lesson player, not the gate-run stage. */
-export function worldRoute(worldId: string): string {
-  return worldId === TOUR_WORLD_ID ? "/tour" : `/world/${worldId}`;
-}
-
-export function stageRoute(stageId: string): string {
-  return isTourStage(stageId) ? `/tour/lesson/${stageId}` : `/play/${stageId}`;
 }

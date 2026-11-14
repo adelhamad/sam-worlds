@@ -5,9 +5,10 @@ import { COUNTRY_BY_CODE, COUNTRIES, flagEmoji } from "../src/engine/generators/
 import { STATS_BY_CODE, areaLabel, countryLabel, populationLabel, rankedCountry } from "../src/engine/generators/countryStats";
 import { auditTraits } from "./audit-traits";
 import { auditTour } from "./audit-tour";
+import { auditChess } from "./audit-chess";
 
 const SEEDS = [1, 3, 7, 37, 101, 509, 1009, 12345, 54321, 99991];
-const failures: string[] = [...auditTraits(), ...auditTour()];
+const failures: string[] = [...auditTraits(), ...auditTour(), ...auditChess()];
 const stageIds = new Set<string>();
 let sessions = 0;
 let questionsChecked = 0;

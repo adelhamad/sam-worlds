@@ -1,5 +1,16 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { COURSES, type Course } from "../../../content/courses";
+import { useGame } from "../../../state/store";
 import { pathAmplitude } from "./layout";
+
+/** Courses Sam can open right now: their world is switched on and not hidden. */
+export function useOpenCourses(): Course[] {
+  const ids = useGame((s) =>
+    COURSES.filter((course) => s.enabledWorlds[course.worldId] && !s.hiddenWorlds[course.worldId])
+      .map((course) => course.id)
+      .join(","));
+  return useMemo(() => COURSES.filter((course) => ids.split(",").includes(course.id)), [ids]);
+}
 
 /** Sideways swing of the trail, kept in step with the viewport width. */
 export function usePathAmp(): number {

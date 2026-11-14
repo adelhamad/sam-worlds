@@ -1,21 +1,27 @@
-// The World Tour path: one winding trail through every unit — lessons, a
-// treasure chest per unit, Pogo waiting at the next lesson — plus the passport.
+// The path of a Pogo course (World Tour at /tour, Chess Camp at /chess): one
+// winding trail through every unit — lessons, a treasure chest per unit, Pogo
+// waiting at the next lesson — plus the course's collection (passport / chess set).
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { TOUR_COUNTRIES, TOUR_WORLD_ID, stageRoute, type TourUnit } from "../../content/tour/units";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { COURSES, stageRoute, type Course, type CourseUnit } from "../../content/courses";
+import { TOUR_COUNTRIES } from "../../content/tour/units";
 import { sfx, unlockAudio } from "../../engine/feedback/audio";
 import { tourSfx } from "../../engine/feedback/tourSfx";
 import { useGame } from "../../state/store";
 import { stampedCount } from "../../state/tour";
 import { TOUR } from "../../strings/tour";
+import { ChessPiece } from "../../ui/chess/ChessPiece";
 import { LockedScreen } from "../../ui/LockedScreen";
 import { Pogo, PogoSay } from "../../ui/tour/Pogo";
 import "../../ui/tour/tour-base.css";
 import "./path.css";
 import "./path/devHook";
+import { ChessSet } from "./path/ChessSet";
 import { ChestNode } from "./path/ChestNode";
 import { ChestOpening } from "./path/ChestOpening";
-import { prefersReducedMotion, usePathAmp, useToast } from "./path/hooks";
+import { CourseSwitch } from "./path/CourseSwitch";
+import { courseOfPath, courseText } from "./path/courseText";
+import { prefersReducedMotion, useOpenCourses, usePathAmp, useToast } from "./path/hooks";
 import { buildTourPath, trailPath, type ChestItem, type LessonItem, type TourPathModel } from "./path/layout";
 import { LessonPopover } from "./path/LessonPopover";
 import { Passport } from "./path/Passport";
@@ -61,25 +67,63 @@ function Trail({ model, amp }: { model: TourPathModel; amp: number }) {
   );
 }
 
-function TopBar({ onPassport }: { onPassport: () => void }) {
+/** 12345 → "12k": big Star Dust counts on phones too narrow for every digit. */
+function shortCount(value: number): string {
+  return value >= 10000 ? `${Math.floor(value / 1000)}k` : String(value);
+}
+
+/** The course's collection in the top bar: passport stamps, or chess set keepsakes. */
+function CollectionChip({ course, label, onOpen }: { course: Course; label: string; onOpen: () => void }) {
+  const chess = course.id === "chess";
+  const total = chess ? course.units.length : TOUR_COUNTRIES.length;
+  const count = useGame((s) => (chess
+    ? course.units.filter((unit) => s.tourChests.includes(unit.id)).length
+    : Math.min(total, stampedCount(s.tourStamps))));
+  return (
+    <button type="button" className="tp-chip tp-chip-pass" data-testid="collection" aria-label={label} onClick={onOpen}>
+      {chess
+        ? <span className="tp-chip-piece" aria-hidden="true"><ChessPiece type="K" size={24} /></span>
+        : <span aria-hidden="true">🛂</span>}
+      {count}/{total}
+    </button>
+  );
+}
+
+interface TopBarProps {
+  course: Course;
+  title: string;
+  collection: string;
+  /** Courses to hop between; fewer than two = no switch, the title sits in the bar. */
+  courses: Course[];
+  onCollection: () => void;
+}
+
+function TopBar({ course, title, collection, courses, onCollection }: TopBarProps) {
   const starDust = useGame((s) => s.starDust);
   const tourDays = useGame((s) => s.tourDays);
-  const stamped = useGame((s) => Math.min(TOUR_COUNTRIES.length, stampedCount(s.tourStamps)));
   return (
     <header className="tp-bar">
       <Link to="/hub" className="tbtn tbtn-ghost tp-back" aria-label={TOUR.path.back} onClick={() => sfx.tap()}>
         <span aria-hidden="true">←</span>
         <span className="tp-back-word">{TOUR.path.back}</span>
       </Link>
-      <h1 className="tp-title">{TOUR.path.title}</h1>
+      {courses.length > 1
+        ? <CourseSwitch current={course} courses={courses} />
+        : <h1 className="tp-title">{title}</h1>}
       <div className="tp-chips">
-        <span className="tp-chip tp-chip-dust"><span aria-hidden="true">✨</span> {starDust}</span>
+        <span className="tp-chip tp-chip-dust" aria-label={String(starDust)}>
+          <span aria-hidden="true">✨</span>
+          <span className="tp-dust-long" aria-hidden="true">{starDust}</span>
+          <span className="tp-dust-short" aria-hidden="true">{shortCount(starDust)}</span>
+        </span>
         {tourDays > 0 && (
-          <span className="tp-chip tp-chip-day"><span aria-hidden="true">🔥</span> {TOUR.path.day(tourDays)}</span>
+          <span className="tp-chip tp-chip-day" aria-label={TOUR.path.day(tourDays)}>
+            <span aria-hidden="true">🔥</span>
+            <span className="tp-day-long" aria-hidden="true">{TOUR.path.day(tourDays)}</span>
+            <span className="tp-day-short" aria-hidden="true">{tourDays}</span>
+          </span>
         )}
-        <button type="button" className="tp-chip tp-chip-pass" aria-label={TOUR.path.passport} onClick={onPassport}>
-          <span aria-hidden="true">🛂</span> {stamped}/{TOUR_COUNTRIES.length}
-        </button>
+        <CollectionChip course={course} label={collection} onOpen={onCollection} />
       </div>
     </header>
   );
@@ -100,9 +144,9 @@ function PogoGuide({ item, amp }: { item: LessonItem; amp: number }) {
   );
 }
 
-export function TourPath() {
+function CoursePath({ course }: { course: Course }) {
   const navigate = useNavigate();
-  const enabled = useGame((s) => Boolean(s.enabledWorlds[TOUR_WORLD_ID]));
+  const enabled = useGame((s) => Boolean(s.enabledWorlds[course.worldId]));
   const progress = useGame((s) => s.progress);
   const chests = useGame((s) => s.tourChests);
   const session = useGame((s) => s.session);
@@ -111,11 +155,16 @@ export function TourPath() {
   const amp = usePathAmp();
   const [toast, say] = useToast();
   const [pickedId, setPickedId] = useState<string | null>(null);
-  const [passportOpen, setPassportOpen] = useState(false);
-  const [opening, setOpening] = useState<{ unit: TourUnit; paid: number } | null>(null);
+  const [collectionOpen, setCollectionOpen] = useState(false);
+  const [opening, setOpening] = useState<{ unit: CourseUnit; paid: number } | null>(null);
   const trailRef = useRef<HTMLDivElement>(null);
 
-  const model = useMemo(() => buildTourPath(progress, chests), [progress, chests]);
+  const text = courseText(course);
+  // The switch offers this course plus every other one Sam may open right now.
+  const openCourses = useOpenCourses();
+  const switchCourses = COURSES.filter((other) => other.id === course.id || openCourses.includes(other));
+  const hasSwitch = switchCourses.length > 1;
+  const model = useMemo(() => buildTourPath(course, progress, chests), [course, progress, chests]);
   const focus = focusTarget(model);
   const current = model.items.find((item): item is LessonItem => item.kind === "lesson" && item.state === "current");
   const picked = model.items.find((item): item is LessonItem => item.kind === "lesson" && item.stage.id === pickedId);
@@ -144,9 +193,17 @@ export function TourPath() {
   if (!enabled) return <LockedScreen />;
 
   return (
-    <div className="screen tour tour-path">
-      <TopBar onPassport={() => { unlockAudio(); tourSfx.whoosh(); setPassportOpen(true); }} />
-      <p className="tp-title-inline" aria-hidden="true">{TOUR.path.title}</p>
+    <div className={`screen tour tour-path ${hasSwitch ? "has-switch" : ""}`} data-course={course.id}>
+      <TopBar
+        course={course}
+        title={text.title}
+        collection={text.collection}
+        courses={switchCourses}
+        onCollection={() => { unlockAudio(); tourSfx.whoosh(); setCollectionOpen(true); }}
+      />
+      {hasSwitch
+        ? <h1 className="tp-title-inline">{text.title}</h1>
+        : <p className="tp-title-inline" aria-hidden="true">{text.title}</p>}
 
       <div className="tp-trail" ref={trailRef} style={{ height: model.height }}>
         <Trail model={model} amp={amp} />
@@ -180,20 +237,22 @@ export function TourPath() {
 
       {model.finished && (
         <div className="tp-finish" data-focus={focus.kind === "end" || undefined}>
-          <PogoSay mood="cheer" size={112} side="top" text={TOUR.path.finished} />
-          <p className="tp-finish-sub">{TOUR.path.finishedSub}</p>
+          <PogoSay mood="cheer" size={112} side="top" text={text.finished} />
+          <p className="tp-finish-sub">{text.finishedSub}</p>
         </div>
       )}
 
       {picked && (
         <LessonPopover
+          course={course}
           item={picked}
           inProgress={Boolean(session && !session.result && session.stageId === picked.stage.id)}
           onClose={() => setPickedId(null)}
           onStart={() => { unlockAudio(); sfx.tap(); navigate(stageRoute(picked.stage.id)); }}
         />
       )}
-      {passportOpen && <Passport onClose={() => setPassportOpen(false)} />}
+      {collectionOpen && course.id === "chess" && <ChessSet course={course} onClose={() => setCollectionOpen(false)} />}
+      {collectionOpen && course.id !== "chess" && <Passport onClose={() => setCollectionOpen(false)} />}
       {opening && (
         <ChestOpening
           unit={opening.unit}
@@ -207,4 +266,12 @@ export function TourPath() {
       {toast && <div key={toast.id} className="tp-toast" role="status">{toast.text}</div>}
     </div>
   );
+}
+
+/** One screen for every course: the URL says which one (default: World Tour). */
+export function TourPath() {
+  const { pathname } = useLocation();
+  const course = courseOfPath(pathname);
+  // Keyed, so hopping to the other course starts its path fresh (scroll focus, open sheets).
+  return <CoursePath key={course.id} course={course} />;
 }

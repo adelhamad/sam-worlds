@@ -1,17 +1,18 @@
 import { useEffect, useState, type CSSProperties } from "react";
-import type { TourUnit } from "../../../content/tour/units";
+import type { CourseUnit } from "../../../content/courses";
 import { sfx } from "../../../engine/feedback/audio";
 import { tourSfx } from "../../../engine/feedback/tourSfx";
 import { TOUR } from "../../../strings/tour";
 import { Confetti, Pogo } from "../../../ui/tour/Pogo";
 import { ChestArt } from "./ChestNode";
 import { prefersReducedMotion } from "./hooks";
+import { Keepsake } from "./Keepsake";
 
 const SHAKE_MS = 1150;
 const COUNT_MS = 900;
 
 interface ChestOpeningProps {
-  unit: TourUnit;
+  unit: CourseUnit;
   /** Star Dust already paid by `tourOpenChest` (the reward is fixed per unit). */
   paid: number;
   onClose: () => void;
@@ -52,7 +53,9 @@ export function ChestOpening({ unit, paid, onClose }: ChestOpeningProps) {
         <div className="tp-opening-stage">
           <span className="tp-opening-rays" aria-hidden="true" />
           {open && (
-            <span className="tp-opening-souvenir" role="img" aria-label={unit.souvenir.name}>{unit.souvenir.icon}</span>
+            <span className="tp-opening-souvenir" role="img" aria-label={unit.souvenir.name}>
+              <Keepsake unit={unit} size={78} />
+            </span>
           )}
           <span className="tp-opening-chest"><ChestArt open={open} size={168} /></span>
           <Pogo mood={open ? "wow" : "think"} size={92} className="tp-opening-pogo" />

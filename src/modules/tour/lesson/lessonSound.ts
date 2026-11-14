@@ -22,6 +22,14 @@ export const lessonSound = {
   stamp: () => {
     setTimeout(() => tourSfx.stamp(), 320);
   },
+  /** Star Dust lands in the meter (softer for a slot solved after a hint). */
+  bank: (small: boolean) => tourSfx.dust(small),
+  /** The gift box arrives. */
+  giftShow: () => tourSfx.hop(),
+  /** The lid pops. */
+  giftOpen: () => tourSfx.chest(),
+  /** Pogo pops in near the end. */
+  cheer: () => tourSfx.cheer(),
   /** Lesson finished. A Perfect Run and a new trophy keep their own fanfares. */
   done: (result: { newBadge: unknown; perfect: boolean }) => {
     if (result.newBadge) sfx.badge();

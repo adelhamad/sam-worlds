@@ -107,5 +107,8 @@ export type TourPayload =
 /** Narrow a generic question to its tour payload (null for other worlds). */
 export function tourPayload(q: Question | null | undefined): TourPayload | null {
   const p = q?.payload as { tour?: unknown } | undefined;
-  return q?.inputMode === "tour" && typeof p?.tour === "string" ? (q.payload as unknown as TourPayload) : null;
+  // "tour" is the lesson-player input mode; other courses prefix their kinds ("chess-…").
+  return q?.inputMode === "tour" && typeof p?.tour === "string" && !p.tour.includes("-")
+    ? (q.payload as unknown as TourPayload)
+    : null;
 }

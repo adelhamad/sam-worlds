@@ -1,0 +1,323 @@
+/* The chess board. Scoped under `.tour` (uses its tokens). A chunky rounded
+   tray like `.tbtn`; cool mist + periwinkle squares so warm cream and deep
+   indigo pieces both pop. Motion is transform/opacity only. */
+.tour .cb {
+  --cb-light: #eef1ff;
+  --cb-dark: #8e9bef;
+  --cb-frame: #4a56b9;
+  --cb-frame-deep: #283080;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--cb-max, 520px);
+  margin: 0 auto;
+  padding: 5px;
+  border-radius: 20px;
+  background: var(--cb-frame);
+  border-bottom: 7px solid var(--cb-frame-deep);
+  box-shadow: 0 10px 22px rgba(2, 6, 18, 0.35);
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.tour .cb-field { position: relative; }
+.tour .cb-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+  border-radius: 15px;
+  overflow: hidden;
+  background: var(--cb-dark); /* hides sub-pixel seams between rows */
+}
+
+/* ---------- squares ---------- */
+.tour .cb-sq {
+  position: relative;
+  aspect-ratio: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: var(--cb-light);
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.tour .cb-sq.is-dark { background: var(--cb-dark); }
+/* pieces can be carried: the page must never scroll or zoom mid-drag */
+.tour .cb.is-carry .cb-sq { touch-action: none; -webkit-touch-callout: none; }
+.tour .cb-sq:disabled { cursor: default; }
+.tour .cb-sq:focus-visible { outline: 3px solid var(--t-go); outline-offset: -3px; z-index: 1; }
+.tour .cb-sq::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+.tour .cb-sq:active:not(:disabled)::before { opacity: 1; background: rgba(34, 211, 238, 0.28); }
+.tour .cb-sq > * { position: absolute; inset: 0; margin: auto; pointer-events: none; }
+
+.tour .cb-sq.is-selected::before { opacity: 1; background: rgba(34, 211, 238, 0.5); }
+.tour .cb-sq.is-focus::before {
+  opacity: 1;
+  background: radial-gradient(circle, #ffd166 0 38%, #ffe9b0 82%);
+  animation: cb-glow 1.5s ease-in-out infinite;
+}
+.tour .cb-sq.tint-trail::before { opacity: 1; background: rgba(139, 108, 255, 0.34); }
+.tour .cb-sq.tint-fire::before {
+  opacity: 1;
+  background: repeating-linear-gradient(45deg, #ffb760 0 7px, #ffd9a3 7px 14px);
+  animation: cb-fire 1.1s ease-in-out infinite;
+}
+.tour .cb-sq.tint-danger::before {
+  opacity: 1;
+  background: radial-gradient(circle, #ff8a2b 0 34%, #ffc27a 86%);
+  animation: cb-glow 0.8s ease-in-out infinite;
+}
+.tour .cb-sq.tint-goal::before {
+  opacity: 1;
+  background: linear-gradient(180deg, #ffd166, #ffeab5);
+  animation: cb-glow 1.3s ease-in-out infinite;
+}
+.tour .cb-sq.tint-hit::before {
+  background: linear-gradient(180deg, #fff3b8, #ffd166);
+  animation: cb-hit 0.9s ease-out both;
+}
+@keyframes cb-breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+@keyframes cb-fire {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.68; }
+}
+@keyframes cb-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.72; }
+}
+@keyframes cb-hit {
+  0% { opacity: 0; }
+  18% { opacity: 1; }
+  40% { opacity: 0.55; }
+  62% { opacity: 1; }
+  100% { opacity: 0.95; }
+}
+
+/* ---------- destination dots (missions, demos) ---------- */
+.tour .cb-dot {
+  width: 36%;
+  height: 36%;
+  border-radius: 50%;
+  background: var(--t-go);
+  box-shadow: inset 0 -3px 0 var(--t-go-deep), 0 0 0 3px rgba(9, 24, 68, 0.72);
+  animation: cb-pop-in 0.22s cubic-bezier(0.3, 1.6, 0.5, 1) both, cb-pulse 1.3s ease-in-out 0.22s infinite;
+}
+.tour .cb-dot.is-ring {
+  width: 90%;
+  height: 90%;
+  background: none;
+  border: 5px solid var(--t-go);
+  box-shadow: 0 0 0 2.5px rgba(9, 24, 68, 0.72), inset 0 0 0 2.5px rgba(9, 24, 68, 0.72);
+  box-sizing: border-box;
+}
+@keyframes cb-pop-in {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+@keyframes cb-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(0.84); }
+}
+
+/* ---------- marks (spot the squares + the solved view) ---------- */
+.tour .cb-mark {
+  --m: var(--t-go);
+  --m-deep: var(--t-go-deep);
+  --m-ink: var(--t-go-ink);
+  width: 54%;
+  height: 54%;
+  border-radius: 50%;
+  background: var(--m);
+  color: var(--m-ink);
+  box-shadow: inset 0 -4px 0 var(--m-deep), 0 0 0 3px rgba(9, 24, 68, 0.72);
+  display: grid;
+  place-items: center;
+  animation: cb-pop-in 0.24s cubic-bezier(0.3, 1.7, 0.5, 1) both;
+}
+.tour .cb-mark .cg { width: 70%; height: 70%; }
+.tour .cb-mark.is-ring {
+  width: 92%;
+  height: 92%;
+  box-sizing: border-box;
+  background: none;
+  border: 6px solid var(--m);
+  box-shadow: 0 0 0 2.5px rgba(9, 24, 68, 0.72), inset 0 0 0 2.5px rgba(9, 24, 68, 0.72);
+}
+.tour .cb-mark.is-good { --m: var(--t-yes); --m-deep: var(--t-yes-deep); --m-ink: var(--t-yes-ink); }
+.tour .cb-mark.is-missed {
+  --m: var(--t-almost);
+  box-sizing: border-box;
+  background: rgba(255, 190, 100, 0.62);
+  border: 5px dashed #e8860c;
+  box-shadow: 0 0 0 2.5px rgba(46, 26, 2, 0.6);
+  animation: cb-pop-in 0.24s cubic-bezier(0.3, 1.7, 0.5, 1) both, cb-pulse 1.1s ease-in-out 0.3s infinite;
+}
+.tour .cb-mark.is-missed.is-ring { border-style: dashed; background: none; }
+.tour .cb-mark.is-extra {
+  --m: #b9c0e6;
+  --m-deep: #7d86b8;
+  --m-ink: #2b3564;
+  opacity: 0.92;
+}
+.tour .cb-mark.is-extra.is-ring { border-style: dotted; }
+.tour .cb-mark.is-no {
+  width: 62%;
+  height: 62%;
+  background: none;
+  box-shadow: none;
+  color: #c2540a;
+}
+.tour .cb-mark.is-no .cg { width: 100%; height: 100%; stroke-width: 4.5; }
+
+/* ---------- stars + capture targets ---------- */
+.tour .cb-star {
+  width: 66%;
+  height: 66%;
+  animation: cb-star-bob 1.6s ease-in-out infinite;
+}
+@keyframes cb-star-bob {
+  0%, 100% { transform: translateY(2%) rotate(-5deg) scale(1); }
+  50% { transform: translateY(-5%) rotate(5deg) scale(1.07); }
+}
+.tour .cb-target {
+  width: 92%;
+  height: 92%;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 5px dashed var(--t-gold);
+  box-shadow: 0 0 0 2.5px rgba(60, 40, 0, 0.5), inset 0 0 0 2.5px rgba(60, 40, 0, 0.35);
+  animation: cb-target 2.6s linear infinite;
+}
+@keyframes cb-target {
+  0% { transform: rotate(0) scale(1); }
+  50% { transform: rotate(60deg) scale(0.92); }
+  100% { transform: rotate(120deg) scale(1); }
+}
+
+/* ---------- glyphs ---------- */
+.tour .cg { display: block; flex: none; overflow: visible; }
+.tour .cg-stroke { fill: none; stroke: currentColor; stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round; }
+.tour .cg-star-body { fill: var(--t-gold); stroke: #8a5a00; stroke-width: 3.6; stroke-linejoin: round; paint-order: stroke; }
+.tour .cg-star-shine { fill: none; stroke: #fff7d6; stroke-width: 3; stroke-linecap: round; }
+
+/* ---------- pieces ---------- */
+.tour .cb-pieces { position: absolute; inset: 0; pointer-events: none; }
+.tour .cb-piece,
+.tour .cb-burst {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% / var(--n));
+  height: calc(100% / var(--n));
+  /* --dx / --dy: the offset while a piece is carried (usePieceDrag) */
+  transform: translate(calc(var(--c) * 100% + var(--dx, 0px)), calc(var(--r) * 100% + var(--dy, 0px)));
+  display: grid;
+  place-items: center;
+}
+.tour .cb-piece { z-index: 1; transition: transform 0.3s cubic-bezier(0.3, 1.2, 0.45, 1); }
+.tour .cb-piece-art {
+  width: 90%;
+  height: 90%;
+  transform-origin: 50% 88%;
+  transition: transform 0.16s cubic-bezier(0.3, 1.5, 0.5, 1);
+}
+.tour .cb-piece.is-selected { z-index: 3; }
+.tour .cb-piece.is-selected .cb-piece-art { transform: translateY(-8%) scale(1.13); }
+.tour .cb-piece.is-focus .cb-piece-art { animation: cb-bob 1.2s ease-in-out infinite; }
+/* "pick me": pieces that can move, while none is in hand */
+.tour .cb-piece.is-hint .cb-piece-art { animation: cb-bob 1.2s ease-in-out infinite; }
+.tour .cb-piece.is-hint:nth-child(even) .cb-piece-art { animation-delay: 0.6s; }
+@keyframes cb-bob {
+  0%, 100% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(-7%) scale(1.06); }
+  70% { transform: translateY(0) scale(1.03, 0.96); }
+}
+
+/* ---------- a piece in the hand (drag and drop) ---------- */
+.tour .cb-piece[data-dragging] { z-index: 10; }
+.tour .cb-piece[data-dragging] .cb-piece-art {
+  transform: scale(1.18);
+  animation: none;
+  filter: drop-shadow(0 12px 7px rgba(4, 8, 30, 0.45));
+}
+/* the square under the finger, when the piece may land there */
+.tour .cb-sq[data-over]::before {
+  opacity: 1;
+  background: var(--t-go);
+  box-shadow: inset 0 0 0 5px #eafcff;
+  animation: none;
+}
+.tour .cb-sq[data-over] .cb-dot:not(.is-ring) { animation: none; transform: scale(1.4); background: #eafcff; }
+.tour .cb-sq[data-over] .cb-dot.is-ring { animation: none; border-color: #eafcff; }
+
+/* ---------- one-shot bursts ---------- */
+.tour .cb-burst { z-index: 6; }
+.tour .cb-burst > * { position: absolute; }
+.tour .cb-burst-ghost { inset: 5%; animation: cb-ghost 0.42s ease-in both; }
+@keyframes cb-ghost {
+  0% { transform: scale(1) rotate(0); opacity: 1; }
+  35% { transform: scale(1.15) rotate(-8deg); opacity: 1; }
+  100% { transform: scale(0.1) rotate(40deg); opacity: 0; }
+}
+.tour .cb-burst-ring {
+  inset: 8%;
+  border-radius: 50%;
+  border: 5px solid var(--burst, #fff);
+  opacity: 0;
+  animation: cb-ring 0.55s ease-out 0.16s both;
+}
+@keyframes cb-ring {
+  0% { transform: scale(0.3); opacity: 0.95; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+.tour .cb-burst i {
+  left: 50%;
+  top: 50%;
+  width: 16%;
+  height: 16%;
+  margin: -8%;
+  border-radius: 50%;
+  background: var(--burst, #fff);
+  opacity: 0;
+  animation: cb-ray 0.6s cubic-bezier(0.2, 0.8, 0.4, 1) 0.16s both;
+}
+@keyframes cb-ray {
+  0% { transform: rotate(var(--a)) translateY(0) scale(0.6); opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: rotate(var(--a)) translateY(-420%) scale(0.2); opacity: 0; }
+}
+.tour .cb-burst-puff { --burst: #e6e9ff; }
+.tour .cb-burst-puff i { width: 26%; height: 26%; margin: -13%; }
+.tour .cb-burst-puff i:nth-child(odd) { animation-duration: 0.5s; }
+@keyframes cb-puff {
+  0% { transform: rotate(var(--a)) translateY(-60%) scale(0.5); opacity: 0.95; }
+  100% { transform: rotate(var(--a)) translateY(-240%) scale(1.5); opacity: 0; }
+}
+.tour .cb-burst-puff i { animation-name: cb-puff; }
+.tour .cb-burst-sparkle { --burst: var(--t-gold); }
+.tour .cb-burst-sparkle i { width: 20%; height: 20%; margin: -10%; box-shadow: 0 0 0 2px #8a5a00; }
+.tour .cb-burst-sparkle .cb-burst-ring,
+.tour .cb-burst-sparkle i { animation-delay: 0.22s; }
+.tour .cb-burst-crown { --burst: var(--t-gold); }
+.tour .cb-burst-crown .cb-burst-ring { border-width: 7px; animation-duration: 0.8s; animation-delay: 0.3s; }
+.tour .cb-burst-crown i { border-radius: 2px; animation-duration: 0.85s; animation-delay: 0.3s; }
+
+/* ---------- arrows ---------- */
+.tour .cb-arrows { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.tour .cb-arrow-edge { fill: #5c3200; stroke: #5c3200; stroke-width: 26; stroke-linecap: round; stroke-linejoin: round; opacity: 0.85; }
+.tour polyline.cb-arrow-edge { fill: none; }
+.tour .cb-arrow-line { fill: none; stroke: var(--t-almost); stroke-width: 15; stroke-linecap: round; stroke-linejoin: round; }
+.tour .cb-arrow-head { fill: var(--t-almost); stroke: var(--t-almost); stroke-width: 6; stroke-linejoin: round; }
+.tour .cb-arrow-badge { fill: #2e1a02; stroke: var(--t-almost); stroke-width: 4.5; }
+.tour .cb-arrow-num { fill: #ffe9c4; font-size: 27px; font-weight: 900; text-anchor: middle; }

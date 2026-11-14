@@ -124,6 +124,44 @@ export const tourSfx = {
   hop(): void {
     glide(310, 650, 0, 0.14, { gain: 0.07 });
   },
+  /** Star Dust lands in the lesson meter: a tiny bright "ting" (softer when `small`). */
+  dust(small = false): void {
+    const gain = small ? 0.035 : 0.06;
+    tone(N.E6, 0, 0.09, gain);
+    tone(N.A6, 0.05, 0.16, gain);
+    if (!small) tone(N.C7, 0.1, 0.22, 0.03, "triangle");
+  },
+  /** Pogo pops in to cheer: a boing, then a happy climb. */
+  cheer(): void {
+    glide(260, 720, 0, 0.18, { gain: 0.08 });
+    [N.G5, N.C6, N.E6, N.G6].forEach((f, i) => tone(f, 0.14 + i * 0.075, 0.2, 0.09));
+    tone(N.G6, 0.46, 0.5, 0.05);
+    tone(N.C7, 0.46, 0.5, 0.045, "triangle");
+  },
+  /** Chess: a piece slides across the board and lands. */
+  slide(): void {
+    swish(0, 0.16, 0.05, 700, 1700, 0.7);
+    glide(250, 140, 0.13, 0.1, { gain: 0.1, type: "triangle" });
+  },
+  /** Chess: a piece is captured — a soft thump and a pop. */
+  capture(): void {
+    glide(200, 70, 0.1, 0.16, { gain: 0.2 });
+    swish(0.1, 0.09, 0.08, 1200, 400, 0.6);
+    glide(620, 1080, 0.2, 0.08, { gain: 0.06 });
+  },
+  /** Chess: a star collected — `nth` (1, 2, 3…) climbs the ladder. */
+  star(nth = 1): void {
+    const start = Math.min(6, Math.max(0, Math.round(nth) - 1) * 2 + 2);
+    tone(LADDER[start], 0.14, 0.12, 0.09);
+    tone(LADDER[start + 2], 0.2, 0.16, 0.09);
+    tone(LADDER[start + 4], 0.26, 0.34, 0.06, "triangle");
+  },
+  /** Chess: a pawn is crowned — a little fanfare. */
+  crown(): void {
+    [N.G5, N.C6, N.E6].forEach((f, i) => tone(f, 0.2 + i * 0.07, 0.16, 0.09, "triangle"));
+    tone(N.G6, 0.42, 0.5, 0.08);
+    tone(N.C7, 0.46, 0.45, 0.035, "triangle");
+  },
   /** Lesson complete: a proud "ta-da-daa, da-da-DAA". */
   lessonDone(): void {
     const tune: [number, number, number][] = [

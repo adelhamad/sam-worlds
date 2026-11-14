@@ -2,22 +2,30 @@
 // exactly `TourExercise` and `TourTeach` from this file.
 import "../../../ui/tour/tour-base.css";
 import "./exercises.css";
+import { chessPayload } from "../../../engine/chess/types";
 import { tourPayload } from "../../../engine/tour/types";
+import { ChessExercise, ChessTeach } from "../chess/ChessExercise";
 import { BuildExercise } from "./BuildExercise";
-import type { ExerciseProps } from "./contract";
+import type { ExerciseProps, TeachProps } from "./contract";
 import { MapExercise } from "./MapExercise";
 import { PairsExercise } from "./PairsExercise";
 import { PaintExercise } from "./PaintExercise";
 import { PickExercise } from "./PickExercise";
 import { SortExercise } from "./SortExercise";
 
-export { TourTeach } from "./TourTeach";
+import { TourTeach as WorldTeach } from "./TourTeach";
+
+/** The solved view for the "Almost — look at this." sheet, for any course. */
+export function TourTeach(props: TeachProps) {
+  return chessPayload(props.question) ? <ChessTeach {...props} /> : <WorldTeach {...props} />;
+}
 
 /**
  * Renders the right widget for the question's `payload.tour` kind. Each widget
  * is keyed by the question id, so a fresh question always starts from scratch.
  */
 export function TourExercise(props: ExerciseProps) {
+  if (chessPayload(props.question)) return <ChessExercise key={props.question.id} {...props} />;
   const payload = tourPayload(props.question);
   if (!payload) return null;
   const key = props.question.id;
