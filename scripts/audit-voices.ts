@@ -3,12 +3,14 @@
 // chosen voice that is gone); (2) the recorded-clip key scheme round-trips for
 // every phrase and letter of every language course, with no collisions, and
 // every card a lesson can speak maps to a clip the studio lists; (3) the
-// strings of Parent Section → Voices are emoji-free and never say "wrong"/"fail".
+// strings of Parent Section → Voices and of the child's speaking practice
+// (LANG.meet.speak) are emoji-free and never say "wrong"/"fail"/"bad".
 // Run alone (`bun scripts/audit-voices.ts`) or through audit-questions.ts.
 import { LANG_SEEDS } from "../src/content/langCourses";
 import { cardClipKey, clipKey, parseClipKey } from "../src/engine/feedback/clipKeys";
 import { isNovelty, pickVoice, rankVoices, voiceQuality, type VoiceInfo } from "../src/engine/feedback/voiceRank";
 import { letterCard, phraseCard } from "../src/engine/lang/cards";
+import { LANG } from "../src/strings/lang";
 import { VOICES } from "../src/strings/voices";
 import { studioGroups } from "../src/ui/voices/studioData";
 
@@ -102,9 +104,10 @@ function texts(value: unknown, label: string, out: Array<[string, string]>, dept
 function checkStrings(failures: string[]): number {
   const out: Array<[string, string]> = [];
   texts(VOICES, "VOICES", out);
+  texts(LANG.meet.speak, "LANG.meet.speak", out);
   for (const [label, text] of out) {
     if (/\p{Extended_Pictographic}/u.test(text)) failures.push(`emoji in ${label}: "${text}"`);
-    if (/\b(wrong|fail)/i.test(text)) failures.push(`${label} says "wrong"/"fail": "${text}"`);
+    if (/\b(wrong|fail|bad\b)/i.test(text)) failures.push(`${label} says "wrong"/"fail"/"bad": "${text}"`);
   }
   return out.length;
 }

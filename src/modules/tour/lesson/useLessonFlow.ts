@@ -1,18 +1,21 @@
 // The lesson's answer loop. Judging, regenerate-on-miss, payouts and restore all
 // live in the store (answer / advance / revealAnswer) — this hook only decides
 // what the child SEES after each verdict: which feedback sheet, the combo, the
-// passport stamps, the tour day, and the two interludes that show between a
-// sheet and the next question (the mid-lesson gift and Pogo's cheer).
+// passport stamps, the tour day, and the interludes that show between a sheet
+// and the next question (the mid-lesson gift, Pogo's cheer and — in language
+// lessons with speaking practice on — one unjudged speaking break).
 import { useCallback, useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { REVEAL_COST, useGame, type Session } from "../../../state/store";
 import type { Question } from "../../../engine/generators/types";
+import type { LangCard, LangCode } from "../../../engine/lang/types";
 import { giftDust, lessonBreaks, type SlotTally } from "../../../engine/answers/lessonRewards";
 import { tourPayload } from "../../../engine/tour/types";
 import { unlockAudio } from "../../../engine/feedback/audio";
 import { TOUR } from "../../../strings/tour";
 import { claimLessonGift } from "./giftGuard";
 import { lessonSound } from "./lessonSound";
+import { speakDue } from "./speakSlot";
 
 export type SheetKind = "correct" | "again" | "almost";
 
@@ -37,7 +40,11 @@ export interface LessonSheet {
 /** A moment between two questions. The gift's Star Dust is already paid. */
 export type Interlude =
   | { id: number; kind: "gift"; dust: number }
-  | { id: number; kind: "cheer"; left: number };
+  | { id: number; kind: "cheer"; left: number }
+  | { id: number; kind: "speak"; lang: LangCode; card: LangCard };
+
+/** What the speaking break would ask for right now, or null (practice off, mic unusable, nothing to say). */
+export type SpeakOffer = () => { lang: LangCode; card: LangCard } | null;
 
 export interface LessonFlow {
   sheet: LessonSheet | null;
@@ -90,12 +97,16 @@ function tallyOf(s: Session): SlotTally {
 
 /** The gift and the cheer: a queue filled when a slot is committed and shown
     one at a time once the feedback sheet is gone. */
-function useInterludes(firstCompletion: boolean) {
+function useInterludes(firstCompletion: boolean, speakOffer: SpeakOffer | undefined) {
   const [interlude, setInterlude] = useState<Interlude | null>(null);
   const [giftCollected, setGiftCollected] = useState(0);
   const queueRef = useRef<Interlude[]>([]);
   const currentRef = useRef<Interlude | null>(null);
   const idRef = useRef(0);
+  const offerRef = useRef(speakOffer);
+  useEffect(() => {
+    offerRef.current = speakOffer;
+  }, [speakOffer]);
 
   /** A slot was just committed (answered or skipped): line up what it set off.
       Only the step that reaches a slot fires, so a restored session never
@@ -106,6 +117,11 @@ function useInterludes(firstCompletion: boolean) {
     if (!s) return;
     const after = tallyOf(s);
     const due = lessonBreaks(tallyOf(before), after);
+    const speak = speakDue(tallyOf(before), after) ? offerRef.current?.() : null;
+    if (speak) {
+      idRef.current += 1;
+      queueRef.current.push({ id: idRef.current, kind: "speak", ...speak });
+    }
     if (due.gift && claimLessonGift(s.seed)) {
       const dust = giftDust(firstCompletion);
       game.earnDust(dust, "lesson.gift");
@@ -144,7 +160,7 @@ function useInterludes(firstCompletion: boolean) {
   return { interlude, giftCollected, settleSlot, showNext, collectGift, endInterlude, isShowing };
 }
 
-export function useLessonFlow(stageId: string): LessonFlow {
+export function useLessonFlow(stageId: string, speakOffer?: SpeakOffer): LessonFlow {
   const [sheet, setSheet] = useState<LessonSheet | null>(null);
   const [finale, setFinale] = useState<Question | null>(null);
   const [combo, setCombo] = useState(0);
@@ -152,7 +168,7 @@ export function useLessonFlow(stageId: string): LessonFlow {
   const [dayNumber, setDayNumber] = useState<number | null>(null);
   // Captured before the final advance() flips `progress` for this lesson.
   const [firstCompletion] = useState(() => !useGame.getState().progress[stageId]?.completed);
-  const { interlude, giftCollected, settleSlot, showNext, collectGift, endInterlude, isShowing } = useInterludes(firstCompletion);
+  const { interlude, giftCollected, settleSlot, showNext, collectGift, endInterlude, isShowing } = useInterludes(firstCompletion, speakOffer);
   // Handler-only state: a sheet is open (blocks double submits), the running
   // combo, the sheet counter / open time and which session marked its tour day.
   const openRef = useRef(false);

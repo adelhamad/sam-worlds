@@ -1,9 +1,13 @@
 // Checks one planned language question against the contract in
 // src/engine/lang/types.ts. Used by audit-lang.ts.
-import { buildAnswer, pairsAnswer } from "../src/engine/lang/answers";
+import { buildAnswer, pairsAnswer, spotAnswer } from "../src/engine/lang/answers";
 import { clashes } from "../src/engine/lang/cards";
 import type { Question } from "../src/engine/generators/types";
-import { TRACED, type BuildPayload, type ChoosePayload, type LangParams, type LangPayload, type PairsPayload, type Phrase } from "../src/engine/lang/types";
+import {
+  FOUND, SAID, TRACED, type BuildPayload, type ChatPayload, type ChoosePayload, type GivePayload, type LangParams, type LangPayload,
+  type MemoryPayload, type PairsPayload, type Phrase, type SpotPayload,
+} from "../src/engine/lang/types";
+import { chatVerdict, memoryPairs } from "../src/engine/lang/verdicts";
 
 const PROMPT_WORDS = 9;
 
@@ -64,15 +68,98 @@ function checkBuild(where: string, question: Question, payload: BuildPayload): s
   return out;
 }
 
+/** Every tile of `reply` can be taken from the bank (each used once). */
+function spellable(reply: string[], tiles: string[]): boolean {
+  const left = [...tiles];
+  return reply.every((part) => {
+    const at = left.indexOf(part);
+    if (at < 0) return false;
+    left.splice(at, 1);
+    return true;
+  });
+}
+
+function checkChat(where: string, question: Question, payload: ChatPayload, params: LangParams): string[] {
+  const out: string[] = [];
+  const tiles = payload.tiles.map((tile) => tile.text);
+  const scene = params.scenes.find((item) => item.id === payload.target);
+  if (question.answer !== SAID) out.push(`${where}: answer is not SAID`);
+  if (!scene) return [...out, `${where}: scene "${payload.target}" is not in the lesson`];
+  if (tiles.length < 3 || tiles.length > 8) out.push(`${where}: ${tiles.length} tiles in the word bank`);
+  if (!payload.accept.length) out.push(`${where}: nothing is accepted`);
+  for (const reply of payload.accept) if (!spellable(reply, tiles)) out.push(`${where}: accepted reply "${reply.join(" ")}" cannot be built from the bank`);
+  if (chatVerdict(payload, payload.accept[0] ?? []) !== SAID) out.push(`${where}: the model reply is not accepted`);
+  // Every accepted reply must be a phrase the scene really allows (or a like-twin of one).
+  const fine = [...scene.reply, ...(scene.alsoOk ?? [])].map((id) => phraseOf(params, id)).filter((phrase): phrase is Phrase => Boolean(phrase));
+  const pool = [...params.teach, ...params.review];
+  const norm = (text: string) => text.toLowerCase().replace(/[.!?؟,،]/g, "").trim();
+  for (const reply of payload.accept) {
+    const built = reply.join(" ");
+    const phrase = pool.find((item) => norm((item.words ?? [{ text: item.text }]).map((word) => word.text).join(" ")) === norm(built));
+    if (!phrase) out.push(`${where}: accepted reply "${built}" is not a phrase the child has met`);
+    else if (!fine.some((item) => item.id === phrase.id || clashes(item, phrase))) out.push(`${where}: accepted reply "${phrase.id}" is not allowed by the scene`);
+  }
+  return out;
+}
+
+function checkGive(where: string, question: Question, payload: GivePayload, params: LangParams): string[] {
+  const out: string[] = [];
+  const ids = payload.items.map((card) => card.id);
+  const arts = payload.items.map((card) => card.art);
+  if (ids.length < 3 || ids.length > 4) out.push(`${where}: ${ids.length} things on the table`);
+  if (new Set(ids).size !== ids.length || new Set(arts).size !== arts.length) out.push(`${where}: two things look the same`);
+  if (arts.some((art) => !art)) out.push(`${where}: a thing has no picture`);
+  if (!ids.includes(question.answer) || payload.ask.id !== question.answer) out.push(`${where}: Pogo does not ask for one of the things`);
+  const right = phraseOf(params, question.answer);
+  for (const id of ids) {
+    const other = phraseOf(params, id);
+    if (id !== question.answer && right && other && clashes(right, other)) out.push(`${where}: "${id}" could also be what Pogo asks for`);
+  }
+  return out;
+}
+
+function checkSpot(where: string, question: Question, payload: SpotPayload): string[] {
+  const out: string[] = [];
+  const texts = payload.words.map((word) => word.text.toLowerCase());
+  if (texts.length < 3) out.push(`${where}: a sentence of ${texts.length} words`);
+  if (new Set(texts).size !== texts.length) out.push(`${where}: a word appears twice`);
+  if (!payload.words[payload.heard] || question.answer !== spotAnswer(payload.heard)) out.push(`${where}: the heard word is not in the sentence`);
+  return out;
+}
+
+function checkMemory(where: string, question: Question, payload: MemoryPayload, params: LangParams): string[] {
+  const out: string[] = [];
+  const pairs = memoryPairs(payload);
+  if (question.answer !== FOUND) out.push(`${where}: answer is not FOUND`);
+  if (pairs < 3 || pairs > 4 || payload.cards.length !== pairs * 2) out.push(`${where}: ${payload.cards.length} cards for ${pairs} pairs`);
+  if (payload.turns < pairs * 2) out.push(`${where}: only ${payload.turns} turns for ${pairs} pairs`);
+  const phrases = [...new Set(payload.cards.map((card) => card.pair))].map((id) => phraseOf(params, id));
+  phrases.forEach((a, i) => phrases.slice(i + 1).forEach((b) => {
+    if (a && b && clashes(a, b)) out.push(`${where}: "${a.id}" and "${b.id}" could be paired either way`);
+  }));
+  return out;
+}
+
+function checkKind(where: string, question: Question, payload: LangPayload, params: LangParams): string[] {
+  switch (payload.tour) {
+    case "lang-choose": return checkChoose(where, question, payload, params);
+    case "lang-pairs": return checkPairs(where, question, payload, params);
+    case "lang-build": return checkBuild(where, question, payload);
+    case "lang-chat": return checkChat(where, question, payload, params);
+    case "lang-give": return checkGive(where, question, payload, params);
+    case "lang-spot": return checkSpot(where, question, payload);
+    case "lang-memory": return checkMemory(where, question, payload, params);
+    default:
+      return question.answer !== TRACED || !params.alphabet.some((letter) => letter.id === payload.letter.id) ? [`${where}: bad trace question`] : [];
+  }
+}
+
 export function checkQuestion(where: string, question: Question, payload: LangPayload, params: LangParams): string[] {
   const out: string[] = [];
   if (!question.repeatable || question.inputMode !== "tour") out.push(`${where}: must be a repeatable tour question`);
   if (!question.prompt || question.prompt.trim().split(/\s+/).length > PROMPT_WORDS) out.push(`${where}: prompt "${question.prompt}" is missing or too long`);
   if (!payload.explain || !payload.model?.id) out.push(`${where}: no teach line or model answer`);
   if (payload.lang !== params.lang) out.push(`${where}: wrong language`);
-  if (payload.tour === "lang-choose") out.push(...checkChoose(where, question, payload, params));
-  else if (payload.tour === "lang-pairs") out.push(...checkPairs(where, question, payload, params));
-  else if (payload.tour === "lang-build") out.push(...checkBuild(where, question, payload));
-  else if (question.answer !== TRACED || !params.alphabet.some((letter) => letter.id === payload.letter.id)) out.push(`${where}: bad trace question`);
+  out.push(...checkKind(where, question, payload, params));
   return out;
 }

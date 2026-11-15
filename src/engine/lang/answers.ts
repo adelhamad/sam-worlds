@@ -8,6 +8,11 @@ export function buildAnswer(tiles: string[], unit: "word" | "letter"): string {
   return tiles.join(unit === "word" ? " " : "");
 }
 
+/** spot: the word that was tapped, by its place in the sentence. */
+export function spotAnswer(index: number): string {
+  return `word:${index}`;
+}
+
 /** Arabic marks that are not letters (harakat, tatweel) — never part of a spelling tile. */
 const MARKS = /[ً-ْٰـ]/g;
 

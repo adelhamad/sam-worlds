@@ -32,7 +32,7 @@ export const U22: LangUnitPack = {
       words: [{ text: "أنا", roman: "ana" }, { text: "سام", roman: "saam" }],
       tip: "It's me, Sam! Say it when someone asks miin?",
     },
-    { id: "booseh", text: "بوسة", roman: "booseh", say: "بوسة", en: "A kiss", art: "heart", topic: "phone", like: ["bboosik"] },
+    { id: "booseh", text: "بوسة", roman: "booseh", say: "بوسة", en: "A kiss", art: "kiss", topic: "phone", like: ["bboosik"] },
     {
       id: "shu-am-tamli", text: "شو عم تعملي؟", roman: "shu ‘am ta‘mli?", say: "شو عَم تَعْمْلي", en: "What are you doing? (girl)",
       topic: "phone", like: ["shu-am-tamel"],

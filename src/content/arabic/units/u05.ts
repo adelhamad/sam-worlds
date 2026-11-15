@@ -34,7 +34,7 @@ export const U05: LangUnitPack = {
       id: "biddik", text: "بدِّك؟", roman: "biddik?", say: "بِدِّك", en: "Do you want? (to a girl)", topic: "want", like: ["biddak"],
       tip: "Ask a girl or a woman this way.",
     },
-    { id: "mayy", text: "مي", roman: "mayy", say: "مَيّ", en: "Water", art: "cup", topic: "want", tip: "Some families say mayyeh." },
+    { id: "mayy", text: "مي", roman: "mayy", say: "مَيّ", en: "Water", art: "water", topic: "want", tip: "Some families say mayyeh." },
     {
       id: "ma-biddi", text: "ما بدّي", roman: "ma biddi", say: "ما بِدّي", en: "I don't want", topic: "want",
       words: [{ text: "ما", roman: "ma" }, { text: "بدّي", roman: "biddi" }],

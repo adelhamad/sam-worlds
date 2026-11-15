@@ -25,7 +25,7 @@
   font-weight: 700;
   line-height: 1.55;
 }
-.tour .lx-roman { font-size: 0.78em; font-weight: 800; color: var(--t-ink-dim); line-height: 1.15; overflow-wrap: anywhere; }
+.tour .lx-roman { direction: ltr; unicode-bidi: isolate; font-size: 0.78em; font-weight: 800; color: var(--t-ink-dim); line-height: 1.15; overflow-wrap: anywhere; }
 .tour .ttile.is-selected .lx-roman { color: #a9e6f5; }
 .tour .lx-meaning { flex-direction: row; gap: 8px; text-align: center; }
 .tour .lx-en { min-width: 0; line-height: 1.15; overflow-wrap: anywhere; text-wrap: balance; }
@@ -182,6 +182,16 @@
 .tour .lx-tile.is-letter .lx-script { font-size: 1.9em; }
 .tour .lx-tile.is-used { opacity: 0.22; pointer-events: none; }
 .tour .lx-tile.is-placed { animation: t-pop 0.25s ease; }
+
+/* ---------- chat, spot, give, memory (first versions) ---------- */
+.tour .lx-chat-row { align-self: stretch; display: flex; flex-direction: column; gap: 4px; }
+.tour .lx-chat-row.is-me { align-items: flex-end; }
+.tour .lx-chat-reply { align-self: stretch; }
+.tour .lx-spot-line { align-self: stretch; }
+.tour .lx-give-pogo { font: inherit; color: inherit; display: flex; align-items: center; gap: 6px; background: none; border: none; cursor: pointer; }
+.tour .lx-memory-grid { align-self: stretch; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.tour .lx-memory-card { min-height: 96px; font-size: 16px; }
+.tour .lx-memory-card.is-down { background: var(--t-pogo-deep); border-color: var(--t-pogo); }
 
 /* ---------- trace ---------- */
 .tour .lx-trace { align-items: center; }

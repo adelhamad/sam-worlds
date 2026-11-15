@@ -124,9 +124,11 @@ About 11 phrases and 5–7 scenes per unit.
 - `words`: for every phrase of 2–5 words, the words in speaking order (Arabic: each with
   its `roman`). They must spell the `text` exactly (punctuation aside). This is what
   "build the sentence" uses — sentences in lesson 3 MUST have it.
-- `art`: only an icon name from `src/content/iconNames.ts`, only when it truly shows the
-  thing (water → `cup`, apple → `apple`). Most phrases have none. **Never an emoji** —
-  not in any string, anywhere.
+- `art`: an icon name from `src/content/iconNames.ts`, when it truly shows the thing
+  (water, apple, door, red, three). Give one to every single WORD that can be pictured:
+  "Give it to Pogo" (he asks for a thing, the child drags its picture to him) only runs
+  when a lesson knows three or more things with different pictures. Two different things
+  never share a picture. **Never an emoji** — not in any string, anywhere.
 - `tip`: ≤ 14 simple words; shown when the phrase is taught and when it is missed. Use it
   for the girl's form, a regional variant, when to say it, or how to answer it. Never
   the words "wrong", "fail" or "bad".
@@ -177,6 +179,19 @@ the phrase in its roman / French form.
 4. **Clips live only in IndexedDB on that device** (table `voiceClips`, db version 3).
    They are not in the localStorage safety mirror (too big), are not synced to another
    device, and a progress reset never clears them; only the Voices page deletes them.
+
+5. **Speaking practice** (Parent Section → Voices → "Speaking practice", SettingsRow
+   `speakPractice`, **off by default**). When on, each opening slide gets a round mic
+   button once the phrase has been heard: the child taps, says it (tap to stop, or it
+   stops by itself after 4 s), then hears the model (the parent's clip, else the device
+   voice) and then his own take, back to back; Pogo is always glad. Once per lesson, about
+   a third of the way in, a speaking break (an interlude like the gift — never judged,
+   pays nothing) asks for one of the lesson's phrases. **His takes are never stored**:
+   memory only, object URL revoked when the slide or break ends. One mic stream per
+   lesson, asked for on the child's first tap and released when the lesson screen closes.
+   If the mic is refused or missing, lessons silently look as with the switch off and the
+   Voices page says why. Code: `src/engine/feedback/speakBack.ts`, `recorder.ts`,
+   `src/modules/tour/lang/useSpeakTurn.ts`, `SpeakTurn.tsx`, `SpeakBreak.tsx`.
 
 `scripts/audit-voices.ts` checks the ranking on fixture voice lists and that every phrase
 and letter of every course has a clip key that round-trips.

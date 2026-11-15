@@ -84,7 +84,11 @@ export type LangTask =
   | "read" // read it in its own writing (no Latin help) → tap what it means
   | "pairs" // match phrases to meanings
   | "build" // put the words in order to say it
-  | "scene" // a real-life moment → tap what you would say
+  | "scene" // a real-life moment, as a chat → build what you would say from a word bank
+  | "dictate" // hear a phrase → build it from word tiles (no English shown)
+  | "give" // Pogo asks for a thing → drag the right picture to him
+  | "spot" // a sentence is shown, one word is heard → tap that word
+  | "memory" // cards face down → find each phrase and its meaning
   | "spell" // build a word from its letters
   | "trace" // write a letter with your finger
   | "sound" // see a letter → tap its sound
@@ -111,13 +115,16 @@ export interface LangParams {
   spell: Phrase[];
   /** Reading without Latin help is allowed in this lesson (later units). */
   reads: boolean;
+  /** Any short single word may be spelled from letter tiles (French always; Arabic once the letters are known). */
+  spellAny: boolean;
   /** A thing to do in real life after the lesson: "Say 'yislamo' to someone at home today." */
   mission?: string;
 }
 
 // ----------------------------------------------------------------- payloads
 
-export type LangKind = "lang-choose" | "lang-pairs" | "lang-build" | "lang-trace";
+export type LangKind =
+  | "lang-choose" | "lang-pairs" | "lang-build" | "lang-trace" | "lang-chat" | "lang-give" | "lang-spot" | "lang-memory";
 
 /** One face in a question: a phrase or a letter, with as much as the widget may show. */
 export interface LangCard {
@@ -197,6 +204,62 @@ export interface BuildPayload extends LangBase {
   tiles: LangTile[];
   /** The line fills from the right (Arabic). */
   rtl: boolean;
+  /** Dictation: the phrase is HEARD, its meaning is not shown — build what you hear. */
+  listen?: boolean;
+}
+
+/**
+ * A real-life moment as a chat: someone "sends" a line, the child builds the
+ * reply from a word bank. Several replies can be right: `accept` lists every
+ * one the bank can spell. answer = SAID (the widget submits chatVerdict()).
+ */
+export interface ChatPayload extends LangBase {
+  tour: "lang-chat";
+  /** The moment, in English. */
+  setup: string;
+  who?: { name: string; art?: IconName };
+  /** What they say to the child (shown and spoken). */
+  line?: LangCard;
+  /** The word bank: shuffled, decoys included. */
+  tiles: LangTile[];
+  /** Every right reply, as the tile texts in order. The first is the model answer. */
+  accept: string[][];
+  rtl: boolean;
+}
+
+/** Pogo asks for a thing; the child drags (or taps) the right picture to him. answer = the item's id. */
+export interface GivePayload extends LangBase {
+  tour: "lang-give";
+  /** What Pogo asks for: shown and spoken. */
+  ask: LangCard;
+  /** The things on the table: every card has a picture (`art`). Shuffled. */
+  items: LangCard[];
+}
+
+/** A sentence is shown; one of its words is heard — tap it. answer = spotAnswer(index). */
+export interface SpotPayload extends LangBase {
+  tour: "lang-spot";
+  /** The sentence, word by word, in speaking order. */
+  words: LangTile[];
+  /** Index (into `words`) of the word that is heard. */
+  heard: number;
+  rtl: boolean;
+}
+
+export interface MemoryCard {
+  /** Cards with the same `pair` belong together. */
+  pair: string;
+  side: "phrase" | "meaning";
+  card: LangCard;
+}
+
+/** Cards face down: find each phrase and its meaning. answer = FOUND (the widget submits memoryVerdict()). */
+export interface MemoryPayload extends LangBase {
+  tour: "lang-memory";
+  /** Two cards per pair, shuffled. */
+  cards: MemoryCard[];
+  /** Turns (two cards flipped) the child may take: generous — only wild guessing runs out. */
+  turns: number;
 }
 
 /** Write a letter with a finger. answer = TRACED. */
@@ -207,10 +270,15 @@ export interface TracePayload extends LangBase {
   guide: "guided" | "memory";
 }
 
-export type LangPayload = ChoosePayload | PairsPayload | BuildPayload | TracePayload;
+export type LangPayload =
+  | ChoosePayload | PairsPayload | BuildPayload | TracePayload | ChatPayload | GivePayload | SpotPayload | MemoryPayload;
 
 /** `question.answer` of every finished trace. */
 export const TRACED = "traced";
+/** `question.answer` of every chat: a reply the scene accepts was built. */
+export const SAID = "said";
+/** `question.answer` of every memory game: all pairs found within the turns. */
+export const FOUND = "found";
 
 /** Narrow a generic question to its language payload (null for everything else). */
 export function langPayload(q: Question | null | undefined): LangPayload | null {

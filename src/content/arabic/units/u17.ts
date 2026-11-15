@@ -26,7 +26,7 @@ export const U17: LangUnitPack = {
   },
   phrases: [
     { id: "dukkaan", text: "دكّان", roman: "dukkaan", say: "دُكّان", en: "Small shop", art: "shop", topic: "shop", tip: "dukkaan is a small shop. Some say dikkaan." },
-    { id: "kiis", text: "كيس", roman: "kiis", en: "Bag (for shopping)", topic: "shop", tip: "kiis is a shopping bag. A school bag is a shanTa." },
+    { id: "kiis", text: "كيس", roman: "kiis", en: "Bag (for shopping)", art: "bag", topic: "shop", tip: "kiis is a shopping bag. A school bag is a shanTa." },
     { id: "kiilo", text: "كيلو", roman: "kiilo", en: "A kilo", art: "scales", topic: "shop" },
     { id: "il-baai", text: "الباقي", roman: "il-baa’i", say: "الباءي", en: "The change (money back)", topic: "shop", tip: "il-baa’i is the money you get back." },
     {

@@ -121,3 +121,47 @@ export function speakIn(lang: SpokenLang, text: string, slow = false, voice = vo
     return false;
   }
 }
+
+/**
+ * Say `text` like speakIn and resolve when it is done (true) — or right away
+ * with false when there is no voice. iOS does not always fire `end`, so it
+ * also resolves after a generous guess of the length.
+ */
+export function speakInUntilDone(lang: SpokenLang, text: string, slow = false): Promise<boolean> {
+  const voice = voiceFor(lang);
+  if (!voice || !text.trim()) return Promise.resolve(false);
+  return new Promise((resolve) => {
+    let settled = false;
+    const finish = (spoke: boolean) => {
+      if (settled) return;
+      settled = true;
+      window.clearTimeout(cap);
+      resolve(spoke);
+    };
+    const cap = window.setTimeout(() => finish(true), 1500 + (text.length * 180) / speechRate(slow));
+    try {
+      const synth = window.speechSynthesis;
+      synth.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.voice = voice;
+      u.lang = voice.lang;
+      u.rate = speechRate(slow);
+      u.pitch = 1;
+      u.onend = () => finish(true);
+      u.onerror = () => finish(false);
+      synth.speak(u);
+    } catch {
+      finish(false);
+    }
+  });
+}
+
+/** Stop the device voice now (before the microphone opens: they clash on iOS). */
+export function hushSpeech(): void {
+  if (!speechSupported()) return;
+  try {
+    window.speechSynthesis.cancel();
+  } catch {
+    // ignore
+  }
+}

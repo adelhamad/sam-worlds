@@ -26,14 +26,14 @@ export const U08: LangUnitPack = {
   },
   phrases: [
     { id: "mabsoot", text: "مبسوط", roman: "mabSooT", say: "مَبْسوط", en: "Happy", art: "smile", topic: "feeling", tip: "A girl says mabSooTa." },
-    { id: "zalaan", text: "زعلان", roman: "za‘laan", say: "زَعْلان", en: "Upset, sad", topic: "feeling", tip: "A girl says za‘laaneh." },
+    { id: "zalaan", text: "زعلان", roman: "za‘laan", say: "زَعْلان", en: "Upset, sad", art: "sad", topic: "feeling", tip: "A girl says za‘laaneh." },
     {
-      id: "taabaan", text: "تعبان", roman: "ta‘baan", say: "تَعْبان", en: "Tired", topic: "feeling", like: ["nasaan", "mariid"],
+      id: "taabaan", text: "تعبان", roman: "ta‘baan", say: "تَعْبان", en: "Tired", art: "tired", topic: "feeling", like: ["nasaan", "mariid"],
       tip: "It also means not feeling well. A girl says ta‘baaneh.",
     },
-    { id: "nasaan", text: "نعسان", roman: "na‘saan", say: "نَعْسان", en: "Sleepy", topic: "feeling", like: ["taabaan"], tip: "A girl says na‘saaneh." },
-    { id: "khaayif", text: "خايف", roman: "khaayef", say: "خايِف", en: "Scared", topic: "feeling", tip: "A girl says khaayfeh." },
-    { id: "mariid", text: "مريض", roman: "mariiD", say: "مَريض", en: "Sick", topic: "feeling", like: ["taabaan"], tip: "A girl says mariiDa." },
+    { id: "nasaan", text: "نعسان", roman: "na‘saan", say: "نَعْسان", en: "Sleepy", art: "sleepy", topic: "feeling", like: ["taabaan"], tip: "A girl says na‘saaneh." },
+    { id: "khaayif", text: "خايف", roman: "khaayef", say: "خايِف", en: "Scared", art: "scared", topic: "feeling", tip: "A girl says khaayfeh." },
+    { id: "mariid", text: "مريض", roman: "mariiD", say: "مَريض", en: "Sick", art: "sick", topic: "feeling", like: ["taabaan"], tip: "A girl says mariiDa." },
     {
       id: "bhebbak", text: "بحبّك", roman: "bHibbak", say: "بْحِبَّك", en: "I love you (to a man)", art: "heart", topic: "feeling", like: ["bhebbik"],
       tip: "Say it to Baba or Jiddo.",

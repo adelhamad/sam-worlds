@@ -8,7 +8,11 @@ import "./lang.css";
 import { langPayload } from "../../../engine/lang/types";
 import type { ExerciseProps } from "../exercises/contract";
 import { LangBuild } from "./LangBuild";
+import { LangChat } from "./LangChat";
 import { LangChoose } from "./LangChoose";
+import { LangGive } from "./LangGive";
+import { LangMemory } from "./LangMemory";
+import { LangSpot } from "./LangSpot";
 import { LangPairs } from "./LangPairs";
 import { LangTrace } from "./LangTrace";
 
@@ -26,6 +30,14 @@ export function LangExercise(props: ExerciseProps) {
       return <LangPairs key={key} {...props} payload={payload} />;
     case "lang-build":
       return <LangBuild key={key} {...props} payload={payload} />;
+    case "lang-chat":
+      return <LangChat key={key} {...props} payload={payload} />;
+    case "lang-give":
+      return <LangGive key={key} {...props} payload={payload} />;
+    case "lang-spot":
+      return <LangSpot key={key} {...props} payload={payload} />;
+    case "lang-memory":
+      return <LangMemory key={key} {...props} payload={payload} />;
     default:
       return <LangTrace key={key} {...props} payload={payload} />;
   }
