@@ -12,7 +12,7 @@ export function phraseCard(phrase: Phrase): LangCard {
 }
 
 export function letterCard(letter: LetterCard): LangCard {
-  return { id: letter.id, text: letter.char, roman: letter.name, say: letter.say ?? letter.char, en: letter.sound, letter: true };
+  return { id: letter.id, text: letter.draw ?? letter.char, roman: letter.name, say: letter.say ?? letter.char, en: letter.sound, letter: true };
 }
 
 /** Compared without punctuation and without Arabic vowel marks. */

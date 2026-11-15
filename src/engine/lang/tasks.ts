@@ -176,7 +176,8 @@ export function spell(env: Env, phrase: Phrase): Question | null {
     : env.params.spell.flatMap((other) => lettersOf(other.text));
   const spare = [...new Set(shuffle(env.rng, source))].filter((letter) => !inWord.has(letter.toLowerCase()));
   const decoys = spare.slice(0, env.ctx.easier ? 1 : 2);
-  const tiles = [...letters, ...decoys].map((text): LangTile => ({ text, say: "" }));
+  const drawn = new Map(env.params.alphabet.filter((letter) => letter.draw).map((letter) => [letter.char, letter.draw as string]));
+  const tiles = [...letters, ...decoys].map((text): LangTile => ({ text, say: "", ...(drawn.has(text) ? { show: drawn.get(text) } : {}) }));
   return make("spell", phrase.id, LANG.engine.spell, buildAnswer(letters, "letter"), {
     ...base(env, "spell", phrase.id, phraseCard(phrase), means(phrase), phrase.tip), tour: "lang-build",
     unit: "letter", hero: phraseCard(phrase), tiles: scramble(env.rng, tiles, letters), rtl: env.params.lang === "ar",

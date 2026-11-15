@@ -68,7 +68,7 @@ export function LangBuild({ payload, disabled, onDraft }: WidgetProps<BuildPaylo
             disabled={disabled || placed.includes(index)} data-testid={`lang-tile-${index}`} data-text={tile.text}
             onClick={() => place(index)}
           >
-            <Script text={tile.text} lang={payload.lang} />
+            <Script text={tile.show ?? tile.text} lang={payload.lang} />
             {tile.roman && <span className="lx-roman">{tile.roman}</span>}
           </button>
         ))}

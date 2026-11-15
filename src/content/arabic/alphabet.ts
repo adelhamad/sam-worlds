@@ -30,7 +30,8 @@ export const ARABIC_ALPHABET: LetterCard[] = [
   { id: "laam", char: "ل", name: "laam", sound: "l", say: "لام" },
   { id: "miim", char: "م", name: "miim", sound: "m", say: "ميم" },
   { id: "nuun", char: "ن", name: "nuun", sound: "n", say: "نون" },
-  { id: "haa", char: "ه", name: "haa", sound: "h", say: "هاء" },
+  // The font draws a lone ه as a knot; ە is the same font's round form, the one schoolbooks teach.
+  { id: "haa", char: "ه", draw: "ە", name: "haa", sound: "h", say: "هاء" },
   { id: "waaw", char: "و", name: "waaw", sound: "w or oo", say: "واو" },
   { id: "yaa", char: "ي", name: "yaa", sound: "y or ee", say: "ياء" },
 ];

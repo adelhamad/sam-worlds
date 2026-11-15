@@ -66,6 +66,9 @@ export interface LetterCard {
   id: string;
   /** The letter itself (isolated form). */
   char: string;
+  /** What to draw for the letter standing alone, when the font's own isolated form is not
+   * the one children are taught (the round ه). Never used inside words. */
+  draw?: string;
   /** Its name in Latin letters: "baa". */
   name: string;
   /** How it sounds, one short hint: "b". */
@@ -176,6 +179,8 @@ export interface PairsPayload extends LangBase {
 
 export interface LangTile {
   text: string;
+  /** What the tile shows, when a lone letter is drawn in another form than `text` (the round ه). */
+  show?: string;
   roman?: string;
   /** What the voice reads when the tile is tapped. */
   say: string;
