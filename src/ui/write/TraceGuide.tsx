@@ -12,7 +12,7 @@ export function GlyphLetter({ glyph, className = "write-letter" }: { glyph: Glyp
   return (
     <text className={className} x={glyph.x} y={font.baseline} fontFamily={`"${font.family}"`} fontWeight={font.weight}
       fontSize={font.size} textAnchor="middle" direction="rtl" lang="ar">
-      {glyph.char}
+      {glyph.draw ?? glyph.char}
     </text>
   );
 }

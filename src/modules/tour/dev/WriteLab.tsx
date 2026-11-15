@@ -83,7 +83,7 @@ function TraceBench({ letterId, guide, auto, onGuide }: { letterId: string; guid
   return (
     <section style={{ display: "flex", flexDirection: "column", gap: 12 }} data-testid="write-trace">
       <div style={css.bar}>
-        <strong style={{ fontSize: 22 }}>{letter.char} {letter.name}</strong>
+        <strong style={{ fontSize: 22 }}>{letter.glyph.draw ?? letter.char} {letter.name}</strong>
         <span style={{ color: "var(--t-ink-dim)" }}>sounds like: {letter.sound}</span>
       </div>
       <div style={css.bar}>

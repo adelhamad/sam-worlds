@@ -7,7 +7,8 @@
 //   comp: "body" — the largest ink shape; "mark" — the largest non-dot shape
 //         after it (kaf's small inner mark).
 //   via:  { end: "top" | [x, y] } a line end, { at: [x, y] } any skeleton
-//         point, { fork: [x, y] } a branch point.
+//         point, { fork: [x, y] } a branch point, { apex: "top" } (first only) a
+//         pointed tip of the ink the skeleton does not reach.
 //
 // Dots are not listed: every dot-shaped ink blob becomes a `dot` stroke after
 // the line strokes, ordered right to left; in the three-dot triangle of ث ش
@@ -54,12 +55,12 @@ const FA = [line(...headLoop([777, 450], [672, 484], [609, 375], [688, 284]), { 
 const QAF = [line(...headLoop([706, 516], [625, 523], [544, 430], [617, 352]), { end: "left" })];
 const WAW = [line(...headLoop([583, 570], [484, 570], [425, 500], [508, 398]), { end: "bottom" })];
 /**
- * ه — Noto's isolated heh is the Naskh "knot". One stroke: from the top, round
- * the right lobe and along the bottom, up round the left lobe to the top
- * (clockwise, as the round ه is taught), then down the middle and out along the tail.
+ * ه — drawn as the round heh children are taught (ە, see letters.mjs): one
+ * stroke from the pointed tip at the top, right and down the right side, left
+ * along the bottom, up the left side and closed back at the top (clockwise —
+ * the Commons animation and Sakkal's chart agree). No tail, no retracing.
  */
-const HA = [line({ end: "top" }, { at: [680, 500] }, { at: [609, 570] }, { fork: [523, 544] }, { fork: [472, 544] }, { at: [430, 438] },
-  { fork: [505, 339] }, { fork: [581, 402] }, { at: [555, 469] }, { fork: [523, 544] }, { fork: [472, 544] }, { end: "left" })];
+const HA = [line({ apex: "top" }, { at: [500, 350] }, { at: [600, 471] }, { at: [500, 564] }, { at: [414, 486] }, { at: [500, 350] })];
 
 export const RECIPES = {
   alif: [ends("top", "bottom")],

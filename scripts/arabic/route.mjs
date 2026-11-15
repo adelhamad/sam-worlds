@@ -38,6 +38,11 @@ function extreme(pixels, w, [dx, dy]) {
  *   { end: [x, y] }        the line end nearest a design-box point
  *   { at: [x, y] }         the skeleton pixel nearest a design-box point
  *   { fork: [x, y] }       the branch point nearest a design-box point
+ *   { apex: "top" }        (first waypoint only) the pointed tip of the ink in that
+ *                          direction — for a stroke that starts in a sharp corner the
+ *                          skeleton does not reach (the top of the round ه); the stroke
+ *                          runs straight from just inside the tip to the nearest
+ *                          skeleton point, then on along the skeleton
  */
 export function snap(waypoint, skel, w, scale) {
   let pool = skel.list;
@@ -177,15 +182,28 @@ function extendEnd(points, inside, radius, scale) {
   return [...added.reverse(), ...body];
 }
 
+/** A straight lead-in from just inside a pointed tip of the ink to skeleton pixel `pin`. */
+function apexLeadIn(direction, pin, ctx) {
+  const { pixels, w, scale, inkDepth, radius } = ctx;
+  const [ax, ay] = xy(extreme(pixels, w, DIRS[direction]), w).map((v) => v / scale);
+  const [bx, by] = xy(pin, w).map((v) => v / scale);
+  const lead = resample([[ax, ay], [bx, by]], 1);
+  const first = lead.findIndex(([x, y]) => inkDepth(x * scale, y * scale) >= radius * 0.5 * scale);
+  return lead.slice(Math.max(0, first), -1);
+}
+
 /** Builds one `line` stroke (design units) from its recipe waypoints. */
 export function routeStroke(recipe, ctx) {
   const { skel, w, scale, inkDepth, radius } = ctx;
-  const pins = recipe.via.map((wp) => snap(wp, skel, w, scale));
+  const apex = recipe.via[0].apex;
+  const via = apex ? recipe.via.slice(1) : recipe.via;
+  const pins = via.map((wp) => snap(wp, skel, w, scale));
   let pixels = [pins[0]];
   for (let i = 1; i < pins.length; i++) pixels = pixels.concat(shortestPath(skel.img, w, pins[i - 1], pins[i]).slice(1));
   let points = pixels.map((p) => xy(p, w)).map(([x, y]) => [x / scale, y / scale]);
+  if (apex) points = [...apexLeadIn(apex, pins[0], ctx), ...points];
   points = resample(points, 1);
-  if (recipe.via[0].end) points = extendEnd(points, inkDepth, radius, scale);
+  if (via[0].end && !apex) points = extendEnd(points, inkDepth, radius, scale);
   if (recipe.via[recipe.via.length - 1].end) points = extendEnd(points.slice().reverse(), inkDepth, radius, scale).reverse();
   points = smooth(resample(points, 2), 2.5);
   return resample(points, 10).map(([x, y]) => [Math.round(x), Math.round(y)]);

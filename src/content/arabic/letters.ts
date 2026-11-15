@@ -58,6 +58,19 @@ export const ARABIC_LETTERS: ArabicLetter[] = LETTER_INFO.map(([id, name, sound]
 
 export const ARABIC_LETTER_BY_ID: ReadonlyMap<string, ArabicLetter> = new Map(ARABIC_LETTERS.map((letter) => [letter.id, letter]));
 
+const DRAWN_BY_CHAR: ReadonlyMap<string, string> = new Map(
+  ARABIC_LETTERS.filter((letter) => letter.glyph.draw).map((letter) => [letter.char, letter.glyph.draw as string]),
+);
+
+/**
+ * How to show a letter standing alone: its `draw` form when the font's own
+ * isolated glyph is not the school form (ه → the round ە), else the char itself.
+ * For single isolated letters only (cards, tiles) — never inside words.
+ */
+export function drawnChar(char: string): string {
+  return DRAWN_BY_CHAR.get(char) ?? char;
+}
+
 /** The tracer glyph of a letter id (throws on an unknown id). */
 export function arabicGlyph(id: string): GlyphStrokes {
   const letter = ARABIC_LETTER_BY_ID.get(id);

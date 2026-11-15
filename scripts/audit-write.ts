@@ -17,7 +17,7 @@
 //   plus traceVerdict's done / slips / order rules.
 import crypto from "node:crypto";
 import fs from "node:fs";
-import { ARABIC_BOX, ARABIC_LETTERS } from "../src/content/arabic/letters";
+import { ARABIC_BOX, ARABIC_LETTERS, drawnChar } from "../src/content/arabic/letters";
 import { ARABIC_FONT_SHA256 } from "../src/content/arabic/strokes.gen";
 import { mulberry32 } from "../src/engine/rng";
 import { judgeGlyphStroke } from "../src/engine/write/judge";
@@ -50,21 +50,28 @@ function family(groups: string[][], a: string, b: string): boolean {
 
 function checkData(failures: string[]): void {
   const ids = ARABIC_LETTERS.map((letter) => letter.id);
+  // The round school ه: the letter stays U+0647, the tracer draws the font's round U+06D5.
+  const ha = ARABIC_LETTERS.find((letter) => letter.id === "ha");
+  if (ha?.char !== "\u0647" || ha.glyph.draw !== "\u06D5" || ha.glyph.strokes.length !== 1) failures.push("write/ha: must be ه drawn as the round ە, one stroke");
   if (ids.join() !== ORDER.join()) failures.push(`write: letters out of alphabet order: ${ids.join(" ")}`);
   const sha = crypto.createHash("sha256").update(fs.readFileSync(FONT_FILE)).digest("hex");
   if (sha !== ARABIC_FONT_SHA256) failures.push("write: the Arabic font file changed — run node scripts/build-arabic-strokes.mjs");
-  for (const letter of ARABIC_LETTERS) {
-    const g = letter.glyph;
-    const label = `write/${letter.id}`;
-    if (!letter.name.trim() || !letter.sound.trim() || [...letter.char].length !== 1) failures.push(`${label}: missing name, sound or char`);
-    if (!g.strokes.length || g.strokes[0].kind !== "line") failures.push(`${label}: must start with a line stroke`);
-    let seenDot = false;
-    for (const [i, s] of g.strokes.entries()) {
-      if (s.kind === "dot") seenDot = true;
-      else if (seenDot) failures.push(`${label}: line stroke ${i + 1} after a dot`);
-      if (s.kind === "dot" ? s.points.length !== 1 : s.points.length < 4) failures.push(`${label}: stroke ${i + 1} has ${s.points.length} points`);
-      if (s.points.some(([x, y]) => !(x >= 0 && y >= 0 && x <= ARABIC_BOX && y <= ARABIC_BOX))) failures.push(`${label}: stroke ${i + 1} leaves the box`);
-    }
+  for (const letter of ARABIC_LETTERS) checkLetterData(failures, letter);
+}
+
+function checkLetterData(failures: string[], letter: (typeof ARABIC_LETTERS)[number]): void {
+  const g = letter.glyph;
+  const label = `write/${letter.id}`;
+  if (!letter.name.trim() || !letter.sound.trim() || [...letter.char].length !== 1) failures.push(`${label}: missing name, sound or char`);
+  if (g.draw !== undefined && ([...g.draw].length !== 1 || g.draw === letter.char)) failures.push(`${label}: draw must be one other character`);
+  if (drawnChar(letter.char) !== (g.draw ?? letter.char)) failures.push(`${label}: drawnChar disagrees with the glyph`);
+  if (!g.strokes.length || g.strokes[0].kind !== "line") failures.push(`${label}: must start with a line stroke`);
+  let seenDot = false;
+  for (const [i, s] of g.strokes.entries()) {
+    if (s.kind === "dot") seenDot = true;
+    else if (seenDot) failures.push(`${label}: line stroke ${i + 1} after a dot`);
+    if (s.kind === "dot" ? s.points.length !== 1 : s.points.length < 4) failures.push(`${label}: stroke ${i + 1} has ${s.points.length} points`);
+    if (s.points.some(([x, y]) => !(x >= 0 && y >= 0 && x <= ARABIC_BOX && y <= ARABIC_BOX))) failures.push(`${label}: stroke ${i + 1} leaves the box`);
   }
 }
 

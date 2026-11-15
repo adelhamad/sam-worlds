@@ -80,7 +80,7 @@ function buildLetter(letter, mask, layoutX) {
   const { body, dots, marks } = classify(components(mask, w, w));
   const comps = { body, mark: marks[0] };
   const skeletons = {};
-  const debug = { id: letter.id, char: letter.char, x: layoutX, skeleton: [], ends: [], forks: [] };
+  const debug = { id: letter.id, char: letter.draw ?? letter.char, x: layoutX, skeleton: [], ends: [], forks: [] };
   for (const [name, comp] of Object.entries(comps)) {
     if (!comp) continue;
     const skel = prune(thin(comp.pixels, w, w), w, inside, PRUNE);
@@ -100,7 +100,7 @@ function buildLetter(letter, mask, layoutX) {
     const skel = skeletons[recipe.comp];
     if (!skel) throw new Error(`${letter.id}: no "${recipe.comp}" shape in the glyph`);
     const own = medianRadius(skel);
-    return { kind: "line", radius: own, points: routeStroke(recipe, { skel, w, scale: SCALE, inkDepth, radius: own }) };
+    return { kind: "line", radius: own, points: routeStroke(recipe, { skel, pixels: comps[recipe.comp].pixels, w, scale: SCALE, inkDepth, radius: own }) };
   });
   const strokes = [...lines, ...dots.map((c) => dotStroke(c, w)).sort(dotOrder)];
   const geometry = checkGeometry({ strokes, mask, outside, w, scale: SCALE, radius });
@@ -121,7 +121,8 @@ function render(layout, built, fontSha) {
     `// Shape source: @fontsource-variable/noto-sans-arabic ${pkg.version}, ${path.basename(FONT_FILE)}.`,
     "// Order and direction: scripts/arabic/recipes.mjs, documented in docs/ARABIC_WRITING.md.",
     "// Units: a 1000 × 1000 design box, y down. Draw the guide letter with ARABIC_FONT at",
-    "// (x, baseline), text-anchor middle, and it lines up with these strokes exactly.",
+    "// (x, baseline), text-anchor middle, and it lines up with these strokes exactly. Draw `draw`",
+    "// instead of `char` when a letter has one (the font's own glyph for `char` is not the school form).",
     'import type { GlyphFont, RawGlyph } from "../../engine/write/types";',
     "",
     `export const ARABIC_FONT_SHA256 = "${fontSha}";`,
@@ -131,7 +132,8 @@ function render(layout, built, fontSha) {
     "export const ARABIC_STROKES: Record<string, RawGlyph> = {",
   ];
   for (const b of built) {
-    lines.push(`  ${b.id}: { char: "${b.char}", x: ${b.x}, width: ${Math.round(b.radius * 2)}, strokes: [`);
+    const draw = b.draw ? ` draw: "${b.draw}",` : "";
+    lines.push(`  ${b.id}: { char: "${b.char}",${draw} x: ${b.x}, width: ${Math.round(b.radius * 2)}, strokes: [`);
     for (const s of b.strokes) lines.push(`    ${fmtStroke(s)},`);
     lines.push("  ] },");
   }
@@ -145,7 +147,8 @@ const { browser, page } = await openFontPage(ROOT);
 const failures = [];
 const built = [];
 try {
-  const metrics = await measureLetters(page, LETTERS.map((l) => l.char), WEIGHT);
+  // Shapes come from what is drawn: `draw` when the font's glyph for `char` is not the school form.
+  const metrics = await measureLetters(page, LETTERS.map((l) => l.draw ?? l.char), WEIGHT);
   const layout = layoutFor(metrics);
   console.log(`font ${FONT_FAMILY} ${WEIGHT}, size ${layout.size}, baseline ${layout.baseline} (box ${BOX})`);
   console.log("on-ink: how far any stroke sample strays off the ink (0 = on the font's own skeleton, by construction);");
@@ -154,7 +157,7 @@ try {
   for (const [i, letter] of LETTERS.entries()) {
     const m = metrics[i];
     const x = Math.round((BOX / 2 + ((m.left - m.right) / 2) * (layout.size / 1000)) * 10) / 10;
-    const mask = await rasterLetter(page, { char: letter.char, x, baseline: layout.baseline, fontSize: layout.size, weight: WEIGHT, box: BOX, scale: SCALE });
+    const mask = await rasterLetter(page, { char: letter.draw ?? letter.char, x, baseline: layout.baseline, fontSize: layout.size, weight: WEIGHT, box: BOX, scale: SCALE });
     const r = buildLetter(letter, mask, x);
     const lines = r.strokes.filter((s) => s.kind === "line").length;
     const g = r.geometry;

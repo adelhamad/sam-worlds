@@ -37,7 +37,7 @@ function useFontReady(glyph: GlyphStrokes): boolean {
     const done = () => {
       if (alive) setReady(true);
     };
-    document.fonts.load(spec, glyph.char).then(done, done);
+    document.fonts.load(spec, glyph.draw ?? glyph.char).then(done, done);
     return () => {
       alive = false;
     };

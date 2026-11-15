@@ -23,7 +23,13 @@ export interface GlyphFont {
 
 /** One letter as the stroke builder writes it (src/content/arabic/strokes.gen.ts). */
 export interface RawGlyph {
+  /** The letter (isolated form) — its identity; lessons join letters to strokes on it. */
   char: string;
+  /**
+   * The character to render and derive strokes from, when the font's glyph for
+   * `char` is not the school form (ه → ە, the round heh). Absent: draw `char`.
+   */
+  draw?: string;
   /** Where the text is anchored (text-anchor middle / textAlign center), design units. */
   x: number;
   /** The font's stroke width for this letter, design units. */

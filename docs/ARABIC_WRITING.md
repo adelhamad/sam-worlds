@@ -16,6 +16,9 @@ every letter, so it can be checked at a glance.
   body to a one-pixel skeleton (Zhang–Suen), prunes spurs and joins hand-written waypoints by
   the shortest path **along the skeleton**. Ends that were cut square are pushed back out to
   the end of the ink; the line is smoothed and resampled every 10 units.
+- **What is drawn**: a letter may name a `draw` character when the font's own glyph for it is not
+  the school form — only ه, drawn as the round ە (U+06D5) of the same font. The guide letter and the
+  strokes both use it, so they still coincide; the letter's identity stays `char`.
 - **Order and direction** are the only hand-written part: `scripts/arabic/recipes.mjs`. A recipe
   says where a stroke starts (for example "the top-right end"), which waypoints it passes (so
   loops go round the right way) and where it ends. Dots are found automatically and ordered by
@@ -35,7 +38,7 @@ node scripts/build-arabic-strokes.mjs --check         # fail if the committed fi
 node scripts/build-arabic-strokes.mjs --debug DIR     # skeleton + stroke sheets for recipe work
 ```
 
-Design box: 1000 × 1000 units, y down. The glyph is drawn with `ARABIC_FONT` (family
+Design box: 1000 × 1000 units, y down. The glyph (`draw ?? char`) is drawn with `ARABIC_FONT` (family
 "Noto Sans Arabic Variable", weight 500, size 678 units, baseline at y = 603) at the
 letter's own `x` with a centred anchor (`text-anchor="middle"`), so every letter's ink is
 centred in the box and all letters share one baseline and one size.
@@ -45,7 +48,10 @@ centred in the box and all letters share one baseline and one size.
 Reference: the Wikimedia Commons stroke-order animations of the Arabic letters
 ("Lettre NN …" series, simple school handwriting), cross-checked with Mamoun Sakkal's Naskh
 alphabet chart (sakkal.com, start dots and arrows) and the Alifbee letter guides. Where they
-disagree it is said below. General rules: the body first, as one continuous stroke where the
+disagree it is said below. The closed loops were re-read frame by frame: ف and ق — both Commons
+and Sakkal start at the bottom right of the head and go left along its bottom first (clockwise);
+و — Commons the same, Sakkal has no arrows for و; the round ه — both start at the top and go
+right and down first (clockwise). General rules: the body first, as one continuous stroke where the
 letter allows, starting at its top or right; then dots and marks. Closed loops (ص ض ط ظ ف ق م و ه)
 go **clockwise** on the page; the open heads of ع غ and the bowls of ج ح خ go anticlockwise.
 Dots: right to left; in the three-dot triangle of ث ش the bottom pair first (right, then
@@ -78,7 +84,7 @@ left), then the top dot.
 | ل | laam | 1 | From the top down, round the bowl to the left and up to the tip. |
 | م | meem | 1 | From the left end of the head, up and over to the right, down and back left along its bottom (clockwise), then straight down the tail. |
 | ن | noon | 2 | From the right tip, down round the bowl to the left tip. Then the dot. |
-| ه | haa | 1 | From the top: down the right, round the right lobe and along the bottom, up round the left lobe to the top (clockwise, as the round ه is taught), then down the middle and out along the tail to the left. |
+| ه | haa | 1 | Drawn round, as schoolbooks show it. From the pointed top: right and down the right side, left along the bottom, up the left side and closed back at the top (clockwise). No tail. |
 | و | waaw | 1 | Head first: from where it meets the tail (its bottom right), left along its bottom, up, over the top and down the right side (clockwise); then down the tail, curving left below the line. |
 | ي | yaa | 3 | From the top-right tip, left and down, swinging back to the right (a reversed "s"), then down and round the big bowl to the left tip. Dots below: right, then left. |
 
@@ -90,9 +96,10 @@ Hamza (ء) is not one of the 28 letters here; harakat, joined forms and digits a
   Commons animation draws the upright first and runs into the loop in one stroke; Sakkal marks
   both starts without an order. A parent may prefer the other order.
 - **ك's inner mark**: no source shows how it is drawn; top-right to bottom-left is our choice.
-- **ه**: Noto Sans Arabic's isolated heh is the Naskh "knot", not the round heh most worksheets
-  show. The route (one stroke, both lobes clockwise, then out along the tail) follows the round
-  heh's clockwise rule; it retraces two short pieces in the middle. A native writer should check it.
+- **ه** is drawn and traced as the round heh children are taught: the tracer renders and derives
+  strokes from `draw` (U+06D5 ە, the same font's round form) because Noto Sans Arabic draws a lone
+  U+0647 as the Naskh "knot"; the letter itself stays ه (`char`). Lessons showing a lone letter use
+  `drawnChar(char)`.
 - **ع head**: Sakkal starts the head at its left; the Commons animation and Alifbee start at the
   top-right tip like a "c". We follow the latter.
 - **ث ش dots**: Commons draws the bottom pair first, then the top; some teachers do top first.
@@ -131,7 +138,7 @@ start dot, the look-alikes د/ذ vs ر/ز.
 ## Using it in a lesson
 
 ```tsx
-import { arabicGlyph, ARABIC_LETTERS } from "src/content/arabic/letters";
+import { arabicGlyph, ARABIC_LETTERS, drawnChar } from "src/content/arabic/letters";
 import { TraceCanvas } from "src/ui/write/TraceCanvas";
 import { TRACE_DONE } from "src/engine/write";
 
