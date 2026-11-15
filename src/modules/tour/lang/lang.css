@@ -4,7 +4,7 @@
    left; its Latin spelling sits under it, small. */
 @import "@fontsource-variable/noto-sans-arabic";
 
-.tour .lx { gap: 12px; }
+.tour .tx.lx { gap: 12px; }
 .tour .lx-hero, .tour .lx-opts, .tour .lx-pairs, .tour .lx-line-row, .tour .lx-tray, .tour .lx-help { align-self: stretch; }
 .tour .lx-help {
   margin: 0;
@@ -268,6 +268,24 @@
   .tour .lx-opts.is-grid .lx-opt { min-height: 104px; }
   .tour .lx-pair { font-size: 19px; min-height: 78px; }
   .tour .lx-speaker.is-big { width: 148px; height: 148px; }
+}
+/* a phone on its side: the question on the left, the answers on the right */
+@media (max-height: 520px) and (min-width: 640px) {
+  .tour .tx.lx-choose, .tour .tx.lx-build {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    align-items: center;
+    column-gap: 16px;
+    row-gap: 8px;
+    max-width: 780px;
+  }
+  .tour .lx-choose > .lx-hero, .tour .lx-build > .lx-hero { grid-column: 1; grid-row: 1 / span 3; }
+  .tour .lx-choose > :not(.lx-hero), .tour .lx-build > :not(.lx-hero) { grid-column: 2; }
+  .tour .lx-help { display: none; }
+  .tour .tx.lx-pairs-wrap { max-width: 780px; }
+  .tour .lx-pair { min-height: 48px; padding: 4px 10px; }
+  .tour .lx-built { min-height: 60px; }
+  .tour .lx-tile { min-height: 50px; }
 }
 @media (max-height: 520px) {
   .tour .lx-hero { min-height: 60px; padding: 8px 12px; font-size: 19px; }
