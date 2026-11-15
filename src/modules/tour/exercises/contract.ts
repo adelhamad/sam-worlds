@@ -2,7 +2,7 @@
 import type { Question } from "../../../engine/generators/types";
 
 /** Kinds that submit by themselves (no CHECK button). */
-const SELF_SUBMITTING = new Set(["pairs", "kit-pairs", "chess-mission", "code-run", "code-debug", "lang-pairs", "lang-trace"]);
+const SELF_SUBMITTING = new Set(["pairs", "kit-pairs", "chess-mission", "code-run", "code-debug", "lang-pairs", "lang-trace", "lang-give", "lang-memory"]);
 
 export function selfSubmitting(question: Question): boolean {
   const kind = (question.payload as { tour?: unknown } | undefined)?.tour;

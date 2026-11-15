@@ -94,6 +94,8 @@ export function defineLangCourse(seed: LangCourseSeed): Course {
         alphabet: [...alphabet],
         spell: phrases(lesson.spell, where),
         reads: unitIndex + 1 >= (seed.readsFromUnit ?? Infinity),
+        // Latin letters are known from the start; Arabic words are spelled once reading has begun.
+        spellAny: seed.lang !== "ar" || unitIndex + 1 >= (seed.readsFromUnit ?? Infinity),
         ...(lesson.mission ? { mission: lesson.mission } : {}),
       };
       for (const phrase of teach) if (!taught.includes(phrase)) taught.push(phrase);

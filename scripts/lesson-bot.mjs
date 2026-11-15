@@ -192,6 +192,21 @@ const SOLVERS = {
       await sleep(160);
     }
   },
+  "lang-chat": async (q, p) => {
+    for (const part of p.accept[0]) {
+      await page.evaluate((text) => [...document.querySelectorAll("[data-testid^=lang-tile-]")].find((el) => el.dataset.text === text && !el.disabled)?.click(), part);
+      await sleep(160);
+    }
+  },
+  "lang-give": async (q) => { await tid(`lang-item-${q.answer}`); await sleep(250); await tid("lang-give-pogo"); await sleep(500); },
+  "lang-spot": async (q) => tid(`lang-word-${q.answer.split(":")[1]}`),
+  "lang-memory": async (q, p) => {
+    for (const pair of [...new Set(p.cards.map((card) => card.pair))]) {
+      const [a, b] = p.cards.map((card, index) => (card.pair === pair ? index : -1)).filter((index) => index >= 0);
+      await tid(`lang-mem-${a}`); await sleep(250); await tid(`lang-mem-${b}`); await sleep(700);
+    }
+    await sleep(900);
+  },
   "lang-trace": async (q, p) => {
     // Wait for the "watch" demo, then write every stroke with a (steady) finger.
     for (let i = 0; i < 80 && (await page.evaluate(() => document.querySelector("[data-testid=trace-canvas]")?.dataset.watching)) !== "0"; i++) await sleep(250);
@@ -272,7 +287,7 @@ async function waitForRun() {
 
 /** CONTINUE / GOT IT on the feedback sheet (never an answer card that happens to say "continue"). */
 const SHEET_BUTTON = ".tl-sheet .tl-main-btn:not(:disabled)";
-const SELF_SUBMITTING = new Set(["pairs", "kit-pairs", "chess-mission", "code-run", "code-debug", "lang-pairs", "lang-trace"]);
+const SELF_SUBMITTING = new Set(["pairs", "kit-pairs", "chess-mission", "code-run", "code-debug", "lang-pairs", "lang-trace", "lang-give", "lang-memory"]);
 
 /** Tap through a gift or a cheer if one is showing. */
 async function passInterludes() {

@@ -7,6 +7,7 @@
 import type { GenContext, GeneratorParams, Question } from "../generators/types";
 import { isFresh, kitKeys, subjectKey } from "../kit/sample";
 import { mulberry32, pick, shuffle, type RNG } from "../rng";
+import * as play from "./playTasks";
 import * as tasks from "./tasks";
 import { langPayload, type LangLessonKind, type LangParams, type LangTask, type LetterCard, type Phrase } from "./types";
 
@@ -19,17 +20,25 @@ export interface LangReplace {
 
 export type LangSessionParams = LangParams & { replace?: LangReplace };
 
+/**
+ * How a lesson is mixed. The hands-on tasks (build, dictate, chat, give, spot,
+ * spell, trace, memory) carry the lesson; "tap one card" (hear, say, read,
+ * sound, find) is the small rest — a word's first meeting, mostly.
+ */
 const WEIGHTS: Record<LangLessonKind, Partial<Record<LangTask, number>>> = {
-  words: { hear: 3, say: 3, pairs: 2, build: 2, scene: 1, read: 1 },
-  talk: { scene: 4, build: 3, say: 2, hear: 1, pairs: 1 },
-  letters: { trace: 4, sound: 2, find: 2, spell: 3, read: 2, hear: 1, say: 1 },
-  review: { hear: 2, say: 2, pairs: 2, build: 2, scene: 2, read: 2, spell: 1, trace: 1 },
+  words: { hear: 2, give: 2, pairs: 1.5, memory: 1, build: 2, dictate: 1.5, spot: 1, spell: 1.5, scene: 1, say: 0.5, read: 0.5 },
+  talk: { scene: 4, build: 2, dictate: 2, spot: 1.5, give: 0.5, hear: 0.5, pairs: 0.5 },
+  letters: { trace: 4, spell: 3, dictate: 1, build: 1, sound: 1, find: 1, read: 0.5, memory: 0.5, give: 0.5 },
+  review: { scene: 2, build: 2, dictate: 2, spot: 1, give: 1, spell: 1, memory: 1, pairs: 1, hear: 1, trace: 1, read: 0.5 },
 };
 
+/** A lesson never has more than this many of a task (the long or samey ones). */
+const CAPS: Partial<Record<LangTask, number>> = { memory: 1, give: 2, pairs: 2, hear: 3, say: 1, read: 1 };
+
 /** Gentlest first: what a lesson opens with. */
-const OPENERS: LangTask[] = ["hear", "trace", "sound", "pairs", "say", "find", "read", "scene", "build", "spell"];
+const OPENERS: LangTask[] = ["hear", "trace", "give", "sound", "pairs", "find", "say", "read", "memory", "spot", "dictate", "scene", "build", "spell"];
 /** What a lesson ends on: making something. */
-const CLOSERS: LangTask[] = ["build", "scene", "spell", "say", "trace"];
+const CLOSERS: LangTask[] = ["scene", "build", "dictate", "spell", "trace", "give", "say"];
 const RECENT = 16;
 const TRIES = 14;
 
@@ -37,18 +46,41 @@ const TRIES = 14;
 export function lessonTasks(params: LangParams): LangTask[] {
   const phrases = params.teach.length + params.review.length;
   const out: LangTask[] = [];
-  if (phrases >= 3) out.push("hear", "say", "pairs");
+  const pool = [...params.review, ...params.teach];
+  if (phrases >= 3) out.push("hear", "say", "pairs", "memory");
   if (phrases >= 3 && params.reads) out.push("read");
-  if (tasks.buildable([...params.teach, ...params.review]).length) out.push("build");
+  if (tasks.buildable(pool).length) out.push("build", "dictate");
+  if (play.spottable(pool).length) out.push("spot");
+  if (new Set(play.pictured(pool).map((phrase) => phrase.art)).size >= 3) out.push("give");
   if (params.scenes.length && phrases >= 3) out.push("scene");
-  if (params.spell.length) out.push("spell");
+  if (spellPool(params).length) out.push("spell");
   if (params.letters.length) out.push("trace");
   if (params.letters.length && params.alphabet.length >= 3) out.push("sound", "find");
   return out;
 }
 
+/** Words this lesson may ask to spell: the author's list, plus any short word where that is allowed. */
+function spellPool(params: LangParams): Phrase[] {
+  if (!params.spellAny) return params.spell;
+  const recent = [...params.review.slice(-RECENT), ...params.teach];
+  return [...new Set([...params.spell, ...play.spellable(recent)])];
+}
+
 function noTriples(sequence: LangTask[]): boolean {
   return !sequence.some((task, i) => i >= 2 && task === sequence[i - 1] && task === sequence[i - 2]);
+}
+
+/** Tasks over their cap give their extra slots to the heaviest tasks that still have room. */
+function capTasks(bag: LangTask[], able: LangTask[], weight: (task: LangTask) => number): void {
+  const amount = (task: LangTask) => bag.filter((item) => item === task).length;
+  const room = (task: LangTask) => (CAPS[task] ?? Infinity) - amount(task);
+  for (const task of able) {
+    while (room(task) < 0) {
+      const open = able.filter((other) => room(other) > 0).sort((a, b) => weight(b) / (amount(b) + 1) - weight(a) / (amount(a) + 1));
+      if (!open.length) return; // every task is at its cap: a short lesson keeps what it has
+      bag[bag.indexOf(task)] = open[0];
+    }
+  }
 }
 
 /** The task of every slot: shares by weight (largest remainder), a gentle opener, a making closer. */
@@ -62,6 +94,7 @@ export function planTasks(params: LangParams, count: number, rng: RNG): LangTask
   const byRemainder = [...shares].sort((a, b) => (b.exact % 1) - (a.exact % 1));
   const missing = count - bag.length;
   for (let i = 0; i < missing; i++) bag.push(byRemainder[i % byRemainder.length].task);
+  capTasks(bag, able, weight);
 
   const opener = OPENERS.find((task) => bag.includes(task)) ?? bag[0];
   bag.splice(bag.indexOf(opener), 1);
@@ -91,6 +124,8 @@ function shownIn(question: Question): string[] {
   if (!payload) return [];
   if (payload.tour === "lang-pairs") return payload.left.map((card) => card.id);
   if (payload.tour === "lang-choose") return [payload.model.id, ...payload.options.map((card) => card.id)];
+  if (payload.tour === "lang-give") return payload.items.map((card) => card.id);
+  if (payload.tour === "lang-memory") return payload.cards.map((card) => card.pair);
   return [payload.model.id];
 }
 
@@ -127,6 +162,39 @@ function nextLetter(fill: Fill, task: LangTask, avoid?: string): LetterCard | un
   return others.length ? pick(rng, others) : params.letters[0];
 }
 
+type PhraseTask = Exclude<LangTask, "trace" | "sound" | "find" | "scene">;
+
+const PHRASE_TASKS: Record<PhraseTask, (env: tasks.Env, phrase: Phrase) => Question | null> = {
+  hear: tasks.hear, say: tasks.say, read: tasks.read, pairs: tasks.pairs, build: tasks.build, spell: tasks.spell,
+  dictate: play.dictate, give: play.give, spot: play.spot, memory: play.memory,
+};
+
+/** The phrases a task can be about. */
+function phrasesFor(task: PhraseTask, pool: Phrase[], params: LangParams): Phrase[] {
+  if (task === "build" || task === "dictate") return tasks.buildable(pool);
+  if (task === "spot") return play.spottable(pool);
+  if (task === "give") return play.pictured(pool);
+  if (task === "spell") return spellPool(params);
+  return pool;
+}
+
+/** Tasks that can show any single word, gentlest first. */
+const COVERING: PhraseTask[] = ["hear", "pairs", "memory", "say"];
+
+/**
+ * No new phrase is left out: when the slots that remain are only just enough
+ * for the new phrases the lesson has not shown yet, a slot whose task cannot
+ * show one of them (a chat, a sentence to build) becomes one that can.
+ */
+function coverTask(task: LangTask, unmet: Phrase[], slotsLeft: number, pool: Phrase[], params: LangParams): LangTask {
+  if (!unmet.length || unmet.length < slotsLeft - 1) return task;
+  const reaches = (candidate: LangTask) =>
+    candidate in PHRASE_TASKS && phrasesFor(candidate as PhraseTask, pool, params).some((phrase) => unmet.includes(phrase));
+  if (reaches(task)) return task;
+  const able = lessonTasks(params);
+  return COVERING.find((candidate) => able.includes(candidate) && reaches(candidate)) ?? task;
+}
+
 function buildOne(fill: Fill, task: LangTask, avoid?: string): Question | null {
   const { env } = fill;
   const { params, rng } = env;
@@ -148,15 +216,12 @@ function buildOne(fill: Fill, task: LangTask, avoid?: string): Question | null {
     const choice = [unmet, open, others, params.scenes].find((list) => list.length) ?? params.scenes;
     const moment = pick(rng, choice);
     used.add(moment.id);
-    return tasks.scene(env, moment);
+    return play.chat(env, moment);
   }
-  let from = env.pool;
-  if (task === "build") from = tasks.buildable(env.pool);
-  else if (task === "spell") from = params.spell;
-  const phrase = nextPhrase(fill, task, from, avoid);
+  const phrase = nextPhrase(fill, task, phrasesFor(task, env.pool, params), avoid);
   if (!phrase) return null;
   usedBy(fill, task).add(phrase.id);
-  return tasks[task](env, phrase);
+  return PHRASE_TASKS[task](env, phrase);
 }
 
 /**
@@ -218,7 +283,9 @@ export function planLangLesson(
     questions = planTasks(params, count, rng).map((task, index) => {
       // Lessons warm up and then stretch.
       fill.env.ctx = { ...ctx, difficulty: Math.min(1, Math.max(0, ctx.difficulty + 0.3 * (index / Math.max(1, count - 1) - 0.5))) };
-      const question = fresh(fill, task);
+      const unmet = params.teach.filter((phrase) => !fill.met.has(phrase.id));
+      fill.env.unmet = unmet;
+      const question = fresh(fill, coverTask(task, unmet, count - index, fill.env.pool, params));
       kitKeys(question).forEach((key) => fill.seen.add(key));
       shownIn(question).forEach((id) => fill.met.add(id));
       return question;

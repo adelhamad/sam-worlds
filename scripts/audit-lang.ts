@@ -28,6 +28,8 @@ interface Run {
 function shownIn(payload: LangPayload): string[] {
   if (payload.tour === "lang-pairs") return payload.left.map((card) => card.id);
   if (payload.tour === "lang-choose") return [payload.model.id, ...payload.options.map((card) => card.id)];
+  if (payload.tour === "lang-give") return payload.items.map((card) => card.id);
+  if (payload.tour === "lang-memory") return payload.cards.map((card) => card.pair);
   return [payload.model.id];
 }
 
@@ -98,6 +100,10 @@ export function auditLang(only?: string): string[] {
     const scenes = seed.packs.reduce((sum, pack) => sum + pack.scenes.length, 0);
     console.log(`Lang audit ${seed.id}: ${seed.packs.length} units, ${course.world.stages.length} lessons, ${phrases} phrases, ${scenes} scenes`);
   }
+  const total = Object.values(stats.tasks).reduce((sum, n) => sum + n, 0) || 1;
+  const tapOne = ["hear", "say", "read", "sound", "find"].reduce((sum, task) => sum + (stats.tasks[task] ?? 0), 0);
+  console.log(`Lang audit: "tap one card" questions are ${Math.round((tapOne / total) * 100)}% of all questions`);
+  if (tapOne / total > 0.3) failures.push(`"tap one card" questions are ${Math.round((tapOne / total) * 100)}% of the courses (max 30%): rebalance the planner weights`);
   console.log(`Lang audit: ${stats.lessons} lessons planned, ${stats.questions} questions, ${stats.replacements} replacements; tasks ${JSON.stringify(stats.tasks)}`);
   return failures;
 }

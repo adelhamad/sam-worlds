@@ -2,7 +2,7 @@
 // one word (the line then shows them joined, so Arabic letters connect the way
 // they do in real writing). Tap a placed word to take it back; the undo button
 // takes the last tile back. Draft = buildAnswer(placed, unit); CHECK submits.
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { buildAnswer } from "../../../engine/lang/answers";
 import type { BuildPayload } from "../../../engine/lang/types";
 import { LANG } from "../../../strings/lang";
@@ -18,6 +18,14 @@ export function LangBuild({ payload, disabled, onDraft }: WidgetProps<BuildPaylo
   /** Indexes into payload.tiles, in the order they were placed. */
   const [placed, setPlaced] = useState<number[]>([]);
   const letters = payload.unit === "letter";
+  // Dictation needs something to hear; without a voice or a recording the meaning shows instead.
+  const dictation = Boolean(payload.listen) && canSay(payload.hero);
+  const { hero } = payload;
+  useEffect(() => {
+    if (!dictation) return;
+    const timer = window.setTimeout(() => say(hero), 500);
+    return () => window.clearTimeout(timer);
+  }, [dictation, hero, say]);
   const texts = placed.map((index) => payload.tiles[index].text);
   useDraft(onDraft, placed.length >= 2 ? buildAnswer(texts, payload.unit) : null);
 
@@ -40,10 +48,19 @@ export function LangBuild({ payload, disabled, onDraft }: WidgetProps<BuildPaylo
 
   return (
     <div className={`tx lx lx-build is-${payload.unit}`} data-testid="lang-build" data-unit={payload.unit}>
-      <div className="lx-hero is-mean">
-        <MeaningFace card={payload.hero} />
-        {letters && canSay(payload.hero) && <Speaker label={S.listen} onClick={() => say(payload.hero)} testId="lang-hear" />}
-      </div>
+      {dictation
+        ? (
+          <div className="lx-hero is-hear">
+            <Speaker size="big" label={S.listenAgain} onClick={() => say(payload.hero)} testId="lang-hear" />
+            <button type="button" className="lx-slow" onClick={() => say(payload.hero, true)}>{S.slow}</button>
+          </div>
+        )
+        : (
+          <div className="lx-hero is-mean">
+            <MeaningFace card={payload.hero} />
+            {letters && canSay(payload.hero) && <Speaker label={S.listen} onClick={() => say(payload.hero)} testId="lang-hear" />}
+          </div>
+        )}
       <p className="lx-help">{letters ? S.spellHelp : S.buildHelp}</p>
       <div className="lx-line-row">
         <div className={`lx-built ${placed.length ? "" : "is-empty"}`} dir={dir} data-testid="lang-built">

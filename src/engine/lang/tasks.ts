@@ -8,7 +8,7 @@ import { buildAnswer, lettersOf, pairsAnswer } from "./answers";
 import { clashes, letterCard, otherLetters, others, phraseCard } from "./cards";
 import {
   TRACED, type LangCard, type LangParams, type LangPayload, type LangTask, type LangTile, type LetterCard, type Phrase,
-  type PhraseWord, type Scene,
+  type PhraseWord,
 } from "./types";
 
 export interface Env {
@@ -17,16 +17,18 @@ export interface Env {
   ctx: GenContext;
   /** Every phrase the child has met: this lesson's and the earlier ones. */
   pool: Phrase[];
+  /** New phrases the lesson has not shown yet: sets of several phrases take these first. */
+  unmet?: Phrase[];
 }
 
 /** Fewest other options for a fair choice. */
 const MIN_OTHERS = 2;
 
-function optionCount(ctx: GenContext): number {
+export function optionCount(ctx: GenContext): number {
   return ctx.easier || ctx.difficulty < 0.25 ? 3 : 4;
 }
 
-function make(task: LangTask, target: string, prompt: string, answer: string, payload: LangPayload): Question {
+export function make(task: LangTask, target: string, prompt: string, answer: string, payload: LangPayload): Question {
   return {
     id: "", prompt, answer, choices: [], hint: LANG.engine.hint, dedupeKey: `lang:${task}:${target}`,
     repeatable: true, inputMode: "tour", payload: payload as unknown as Record<string, unknown>,
@@ -34,18 +36,18 @@ function make(task: LangTask, target: string, prompt: string, answer: string, pa
 }
 
 /** How a phrase is named inside a teach line: the Latin spelling when there is one. */
-const spoken = (phrase: Phrase) => phrase.roman ?? phrase.text;
+export const spoken = (phrase: Phrase) => phrase.roman ?? phrase.text;
 
-function means(phrase: Phrase): string {
+export function means(phrase: Phrase): string {
   return LANG.engine.means(spoken(phrase), phrase.en);
 }
 
 /** How to say a meaning: the teach line of the "produce it" tasks. */
-function sayIt(phrase: Phrase): string {
+export function sayIt(phrase: Phrase): string {
   return LANG.engine.sayIt(phrase.en, spoken(phrase));
 }
 
-function base(env: Env, task: LangTask, target: string, model: LangCard, explain: string, tip?: string) {
+export function base(env: Env, task: LangTask, target: string, model: LangCard, explain: string, tip?: string) {
   return { lang: env.params.lang, task, target, model, explain, ...(tip ? { tip } : {}) };
 }
 
@@ -86,9 +88,22 @@ export function read(env: Env, phrase: Phrase): Question | null {
   });
 }
 
+/**
+ * `count` phrases to show together with `phrase` (pairs, memory): new phrases
+ * the lesson has not shown yet first, then any — never two that could be mixed up.
+ */
+export function companions(env: Env, phrase: Phrase, count: number): Phrase[] {
+  const out: Phrase[] = [];
+  for (const other of [...shuffle(env.rng, env.unmet ?? []), ...others(phrase, env.pool, env.pool.length, env.rng)]) {
+    if (out.length >= count) break;
+    if (![phrase, ...out].some((taken) => clashes(taken, other))) out.push(other);
+  }
+  return out;
+}
+
 export function pairs(env: Env, phrase: Phrase): Question | null {
   const size = env.ctx.easier ? 3 : 4;
-  const rest = others(phrase, env.pool, size - 1, env.rng);
+  const rest = companions(env, phrase, size - 1);
   if (rest.length < 2) return null;
   const left = shuffle(env.rng, [phrase, ...rest]).map(phraseCard);
   const ids = left.map((card) => card.id);
@@ -99,7 +114,7 @@ export function pairs(env: Env, phrase: Phrase): Question | null {
 }
 
 /** Shuffled so the tiles never arrive already in the right order (when they can differ). */
-function scramble(rng: RNG, tiles: LangTile[], right: string[]): LangTile[] {
+export function scramble(rng: RNG, tiles: LangTile[], right: string[]): LangTile[] {
   for (let attempt = 0; attempt < 8; attempt++) {
     const mixed = shuffle(rng, tiles);
     if (mixed.slice(0, right.length).some((tile, i) => tile.text !== right[i])) return mixed;
@@ -111,7 +126,7 @@ function scramble(rng: RNG, tiles: LangTile[], right: string[]): LangTile[] {
  * A phrase's words as tiles. A capital on the first word would give the order
  * away, so French sentences start lower-case on the tiles (Arabic has no capitals).
  */
-function tileWords(phrase: Phrase, lang: LangParams["lang"]): PhraseWord[] {
+export function tileWords(phrase: Phrase, lang: LangParams["lang"]): PhraseWord[] {
   const words = phrase.words ?? [{ text: phrase.text, roman: phrase.roman }];
   if (lang !== "fr") return words;
   return words.map((word, i) => (i === 0 ? { ...word, text: word.text.charAt(0).toLowerCase() + word.text.slice(1) } : word));
@@ -124,7 +139,7 @@ export function buildable(pool: Phrase[]): Phrase[] {
 }
 
 /** A word without vowel marks, punctuation or capitals: كيفِك and كيفك are the same tile to a child. */
-function bare(text: string): string {
+export function bare(text: string): string {
   return text.toLowerCase().replace(/\p{M}/gu, "").replace(/[.!?؟,]/g, "").trim();
 }
 
@@ -134,7 +149,7 @@ function bare(text: string): string {
  * `like` twin of one of them (shukran / yislamo), since swapping it in would
  * build another perfectly good sentence.
  */
-function closedWords(phrase: Phrase, words: PhraseWord[], pool: Phrase[]): Set<string> {
+export function closedWords(phrase: Phrase, words: PhraseWord[], pool: Phrase[]): Set<string> {
   const closed = new Set(words.map((word) => bare(word.text)));
   const twins = pool.filter((other) => !other.words && closed.has(bare(other.text)));
   for (const twin of [phrase, ...twins]) {
@@ -184,23 +199,8 @@ export function spell(env: Env, phrase: Phrase): Question | null {
   });
 }
 
-function phraseOf(env: Env, id: string | undefined): Phrase | undefined {
+export function phraseOf(env: Env, id: string | undefined): Phrase | undefined {
   return id ? env.pool.find((phrase) => phrase.id === id) : undefined;
-}
-
-export function scene(env: Env, moment: Scene): Question | null {
-  const replies = moment.reply.map((id) => phraseOf(env, id)).filter((phrase): phrase is Phrase => Boolean(phrase));
-  const right = replies[0];
-  if (!right) return null;
-  const fine = (moment.alsoOk ?? []).map((id) => phraseOf(env, id)).filter((phrase): phrase is Phrase => Boolean(phrase));
-  const line = phraseOf(env, moment.line);
-  const options = optionsFor(env, right, [...replies.slice(1), ...fine, ...(line ? [line] : [])]);
-  if (!options) return null;
-  return make("scene", moment.id, LANG.engine.scene, right.id, {
-    ...base(env, "scene", moment.id, phraseCard(right), means(right), right.tip), tour: "lang-choose",
-    hero: { kind: "scene", setup: moment.setup, ...(moment.who ? { who: moment.who } : {}), ...(line ? { line: phraseCard(line) } : {}) },
-    show: "phrase", options, noRoman: false,
-  });
 }
 
 export function trace(env: Env, letter: LetterCard, guide: "guided" | "memory"): Question {
