@@ -24,7 +24,7 @@ export const U04: LangUnitPack = {
     ],
   },
   phrases: [
-    { id: "maman", text: "Maman", en: "Mum", topic: "family", tip: "Say it ma-MAN. Some kids say Mam." },
+    { id: "maman", text: "Maman", en: "Mum", topic: "family", tip: "Say ma-MAHN. The end goes through the nose." },
     { id: "papa", text: "Papa", en: "Dad", topic: "family", tip: "Say it pa-PA." },
     { id: "frere", text: "Frère", en: "Brother", topic: "family", tip: "Sounds like 'frair'." },
     { id: "soeur", text: "Sœur", en: "Sister", topic: "family", tip: "Sounds like 'sur'." },
@@ -61,15 +61,15 @@ export const U04: LangUnitPack = {
       reply: ["c-est-mon-frere"], alsoOk: ["frere"],
     },
     {
-      id: "cousin-park", setup: "A friend asks about your cousin Zoé at the park.", who: { name: "Léa" },
+      id: "cousin-park", setup: "At the park, Léa asks who Zoé is. She is your cousin.", who: { name: "Léa" },
       reply: ["c-est-ma-cousine"],
     },
     {
       id: "grandma-door", setup: "Grandma arrives at the door with a big hug.", who: { name: "Grandma" },
-      reply: ["mamie"], alsoOk: ["salut", "coucou", "bonjour", "salut-ca-va", "ca-va"],
+      reply: ["mamie"], alsoOk: ["salut", "coucou", "bonjour", "bonsoir", "salut-ca-va", "ca-va"],
     },
-    { id: "has-sister", setup: "Léa asks if you have a sister. You do.", who: { name: "Léa" }, reply: ["jai-une-soeur"] },
-    { id: "has-brother", setup: "Hugo asks if you have a brother. You do.", who: { name: "Hugo" }, reply: ["jai-un-frere"] },
+    { id: "has-sister", setup: "Léa asks if you have a sister. You do.", who: { name: "Léa" }, reply: ["jai-une-soeur"], alsoOk: ["oui"] },
+    { id: "has-brother", setup: "Hugo asks if you have a brother. You do.", who: { name: "Hugo" }, reply: ["jai-un-frere"], alsoOk: ["oui"] },
     {
       id: "uncle-visit", setup: "Your mum's brother visits. What do you call him?", who: { name: "Uncle" },
       reply: ["oncle"], alsoOk: ["salut", "coucou", "bonjour", "salut-ca-va", "ca-va"],

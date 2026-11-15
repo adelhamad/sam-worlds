@@ -25,7 +25,7 @@ export const U01: LangUnitPack = {
     ],
   },
   phrases: [
-    { id: "salut", text: "Salut", en: "Hi!", topic: "greeting", like: ["coucou", "bonjour"], tip: "For friends and family. The t is silent." },
+    { id: "salut", text: "Salut", en: "Hi!", topic: "greeting", like: ["coucou", "bonjour"], tip: "For friends and family. It also means bye. The t is silent." },
     { id: "coucou", text: "Coucou", en: "Hey there!", topic: "greeting", like: ["salut", "bonjour"], tip: "A cheerful hi for friends and family." },
     { id: "bonjour", text: "Bonjour", en: "Hello", topic: "greeting", like: ["salut", "coucou"], tip: "Fine for everyone, all day until evening." },
     { id: "bonsoir", text: "Bonsoir", en: "Good evening", topic: "greeting", tip: "Say it when you meet someone in the evening." },
@@ -46,7 +46,7 @@ export const U01: LangUnitPack = {
       id: "a-demain", text: "À demain", en: "See you tomorrow", topic: "greeting", like: ["au-revoir", "au-revoir-a-demain"],
       words: [{ text: "À" }, { text: "demain" }], tip: "Say it when you will meet again tomorrow.",
     },
-    { id: "bonne-nuit", text: "Bonne nuit", en: "Good night", topic: "greeting", words: [{ text: "Bonne" }, { text: "nuit" }], tip: "Say it at bedtime. It is the same for a girl." },
+    { id: "bonne-nuit", text: "Bonne nuit", en: "Good night", topic: "greeting", words: [{ text: "Bonne" }, { text: "nuit" }], tip: "Say it at bedtime, with a big kiss." },
     {
       id: "salut-ca-va", text: "Salut, ça va?", en: "Hi, how are you?", topic: "greeting", like: ["ca-va"],
       words: [{ text: "Salut" }, { text: "ça" }, { text: "va" }], tip: "Say hi and ask in one go.",
@@ -75,9 +75,9 @@ export const U01: LangUnitPack = {
     },
     {
       id: "park-bye", setup: "Time to go home from the park. You will play again tomorrow.", who: { name: "Léa" },
-      reply: ["a-demain", "au-revoir-a-demain", "au-revoir"],
+      reply: ["a-demain", "au-revoir-a-demain", "au-revoir"], alsoOk: ["salut"],
     },
-    { id: "bedtime", setup: "Bedtime. Maman gives you a kiss.", who: { name: "Maman" }, line: "bonne-nuit", reply: ["bonne-nuit"] },
+    { id: "bedtime", setup: "Bedtime. Maman gives you a kiss.", who: { name: "Maman" }, line: "bonne-nuit", reply: ["bonne-nuit"], alsoOk: ["a-demain"] },
     {
       id: "cousin-calls", setup: "Your cousin waves from across the street.", who: { name: "Your cousin" }, line: "salut-ca-va",
       reply: ["ca-va-bien-et-toi", "ca-va-bien"], alsoOk: ["ca-va", "salut", "coucou", "et-toi", "bonjour"],

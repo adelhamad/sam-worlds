@@ -27,11 +27,11 @@ export const U09: LangUnitPack = {
     { id: "viens", text: "Viens!", en: "Come!", topic: "action", like: ["viens-ici"], tip: "To a friend. To a grown-up, say Venez." },
     { id: "regarde", text: "Regarde!", en: "Look!", topic: "action", like: ["regarde-ca"], tip: "To a friend. To a grown-up, say Regardez." },
     { id: "ecoute", text: "Écoute!", en: "Listen!", topic: "action", tip: "To a friend. The final e is silent." },
-    { id: "attends", text: "Attends!", en: "Wait!", topic: "action", tip: "Say 'ah-TAHN'. The ends is a soft nose sound." },
+    { id: "attends", text: "Attends!", en: "Wait!", topic: "action", tip: "Say 'ah-TAHN'. The d and s are silent." },
     { id: "vite", text: "Vite!", en: "Quick, hurry!", topic: "action", tip: "Say it 'veet'." },
     { id: "vas-y", text: "Vas-y!", en: "Go ahead!", topic: "action", tip: "Said to cheer someone on, or to let them go first." },
-    { id: "assieds-toi", text: "Assieds-toi!", en: "Sit down!", topic: "action", tip: "To a friend. Kids also say Assis-toi." },
-    { id: "prends", text: "Prends!", en: "Take it!", topic: "action", tip: "Sounds like 'prahn'. The ds is silent." },
+    { id: "assieds-toi", text: "Assieds-toi!", en: "Sit down!", topic: "action", tip: "To a friend. To a grown-up: Asseyez-vous." },
+    { id: "prends", text: "Prends!", en: "Take it!", topic: "action", tip: "Sounds like 'prahn'. Handing something over, kids also say Tiens!" },
     { id: "doucement", text: "Doucement!", en: "Slowly, gently!", topic: "action", tip: "Say it 'dooss-MAN'." },
     { id: "donne-moi", text: "Donne-moi", en: "Give me", topic: "action", like: ["donne-moi-ca"], tip: "Add please: Donne-moi ça, s'il te plaît." },
     {
@@ -61,7 +61,7 @@ export const U09: LangUnitPack = {
       reply: ["regarde", "regarde-ca"], alsoOk: ["viens-ici", "viens"],
     },
     {
-      id: "go-out", setup: "Papa stands at the door with the car keys.", who: { name: "Papa" },
+      id: "go-out", setup: "Papa waits at the door with the car keys. You go too.", who: { name: "Papa" },
       reply: ["on-y-va"], alsoOk: ["viens", "viens-ici", "vite", "vas-y", "attends"],
     },
     {
@@ -70,15 +70,15 @@ export const U09: LangUnitPack = {
     },
     {
       id: "hurry", setup: "You will be late for school! Hurry your brother.", who: { name: "Your brother" },
-      reply: ["vite"], alsoOk: ["on-y-va", "viens", "viens-ici", "attends"],
+      reply: ["vite"], alsoOk: ["on-y-va", "viens", "viens-ici", "vas-y"],
     },
     {
       id: "pass-crayon", setup: "You need the red crayon. It is next to Léa.", who: { name: "Léa" },
-      reply: ["donne-moi-ca", "donne-moi"], alsoOk: ["s-il-te-plait", "je-veux", "je-voudrais", "prends"],
+      reply: ["donne-moi-ca", "donne-moi"], alsoOk: ["s-il-te-plait", "je-veux", "je-voudrais"],
     },
     {
-      id: "take-sweet", setup: "Léa holds out a sweet and says it.", who: { name: "Léa" }, line: "prends",
-      reply: ["merci", "oui-merci"], alsoOk: ["merci-beaucoup", "oui", "oui-s-il-te-plait"],
+      id: "take-sweet", setup: "Léa holds out a sweet and says it. You love sweets.", who: { name: "Léa" }, line: "prends",
+      reply: ["merci", "oui-merci"], alsoOk: ["merci-beaucoup", "oui", "oui-s-il-te-plait", "miam"],
     },
   ],
 };

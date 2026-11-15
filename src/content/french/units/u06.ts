@@ -42,7 +42,7 @@ export const U06: LangUnitPack = {
     },
     {
       id: "bon-appetit", text: "Bon appétit!", en: "Enjoy your meal", topic: "food",
-      words: [{ text: "Bon" }, { text: "appétit" }], tip: "Said before eating. The t at the end is silent.",
+      words: [{ text: "Bon" }, { text: "appétit" }], tip: "Said before eating. Say 'bo-na-pay-TEE'.",
     },
     {
       id: "merci-toi-aussi", text: "Merci, toi aussi.", en: "Thanks, you too (friend)", topic: "food", like: ["merci-vous-aussi"],
@@ -50,7 +50,7 @@ export const U06: LangUnitPack = {
     },
     {
       id: "c-est-delicieux", text: "C'est délicieux.", en: "It's delicious", topic: "food", like: ["miam"],
-      words: [{ text: "C'est" }, { text: "délicieux" }], tip: "Say it to the cook!",
+      words: [{ text: "C'est" }, { text: "délicieux" }], tip: "Say it to the cook! Kids also say C'est trop bon.",
     },
     {
       id: "je-nai-plus-faim", text: "Je n'ai plus faim.", en: "I'm full", topic: "feeling",
@@ -59,8 +59,8 @@ export const U06: LangUnitPack = {
   ],
   scenes: [
     {
-      id: "hungry-home", setup: "You get home from school. Your tummy rumbles.", who: { name: "Maman" },
-      reply: ["jai-faim"], alsoOk: ["je-veux", "je-voudrais", "pain", "gateau", "pomme", "fromage", "jus"],
+      id: "hungry-home", setup: "After school, your tummy rumbles. Tell Maman.", who: { name: "Maman" },
+      reply: ["jai-faim"], alsoOk: ["je-veux", "je-voudrais", "pain", "gateau", "pomme", "fromage", "jus", "lait", "poulet", "riz"],
     },
     {
       id: "thirsty-park", setup: "It is hot at the park. You need a drink.", who: { name: "Papa" },
@@ -80,11 +80,11 @@ export const U06: LangUnitPack = {
     },
     {
       id: "want-apple", setup: "Maman holds a bowl of fruit. You want an apple.", who: { name: "Maman" },
-      reply: ["pomme"], alsoOk: ["je-veux", "je-voudrais", "oui-merci", "oui-s-il-te-plait"],
+      reply: ["pomme"], alsoOk: ["je-veux", "je-voudrais", "oui-merci", "oui-s-il-te-plait", "s-il-te-plait"],
     },
     {
       id: "want-cheese", setup: "Papa makes a sandwich. You want cheese in it.", who: { name: "Papa" },
-      reply: ["fromage"], alsoOk: ["je-veux", "je-voudrais", "oui-merci", "oui-s-il-te-plait"],
+      reply: ["fromage"], alsoOk: ["je-veux", "je-voudrais", "oui-merci", "oui-s-il-te-plait", "s-il-te-plait"],
     },
   ],
 };
