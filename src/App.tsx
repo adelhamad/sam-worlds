@@ -20,6 +20,7 @@ const LangLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/Lang
 const CodeLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/CodeLab")) : null;
 const TickLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/TickLab")) : null;
 const IconLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/IconLab")) : null;
+const WriteLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/WriteLab")) : null;
 
 /** Each screen starts at the top — no inherited scroll position. */
 function ScrollToTop() {
@@ -115,6 +116,7 @@ export default function App() {
         {CodeLab && <Route path="/tour/lab/code" element={<Suspense fallback={null}><CodeLab /></Suspense>} />}
         {TickLab && <Route path="/tour/lab/tick" element={<Suspense fallback={null}><TickLab /></Suspense>} />}
         {IconLab && <Route path="/tour/lab/icons" element={<Suspense fallback={null}><IconLab /></Suspense>} />}
+        {WriteLab && <Route path="/tour/lab/write" element={<Suspense fallback={null}><WriteLab /></Suspense>} />}
         {ChessLab && <Route path="/tour/lab/chess" element={<Suspense fallback={null}><ChessLab /></Suspense>} />}
         {PogoLab && ExerciseLab && (
           <>
