@@ -157,7 +157,8 @@ Shared by every course — a new course gets all of it for free.
 
 Dev-only test benches (`bun run dev`): `/#/tour/lab/pogo` (every mood, the three
 entrances, Pogo's voice), `/#/tour/lab/exercises`,
-`/#/tour/lab/kit`, `/#/tour/lab/chess`, `/#/tour/lab/code`, `/#/tour/lab/tick`,
+`/#/tour/lab/kit`, `/#/tour/lab/lang` (any lesson of a language course, question by
+question: `?course=arabic&lesson=3&seed=2`), `/#/tour/lab/chess`, `/#/tour/lab/code`, `/#/tour/lab/tick`,
 `/#/tour/lab/icons`.
 
 ## Rolling it back
