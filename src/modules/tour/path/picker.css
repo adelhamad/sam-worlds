@@ -1,0 +1,211 @@
+/* The courses button in the top bar and the course picker sheet behind it.
+   Works for any number of courses: the list scrolls inside the sheet. */
+
+/* A course emblem always sits in a fixed square, whatever its art's shape. */
+.tour-path .tp-emblem {
+  display: grid;
+  place-items: center;
+  overflow: visible;
+  line-height: 1;
+}
+.tour-path .tp-emblem > * { max-width: 100%; max-height: 100%; }
+
+/* ---------- courses button ---------- */
+.tour-path .tp-course-btn {
+  position: relative;
+  flex: 0 1 auto;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 0 12px 4px 8px;
+  border: none;
+  border-radius: 14px;
+  background: var(--t-pogo);
+  box-shadow: inset 0 -4px 0 var(--t-pogo-deep);
+  color: #fff;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.06s ease;
+}
+.tour-path .tp-course-btn:active { transform: translateY(2px); }
+.tour-path .tp-course-btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.tour-path .tp-course-emblem { flex: none; width: 34px; height: 34px; }
+.tour-path .tp-course-name { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tour-path .tp-course-caret { flex: none; font-size: 14px; opacity: 0.9; }
+
+/* ---------- picker sheet ---------- */
+.tour-path .tp-picker {
+  position: relative;
+  box-sizing: border-box;
+  width: min(100%, 560px);
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  display: flex;
+  flex-direction: column;
+  border-radius: 28px 28px 0 0;
+  background: var(--t-surface);
+  border-top: 7px solid var(--t-pogo);
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.5);
+  animation: t-rise 0.3s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+}
+.tour-path .tp-picker-head { position: relative; flex: none; padding: 20px 68px 10px 20px; }
+.tour-path .tp-picker-title { margin: 0; font-size: 26px; font-weight: 900; line-height: 1.1; color: var(--t-ink); }
+.tour-path .tp-picker-sub { margin: 4px 0 0; font-size: 15px; font-weight: 800; color: var(--t-ink-dim); }
+
+.tour-path .tp-picker-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0;
+  padding: 12px 16px 14px;
+  list-style: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tour-path .tp-pick-row {
+  --hue-ink: color-mix(in srgb, var(--hue) 16%, #06102a);
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 72px;
+  padding: 10px 12px;
+  border: 3px solid transparent;
+  border-radius: 20px;
+  background: var(--t-surface-2);
+  box-shadow: 0 4px 0 var(--t-line-deep);
+  color: var(--t-ink);
+  font: inherit;
+  text-align: left;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.06s ease, box-shadow 0.06s ease;
+}
+.tour-path .tp-pick-row:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--t-line-deep); }
+.tour-path .tp-pick-row:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.tour-path .tp-pick-row.is-current {
+  border-color: var(--hue);
+  background: color-mix(in srgb, var(--hue) 16%, var(--t-surface-2));
+}
+.tour-path .tp-pick-art {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--hue) 22%, #0b1838);
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--hue) 45%, transparent);
+}
+.tour-path .tp-pick-art .tp-emblem { width: 46px; height: 46px; }
+.tour-path .tp-pick-text { min-width: 0; display: grid; gap: 7px; }
+.tour-path .tp-pick-name {
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tour-path .tp-pick-meter { display: flex; align-items: center; gap: 8px; }
+.tour-path .tp-pick-bar {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(6, 16, 42, 0.55);
+  overflow: hidden;
+}
+.tour-path .tp-pick-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--hue);
+  transform-origin: 0 50%;
+}
+.tour-path .tp-pick-num {
+  flex: none;
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--t-ink-dim);
+  font-variant-numeric: tabular-nums;
+}
+/* "Here" hangs on the current row's top edge, so it never squeezes the name. */
+.tour-path .tp-pick-here {
+  position: absolute;
+  top: -11px;
+  right: 14px;
+  padding: 4px 9px;
+  box-shadow: 0 2px 0 rgba(6, 16, 42, 0.45);
+  border-radius: 999px;
+  background: var(--hue);
+  color: var(--hue-ink);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.tour-path .tp-pick-home {
+  flex: none;
+  margin: 0 16px max(16px, env(safe-area-inset-bottom));
+  min-height: 56px;
+  border-radius: 18px;
+  border: 2px solid var(--t-line);
+  border-bottom-width: 4px;
+  color: var(--t-ink);
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  touch-action: manipulation;
+}
+.tour-path .tp-pick-home:active { transform: translateY(2px); }
+.tour-path .tp-pick-home:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+
+@media (min-width: 600px) {
+  .tour-path .tp-picker { border-radius: 28px; }
+  .tour-path .tp-picker-list.is-many { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Phones: the courses button is just the emblem with a little caret badge. */
+@media (max-width: 599px) {
+  .tour-path .tp-course-btn { width: 52px; padding: 0 0 4px; justify-content: center; flex: none; overflow: visible; }
+  .tour-path .tp-course-name { display: none; }
+  .tour-path .tp-course-caret {
+    position: absolute;
+    right: -4px;
+    bottom: -3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #fff;
+    color: var(--t-pogo-deep);
+    font-size: 11px;
+    box-shadow: 0 2px 0 rgba(6, 16, 42, 0.4);
+  }
+}
+@media (max-width: 419px) {
+  .tour-path .tp-course-btn { width: 48px; }
+}

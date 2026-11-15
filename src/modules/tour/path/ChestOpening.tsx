@@ -1,11 +1,13 @@
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useState } from "react";
 import type { CourseUnit } from "../../../content/courses";
 import { sfx } from "../../../engine/feedback/audio";
 import { tourSfx } from "../../../engine/feedback/tourSfx";
 import { TOUR } from "../../../strings/tour";
 import { Confetti, Pogo } from "../../../ui/tour/Pogo";
+import { Icon } from "../../../ui/icons/Icon";
 import { ChestArt } from "./ChestNode";
 import { prefersReducedMotion } from "./hooks";
+import { hueStyle } from "./hue";
 import { Keepsake } from "./Keepsake";
 
 const SHAKE_MS = 1150;
@@ -48,7 +50,7 @@ export function ChestOpening({ unit, paid, onClose }: ChestOpeningProps) {
 
   return (
     <div className="tp-scrim tp-scrim-centre" role="dialog" aria-modal="true" aria-label={TOUR.path.chestTitle}>
-      <div className={`tp-opening ${open ? "is-open" : "is-shaking"}`} style={{ "--hue": unit.hue } as CSSProperties}>
+      <div className={`tp-opening ${open ? "is-open" : "is-shaking"}`} style={hueStyle(unit.hue)}>
         <h2 className="tp-opening-title">{open ? TOUR.path.chestFound(unit.souvenir.name) : TOUR.path.chestTitle}</h2>
         <div className="tp-opening-stage">
           <span className="tp-opening-rays" aria-hidden="true" />
@@ -61,7 +63,7 @@ export function ChestOpening({ unit, paid, onClose }: ChestOpeningProps) {
           <Pogo mood={open ? "wow" : "think"} size={92} className="tp-opening-pogo" />
         </div>
         <p className="tp-opening-dust" aria-live="polite">
-          {open ? <>+{shown} <span aria-hidden="true">✨</span></> : <span className="tp-opening-wait">…</span>}
+          {open ? <>+{shown} <Icon name="dust" size="1em" /></> : <span className="tp-opening-wait">…</span>}
         </p>
         <button type="button" className="tbtn tbtn-go tbtn-wide" disabled={!open} onClick={onClose}>
           {TOUR.path.chestDone}

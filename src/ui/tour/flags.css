@@ -1,0 +1,12 @@
+/* Sized in em so callers (and card overrides) keep steering it via font-size. */
+.tour .tflag { display: inline-block; line-height: 0; vertical-align: middle; filter: none; }
+.tour .tflag-img {
+  display: block;
+  height: 0.8em;
+  width: 1.0667em; /* 4:3 */
+  object-fit: cover;
+  border-radius: 0.09em;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.28), 0 0.04em 0.1em rgba(0, 0, 0, 0.3);
+  user-select: none;
+  -webkit-user-drag: none;
+}

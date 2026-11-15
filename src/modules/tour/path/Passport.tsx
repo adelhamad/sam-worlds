@@ -6,6 +6,7 @@ import { useGame } from "../../../state/store";
 import { STAMP_GOAL, stampedCount } from "../../../state/tour";
 import { TOUR } from "../../../strings/tour";
 import { Flag } from "../../../ui/tour/Flag";
+import { Glyph, Icon } from "../../../ui/icons/Icon";
 import { useToast } from "./hooks";
 import { stampTilt } from "./layout";
 import "./passport.css";
@@ -62,7 +63,7 @@ function UnitPage({ unit, stamps, onSay, onStamp }: UnitPageProps) {
   return (
     <section className="pp-unit" style={{ "--hue": unit.hue } as CSSProperties}>
       <header className="pp-unit-head">
-        <span className="pp-unit-icon" aria-hidden="true">{unit.icon}</span>
+        <span className="pp-unit-icon" aria-hidden="true"><Glyph value={unit.icon} size="1em" /></span>
         <h3>{unit.name}</h3>
         <span className="pp-unit-count">{got}/{unit.countries.length}</span>
       </header>
@@ -96,8 +97,8 @@ export function Passport({ onClose }: { onClose: () => void }) {
     <div className="tp-scrim tp-scrim-centre" onClick={onClose}>
       <div className="pp-book" role="dialog" aria-modal="true" aria-label={TOUR.path.passportTitle} onClick={(event) => event.stopPropagation()}>
         <header className="pp-cover">
-          <button type="button" className="tp-close" aria-label={TOUR.path.close} onClick={onClose}>✕</button>
-          <span className="pp-cover-kicker"><span aria-hidden="true">🛂 </span>{TOUR.path.passport}</span>
+          <button type="button" className="tp-close" aria-label={TOUR.path.close} onClick={onClose}><Icon name="close" size={18} mono /></button>
+          <span className="pp-cover-kicker"><Icon name="passport" size="1.2em" /> {TOUR.path.passport}</span>
           <h2 className="pp-title">{TOUR.path.passportTitle}</h2>
           <p className="pp-count">{TOUR.path.stamps(stamped, total)}</p>
           <div className="pp-bar" role="progressbar" aria-valuemin={0} aria-valuemax={total} aria-valuenow={stamped}>
@@ -122,7 +123,7 @@ export function Passport({ onClose }: { onClose: () => void }) {
                     aria-label={line}
                     onClick={() => sayWithTap(line)}
                   >
-                    <span aria-hidden="true">{unit.souvenir.icon}</span>
+                    <Glyph value={unit.souvenir.icon} size="1em" />
                   </button>
                 );
               })}

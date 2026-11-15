@@ -1,6 +1,6 @@
 // The live Star Dust meter. What a lesson has banked is DERIVED from the
 // session (so it survives a reload); this hook only turns each increase into
-// a "+N ✨" token that flies to the chip, and lets the chip tick up when the
+// a "+N" Star Dust token that flies to the chip, and lets the chip tick up when the
 // token lands. The number it shows never goes down.
 import { useCallback, useState } from "react";
 import { lessonSound } from "./lessonSound";

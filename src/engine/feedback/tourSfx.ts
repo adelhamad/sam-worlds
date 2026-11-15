@@ -162,6 +162,34 @@ export const tourSfx = {
     tone(N.G6, 0.42, 0.5, 0.08);
     tone(N.C7, 0.46, 0.45, 0.035, "triangle");
   },
+  /** Code Lab: Pogo hops one square — a soft wooden "tok" that climbs with `nth`. */
+  step(nth = 0): void {
+    const f = LADDER[Math.min(LADDER.length - 1, Math.max(0, Math.round(nth)) % 6)];
+    glide(f * 0.5, f * 0.62, 0, 0.09, { gain: 0.07, type: "triangle", attack: 0.006 });
+    tone(f, 0.015, 0.06, 0.025);
+  },
+  /** Code Lab: a gentle "bonk" against a rock — a low boing, never a crash. */
+  bonk(): void {
+    glide(240, 120, 0, 0.18, { gain: 0.12, type: "triangle" });
+    glide(520, 380, 0.05, 0.16, { gain: 0.035 });
+  },
+  /** Code Lab: RUN pressed — a quick rising "whirr". */
+  run(): void {
+    swish(0, 0.24, 0.035, 400, 2200);
+    [N.C5, N.E5, N.G5].forEach((f, i) => tone(f, i * 0.05, 0.1, 0.06, "triangle"));
+  },
+  /** Tick Tock: a clock hand passes a number — a soft wooden "tick" (`tock` = the lower partner). */
+  tick(tock = false): void {
+    const f = tock ? 1250 : 1650;
+    glide(f, f * 0.8, 0, 0.035, { gain: 0.045, type: "triangle", attack: 0.002 });
+    swish(0, 0.025, 0.02, 3800, 2400, 1.4);
+  },
+  /** Tick Tock: the hour changes — a small, warm two-note bell. */
+  chime(): void {
+    tone(N.G5, 0, 0.45, 0.045);
+    tone(N.E6, 0.09, 0.55, 0.04);
+    tone(N.G6, 0.09, 0.4, 0.012, "triangle");
+  },
   /** Lesson complete: a proud "ta-da-daa, da-da-DAA". */
   lessonDone(): void {
     const tune: [number, number, number][] = [

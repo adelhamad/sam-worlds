@@ -75,7 +75,7 @@ export interface SettingsRow {
   lastGiftDay?: string | null;
   giftStreak?: number;
   giftBestStreak?: number;
-  /** Cosmo companion (rides this row — no schema bump, mirrored by backup). */
+  /** Legacy pet fields: no longer read or written; kept so old rows type-check. Do not reuse these names. */
   petName?: string | null;
   petXp?: number;
   petStageIdx?: number;
@@ -86,6 +86,12 @@ export interface SettingsRow {
   tourChests?: string[];
   tourDays?: number;
   tourLastDay?: string | null;
+  /** Daily quests (rides this row too): today's counters, collected quests, chest, quest days. */
+  questDay?: string | null;
+  questCounters?: { lessons: number; firstTry: number; combo: number; dust: number; perfect: number };
+  questClaimed?: string[];
+  questChestDay?: string | null;
+  questDaysDone?: number;
 }
 export interface CouponRow {
   id?: number;

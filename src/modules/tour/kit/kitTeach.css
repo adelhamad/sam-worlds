@@ -1,0 +1,132 @@
+/* Course Kit — teach cards inside the amber "Almost — look at this." sheet.
+   The sheet's .tl-teach is the frame; these stay compact (≤ ~45% of a phone). */
+.tour .kx-teach { display: flex; flex-direction: column; gap: 10px; }
+.tour .kx-teach-explain {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1.25;
+  color: #fff3df;
+  text-align: center;
+  text-wrap: balance;
+}
+.tour .kx-teach .kx-card { border-bottom-width: 3px; }
+.tour .kx-teach .ttile.is-right { animation: t-pop 0.32s ease 0.3s both; }
+.tour .kx-teach-note { font-size: 14px; font-weight: 800; color: var(--t-ink-dim); white-space: nowrap; }
+.tour .kx-teach-arrow { flex: none; display: grid; place-items: center; line-height: 0; color: var(--t-almost); }
+
+/* pick */
+.tour .kx-teach-pick { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.tour .kx-teach-answer { display: flex; flex-direction: column; align-items: center; gap: 2px; width: 100%; }
+.tour .kx-teach-answer .kx-teach-right { width: 100%; max-width: 440px; min-height: 56px; }
+.tour .kx-teach-hero { max-width: 100%; min-height: 44px; background: #1d1b4d; border-color: #4c3fa8; }
+.tour .kx-teach-answer .kx-teach-arrow { transform: rotate(90deg); line-height: 1; }
+.tour .kx-teach-picked { display: flex; align-items: center; justify-content: center; gap: 8px; max-width: 100%; }
+.tour .kx-teach-dim { min-height: 44px; opacity: 0.75; max-width: 70%; }
+
+/* pairs */
+.tour .kx-teach-pairs { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.tour .kx-teach-pairs.is-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 6px 10px; }
+.tour .kx-teach-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  max-width: 440px;
+}
+.tour .kx-teach-pair .kx-card { min-height: 48px; }
+.tour .kx-teach-pairs.is-grid .kx-teach-pair { gap: 3px; }
+.tour .kx-teach-pairs.is-grid .kx-card { min-height: 44px; padding: 2px 6px; gap: 4px; }
+.tour .kx-teach-pairs.is-grid .kx-card .kx-art.is-clock { --clock: 44px; }
+
+/* order */
+.tour .kx-teach-order {
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.tour .kx-teach-order li {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  animation: t-fade-up 0.3s ease both;
+  animation-delay: calc(var(--i) * 90ms + 0.2s);
+}
+.tour .kx-teach-order .kx-slot-num { width: 30px; font-size: 17px; background: var(--t-gold); color: #3a2800; }
+.tour .kx-teach-order .kx-card { flex: 1 1 auto; min-height: 44px; }
+.tour .kx-teach-order.is-long .kx-card { min-height: 40px; padding-block: 2px; }
+.tour .kx-teach-order.is-long .kx-card .kx-art.is-clock { --clock: 40px; }
+/* clocks / pictures: the solved order as one row, numbers on top */
+.tour .kx-teach-order.is-strip { display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); gap: 6px; max-width: 520px; }
+.tour .kx-teach-order.is-strip li { flex-direction: column; align-items: stretch; gap: 4px; }
+.tour .kx-teach-order.is-strip .kx-slot-num { width: auto; height: 26px; border-radius: 9px; font-size: 16px; }
+.tour .kx-teach-order.is-strip .kx-card { flex-direction: column; justify-content: center; min-height: 0; padding: 4px; gap: 2px; }
+.tour .kx-teach-order.is-strip .kx-card .kx-art.is-clock { --clock: 100%; }
+.tour .kx-teach-order.is-strip .kx-card .kx-label { font-size: 12px; text-align: center; }
+
+/* sort */
+.tour .kx-teach-sort { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 8px; }
+.tour .kx-teach-bucket {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 2px dashed rgba(255, 180, 84, 0.35);
+}
+.tour .kx-teach-bucket .kx-bucket-head { min-height: 40px; }
+.tour .kx-teach-chip { min-height: 38px; padding: 2px 8px; }
+.tour .kx-teach-chip .kx-art.is-clock { --clock: 40px; }
+@media (max-width: 520px) {
+  .tour .kx-teach-sort.is-narrow { gap: 5px; }
+  .tour .kx-teach-sort.is-narrow .kx-teach-bucket { padding: 4px 3px; }
+  .tour .kx-teach-sort.is-narrow .kx-card { flex-direction: column; justify-content: center; gap: 0; padding: 3px 2px; text-align: center; }
+  .tour .kx-teach-sort.is-narrow .kx-card .kx-label { flex: 0 1 auto; align-self: stretch; font-size: 12.5px; }
+  .tour .kx-teach-sort.is-narrow .kx-card .kx-art.is-clock { --clock: 36px; }
+}
+
+/* build */
+.tour .kx-teach-build { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.tour .kx-teach-build .kx-teach-hero { max-width: 100%; }
+.tour .kx-teach-words { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.tour .kx-teach-words .kx-word {
+  min-height: 44px;
+  min-width: 0;
+  padding: 2px 12px;
+  font-size: 19px;
+  border-bottom-width: 3px;
+  cursor: default;
+  animation: t-fade-up 0.3s ease both;
+  animation-delay: calc(var(--i) * 70ms + 0.2s);
+}
+
+/* number */
+.tour .kx-teach-number { display: flex; align-items: center; justify-content: center; gap: 12px; }
+.tour .kx-teach-number .kx-items { flex: 0 1 auto; width: auto; padding: 6px 8px; border-bottom-width: 3px; background: rgba(255, 255, 255, 0.04); }
+.tour .kx-items.is-small .kx-items-row { --size: 30px; }
+.tour .kx-items.is-small.is-many .kx-items-row { --size: 25px; }
+.tour .kx-items.is-small.is-lots .kx-items-row { --size: 22px; }
+.tour .kx-items.is-small .kx-caption { font-size: 14px; }
+.tour .kx-teach-equals { font-size: 30px; font-weight: 900; color: var(--t-ink-dim); }
+.tour .kx-teach-big {
+  min-width: 72px;
+  padding: 2px 14px;
+  border-radius: 18px;
+  background: var(--t-gold);
+  border-bottom: 5px solid var(--t-gold-deep);
+  color: #3a2800;
+  font-size: 44px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  animation: t-pop 0.4s ease 0.3s both;
+}

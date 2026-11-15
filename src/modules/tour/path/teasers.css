@@ -1,0 +1,42 @@
+/* Lesson-card teasers that are not flags or pieces: what-you'll-do chips and
+   the big unit picture of the default (kit) teaser. Flags/pieces live in path.css. */
+
+.tour-path .tp-sheet-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0 2px;
+}
+.tour-path .tp-sheet-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--hue) 14%, #0b1838);
+  border: 2px solid color-mix(in srgb, var(--hue) 45%, var(--t-line));
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--t-ink);
+  white-space: nowrap;
+}
+.tour-path .tp-sheet-chips .tp-sheet-count { margin-left: 0; }
+
+.tour-path .tp-sheet-kit { display: flex; align-items: center; gap: 14px; margin: 6px 0 2px; }
+.tour-path .tp-sheet-kit .tp-sheet-chips { margin: 0; flex: 1; min-width: 0; }
+.tour-path .tp-sheet-art {
+  flex: none;
+  width: 76px;
+  height: 76px;
+  border-radius: 22px;
+  display: grid;
+  place-items: center;
+  font-size: 44px;
+  line-height: 1;
+  background: var(--hue);
+  background-image: radial-gradient(ellipse 60% 42% at 36% 24%, rgba(255, 255, 255, 0.45), transparent 70%);
+  box-shadow: 0 5px 0 color-mix(in srgb, var(--hue) 60%, #06102a);
+}
+.tour-path .tp-sheet-art.has-piece { background: color-mix(in srgb, var(--hue) 18%, #06102a); }

@@ -22,7 +22,6 @@ import { Launcher } from "../../ui/inputs/Launcher";
 import { OrderCards } from "../../ui/inputs/OrderCards";
 import { ChoiceButtons } from "../../ui/inputs/ChoiceButtons";
 import { TraceCanvas } from "../../ui/inputs/TraceCanvas";
-import { StagePet } from "../../ui/PetCompanion";
 import { GeoStatMedia } from "./GeoStatMedia";
 import { VideoToggle } from "../../ui/VideoToggle";
 import { CircuitDiagram } from "../../ui/inputs/CircuitDiagram";
@@ -32,7 +31,7 @@ import { TraitQuestionLabel } from "../../ui/TraitQuestionLabel";
 import { traitQuestionSpeech } from "../../engine/generators/traitQuestionSpeech";
 import { TraitDetective } from "../../ui/inputs/TraitDetective";
 import { TraitDetectiveReview, type DetectiveReview } from "../../ui/TraitDetectiveReview";
-
+import { Glyph } from "../../ui/icons/Icon";
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const THINK_MS = 1200;
 
@@ -303,7 +302,7 @@ export function PlayStage() {
 
       <StageHeader
         worldId={world.id}
-        title={`${world.id === "traits" ? "" : world.icon} ${stage.name}`.trim()}
+        title={<>{world.id !== "traits" && <Glyph value={world.icon} size="1.1em" />} {stage.name}</>}
         starDust={starDust}
         intro={stage.intro}
         helpOpen={helpOpen}
@@ -362,7 +361,7 @@ export function PlayStage() {
 
 interface StageHeaderProps {
   worldId: string;
-  title: string;
+  title: React.ReactNode;
   starDust: number;
   intro?: string[];
   helpOpen: boolean;
@@ -421,7 +420,6 @@ function QuestionCard({ session, q, praise, busy, interactive, onSubmit, onRevea
     <div className={`question-card panel ${interactive ? "q-wide" : ""} ${q.payload?.statNote ? "q-stat" : ""}`}>
       <div className="q-progress">
         {STR.question(session.index + 1, session.questions.length)}
-        <StagePet correctCount={session.correctCount} />
       </div>
       {session.companionLine && <div className="q-companion">🤖 {session.companionLine}</div>}
       {session.workedExample && (
@@ -499,7 +497,7 @@ function Celebration({ result, tease, onBackToMap, onNext, nextLabel }: Celebrat
         </div>}
         {result.newBadge && (
           <div className="badge-banner">
-            <span className="badge-icon">{result.newBadge.icon}</span>
+            <span className="badge-icon"><Glyph value={result.newBadge.icon} size="1em" /></span>
             <span>
               {STR.badgeEarned} <b>{result.newBadge.name}</b> — {persona.name},{" "}
               {new Date().toLocaleDateString(undefined, { month: "long", year: "numeric" })}
@@ -508,7 +506,7 @@ function Celebration({ result, tease, onBackToMap, onNext, nextLabel }: Celebrat
         )}
         {result.surprise && (
           <div className={`badge-banner rarity-${result.surprise.rarity}`}>
-            <span className="badge-icon">{result.surprise.icon}</span>
+            <span className="badge-icon"><Glyph value={result.surprise.icon} size="1em" /></span>
             <span>
               Surprise treasure! <b>{result.surprise.name}</b> added to your Vault 🗝️
             </span>

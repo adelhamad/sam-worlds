@@ -1,0 +1,41 @@
+/* Tick Tock clock — motion only (colours are SVG attributes in ClockArt.tsx so
+   the clock draws right anywhere). Hands rotate about the centre in viewBox
+   units; the transition is set inline (it is off while a finger drags). */
+@import "@fontsource-variable/nunito";
+
+.tclock {
+  display: block;
+  overflow: visible;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.tclock:not([width]) { width: 100%; height: auto; }
+.tclock .tclock-hand {
+  transform-box: view-box;
+  transform-origin: 100px 100px;
+}
+.tclock .tclock-halo { animation: tclock-halo 0.9s ease-in-out infinite; }
+@keyframes tclock-halo {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+.tclock .tclock-grip > circle:last-child {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: tclock-grip 1.6s ease-in-out infinite;
+}
+@keyframes tclock-grip {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+}
+.tclock .tclock-mark { animation: tclock-pop 0.32s ease both; transform-box: fill-box; transform-origin: center; }
+.tclock .tclock-ring-on > circle { animation: tclock-pop 0.3s ease both; transform-box: fill-box; transform-origin: center; }
+@keyframes tclock-pop {
+  0% { transform: scale(0.4); }
+  70% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tclock * { animation: none !important; transition: none !important; }
+}

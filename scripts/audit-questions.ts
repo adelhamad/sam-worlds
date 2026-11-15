@@ -6,9 +6,14 @@ import { STATS_BY_CODE, areaLabel, countryLabel, populationLabel, rankedCountry 
 import { auditTraits } from "./audit-traits";
 import { auditTour } from "./audit-tour";
 import { auditChess } from "./audit-chess";
+import { auditMotivators } from "./audit-motivators";
+import { auditKit } from "./audit-kit";
+import { auditCode } from "./audit-code";
+import { auditTick } from "./audit-tick";
+import { auditIcons } from "./audit-icons";
 
 const SEEDS = [1, 3, 7, 37, 101, 509, 1009, 12345, 54321, 99991];
-const failures: string[] = [...auditTraits(), ...auditTour(), ...auditChess()];
+const failures: string[] = [...auditTraits(), ...auditTour(), ...auditChess(), ...auditKit(), ...auditCode(), ...auditTick(), ...auditMotivators(), ...auditIcons()];
 const stageIds = new Set<string>();
 let sessions = 0;
 let questionsChecked = 0;

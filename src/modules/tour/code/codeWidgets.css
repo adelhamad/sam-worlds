@@ -1,0 +1,151 @@
+/* Code Lab — the exercise widgets and teach cards. Builds on tour-base.css,
+   code.css (grid) and codeBlocks.css (blocks). Prefixes: `cw-` widgets,
+   `ck-` teach. Each widget fits ~480px of height on a 360×740 phone: the
+   grid shrinks before anything would scroll. */
+.tour .cw {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+/* run / debug carry track + palette + buttons: the grid gets what is left */
+.tour .cw-run { --cg-max: min(480px, 100%, max(170px, calc(100dvh - 545px))); }
+.tour .cw-run.has-loops { --cg-max: min(480px, 100%, max(160px, calc(100dvh - 600px))); }
+.tour .cw-debug { --cg-max: min(480px, 100%, max(200px, calc(100dvh - 450px))); }
+.tour .cw-trace { --cg-max: min(480px, 100%, max(240px, calc(100dvh - 420px))); }
+
+/* ---------- the line above the grid ---------- */
+.tour .cw-bar {
+  width: 100%;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.tour .cw-help {
+  min-width: 0;
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--t-ink-dim);
+  text-align: center;
+  text-wrap: balance;
+  animation: t-fade-up 0.3s ease both;
+}
+.tour .is-done .cw-help { color: var(--t-ink); }
+.tour .cw-stars {
+  flex: none;
+  min-height: 34px;
+  box-sizing: border-box;
+  padding: 2px 12px 2px 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 999px;
+  background: var(--t-surface);
+  border: 2px solid var(--t-line);
+  border-bottom-width: 4px;
+  color: var(--t-gold);
+  font-size: 18px;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+.tour .cw-stars .cgl { width: 26px; height: 26px; }
+.tour .cw-stars.is-got { animation: t-pop 0.35s ease; border-color: var(--t-gold-deep); }
+
+/* ---------- RUN + watch ---------- */
+.tour .tbtn.cw-go {
+  width: 100%;
+  min-height: 60px;
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.tour .tbtn.cw-go .cgl-play { width: 24px; height: 24px; fill: currentColor; }
+.tour .tbtn.cw-go:not(:disabled) { animation: cw-ready 0.36s cubic-bezier(0.2, 0.9, 0.25, 1.18); }
+@keyframes cw-ready {
+  0% { transform: scale(0.96); }
+  60% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+.tour .cw-actions { width: 100%; display: flex; gap: 10px; }
+.tour .cw-actions .tbtn.cw-go { flex: 1 1 auto; width: auto; }
+.tour .cw-watch { flex: none; min-height: 60px; padding: 8px 16px; font-size: 18px; color: var(--t-ink); }
+.tour .cw-eye {
+  position: relative;
+  width: 24px;
+  height: 15px;
+  border-radius: 50% / 60%;
+  border: 3px solid currentColor;
+  box-sizing: border-box;
+}
+.tour .cw-eye::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.tour .cw-debug .cp-picker { width: 100%; box-sizing: border-box; }
+
+/* ---------- trace ---------- */
+.tour .cw-read { padding-block: 10px; }
+
+/* ---------- teach cards ---------- */
+.tour .ck {
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+}
+.tour .ck-grid.cg {
+  width: clamp(150px, 44vw, 230px);
+  padding: 3px;
+  border-radius: 14px;
+  border-bottom-width: 4px;
+  box-shadow: none;
+}
+.tour .ck-grid .cg-field { border-radius: 11px; }
+.tour .ck-grid .cg-tile::before { inset: 1.5px; box-shadow: inset 0 -2px 0 var(--cg-a-deep); }
+.tour .ck-grid .cg-tile.is-b::before { box-shadow: inset 0 -2px 0 var(--cg-b-deep); }
+.tour .ck-grid .cg-pad { border-width: 2px; }
+.tour .ck-grid .cg-step b { min-width: 50%; height: 50%; font-size: calc(100cqi / var(--n) * 0.34); }
+.tour .ck-grid .cg-pin .cgl-pin { width: 66%; height: 66%; }
+.tour .ck-side { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.tour .ck-side .cp-track { width: auto; max-width: 100%; }
+.tour .ck-line { font-size: clamp(17px, 4.6vw, 21px); font-weight: 900; line-height: 1.2; text-wrap: balance; }
+.tour .ck-note { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 800; opacity: 0.9; }
+.tour .ck-ring {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 3px dashed var(--t-almost);
+  background: rgba(255, 180, 84, 0.25);
+}
+
+@media (min-width: 600px) and (min-height: 900px) {
+  .tour .cw { gap: 14px; }
+  .tour .cw-help { font-size: 20px; }
+  .tour .cw-run,
+  .tour .cw-debug { --cg-max: min(460px, 100%, calc(100dvh - 640px)); }
+  .tour .cw-trace { --cg-max: min(480px, 100%, calc(100dvh - 500px)); }
+  .tour .ck .cp-track.mode-mini { --cp-size: 42px; }
+}

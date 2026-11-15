@@ -45,78 +45,19 @@
   color: var(--t-ink);
   flex: none;
 }
-.tour-path .tp-title {
-  flex: 1;
-  min-width: 0;
-  margin: 0;
-  font-size: 24px;
-  font-weight: 900;
-  letter-spacing: 0.01em;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 .tour-path .tp-title-inline {
-  display: none;
   margin: 18px 0 0;
   text-align: center;
   font-size: 24px;
   font-weight: 900;
 }
-/* With a course switch in the bar, the title always sits under it. */
-.tour-path.has-switch .tp-title-inline { display: block; }
-
-/* ---------- course switch ---------- */
-.tour-path .tp-switch {
-  flex: none;
-  display: flex;
-  margin: 0 auto;
-  padding: 0;
-  border-radius: 16px;
-  background: var(--t-surface);
-  box-shadow: inset 0 0 0 2px var(--t-line-deep);
-}
-.tour-path .tp-switch-seg {
-  position: relative;
-  font: inherit;
-  font-size: 16px;
-  font-weight: 900;
-  line-height: 1;
-  min-height: 48px;
-  min-width: 48px;
-  padding: 0 16px 0 12px;
-  border: none;
-  border-radius: 16px;
-  background: none;
-  color: var(--t-ink-dim);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap;
-  cursor: pointer;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  transition: transform 0.06s ease, color 0.12s ease;
-}
-.tour-path .tp-switch-seg:not(.is-active):active { transform: translateY(2px); }
-.tour-path .tp-switch-seg:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
-.tour-path .tp-switch-seg.is-active {
-  background: var(--t-pogo);
-  color: #fff;
-  box-shadow: inset 0 -4px 0 var(--t-pogo-deep);
-  cursor: default;
-}
-.tour-path .tp-switch-icon { width: 28px; height: 28px; display: grid; place-items: center; line-height: 1; }
-.tour-path .tp-switch-seg:not(.is-active) .tp-switch-icon { opacity: 0.85; }
-.tour-path .tp-switch-swap { display: none; }
-
 .tour-path .tp-chips {
   display: flex;
   align-items: center;
   gap: 6px;
   margin-left: auto;
   flex: none;
+  min-width: 0;
 }
 .tour-path .tp-chip {
   font: inherit;
@@ -290,7 +231,7 @@
   padding: 7px 14px 8px;
   border-radius: 12px;
   background: #fff;
-  color: var(--hue-ink);
+  color: color-mix(in srgb, var(--hue) 22%, #06102a);
   font-size: 16px;
   font-weight: 900;
   letter-spacing: 0.08em;
@@ -506,7 +447,7 @@
   font-weight: 900;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--hue);
+  color: var(--hue-text, var(--hue));
 }
 .tour-path .tp-sheet-name { margin: 0; padding-right: 52px; font-size: 28px; font-weight: 900; line-height: 1.1; color: var(--t-ink); }
 .tour-path .tp-sheet-flags { display: flex; align-items: center; gap: 8px; margin: 6px 0 2px; flex-wrap: wrap; }
@@ -678,45 +619,12 @@
 
 /* ---------- small phones ---------- */
 @media (max-width: 599px) {
-  .tour-path .tp-title { display: none; }
-  .tour-path .tp-title-inline { display: block; }
   .tour-path .tp-bar { gap: 6px; }
   .tour-path .tp-chip { font-size: 15px; padding: 0 9px; gap: 4px; }
   .tour-path .tp-back { padding: 6px 12px; }
   .tour-path .tp-banner-name { font-size: 20px; }
   .tour-path .tp-banner-blurb { font-size: 13.5px; }
   .tour-path .tp-banner-icon { width: 52px; height: 52px; font-size: 30px; border-radius: 16px; }
-
-  /* The switch shrinks to one button: the way to the other course. */
-  .tour-path .tp-switch { margin: 0; background: none; box-shadow: none; }
-  .tour-path .tp-switch-seg.is-active,
-  .tour-path .tp-switch-name { display: none; }
-  .tour-path .tp-switch-seg {
-    width: 52px;
-    padding: 0 0 4px;
-    justify-content: center;
-    border-radius: 14px;
-    background: var(--t-pogo);
-    color: #fff;
-    box-shadow: inset 0 -4px 0 var(--t-pogo-deep);
-  }
-  .tour-path .tp-switch-seg:not(.is-active) .tp-switch-icon { opacity: 1; }
-  .tour-path .tp-switch-swap {
-    position: absolute;
-    right: -5px;
-    top: -5px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    background: #fff;
-    color: var(--t-pogo-deep);
-    font-size: 13px;
-    font-weight: 900;
-    line-height: 1;
-    box-shadow: 0 2px 0 rgba(6, 16, 42, 0.4);
-  }
 }
 @media (min-width: 600px) {
   .tour-path .tp-scrim:not(.tp-scrim-centre) { padding-bottom: 28px; }
@@ -735,11 +643,12 @@
 @media (max-width: 419px) {
   .tour-path .tp-back-word { display: none; }
   .tour-path .tp-back { padding: 6px; font-size: 20px; }
-  /* …and the day chip keeps its flame and number. */
-  .tour-path.has-switch .tp-day-long { display: none; }
-  .tour-path.has-switch .tp-day-short { display: inline; }
-  .tour-path.has-switch .tp-dust-long { display: none; }
-  .tour-path.has-switch .tp-dust-short { display: inline; }
-  .tour-path.has-switch .tp-chip { padding: 0 8px; }
-  .tour-path.has-switch .tp-chips { gap: 5px; }
+  .tour-path .tp-bar { gap: 5px; padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
+  /* …and the chips keep their picture and number. */
+  .tour-path .tp-day-long { display: none; }
+  .tour-path .tp-day-short { display: inline; }
+  .tour-path .tp-dust-long { display: none; }
+  .tour-path .tp-dust-short { display: inline; }
+  .tour-path .tp-chip { padding: 0 7px; gap: 3px; }
+  .tour-path .tp-chips { gap: 5px; }
 }

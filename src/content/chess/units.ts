@@ -4,6 +4,7 @@
 // Sam's chess set. Stage ids are permanent (saves reference them): only ever
 // APPEND units or lessons.
 import type { CourseUnit } from "../courseTypes";
+import { iconRef } from "../iconNames";
 import type { StageDef } from "../types";
 import type { WorldDef } from "../worldList";
 import type { ChessIntroKey, ChessParams, ChessTask, PieceType } from "../../engine/chess/types";
@@ -87,7 +88,7 @@ const SEEDS: UnitSeed[] = [
     { name: "Pawn Champion", tasks: ["spot-moves", "spot-captures", "capture", "promote"] },
   ]),
   {
-    name: "Piece Points", icon: "🧮", hue: "#ff9f43", blurb: "Who is worth the most?",
+    name: "Piece Points", icon: iconRef("abacus"), hue: "#ff9f43", blurb: "Who is worth the most?",
     pieces: ["Q", "R", "B", "N", "P"], size: 5,
     lessons: [
       { name: "Count the Points", tasks: ["count", "capture"], intro: "values" },
@@ -95,10 +96,10 @@ const SEEDS: UnitSeed[] = [
       { name: "Home Squares", tasks: ["place", "count"], intro: "home" },
       { name: "Points Champion", tasks: ["count", "place", "capture", "stars"] },
     ],
-    souvenir: { icon: "🧮", name: "Point Counter" },
+    souvenir: { icon: iconRef("abacus"), name: "Point Counter" },
   },
   {
-    name: "Check!", icon: "🔔", hue: "#f4c542", blurb: "Watch out, the king is in danger!",
+    name: "Check!", icon: iconRef("bell"), hue: "#f4c542", blurb: "Watch out, the king is in danger!",
     pieces: ["Q", "R", "B", "N"], size: 5,
     lessons: [
       { name: "Spot the Danger", tasks: ["spot-attackers", "spot-safe"], intro: "check" },
@@ -106,10 +107,10 @@ const SEEDS: UnitSeed[] = [
       { name: "Run, King!", tasks: ["escape", "spot-safe", "check"] },
       { name: "Check Champion", tasks: ["check", "escape", "spot-attackers", "spot-safe"] },
     ],
-    souvenir: { icon: "🔔", name: "Check Bell" },
+    souvenir: { icon: iconRef("bell"), name: "Check Bell" },
   },
   {
-    name: "Checkmate!", icon: "👑", hue: "#b794ff", blurb: "Trap the king and win!",
+    name: "Checkmate!", icon: iconRef("crown"), hue: "#b794ff", blurb: "Trap the king and win!",
     pieces: ["Q", "R"], size: 5,
     lessons: [
       { name: "The King Is Trapped", tasks: ["mate", "check"], intro: "mate" },
@@ -117,7 +118,7 @@ const SEEDS: UnitSeed[] = [
       { name: "Rook Mates", tasks: ["mate", "escape"], pieces: ["R"] },
       { name: "Grand Champion", tasks: ["mate", "check", "escape", "capture", "stars"] },
     ],
-    souvenir: { icon: "👑", name: "Champion Crown" },
+    souvenir: { icon: iconRef("crown"), name: "Champion Crown" },
   },
 ];
 
@@ -166,7 +167,7 @@ export const CHESS_UNITS: ChessUnit[] = SEEDS.reduce<ChessUnit[]>((units, seed, 
 export const CHESS_WORLD: WorldDef = {
   id: CHESS_WORLD_ID,
   name: "Chess Camp",
-  icon: "♟️",
+  icon: iconRef("pawn"),
   tagline: "Learn chess with Pogo!",
   stages: CHESS_UNITS.flatMap((unit) => unit.lessons),
   // One trophy per finished unit (its champion lesson).

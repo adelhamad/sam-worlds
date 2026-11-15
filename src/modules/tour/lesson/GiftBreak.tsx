@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { unlockAudio } from "../../../engine/feedback/audio";
 import { Confetti, Pogo } from "../../../ui/tour/Pogo";
 import { TOUR } from "../../../strings/tour";
+import { Icon } from "../../../ui/icons/Icon";
 import { lessonSound } from "./lessonSound";
 import { useCompact } from "./useCompact";
 
@@ -99,7 +100,7 @@ export function GiftBreak({ id, dust, onOpen, onDone }: GiftBreakProps) {
         </div>
         <p className="tl-gift-note" role="status">
           {open
-            ? <span className="tl-gift-prize">{TOUR.lesson.dustToken(dust)}</span>
+            ? <span className="tl-gift-prize">{TOUR.lesson.dustToken(dust)} <Icon name="dust" size="1em" /></span>
             : <span className="tl-gift-hint">{TOUR.lesson.giftTap}</span>}
         </p>
       </main>

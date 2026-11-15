@@ -3,19 +3,22 @@ import { useNavigate } from "react-router-dom";
 import { useGame } from "../state/store";
 import { completedInWorld, focusWorldIn, WORLDS, type WorldDef } from "../content/worlds";
 import { categoryOf } from "../content/categories";
+import { COURSE_WORLD_IDS } from "../content/courses";
 import { sfx, unlockAudio } from "../engine/feedback/audio";
 import { TRAIT_IMAGES } from "../content/traits/images";
+import type { IconName } from "../content/iconNames";
+import { Glyph, Icon } from "./icons/Icon";
 import "./traits.css";
 
 // The worlds aren't sorted into tabs — they're scattered across the universe as
 // themed "galaxies" you scroll through and explore.
-const GALAXIES: Array<{ key: string; name: string; icon: string; hue: string }> = [
-  { key: "math", name: "Number Nebula", icon: "🔢", hue: "#60a5fa" },
-  { key: "reading", name: "Word Galaxy", icon: "📖", hue: "#fbbf24" },
-  { key: "science", name: "Discovery Sector", icon: "🔬", hue: "#34d399" },
-  { key: "world", name: "Wonder Worlds", icon: "🌍", hue: "#2dd4bf" },
-  { key: "life", name: "Life Constellation", icon: "💛", hue: "#f9a8d4" },
-  { key: "creative", name: "Maker Moons", icon: "🎨", hue: "#c084fc" },
+const GALAXIES: Array<{ key: string; name: string; icon: IconName; hue: string }> = [
+  { key: "math", name: "Number Nebula", icon: "abacus", hue: "#60a5fa" },
+  { key: "reading", name: "Word Galaxy", icon: "book", hue: "#fbbf24" },
+  { key: "science", name: "Discovery Sector", icon: "atom", hue: "#34d399" },
+  { key: "world", name: "Wonder Worlds", icon: "globe", hue: "#2dd4bf" },
+  { key: "life", name: "Life Constellation", icon: "heart", hue: "#f9a8d4" },
+  { key: "creative", name: "Maker Moons", icon: "palette", hue: "#c084fc" },
 ];
 
 // Each world portal gets its own planet hue.
@@ -55,15 +58,17 @@ function WorldTile({ w, done, on, focused, fav, onOpen, onFav }: {
         onClick={() => { unlockAudio(); onOpen(); }}
       >
         <span className="planet-ball" style={{ "--hue": PLANET_HUES[w.id] } as React.CSSProperties}>
-          <span className="planet-icon">{w.id === "traits" ? <img className="trait-emblem" src={TRAIT_IMAGES.turtle.src} alt="" /> : w.icon}</span>
+          <span className="planet-icon">
+            {w.id === "traits" ? <img className="trait-emblem" src={TRAIT_IMAGES.turtle.src} alt="" /> : <Glyph value={w.icon} size={50} className="planet-glyph" />}
+          </span>
         </span>
         <span className="planet-name">{w.name}</span>
         <span className={`planet-chip ${!on || done === 0 ? "dim-chip" : ""}`}>
-          {on ? `${done}/${w.stages.length}` : "🔒"}
+          {on ? `${done}/${w.stages.length}` : <Icon name="lock" size={16} />}
         </span>
       </button>
-      <button className={`planet-fav ${fav ? "is-fav" : ""}`} aria-label="favorite" onClick={onFav}>
-        {fav ? "⭐" : "☆"}
+      <button className={`planet-fav ${fav ? "is-fav" : ""}`} aria-label="favorite" aria-pressed={fav} onClick={onFav}>
+        <Icon name="star" size={22} mono={!fav} />
       </button>
     </div>
   );
@@ -74,16 +79,16 @@ function MiniRow({ title, worlds, progress, gates, onOpen }: {
 }) {
   return (
     <div className="mini-row-block">
-      <div className="mini-row-title">{title}</div>
+      <div className="mini-row-title"><Icon name="play" size="1.1em" /> {title}</div>
       <div className="mini-row">
         {worlds.map((w) => {
           const on = Boolean(gates[w.id]);
           const done = completedInWorld(w, progress);
           return (
             <button key={w.id} className="mini-chip" disabled={!on} onClick={() => onOpen(w)}>
-              <span className="mini-chip-icon">{w.icon}</span>
+              <span className="mini-chip-icon"><Glyph value={w.icon} size={34} /></span>
               <span className="mini-chip-name">{w.name}</span>
-              <span className="mini-chip-sub">{on ? `${done}/${w.stages.length}` : "🔒"}</span>
+              <span className="mini-chip-sub">{on ? `${done}/${w.stages.length}` : <Icon name="lock" size={14} />}</span>
             </button>
           );
         })}
@@ -136,7 +141,7 @@ function FavoritesRow({ worlds, gates, onOpen, onReorder }: {
 
   return (
     <div className="mini-row-block">
-      <div className="mini-row-title">⭐ Favorites <small className="dim">· drag to reorder</small></div>
+      <div className="mini-row-title"><Icon name="star" size="1.1em" /> Favorites <small className="dim">· drag to reorder</small></div>
       <div className="mini-row" ref={rowRef}>
         {order.map((w) => (
           <button
@@ -147,7 +152,7 @@ function FavoritesRow({ worlds, gates, onOpen, onReorder }: {
             onPointerMove={move}
             onPointerUp={() => up(w)}
           >
-            <span className="mini-chip-icon">{w.icon}</span>
+            <span className="mini-chip-icon"><Glyph value={w.icon} size={34} /></span>
             <span className="mini-chip-name">{w.name}</span>
           </button>
         ))}
@@ -167,7 +172,8 @@ export function WorldGrid() {
   const setFavoriteOrder = useGame((s) => s.setFavoriteOrder);
   const [search, setSearch] = useState("");
 
-  const visible = WORLDS.filter((w) => !hiddenWorlds[w.id]);
+  // Courses have their own shelf at home; the planet grid is for the classic worlds.
+  const visible = WORLDS.filter((w) => !hiddenWorlds[w.id] && !COURSE_WORLD_IDS.has(w.id));
   const focus = focusWorldIn(visible.filter((w) => enabledWorlds[w.id]), progress);
   const q = search.trim().toLowerCase();
   const matches = visible.filter(
@@ -202,22 +208,23 @@ export function WorldGrid() {
 
   return (
     <section>
-      <h2 className="section-title">🌌 Explore the Universe <small className="worlds-count">{visible.length}</small></h2>
+      <h2 className="section-title"><Icon name="planet" size="1.1em" /> Explore the Universe <small className="worlds-count">{visible.length}</small></h2>
 
       <div className="world-search">
+        <Icon name="lens" size={24} className="world-search-lens" />
         <input
           className="world-search-input"
-          placeholder="🔍 Search the worlds…"
+          placeholder="Search the worlds…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        {search && <button className="world-search-clear" aria-label="clear" onClick={() => setSearch("")}>✕</button>}
+        {search && <button className="world-search-clear" aria-label="clear" onClick={() => setSearch("")}><Icon name="close" size={22} mono /></button>}
       </div>
 
       {q ? searchView : (
         <>
           {recent.length > 0 && (
-            <MiniRow title="▶ Recently played" worlds={recent} progress={progress} gates={enabledWorlds} onOpen={open} />
+            <MiniRow title="Recently played" worlds={recent} progress={progress} gates={enabledWorlds} onOpen={open} />
           )}
           {favs.length > 0 && (
             <FavoritesRow
@@ -234,7 +241,7 @@ export function WorldGrid() {
             return (
               <div key={g.key} className="galaxy" style={{ "--galaxy-hue": g.hue } as React.CSSProperties}>
                 <div className="galaxy-head">
-                  <span className="galaxy-icon">{g.icon}</span>
+                  <span className="galaxy-icon"><Icon name={g.icon} size={30} /></span>
                   <h3 className="galaxy-name">{g.name}</h3>
                   <span className="galaxy-count">{ws.length}</span>
                 </div>

@@ -2,25 +2,24 @@ import { WORLDS as BASE_WORLDS, type WorldDef } from "./worldList";
 import { EXTRA_WORLDS } from "./worldListExtra";
 import { EXTRA_WORLDS2 } from "./worldListExtra2";
 import { GEOGRAPHY_WORLDS } from "./worldListGeography";
-import { CHESS_WORLD } from "./chess/units";
-import { TOUR_WORLD } from "./tour/units";
+import { COURSES, COURSE_WORLD_IDS } from "./courses";
 import type { StageDef } from "./types";
 
 const PRECISE_STAGE_TITLES = new Set([
   "numberforge", "melody", "logic", "robot", "time", "cipher", "builder",
   "algebra", "placevalue", "measure", "capitals", "countrymaps",
-  "landduel", "areaatlas", "population", "traits", "tour", "chess",
+  "landduel", "areaatlas", "population", "traits",
 ]);
 const MIXED_TYPE_WORLDS = new Set(["melody", "cipher", "builder", "algebra", "placevalue", "measure"]);
 
 // Legacy fact worlds name many stages after one example, even though their
 // generator draws from the entire topic. Show an accurate chapter title.
-export const WORLDS: WorldDef[] = [...BASE_WORLDS, ...EXTRA_WORLDS, ...EXTRA_WORLDS2, ...GEOGRAPHY_WORLDS, TOUR_WORLD, CHESS_WORLD]
+export const WORLDS: WorldDef[] = [...BASE_WORLDS, ...EXTRA_WORLDS, ...EXTRA_WORLDS2, ...GEOGRAPHY_WORLDS, ...COURSES.map((course) => course.world)]
   .map((world) => ({
     ...world,
     stages: world.stages.map((stage, index) => {
       const mixed = MIXED_TYPE_WORLDS.has(world.id) && Array.isArray(stage.params.types) && stage.params.types.length > 1;
-      return PRECISE_STAGE_TITLES.has(world.id) && !mixed ? stage :
+      return (PRECISE_STAGE_TITLES.has(world.id) || COURSE_WORLD_IDS.has(world.id)) && !mixed ? stage :
         { ...stage, name: `${world.name} ${index + 1}` };
     }),
   }));

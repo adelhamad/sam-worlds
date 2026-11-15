@@ -1,6 +1,7 @@
-// The ✨ chip in the lesson's top bar and the "+N ✨" tokens that fly into it.
+// The Star Dust chip in the lesson's top bar and the "+N" dust tokens that fly into it.
 import { useEffect, useRef, useState } from "react";
 import { TOUR } from "../../../strings/tour";
+import { Icon } from "../../../ui/icons/Icon";
 import type { DustTokenSpec } from "./useDustMeter";
 
 /** A slot's token waits for the feedback sheet to land before it takes off. */
@@ -41,7 +42,7 @@ export function DustMeter({ value, bumps }: { value: number; bumps: number }) {
     <div className="tl-dust" data-dust-chip="" role="img" aria-label={TOUR.lesson.dustMeter(value)}>
       {/* keyed: every landing replays the bump and the ring */}
       <span key={bumps} className={`tl-dust-body ${bumps > 0 ? "is-bump" : ""}`}>
-        <span className="tl-dust-icon" aria-hidden="true">✨</span>
+        <Icon name="dust" size="1.15em" className="tl-dust-icon" />
         <span className="tl-dust-num">{shown}</span>
         {bumps > 0 && <span className="tl-dust-ring" aria-hidden="true" />}
       </span>
@@ -94,7 +95,7 @@ export function DustToken({ token, onLand }: DustTokenProps) {
 
   return (
     <div ref={ref} className={`tl-token ${token.small ? "is-small" : ""}`} aria-hidden="true">
-      <span className="tl-token-in">{TOUR.lesson.dustToken(token.amount)}</span>
+      <span className="tl-token-in">{TOUR.lesson.dustToken(token.amount)} <Icon name="dust" size="1em" /></span>
     </div>
   );
 }

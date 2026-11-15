@@ -6,10 +6,11 @@ import type { StageDef } from "../../content/types";
 import { LockedScreen } from "../../ui/LockedScreen";
 import { TraitGuide } from "../../ui/TraitGuide";
 import { TRAIT_IMAGES } from "../../content/traits/images";
+import { Glyph, Icon } from "../../ui/icons/Icon";
 
-function nodeStars(completed: boolean | undefined, bestStars: number | undefined, unlocked: boolean): string {
-  if (completed) return "⭐".repeat(bestStars ?? 1);
-  return unlocked ? "" : "🔒";
+function nodeStars(completed: boolean | undefined, bestStars: number | undefined, unlocked: boolean) {
+  if (completed) return Array.from({ length: bestStars ?? 1 }, (_, i) => <Icon key={i} name="star" size="1em" />);
+  return unlocked ? null : <Icon name="lock" size="1em" />;
 }
 
 export function WorldMap() {
@@ -46,13 +47,13 @@ export function WorldMap() {
   return (
     <div className={`screen world-map ${world.id === "traits" ? "traits-map" : ""}`}>
       <header className="hub-header">
-        <Link to="/hub" className="btn btn-secondary" onClick={() => sfx.tap()}>
-          ← Base
+        <Link to="/universe" className="btn btn-secondary" onClick={() => sfx.tap()}>
+          ← Worlds
         </Link>
         <h1>
-          {world.id === "traits" ? <img className="trait-emblem" src={TRAIT_IMAGES.turtle.src} alt="" /> : world.icon} {world.name}
+          {world.id === "traits" ? <img className="trait-emblem" src={TRAIT_IMAGES.turtle.src} alt="" /> : <Glyph value={world.icon} size="1.15em" />} {world.name}
         </h1>
-        <span className="dust-counter">✨ {starDust}</span>
+        <span className="dust-counter"><Icon name="dust" size="1em" /> {starDust}</span>
       </header>
 
       {world.id === "traits" && <TraitGuide stageId={world.stages[lastUnlocked].id} />}

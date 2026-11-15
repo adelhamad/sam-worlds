@@ -1,8 +1,9 @@
-// The few lines of a path screen that differ per course, plus the lookup from
-// the URL to the course it shows.
+// The few lines of a path screen that depend on the course, plus the lookup
+// from the URL to the course it shows. Generic: per-course flavour comes from
+// courseFamilies.ts.
 import { COURSES, type Course } from "../../../content/courses";
-import { CHESS } from "../../../strings/chess";
 import { TOUR } from "../../../strings/tour";
+import { courseFamily } from "./courseFamilies";
 
 export interface CourseText {
   title: string;
@@ -14,23 +15,16 @@ export interface CourseText {
 }
 
 export function courseText(course: Course): CourseText {
-  if (course.id === "chess") {
-    return {
-      title: CHESS.path.title,
-      finished: CHESS.path.finished,
-      finishedSub: CHESS.path.finishedSub,
-      collection: CHESS.path.set,
-    };
-  }
+  const family = courseFamily(course);
   return {
-    title: TOUR.path.title,
-    finished: TOUR.path.finished,
-    finishedSub: TOUR.path.finishedSub,
-    collection: TOUR.path.passport,
+    title: TOUR.path.courseTitle(course.title),
+    finished: family.finished(course),
+    finishedSub: family.finishedSub,
+    collection: family.label,
   };
 }
 
-/** `/chess` and anything below it is Chess Camp; everything else falls back to the first course. */
+/** A course's path and anything below it shows that course; anything else falls back to the first. */
 export function courseOfPath(pathname: string): Course {
   return COURSES.find((course) => pathname === course.path || pathname.startsWith(`${course.path}/`)) ?? COURSES[0];
 }

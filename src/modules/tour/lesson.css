@@ -133,7 +133,7 @@
   font-variant-numeric: tabular-nums;
   animation: tl-combo-pop 0.42s var(--tl-spring);
 }
-.tour .tl-combo-flame { font-size: 20px; line-height: 1; transform-origin: 50% 90%; animation: tl-flicker 1.1s ease-in-out infinite; }
+.tour .tl-combo-flame { font-size: 20px; transform-origin: 50% 90%; animation: tl-flicker 1.1s ease-in-out infinite; }
 @keyframes tl-combo-pop {
   0% { transform: scale(0.6); }
   60% { transform: scale(1.18); }
@@ -349,6 +349,16 @@
   touch-action: manipulation;
   transition: opacity 0.2s ease;
 }
+.tour .tl-skip { display: inline-flex; align-items: center; gap: 6px; }
+.tour .tl-skip-cost {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: 2px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
 .tour .tl-skip:disabled { opacity: 0.35; }
 .tour .tl-skip:active:not(:disabled) { background: rgba(255, 255, 255, 0.08); }
 
@@ -555,6 +565,7 @@
 .tour .tl-stat-icon { font-size: 0.8em; }
 .tour .tl-stars { display: inline-flex; gap: 2px; }
 .tour .tl-star { color: var(--t-line); font-size: 1.05em; line-height: 1; }
+.tour .tl-star .ticon { display: block; }
 .tour .tl-star.is-lit { color: var(--t-gold); animation: tl-star-in 0.5s var(--tl-spring) both; text-shadow: 0 0 14px rgba(255, 209, 102, 0.6); }
 @keyframes tl-star-in {
   0% { color: var(--t-line); transform: scale(0.3) rotate(-50deg); }

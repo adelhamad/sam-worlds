@@ -2,21 +2,34 @@
 // the hub and the save state share. Add a course here and it gets a path, a
 // lesson player, chests and parent controls.
 import { CHESS_UNITS, CHESS_WORLD, CHESS_WORLD_ID } from "./chess/units";
+import { CODE_COURSE } from "./code/units";
+import { TICK_COURSE } from "./tick/units";
 import type { Course, CourseUnit } from "./courseTypes";
+import { iconRef } from "./iconNames";
 import { TOUR_UNITS, TOUR_WORLD, TOUR_WORLD_ID } from "./tour/units";
 
 export type { Course, CourseUnit };
 
+// ADDING A COURSE = one entry here (plus its content file). The home shelf,
+// routes, world registration, parent controls and audits all read this list.
 export const COURSES: Course[] = [
   {
-    id: "tour", worldId: TOUR_WORLD_ID, title: "World Tour", icon: "🌍",
-    tagline: "Show Pogo around planet Earth!", path: "/tour", units: TOUR_UNITS, world: TOUR_WORLD,
+    id: "tour", worldId: TOUR_WORLD_ID, title: "World Tour", icon: iconRef("globe"),
+    tagline: "Show Pogo around planet Earth!", path: "/tour", hue: "#6ea8ff", subject: "explore",
+    units: TOUR_UNITS, world: TOUR_WORLD,
   },
   {
-    id: "chess", worldId: CHESS_WORLD_ID, title: "Chess Camp", icon: "♟️",
-    tagline: "Learn chess with Pogo!", path: "/chess", units: CHESS_UNITS, world: CHESS_WORLD,
+    id: "chess", worldId: CHESS_WORLD_ID, title: "Chess Camp", icon: iconRef("pawn"),
+    tagline: "Learn chess with Pogo!", path: "/chess", hue: "#ffd166", subject: "think",
+    units: CHESS_UNITS, world: CHESS_WORLD,
   },
+  CODE_COURSE,
+  TICK_COURSE,
 ];
+
+/** Worlds that belong to a course (they use the path + lesson player, not the planet grid). */
+export const COURSE_WORLD_IDS = new Set(COURSES.map((course) => course.worldId));
+
 
 export function courseById(id: string): Course | undefined {
   return COURSES.find((course) => course.id === id);

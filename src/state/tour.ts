@@ -1,5 +1,5 @@
 // World Tour state — passport stamps, unit chests and tour days. Rides the
-// SettingsRow like the pet does: no Dexie schema bump, and the localStorage
+// SettingsRow: no Dexie schema bump, and the localStorage
 // backup already mirrors it. Lesson progress itself lives in the normal
 // `progress` table (tour lessons are ordinary stages).
 import { db, logEvent } from "../engine/save/db";

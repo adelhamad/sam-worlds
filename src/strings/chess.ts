@@ -179,7 +179,6 @@ export const CHESS = {
 
   /** Path screen bits that are chess-only (chess set shelf). */
   path: {
-    title: `${guide}'s Chess Camp`,
     set: "Chess set",
     setTitle: `${persona.name}'s Chess Set`,
     setCount: (owned: number, total: number) => `${owned} / ${total} keepsakes`,
@@ -189,8 +188,5 @@ export const CHESS = {
     setMystery: "???",
     // Lesson card
     puzzles: (count: number) => `${count} puzzles`,
-    // End of the course
-    finished: `You are a chess champion, ${persona.name}!`,
-    finishedSub: "Play any lesson again!",
   },
 };

@@ -1,5 +1,6 @@
-import { useState, type CSSProperties } from "react";
+import { useState } from "react";
 import { TOUR } from "../../../strings/tour";
+import { hueStyle } from "./hue";
 import { Keepsake } from "./Keepsake";
 import type { ChestItem } from "./layout";
 
@@ -49,11 +50,7 @@ interface ChestNodeProps {
 export function ChestNode({ item, amp, focus, onOpen, onNudge }: ChestNodeProps) {
   const [nudge, setNudge] = useState(0);
   const { unit, state } = item;
-  const style = {
-    left: `calc(50% + ${(item.x * amp).toFixed(1)}px)`,
-    top: item.y,
-    "--hue": unit.hue,
-  } as CSSProperties;
+  const style = hueStyle(unit.hue, { left: `calc(50% + ${(item.x * amp).toFixed(1)}px)`, top: item.y });
 
   function tap() {
     if (state === "ready") {

@@ -2,6 +2,7 @@
 // Star Dust meter — plus the small "Take a break?" sheet the quit button opens.
 import { Pogo } from "../../../ui/tour/Pogo";
 import { TOUR } from "../../../strings/tour";
+import { Icon } from "../../../ui/icons/Icon";
 import { DustMeter } from "./DustMeter";
 
 interface TopBarProps {
@@ -37,7 +38,7 @@ export function LessonTopBar({ done, total, combo, dust, dustBumps, cheering, on
       </div>
       {combo >= 2 && (
         <div key={combo} className="tl-combo" aria-label={TOUR.lesson.comboChip(combo)}>
-          <span className="tl-combo-flame" aria-hidden="true">🔥</span>
+          <Icon name="flame" size="1.1em" className="tl-combo-flame" />
           {combo}
         </div>
       )}

@@ -4,6 +4,7 @@
 // as review (spaced repetition). Stage ids are permanent — saves reference
 // them — so only ever APPEND units or lessons.
 import type { CourseUnit } from "../courseTypes";
+import { iconRef } from "../iconNames";
 import type { StageDef } from "../types";
 import type { WorldDef } from "../worldList";
 import type { TourKind, TourParams } from "../../engine/tour/types";
@@ -26,44 +27,44 @@ interface UnitSeed {
 
 const SEEDS: UnitSeed[] = [
   {
-    name: "World Stars", icon: "🌟", hue: "#ffd166", blurb: "Famous flags everyone knows!",
+    name: "World Stars", icon: iconRef("star"), hue: "#ffd166", blurb: "Famous flags everyone knows!",
     groups: [["JPN", "USA", "BRA", "FRA"], ["EGY", "SAU", "CAN", "AUS"], ["CHN", "IND", "GBR", "ITA"]],
-    souvenir: { icon: "🌐", name: "Crystal Globe" },
+    souvenir: { icon: iconRef("globe"), name: "Crystal Globe" },
   },
   {
-    name: "Europe Hop", icon: "🏰", hue: "#6ea8ff", blurb: "Castles, mountains and stripes!",
+    name: "Europe Hop", icon: iconRef("castle"), hue: "#6ea8ff", blurb: "Castles, mountains and stripes!",
     groups: [["DEU", "ESP", "PRT", "IRL"], ["GRC", "SWE", "NOR", "CHE"], ["POL", "UKR", "AUT", "BEL"]],
-    souvenir: { icon: "🗝️", name: "Castle Key" },
+    souvenir: { icon: iconRef("key"), name: "Castle Key" },
   },
   {
-    name: "Desert Lands", icon: "🐪", hue: "#ff8f6b", blurb: "Golden sand and green stars!",
+    name: "Desert Lands", icon: iconRef("cactus"), hue: "#ff8f6b", blurb: "Golden sand and green stars!",
     groups: [["ARE", "QAT", "KWT", "JOR"], ["IRQ", "SYR", "LBN", "OMN"], ["MAR", "DZA", "TUN", "LBY"]],
-    souvenir: { icon: "🪔", name: "Desert Lamp" },
+    souvenir: { icon: iconRef("lamp"), name: "Desert Lamp" },
   },
   {
-    name: "Americas Trip", icon: "🦙", hue: "#5fd68b", blurb: "From jungles to snowy peaks!",
+    name: "Americas Trip", icon: iconRef("mountain"), hue: "#5fd68b", blurb: "From jungles to snowy peaks!",
     groups: [["MEX", "ARG", "CHL", "COL"], ["PER", "CUB", "VEN", "JAM"], ["PAN", "CRI", "ECU", "URY"]],
-    souvenir: { icon: "🦜", name: "Jungle Parrot" },
+    souvenir: { icon: iconRef("parrot"), name: "Jungle Parrot" },
   },
   {
-    name: "Asia Adventure", icon: "🐉", hue: "#ff7eb6", blurb: "Dragons, temples and tall peaks!",
+    name: "Asia Adventure", icon: iconRef("dragon"), hue: "#ff7eb6", blurb: "Dragons, temples and tall peaks!",
     groups: [["KOR", "THA", "VNM", "PHL"], ["PAK", "BGD", "NPL", "MNG"], ["KAZ", "IRN", "YEM", "AFG"]],
-    souvenir: { icon: "🏮", name: "Red Lantern" },
+    souvenir: { icon: iconRef("lantern"), name: "Red Lantern" },
   },
   {
-    name: "Africa Safari", icon: "🦁", hue: "#ff9f43", blurb: "Lions, rivers and bright colors!",
+    name: "Africa Safari", icon: iconRef("lion"), hue: "#ff9f43", blurb: "Lions, rivers and bright colors!",
     groups: [["NGA", "KEN", "ETH", "GHA"], ["SEN", "CMR", "MDG", "SDN"], ["UGA", "ZWE", "MLI", "SOM"]],
-    souvenir: { icon: "🥁", name: "Safari Drum" },
+    souvenir: { icon: iconRef("drum"), name: "Safari Drum" },
   },
   {
-    name: "North Lights", icon: "❄️", hue: "#8fd3ff", blurb: "Snowy lands and crossed flags!",
+    name: "North Lights", icon: iconRef("snow"), hue: "#8fd3ff", blurb: "Snowy lands and crossed flags!",
     groups: [["DNK", "FIN", "ISL", "EST"], ["HUN", "CZE", "ROU", "BGR"], ["HRV", "SRB", "LTU", "LVA"]],
-    souvenir: { icon: "🔮", name: "Snow Crystal" },
+    souvenir: { icon: iconRef("crystal"), name: "Snow Crystal" },
   },
   {
-    name: "Far Corners", icon: "🧭", hue: "#b794ff", blurb: "Islands and faraway friends!",
+    name: "Far Corners", icon: iconRef("compass"), hue: "#b794ff", blurb: "Islands and faraway friends!",
     groups: [["NZL", "PNG", "FJI", "KHM"], ["GTM", "HND", "DOM", "PRY"], ["GEO", "ARM", "UZB", "LAO"]],
-    souvenir: { icon: "🐚", name: "Sea Shell" },
+    souvenir: { icon: iconRef("shell"), name: "Sea Shell" },
   },
 ];
 
@@ -127,7 +128,7 @@ export const TOUR_COUNTRIES: string[] = TOUR_UNITS.flatMap((unit) => unit.countr
 export const TOUR_WORLD: WorldDef = {
   id: TOUR_WORLD_ID,
   name: "World Tour",
-  icon: "🛸",
+  icon: iconRef("globe"),
   tagline: "Show Pogo around planet Earth!",
   stages: TOUR_UNITS.flatMap((unit) => unit.lessons),
   // One trophy per finished unit (its Champion lesson).

@@ -1,9 +1,16 @@
 import { useState } from "react";
 import { COURSES, type Course } from "../../content/courses";
 import { TOUR_COUNTRIES } from "../../content/tour/units";
+import { QUEST_CHEST_DUST, questDone, questProgress } from "../../engine/quests/daily";
+import { questView, type QuestView } from "../../state/quests";
 import { useGame } from "../../state/store";
+import { HOME } from "../../strings/home";
 import { STAMP_GOAL } from "../../state/tour";
 import { TOUR } from "../../strings/tour";
+import { Glyph, Icon } from "../icons/Icon";
+
+// ParentSection draws world icons through this re-export (it is at its line cap).
+export { Glyph };
 
 type Pending = "passport" | "chests" | null;
 
@@ -28,6 +35,115 @@ function CourseSummary({ course }: { course: Course }) {
       {course.id === "tour" && ` · ${TOUR.parent.stamps(stamps, TOUR_COUNTRIES.length)}`}
       {course.id === "tour" && started > 0 && ` · ${started} more on the way to a stamp`}
     </p>
+  );
+}
+
+function chestState(view: QuestView): string {
+  if (view.chestOpened) return "opened today";
+  if (view.chestReady) return "ready to open on the home screen";
+  return "opens once all three are collected";
+}
+
+function questState(done: boolean, claimed: boolean): string {
+  if (claimed) return "collected";
+  if (done) return "done — waiting to be collected at home";
+  return "in progress";
+}
+
+/** Today's three quests with progress, collected state and the chest. */
+function QuestToday() {
+  const questDay = useGame((s) => s.questDay);
+  const questCounters = useGame((s) => s.questCounters);
+  const questClaimed = useGame((s) => s.questClaimed);
+  const questChestDay = useGame((s) => s.questChestDay);
+  const view = questView({ questDay, questCounters, questClaimed, questChestDay });
+  const chest = chestState(view);
+  return (
+    <>
+      {view.quests.map((quest) => {
+        const state = questState(questDone(quest, view.counters), view.claimed.includes(quest.id));
+        return (
+          <p key={quest.id} className="dim">
+            <Icon name={HOME.quests.icon[quest.kind]} size="1.1em" /> <strong>{HOME.quests.quest(quest.kind, quest.target)}</strong>
+            {" — "}
+            {questProgress(quest, view.counters)}/{quest.target} · {state} · +{quest.reward} Star Dust
+          </p>
+        );
+      })}
+      <p className="dim"><Icon name="chest" size="1.1em" /> Quest chest (+{QUEST_CHEST_DUST} Star Dust): {chest}.</p>
+    </>
+  );
+}
+
+/** Daily quests: view today, set the quest-days count, reset today (confirm step). */
+function QuestControls() {
+  const questDaysDone = useGame((s) => s.questDaysDone);
+  const setQuestDaysDone = useGame((s) => s.setQuestDaysDone);
+  const resetQuestsToday = useGame((s) => s.resetQuestsToday);
+  const [daysInput, setDaysInput] = useState(String(questDaysDone));
+  const [confirming, setConfirming] = useState(false);
+  return (
+    <>
+      <h3>Daily quests</h3>
+      <p className="dim">
+        Three small goals a day, the same all day and picked from the date (every world and course counts).
+        Rewards are collected on the home screen; nothing is lost by skipping a day.
+      </p>
+      <QuestToday />
+      <p className="dim">Quest days: {questDaysDone} (days with all three quests done — only ever grows, not a streak)</p>
+      <div className="parent-row">
+        <span className="parent-world-name">Set quest days</span>
+        <input
+          className="parent-input parent-input-sm"
+          type="number"
+          min={0}
+          value={daysInput}
+          onChange={(e) => setDaysInput(e.target.value)}
+        />
+        <button className="btn btn-primary" onClick={() => setQuestDaysDone(Number(daysInput) || 0)}>
+          Set
+        </button>
+      </div>
+      {confirming ? (
+        <div className="parent-row">
+          <button className="btn btn-secondary" onClick={() => setConfirming(false)}>Cancel</button>
+          <button className="btn btn-danger" onClick={() => { resetQuestsToday(); setConfirming(false); }}>
+            Yes, reset today’s quests
+          </button>
+        </div>
+      ) : (
+        <div className="parent-row">
+          <button className="btn btn-secondary" onClick={() => setConfirming(true)}>Reset today’s quests…</button>
+        </div>
+      )}
+      <p className="dim">
+        Resetting sets today’s quest progress back to zero and un-collects them (the chest closes too), so he
+        can earn them again. Star Dust already collected is kept.
+      </p>
+    </>
+  );
+}
+
+/** Plain-English note on what reminders can and cannot do on each device. */
+function ReminderNote() {
+  return (
+    <>
+      <h3>Reminders and the app badge</h3>
+      <p className="dim">
+        Friendly notifications about Pogo, the courses and today’s quests: at most two a day (about 10:30 and
+        16:30), never before 8:00 or after 19:30, and none for the rest of a day once he has finished a lesson.
+        The on/off switch is under “Encouragement reminders”.
+      </p>
+      <p className="dim">
+        They are scheduled on this device, which needs the browser’s “Notification Triggers” feature. No
+        browser ships it today (Chrome only had it as a trial), so the switch usually stays off and says this
+        device can’t — the app is ready if a browser ever turns it on. The app-icon badge works now on installed
+        apps (Android / desktop Chrome, and iPad / iPhone added to the home screen): a number when a quest prize,
+        the quest chest or the daily gift is waiting. On iPad / iPhone, tap the reminders switch once and allow
+        notifications so the badge can show; the switch itself stays off there.
+      </p>
+      <p className="dim">Real push notifications would need a small server — see docs/NOTIFICATIONS.md.</p>
+    </>
   );
 }
 
@@ -102,6 +218,8 @@ export function TourControls() {
         Resetting chests closes them again for that course only, so he can re-open each finished unit’s chest and
         collect its Star Dust once more. Star Dust already earned is kept.
       </p>
+      <QuestControls />
+      <ReminderNote />
     </section>
   );
 }

@@ -6,6 +6,7 @@ import { REVEAL_COST } from "../../../state/store";
 import { MISS_LOCK_MS } from "../../../engine/answers/answerEngine";
 import { countryName } from "../../../engine/tour/countries";
 import { Flag } from "../../../ui/tour/Flag";
+import { Icon } from "../../../ui/icons/Icon";
 import { TourTeach } from "../exercises/TourExercise";
 import { TOUR } from "../../../strings/tour";
 import type { LessonSheet } from "./useLessonFlow";
@@ -24,7 +25,7 @@ function useUnlocked(id: number, ms: number): boolean {
 function StampToast({ codes }: { codes: string[] }) {
   return (
     <div className="tl-stamp-toast">
-      <span aria-hidden="true">🛂</span>
+      <Icon name="passport" size={22} />
       <span>{TOUR.lesson.newStamp}</span>
       {codes.map((code) => (
         <span key={code} className="tl-stamp-toast-flag">
@@ -67,7 +68,7 @@ export function FeedbackSheet({ sheet, onContinue, onSkip }: FeedbackSheetProps)
     <section className={`tl-sheet tl-sheet-${sheet.kind}`} role="status" aria-live="polite">
       {sheet.comboCount !== null && (
         <div className="tl-combo-banner">
-          <span className="tl-combo-banner-flame" aria-hidden="true">🔥</span>
+          <Icon name="flame" size={22} className="tl-combo-banner-flame" />
           {TOUR.lesson.comboBanner(sheet.comboCount)}
         </div>
       )}
@@ -94,8 +95,9 @@ export function FeedbackSheet({ sheet, onContinue, onSkip }: FeedbackSheetProps)
             <span className="tl-main-btn-label">{unlocked ? label : TOUR.lesson.lookFirst}</span>
           </button>
           {sheet.canSkip && (
-            <button className="tl-skip" disabled={!unlocked} onClick={onSkip}>
-              <span aria-hidden="true">🔑</span> {TOUR.lesson.skip(REVEAL_COST)}
+            <button className="tl-skip" disabled={!unlocked} onClick={onSkip} aria-label={TOUR.lesson.skipLabel(REVEAL_COST)}>
+              <Icon name="key" size={20} /> {TOUR.lesson.skip}
+              <span className="tl-skip-cost">{REVEAL_COST} <Icon name="dust" size={18} /></span>
             </button>
           )}
         </div>

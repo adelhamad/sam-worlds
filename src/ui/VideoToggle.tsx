@@ -1,4 +1,5 @@
 import { useGame } from "../state/store";
+import { Icon } from "./icons/Icon";
 
 /** Header button (beside music) to turn the video companion on/off. Only shows
  * when the parent has added videos. */
@@ -9,7 +10,7 @@ export function VideoToggle() {
   if (urls.length === 0) return null;
   return (
     <button className="btn btn-icon" aria-label="video companion" onClick={toggle}>
-      <span style={enabled ? undefined : { opacity: 0.35 }}>📺</span>
+      <span style={enabled ? undefined : { opacity: 0.35 }}><Icon name="play" size={22} mono /></span>
     </button>
   );
 }

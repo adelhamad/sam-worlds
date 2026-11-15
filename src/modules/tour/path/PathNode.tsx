@@ -1,5 +1,7 @@
-import { useState, type CSSProperties } from "react";
+import { useState } from "react";
 import { TOUR } from "../../../strings/tour";
+import { Icon } from "../../../ui/icons/Icon";
+import { hueStyle } from "./hue";
 import type { LessonItem } from "./layout";
 
 /** Mix-Up (geography lesson 4): two crossing arrows. */
@@ -33,7 +35,7 @@ function Stars({ count }: { count: number }) {
   return (
     <span className="tp-stars" aria-label={`${count} of 3 stars`}>
       {[1, 2, 3].map((star) => (
-        <span key={star} className={star <= count ? "is-on" : ""}>★</span>
+        <span key={star} className={star <= count ? "is-on" : ""}><Icon name="star" size="1em" mono={star > count} /></span>
       ))}
     </span>
   );
@@ -53,11 +55,7 @@ export function LessonNode({ item, amp, focus, onOpen, onLocked }: LessonNodePro
   const [nudge, setNudge] = useState(0);
   const { state, stage } = item;
   const locked = state === "locked";
-  const style = {
-    left: `calc(50% + ${(item.x * amp).toFixed(1)}px)`,
-    top: item.y,
-    "--hue": item.unit.hue,
-  } as CSSProperties;
+  const style = hueStyle(item.unit.hue, { left: `calc(50% + ${(item.x * amp).toFixed(1)}px)`, top: item.y });
 
   return (
     <div className={`tp-anchor tp-lesson is-${state}`} style={style} data-focus={focus || undefined}>
@@ -83,7 +81,7 @@ export function LessonNode({ item, amp, focus, onOpen, onLocked }: LessonNodePro
         }}
       >
         <NodeIcon item={item} />
-        {locked && <span className="tp-lock" aria-hidden="true">🔒</span>}
+        {locked && <span className="tp-lock" aria-hidden="true"><Icon name="lock" size="1.3em" /></span>}
       </button>
       {state === "done" && <Stars count={item.stars} />}
     </div>

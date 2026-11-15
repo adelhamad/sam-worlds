@@ -1,4 +1,4 @@
-// Geometry + state of a course path (World Tour, Chess Camp…). Pure: everything
+// Geometry + state of a course path (any course). Pure: everything
 // the screen draws (banner, lesson nodes, chests, the dotted trail) is derived
 // here from the course and the save, so the path is the same picture for the
 // same progress.
@@ -75,10 +75,10 @@ function waveX(unitIndex: number, slot: number, lessons: number): number {
   return side * Math.sin((slot * Math.PI) / Math.max(1, lessons));
 }
 
-/** The last lesson of a unit wears the crown; geography's fourth is the mix-up. */
-function nodeIcon(course: Course, unit: CourseUnit, slot: number): NodeIcon {
+/** The last lesson of a unit wears the crown; a course may mark one slot as its mix-up. */
+function nodeIcon(unit: CourseUnit, slot: number, mixSlot: number | undefined): NodeIcon {
   if (slot === unit.lessons.length - 1) return "crown";
-  return course.id === "tour" && slot === 3 ? "mix" : "number";
+  return slot === mixSlot ? "mix" : "number";
 }
 
 function chestState(unit: CourseUnit, progress: Progress, chests: string[]): ChestState {
@@ -86,7 +86,12 @@ function chestState(unit: CourseUnit, progress: Progress, chests: string[]): Che
   return unitComplete(unit, progress) ? "ready" : "locked";
 }
 
-export function buildTourPath(course: Course, progress: Progress, chests: string[]): TourPathModel {
+export interface PathOptions {
+  /** 0-based lesson slot drawn with the mix-up arrows (see courseFamilies). */
+  mixSlot?: number;
+}
+
+export function buildTourPath(course: Course, progress: Progress, chests: string[], options: PathOptions = {}): TourPathModel {
   const stages = course.units.flatMap((unit) => unit.lessons);
   const current = stages.find((stage) => !progress[stage.id]?.completed) ?? null;
   const items: PathItem[] = [];
@@ -109,7 +114,7 @@ export function buildTourPath(course: Course, progress: Progress, chests: string
       }
       items.push({
         kind: "lesson", unit, unitIndex, slot, stage, state,
-        icon: nodeIcon(course, unit, slot),
+        icon: nodeIcon(unit, slot, options.mixSlot),
         stars: row?.completed ? Math.max(1, Math.min(3, row.bestStars ?? 1)) : 0,
         x: waveX(unitIndex, slot, unit.lessons.length), y: cursor,
       });

@@ -1,0 +1,359 @@
+/* Code Lab — blocks, the program track and the palette. Chunky coloured tiles
+   with a pressable bottom edge (like `.tbtn`), one colour per direction so a
+   program reads at a glance; loops are violet containers. Prefix `cp-`. */
+.tour .cp-track,
+.tour .cp-palette,
+.tour .cp-picker {
+  --cp-size: 50px;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------- one block ---------- */
+.tour .cp-block {
+  --b: #8b9bff;
+  --b-deep: #4c5cc9;
+  position: relative;
+  flex: none;
+  box-sizing: border-box;
+  width: var(--cp-size);
+  height: var(--cp-size);
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: calc(var(--cp-size) * 0.28);
+  border-bottom: calc(var(--cp-size) * 0.1) solid var(--b-deep);
+  background: var(--b);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.35);
+  color: #fff;
+  font: inherit;
+  touch-action: manipulation;
+  animation: cp-snap 0.3s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.tour .cp-block.d-N { --b: #ff7eb6; --b-deep: #c2457f; }
+.tour .cp-block.d-E { --b: #6f9bff; --b-deep: #3a60c4; }
+.tour .cp-block.d-S { --b: #35cf95; --b-deep: #1a8a5f; }
+.tour .cp-block.d-W { --b: #ffa24c; --b-deep: #c26712; }
+.tour button.cp-block { cursor: pointer; }
+.tour button.cp-block:active:not(:disabled) { transform: translateY(3px); border-bottom-width: 2px; margin-bottom: calc(var(--cp-size) * 0.1 - 2px); }
+.tour button.cp-block:disabled { cursor: default; }
+.tour .cp-block .cgl-arrow { width: 66%; height: 66%; }
+.tour .cgl-arrow-body { fill: #fff; stroke: rgba(0, 0, 0, 0.12); stroke-width: 1.5; stroke-linejoin: round; }
+.tour .cgl-arrow-shade { fill: rgba(0, 0, 0, 0.18); }
+@keyframes cp-snap {
+  0% { transform: scale(0.3) translateY(-30%); opacity: 0; }
+  60% { transform: scale(1.12); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* the ✕ that says "tap to take out" */
+.tour .cp-x,
+.tour .cp-wrench {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #23365f;
+  border: 2px solid #0a1730;
+  color: #dbe6ff;
+}
+.tour .is-locked .cp-x,
+.tour .is-locked .cp-loop-x { display: none; }
+.tour .cp-x .cgl { width: 13px; height: 13px; }
+.tour .cgl-cross { fill: none; stroke: currentColor; stroke-width: 3.4; stroke-linecap: round; }
+.tour .cp-wrench { top: auto; bottom: -9px; background: var(--t-gold); color: #4a3000; animation: cp-snap 0.3s cubic-bezier(0.3, 1.6, 0.5, 1) both; }
+.tour .cp-wrench .cgl { width: 14px; height: 14px; fill: currentColor; }
+
+/* states */
+.tour .cp-block.is-lit {
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 0 0 4px var(--t-gold), 0 0 20px rgba(255, 209, 102, 0.75);
+  z-index: 2;
+}
+.tour .cp-block.is-picked { transform: translateY(-5px); box-shadow: 0 0 0 4px var(--t-go), 0 8px 16px rgba(2, 6, 18, 0.45); z-index: 2; }
+.tour .cp-block.is-fixed { box-shadow: 0 0 0 4px var(--t-gold); animation: cp-snap 0.3s both, cp-glow 1.2s ease-in-out 0.3s infinite; }
+@keyframes cp-glow {
+  0%, 100% { box-shadow: 0 0 0 4px var(--t-gold); }
+  50% { box-shadow: 0 0 0 4px var(--t-gold), 0 0 16px rgba(255, 209, 102, 0.9); }
+}
+.tour .cp-block.is-shuffle-0 { animation: cp-shuffle-0 0.5s ease; }
+.tour .cp-block.is-shuffle-1 { animation: cp-shuffle-1 0.5s ease; }
+@keyframes cp-shuffle-0 {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  20% { transform: translateX(-6px) rotate(-10deg); }
+  45% { transform: translateX(6px) rotate(8deg) scale(0.9); }
+  70% { transform: translateX(-3px) rotate(-4deg); }
+}
+@keyframes cp-shuffle-1 {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  20% { transform: translateX(-6px) rotate(-10deg); }
+  45% { transform: translateX(6px) rotate(8deg) scale(0.9); }
+  70% { transform: translateX(-3px) rotate(-4deg); }
+}
+
+/* ---------- the track ---------- */
+.tour .cp-track {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: calc(var(--cp-size) * 1.1 + 22px);
+  padding: 10px 10px 12px 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  gap: 8px 7px;
+  border-radius: 20px;
+  background: #0c1a36;
+  border: 2px solid var(--t-line);
+  box-shadow: inset 0 4px 0 rgba(0, 0, 0, 0.22);
+}
+.tour .cp-cap {
+  flex: none;
+  width: calc(var(--cp-size) * 0.5);
+  height: var(--cp-size);
+  display: grid;
+  place-items: center;
+  border-radius: 10px 4px 4px 10px;
+  background: var(--t-yes);
+  border-bottom: 4px solid var(--t-yes-deep);
+  box-sizing: border-box;
+  color: var(--t-yes-ink);
+}
+.tour .cp-cap .cgl { width: 70%; height: 70%; fill: currentColor; }
+.tour .cp-slot {
+  flex: none;
+  box-sizing: border-box;
+  width: var(--cp-size);
+  height: var(--cp-size);
+  border-radius: calc(var(--cp-size) * 0.28);
+  border: 3px dashed rgba(159, 179, 222, 0.35);
+}
+.tour .cp-slot.is-next { border-color: rgba(34, 211, 238, 0.7); animation: cp-breathe 1.4s ease-in-out infinite; }
+@keyframes cp-breathe {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.94); }
+}
+.tour .cp-empty { font-size: 15px; font-weight: 800; color: var(--t-ink-dim); opacity: 0.8; }
+.tour .cp-used {
+  position: absolute;
+  top: -13px;
+  right: 12px;
+  min-width: 46px;
+  box-sizing: border-box;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--t-surface-2);
+  border: 2px solid var(--t-line);
+  color: var(--t-ink);
+  font-size: 15px;
+  font-weight: 900;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.tour .cp-used.is-full { background: #3a2a10; border-color: var(--t-almost); color: var(--t-almost); }
+.tour .cp-used.is-wobble { animation: t-shake 0.42s ease; }
+
+/* ---------- loop blocks ---------- */
+.tour .cp-loop {
+  position: relative;
+  flex: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 6px 4px 4px;
+  min-height: calc(var(--cp-size) + 12px);
+  border-radius: calc(var(--cp-size) * 0.34);
+  background: rgba(139, 108, 255, 0.2);
+  border: 3px solid var(--t-pogo);
+  border-bottom-width: 6px;
+  animation: cp-snap 0.3s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.tour .cp-loop.is-open { border-color: var(--t-go); box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.25); }
+.tour .cp-loop.is-lit { border-color: var(--t-gold); box-shadow: 0 0 18px rgba(255, 209, 102, 0.45); }
+.tour .cp-loop-head {
+  position: relative;
+  flex: none;
+  box-sizing: border-box;
+  min-width: calc(var(--cp-size) * 0.8);
+  height: var(--cp-size);
+  margin: 0;
+  padding: 0 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  border: none;
+  border-radius: calc(var(--cp-size) * 0.24);
+  border-bottom: 4px solid var(--t-pogo-deep);
+  background: var(--t-pogo);
+  color: #fff;
+  font: inherit;
+  touch-action: manipulation;
+}
+.tour button.cp-loop-head { cursor: pointer; }
+.tour .cp-loop-head .cgl-repeat { width: 46%; height: 34%; fill: none; stroke: currentColor; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; opacity: 0.85; }
+.tour .cp-times { font-size: calc(var(--cp-size) * 0.4); font-weight: 900; line-height: 1; }
+.tour .cp-count {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 28px;
+  height: 28px;
+  margin-left: -14px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--t-gold);
+  border-bottom: 3px solid var(--t-gold-deep);
+  color: #3a2800;
+  font-size: 17px;
+  font-weight: 900;
+  animation: cp-count 0.4s cubic-bezier(0.3, 1.8, 0.5, 1) both;
+}
+@keyframes cp-count {
+  from { transform: scale(0) rotate(-40deg); }
+  to { transform: scale(1) rotate(0); }
+}
+.tour .cp-loop-body { display: inline-flex; align-items: center; gap: 5px; }
+/* inside a loop the arrows stay ≥ 48px but never wider than a phone row allows */
+.tour .mode-build .cp-loop-body,
+.tour .mode-edit .cp-loop-body { --cp-size: 48px; }
+.tour .cp-done {
+  flex: none;
+  width: 48px;
+  height: var(--cp-size);
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: calc(var(--cp-size) * 0.24);
+  border-bottom: 4px solid var(--t-go-deep);
+  background: var(--t-go);
+  color: var(--t-go-ink);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+  touch-action: manipulation;
+  animation: cp-snap 0.3s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+}
+.tour .cp-done .cgl-tick { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 3.6; stroke-linecap: round; stroke-linejoin: round; }
+.tour .cp-done:active:not(:disabled) { transform: translateY(2px); }
+.tour .cp-loop-x {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid #0a1730;
+  background: #23365f;
+  color: #dbe6ff;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+/* a bigger invisible hit area than the badge */
+.tour .cp-loop-x::after { content: ""; position: absolute; inset: -9px; }
+.tour .cp-loop-x .cgl { width: 15px; height: 15px; }
+
+/* ---------- read-only / mini ---------- */
+.tour .cp-track.mode-read { --cp-size: 54px; justify-content: center; }
+.tour .cp-track.mode-mini {
+  --cp-size: 30px;
+  min-height: 0;
+  padding: 6px;
+  gap: 4px;
+  border-radius: 12px;
+  border-width: 2px;
+}
+.tour .mode-mini .cp-loop { padding: 2px 4px 2px 2px; border-width: 2px; border-bottom-width: 4px; gap: 3px; min-height: 0; }
+.tour .mode-mini .cp-loop-body { gap: 3px; }
+.tour .mode-mini .cp-loop-head { border-bottom-width: 3px; min-width: 30px; }
+.tour .mode-mini .cp-loop-head .cgl-repeat { display: none; }
+.tour .mode-mini .cp-cap { border-bottom-width: 3px; border-radius: 7px 3px 3px 7px; }
+.tour .mode-mini .cp-count { width: 20px; height: 20px; margin-left: -10px; top: -10px; font-size: 13px; }
+.tour .mode-mini .cp-block.is-lit { box-shadow: 0 0 0 3px var(--t-gold), 0 0 10px rgba(255, 209, 102, 0.7); transform: translateY(-2px) scale(1.08); }
+.tour .mode-mini .cp-block.is-fixed { box-shadow: 0 0 0 3px var(--t-gold); }
+
+/* ---------- the palette ---------- */
+.tour .cp-palette {
+  --cp-size: 58px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px 14px;
+}
+.tour .cp-palette-arrows,
+.tour .cp-palette-loops { display: flex; gap: 9px; }
+.tour .cp-palette .cp-block { animation: none; }
+.tour .cp-palette.is-into .cp-key { box-shadow: 0 0 0 3px var(--t-go), inset 0 2px 0 rgba(255, 255, 255, 0.35); }
+.tour .cp-loop-key {
+  box-sizing: border-box;
+  min-width: var(--cp-size);
+  height: var(--cp-size);
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: calc(var(--cp-size) * 0.28);
+  border-bottom: calc(var(--cp-size) * 0.1) solid var(--t-pogo-deep);
+  background: var(--t-pogo);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font: inherit;
+  font-size: 21px;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.tour .cp-loop-key .cgl-repeat { width: 22px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; opacity: 0.85; }
+.tour .cp-loop-key:active:not(:disabled) { transform: translateY(3px); border-bottom-width: 2px; }
+.tour .cp-palette button:disabled { cursor: default; filter: saturate(0.4) brightness(0.75); }
+
+/* ---------- the debug picker ---------- */
+.tour .cp-picker {
+  --cp-size: 56px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 20px;
+  background: var(--t-surface);
+  border: 2px solid var(--t-go);
+  box-shadow: 0 10px 22px rgba(2, 6, 18, 0.4);
+  animation: cp-picker-in 0.24s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+}
+.tour .cp-picker .cp-block { animation: none; }
+.tour .cp-picker .cp-block.is-current { opacity: 0.45; transform: scale(0.9); }
+@keyframes cp-picker-in {
+  from { opacity: 0; transform: translateY(-10px) scale(0.92); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (min-width: 600px) and (min-height: 900px) {
+  .tour .cp-track { --cp-size: 58px; }
+  .tour .cp-track.mode-read { --cp-size: 64px; }
+  .tour .cp-palette { --cp-size: 66px; }
+  .tour .cp-picker { --cp-size: 62px; }
+}
