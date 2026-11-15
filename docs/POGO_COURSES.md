@@ -88,7 +88,8 @@ for Arabic and both syllabuses: `docs/LANGUAGES.md`.
 | Course builder | `src/content/langCourse.ts` (`defineLangCourse`), registry `src/content/langCourses.ts` |
 | Content | `src/content/arabic/` (`course.ts`, `alphabet.ts`, `units/uNN.ts`), `src/content/french/` |
 | Widgets, opening slides, teach card, mission card | `src/modules/tour/lang/` |
-| Voices (Arabic, French) | `speakIn` / `voiceFor` in `src/engine/feedback/speech.ts`, `useVoice` |
+| Voices (Arabic, French) | ranking `src/engine/feedback/voiceRank.ts`, `rankedVoices` / `voiceFor` / `speakIn` in `src/engine/feedback/speech.ts`, `useVoice` (recording first, then device voice) |
+| Parent's recorded clips | table `voiceClips` (db v3), playback `src/engine/feedback/clips.ts`, keys `clipKeys.ts`, mic `recorder.ts`, studio `src/ui/voices/` (route `/parent/voices`), strings `src/strings/voices.ts`, audit `scripts/audit-voices.ts`; guide: "How it is spoken" in `docs/LANGUAGES.md` |
 | Writing a letter with a finger | judge `src/engine/write/`, canvas `src/ui/write/`, strokes `src/content/arabic/strokes.gen.ts`, guide `docs/ARABIC_WRITING.md` |
 | Strings | `src/strings/lang.ts`, `src/strings/write.ts` |
 | Audit | `scripts/audit-lang.ts` (+ `-seed`, `-question`), `scripts/audit-write.ts` |

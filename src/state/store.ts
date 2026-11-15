@@ -14,6 +14,8 @@ import { persistSettings, settingsState } from "./settings";
 import { giftActions } from "./gifts";
 import { tourActions, tourInitial, type TourSlice } from "./tour";
 import { questActions, questInitial, type QuestSlice } from "./quests";
+import { voiceActions, voiceInitial, type VoiceSlice } from "./voices";
+import { setVoicePrefs } from "../engine/feedback/speech";
 import { videoActions } from "./video";
 import { worldAdminActions } from "./worldAdmin";
 import { couponActions } from "./coupons";
@@ -48,7 +50,7 @@ export interface Session extends SessionRow {
 /** Star Dust it costs to reveal an answer and skip a question. */
 export const REVEAL_COST = 15;
 
-export interface GameStore extends TourSlice, QuestSlice {
+export interface GameStore extends TourSlice, QuestSlice, VoiceSlice {
   loaded: boolean;
   hasSave: boolean;
   starDust: number;
@@ -176,6 +178,7 @@ export const useGame = create<GameStore>((set, get) => ({
   gifts: [], lastGiftDay: null, giftStreak: 0, giftBestStreak: 0,
   ...tourInitial,
   ...questInitial,
+  ...voiceInitial,
   session: null,
 
   hydrate: async () => {
@@ -215,6 +218,7 @@ export const useGame = create<GameStore>((set, get) => ({
 
       const fromSettings = settingsState(settings);
       setMuted(!fromSettings.soundOn);
+      setVoicePrefs(fromSettings.voicePick, fromSettings.voiceSpeed);
 
       set({
         loaded: true,
@@ -465,10 +469,12 @@ export const useGame = create<GameStore>((set, get) => ({
   ...giftActions(set, get),
   ...tourActions(set, get),
   ...questActions(set, get),
+  ...voiceActions(set, get),
   ...videoActions(set, get),
   ...worldAdminActions(set, get),
   ...couponActions(set, get),
 
+  // Progress reset: the parent's voice recordings (voiceClips) are deliberately NOT cleared.
   resetAll: async () => {
     await Promise.all([
       db.profile.clear(),

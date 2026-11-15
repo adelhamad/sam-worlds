@@ -20,7 +20,7 @@ function Hero({ payload, voice }: { payload: ChoosePayload; voice: Voice }) {
   if (hero.kind === "read") return <div className="lx-hero is-read"><PhraseFace card={hero.card} lang={lang} noRoman /></div>;
   if (hero.kind === "hear") {
     const { card } = hero;
-    if (!voice.ready) {
+    if (!voice.canSay(card)) {
       return (
         <div className="lx-hero is-read">
           <PhraseFace card={card} lang={lang} noRoman={card.letter} />
@@ -30,8 +30,8 @@ function Hero({ payload, voice }: { payload: ChoosePayload; voice: Voice }) {
     }
     return (
       <div className="lx-hero is-hear">
-        <Speaker size="big" label={S.listenAgain} onClick={() => voice.say(card.say)} testId="lang-hear" />
-        <button type="button" className="lx-slow" onClick={() => voice.say(card.say, true)}>{S.slow}</button>
+        <Speaker size="big" label={S.listenAgain} onClick={() => voice.say(card)} testId="lang-hear" />
+        <button type="button" className="lx-slow" onClick={() => voice.say(card, true)}>{S.slow}</button>
       </div>
     );
   }
@@ -42,7 +42,7 @@ function Hero({ payload, voice }: { payload: ChoosePayload; voice: Voice }) {
       {line && (
         <div className="lx-line">
           <span className="lx-who">{who?.art && <Icon name={who.art} size="1.3em" />} {S.says(who?.name ?? "")}</span>
-          <button type="button" className="lx-bubble" onClick={() => voice.say(line.say)} aria-label={S.listenAgain}>
+          <button type="button" className="lx-bubble" onClick={() => voice.say(line)} aria-label={S.listenAgain}>
             <PhraseFace card={line} lang={lang} />
             <Icon name="sound" size={22} mono />
           </button>
@@ -63,13 +63,14 @@ export function LangChoose({ payload, disabled, onDraft }: WidgetProps<ChoosePay
   const [picked, setPicked] = useState<string | null>(null);
   useDraft(onDraft, picked);
   const spoken = spokenOf(payload);
-  const { ready, say } = voice;
+  const { canSay, say } = voice;
+  const audible = canSay(spoken);
 
   useEffect(() => {
-    if (!spoken || !ready) return;
-    const timer = window.setTimeout(() => say(spoken.say), AUTO_SPEAK_MS);
+    if (!spoken || !audible) return;
+    const timer = window.setTimeout(() => say(spoken), AUTO_SPEAK_MS);
     return () => window.clearTimeout(timer);
-  }, [spoken, ready, say]);
+  }, [spoken, audible, say]);
 
   // Hearing an option would give a listening question away; elsewhere it teaches.
   const optionsSpeak = payload.show === "phrase" && payload.hero.kind !== "hear";
@@ -77,7 +78,7 @@ export function LangChoose({ payload, disabled, onDraft }: WidgetProps<ChoosePay
     if (disabled) return;
     tourSound.pop();
     setPicked(card.id);
-    if (optionsSpeak) say(card.say);
+    if (optionsSpeak) say(card);
   };
   const letters = payload.options.every((card) => card.letter);
   const grid = payload.show === "meaning" || letters;
@@ -85,7 +86,7 @@ export function LangChoose({ payload, disabled, onDraft }: WidgetProps<ChoosePay
   return (
     <div className={`tx lx lx-choose is-${payload.hero.kind}`} data-testid="lang-choose" data-task={payload.task}>
       <Hero payload={payload} voice={voice} />
-      <p className="lx-help">{optionsSpeak && ready ? S.tapToHear : S.pickHelp}</p>
+      <p className="lx-help">{optionsSpeak && payload.options.some(canSay) ? S.tapToHear : S.pickHelp}</p>
       <div className={`lx-opts ${grid ? "is-grid" : "is-list"} ${letters ? "is-letters" : ""}`}>
         {payload.options.map((card, i) => (
           <button

@@ -7,6 +7,7 @@ Personal PWA learning game for Sam (7). Full spec lives in `SAMS_GAME_PLAN.md` �
 1. **After every task, run `bun run check` (lint + typecheck + build) and fix everything it reports before considering the task done.**
 2. **The Parent Section (`src/ui/ParentSection.tsx`, route `/parent`, password-gated) must be respected on every change.** When adding a new world, it appears automatically (the section iterates the `WORLDS` registry — keep it that way). When adding any new feature with its own persisted state (currencies, unlocks, minigame records…), add matching view/edit/reset controls to the Parent Section in the same task.
 3. **Saves must survive everything** — deploys, restarts, feature additions. IndexedDB is the primary store; `src/engine/save/backup.ts` mirrors it to localStorage and auto-restores. Never change a `db.version(n)` block (add a new version), never rename existing stage/badge/item ids (saves reference them), and route every meaningful mutation through `logEvent` so the backup snapshot stays fresh.
+   The `voiceClips` table (the parent's recorded voices, Parent Section → Voices) is deliberately NOT in the localStorage mirror (too big) and is never cleared by progress resets (`resetAll`); only the Voices page deletes clips.
 
 ## Tooling
 

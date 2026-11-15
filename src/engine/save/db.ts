@@ -92,6 +92,9 @@ export interface SettingsRow {
   questClaimed?: string[];
   questChestDay?: string | null;
   questDaysDone?: number;
+  /** Parent Section → Voices: the chosen device voice per language (voiceURI), and a speed (1 = normal). */
+  voicePick?: Record<string, string>;
+  voiceSpeed?: number;
 }
 export interface CouponRow {
   id?: number;
@@ -102,6 +105,20 @@ export interface CouponRow {
 export interface SkillRow {
   skill: string;
   rating: number;
+}
+/**
+ * A parent's own recording of a phrase or a letter name (Parent Section → Voices).
+ * Key scheme: src/engine/feedback/clipKeys.ts. Deliberately NOT in the
+ * localStorage mirror (too big) and never cleared by a progress reset.
+ */
+export interface VoiceClipRow {
+  key: string;
+  lang: string;
+  blob: Blob;
+  mime: string;
+  /** Duration in ms (measured while recording). */
+  ms: number;
+  at: number;
 }
 export interface EventRow {
   id?: number;
@@ -121,6 +138,7 @@ export const db = new Dexie("sams-worlds") as Dexie & {
   skillRatings: EntityTable<SkillRow, "skill">;
   eventLog: EntityTable<EventRow, "id">;
   coupons: EntityTable<CouponRow, "id">;
+  voiceClips: EntityTable<VoiceClipRow, "key">;
 };
 
 db.version(1).stores({
@@ -138,6 +156,11 @@ db.version(1).stores({
 // v2: real-world reward coupons (Daddy Rewards)
 db.version(2).stores({
   coupons: "++id, itemId",
+});
+
+// v3: the parent's recorded voice clips (Parent Section → Voices)
+db.version(3).stores({
+  voiceClips: "key, lang",
 });
 
 import { scheduleBackup } from "./backup";

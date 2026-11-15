@@ -14,11 +14,12 @@ import { auditTick } from "./audit-tick";
 import { auditIcons } from "./audit-icons";
 import { auditPush } from "./audit-push";
 import { auditWrite } from "./audit-write";
+import { auditVoices } from "./audit-voices";
 
 const SEEDS = [1, 3, 7, 37, 101, 509, 1009, 12345, 54321, 99991];
 const failures: string[] = [
   ...auditTraits(), ...auditTour(), ...auditChess(), ...auditKit(), ...auditCode(), ...auditTick(), ...auditLang(),
-  ...auditMotivators(), ...auditIcons(), ...auditWrite(),
+  ...auditMotivators(), ...auditIcons(), ...auditWrite(), ...auditVoices(),
 ];
 failures.push(...(await auditPush()));
 const stageIds = new Set<string>();

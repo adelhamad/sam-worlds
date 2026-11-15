@@ -7,6 +7,7 @@ import { Hub } from "./ui/Hub";
 import { Universe } from "./ui/Universe";
 import { PlayRoute, WorldRoute } from "./modules/tour/TourRedirects";
 import { ParentSection } from "./ui/ParentSection";
+import { ParentAutoLock } from "./ui/ParentGate";
 import { VideoCompanion } from "./ui/VideoCompanion";
 import { TourPath } from "./modules/tour/TourPath";
 import { TourLesson } from "./modules/tour/TourLesson";
@@ -20,6 +21,8 @@ const LangLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/Lang
 const CodeLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/CodeLab")) : null;
 const TickLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/TickLab")) : null;
 const IconLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/IconLab")) : null;
+// Parent Section → Voices (device voice + the parent's recordings), loaded on demand.
+const VoicesPage = lazy(() => import("./ui/voices/VoicesPage").then((m) => ({ default: m.VoicesPage })));
 const WriteLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/WriteLab")) : null;
 
 /** Each screen starts at the top — no inherited scroll position. */
@@ -51,6 +54,7 @@ function BlockBrowserNav() {
 }
 import { STR } from "./strings/en";
 import { unlockAudio } from "./engine/feedback/audio";
+import { loadClipIndex, primeClips } from "./engine/feedback/clips";
 import { startMusic } from "./engine/feedback/music";
 import { keepScreenAwake } from "./engine/wakeLock";
 import { armReminders } from "./engine/notify/reminders";
@@ -66,6 +70,8 @@ export default function App() {
       if (useGame.getState().remindersOn) void armReminders(Date.now());
     });
     keepScreenAwake();
+    // The parent's recordings: know which exist before any lesson asks.
+    void loadClipIndex();
   }, [hydrate]);
 
   // Native feel: no long-press context menus anywhere.
@@ -79,6 +85,7 @@ export default function App() {
   useEffect(() => {
     const onFirstTap = () => {
       unlockAudio();
+      primeClips();
       if (useGame.getState().musicOn) startMusic();
       window.removeEventListener("pointerdown", onFirstTap);
     };
@@ -99,6 +106,7 @@ export default function App() {
     <HashRouter>
       <ScrollToTop />
       <BlockBrowserNav />
+      <ParentAutoLock />
       <VideoCompanion />
       <Routes>
         <Route path="/" element={<TitleScreen />} />
@@ -125,6 +133,7 @@ export default function App() {
           </>
         )}
         <Route path="/parent" element={<ParentSection />} />
+        <Route path="/parent/voices" element={<Suspense fallback={null}><VoicesPage /></Suspense>} />
       </Routes>
     </HashRouter>
   );

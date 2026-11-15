@@ -10,7 +10,7 @@ import { useVoice } from "./useVoice";
 
 export function LangTeach({ question }: TeachProps) {
   const payload = langPayload(question);
-  const { ready, say } = useVoice(payload?.lang ?? "ar");
+  const { canSay, say } = useVoice(payload?.lang ?? "ar");
   if (!payload) return null;
   const { model, lang } = payload;
   const glyph = payload.tour === "lang-trace" ? glyphOf(payload.letter.char) : null;
@@ -27,7 +27,7 @@ export function LangTeach({ question }: TeachProps) {
     <div className="lx lx-teach" data-testid="lang-teach">
       <div className="lx-teach-card">
         <PhraseFace card={model} lang={lang} />
-        {ready && model.say && <Speaker label={LANG.ui.listen} onClick={() => say(model.say)} />}
+        {canSay(model) && <Speaker label={LANG.ui.listen} onClick={() => say(model)} />}
       </div>
       <div className="lx-teach-means">
         <span className="lx-teach-label">{model.letter ? LANG.meet.soundsLike("") : LANG.ui.means}</span>

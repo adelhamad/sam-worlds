@@ -1,5 +1,7 @@
 // Read-aloud via the Web Speech API (on-device, no network). Best-effort: it
 // silently does nothing where speech synthesis isn't available.
+import { pickVoice, rankVoices } from "./voiceRank";
+
 export function speechSupported(): boolean {
   return typeof window !== "undefined" && "speechSynthesis" in window;
 }
@@ -30,30 +32,45 @@ export function speak(text: string): void {
 
 // ---------------------------------------------------------------- languages
 // The language courses speak Arabic and French with the device's own voices
-// (on-device, no network). A device without a voice for the language simply
-// has none: the lesson then shows the words to read out loud instead.
-
+// (on-device, no network). The best installed voice is chosen by voiceRank.ts
+// (never a novelty voice when a natural one exists); the parent can choose
+// another and a speed in Parent Section → Voices. A device without a voice for
+// the language simply has none: the lesson then shows the words instead (unless
+// the parent recorded them — see clips.ts and useVoice).
 export type SpokenLang = "ar" | "fr";
 
-/** Locales tried in order; the first voice that matches wins. */
-const LOCALES: Record<SpokenLang, string[]> = {
-  ar: ["ar-SA", "ar-AE", "ar-EG", "ar"],
-  fr: ["fr-FR", "fr-CA", "fr-BE", "fr"],
-};
+/** Speech rates: normal and "slowly", before the parent's speed scales them. */
+export const SPEECH_RATES = { normal: 0.85, slow: 0.55 } as const;
 
-/** The best installed voice for the language, or null. Voices load late on some devices. */
-export function voiceFor(lang: SpokenLang): SpeechSynthesisVoice | null {
-  if (!speechSupported()) return null;
-  const voices = window.speechSynthesis.getVoices();
-  const norm = (code: string) => code.replace("_", "-").toLowerCase();
-  for (const locale of LOCALES[lang]) {
-    const wanted = locale.toLowerCase();
-    const match = voices.filter((voice) => (wanted.includes("-") ? norm(voice.lang) === wanted : norm(voice.lang).startsWith(wanted)));
-    // An on-device voice keeps the "no network" promise; a network voice is the last resort.
-    const best = match.find((voice) => voice.localService) ?? match[0];
-    if (best) return best;
+/** The parent's choices (pushed in by the store; the engine never reads the store). */
+let prefs: { pick: Record<string, string>; speed: number } = { pick: {}, speed: 1 };
+
+export function setVoicePrefs(pick: Record<string, string> | undefined, speed: number | undefined): void {
+  prefs = { pick: pick ?? {}, speed: speed && speed > 0 ? speed : 1 };
+}
+
+/** The rate an utterance is spoken at. */
+export function speechRate(slow: boolean): number {
+  return (slow ? SPEECH_RATES.slow : SPEECH_RATES.normal) * prefs.speed;
+}
+
+function installedVoices(): SpeechSynthesisVoice[] {
+  if (!speechSupported()) return [];
+  try {
+    return window.speechSynthesis.getVoices();
+  } catch {
+    return [];
   }
-  return null;
+}
+
+/** Every installed voice for the language, best first (novelty voices last). Read fresh each time. */
+export function rankedVoices(lang: SpokenLang): SpeechSynthesisVoice[] {
+  return rankVoices(installedVoices(), lang);
+}
+
+/** The parent's chosen voice if still installed, else the best ranked one, else null. Never cached. */
+export function voiceFor(lang: SpokenLang): SpeechSynthesisVoice | null {
+  return pickVoice(installedVoices(), lang, prefs.pick[lang]);
 }
 
 /** Calls `onChange` when the device's voice list (re)loads. Returns the unsubscribe. */
@@ -61,7 +78,12 @@ export function onVoicesChanged(onChange: () => void): () => void {
   if (!speechSupported()) return () => undefined;
   const synth = window.speechSynthesis;
   synth.addEventListener?.("voiceschanged", onChange);
-  return () => synth.removeEventListener?.("voiceschanged", onChange);
+  // Safari does not always fire "voiceschanged": look again a few times.
+  const timers = [300, 1000, 3000].map((ms) => window.setTimeout(onChange, ms));
+  return () => {
+    synth.removeEventListener?.("voiceschanged", onChange);
+    for (const timer of timers) window.clearTimeout(timer);
+  };
 }
 
 let primed = false;
@@ -82,9 +104,8 @@ export function primeSpeech(): void {
   }
 }
 
-/** Say `text` in the language. Returns false when the device has no voice for it. */
-export function speakIn(lang: SpokenLang, text: string, slow = false): boolean {
-  const voice = voiceFor(lang);
+/** Say `text` in the language (with `voice`, or the one voiceFor picks). False when there is no voice. */
+export function speakIn(lang: SpokenLang, text: string, slow = false, voice = voiceFor(lang)): boolean {
   if (!voice || !text.trim()) return false;
   try {
     const synth = window.speechSynthesis;
@@ -92,7 +113,7 @@ export function speakIn(lang: SpokenLang, text: string, slow = false): boolean {
     const u = new SpeechSynthesisUtterance(text);
     u.voice = voice;
     u.lang = voice.lang;
-    u.rate = slow ? 0.55 : 0.85;
+    u.rate = speechRate(slow);
     u.pitch = 1;
     synth.speak(u);
     return true;

@@ -14,7 +14,7 @@ import { useVoice } from "./useVoice";
 const S = LANG.ui;
 
 export function LangBuild({ payload, disabled, onDraft }: WidgetProps<BuildPayload>) {
-  const { ready, say } = useVoice(payload.lang);
+  const { canSay, say } = useVoice(payload.lang);
   /** Indexes into payload.tiles, in the order they were placed. */
   const [placed, setPlaced] = useState<number[]>([]);
   const letters = payload.unit === "letter";
@@ -42,7 +42,7 @@ export function LangBuild({ payload, disabled, onDraft }: WidgetProps<BuildPaylo
     <div className={`tx lx lx-build is-${payload.unit}`} data-testid="lang-build" data-unit={payload.unit}>
       <div className="lx-hero is-mean">
         <MeaningFace card={payload.hero} />
-        {letters && ready && <Speaker label={S.listen} onClick={() => say(payload.hero.say)} testId="lang-hear" />}
+        {letters && canSay(payload.hero) && <Speaker label={S.listen} onClick={() => say(payload.hero)} testId="lang-hear" />}
       </div>
       <p className="lx-help">{letters ? S.spellHelp : S.buildHelp}</p>
       <div className="lx-line-row">

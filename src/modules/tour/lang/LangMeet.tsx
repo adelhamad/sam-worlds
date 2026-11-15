@@ -5,6 +5,7 @@
 import { useEffect, useState } from "react";
 import { letterCard, phraseCard } from "../../../engine/lang/cards";
 import type { LangCard, LangParams } from "../../../engine/lang/types";
+import { primeClips } from "../../../engine/feedback/clips";
 import { primeSpeech } from "../../../engine/feedback/speech";
 import { tourSfx } from "../../../engine/feedback/tourSfx";
 import { LANG } from "../../../strings/lang";
@@ -39,22 +40,27 @@ export interface LangMeetProps {
 
 export function LangMeet({ params, onStart }: LangMeetProps) {
   const compact = useCompact();
-  const { ready, say } = useVoice(params.lang);
+  const { canSay, say } = useVoice(params.lang);
   const [slides] = useState(() => meetSlides(params));
   const [index, setIndex] = useState(0);
   const total = slides.length;
   const slide = slides[Math.min(index, total - 1)];
   const last = index >= total - 1;
-  const spoken = slide?.card.say ?? "";
+  const card = slide?.card;
+  const audible = canSay(card);
 
   useEffect(() => {
-    if (!ready || !spoken) return;
-    const timer = window.setTimeout(() => say(spoken), 450);
+    if (!audible || !card) return;
+    const timer = window.setTimeout(() => say(card), 450);
     return () => window.clearTimeout(timer);
-  }, [ready, spoken, say, index]);
+  }, [audible, card, say, index]);
 
-  const next = () => {
+  const prime = () => {
     primeSpeech();
+    primeClips();
+  };
+  const next = () => {
+    prime();
     if (last) {
       onStart();
       return;
@@ -66,7 +72,7 @@ export function LangMeet({ params, onStart }: LangMeetProps) {
 
   return (
     <div className="tl-meet lx lx-meet" data-testid="lang-meet" data-slide={index}>
-      <button type="button" className="lx-meet-skip" onClick={() => { primeSpeech(); onStart(); }} data-testid="lang-meet-skip">{S.skip}</button>
+      <button type="button" className="lx-meet-skip" onClick={() => { prime(); onStart(); }} data-testid="lang-meet-skip">{S.skip}</button>
       <PogoSay mood={index === 0 ? "wave" : undefined} size={compact ? 84 : 116} text={slide.title} />
       <div key={index} className="lx-meet-card">
         <PhraseFace card={slide.card} lang={params.lang} />
@@ -74,11 +80,11 @@ export function LangMeet({ params, onStart }: LangMeetProps) {
           {slide.card.letter ? <span className="lx-en">{S.soundsLike(slide.card.en)}</span> : <MeaningFace card={slide.card} />}
         </div>
         {slide.tip && <p className="lx-meet-tip">{slide.tip}</p>}
-        {ready
+        {audible
           ? (
             <div className="lx-meet-hear">
-              <Speaker label={LANG.ui.listenAgain} onClick={() => say(spoken)} testId="lang-meet-hear">{LANG.ui.listenAgain}</Speaker>
-              <button type="button" className="lx-slow" onClick={() => say(spoken, true)}>{LANG.ui.slow}</button>
+              <Speaker label={LANG.ui.listenAgain} onClick={() => say(slide.card)} testId="lang-meet-hear">{LANG.ui.listenAgain}</Speaker>
+              <button type="button" className="lx-slow" onClick={() => say(slide.card, true)}>{LANG.ui.slow}</button>
             </div>
           )
           : <p className="lx-note">{LANG.ui.noVoice}</p>}

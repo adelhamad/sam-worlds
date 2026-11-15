@@ -50,7 +50,7 @@ export function LangPairs({ payload, disabled, onSubmit }: WidgetProps<PairsPayl
 
   const tap = (side: Side, card: LangCard) => {
     if (disabled || miss || finished || matched[card.id]) return;
-    if (side === "left") say(card.say);
+    if (side === "left") say(card);
     if (!sel || sel.side === side) {
       tourSound.pop();
       setSel(sel?.side === side && sel.id === card.id ? null : { side, id: card.id });

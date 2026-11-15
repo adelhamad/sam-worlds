@@ -156,6 +156,31 @@ bright colour that is not cyan (`#22d3ee` is reserved). `blurb` ≤ 8 words. Les
 ≤ 22 characters. `mission` ≤ 16 words, something to SAY to a real person today, quoting
 the phrase in its roman / French form.
 
+## How it is spoken
+
+1. **The device's best voice.** `rankedVoices(lang)` in `src/engine/feedback/speech.ts`
+   ranks the installed voices with the pure `src/engine/feedback/voiceRank.ts`: natural
+   before novelty (Apple's Eddy, Grandma, Zarvox… are listed explicitly), premium before
+   enhanced before default, on-device before network, then the locale (ar-SA, ar-001,
+   ar-AE, ar-EG; fr-FR, fr-CA, fr-BE, fr-CH). The parent can choose another voice and a
+   slower speed. No device has a Levantine voice: the Arabic one reads Standard Arabic,
+   so each phrase's `say` only approximates the dialect.
+2. **The parent's own recording wins.** When a phrase (or a letter's name) has been
+   recorded, lessons play that clip instead (`useVoice` → `src/engine/feedback/clips.ts`);
+   "slowly" plays it at 0.75 speed with the pitch kept. Without a clip and without a
+   device voice, the lesson shows the words.
+3. **Where the parent records:** Parent Section → **Voices** (`/parent/voices`, same
+   password): per unit, record / play / delete each phrase, or "Record them in a row";
+   letters have their own group. Keys: `ar:<phraseId>`, `ar:letter:<letterId>`
+   (`src/engine/feedback/clipKeys.ts`) — so **never rename a phrase or letter id**, or
+   its recording is orphaned.
+4. **Clips live only in IndexedDB on that device** (table `voiceClips`, db version 3).
+   They are not in the localStorage safety mirror (too big), are not synced to another
+   device, and a progress reset never clears them; only the Voices page deletes them.
+
+`scripts/audit-voices.ts` checks the ranking on fixture voice lists and that every phrase
+and letter of every course has a clip key that round-trips.
+
 ## Check your work
 
 ```
