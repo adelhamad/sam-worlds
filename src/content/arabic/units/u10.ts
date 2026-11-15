@@ -27,7 +27,7 @@ export const U10: LangUnitPack = {
   phrases: [
     { id: "wein", text: "وين؟", roman: "wein?", en: "Where?", topic: "place" },
     { id: "hoon", text: "هون", roman: "hoon", say: "هُون", en: "Here", topic: "place", like: ["ana-hoon"] },
-    { id: "hniik", text: "هنيك", roman: "hniik", say: "هْنيك", en: "There", topic: "place", tip: "Some families say hunaak." },
+    { id: "hniik", text: "هنيك", roman: "hniik", say: "هْنيك", en: "There", topic: "place", tip: "Some families say hnaak." },
     { id: "juwwa", text: "جوا", roman: "juwwa", say: "جُوّا", en: "Inside", topic: "place" },
     { id: "barra", text: "برا", roman: "barra", say: "بَرّا", en: "Outside", topic: "place" },
     { id: "foo", text: "فوق", roman: "foo’", say: "فوء", en: "Up, on top", art: "arrow-up", topic: "place", tip: "It also means upstairs." },

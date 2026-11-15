@@ -20,7 +20,7 @@ export const U17: LangUnitPack = {
       },
       {
         name: "Reading the Shop", kind: "letters", letters: ["د", "س", "ز"], spell: ["dukkaan", "kiis", "kiilo", "il-baai"],
-        mission: "At the shop, ask the seller: addeish il-kiilo? Then say: bass heik.",
+        mission: "At the shop, ask the seller: ’addeish il-kiilo? Then say: bass heik.",
       },
     ],
   },
@@ -40,18 +40,18 @@ export const U17: LangUnitPack = {
       tip: "What would you like? Said to a boy. To a girl: shu biddik?",
     },
     {
-      id: "bass-heik", text: "بس هيك", roman: "bass heik", say: "بَسّ هَيك", en: "That's all", topic: "shop",
+      id: "bass-heik", text: "بس هيك", roman: "bass heik", say: "بَسّ هَيك", en: "That's all", topic: "shop", like: ["khalas"],
       words: [{ text: "بس", roman: "bass" }, { text: "هيك", roman: "heik" }],
       tip: "That's all. Done shopping? Say bass heik, shukran.",
     },
     {
-      id: "addeish-il-kiilo", text: "قدّيش الكيلو؟", roman: "addeish il-kiilo?", say: "أَدّيش الكيلو", en: "How much for a kilo?", topic: "shop",
-      words: [{ text: "قدّيش", roman: "addeish" }, { text: "الكيلو", roman: "il-kiilo" }],
+      id: "addeish-il-kiilo", text: "قدّيش الكيلو؟", roman: "’addeish il-kiilo?", say: "أَدّيش الكيلو", en: "How much for a kilo?", topic: "shop",
+      words: [{ text: "قدّيش", roman: "’addeish" }, { text: "الكيلو", roman: "il-kiilo" }],
     },
     {
-      id: "biddi-kiilo-tuffaah", text: "بدّي كيلو تفاح", roman: "biddi kiilo tuffaaH", say: "بِدّي كيلو تُفّاح", en: "I want a kilo of apples",
+      id: "biddi-kiilo-tuffaah", text: "بدّي كيلو تفاح", roman: "biddi kiilo tiffaaH", say: "بِدّي كيلو تِفّاح", en: "I want a kilo of apples",
       art: "apple", topic: "shop",
-      words: [{ text: "بدّي", roman: "biddi" }, { text: "كيلو", roman: "kiilo" }, { text: "تفاح", roman: "tuffaaH" }],
+      words: [{ text: "بدّي", roman: "biddi" }, { text: "كيلو", roman: "kiilo" }, { text: "تفاح", roman: "tiffaaH" }],
     },
     {
       id: "fii-andak-khubz", text: "في عندك خبز؟", roman: "fii ‘andak khubz?", say: "في عَنْدَك خُبْز", en: "Do you have bread?", topic: "shop",
@@ -59,7 +59,7 @@ export const U17: LangUnitPack = {
       tip: "Do you have bread? Ask a man. To a woman: fii ‘andik?",
     },
     {
-      id: "tfaddal-il-masaari", text: "تفضل المصاري", roman: "tfaDDal il-maSaari", say: "تْفَضَّل المَصاري", en: "Here's the money", topic: "shop",
+      id: "tfaddal-il-masaari", text: "تفضل المصاري", roman: "tfaDDal il-maSaari", say: "تْفَضَّل المَصاري", en: "Here's the money", topic: "shop", like: ["tfaddal"],
       words: [{ text: "تفضل", roman: "tfaDDal" }, { text: "المصاري", roman: "il-maSaari" }],
       tip: "Here's the money. To a woman: tfaDDali il-maSaari.",
     },
@@ -67,7 +67,7 @@ export const U17: LangUnitPack = {
   scenes: [
     {
       id: "u17-fruit-man", setup: "You walk into the fruit shop. The man smiles and asks:", who: { name: "Shopkeeper" },
-      line: "shu-biddak", reply: ["biddi-kiilo-tuffaah"], alsoOk: ["biddi-ishtari", "fii-andak-khubz", "addeish-il-kiilo", "addeish-haada"],
+      line: "shu-biddak", reply: ["biddi-kiilo-tuffaah"], alsoOk: ["biddi-ishtari", "fii-andak-khubz", "addeish-il-kiilo", "addeish-haada", "biddi", "tiffaaha", "moozeh"],
     },
     { id: "u17-bakery", setup: "At the bakery, the shelves look empty. Ask the man.", who: { name: "Baker" }, reply: ["fii-andak-khubz"] },
     {
@@ -76,9 +76,9 @@ export const U17: LangUnitPack = {
     },
     {
       id: "u17-pay", setup: "You bought sweets. The shopkeeper tells you the price.", who: { name: "Shopkeeper" },
-      line: "khamsiin", reply: ["tfaddal-il-masaari"], alsoOk: ["ktiir-ghaali", "ghaali"],
+      line: "khamsiin", reply: ["tfaddal-il-masaari"], alsoOk: ["tfaddal", "ktiir-ghaali", "ghaali"],
     },
-    { id: "u17-thats-all", setup: "You have everything on Mama's list. The man waits.", who: { name: "Shopkeeper" }, reply: ["bass-heik"] },
+    { id: "u17-thats-all", setup: "You have everything on Mama's list. The man waits.", who: { name: "Shopkeeper" }, reply: ["bass-heik"], alsoOk: ["khalas", "la-shukran", "la", "shukran", "yislamo"] },
     { id: "u17-change", setup: "You paid too much. The man forgot to give money back.", who: { name: "Shopkeeper" }, reply: ["il-baai"] },
     { id: "u17-full-arms", setup: "Your arms are full of oranges. You need something to carry them.", reply: ["kiis"] },
   ],

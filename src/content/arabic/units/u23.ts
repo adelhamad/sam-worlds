@@ -51,8 +51,8 @@ export const U23: LangUnitPack = {
       words: [{ text: "رحت", roman: "ruHt" }, { text: "عالمدرسة", roman: "‘al-madraseh" }],
     },
     {
-      id: "akalt-tuffaaha", text: "أكلت تفاحة", roman: "akalt tuffaaHa", say: "أَكَلْت تُفّاحة", en: "I ate an apple", art: "apple", topic: "did",
-      words: [{ text: "أكلت", roman: "akalt" }, { text: "تفاحة", roman: "tuffaaHa" }],
+      id: "akalt-tuffaaha", text: "أكلت تفاحة", roman: "akalt tiffaaHa", say: "أَكَلْت تِفّاحة", en: "I ate an apple", art: "apple", topic: "did",
+      words: [{ text: "أكلت", roman: "akalt" }, { text: "تفاحة", roman: "tiffaaHa" }],
     },
     {
       id: "libt-taabeh", text: "لعبت طابة", roman: "l‘ibt Taabeh", say: "لْعِبْت طابة", en: "I played ball", art: "ball", topic: "did",
@@ -74,14 +74,14 @@ export const U23: LangUnitPack = {
       line: "shu-am-tamel", reply: ["am-bilab"],
     },
     {
-      id: "u23-not-hungry", setup: "Mama brings lunch, but you just had an apple.", who: { name: "Mama" },
-      reply: ["akalt-tuffaaha"], alsoOk: ["akalt"],
+      id: "u23-not-hungry", setup: "Mama asks what you just ate. It was an apple.", who: { name: "Mama" },
+      reply: ["akalt-tuffaaha"], alsoOk: ["akalt", "tiffaaha"],
     },
     {
       id: "u23-morning-baba", setup: "Morning! Baba asks about your night. You slept like a log.", who: { name: "Baba" },
       reply: ["nimt-mniih"], alsoOk: ["mniih", "ana-mniih", "hamdilla"],
     },
     { id: "u23-after-lunch", setup: "Lunch is done. You tell Mama your plan: the swings!", who: { name: "Mama" }, reply: ["rah-ilab"] },
-    { id: "u23-school-water", setup: "Baba asks if you had water at school. You did!", who: { name: "Baba" }, reply: ["shribt"] },
+    { id: "u23-school-water", setup: "Baba asks if you had water at school. You did!", who: { name: "Baba" }, reply: ["shribt"], alsoOk: ["ee", "aah"] },
   ],
 };

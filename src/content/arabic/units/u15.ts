@@ -30,9 +30,9 @@ export const U15: LangUnitPack = {
     { id: "mbaarih", text: "مبارح", roman: "mbaariH", say: "مْبارِح", en: "Yesterday", topic: "time" },
     { id: "halla", text: "هلّق", roman: "halla’", say: "هَلَّأ", en: "Now", topic: "time", tip: "halla’ means now, right now. Some families say hassa." },
     { id: "badein", text: "بعدين", roman: "ba‘dein", say: "بَعْدَين", en: "Later", topic: "time", tip: "ba‘dein means later, after a while." },
-    { id: "is-subih", text: "الصبح", roman: "iS-SubiH", say: "الصُّبِح", en: "Morning", topic: "time" },
-    { id: "il-masa", text: "المسا", roman: "il-masa", say: "المَسا", en: "Evening", topic: "time" },
-    { id: "il-leil", text: "الليل", roman: "il-leil", say: "اللَّيل", en: "Night", topic: "time" },
+    { id: "is-subih", text: "الصبح", roman: "iS-SubiH", say: "الصُّبِح", en: "In the morning", topic: "time" },
+    { id: "il-masa", text: "المسا", roman: "il-masa", say: "المَسا", en: "In the evening", topic: "time" },
+    { id: "il-leil", text: "الليل", roman: "il-leil", say: "اللَّيل", en: "At night", topic: "time" },
     {
       id: "sabaah-il-kheir", text: "صباح الخير", roman: "SabaaH il-kheir", say: "صَباح الخَير", en: "Good morning", topic: "time",
       like: ["sabaah-in-noor"],
@@ -76,13 +76,13 @@ export const U15: LangUnitPack = {
     },
     {
       id: "u15-teta-curtains", setup: "Teta opens the curtains and smiles at you.", who: { name: "Teta" },
-      line: "sabaah-il-kheir", reply: ["sabaah-in-noor"], alsoOk: ["marhaba", "ahlein", "kiifik"],
+      line: "sabaah-il-kheir", reply: ["sabaah-in-noor"], alsoOk: ["marhaba", "ahlein", "kiifik", "kiifik-teeta"],
     },
     {
       id: "u15-lights-off", setup: "Bedtime. Mama kisses you and turns off the light.", who: { name: "Mama" },
-      line: "tisbah-ala-kheir", reply: ["w-inti-min-ahlo"], alsoOk: ["tisbahi-ala-kheir"],
+      line: "tisbah-ala-kheir", reply: ["w-inti-min-ahlo"], alsoOk: ["tisbahi-ala-kheir", "bhebbik"],
     },
-    { id: "u15-baba-sofa", setup: "You are sleepy and going to bed. Baba is on the sofa.", who: { name: "Baba" }, reply: ["tisbah-ala-kheir"] },
+    { id: "u15-baba-sofa", setup: "You are sleepy and going to bed. Baba is on the sofa.", who: { name: "Baba" }, reply: ["tisbah-ala-kheir"], alsoOk: ["bhebbak", "nasaan"] },
     { id: "u15-zoo-trip", setup: "Teta asks when you went to the zoo. It was one day ago.", who: { name: "Teta" }, reply: ["mbaarih"] },
     { id: "u15-cake-now", setup: "Mama asks when you want your cake. You can't wait!", who: { name: "Mama" }, reply: ["halla"], alsoOk: ["il-yoom"] },
     {

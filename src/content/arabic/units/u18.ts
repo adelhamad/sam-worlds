@@ -39,7 +39,7 @@ export const U18: LangUnitPack = {
     },
     { id: "wazaayef", text: "وظايف", roman: "waZaayef", say: "وَظايِف", en: "Homework", topic: "school", tip: "waZaayef is homework. Some families say frooD." },
     {
-      id: "fhimt", text: "فهمت", roman: "fhimt", say: "فْهِمْت", en: "Got it! I understand", topic: "school",
+      id: "fhimt", text: "فهمت", roman: "fhimt", say: "فْهِمْت", en: "I understand! Got it!", topic: "school",
       tip: "Someone asks fhimt? Answer fhimt! or ma fhimt.",
     },
     {
@@ -65,8 +65,8 @@ export const U18: LangUnitPack = {
   ],
   scenes: [
     {
-      id: "u18-card-game", setup: "Jiddo explains a new card game very fast. Then he asks:", who: { name: "Jiddo" },
-      line: "fhimt", reply: ["ma-fhimt"], alsoOk: ["iid-kamaan-marra", "kamaan-marra"],
+      id: "u18-card-game", setup: "Jiddo explains a new game very fast. You are lost.", who: { name: "Jiddo" },
+      reply: ["ma-fhimt"], alsoOk: ["iid-kamaan-marra", "kamaan-marra"],
     },
     {
       id: "u18-fast-teacher", setup: "Your teacher reads too fast. Ask her to read it again.", who: { name: "Teacher" },
@@ -75,7 +75,7 @@ export const U18: LangUnitPack = {
     { id: "u18-new-friend", setup: "Your friend Adam comes home with you. Mama hasn't met him.", who: { name: "Mama" }, reply: ["haada-saahbi"] },
     {
       id: "u18-break-time", setup: "At break time, your friend Yusuf runs up and asks:", who: { name: "Yusuf" },
-      line: "biddak-tilab-mai", reply: ["yalla-nilab"], alsoOk: ["nilab"],
+      line: "biddak-tilab-mai", reply: ["yalla-nilab"], alsoOk: ["nilab", "ee", "aah", "yalla"],
     },
     { id: "u18-every-morning", setup: "Teta asks where you go every morning with your bag.", who: { name: "Teta" }, reply: ["madraseh"] },
     { id: "u18-broken-pencil", setup: "Your pencil broke in class. You need another one to write.", reply: ["alam"] },

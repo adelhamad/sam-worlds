@@ -49,9 +49,9 @@ export const U07: LangUnitPack = {
       words: [{ text: "يلا", roman: "yalla" }, { text: "نعدّ", roman: "n‘idd" }],
     },
     {
-      id: "umrik-addeish", text: "عمرِك قدّيش؟", roman: "‘umrik addeish?", say: "عُمْرِك أَدّيش", en: "How old are you? (girl)", topic: "me",
+      id: "umrik-addeish", text: "عمرِك قدّيش؟", roman: "‘umrik ’addeish?", say: "عُمْرِك أَدّيش", en: "How old are you? (girl)", topic: "me",
       like: ["umrak-addeish"],
-      words: [{ text: "عمرِك", roman: "‘umrik" }, { text: "قدّيش", roman: "addeish" }],
+      words: [{ text: "عمرِك", roman: "‘umrik" }, { text: "قدّيش", roman: "’addeish" }],
       tip: "Ask a girl or a woman this way.",
     },
   ],

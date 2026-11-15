@@ -34,21 +34,21 @@ export const U12: LangUnitPack = {
     { id: "kbiir", text: "كبير", roman: "kbiir", say: "كْبير", en: "Big", topic: "colour", like: ["ana-kbiir"], tip: "For a girl: kbiira." },
     { id: "zghiir", text: "زغير", roman: "zghiir", say: "زْغير", en: "Small", topic: "colour", tip: "Some families say Sghiir. For a girl: zghiira." },
     {
-      id: "helw", text: "حلو", roman: "Helw", say: "حِلو", en: "Pretty, lovely", topic: "colour", like: ["ktiir-helw", "tayybeh"],
-      tip: "It also means sweet. For a girl: Helweh.",
+      id: "helw", text: "حلو", roman: "Hilu", say: "حِلُو", en: "Pretty, lovely", topic: "colour", like: ["ktiir-helw", "tayybeh"],
+      tip: "It also means sweet. For a girl: Hilweh.",
     },
     {
       id: "shu-loono", text: "شو لونه؟", roman: "shu loono?", say: "شو لونو", en: "What colour is it?", art: "palette", topic: "colour",
       words: [{ text: "شو", roman: "shu" }, { text: "لونه", roman: "loono" }],
     },
     {
-      id: "bhebb-il-azra", text: "بحب الأزرق", roman: "bHebb il-azra’", say: "بْحِبّ الأَزْرَء", en: "I like blue", topic: "colour",
-      words: [{ text: "بحب", roman: "bHebb" }, { text: "الأزرق", roman: "il-azra’" }],
-      tip: "Say your colour: bHebb il-aHmar. Not for you? ma bHebb.",
+      id: "bhebb-il-azra", text: "بحب الأزرق", roman: "bHibb il-azra’", say: "بْحِبّ الأَزْرَء", en: "I like blue", topic: "colour",
+      words: [{ text: "بحب", roman: "bHibb" }, { text: "الأزرق", roman: "il-azra’" }],
+      tip: "Say your colour: bHibb il-aHmar. Not for you? ma bHibb.",
     },
     {
-      id: "ktiir-helw", text: "كتير حلو", roman: "ktiir Helw", say: "كْتير حِلو", en: "So pretty!", topic: "colour", like: ["helw"],
-      words: [{ text: "كتير", roman: "ktiir" }, { text: "حلو", roman: "Helw" }],
+      id: "ktiir-helw", text: "كتير حلو", roman: "ktiir Hilu", say: "كْتير حِلُو", en: "So pretty!", topic: "colour", like: ["helw"],
+      words: [{ text: "كتير", roman: "ktiir" }, { text: "حلو", roman: "Hilu" }],
     },
     {
       id: "ana-kbiir", text: "أنا كبير", roman: "ana kbiir", say: "أَنا كْبير", en: "I'm big!", topic: "colour", like: ["kbiir"],

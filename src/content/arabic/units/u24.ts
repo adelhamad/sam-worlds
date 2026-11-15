@@ -26,23 +26,24 @@ export const U24: LangUnitPack = {
   },
   phrases: [
     {
-      id: "inshalla", text: "إن شاء الله", roman: "inshalla", say: "إن شاء الله", en: "I hope so! (God willing)", topic: "saying",
+      id: "inshalla", text: "إن شاء الله", roman: "inshalla", say: "إن شاء الله", en: "I hope so! (God willing)", topic: "saying", like: ["yaa-reit"],
       tip: "inshalla: I hope so. Say it about tomorrow and wishes.",
     },
     {
       id: "naiiman", text: "نعيماً", roman: "na‘iiman", say: "نَعيماً", en: "Fresh and clean! (after a bath)", topic: "saying",
       tip: "Said after a bath or a haircut. Answer: allah yin‘im ‘aleiki.",
     },
-    { id: "bil-hana", text: "بالهنا", roman: "bil-hana", say: "بِالهَنا", en: "Enjoy it! (something new)", topic: "saying", tip: "Enjoy it! Say it for new clothes or a new toy." },
-    { id: "yaa-reit", text: "ياريت", roman: "yaa reit", say: "يا رَيت", en: "I wish!", topic: "saying", tip: "I wish! Want something a lot? Say yaa reit!" },
+    { id: "bil-hana", text: "بالهنا", roman: "bil-hana", say: "بِالهَنا", en: "Enjoy it!", topic: "saying", like: ["sahtein"],
+      tip: "Say it for food, like SaHtein, and for new clothes or toys." },
+    { id: "yaa-reit", text: "ياريت", roman: "yaa reit", say: "يا رَيت", en: "I wish!", topic: "saying", like: ["inshalla"], tip: "I wish! Want something a lot? Say yaa reit!" },
     {
       id: "il-hamdilla-as-salaameh", text: "الحمد لله عالسلامة", roman: "il-Hamdilla ‘as-salaameh", say: "الحَمْدِ لله عالسَّلامة",
-      en: "Welcome back, safe and sound!", topic: "saying",
+      en: "Welcome back, safe and sound!", topic: "saying", like: ["hamdilla"],
       tip: "Said to someone back from a trip, or feeling better.",
     },
     {
       id: "ahlaam-saiideh", text: "أحلام سعيدة", roman: "aHlaam sa‘iideh", say: "أَحْلام سَعيدة", en: "Sweet dreams", topic: "saying",
-      like: ["tisbah-ala-kheir", "tisbahi-ala-kheir"],
+      like: ["tisbah-ala-kheir", "tisbahi-ala-kheir"], tip: "Some families say aHlaam Hilweh.",
       words: [{ text: "أحلام", roman: "aHlaam" }, { text: "سعيدة", roman: "sa‘iideh" }],
     },
     {
@@ -76,28 +77,28 @@ export const U24: LangUnitPack = {
   scenes: [
     {
       id: "u24-after-bath", setup: "You come out of the bath, all clean. Mama smiles:", who: { name: "Mama" },
-      line: "naiiman", reply: ["allah-yinim-aleiki"],
+      line: "naiiman", reply: ["allah-yinim-aleiki"], alsoOk: ["shukran", "yislamo"],
     },
     {
       id: "u24-teta-arrive", setup: "You land and run into Teta's arms. She says:", who: { name: "Teta" },
-      line: "il-hamdilla-as-salaameh", reply: ["allah-ysallmik"], alsoOk: ["ishtatillik", "ishtatillik-ktiir", "marhaba", "ahlein", "kiifik"],
+      line: "il-hamdilla-as-salaameh", reply: ["allah-ysallmik"], alsoOk: ["ishtatillik", "ishtatillik-ktiir", "bhebbik", "marhaba", "ahlein", "kiifik", "kiifik-teeta"],
     },
     {
       id: "u24-jiddo-garden", setup: "You help Jiddo dig in the garden. He wipes his face and says:", who: { name: "Jiddo" },
-      line: "yatiik-il-aafyeh", reply: ["allah-yaafiik"],
+      line: "yatiik-il-aafyeh", reply: ["allah-yaafiik"], alsoOk: ["shukran", "yislamo"],
     },
     {
       id: "u24-baba-bike", setup: "Baba fixed your bike all afternoon. Now it works!", who: { name: "Baba" },
-      reply: ["yatiik-il-aafyeh"], alsoOk: ["shaater"],
+      reply: ["yatiik-il-aafyeh"], alsoOk: ["shukran", "yislamo", "bhebbak", "shaater"],
     },
     {
       id: "u24-zoo-maybe", setup: "Mama says maybe you will all go to the zoo tomorrow.", who: { name: "Mama" },
-      reply: ["inshalla"], alsoOk: ["yaa-reit"],
+      reply: ["inshalla"], alsoOk: ["yaa-reit", "ee", "aah"],
     },
     {
       id: "u24-new-shoes", setup: "Your cousin Lina shows you her new shoes.", who: { name: "Lina" },
-      reply: ["bil-hana"], alsoOk: ["mabrook"],
+      reply: ["bil-hana", "mabrook"], alsoOk: ["helw", "ktiir-helw"],
     },
-    { id: "u24-busy-road", setup: "Your little cousin runs toward the busy road!", reply: ["diir-baalak"] },
+    { id: "u24-busy-road", setup: "Your little cousin runs toward the busy road!", reply: ["diir-baalak"], alsoOk: ["stanna-shway", "taa", "la"] },
   ],
 };

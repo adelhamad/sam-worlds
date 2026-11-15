@@ -82,26 +82,26 @@ export const U13: LangUnitPack = {
     },
     {
       id: "kamaan-marra", text: "كمان مرة", roman: "kamaan marra", say: "كَمان مَرّة", en: "Again! One more time!", topic: "play",
-      like: ["iid-kamaan-marra", "iidi-kamaan-marra"],
+      like: ["iid-kamaan-marra", "iidi-kamaan-marra", "kamaan"],
       words: [{ text: "كمان", roman: "kamaan" }, { text: "مرة", roman: "marra" }],
     },
   ],
   scenes: [
     {
       id: "u13-maya-alone", setup: "Your cousin Maya sits alone. Ask her to play.", who: { name: "Maya" },
-      reply: ["biddik-tilabi-mai"], alsoOk: ["yalla-nilab", "nilab"],
+      reply: ["biddik-tilabi-mai"], alsoOk: ["yalla-nilab", "nilab", "yalla"],
     },
     {
       id: "u13-park-boy", setup: "At the park, a boy with a ball asks you.", who: { name: "Adam" },
-      line: "biddak-tilab-mai", reply: ["yalla-nilab"], alsoOk: ["nilab"],
+      line: "biddak-tilab-mai", reply: ["yalla-nilab"], alsoOk: ["nilab", "ee", "aah", "yalla"],
     },
     {
       id: "u13-rainy-day", setup: "A rainy day. Mama holds up a board game.", who: { name: "Mama" },
-      line: "nilab", reply: ["yalla-nilab"], alsoOk: ["biddak-tilab-mai", "biddik-tilabi-mai"],
+      line: "nilab", reply: ["yalla-nilab"], alsoOk: ["biddak-tilab-mai", "biddik-tilabi-mai", "ee", "aah", "yalla"],
     },
-    { id: "u13-jiddo-cards", setup: "Cards with Jiddo. He just played. Now it is your go.", who: { name: "Jiddo" }, reply: ["doori"] },
+    { id: "u13-jiddo-cards", setup: "Cards with Jiddo. He just played. Now it is your go.", who: { name: "Jiddo" }, reply: ["doori"], alsoOk: ["ana"] },
     { id: "u13-teta-dice", setup: "You rolled the dice. Now it is Teta's go.", who: { name: "Teta" }, reply: ["doorik"] },
     { id: "u13-race-baba", setup: "You race Baba to the door and get there first!", who: { name: "Baba" }, reply: ["ana-rbiht"] },
-    { id: "u13-spin-again", setup: "Baba spins you round and round. You want more!", who: { name: "Baba" }, reply: ["kamaan-marra"] },
+    { id: "u13-spin-again", setup: "Baba spins you round and round. You want more!", who: { name: "Baba" }, reply: ["kamaan-marra"], alsoOk: ["kamaan", "biddi-kamaan"] },
   ],
 };

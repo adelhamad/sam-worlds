@@ -20,7 +20,7 @@ export const U16: LangUnitPack = {
       },
       {
         name: "Reading Numbers", kind: "letters", letters: ["ع", "غ", "ص"], spell: ["ishriin", "khamsiin", "miyyeh", "masaari", "ghaali"],
-        mission: "In a shop, point at something and ask: addeish haada?",
+        mission: "In a shop, point at something and ask: ’addeish haada?",
       },
     ],
   },
@@ -39,11 +39,11 @@ export const U16: LangUnitPack = {
     },
     { id: "khamsiin", text: "خمسين", roman: "khamsiin", say: "خَمْسين", en: "Fifty", topic: "number" },
     { id: "miyyeh", text: "مية", roman: "miyyeh", say: "مِيّة", en: "A hundred", topic: "number" },
-    { id: "masaari", text: "مصاري", roman: "maSaari", say: "مَصاري", en: "Money", art: "coin", topic: "shop" },
+    { id: "masaari", text: "مصاري", roman: "maSaari", say: "مَصاري", en: "Money", art: "coin", topic: "shop", like: ["iidiyyeh"] },
     { id: "ghaali", text: "غالي", roman: "ghaali", en: "Expensive", topic: "shop", like: ["ktiir-ghaali"], tip: "ghaali means it costs a lot." },
     {
-      id: "addeish-haada", text: "قدّيش هادا؟", roman: "addeish haada?", say: "أَدّيش هادا", en: "How much is this?", topic: "shop",
-      words: [{ text: "قدّيش", roman: "addeish" }, { text: "هادا", roman: "haada" }],
+      id: "addeish-haada", text: "قدّيش هادا؟", roman: "’addeish haada?", say: "أَدّيش هادا", en: "How much is this?", topic: "shop",
+      words: [{ text: "قدّيش", roman: "’addeish" }, { text: "هادا", roman: "haada" }],
       tip: "How much is this? Point at it and ask.",
     },
     {
@@ -61,7 +61,7 @@ export const U16: LangUnitPack = {
     { id: "u16-stickers", setup: "You count your stickers: twenty! Tell your cousin.", reply: ["ishriin"] },
     { id: "u16-toy-car", setup: "In the toy shop, you love a red car. Ask the price.", who: { name: "Shopkeeper" }, reply: ["addeish-haada"] },
     {
-      id: "u16-sweets-price", setup: "You want a small bag of sweets. The man says the price.", who: { name: "Shopkeeper" },
+      id: "u16-sweets-price", setup: "A tiny bag of sweets. The man asks for so much money!", who: { name: "Shopkeeper" },
       line: "khamsiin", reply: ["ktiir-ghaali"],
     },
     { id: "u16-cheap-ball", setup: "The ball costs only one coin! Tell Baba.", who: { name: "Baba" }, reply: ["haada-rkhiis"] },

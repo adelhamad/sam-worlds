@@ -25,7 +25,7 @@ export const U06: LangUnitPack = {
     ],
   },
   phrases: [
-    { id: "khubz", text: "خبز", roman: "khubz", say: "خُبْز", en: "Bread", topic: "food" },
+    { id: "khubz", text: "خبز", roman: "khubz", say: "خُبْز", en: "Bread", topic: "food", tip: "Some families say khibz." },
     { id: "jibneh", text: "جبنة", roman: "jibneh", say: "جِبْنة", en: "Cheese", topic: "food" },
     { id: "laban", text: "لبن", roman: "laban", say: "لَبَن", en: "Yoghurt", topic: "food", tip: "laban is yoghurt, not milk. Milk is Haliib." },
     { id: "beid", text: "بيض", roman: "beiD", say: "بَيْض", en: "Eggs", topic: "food", tip: "One egg is beiDa." },
@@ -33,9 +33,9 @@ export const U06: LangUnitPack = {
     { id: "jaaj", text: "جاج", roman: "jaaj", en: "Chicken", topic: "food" },
     { id: "tiffaaha", text: "تفاحة", roman: "tiffaaHa", say: "تِفّاحة", en: "An apple", art: "apple", topic: "food", tip: "Some families say tuffaaHa." },
     { id: "moozeh", text: "موزة", roman: "moozeh", say: "مُوزة", en: "A banana", topic: "food" },
-    { id: "tayybeh", text: "طيبة", roman: "Tayybeh", say: "طَيّْبة", en: "Tasty, yummy", topic: "food", like: ["helw"], tip: "Some families say zaakyeh." },
+    { id: "tayybeh", text: "طيبة", roman: "Tayybeh", say: "طَيّْبة", en: "Tasty, yummy", topic: "food", like: ["helw"], tip: "Said about food. Some say Tayyib. In Lebanon: zaakyeh." },
     {
-      id: "sahtein", text: "صحتين", roman: "SaHtein", say: "صَحْتين", en: "Enjoy your food!", topic: "food",
+      id: "sahtein", text: "صحتين", roman: "SaHtein", say: "صَحْتين", en: "Enjoy your food!", topic: "food", like: ["bil-hana"],
       tip: "Grown-ups say it while you eat. Answer: ‘ala ’albik!",
     },
     {
