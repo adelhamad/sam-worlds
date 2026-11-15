@@ -12,10 +12,10 @@ export const U21: LangUnitPack = {
     souvenir: { icon: iconRef("lantern"), name: "Eid Lantern" },
     lessons: [
       { name: "Welcome!", kind: "words", teach: ["ahla-w-sahla", "foot", "ishtatillak", "ishtatillik", "kiif-il-ahl"] },
-      { name: "Big Days", kind: "words", teach: ["iid-mbaarak", "kull-sineh-w-inta-saalem", "kull-sineh-w-inti-saalmeh", "mabrook", "allah-ybaarik-fiik", "iidiyyeh"] },
+      { name: "Big Days", kind: "words", teach: ["iid-mbaarak", "kull-sineh-w-inta-saalem", "mabrook", "allah-ybaarik-fiik", "iidiyyeh"] },
       {
         name: "At Teta's Door", kind: "talk",
-        teach: ["ahlein-fiik", "ahlein-fiiki", "sallimli-ala-jiddo"],
+        teach: ["ahlein-fiik", "ahlein-fiiki", "sallimli-ala-jiddo", "kull-sineh-w-inti-saalmeh"],
         scenes: ["u21-teta-door", "u21-khaalo-bell", "u21-jiddo-airport", "u21-eid-morning", "u21-swim-medal", "u21-baba-drives", "u21-omar-party"],
       },
       {
@@ -31,7 +31,7 @@ export const U21: LangUnitPack = {
       tip: "Welcome! Say it when guests come in.",
     },
     { id: "foot", text: "فوت", roman: "foot", say: "فوت", en: "Come in!", topic: "visit", like: ["tfaddal"],
-      tip: "Sounds like foot, means come in! To a girl: footi. tfaDDal is politer." },
+      tip: "Sounds like foot, means come in! To a girl: footi. tfaDDal is more polite." },
     {
       id: "ishtatillak", text: "اشتقتلك", roman: "ishta’tillak", say: "إشْتَأْتِلَّك", en: "I missed you (to a boy)", topic: "visit",
       like: ["ishtatillik", "ishtatillik-ktiir"],
