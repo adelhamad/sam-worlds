@@ -198,23 +198,6 @@ export async function playBlob(blob: Blob, slow = false): Promise<boolean> {
   return playUrl(el, blobUrl, slow);
 }
 
-/** Resolves when the shared element stops (end, pause or error) — or at once if it is idle. */
-export function clipEnded(): Promise<void> {
-  const el = player;
-  if (!el || el.paused) return Promise.resolve();
-  return new Promise((resolve) => {
-    const done = () => {
-      el.removeEventListener("ended", done);
-      el.removeEventListener("pause", done);
-      el.removeEventListener("error", done);
-      resolve();
-    };
-    el.addEventListener("ended", done);
-    el.addEventListener("pause", done);
-    el.addEventListener("error", done);
-  });
-}
-
 /** A 50 ms silent WAV (8 kHz, 8-bit mono), for priming the element inside a tap. */
 function silentWav(): string {
   const samples = 400;

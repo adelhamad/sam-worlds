@@ -81,11 +81,19 @@ export default function App() {
     return () => window.removeEventListener("contextmenu", onContextMenu);
   }, []);
 
+  // The parent's recordings play through one <audio> element, which iOS only
+  // lets play on its own after it has played inside a tap. A touch's
+  // pointerdown is not such a tap; a click is. (Stops once primed.)
+  useEffect(() => {
+    const onClick = () => primeClips();
+    window.addEventListener("click", onClick, true);
+    return () => window.removeEventListener("click", onClick, true);
+  }, []);
+
   // First tap anywhere unlocks audio and starts the background loop.
   useEffect(() => {
     const onFirstTap = () => {
       unlockAudio();
-      primeClips();
       if (useGame.getState().musicOn) startMusic();
       window.removeEventListener("pointerdown", onFirstTap);
     };
