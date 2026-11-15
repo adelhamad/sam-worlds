@@ -102,7 +102,8 @@ Hamza (ء) is not one of the 28 letters here; harakat, joined forms and digits a
 `judgeStroke(target, drawn, opts)` works in design units on the finger trail resampled to 64
 even points. A `line` must, in this order: **start** near its start dot, be **long enough**,
 stay near the path (**mean** and **90th-percentile** distance — a few jittery points are
-fine), **cover** at least 85 % of the path, **end** near its end, not be a scribble, and run
+fine), **cover** at least 85 % of the path with no uncovered stretch longer than 90 units (so
+skipping a tooth of س or ص, or the lower arm of ع, does not count), **end** near its end, not be a scribble, and run
 the right way (**in-order match**: the 90th percentile of a dynamic-time-warping match, which
 catches going round a loop the wrong way even when every point sits on the ink). A `dot` takes
 a tap or a small dab, and the tap must be nearer this dot than any other dot of the letter.
@@ -115,12 +116,14 @@ the path.", long → "Stop at the end." Never "wrong", "fail" or "mistake".
 
 `traceVerdict(glyph, attempts, guide)` re-judges every attempt and returns `TRACE_DONE`
 (`"traced"`) when every stroke was written in order with at most `MAX_SLIPS` (3) slips,
-otherwise `miss:order`, `miss:unfinished:2/4` or `miss:slips:5`.
+otherwise `miss:order`, `miss:unfinished:2/4` or `miss:slips:5`. `TRACE_DONE` looks the same
+with 0 or 3 slips: a lesson that pays first-try vs after-hint (answer-integrity rule 4) should
+grade with `traceTally(glyph, attempts, guide).slips`, using the attempts `onDone` hands over.
 
 `scripts/audit-write.ts` (inside `bun run check`) proves it: every stroke's own path with
 seeded finger wobble, at different pointer speeds, landing well off the dot, stopping short
 or running past the end, passes at both levels; the path backwards, a loop the wrong way
-round, the first half, a straight shortcut, a tap on another dot and every other letter's
+round, a skipped tooth, the first half, a straight shortcut, a tap on another dot and every other letter's
 first stroke (in place, and moved onto this letter's start dot) fail — except the listed
 same-body families (ب ت ث; ج ح خ; د ذ; ر ز; س ش; ص ض; ط ظ; ع غ) and, once moved onto the same
 start dot, the look-alikes د/ذ vs ر/ز.

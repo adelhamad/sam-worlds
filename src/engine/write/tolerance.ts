@@ -16,6 +16,8 @@ export interface Tolerance {
   cover: number;
   /** Share of the path that must be covered. */
   minCover: number;
+  /** Longest stretch of the path, in units, the trail may leave uncovered (a skipped tooth of س is ~250). */
+  maxGap: number;
   /** 90th-percentile distance of the IN-ORDER match (catches going round a loop backwards). */
   order: number;
   /** Trail length / path length below which the stroke is unfinished. */
@@ -39,6 +41,7 @@ const GUIDED: Tolerance = {
   p90: 90,
   cover: 65,
   minCover: 0.85,
+  maxGap: 90,
   order: 100,
   minLength: 0.6,
   maxLength: 1.9,

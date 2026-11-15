@@ -8,7 +8,8 @@
 //       off the dot, stopping 60 units short or running 50 units past the end, or reported
 //       by a fast, jittery touch screen; a tap passes
 //       a dot, a tap on one of the letter's OTHER dots does not;
-//   (c) the same path backwards fails, and so does going round a loop the wrong way;
+//   (c) the same path backwards fails, and so does going round a loop the wrong way
+//       or skipping a tooth (the up-and-down of س ش ص ض, the lower arm of ع غ);
 //   (d) the first half fails, and a straight shortcut fails for curved strokes;
 //   (e) every OTHER letter's first stroke fails against this letter's first stroke,
 //       unless the two are listed below as the same shape — both where it sits in the
@@ -23,7 +24,7 @@ import { judgeGlyphStroke } from "../src/engine/write/judge";
 import { MAX_SLIPS, TOLERANCE } from "../src/engine/write/tolerance";
 import type { GlyphStrokes, GuideLevel, Point, TraceAttempt } from "../src/engine/write/types";
 import { TRACE_DONE, traceVerdict } from "../src/engine/write/verdict";
-import { cutBy, cutTo, isSymmetric, loopsOf, maxDeviationFromChord, overshoot, sampleEvery, JITTERY, SHAKY, STEADY, wobble, wrongWayRound } from "./audit-write-traces";
+import { cutBy, cutTo, isSymmetric, loopsOf, maxDeviationFromChord, overshoot, retracesOf, skipSpan, sampleEvery, JITTERY, SHAKY, STEADY, wobble, wrongWayRound } from "./audit-write-traces";
 
 const FONT_FILE = "node_modules/@fontsource-variable/noto-sans-arabic/files/noto-sans-arabic-arabic-wght-normal.woff2";
 const ORDER = ["alif", "ba", "ta", "tha", "jeem", "hha", "kha", "dal", "thal", "ra", "zay", "seen", "sheen", "sad", "dad",
@@ -100,6 +101,9 @@ function checkLine(failures: string[], stats: Stats, glyph: GlyphStrokes, index:
     expectJudge(failures, stats, `${label} shaky, past the end, seed ${seed}`, glyph, index, wobble(sampleEvery(overshoot(path, 50), 14), rng, SHAKY), guide, true);
   }
   if (!isSymmetric(path)) expectJudge(failures, stats, `${label} backwards`, glyph, index, [...path].reverse(), guide, false);
+  for (const tooth of retracesOf(path)) {
+    expectJudge(failures, stats, `${label} skipping the retrace ${tooth.join("-")}`, glyph, index, skipSpan(path, tooth), guide, false);
+  }
   for (const loop of loopsOf(path)) {
     expectJudge(failures, stats, `${label} loop ${loop.join("-")} the wrong way round`, glyph, index, wrongWayRound(path, loop), guide, false);
   }
@@ -176,7 +180,8 @@ export function auditWrite(): string[] {
   for (const letter of ARABIC_LETTERS) checkOwnStrokes(failures, letter.glyph, stats);
   checkDiscrimination(failures, stats);
   checkVerdicts(failures);
-  if (TOLERANCE.memory.order !== TOLERANCE.guided.order || TOLERANCE.memory.minCover !== TOLERANCE.guided.minCover) {
+  const { guided, memory } = TOLERANCE;
+  if (memory.order !== guided.order || memory.minCover !== guided.minCover || memory.maxGap !== guided.maxGap) {
     failures.push("write: memory mode must keep the same direction and coverage rules as guided");
   }
   if (!failures.length) {

@@ -40,6 +40,18 @@ function startProblem(drawn: Point[], path: Point[], t: Tolerance): StrokeJudgem
   return { ok: false, reason: reversed ? "direction" : "start" };
 }
 
+/** The longest run of the path (units, along it) that the trail never passes within `reach` of. */
+function longestGap(path: readonly Point[], trail: Point[], reach: number): number {
+  let longest = 0;
+  let run = 0;
+  for (let i = 0; i < path.length; i++) {
+    if (distToPolyline(path[i], trail) <= reach) run = 0;
+    else if (i > 0) run += dist(path[i - 1], path[i]);
+    longest = Math.max(longest, run);
+  }
+  return longest;
+}
+
 /** The share of `path` samples that the trail passes within `reach` of. */
 function coverage(path: Point[], trail: Point[], reach: number): number {
   let near = 0;
@@ -61,7 +73,8 @@ function judgeLine(target: Stroke, drawn: Point[], t: Tolerance): StrokeJudgemen
   if (mean > t.mean || quantile(offsets, 0.9) > t.p90) return { ok: false, reason: "shape" };
 
   const end = path[path.length - 1];
-  if (coverage(path, trail, t.cover) < t.minCover || trailLength < pathLength * t.minLength) {
+  if (coverage(path, trail, t.cover) < t.minCover || trailLength < pathLength * t.minLength ||
+      longestGap(target.points, trail, t.cover) > t.maxGap) {
     return { ok: false, reason: "short" };
   }
   if (trailLength > pathLength * t.maxLength + t.lengthSlack) return { ok: false, reason: "long" };

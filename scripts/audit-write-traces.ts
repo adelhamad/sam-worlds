@@ -123,3 +123,31 @@ export function loopsOf(points: readonly Point[]): Array<[number, number]> {
 export function wrongWayRound(points: readonly Point[], [from, to]: [number, number]): Point[] {
   return [...points.slice(0, from), ...points.slice(from, to + 1).reverse(), ...points.slice(to + 1)];
 }
+
+/**
+ * Up-and-down retraces inside a stroke (the teeth of س ش ص ض, the lower arm of
+ * ع غ): the path leaves a point, reaches more than 90 units out and comes back
+ * the same way. Returns [from, to] index pairs.
+ */
+export function retracesOf(points: readonly Point[]): Array<[number, number]> {
+  const out: Array<[number, number]> = [];
+  let i = 0;
+  while (i < points.length) {
+    let to = -1;
+    for (let j = i + 4; j < points.length; j++) if (dist(points[i], points[j]) < 15) to = j;
+    const span = to > 0 ? points.slice(i, to + 1) : [];
+    const reach = Math.max(0, ...span.map((p) => dist(p, points[i])));
+    if (to > 0 && reach > 90 && isSymmetric(span)) {
+      out.push([i, to]);
+      i = to + 1;
+    } else {
+      i++;
+    }
+  }
+  return out;
+}
+
+/** The path with span [from, to] left out (a tooth skipped). */
+export function skipSpan(points: readonly Point[], [from, to]: [number, number]): Point[] {
+  return [...points.slice(0, from + 1), ...points.slice(to + 1)];
+}
