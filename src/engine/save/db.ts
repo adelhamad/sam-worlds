@@ -95,6 +95,8 @@ export interface SettingsRow {
   /** Parent Section → Voices: the chosen device voice per language (voiceURI), and a speed (1 = normal). */
   voicePick?: Record<string, string>;
   voiceSpeed?: number;
+  /** Parent Section → Voices: "Speaking practice" (the child records himself next to the model; takes are never stored). */
+  speakPractice?: boolean;
 }
 export interface CouponRow {
   id?: number;

@@ -37,6 +37,7 @@ export function persistSettings(get: () => GameStore): void {
     questDaysDone: s.questDaysDone,
     voicePick: s.voicePick,
     voiceSpeed: s.voiceSpeed,
+    speakPractice: s.speakPractice,
   });
 }
 
@@ -88,11 +89,12 @@ function questSettings(s: SettingsRow | undefined) {
   };
 }
 
-/** Parent Section → Voices: chosen device voice per language and speed. */
+/** Parent Section → Voices: chosen device voice per language, speed, speaking practice. */
 function voiceSettings(s: SettingsRow | undefined) {
   return {
     voicePick: s?.voicePick ?? {},
     voiceSpeed: s?.voiceSpeed ?? 1,
+    speakPractice: s?.speakPractice ?? false,
   };
 }
 

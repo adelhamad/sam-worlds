@@ -1,0 +1,180 @@
+/* Speaking practice ("Your turn — say it!"): the round microphone, its live
+   ring, the two ears, and the speaking break. Scoped under `.tour`, prefixed
+   `sp-` (not used anywhere else). Cyan = interactive. Phone first; every
+   target at least 48 px; motion off under prefers-reduced-motion. */
+
+.tour .sp {
+  --sp-size: 92px;
+  --sp-level: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.tour .sp.is-compact { --sp-size: 80px; gap: 6px; }
+@media (min-width: 700px) { .tour .sp:not(.is-compact) { --sp-size: 112px; } }
+.tour .sp.is-waiting { opacity: 0; transform: translateY(8px) scale(0.92); pointer-events: none; }
+.tour .sp-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.tour .sp-row { display: flex; align-items: flex-start; justify-content: center; gap: 14px; min-height: var(--sp-size); }
+.tour .sp-mic-col { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+
+/* ---------- the microphone ---------- */
+.tour .sp-mic {
+  position: relative;
+  width: var(--sp-size);
+  height: var(--sp-size);
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--t-go-ink);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.tour .sp-mic-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--t-go);
+  border-bottom: 6px solid var(--t-go-deep);
+  box-sizing: border-box;
+  transition: transform 0.12s ease, background 0.2s ease;
+}
+.tour .sp-mic:active .sp-mic-face { transform: translateY(4px); border-bottom-width: 2px; }
+.tour .sp-mic:disabled { cursor: default; }
+.tour .sp-mic:disabled .sp-mic-face { background: var(--t-surface-2); border-bottom-color: var(--t-line-deep); color: #6f84b5; }
+.tour .sp-mic:focus-visible { outline: 3px solid var(--t-gold); outline-offset: 6px; }
+
+/* Idle: a soft inviting halo. */
+.tour .sp.is-idle .sp-ring,
+.tour .sp.is-done .sp-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  animation: sp-invite 2.2s ease-in-out infinite;
+}
+@keyframes sp-invite {
+  0%, 100% { box-shadow: 0 0 0 7px rgba(34, 211, 238, 0.16), 0 0 0 16px rgba(34, 211, 238, 0.06); }
+  50% { box-shadow: 0 0 0 12px rgba(34, 211, 238, 0.1), 0 0 0 26px rgba(34, 211, 238, 0.03); }
+}
+
+/* Recording: the button becomes a ring that swells with his voice. */
+.tour .sp-mic.is-live .sp-mic-face {
+  background: var(--t-surface);
+  border: 5px solid var(--t-go);
+  color: var(--t-go);
+}
+.tour .sp-mic.is-live .sp-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 6px solid var(--t-go);
+  opacity: calc(0.35 + var(--sp-level) * 0.65);
+  transform: scale(calc(1 + var(--sp-level) * 0.45));
+  transition: transform 0.08s linear, opacity 0.08s linear;
+  animation: sp-breathe 1.4s ease-in-out infinite;
+}
+@keyframes sp-breathe {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.35); }
+  50% { box-shadow: 0 0 0 14px rgba(34, 211, 238, 0); }
+}
+.tour .sp-stop { width: 26px; height: 26px; border-radius: 7px; background: var(--t-go); }
+
+.tour .sp-label { min-height: 22px; text-align: center; font-size: 17px; font-weight: 900; color: var(--t-go); line-height: 1.2; }
+
+/* ---------- Hear both ---------- */
+.tour .sp-both {
+  font: inherit;
+  font-weight: 900;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 52px;
+  margin-top: calc((var(--sp-size) - 52px) / 2);
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 2px solid var(--t-go);
+  background: transparent;
+  color: var(--t-go);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+/* ---------- the two ears ---------- */
+.tour .sp-ears { display: flex; align-items: center; gap: 8px; }
+.tour .sp-ears.is-hidden { visibility: hidden; }
+/* While he records or listens back, the slide's own Listen buttons step aside. */
+.tour .lx-meet-hear.is-quiet { opacity: 0.4; transition: opacity 0.2s ease; }
+.tour .sp-ear {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px 4px 8px;
+  border-radius: 999px;
+  border: 2px solid var(--t-line);
+  color: var(--t-ink-dim);
+  font-size: 15px;
+  font-weight: 900;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.tour .sp-ear.is-on { background: var(--t-gold); border-color: var(--t-gold); color: #2b1d00; transform: scale(1.1); }
+.tour .sp-ear.is-you.is-on { background: var(--t-pogo); border-color: var(--t-pogo); color: #fff; }
+.tour .sp-ear.is-heard { border-color: var(--t-gold-deep); color: var(--t-ink); }
+.tour .sp-ear.is-you.is-heard { border-color: var(--t-pogo); }
+.tour .sp-ear-dot { width: 18px; height: 3px; border-radius: 2px; background: var(--t-line); }
+.tour .sp-ear.is-on .sp-ear-glyph { animation: sp-ear 0.6s ease-in-out infinite alternate; }
+@keyframes sp-ear { to { transform: rotate(-12deg) scale(1.12); } }
+
+/* ---------- inside the opening slide ---------- */
+.tour .lx-meet-card .sp { margin-top: 2px; }
+
+/* ---------- the speaking break ---------- */
+.tour .sp-break {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 8px 0 12px;
+  text-align: center;
+  animation: t-fade-up 0.35s ease both;
+}
+.tour .sp-break .pogo-say { align-self: stretch; }
+.tour .sp-break-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 18px;
+  border-radius: 24px;
+  background: var(--t-surface);
+  border: 2px solid var(--t-line);
+  font-size: 28px;
+  width: min(100%, 460px);
+  box-sizing: border-box;
+}
+.tour .sp-break-means { font-size: 20px; font-weight: 900; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tour .sp,
+  .tour .sp-ear,
+  .tour .sp-mic.is-live .sp-ring { transition: none; }
+  .tour .sp.is-waiting { transform: none; }
+  .tour .sp.is-idle .sp-ring,
+  .tour .sp.is-done .sp-ring,
+  .tour .sp-mic.is-live .sp-ring,
+  .tour .sp-ear.is-on .sp-ear-glyph,
+  .tour .sp-break { animation: none; }
+  .tour .sp-mic.is-live .sp-ring { transform: none; }
+  .tour .sp.is-idle .sp-ring,
+  .tour .sp.is-done .sp-ring { box-shadow: 0 0 0 8px rgba(34, 211, 238, 0.14); }
+}

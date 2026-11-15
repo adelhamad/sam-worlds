@@ -61,5 +61,27 @@ export const LANG = {
     soundsLike: (sound: string) => `Sounds like ${sound}`,
     mission: "Real-life mission",
     missionNote: "Do it today, with someone at home.",
+    /** "Your turn — say it!" (speaking practice, when the parent switched it on).
+        Never judged: every line is glad he spoke. */
+    speak: {
+      mic: "Your turn",
+      micLabel: "Your turn: tap and say it",
+      stop: "Tap to stop",
+      stopLabel: "Stop recording",
+      starting: "Getting ready…",
+      listening: "I'm listening…",
+      model: "Listen…",
+      you: "Now you!",
+      again: "Again",
+      both: "Hear both",
+      earModel: "Listen",
+      earYou: "You",
+      cheers: ["You said it!", "I heard you!", "Great talking!", "That sounds like you!", "Lovely saying it!"],
+      /** The speaking break inside a lesson. */
+      breakTitle: "Say it to me!",
+      breakHint: "Tap the mic and say it.",
+      notNow: "Not now",
+      next: "Continue",
+    },
   },
 };

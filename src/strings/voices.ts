@@ -92,6 +92,23 @@ export const VOICES = {
     already: "Already recorded. Record again to replace it, or skip.",
   },
 
+  /** Speaking practice: one switch for every language. */
+  speak: {
+    heading: "Speaking practice",
+    lines: [
+      "Sam taps a microphone on the new words, says them, and hears the model and then himself, one after the other. It is never scored.",
+      "Nothing is saved or sent anywhere: his voice is dropped as soon as the slide changes. The iPad will ask for the microphone once.",
+    ],
+    off: "Off",
+    on: "On",
+    check: "Try the microphone",
+    checking: "Asking for the microphone…",
+    ready: "The microphone works.",
+    asked: "The device will ask for the microphone the first time Sam taps it.",
+    hidden: "Until this is fixed, lessons look as they do without speaking practice.",
+    inLesson: "In a lesson just now:",
+  },
+
   /** When the microphone cannot be used: one plain sentence each. */
   mic: {
     unsupported: "This browser cannot record sound. Try Safari on the iPad, or Chrome.",

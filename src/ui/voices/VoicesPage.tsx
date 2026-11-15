@@ -1,5 +1,6 @@
 // Parent Section → Voices (/parent/voices, behind the same parent password):
-// for every language course, the device voice and the parent's own recordings.
+// for every language course, the device voice and the parent's own recordings;
+// and one switch for all of them: speaking practice (the child's microphone).
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { LANG_SEEDS } from "../../content/langCourses";
@@ -8,6 +9,7 @@ import { Icon } from "../icons/Icon";
 import { ParentGate } from "../ParentGate";
 import { ClipStudio } from "./ClipStudio";
 import { DeviceVoice } from "./DeviceVoice";
+import { SpeakSwitch } from "./SpeakSwitch";
 import { useStudio } from "./useStudio";
 import "./voices.css";
 
@@ -32,6 +34,8 @@ function Voices() {
         <h1>{VOICES.title}</h1>
         <span />
       </header>
+
+      <SpeakSwitch studioBusy={studio.active !== null} />
 
       <div className="vx-tabs" role="tablist">
         {LANG_SEEDS.map((item) => (
