@@ -1,4 +1,4 @@
-// Unit 8 — Je me sens. Feelings, what's wrong, I love you, a hug.
+// Unit 8 — Je me sens. Feelings, what's the matter, I love you, a hug.
 import { iconRef } from "../../iconNames";
 import type { LangUnitPack } from "../../langCourse";
 
@@ -11,7 +11,7 @@ export const U08: LangUnitPack = {
     souvenir: { icon: iconRef("heart"), name: "Heart Sticker" },
     lessons: [
       { name: "Feelings", kind: "words", teach: ["content", "triste", "fatigue", "malade", "calin"] },
-      { name: "What's Wrong?", kind: "words", teach: ["jai-peur", "rien", "je-taime", "moi-aussi", "qu-est-ce-qu-il-y-a"] },
+      { name: "What's the Matter?", kind: "words", teach: ["jai-peur", "rien", "je-taime", "moi-aussi", "qu-est-ce-qu-il-y-a"] },
       {
         name: "I Feel...", kind: "talk",
         teach: ["je-suis-content", "je-suis-triste", "je-suis-fatigue", "je-suis-malade"],
