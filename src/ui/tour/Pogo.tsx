@@ -6,10 +6,15 @@ import { useEffect, useState, type ReactNode } from "react";
 import "./tour-base.css";
 import "./pogo.css";
 import "./pogo-moods.css";
+import "./pogo-arc.css";
+import "./pogo-live.css";
 import { PogoArt } from "./PogoArt";
+import { PogoTap } from "./PogoTap";
+import type { PogoPoke } from "./usePogoPoke";
 import type { PogoMood } from "./pogoPoses";
 
 export { Confetti } from "./Confetti";
+export { PogoTap } from "./PogoTap";
 
 export type { PogoMood } from "./pogoPoses";
 
@@ -38,8 +43,12 @@ export interface PogoSayProps extends PogoProps {
   text: string;
   /** Which side of Pogo the bubble sits on. */
   side?: "right" | "top";
-  /** Optional content inside the bubble after the text (e.g. a 🔊 button). */
+  /** Optional content inside the bubble after the text (e.g. a read-aloud button). */
   children?: ReactNode;
+  /** Makes Pogo himself a button: tapping him plays this poke (see usePogoPoke). */
+  poke?: PogoPoke;
+  /** Accessible name of that button. */
+  pokeLabel?: string;
 }
 
 /** True for a moment after `text` changes — long enough to "say" the line. */
@@ -55,11 +64,12 @@ function useSpeaking(text: string): boolean {
 
 /** Pogo with a speech bubble. Without an explicit `mood`, Pogo talks while a
     new line pops in and then settles to idle. */
-export function PogoSay({ text, side = "right", children, mood, ...pogo }: PogoSayProps) {
+export function PogoSay({ text, side = "right", children, mood, poke, pokeLabel = "", ...pogo }: PogoSayProps) {
   const speaking = useSpeaking(text);
+  const art = <Pogo {...pogo} mood={poke?.mood ?? mood ?? (speaking ? "talk" : "idle")} />;
   return (
     <div className={`pogo-say pogo-say-${side}`}>
-      <Pogo {...pogo} mood={mood ?? (speaking ? "talk" : "idle")} />
+      {poke ? <PogoTap poke={poke} label={pokeLabel}>{art}</PogoTap> : art}
       <div key={text} className="pogo-bubble">
         <span className="pogo-bubble-text">{text}</span>
         {children}

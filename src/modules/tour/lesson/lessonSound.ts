@@ -21,11 +21,19 @@ export const lessonSound = {
     const variant = chirp;
     setTimeout(() => pogoVoice.happy(variant), 110);
   },
-  /** A miss: gentle and curious, never a buzzer. */
+  /** A miss: gentle, never a buzzer — Pogo goes "uh-oh" as he jolts. */
   almost: () => {
     tourSfx.nudge();
-    setTimeout(() => pogoVoice.aww(), 160);
+    setTimeout(() => pogoVoice.uhoh(), 160);
   },
+  /** The miss sinks in: the soft "aww" (only on a second miss in a slot). */
+  sinks: () => pogoVoice.aww(),
+  /** Pogo pulls himself together and points at the worked answer. */
+  focus: () => pogoVoice.hm(),
+  /** The first right answer after a miss: "phew" (after the right-answer chirp). */
+  relieved: () => pogoVoice.phew(),
+  /** Pogo was tapped (the caller rate-limits). */
+  poke: () => pogoVoice.giggle(),
   /** Combo milestone (level 1, 2, 3 = 3, 5, 8 in a row): rises each time. */
   combo: (level: number) => {
     setTimeout(() => tourSfx.combo(level * 2), 220);

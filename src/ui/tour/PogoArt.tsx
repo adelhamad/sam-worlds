@@ -5,19 +5,28 @@
 // themselves (as data) in pogoPoses.ts.
 import { useId } from "react";
 import { Brows, EyeSet, MouthShape, Pivot } from "./PogoFace";
-import { Bulb, Ears, Flames, OrbitStars, PartyStars, Scarf, Tear, Zzz, type PogoPaint } from "./PogoProps";
-import { ANTENNAS, BODY_D, GRIN_MOUTH_D, LIMB_LINE, OPEN_MOUTH_D, POSES, type PogoMood } from "./pogoPoses";
+import { Bulb, Ears, Effort, Flames, OrbitStars, PartyStars, Puff, Scarf, Sweat, Tear, Zzz, type PogoPaint } from "./PogoProps";
+import { ANTENNAS, BODY_D, GRIN_MOUTH_D, LIMB_LINE, OPEN_MOUTH_D, POSES, type HandKind, type PogoMood } from "./pogoPoses";
 
 const TOE = "#4a30bd";
 
 /** A stubby arm hanging from a shoulder at (x, 151): slim at the top, a round
-    mitten with a thumb at the end (the thumb points at the body). */
-function Arm({ x, side, fill }: { x: number; side: "l" | "r"; fill: string }) {
+    mitten with a thumb at the end (the thumb points at the body). `hand` adds a
+    pointing finger (along the arm) or a raised thumb (outward, so it points up
+    when the arm is held out sideways). */
+function Arm({ x, side, fill, hand }: { x: number; side: "l" | "r"; fill: string; hand?: HandKind }) {
   const thumb = side === "l" ? x + 10.5 : x - 10.5;
   return (
     <Pivot x={x} y={151} className={`pg-arm pg-arm-${side}`}>
       <circle cx={thumb} cy={173} r={5.4} fill={fill} />
-      <path d={`M${x - 8} 151 Q${x - 8} 142 ${x} 142 Q${x + 8} 142 ${x + 8} 151 L${x + 11.5} 178 A11.5 11.5 0 0 1 ${x - 11.5} 178 Z`} fill={fill} />
+      {hand === "point" && <rect className="pg-finger" x={x - 4} y={182} width={8} height={23} rx={4} fill={fill} stroke={TOE} strokeWidth={1.4} strokeOpacity={0.45} />}
+      {hand === "thumb" && <rect className="pg-thumb" x={x + 3} y={169.5} width={18} height={10} rx={5} fill={fill} stroke={TOE} strokeWidth={1.4} strokeOpacity={0.45} />}
+      {/* a soft rim so the arm still reads when it crosses the body (mittens to cheeks, wiping the brow) */}
+      <path
+        d={`M${x - 8} 151 Q${x - 8} 142 ${x} 142 Q${x + 8} 142 ${x + 8} 151 L${x + 11.5} 178 A11.5 11.5 0 0 1 ${x - 11.5} 178 Z`}
+        fill={fill} stroke={TOE} strokeWidth={1.6} strokeOpacity={0.5}
+      />
+      {hand === "palm" && <ellipse className="pg-palm" cx={x} cy={180} rx={6.5} ry={5.5} fill="#c9b8ff" opacity={0.9} />}
     </Pivot>
   );
 }
@@ -26,10 +35,10 @@ function Feet({ fill }: { fill: string }) {
   return (
     <g className="pg-feet">
       {[93, 147].map((x) => (
-        <g key={x}>
+        <Pivot key={x} x={x} y={225} className={`pg-foot pg-foot-${x < 120 ? "l" : "r"}`}>
           <ellipse cx={x} cy={216.5} rx={23} ry={11} fill={fill} />
           <path d={`M${x - 8} 219.5 v6 M${x + 3} 220.5 v6`} fill="none" stroke={TOE} strokeWidth={2.6} strokeLinecap="round" opacity={0.55} />
-        </g>
+        </Pivot>
       ))}
     </g>
   );
@@ -108,6 +117,8 @@ export function PogoArt({ mood }: { mood: PogoMood }) {
         <Pivot x={120} y={227} className="pg-squash">
           <Feet fill={paint.limb} />
 
+          {/* pg-lean: the head follows the child's finger and perks up (CSS variables) */}
+          <Pivot x={120} y={192} className="pg-lean">
           <Pivot x={120} y={192} className="pg-tilt">
             <Pivot x={120} y={60} className="pg-antenna">
               <path className="pg-stalk" d={antenna.d} fill="none" stroke={LIMB_LINE} strokeWidth={6.5} strokeLinecap="round" strokeLinejoin="round" />
@@ -141,9 +152,13 @@ export function PogoArt({ mood }: { mood: PogoMood }) {
               </Pivot>
             </g>
 
+            {pose.sweat && <Sweat />}
+            {pose.puff && <Puff />}
+            {pose.effort && <Effort />}
             <Arm x={55} side="l" fill={paint.limb} />
-            <Arm x={185} side="r" fill={paint.limb} />
+            <Arm x={185} side="r" fill={paint.limb} hand={pose.hand} />
             {pose.orbit && <OrbitStars />}
+          </Pivot>
           </Pivot>
         </Pivot>
         {pose.zzz && <Zzz />}

@@ -63,6 +63,8 @@ html:has(.tour-lesson) body {
 
 /* ---------- top bar ---------- */
 .tour .tl-top {
+  position: relative;
+  z-index: 2; /* above Pogo's antenna, which may reach up into the bar's padding */
   flex: 0 0 auto;
   display: flex;
   align-items: center;
@@ -93,7 +95,8 @@ html:has(.tour-lesson) body {
   border-radius: 999px;
   background: var(--t-surface-2);
   box-shadow: inset 0 3px 0 rgba(4, 10, 26, 0.35);
-  overflow: hidden;
+  /* visible: Pogo's head rides past the bar's edges (the fill clips itself) */
+  overflow: visible;
 }
 .tour .tl-bar-fill {
   position: relative;
@@ -120,6 +123,31 @@ html:has(.tour-lesson) body {
   background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.85) 80%, #fff 100%);
   opacity: 0;
   animation: tl-bar-bump 0.7s ease-out;
+}
+/* Pogo's head at the leading edge of the fill */
+.tour .tl-rider {
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  width: 34px;
+  height: 34px;
+  margin-top: -18px;
+  pointer-events: none;
+  transform-origin: 50% 90%;
+}
+.tour .tl-rider .pogo-head { display: block; }
+.tour .tl-rider .pogo-head-glow { transform-box: fill-box; transform-origin: center; animation: tl-rider-glow 1.6s ease-in-out infinite; }
+.tour .tl-rider.is-hopping { animation: tl-rider-hop 0.6s cubic-bezier(0.3, 0.6, 0.4, 1) 0.15s both; }
+.tour .tl-bar.is-cheering .tl-rider { animation: tl-rider-hop 0.72s cubic-bezier(0.3, 0.6, 0.4, 1) 3; }
+@keyframes tl-rider-hop {
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  18% { transform: translateY(0) scale(1.14, 0.86); }
+  48% { transform: translateY(-7px) scale(0.94, 1.08) rotate(-8deg); }
+  78% { transform: translateY(0) scale(1.1, 0.9); }
+}
+@keyframes tl-rider-glow {
+  0%, 100% { transform: scale(0.8); opacity: 0.35; }
+  50% { transform: scale(1.35); opacity: 0.8; }
 }
 @keyframes tl-bar-bump {
   0% { opacity: 0; }
@@ -156,9 +184,16 @@ html:has(.tour-lesson) body {
 
 /* ---------- Pogo asks ---------- */
 .tour .tl-ask {
+  --tl-pogo: 120px; /* Pogo's drawn size, set by QuestionView (useLessonPogoSize) */
   flex: 0 0 auto;
   padding-top: 6px;
   padding-bottom: 2px;
+}
+/* Pogo is drawn big, but his art has empty edges (above the antenna, beside the
+   ear fins, under the feet): pull them into the gutters so the layout box —
+   and the room left for the puzzle — grows far less than the drawing. */
+.tour .tl-ask .pogo-say > :first-child {
+  margin: calc(var(--tl-pogo) * -0.15) calc(var(--tl-pogo) * -0.09) calc(var(--tl-pogo) * -0.1);
 }
 .tour .tl-hear {
   position: relative;
@@ -708,4 +743,5 @@ html:has(.tour-lesson) body {
   .tour .tl-main-btn .tl-lock-fill { animation-duration: var(--tl-lock-ms, 2500ms) !important; }
   /* the banner would vanish instantly: keep it while the sheet is open */
   .tour .tl-combo-banner { animation: none !important; }
+  .tour .tl-rider, .tour .tl-rider .pogo-head-glow { animation: none !important; }
 }

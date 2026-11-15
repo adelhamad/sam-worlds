@@ -10,7 +10,7 @@ import { tourSfx } from "../../engine/feedback/tourSfx";
 import { useGame } from "../../state/store";
 import { TOUR } from "../../strings/tour";
 import { LockedScreen } from "../../ui/LockedScreen";
-import { Pogo, PogoSay } from "../../ui/tour/Pogo";
+import { PogoSay } from "../../ui/tour/Pogo";
 import "../../ui/tour/tour-base.css";
 import "./path.css";
 import { ChestNode } from "./path/ChestNode";
@@ -21,12 +21,10 @@ import { devPadCourses } from "./path/devHook";
 import { prefersReducedMotion, useOpenCourses, usePathAmp, useToast } from "./path/hooks";
 import { buildTourPath, trailPath, type ChestItem, type LessonItem, type TourPathModel } from "./path/layout";
 import { LessonPopover } from "./path/LessonPopover";
+import { PogoGuide } from "./path/PogoGuide";
 import { LessonNode } from "./path/PathNode";
 import { TopBar } from "./path/TopBar";
 import { UnitBanner } from "./path/UnitBanner";
-
-/** How far Pogo stands from the centre of the lesson he is waiting at. */
-const POGO_GAP = 104;
 
 type FocusTarget = { kind: "chest" | "lesson"; id: string } | { kind: "end" };
 
@@ -61,21 +59,6 @@ function Trail({ model, amp }: { model: TourPathModel; amp: number }) {
       <path className="tp-trail-line" d={trailPath(points)} />
       <path className="tp-trail-line is-walked" d={trailPath(points.slice(0, reached))} />
     </svg>
-  );
-}
-
-function PogoGuide({ item, amp }: { item: LessonItem; amp: number }) {
-  const [mood, setMood] = useState<"wave" | "idle">("wave");
-  useEffect(() => {
-    const timer = window.setTimeout(() => setMood("idle"), 3200);
-    return () => window.clearTimeout(timer);
-  }, []);
-  const side = item.unitIndex % 2 === 0 ? -1 : 1;
-  const left = `calc(50% + ${(item.x * amp + side * POGO_GAP).toFixed(1)}px)`;
-  return (
-    <div className="tp-anchor tp-pogo" style={{ left, top: item.y }}>
-      <span className="tp-pogo-hop"><Pogo mood={mood} size={88} /></span>
-    </div>
   );
 }
 
@@ -166,7 +149,7 @@ function CoursePath({ course }: { course: Course }) {
             />
           );
         })}
-        {current && <PogoGuide key={current.stage.id} item={current} amp={amp} />}
+        {current && <PogoGuide key={current.stage.id} courseId={course.id} item={current} amp={amp} />}
       </div>
 
       {model.finished && (

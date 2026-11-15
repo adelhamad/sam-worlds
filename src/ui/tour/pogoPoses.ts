@@ -15,12 +15,30 @@ export type PogoMood =
   | "dizzy" // spiral eyes, stars circling (after a bump)
   | "zoom" // flying on the jet boots, arms forward
   | "splat" // squashed flat against the screen glass
-  | "starry"; // star-struck (Perfect Run)
+  | "starry" // star-struck (Perfect Run)
+  // the miss arc — a mistake registers, then gets fixed (see docs/POGO_COURSES.md)
+  | "oops" // the moment of a miss: startled jolt, mittens to cheeks
+  | "worried" // a second miss in the same slot: bitten lip, sweat drop, small tremble
+  | "focus" // pulls himself together, points down at the worked answer
+  | "determined" // the retry: leaning in, tongue tip out, effort marks
+  | "relieved" // fixed it: "phew", wipes his brow
+  | "proud" // ...then chest out, thumbs up
+  | "whoa" // rapid guessing: one mitten raised flat, calm head shake
+  // playing along
+  | "giggle" // tapped: squeezed-shut eyes, belly laugh
+  | "beckon" // the child has been still a while: a small wave down at the puzzle
+  | "twirl" // combo of 5: turns all the way round
+  | "flip"; // combo of 8: a big jump with a flip
 
 export type Eyes = "open" | "arc" | "shut" | "squeeze" | "dizzy" | "star";
-export type MouthKind = "smile" | "open" | "o" | "hmm" | "talk" | "snooze" | "frown" | "grin" | "oof" | "wavy";
+export type MouthKind =
+  | "smile" | "open" | "o" | "hmm" | "talk" | "snooze" | "frown" | "grin" | "oof" | "wavy"
+  | "flat" | "tongue" | "bite" | "phew" | "smug";
 export type AntennaKind = "curve" | "straight" | "curl" | "droop";
-export type BrowKind = "soft" | "ask" | "sad" | "high" | "bold";
+export type BrowKind = "soft" | "ask" | "sad" | "high" | "bold" | "level" | "worry" | "firm";
+/** What the right mitten does beyond swinging: point a finger, a thumbs-up, or
+    show its palm ("wait"). */
+export type HandKind = "point" | "thumb" | "palm";
 
 export interface Pose {
   eyes: Eyes;
@@ -36,6 +54,13 @@ export interface Pose {
   orbit?: boolean;
   /** Jet-boot flames. */
   flames?: boolean;
+  /** A sweat drop at the temple (worried; flicked off when relieved). */
+  sweat?: boolean;
+  /** Little "trying hard" strokes beside the head. */
+  effort?: boolean;
+  /** A puff of breath (the "phew"). */
+  puff?: boolean;
+  hand?: HandKind;
 }
 
 export const POSES: Record<PogoMood, Pose> = {
@@ -52,6 +77,17 @@ export const POSES: Record<PogoMood, Pose> = {
   zoom: { eyes: "open", mouth: "grin", antenna: "droop", brows: "bold", flames: true },
   splat: { eyes: "squeeze", mouth: "oof", antenna: "curl" },
   starry: { eyes: "star", mouth: "grin", antenna: "straight", brows: "high", sparkles: true, party: true },
+  oops: { eyes: "open", mouth: "o", antenna: "straight", brows: "high" },
+  worried: { eyes: "open", mouth: "bite", antenna: "droop", brows: "worry", tear: true, sweat: true },
+  focus: { eyes: "open", mouth: "flat", antenna: "straight", brows: "level", hand: "point" },
+  determined: { eyes: "open", mouth: "tongue", antenna: "curve", brows: "firm", effort: true },
+  relieved: { eyes: "shut", mouth: "phew", antenna: "curve", brows: "sad", sweat: true, puff: true },
+  proud: { eyes: "open", mouth: "smug", antenna: "straight", brows: "high", sparkles: true, hand: "thumb" },
+  whoa: { eyes: "open", mouth: "flat", antenna: "curve", brows: "level", hand: "palm" },
+  giggle: { eyes: "squeeze", mouth: "grin", antenna: "curl" },
+  beckon: { eyes: "open", mouth: "open", antenna: "curve", brows: "soft" },
+  twirl: { eyes: "arc", mouth: "open", antenna: "curve", sparkles: true },
+  flip: { eyes: "arc", mouth: "grin", antenna: "straight", sparkles: true, party: true },
 };
 
 /** Stalk path from the head (120,60) and where its bulb ends up. */
