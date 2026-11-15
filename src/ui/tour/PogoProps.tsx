@@ -136,3 +136,43 @@ export function Flames({ paint }: { paint: PogoPaint }) {
     </g>
   );
 }
+
+/** A sweat drop at the right temple ("uh-oh, this one is hard"). */
+export function Sweat() {
+  return (
+    <g transform="translate(167 70)">
+      <g className="pg-sweat">
+        <path d="M0 -11 C6 -3 8.5 1.5 8.5 5.5 A8.5 8.5 0 0 1 -8.5 5.5 C-8.5 1.5 -6 -3 0 -11 Z" fill="#a9e6ff" stroke="#3d6fd6" strokeWidth={1.6} />
+        <ellipse cx={-3} cy={4} rx={2} ry={3.2} fill="#fff" opacity={0.9} />
+      </g>
+    </g>
+  );
+}
+
+/** Three short "trying hard" strokes above the left ear. */
+export function Effort() {
+  return (
+    <g className="pg-effort" fill="none" stroke="#ffd36b" strokeWidth={4.6} strokeLinecap="round">
+      {[
+        "M42 70 L30 64",
+        "M50 58 L41 47",
+        "M63 50 L59 37",
+      ].map((d, i) => (
+        <path key={d} className={`pg-effort-${i + 1}`} d={d} />
+      ))}
+    </g>
+  );
+}
+
+/** The "phew": a little cloud of breath leaving the mouth. */
+export function Puff() {
+  return (
+    <g transform="translate(142 150)">
+      <g className="pg-puff" fill="#eef3ff">
+        <circle cx={0} cy={0} r={6} />
+        <circle cx={8} cy={-3} r={7.5} />
+        <circle cx={16} cy={1} r={5.5} />
+      </g>
+    </g>
+  );
+}

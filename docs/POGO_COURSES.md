@@ -79,18 +79,49 @@ that solve it (the audit re-solves each one).
 Shared by every course — a new course gets all of it for free.
 
 - **Pogo is drawn in code** (`src/ui/tour/`): `pogoPoses.ts` lists the moods as data
-  (eyes, mouth, brows, antenna, props), `PogoArt.tsx` / `PogoFace.tsx` / `PogoProps.tsx`
-  draw them, `pogo.css` / `pogo-moods.css` move them. A new mood is one `POSES` entry plus
-  its CSS block. Moods: idle, happy, cheer, think, wave, talk, wow, sleep, sad, dizzy,
-  zoom, splat, starry.
-- **A miss makes Pogo sad — briefly.** The owner asked for it. Pogo droops with one tear
-  for under two seconds, then turns curious and looks at the worked answer with the
-  child (`usePogoReaction` in `TourLesson.tsx`). It is sympathy, never blame: the sheet
-  still says "Almost — look at this." and nothing is lost.
+  (eyes, mouth, brows, antenna, props, what the right mitten does), `PogoArt.tsx` /
+  `PogoFace.tsx` / `PogoProps.tsx` draw them, `pogo.css` / `pogo-moods.css` /
+  `pogo-arc.css` / `pogo-live.css` move them. A new mood is one `POSES` entry plus its CSS
+  block (a static pose plus motion; `.pogo-still` and reduced motion keep the pose).
+  Moods: idle, happy, cheer, think, wave, talk, wow, sleep, sad, dizzy, zoom, splat,
+  starry; the miss arc oops, worried, focus, determined, relieved, proud, whoa; and
+  giggle, beckon, twirl, flip. Every mood is in the dev gallery `/#/tour/lab/pogo`
+  (three sizes, plus buttons that play the whole miss arc).
+- **A mistake registers — then gets fixed.** The owner asked that a miss make Pogo show
+  feelings so the child senses "I need to fix this and concentrate", without any
+  punishment (`usePogoReaction` in `TourLesson.tsx`, beats in ms from the sheet opening):
+  1. *oops* (0–0.6 s): a startled jolt, mittens to his cheeks, bulb flickers, "uh-oh".
+  2. *sad* (0.6–1.8 s): droop and one tear. A **second miss in the same slot** is *worried*
+     instead (bitten lip, sweat drop, small tremble, soft "aww"). Rapid guessing
+     (`sheet.slowDown`) is *whoa* instead, held: a raised palm and a slow head shake.
+  3. *focus* (from 1.8 s while the amber sheet is open): brows level, eyes narrowed and
+     looking down, a finger pointing down at the worked answer, the bulb pulsing like a
+     lighthouse, a firm "hm!". His bubble says a short focus line (`TOUR.lesson.focusLines`).
+  4. *determined* for the whole retry (`session.attemptMissed`, so it survives a reload):
+     leaning in, tongue tip out, "effort" strokes, slow blink — the prompt still shows.
+  5. The first right answer after a miss in that slot: *relieved* ("phew", wipes his brow,
+     the sweat drop flies off) for 1 s, then *proud* (chest out, thumbs up) — worth more
+     than an ordinary hop. A choices question that must be proven twice counts its
+     "one more to be sure" sheet as the fix; Pogo stays determined for the proof.
+  Pogo's acting never depends on WHAT was answered, only on the verdict the store gave.
+- **Pogo plays along while the child works** (`lesson/usePogoLive.ts`, used by
+  `QuestionView`): his pupils and head follow the child's finger (one passive pointer
+  listener writing CSS variables on `.tl-ask` — no React render per move; off under
+  reduced motion); he perks up when the answer is ready (only `value !== null`, never
+  the value); after ~10 s without a touch he fidgets, after ~20 s he waves down at the
+  puzzle — any touch ends it, nothing is shown to the child. Tapping him (`PogoTap` +
+  `usePogoPoke`) makes him giggle, hop, turn round or squish, with a rate-limited voice;
+  taps are ignored while a sheet is up. Combo milestones escalate: 3 cheer, 5 twirl,
+  8 flip. A tiny Pogo head (`PogoHead.tsx`) rides the progress bar and hops each step.
+- **Bigger Pogo.** The lesson Pogo is drawn at 120 px on a tall phone (184 on a portrait
+  tablet, 96 on a landscape phone — `useLessonPogoSize`), but `.tl-ask` pulls his art's
+  empty edges into the gutters, so the layout box grows far less than the drawing.
+  On the path he is 104 px, can be tapped, and hops over from the lesson he stood at
+  before (`path/PogoGuide.tsx`); on the home card he is 124 / 172 px and can be tapped.
 - **Pogo has a voice** (`src/engine/feedback/pogoVoice.ts`, synthesized like every other
-  sound): a chirp on a right answer, a soft "aww" on a miss, a cheer at the end, and the
-  slapstick sounds of the entrance. `lessonSound.ts` is the one place that decides which
-  sound plays when.
+  sound): a chirp on a right answer, "uh-oh" / "hm!" / "phew" around a miss, a giggle when
+  tapped, a cheer at the end, and the slapstick sounds of the entrance. `lessonSound.ts`
+  is the one place that decides which sound plays when.
 - **The solved puzzle stays solved under the feedback sheet.** Puzzles that submit
   themselves (missions, pairs, code runs) report from a timer; `useLessonFlow.submit`
   commits the store change and the sheet in one synchronous render (`flushSync`) so the

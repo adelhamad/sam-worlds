@@ -256,7 +256,9 @@
 .tour-path .tp-tag-gold { background: var(--t-gold); color: #3a2600; bottom: 52px; }
 
 /* ---------- Pogo beside the current lesson ---------- */
+/* only Pogo himself takes taps (he giggles); the empty box around him does not */
 .tour-path .tp-pogo { z-index: 4; pointer-events: none; }
+.tour-path .tp-pogo .pogo-tap { pointer-events: auto; }
 .tour-path .tp-pogo-hop {
   position: absolute;
   left: 0;
@@ -578,6 +580,15 @@
   0%, 100% { transform: scale(0.85); opacity: 0.55; }
   50% { transform: scale(1.1); opacity: 1; }
 }
+/* a lesson was just finished: he hops over from the lesson before */
+.tour-path .tp-pogo-hop.is-travelling { animation: tp-pogo-travel 1.1s cubic-bezier(0.45, 0, 0.4, 1) both; }
+@keyframes tp-pogo-travel {
+  0% { transform: translate(calc(-50% + var(--tp-from-x)), calc(-56% + var(--tp-from-y))) scale(1.06, 0.9); }
+  12% { transform: translate(calc(-50% + var(--tp-from-x)), calc(-56% + var(--tp-from-y))) scale(0.94, 1.08); }
+  55% { transform: translate(calc(-50% + var(--tp-from-x) * 0.4), calc(-56% + var(--tp-from-y) * 0.4 - 70px)) scale(1, 1); }
+  88% { transform: translate(-50%, -56%) scale(1.1, 0.88); }
+  100% { transform: translate(-50%, -56%) scale(1, 1); }
+}
 @keyframes tp-hop-in {
   0% { opacity: 0; transform: translate(-50%, -110%) scale(0.7); }
   100% { opacity: 1; transform: translate(-50%, -56%) scale(1); }
@@ -635,6 +646,7 @@
    pieces that would otherwise end up invisible or lost. */
 @media (prefers-reduced-motion: reduce) {
   .tour-path .tp-toast { animation: none; }
+  .tour-path .tp-pogo-hop.is-travelling { animation: none; }
   .tour-path .tp-ring { animation: none; opacity: 0.55; }
   .tour-path .is-open .tp-opening-rays { animation: none; }
 }
