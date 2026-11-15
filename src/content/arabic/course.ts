@@ -17,6 +17,18 @@ import { U09 } from "./units/u09";
 import { U10 } from "./units/u10";
 import { U11 } from "./units/u11";
 import { U12 } from "./units/u12";
+import { U13 } from "./units/u13";
+import { U14 } from "./units/u14";
+import { U15 } from "./units/u15";
+import { U16 } from "./units/u16";
+import { U17 } from "./units/u17";
+import { U18 } from "./units/u18";
+import { U19 } from "./units/u19";
+import { U20 } from "./units/u20";
+import { U21 } from "./units/u21";
+import { U22 } from "./units/u22";
+import { U23 } from "./units/u23";
+import { U24 } from "./units/u24";
 
 // Not "arabic": that id belongs to the classic Letter Garden world, and saves refer to it.
 export const ARABIC_WORLD_ID = "yalla";
@@ -25,7 +37,10 @@ export const ARABIC_SEED: LangCourseSeed = {
   id: "arabic", worldId: ARABIC_WORLD_ID, lang: "ar", title: "Yalla Arabic", icon: iconRef("chat"),
   tagline: "Talk with the family in Arabic!", path: "/arabic", hue: "#ff9f6e", isNew: true,
   letters: ARABIC_ALPHABET, readsFromUnit: 9,
-  packs: [U01, U02, U03, U04, U05, U06, U07, U08, U09, U10, U11, U12],
+  packs: [
+    U01, U02, U03, U04, U05, U06, U07, U08, U09, U10, U11, U12,
+    U13, U14, U15, U16, U17, U18, U19, U20, U21, U22, U23, U24,
+  ],
 };
 
 export const ARABIC_COURSE: Course = defineLangCourse(ARABIC_SEED);
