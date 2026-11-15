@@ -7,7 +7,8 @@ import { defineLangCourse, type LangCourseSeed } from "../langCourse";
 import { ARABIC_ALPHABET } from "./alphabet";
 import { U01 } from "./units/u01";
 
-export const ARABIC_WORLD_ID = "arabic";
+// Not "arabic": that id belongs to the classic Letter Garden world, and saves refer to it.
+export const ARABIC_WORLD_ID = "yalla";
 
 export const ARABIC_SEED: LangCourseSeed = {
   id: "arabic", worldId: ARABIC_WORLD_ID, lang: "ar", title: "Yalla Arabic", icon: iconRef("chat"),

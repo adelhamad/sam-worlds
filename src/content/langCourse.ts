@@ -105,7 +105,7 @@ export function defineLangCourse(seed: LangCourseSeed): Course {
         questions: QUESTIONS[lesson.kind],
         mechanic: "tour",
         payout: 22 + Math.min(unitIndex, 14) * 2 + (last ? 8 : 0),
-        skill: seed.id,
+        skill: `lang-${seed.id}`,
       };
     });
     return {

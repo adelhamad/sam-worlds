@@ -171,6 +171,16 @@ const SOLVERS = {
     }
     await sleep(1400);
   },
+  // ---- languages
+  "lang-choose": async (q) => tid(`lang-opt-${q.answer}`),
+  "lang-pairs": async (q, p) => { for (const card of p.left) { await tid(`lang-left-${card.id}`); await sleep(160); await tid(`lang-right-${card.id}`); await sleep(560); } await sleep(500); },
+  "lang-build": async (q, p) => {
+    for (const part of p.unit === "word" ? q.answer.split(" ") : Array.from(q.answer)) {
+      await page.evaluate((text) => [...document.querySelectorAll("[data-testid^=lang-tile-]")].find((el) => el.dataset.text === text && !el.disabled)?.click(), part);
+      await sleep(160);
+    }
+  },
+  "lang-trace": async () => { await tid("lang-trace-done"); await sleep(400); },
   // ---- course kit
   "kit-pick": async (q) => tid(`kit-opt-${q.answer}`),
   "kit-number": async (q) => { for (const digit of q.answer) { await tid(`num-${digit}`); await sleep(120); } },
@@ -241,7 +251,7 @@ async function waitForRun() {
 
 /** CONTINUE / GOT IT on the feedback sheet (never an answer card that happens to say "continue"). */
 const SHEET_BUTTON = ".tl-sheet .tl-main-btn:not(:disabled)";
-const SELF_SUBMITTING = new Set(["pairs", "kit-pairs", "chess-mission", "code-run", "code-debug"]);
+const SELF_SUBMITTING = new Set(["pairs", "kit-pairs", "chess-mission", "code-run", "code-debug", "lang-pairs", "lang-trace"]);
 
 /** Tap through a gift or a cheer if one is showing. */
 async function passInterludes() {
@@ -263,7 +273,7 @@ async function passOpening() {
     const s = await session();
     const widget = await page.evaluate(() => Boolean(document.querySelector(".tl-exercise")));
     if (!s || widget) return;
-    const started = (await tid("kit-meet-skip")) || (await tid("code-meet-start")) || (await tid("tick-meet-start")) || (await tid("chess-meet-start"));
+    const started = (await tid("kit-meet-skip")) || (await tid("lang-meet-skip")) || (await tid("code-meet-start")) || (await tid("tick-meet-start")) || (await tid("chess-meet-start"));
     if (!started) await tapText("let's go");
     await sleep(700);
   }

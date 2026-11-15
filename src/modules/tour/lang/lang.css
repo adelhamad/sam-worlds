@@ -1,0 +1,278 @@
+/* Language courses — exercise widgets, teach card and opening slides. Builds
+   on tour-base.css (.ttile, tokens) and exercises.css (.tx column). Scoped
+   under `.tour`, prefixed `lx-`. Arabic is set in Noto Sans Arabic, right to
+   left; its Latin spelling sits under it, small. */
+@import "@fontsource-variable/noto-sans-arabic";
+
+.tour .lx { gap: 12px; }
+.tour .lx-hero, .tour .lx-opts, .tour .lx-pairs, .tour .lx-line-row, .tour .lx-tray, .tour .lx-help { align-self: stretch; }
+.tour .lx-help {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--t-ink-dim);
+  text-align: center;
+}
+.tour .lx-note { margin: 0; font-size: 14px; color: var(--t-ink-dim); text-align: center; }
+
+/* ---------- faces ---------- */
+.tour .lx-face { display: inline-flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0; max-width: 100%; }
+.tour .lx-script { display: block; min-width: 0; max-width: 100%; overflow-wrap: anywhere; line-height: 1.25; font-weight: 800; }
+.tour .lx-script.is-ar {
+  font-family: "Noto Sans Arabic Variable", "Geeza Pro", "Noto Sans Arabic", system-ui, sans-serif;
+  font-size: 1.35em;
+  font-weight: 700;
+  line-height: 1.55;
+}
+.tour .lx-roman { font-size: 0.78em; font-weight: 800; color: var(--t-ink-dim); line-height: 1.15; overflow-wrap: anywhere; }
+.tour .ttile.is-selected .lx-roman { color: #a9e6f5; }
+.tour .lx-meaning { flex-direction: row; gap: 8px; text-align: center; }
+.tour .lx-en { min-width: 0; line-height: 1.15; overflow-wrap: anywhere; text-wrap: balance; }
+.tour .lx-art { flex: none; }
+.tour .lx-phrase.is-letter .lx-script { font-size: 2.6em; line-height: 1.3; }
+
+/* ---------- speaker ---------- */
+.tour .lx-speaker {
+  font: inherit;
+  font-weight: 900;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 52px;
+  min-height: 52px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 999px;
+  border-bottom: 4px solid var(--t-go-deep);
+  background: var(--t-go);
+  color: var(--t-go-ink);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.tour .lx-speaker:active { transform: translateY(3px); border-bottom-width: 1px; margin-bottom: 3px; }
+.tour .lx-speaker.is-big {
+  width: 124px;
+  height: 124px;
+  padding: 0;
+  border-bottom-width: 7px;
+  box-shadow: 0 0 0 10px rgba(34, 211, 238, 0.14), 0 0 0 22px rgba(34, 211, 238, 0.07);
+  animation: lx-ring 2.2s ease-in-out infinite;
+}
+.tour .lx-speaker.is-big:active { transform: translateY(6px); margin-bottom: 6px; }
+@keyframes lx-ring {
+  0%, 100% { box-shadow: 0 0 0 8px rgba(34, 211, 238, 0.16), 0 0 0 18px rgba(34, 211, 238, 0.07); }
+  50% { box-shadow: 0 0 0 14px rgba(34, 211, 238, 0.1), 0 0 0 30px rgba(34, 211, 238, 0.03); }
+}
+.tour .lx-slow {
+  font: inherit;
+  font-weight: 800;
+  font-size: 15px;
+  min-height: 48px;
+  padding: 6px 18px;
+  border-radius: 999px;
+  border: 2px solid var(--t-line);
+  background: transparent;
+  color: var(--t-ink-dim);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+/* ---------- hero ---------- */
+.tour .lx-hero {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 96px;
+  padding: 14px 16px;
+  border-radius: 20px;
+  background: var(--t-surface);
+  border: 2px solid var(--t-line);
+  font-size: 22px;
+  font-weight: 900;
+  text-align: center;
+}
+.tour .lx-hero.is-hear { background: transparent; border: none; padding: 18px 0 6px; gap: 14px; }
+.tour .lx-hero.is-read .lx-script { font-size: 1.7em; }
+.tour .lx-hero.is-read .lx-phrase.is-letter .lx-script { font-size: 4em; line-height: 1.25; }
+.tour .lx-hero.is-mean { flex-direction: row; gap: 14px; }
+.tour .lx-hero.is-mean .lx-art { width: 2.4em; height: 2.4em; }
+.tour .lx-hero.is-scene { align-items: stretch; text-align: left; gap: 10px; }
+.tour .lx-setup { margin: 0; font-size: 19px; font-weight: 800; line-height: 1.25; text-wrap: balance; }
+.tour .lx-line { display: flex; flex-direction: column; gap: 4px; }
+.tour .lx-who { font-size: 14px; font-weight: 800; color: var(--t-ink-dim); display: inline-flex; align-items: center; gap: 6px; }
+.tour .lx-bubble {
+  font: inherit;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px 20px 20px 20px;
+  background: #f4f7ff;
+  color: #16234f;
+  box-shadow: 0 4px 0 #aebce6;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.tour .lx-bubble .lx-roman { color: #51608f; }
+
+/* ---------- options ---------- */
+.tour .lx-opts { display: grid; gap: 10px; }
+.tour .lx-opts.is-grid { grid-template-columns: 1fr 1fr; }
+.tour .lx-opts.is-list { grid-template-columns: 1fr; }
+.tour .lx-opt {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 68px;
+  line-height: 1.15;
+  animation: t-fade-up 0.3s ease both;
+  animation-delay: calc(var(--i, 0) * 50ms);
+}
+.tour .lx-opts.is-grid .lx-opt { min-height: 84px; }
+.tour .lx-opts.is-grid .lx-meaning { flex-direction: column; gap: 4px; }
+.tour .lx-opts.is-letters .lx-opt { min-height: 104px; }
+
+/* ---------- pairs ---------- */
+.tour .lx-pairs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.tour .lx-pairs-col { display: grid; grid-auto-rows: 1fr; gap: 10px; }
+.tour .lx-pair { box-sizing: border-box; width: 100%; min-height: 70px; padding: 8px 10px; line-height: 1.15; font-size: 17px; }
+
+/* ---------- build / spell ---------- */
+.tour .lx-line-row { display: flex; align-items: stretch; gap: 8px; }
+.tour .lx-built {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 78px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 18px;
+  border: 2px dashed var(--t-line);
+  background: rgba(19, 36, 72, 0.6);
+}
+.tour .lx-built.is-empty { border-color: var(--t-line-deep); }
+.tour .lx-built-word { width: 100%; text-align: center; font-size: 2.4em !important; line-height: 1.5 !important; min-height: 1.5em; }
+.tour .lx-build.is-letter .lx-built { justify-content: center; }
+.tour .lx-undo {
+  flex: none;
+  width: 52px;
+  border-radius: 16px;
+  border: 2px solid var(--t-line);
+  background: var(--t-surface);
+  color: var(--t-ink-dim);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.tour .lx-undo:disabled { opacity: 0.35; cursor: default; }
+.tour .lx-tray { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.tour .lx-tile { flex-direction: column; gap: 0; padding: 6px 14px; min-height: 60px; line-height: 1.1; }
+.tour .lx-tile.is-letter { min-width: 60px; }
+.tour .lx-tile.is-letter .lx-script { font-size: 1.9em; }
+.tour .lx-tile.is-used { opacity: 0.22; pointer-events: none; }
+.tour .lx-tile.is-placed { animation: t-pop 0.25s ease; }
+
+/* ---------- trace ---------- */
+.tour .lx-trace { align-items: center; }
+
+/* ---------- teach card (the "Almost — look at this." sheet) ---------- */
+.tour .lx-teach { display: flex; flex-direction: column; gap: 10px; align-items: stretch; }
+.tour .lx-teach-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: var(--t-surface);
+  border: 2px solid var(--t-almost);
+  font-size: 22px;
+}
+.tour .lx-teach-means { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 19px; font-weight: 900; flex-wrap: wrap; }
+.tour .lx-teach-label { font-size: 14px; font-weight: 800; color: var(--t-ink-dim); }
+.tour .lx-teach-line { margin: 0; text-align: center; font-size: 16px; line-height: 1.3; color: var(--t-ink); }
+
+/* ---------- opening slides ---------- */
+.tour .lx-meet { position: relative; display: flex; flex-direction: column; gap: 14px; flex: 1 1 auto; min-height: 0; padding-top: 6px; padding-bottom: 14px; }
+.tour .lx-meet-skip {
+  align-self: flex-end;
+  font: inherit;
+  font-weight: 800;
+  font-size: 15px;
+  min-height: 48px;
+  padding: 6px 16px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--t-ink-dim);
+  cursor: pointer;
+}
+.tour .lx-meet-card {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 18px 16px;
+  border-radius: 24px;
+  background: var(--t-surface);
+  border: 2px solid var(--t-line);
+  font-size: 30px;
+  text-align: center;
+  animation: t-fade-up 0.35s ease both;
+}
+.tour .lx-meet-card .lx-phrase.is-letter .lx-script { font-size: 4.2em; }
+.tour .lx-meet-means { font-size: 22px; font-weight: 900; }
+.tour .lx-meet-tip { margin: 0; font-size: 16px; line-height: 1.3; color: var(--t-ink-dim); max-width: 26em; text-wrap: balance; }
+.tour .lx-meet-hear { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.tour .lx-meet-foot { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.tour .lx-meet-dots { display: flex; gap: 8px; }
+.tour .lx-meet-dots i { width: 12px; height: 12px; border-radius: 999px; background: var(--t-line-deep); }
+.tour .lx-meet-dots i.is-on { background: var(--t-pogo); }
+
+/* ---------- real-life mission (lesson complete) ---------- */
+.tour .lx-mission {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 18px;
+  background: #2a1f4d;
+  border: 2px solid var(--t-pogo);
+  text-align: left;
+}
+.tour .lx-mission-icon { flex: none; }
+.tour .lx-mission-title { margin: 0; font-size: 13px; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; color: #c9bbff; }
+.tour .lx-mission-text { margin: 2px 0 0; font-size: 18px; font-weight: 900; line-height: 1.25; }
+.tour .lx-mission-note { margin: 2px 0 0; font-size: 14px; color: var(--t-ink-dim); }
+
+@media (min-width: 600px) {
+  .tour .lx-help { font-size: 17px; }
+  .tour .lx-hero { font-size: 26px; min-height: 120px; }
+  .tour .lx-opt { font-size: 20px; min-height: 76px; }
+  .tour .lx-opts.is-grid .lx-opt { min-height: 104px; }
+  .tour .lx-pair { font-size: 19px; min-height: 78px; }
+  .tour .lx-speaker.is-big { width: 148px; height: 148px; }
+}
+@media (max-height: 520px) {
+  .tour .lx-hero { min-height: 60px; padding: 8px 12px; font-size: 19px; }
+  .tour .lx-hero.is-hear { flex-direction: row; padding: 6px 0; }
+  .tour .lx-speaker.is-big { width: 76px; height: 76px; box-shadow: none; animation: none; }
+  .tour .lx-opt, .tour .lx-opts.is-grid .lx-opt { min-height: 54px; }
+  .tour .lx-opts.is-list { grid-template-columns: 1fr 1fr; }
+}
