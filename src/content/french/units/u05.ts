@@ -24,8 +24,8 @@ export const U05: LangUnitPack = {
     ],
   },
   phrases: [
-    { id: "eau", text: "Eau", en: "Water", art: "cup", topic: "food", tip: "Say it like 'oh'." },
-    { id: "jus", text: "Jus", en: "Juice", topic: "food", tip: "Say 'zhew', with round lips." },
+    { id: "eau", text: "Eau", en: "Water", art: "water", topic: "food", tip: "Say it like 'oh'." },
+    { id: "jus", text: "Jus", en: "Juice", art: "juice", topic: "food", tip: "Say 'zhew', with round lips." },
     { id: "encore", text: "Encore", en: "More", topic: "action", like: ["encore-s-il-te-plait", "encore-une-fois"], tip: "Say it 'on-kor'." },
     {
       id: "un-peu", text: "Un peu", en: "A little", topic: "action",

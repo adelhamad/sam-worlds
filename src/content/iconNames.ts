@@ -26,6 +26,17 @@ export const ICON_NAMES = [
   "paw", "hourglass", "pin", "mosque", "letters",
   "smile", "tophat", "traffic-light", "firetruck", "recycle", "piggy", "shop", "pan", "family", "crowd",
   "bricks", "pickaxe", "palette", "wizard", "slide", "ear", "hand",
+  // vocabulary pictures for the language courses: food and drink
+  "bread", "cheese", "egg", "banana", "rice", "chicken", "milk", "yoghurt", "water", "juice", "cake", "icecream", "candy",
+  // the house, bags and toys
+  "door", "window", "chair", "table", "kitchen", "bath", "bag", "notebook", "teddy",
+  // body, clothes, nature
+  "palm", "foot", "head", "eye", "mouth", "trousers", "jacket", "horse", "sea", "wind", "hot", "cold",
+  // feelings and people
+  "sad", "tired", "sleepy", "scared", "sick", "mother", "father", "grandma", "grandpa", "baby", "boy", "girl", "kiss",
+  // colours (paint blobs) and numbers (dot cards)
+  "blob-red", "blob-blue", "blob-green", "blob-yellow", "blob-white", "blob-black",
+  "dots-1", "dots-2", "dots-3", "dots-4", "dots-5", "dots-6", "dots-7", "dots-8", "dots-9", "dots-10",
   // shapes and arrows
   "circle", "square", "triangle", "diamond", "arrow-up", "arrow-right", "arrow-down", "arrow-left",
 ] as const;

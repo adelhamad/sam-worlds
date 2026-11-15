@@ -1,12 +1,18 @@
 // The name → artwork map behind <Icon>, plus the check the audit and the lab
 // use. Art lives in data files (art-*.ts) so the audit can load it without React.
 import { ICON_NAMES, type IconName } from "../../content/iconNames";
+import { BODY_ART } from "./art-body";
 import { CHROME_ART } from "./art-chrome";
+import { DOT_ART } from "./art-dots";
+import { FACE_ART } from "./art-faces";
+import { FOOD_ART } from "./art-food";
+import { HOME_ART } from "./art-home";
 import { IDEA_ART } from "./art-ideas";
 import { PLACE_ART } from "./art-places";
 import { REWARD_ART } from "./art-rewards";
 import { SHAPE_ART } from "./art-shapes";
 import { THING_ART } from "./art-things";
+import { VOCAB_ART } from "./art-vocab";
 import { WORLD_LIFE_ART } from "./art-worlds-life";
 import { WORLD_MATH_ART } from "./art-worlds-math";
 import { WORLD_NATURE_ART } from "./art-worlds-nature";
@@ -22,6 +28,12 @@ const ALL: Record<string, IconArt> = {
   ...WORLD_MATH_ART,
   ...WORLD_NATURE_ART,
   ...WORLD_LIFE_ART,
+  ...FOOD_ART,
+  ...HOME_ART,
+  ...BODY_ART,
+  ...VOCAB_ART,
+  ...FACE_ART,
+  ...DOT_ART,
 };
 
 export function iconArt(name: IconName): IconArt | undefined {

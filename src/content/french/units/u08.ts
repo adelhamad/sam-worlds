@@ -25,9 +25,9 @@ export const U08: LangUnitPack = {
   },
   phrases: [
     { id: "content", text: "Content", en: "Happy (a boy)", topic: "feeling", like: ["je-suis-content"], tip: "A girl says contente. The n is soft." },
-    { id: "triste", text: "Triste", en: "Sad", topic: "feeling", like: ["je-suis-triste"], tip: "Same for a boy and a girl." },
-    { id: "fatigue", text: "Fatigué", en: "Tired (a boy)", topic: "feeling", like: ["je-suis-fatigue"], tip: "A girl says fatiguée. It sounds the same." },
-    { id: "malade", text: "Malade", en: "Sick", topic: "feeling", like: ["je-suis-malade"], tip: "Same for a boy and a girl." },
+    { id: "triste", text: "Triste", en: "Sad", art: "sad", topic: "feeling", like: ["je-suis-triste"], tip: "Same for a boy and a girl." },
+    { id: "fatigue", text: "Fatigué", en: "Tired (a boy)", art: "tired", topic: "feeling", like: ["je-suis-fatigue"], tip: "A girl says fatiguée. It sounds the same." },
+    { id: "malade", text: "Malade", en: "Sick", art: "sick", topic: "feeling", like: ["je-suis-malade"], tip: "Same for a boy and a girl." },
     { id: "calin", text: "Câlin", en: "A hug", topic: "feeling", tip: "Ask for one: Un câlin?" },
     {
       id: "jai-peur", text: "J'ai peur.", en: "I'm scared", topic: "feeling",

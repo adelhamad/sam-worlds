@@ -31,8 +31,8 @@ export const U01: LangUnitPack = {
       id: "ahlein", text: "أهلين", roman: "ahlein", say: "أَهْلين", en: "Hi! (a warm answer)", topic: "greeting", like: ["marhaba", "ahla-w-sahla", "ahlein-fiik", "ahlein-fiiki"],
       tip: "Someone says marHaba? Answer: ahlein!",
     },
-    { id: "mama", text: "ماما", roman: "maama", en: "Mom", topic: "family" },
-    { id: "baba", text: "بابا", roman: "baaba", en: "Dad", topic: "family" },
+    { id: "mama", text: "ماما", roman: "maama", en: "Mom", art: "mother", topic: "family" },
+    { id: "baba", text: "بابا", roman: "baaba", en: "Dad", art: "father", topic: "family" },
     {
       id: "kiifak", text: "كيفك؟", roman: "kiifak?", say: "كِيفَك", en: "How are you? (to a boy)", topic: "greeting", like: ["kiifik"],
       tip: "kiifak is for a boy or a man.",

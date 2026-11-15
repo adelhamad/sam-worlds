@@ -25,12 +25,12 @@ export const U12: LangUnitPack = {
     ],
   },
   phrases: [
-    { id: "ahmar", text: "أحمر", roman: "aHmar", say: "أَحْمَر", en: "Red", topic: "colour", tip: "With some words it becomes Hamra." },
-    { id: "azra", text: "أزرق", roman: "azra’", say: "أَزْرَء", en: "Blue", topic: "colour", tip: "With some words it becomes zar’a." },
-    { id: "akhdar", text: "أخضر", roman: "akhDar", say: "أَخْضَر", en: "Green", topic: "colour", tip: "With some words it becomes khaDra." },
-    { id: "asfar", text: "أصفر", roman: "aSfar", say: "أَصْفَر", en: "Yellow", topic: "colour", tip: "With some words it becomes Safra." },
-    { id: "abyad", text: "أبيض", roman: "abyaD", say: "أَبْيَض", en: "White", topic: "colour", tip: "With some words it becomes beiDa." },
-    { id: "aswad", text: "أسود", roman: "aswad", say: "أَسْوَد", en: "Black", topic: "colour", tip: "With some words it becomes sooda." },
+    { id: "ahmar", text: "أحمر", roman: "aHmar", say: "أَحْمَر", en: "Red", art: "blob-red", topic: "colour", tip: "With some words it becomes Hamra." },
+    { id: "azra", text: "أزرق", roman: "azra’", say: "أَزْرَء", en: "Blue", art: "blob-blue", topic: "colour", tip: "With some words it becomes zar’a." },
+    { id: "akhdar", text: "أخضر", roman: "akhDar", say: "أَخْضَر", en: "Green", art: "blob-green", topic: "colour", tip: "With some words it becomes khaDra." },
+    { id: "asfar", text: "أصفر", roman: "aSfar", say: "أَصْفَر", en: "Yellow", art: "blob-yellow", topic: "colour", tip: "With some words it becomes Safra." },
+    { id: "abyad", text: "أبيض", roman: "abyaD", say: "أَبْيَض", en: "White", art: "blob-white", topic: "colour", tip: "With some words it becomes beiDa." },
+    { id: "aswad", text: "أسود", roman: "aswad", say: "أَسْوَد", en: "Black", art: "blob-black", topic: "colour", tip: "With some words it becomes sooda." },
     { id: "kbiir", text: "كبير", roman: "kbiir", say: "كْبير", en: "Big", topic: "colour", like: ["ana-kbiir"], tip: "For a girl: kbiira." },
     { id: "zghiir", text: "زغير", roman: "zghiir", say: "زْغير", en: "Small", topic: "colour", tip: "Some families say Sghiir. For a girl: zghiira." },
     {

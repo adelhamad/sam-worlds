@@ -26,8 +26,8 @@ export const U15: LangUnitPack = {
   phrases: [
     { id: "soleil", text: "Soleil", en: "Sun", art: "sun", topic: "thing", tip: "Say 'so-LAY'." },
     { id: "pluie", text: "Pluie", en: "Rain", art: "rain", topic: "thing", tip: "Say 'plwee'." },
-    { id: "chaud", text: "Chaud", en: "Hot", topic: "thing", tip: "Say 'show'. The d is silent." },
-    { id: "froid", text: "Froid", en: "Cold", topic: "thing", tip: "Say 'frwah'. The d is silent." },
+    { id: "chaud", text: "Chaud", en: "Hot", art: "hot", topic: "thing", tip: "Say 'show'. The d is silent." },
+    { id: "froid", text: "Froid", en: "Cold", art: "cold", topic: "thing", tip: "Say 'frwah'. The d is silent." },
     { id: "dehors", text: "Dehors", en: "Outside", topic: "place", tip: "Say 'duh-OR'. The s is silent." },
     { id: "chat", text: "Chat", en: "Cat", art: "cat", topic: "thing", tip: "Say 'shah'. The t is silent." },
     { id: "chien", text: "Chien", en: "Dog", art: "dog", topic: "thing", tip: "Say 'shee-AN'." },
