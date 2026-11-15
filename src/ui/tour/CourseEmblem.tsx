@@ -5,7 +5,8 @@
 import type { CSSProperties, ReactElement } from "react";
 import type { Course } from "../../content/courseTypes";
 import { Glyph } from "../icons/Icon";
-import { BlocksArt, ChessArt, GlobeArt, RobotArt } from "./EmblemArt";
+import "@fontsource-variable/noto-sans-arabic";
+import { ArabicArt, BlocksArt, ChessArt, FrenchArt, GlobeArt, RobotArt } from "./EmblemArt";
 import "./course-emblem.css";
 
 export interface CourseEmblemProps {
@@ -20,6 +21,8 @@ const ART: Record<string, () => ReactElement> = {
   chess: ChessArt,
   code: BlocksArt,
   ai: RobotArt,
+  arabic: ArabicArt,
+  french: FrenchArt,
 };
 
 export function CourseEmblem({ course, size = 64, className = "" }: CourseEmblemProps) {
