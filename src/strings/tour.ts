@@ -9,6 +9,8 @@ const guide = persona.guide;
 export const TOUR = {
   title: "World Tour",
   guide,
+  /** The button around Pogo wherever he can be tapped (he giggles). */
+  tapPogo: `Tickle ${guide}`,
   tagline: `Show ${guide} around planet Earth!`,
 
   /** Question prompts and hints written by the lesson planner (engine). */
@@ -65,6 +67,10 @@ export const TOUR = {
     comboBanner: (count: number) => `${count} in a row!`,
     comboChip: (count: number) => `${count} in a row`,
     slowDown: `No rush, ${n}. ${guide} can wait!`,
+    /** Pogo's bubble while the miss sheet shows the worked answer (≤ 6 words). */
+    focusLines: ["Let's look closely.", "Slow and careful.", "Look here with me."],
+    /** ...on a second miss in the same slot. */
+    focusTricky: "Tricky one! I'm with you.",
     /** Skip button; the component adds the cost and the Star Dust icon. */
     skip: "Skip",
     skipLabel: (cost: number) => `Skip for ${cost} Star Dust`,

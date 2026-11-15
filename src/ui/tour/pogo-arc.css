@@ -1,0 +1,279 @@
+/* Pogo, part three: the miss arc. A mistake registers and then gets fixed —
+   oops (jolt) -> sad / worried (it sinks in) -> focus (let's look) ->
+   determined (the retry) -> relieved -> proud. Plus whoa for rapid guessing.
+   Same rules as pogo.css: a mood is a static POSE plus MOTION; `.pogo-still`
+   and reduced motion keep the pose and drop the motion. Arms: a positive
+   rotate swings the LEFT arm outward, a negative one the RIGHT arm. */
+
+.pg-sweat, .pg-puff { transform: scale(0); opacity: 0; }
+.pg-effort { opacity: 0.9; }
+
+/* ---------- oops: the moment of a miss — a startled jolt ---------- */
+.pogo-oops .pg-eye { transform: scale(1.2); }
+.pogo-oops .pg-pupil { transform: scale(0.55); }
+.pogo-oops .pg-lid { animation: none; }
+.pogo-oops .pg-brows { transform: translateY(-5px); }
+.pogo-oops .pg-arm-l { transform: translate(1px, 0) rotate(200deg); animation: pg-oops-l 0.38s cubic-bezier(0.2, 1.4, 0.4, 1) both; }
+.pogo-oops .pg-arm-r { transform: translate(-1px, 0) rotate(-200deg); animation: pg-oops-r 0.38s cubic-bezier(0.2, 1.4, 0.4, 1) both; }
+.pogo-oops .pg-all { animation: pg-jolt-y 0.5s both; }
+.pogo-oops .pg-squash { animation: pg-jolt-squash 0.5s both, pg-breathe 1.4s ease-in-out 0.5s infinite; }
+.pogo-oops .pg-shadow { animation: pg-startle-shadow 0.5s both; }
+.pogo-oops .pg-antenna { animation: pg-quiver 0.06s ease-in-out 8 alternate; }
+.pogo-oops .pg-bulb-dim { opacity: 0.25; animation: pg-flicker-bulb 0.6s linear both; }
+.pogo-oops .pg-glow { transform: scale(0.8); opacity: 0.5; animation: none; }
+.pogo-oops .pg-ear-l { transform: rotate(24deg); animation: none; }
+.pogo-oops .pg-ear-r { transform: rotate(-24deg); animation: none; }
+.pogo-oops .pg-cheeks { opacity: 0.35; }
+.pogo-oops .pg-mouth { animation: pg-gasp 0.4s ease-out both; }
+
+@keyframes pg-oops-l {
+  from { transform: translate(1px, 0) rotate(20deg); }
+  to { transform: translate(1px, 0) rotate(200deg); }
+}
+@keyframes pg-oops-r {
+  from { transform: translate(-1px, 0) rotate(-20deg); }
+  to { transform: translate(-1px, 0) rotate(-200deg); }
+}
+@keyframes pg-jolt-y {
+  0% { transform: translateY(0); animation-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1); }
+  28% { transform: translateY(-13px); animation-timing-function: cubic-bezier(0.6, 0, 0.8, 0.4); }
+  58%, 100% { transform: translateY(0); }
+}
+@keyframes pg-jolt-squash {
+  0% { transform: scale(1.1, 0.88); }
+  28% { transform: scale(0.9, 1.12); }
+  60% { transform: scale(1.06, 0.95); }
+  100% { transform: scale(1, 1); }
+}
+@keyframes pg-flicker-bulb {
+  0%, 22%, 48% { opacity: 0; }
+  10%, 34% { opacity: 0.85; }
+  62% { opacity: 0.6; }
+  100% { opacity: 0.25; }
+}
+@keyframes pg-gasp {
+  from { transform: scale(0.4); }
+  to { transform: scale(1); }
+}
+
+/* ---------- worried: second miss on the same slot — gentle "uh-oh" ---------- */
+.pogo-worried .pg-tilt { transform: rotate(-3deg) translateY(3px); animation: pg-droop-in 0.55s cubic-bezier(0.3, 0, 0.3, 1) both; }
+.pogo-worried .pg-all { animation: pg-tremble 0.1s linear infinite alternate; }
+.pogo-worried .pg-squash { animation: pg-sigh 2.4s ease-in-out infinite; }
+.pogo-worried .pg-pupil { transform: translate(0, 3px) scale(0.86); animation: pg-dart 2.4s ease-in-out infinite; }
+.pogo-worried .pg-lid { transform: scaleY(0.24); animation: pg-blink-worry 2.4s linear infinite; }
+.pogo-worried .pg-arm-l { transform: rotate(-26deg); animation: pg-wring-l 0.5s ease-in-out infinite alternate; }
+.pogo-worried .pg-arm-r { transform: rotate(26deg); animation: pg-wring-r 0.5s ease-in-out infinite alternate; }
+.pogo-worried .pg-ear-l { transform: rotate(-32deg); animation: none; }
+.pogo-worried .pg-ear-r { transform: rotate(32deg); animation: none; }
+.pogo-worried .pg-cheeks { opacity: 0.25; }
+.pogo-worried .pg-bulb-dim { opacity: 0.55; }
+.pogo-worried .pg-glow { transform: scale(0.7); opacity: 0.2; animation: none; }
+.pogo-worried .pg-antenna { animation: pg-quiver 0.14s ease-in-out infinite alternate; }
+.pogo-worried .pg-scarf-tail { transform: rotate(0deg); animation: none; }
+.pogo-worried .pg-mouth { animation: pg-quiver-lip 0.3s ease-in-out infinite alternate; }
+.pogo-worried .pg-brows { animation: pg-brow-knit 1.2s ease-in-out infinite; }
+.pogo-worried .pg-water { animation: pg-water 2.4s ease-in-out infinite; }
+.pogo-worried .pg-tear { transform: translateY(26px) scale(1); opacity: 0.95; animation: pg-tear 2.4s ease-in infinite; }
+.pogo-worried .pg-sweat { transform: translate(0, 4px) scale(1); opacity: 1; animation: pg-sweat 2.4s ease-in infinite; }
+
+@keyframes pg-tremble {
+  from { transform: translateX(-0.9px); }
+  to { transform: translateX(0.9px); }
+}
+@keyframes pg-dart {
+  0%, 30%, 100% { transform: translate(0, 3px) scale(0.86); }
+  40%, 55% { transform: translate(-4px, 2px) scale(0.86); }
+  65%, 85% { transform: translate(4px, 2px) scale(0.86); }
+}
+@keyframes pg-blink-worry {
+  0%, 20%, 26%, 100% { transform: scaleY(0.24); }
+  23% { transform: scaleY(1); }
+}
+@keyframes pg-wring-l {
+  from { transform: rotate(-22deg); }
+  to { transform: rotate(-32deg); }
+}
+@keyframes pg-wring-r {
+  from { transform: rotate(22deg); }
+  to { transform: rotate(32deg); }
+}
+@keyframes pg-sweat {
+  0% { transform: translate(0, -2px) scale(0); opacity: 0; }
+  14% { transform: translate(0, 0) scale(1.08); opacity: 1; }
+  75% { transform: translate(0, 9px) scale(1); opacity: 1; }
+  100% { transform: translate(0, 14px) scale(0.9); opacity: 0; }
+}
+
+/* ---------- focus: pulls himself together — "look here" ---------- */
+.pogo-focus .pg-tilt { transform: rotate(3deg) translateY(2px); animation: pg-focus-nod 2.2s ease-in-out infinite; }
+.pogo-focus .pg-lid { transform: scaleY(0.4); animation: pg-blink-focus 4.4s linear infinite; }
+.pogo-focus .pg-pupil { transform: translate(3px, 8px); }
+.pogo-focus .pg-arm-l { transform: rotate(10deg); }
+.pogo-focus .pg-arm-r { transform: rotate(-44deg); animation: pg-point 1.1s ease-in-out infinite; }
+.pogo-focus .pg-ear-l { transform: rotate(8deg); animation: none; }
+.pogo-focus .pg-ear-r { transform: rotate(-8deg); animation: none; }
+.pogo-focus .pg-antenna { transform: rotate(0deg); animation: none; }
+.pogo-focus .pg-glow { animation: pg-lighthouse 2.2s ease-in-out infinite; }
+.pogo-focus .pg-squash { animation: pg-breathe 2.2s ease-in-out infinite; }
+
+@keyframes pg-focus-nod {
+  0%, 100% { transform: rotate(3deg) translateY(2px); }
+  50% { transform: rotate(4.5deg) translateY(3.5px); }
+}
+@keyframes pg-blink-focus {
+  0%, 46%, 50%, 100% { transform: scaleY(0.4); }
+  48% { transform: scaleY(1); }
+}
+@keyframes pg-point {
+  0%, 55%, 100% { transform: rotate(-44deg); }
+  70% { transform: rotate(-36deg); }
+  85% { transform: rotate(-46deg); }
+}
+@keyframes pg-lighthouse {
+  0%, 100% { transform: scale(0.7); opacity: 0.4; }
+  50% { transform: scale(2.1); opacity: 1; }
+}
+
+/* ---------- determined: the retry — concentrating, tongue tip out ---------- */
+.pogo-determined .pg-tilt { transform: translateY(3px); animation: pg-strain 2.8s ease-in-out infinite; }
+.pogo-determined .pg-squash { animation: pg-breathe 2.8s ease-in-out infinite; }
+.pogo-determined .pg-lid { transform: scaleY(0.22); animation: pg-blink-slow 7.5s linear infinite; }
+.pogo-determined .pg-pupil { transform: translate(0, 6px); }
+.pogo-determined .pg-arm-l { transform: rotate(-16deg); animation: pg-fist-l 2.8s ease-in-out infinite; }
+.pogo-determined .pg-arm-r { transform: rotate(16deg); animation: pg-fist-r 2.8s ease-in-out infinite; }
+.pogo-determined .pg-ear-l { transform: rotate(-8deg); animation: none; }
+.pogo-determined .pg-ear-r { transform: rotate(8deg); animation: none; }
+.pogo-determined .pg-antenna { animation: pg-sway-small 2.8s ease-in-out infinite; }
+.pogo-determined .pg-mouth { animation: pg-tongue 2.8s ease-in-out infinite; }
+.pogo-determined .pg-effort-1 { animation: pg-effort 1.4s ease-in-out infinite; }
+.pogo-determined .pg-effort-2 { animation: pg-effort 1.4s ease-in-out -0.25s infinite; }
+.pogo-determined .pg-effort-3 { animation: pg-effort 1.4s ease-in-out -0.5s infinite; }
+
+@keyframes pg-strain {
+  0%, 100% { transform: translateY(3px) rotate(-1deg); }
+  50% { transform: translateY(4px) rotate(1deg); }
+}
+@keyframes pg-blink-slow {
+  0%, 60%, 63%, 100% { transform: scaleY(0.22); }
+  61.5% { transform: scaleY(1); }
+}
+@keyframes pg-fist-l {
+  0%, 100% { transform: rotate(-16deg); }
+  50% { transform: rotate(-20deg); }
+}
+@keyframes pg-fist-r {
+  0%, 100% { transform: rotate(16deg); }
+  50% { transform: rotate(20deg); }
+}
+@keyframes pg-tongue {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(1.5px); }
+}
+@keyframes pg-effort {
+  0%, 100% { opacity: 0.25; transform: translate(1.5px, 1.5px); }
+  50% { opacity: 1; transform: translate(-1.5px, -1.5px); }
+}
+
+/* ---------- relieved: "phew" — eyes shut, big exhale, wipes the brow ---------- */
+.pogo-relieved .pg-squash { animation: pg-exhale 1s ease-out both; }
+.pogo-relieved .pg-tilt { transform: rotate(-3deg); animation: pg-relief-tilt 1s ease-out both; }
+.pogo-relieved .pg-arm-r { transform: translate(-14px, -40px) rotate(150deg); animation: pg-wipe 1s ease-in-out both; }
+.pogo-relieved .pg-arm-l { transform: rotate(10deg); }
+.pogo-relieved .pg-ear-l { transform: rotate(-14deg); animation: none; }
+.pogo-relieved .pg-ear-r { transform: rotate(14deg); animation: none; }
+.pogo-relieved .pg-cheeks { opacity: 0.75; }
+.pogo-relieved .pg-sweat { animation: pg-sweat-fly 0.75s cubic-bezier(0.3, 0, 0.6, 1) 0.3s both; }
+.pogo-relieved .pg-puff { animation: pg-puff 0.9s ease-out 0.12s both; }
+.pogo-relieved .pg-antenna { animation: pg-whip 1s ease-out both; }
+
+@keyframes pg-exhale {
+  0% { transform: scale(0.97, 1.05); }
+  40% { transform: scale(1.09, 0.89); }
+  70% { transform: scale(1.03, 0.97); }
+  100% { transform: scale(1.02, 0.98); }
+}
+@keyframes pg-relief-tilt {
+  0% { transform: rotate(0deg); }
+  40% { transform: rotate(-5deg); }
+  100% { transform: rotate(-3deg); }
+}
+@keyframes pg-wipe {
+  0% { transform: translate(0, 0) rotate(-20deg); }
+  28% { transform: translate(-14px, -40px) rotate(160deg); }
+  50% { transform: translate(-14px, -40px) rotate(140deg); }
+  72% { transform: translate(-14px, -40px) rotate(160deg); }
+  100% { transform: translate(-14px, -40px) rotate(150deg); }
+}
+@keyframes pg-sweat-fly {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(30px, -26px) rotate(50deg) scale(0.6); opacity: 0; }
+}
+@keyframes pg-puff {
+  0% { transform: translate(-4px, 0) scale(0.3); opacity: 0; }
+  25% { transform: translate(0, 0) scale(1); opacity: 0.95; }
+  100% { transform: translate(22px, -4px) scale(1.5); opacity: 0; }
+}
+
+/* ---------- proud: chest out, thumbs up, a confident grin ---------- */
+.pogo-proud .pg-cheeks { opacity: 0.85; }
+.pogo-proud .pg-squash { transform: scale(1.05, 0.985); animation: pg-proud-puff 0.55s cubic-bezier(0.2, 1.5, 0.4, 1) both, pg-proud-breathe 3s ease-in-out 0.55s infinite; }
+.pogo-proud .pg-tilt { transform: rotate(-3deg); animation: pg-proud-nod 1.6s ease-in-out infinite; }
+.pogo-proud .pg-lid { transform: scaleY(0.26); animation: none; }
+.pogo-proud .pg-pupil { transform: translate(-1px, -2px); }
+.pogo-proud .pg-arm-r { transform: rotate(-96deg); animation: pg-thumb-out 0.5s cubic-bezier(0.2, 1.5, 0.4, 1) both; }
+.pogo-proud .pg-arm-l { transform: rotate(6deg); }
+.pogo-proud .pg-ear-l { transform: rotate(16deg); animation: none; }
+.pogo-proud .pg-ear-r { transform: rotate(-16deg); animation: none; }
+.pogo-proud .pg-glow { transform: scale(1.5); animation: pg-glow-wow 0.8s ease-in-out infinite alternate; }
+.pogo-proud .pg-spark { animation: pg-twinkle 1.3s ease-in-out infinite; }
+.pogo-proud .pg-spark-2 { animation-delay: -0.45s; }
+.pogo-proud .pg-spark-3 { animation-delay: -0.9s; }
+.pogo-proud .pg-scarf-tail { animation: pg-scarf-flap 0.5s ease-in-out infinite alternate; }
+
+@keyframes pg-proud-puff {
+  0% { transform: scale(0.96, 1.04); }
+  55% { transform: scale(1.1, 0.95); }
+  100% { transform: scale(1.05, 0.985); }
+}
+@keyframes pg-proud-breathe {
+  0%, 100% { transform: scale(1.05, 0.985); }
+  50% { transform: scale(1.07, 0.975); }
+}
+@keyframes pg-proud-nod {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(-1deg) translateY(1.5px); }
+}
+@keyframes pg-thumb-out {
+  from { transform: rotate(-20deg); }
+  to { transform: rotate(-96deg); }
+}
+
+/* ---------- whoa: rapid guessing — "wait", one mitten up, calm head shake ---------- */
+.pogo-whoa .pg-arm-r { transform: rotate(-146deg); animation: pg-hold-up 0.45s cubic-bezier(0.2, 1.3, 0.4, 1) both, pg-hold-pat 1.8s ease-in-out 0.45s infinite; }
+.pogo-whoa .pg-arm-l { transform: rotate(14deg); }
+.pogo-whoa .pg-tilt { animation: pg-head-shake 1.8s ease-in-out infinite; }
+.pogo-whoa .pg-lid { transform: scaleY(0.14); animation: pg-blink-calm 3.6s linear infinite; }
+.pogo-whoa .pg-pupil { transform: translate(0, 1px); }
+.pogo-whoa .pg-squash { animation: pg-breathe 4.4s ease-in-out infinite; }
+.pogo-whoa .pg-glow { animation: pg-glow 3.6s ease-in-out infinite; }
+.pogo-whoa .pg-antenna { animation: pg-sway-small 3.6s ease-in-out infinite; }
+
+@keyframes pg-hold-up {
+  from { transform: rotate(-20deg); }
+  to { transform: rotate(-146deg); }
+}
+/* the raised palm pats the air, slowly: "easy, easy" */
+@keyframes pg-hold-pat {
+  0%, 100% { transform: rotate(-146deg); }
+  50% { transform: rotate(-138deg); }
+}
+@keyframes pg-head-shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3.5deg); }
+  75% { transform: rotate(3.5deg); }
+}
+@keyframes pg-blink-calm {
+  0%, 40%, 45%, 100% { transform: scaleY(0.14); }
+  42.5% { transform: scaleY(1); }
+}

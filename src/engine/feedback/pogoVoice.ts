@@ -205,6 +205,20 @@ export const pogoVoice = {
   whistle(dur = 0.5): void {
     glide(1500, 480, 0, dur, { gain: 0.04, attack: 0.05, vibRate: 7, vibDepth: 15 });
   },
+  /** The moment of a miss: a soft two-note "uh-oh" (falling, never a buzzer). */
+  uhoh(): void {
+    syllable(0, 0.13, 600, 580, { vowel: "u", peak: 0.065, wave: "triangle" });
+    syllable(0.16, 0.28, 480, 400, { vowel: "o", peak: 0.07, vibRate: 5, vibDepth: 6, wave: "triangle" });
+  },
+  /** Pulling himself together: a short, firm, rising "hm!". */
+  hm(): void {
+    syllable(0, 0.17, 380, 450, { vowel: "u", peak: 0.065, wave: "triangle" });
+  },
+  /** Fixed it: a breathy exhale with a soft falling "phew". */
+  phew(): void {
+    swish(0, 0.5, 0.045, 2200, 700, 0.9);
+    syllable(0.04, 0.34, 660, 470, { vowel: "u", peak: 0.055, wave: "triangle" });
+  },
   /** A tiny pleased giggle: five very short blips. */
   giggle(): void {
     [760, 640, 800, 660, 840].forEach((f, i) => {

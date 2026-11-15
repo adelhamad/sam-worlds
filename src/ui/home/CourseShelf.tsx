@@ -75,10 +75,15 @@ export function CourseShelf({ courses, progress, tourChests }: CourseShelfProps)
     sfx.tap();
     navigate(course.path);
   };
-  const grouped = courses.length > GROUP_ABOVE;
-  const shelves = grouped
-    ? SUBJECTS.map((subject) => ({ subject, list: courses.filter((course) => course.subject === subject) })).filter((shelf) => shelf.list.length)
-    : [{ subject: null, list: courses }];
+  // Languages always sit on a shelf of their own; the rest split by subject once there are many.
+  const languages = courses.filter((course) => course.subject === "languages");
+  const rest = courses.filter((course) => course.subject !== "languages");
+  const bySubject = (subject: CourseSubject) => ({ subject, list: rest.filter((course) => course.subject === subject) });
+  const shelves: Array<{ subject: CourseSubject | null; list: Course[] }> = [
+    ...(rest.length > GROUP_ABOVE ? SUBJECTS.map(bySubject) : [{ subject: null, list: rest }]),
+    bySubject("languages"),
+  ];
+  shelves[shelves.length - 1].list = languages;
   let index = 0;
 
   return (
@@ -87,9 +92,13 @@ export function CourseShelf({ courses, progress, tourChests }: CourseShelfProps)
         <h2 id="home-shelf-title" className="home-h2"><Icon name="rocket" size="1.1em" /> {T.courses}</h2>
         <p className="home-sec-sub">{T.shelfSub}</p>
       </header>
-      {shelves.map(({ subject, list }) => (
+      {shelves.filter((shelf) => shelf.list.length).map(({ subject, list }) => (
         <div key={subject ?? "all"} className="home-shelf-group">
-          {subject && <h3 className="home-shelf-sub">{T.subjects[subject]}</h3>}
+          {subject && (
+            <h3 className="home-shelf-sub" data-testid={`shelf-${subject}`}>
+              {subject === "languages" && <><Icon name="chat" size="1.1em" />{" "}</>}{T.subjects[subject]}
+            </h3>
+          )}
           <div className="home-courses">
             {list.map((course) => (
               <CourseCard

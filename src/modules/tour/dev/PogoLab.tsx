@@ -1,16 +1,60 @@
 // DEV-only showcase for the mascot (route /tour/lab/pogo): every mood at three
-// sizes, the speech bubble on both sides, confetti, the lesson-complete
-// entrances, Pogo's voice and the tour sound set.
-import { useState, type CSSProperties } from "react";
-import { Confetti, Pogo, PogoSay, type PogoMood } from "../../../ui/tour/Pogo";
+// sizes, the miss arc as one sequence, the "playing along" modifiers (ready,
+// fidget, eyes following the pointer, tap reactions), the speech bubble on both
+// sides, confetti, the lesson-complete entrances, Pogo's voice and the tour sounds.
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { Confetti, Pogo, PogoSay, PogoTap, type PogoMood } from "../../../ui/tour/Pogo";
+import { usePogoPoke } from "../../../ui/tour/usePogoPoke";
 import { unlockAudio } from "../../../engine/feedback/audio";
 import { pogoVoice } from "../../../engine/feedback/pogoVoice";
 import { tourSfx } from "../../../engine/feedback/tourSfx";
 import { FinishEntrance } from "../lesson/FinishEntrance";
 import type { EntranceAct } from "../lesson/finishActs";
+import { lessonSound } from "../lesson/lessonSound";
+import { usePogoGaze } from "../lesson/usePogoLive";
 
-const MOODS: PogoMood[] = ["idle", "happy", "cheer", "think", "wave", "talk", "wow", "sleep", "sad", "dizzy", "zoom", "splat", "starry"];
-const SIZES = [56, 110, 180];
+const MOODS: PogoMood[] = [
+  "idle", "happy", "cheer", "think", "wave", "talk", "wow", "sleep", "sad", "dizzy", "zoom", "splat", "starry",
+  "oops", "worried", "focus", "determined", "relieved", "proud", "whoa", "giggle", "beckon", "twirl", "flip",
+];
+const SIZES = [56, 110, 220];
+
+/** The miss arc as the lesson plays it: [mood, ms, sound at the start]. */
+type Beat = [PogoMood, number, (() => void)?];
+const MISS_ARC: Beat[] = [
+  ["oops", 600, lessonSound.almost],
+  ["sad", 1200],
+  ["focus", 2600, lessonSound.focus],
+  ["determined", 3000],
+  ["relieved", 1000, () => setTimeout(lessonSound.relieved, 380)],
+  ["proud", 2200],
+];
+const TRICKY_ARC: Beat[] = [
+  ["oops", 600, lessonSound.almost],
+  ["worried", 1200, lessonSound.sinks],
+  ["focus", 2600, lessonSound.focus],
+  ["determined", 2400],
+];
+const GUESS_ARC: Beat[] = [
+  ["oops", 600, lessonSound.almost],
+  ["whoa", 3000],
+];
+
+/** Plays a list of beats on the big stage Pogo; returns the start function. */
+function useArc(setMood: (mood: PogoMood) => void): (beats: Beat[]) => void {
+  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  useEffect(() => () => timers.current.forEach(clearTimeout), []);
+  return (beats) => {
+    unlockAudio();
+    timers.current.forEach(clearTimeout);
+    let at = 0;
+    timers.current = [...beats, ["idle", 0] as Beat].map(([mood, ms, sound]) => {
+      const timer = setTimeout(() => { setMood(mood); sound?.(); }, at);
+      at += ms;
+      return timer;
+    });
+  };
+}
 const LINES = [
   "Hi Sam! I'm Pogo.",
   "Which flag is Japan's?",
@@ -36,6 +80,9 @@ const ACTS: EntranceAct[] = ["splat", "drop", "peek"];
 const VOICE: [string, () => void][] = [
   ["happy", () => pogoVoice.happy(Math.floor(Math.random() * 4))],
   ["aww", () => pogoVoice.aww()],
+  ["uh-oh", () => pogoVoice.uhoh()],
+  ["hm", () => pogoVoice.hm()],
+  ["phew", () => pogoVoice.phew()],
   ["hey", () => pogoVoice.hey()],
   ["yay", () => pogoVoice.yay()],
   ["wow", () => pogoVoice.wow()],
@@ -60,11 +107,16 @@ export default function PogoLab() {
   const [line, setLine] = useState(0);
   const [burst, setBurst] = useState(0);
   const [act, setAct] = useState<EntranceAct | null>(null);
+  const [modifier, setModifier] = useState("");
+  const stageRef = useRef<HTMLElement>(null);
+  const poke = usePogoPoke(() => { unlockAudio(); pogoVoice.giggle(); });
+  usePogoGaze(stageRef, true);
 
   const pick = (m: PogoMood) => {
     setMood(m);
     setReplay((n) => n + 1);
   };
+  const arc = useArc(pick);
   const play = (fn: () => void) => {
     unlockAudio();
     fn();
@@ -74,10 +126,22 @@ export default function PogoLab() {
     <div className="screen tour" style={{ background: "var(--t-bg)", gap: 18 }}>
       <h1 style={{ margin: 0, fontSize: 26, fontWeight: 900 }}>Pogo Lab</h1>
 
-      <section id="lab-stage" style={{ ...card, position: "relative", display: "flex", flexDirection: "column", alignItems: "center", gap: 12, paddingTop: 44 }}>
+      <section ref={stageRef} id="lab-stage" style={{ ...card, position: "relative", display: "flex", flexDirection: "column", alignItems: "center", gap: 12, paddingTop: 44 }}>
         <Confetti burstKey={burst} />
-        <Pogo mood={mood} size={220} replayKey={replay} still={still} />
-        <div style={label}>{mood}</div>
+        <PogoTap poke={poke} label="Tickle Pogo">
+          <Pogo mood={poke.mood ?? mood} size={220} replayKey={replay} still={still} className={modifier} />
+        </PogoTap>
+        <div style={label}>{mood}{modifier ? ` + ${modifier}` : ""} (tap him; move the pointer: his eyes follow)</div>
+        <div style={{ ...row, justifyContent: "center" }}>
+          <button className="tbtn tbtn-go" style={small} data-testid="arc-miss" onClick={() => arc(MISS_ARC)}>miss arc</button>
+          <button className="tbtn tbtn-go" style={small} data-testid="arc-tricky" onClick={() => arc(TRICKY_ARC)}>second miss</button>
+          <button className="tbtn tbtn-go" style={small} data-testid="arc-guess" onClick={() => arc(GUESS_ARC)}>rapid guess</button>
+          {["", "pogo-ready", "pogo-fidget"].map((m) => (
+            <button key={m || "none"} className={`tbtn ${m === modifier ? "tbtn-go" : "tbtn-ghost"}`} style={small} onClick={() => setModifier(m)}>
+              {m ? m.replace("pogo-", "") : "no modifier"}
+            </button>
+          ))}
+        </div>
         <div style={{ ...row, justifyContent: "center" }}>
           {MOODS.map((m) => (
             <button key={m} className={`tbtn ${m === mood ? "tbtn-go" : ""}`} style={small} onClick={() => pick(m)}>

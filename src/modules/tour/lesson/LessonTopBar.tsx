@@ -1,6 +1,7 @@
 // Top of the lesson: quit, the fat progress bar, the combo flame and the live
 // Star Dust meter — plus the small "Take a break?" sheet the quit button opens.
 import { Pogo } from "../../../ui/tour/Pogo";
+import { PogoHead } from "../../../ui/tour/PogoHead";
 import { TOUR } from "../../../strings/tour";
 import { Icon } from "../../../ui/icons/Icon";
 import { DustMeter } from "./DustMeter";
@@ -34,6 +35,10 @@ export function LessonTopBar({ done, total, combo, dust, dustBumps, cheering, on
         <div className="tl-bar-fill" style={{ width: `${Math.max(7, percent)}%` }}>
           <span className="tl-bar-shine" />
           {done > 0 && <span key={done} className="tl-bar-bump" />}
+          {/* Pogo rides the leading edge and hops each time it moves on */}
+          <span key={`rider-${done}`} className={`tl-rider ${done > 0 ? "is-hopping" : ""}`} aria-hidden="true">
+            <PogoHead />
+          </span>
         </div>
       </div>
       {combo >= 2 && (

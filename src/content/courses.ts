@@ -6,6 +6,7 @@ import { CODE_COURSE } from "./code/units";
 import { TICK_COURSE } from "./tick/units";
 import type { Course, CourseUnit } from "./courseTypes";
 import { iconRef } from "./iconNames";
+import { LANG_COURSES } from "./langCourses";
 import { TOUR_UNITS, TOUR_WORLD, TOUR_WORLD_ID } from "./tour/units";
 
 export type { Course, CourseUnit };
@@ -25,6 +26,7 @@ export const COURSES: Course[] = [
   },
   CODE_COURSE,
   TICK_COURSE,
+  ...LANG_COURSES,
 ];
 
 /** Worlds that belong to a course (they use the path + lesson player, not the planet grid). */

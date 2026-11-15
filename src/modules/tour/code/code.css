@@ -2,8 +2,8 @@
    stepping stones on a green tray with a chunky bottom edge (same family as
    `.tbtn` and the chess board, but its own place), grey rocks, gold stars, a
    coral flag and Pogo hopping between stones. Scoped under `.tour`, prefixed
-   `cg-`. Motion is transform/opacity only. */
-.tour .cg {
+   `cgd-`. Motion is transform/opacity only. */
+.tour .cgd {
   --cg-a: #e3f7cf;
   --cg-b: #c8edb4;
   --cg-a-deep: #b6dc9c;
@@ -25,14 +25,14 @@
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
-.tour .cg-field {
+.tour .cgd-field {
   position: relative;
   aspect-ratio: 1;
   border-radius: 16px;
   background: var(--cg-grout);
   container-type: inline-size;
 }
-.tour .cg-tiles {
+.tour .cgd-tiles {
   position: absolute;
   inset: 0;
   display: grid;
@@ -41,7 +41,7 @@
 }
 
 /* ---------- stepping stones ---------- */
-.tour .cg-tile {
+.tour .cgd-tile {
   position: relative;
   min-width: 0;
   min-height: 0;
@@ -52,7 +52,7 @@
   font: inherit;
   color: inherit;
 }
-.tour .cg-tile::before {
+.tour .cgd-tile::before {
   content: "";
   position: absolute;
   inset: 2.5px;
@@ -60,17 +60,17 @@
   background: var(--cg-a);
   box-shadow: inset 0 -4px 0 var(--cg-a-deep), inset 0 2px 0 rgba(255, 255, 255, 0.55);
 }
-.tour .cg-tile.is-b::before { background: var(--cg-b); box-shadow: inset 0 -4px 0 var(--cg-b-deep), inset 0 2px 0 rgba(255, 255, 255, 0.45); }
-.tour .cg-tile.is-wall::before { background: #7cc08a; box-shadow: inset 0 -3px 0 #5c9f6a; }
-.tour .cg-tile > * { position: absolute; pointer-events: none; }
-.tour button.cg-tile { cursor: pointer; touch-action: manipulation; }
-.tour button.cg-tile:disabled { cursor: default; }
-.tour button.cg-tile:focus-visible { outline: 3px solid var(--t-go); outline-offset: -3px; z-index: 1; border-radius: 10px; }
-.tour button.cg-tile:active:not(:disabled)::before { filter: brightness(0.92); transform: translateY(1px); }
-.tour button.cg-tile.is-pinned::before { background: #c9f6ff; box-shadow: inset 0 -4px 0 #7cd9ec, 0 0 0 3px var(--t-go); }
+.tour .cgd-tile.is-b::before { background: var(--cg-b); box-shadow: inset 0 -4px 0 var(--cg-b-deep), inset 0 2px 0 rgba(255, 255, 255, 0.45); }
+.tour .cgd-tile.is-wall::before { background: #7cc08a; box-shadow: inset 0 -3px 0 #5c9f6a; }
+.tour .cgd-tile > * { position: absolute; pointer-events: none; }
+.tour button.cgd-tile { cursor: pointer; touch-action: manipulation; }
+.tour button.cgd-tile:disabled { cursor: default; }
+.tour button.cgd-tile:focus-visible { outline: 3px solid var(--t-go); outline-offset: -3px; z-index: 1; border-radius: 10px; }
+.tour button.cgd-tile:active:not(:disabled)::before { filter: brightness(0.92); transform: translateY(1px); }
+.tour button.cgd-tile.is-pinned::before { background: #c9f6ff; box-shadow: inset 0 -4px 0 #7cd9ec, 0 0 0 3px var(--t-go); }
 
 /* the start pad: a soft violet ring Pogo leaves behind */
-.tour .cg-pad {
+.tour .cgd-pad {
   inset: 20%;
   border-radius: 50%;
   border: 3px dashed rgba(91, 63, 214, 0.45);
@@ -78,13 +78,13 @@
 }
 
 /* rocks — chunky rounded blocks with a highlight */
-.tour .cg-rock {
+.tour .cgd-rock {
   inset: 12% 10% 14%;
   border-radius: 42% 46% 38% 44%;
   background: linear-gradient(160deg, #a9b2cf 0%, #8590b3 60%, #6d779c 100%);
   box-shadow: inset 0 -6px 0 #565f84, inset 4px 4px 0 rgba(255, 255, 255, 0.28), 0 3px 0 rgba(20, 40, 25, 0.35);
 }
-.tour .cg-rock::before {
+.tour .cgd-rock::before {
   content: "";
   position: absolute;
   left: 20%;
@@ -94,7 +94,7 @@
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.42);
 }
-.tour .cg-rock::after {
+.tour .cgd-rock::after {
   content: "";
   position: absolute;
   right: -10%;
@@ -105,26 +105,26 @@
   background: #8a95b7;
   box-shadow: inset 0 -3px 0 #5d668a;
 }
-.tour .cg-rock.rock-1 { inset: 14% 12% 12% 9%; border-radius: 48% 38% 44% 40%; }
-.tour .cg-rock.rock-2 { inset: 10% 13% 15% 12%; border-radius: 40% 48% 42% 46%; }
-.tour .cg-rock.rock-2::after { left: -10%; right: auto; }
+.tour .cgd-rock.rock-1 { inset: 14% 12% 12% 9%; border-radius: 48% 38% 44% 40%; }
+.tour .cgd-rock.rock-2 { inset: 10% 13% 15% 12%; border-radius: 40% 48% 42% 46%; }
+.tour .cgd-rock.rock-2::after { left: -10%; right: auto; }
 
 /* stars + flag */
 .tour .cgl { display: block; overflow: visible; }
 .tour .cgl-star-body { fill: var(--t-gold); stroke: #8a5a00; stroke-width: 3.6; stroke-linejoin: round; paint-order: stroke; }
 .tour .cgl-star-shine { fill: none; stroke: #fff7d6; stroke-width: 3; stroke-linecap: round; }
-.tour .cg-star {
+.tour .cgd-star {
   inset: 18%;
   width: 64%;
   height: 64%;
-  animation: cg-star-bob 2.4s ease-in-out infinite;
+  animation: cgd-star-bob 2.4s ease-in-out infinite;
 }
-.tour .cg-star.is-got { animation: cg-star-got 0.45s ease-out forwards; }
-@keyframes cg-star-bob {
+.tour .cgd-star.is-got { animation: cgd-star-got 0.45s ease-out forwards; }
+@keyframes cgd-star-bob {
   0%, 100% { transform: translateY(0) rotate(-4deg); }
   50% { transform: translateY(-6%) rotate(4deg); }
 }
-@keyframes cg-star-got {
+@keyframes cgd-star-got {
   0% { transform: scale(1); opacity: 1; }
   40% { transform: scale(1.5) rotate(20deg); opacity: 1; }
   100% { transform: scale(0.2) translateY(-80%) rotate(60deg); opacity: 0; }
@@ -133,26 +133,26 @@
 .tour .cgl-flag-pole { fill: #f4e6d0; stroke: #7a5a3a; stroke-width: 2.4; paint-order: stroke; }
 .tour .cgl-flag-cloth { fill: #ff6f91; stroke: #b23a5c; stroke-width: 2.6; stroke-linejoin: round; paint-order: stroke; }
 .tour .cgl-flag-knob { fill: var(--t-gold); stroke: #8a5a00; stroke-width: 2; paint-order: stroke; }
-.tour .cg-flag {
+.tour .cgd-flag {
   inset: 8%;
   width: 84%;
   height: 84%;
   transform-origin: 35% 90%;
-  animation: cg-flag-wave 2.2s ease-in-out infinite;
+  animation: cgd-flag-wave 2.2s ease-in-out infinite;
 }
-.tour .cg-flag.is-won { animation: cg-flag-yay 0.6s cubic-bezier(0.3, 1.6, 0.5, 1) 3 both; }
-@keyframes cg-flag-wave {
+.tour .cgd-flag.is-won { animation: cgd-flag-yay 0.6s cubic-bezier(0.3, 1.6, 0.5, 1) 3 both; }
+@keyframes cgd-flag-wave {
   0%, 100% { transform: rotate(-3deg); }
   50% { transform: rotate(3deg); }
 }
-@keyframes cg-flag-yay {
+@keyframes cgd-flag-yay {
   0% { transform: scale(1); }
   40% { transform: scale(1.25) rotate(-8deg); }
   100% { transform: scale(1); }
 }
 
 /* where the child tapped (teach card) */
-.tour .cg-ring {
+.tour .cgd-ring {
   inset: 14%;
   border-radius: 50%;
   border: 4px dashed var(--t-almost);
@@ -160,11 +160,11 @@
 }
 
 /* ---------- the layer above the stones ---------- */
-.tour .cg-layer { position: absolute; inset: 0; pointer-events: none; }
-.tour .cg-token,
-.tour .cg-step,
-.tour .cg-pin,
-.tour .cg-burst {
+.tour .cgd-layer { position: absolute; inset: 0; pointer-events: none; }
+.tour .cgd-token,
+.tour .cgd-step,
+.tour .cgd-pin,
+.tour .cgd-burst {
   position: absolute;
   left: 0;
   top: 0;
@@ -172,50 +172,50 @@
   height: calc(100% / var(--n));
   transform: translate(calc(var(--c) * 100%), calc(var(--r) * 100%));
 }
-.tour .cg-token {
+.tour .cgd-token {
   z-index: 3;
   display: grid;
   place-items: center;
   transition: transform 0.3s cubic-bezier(0.45, 0.05, 0.4, 1);
 }
-.tour .cg-token.is-rest { transition: none; }
-.tour .cg-token .pogo { width: 92% !important; height: 92% !important; transition: transform 0.2s ease; }
-.tour .cg-token.lean-E .pogo { transform: rotate(9deg); }
-.tour .cg-token.lean-W .pogo { transform: rotate(-9deg); }
-.tour .cg-token.lean-N .pogo { transform: scale(0.97, 1.03); }
-.tour .cg-hop { width: 100%; height: 100%; display: grid; place-items: center; }
-.tour .cg-hop.is-hop-0 { animation: cg-hop-0 0.32s ease-out; }
-.tour .cg-hop.is-hop-1 { animation: cg-hop-1 0.32s ease-out; }
-.tour .cg-hop.is-bonk-0 { animation: cg-bonk-0 0.5s ease-out; }
-.tour .cg-hop.is-bonk-1 { animation: cg-bonk-1 0.5s ease-out; }
-@keyframes cg-hop-0 {
+.tour .cgd-token.is-rest { transition: none; }
+.tour .cgd-token .pogo { width: 92% !important; height: 92% !important; transition: transform 0.2s ease; }
+.tour .cgd-token.lean-E .pogo { transform: rotate(9deg); }
+.tour .cgd-token.lean-W .pogo { transform: rotate(-9deg); }
+.tour .cgd-token.lean-N .pogo { transform: scale(0.97, 1.03); }
+.tour .cgd-hop { width: 100%; height: 100%; display: grid; place-items: center; }
+.tour .cgd-hop.is-hop-0 { animation: cgd-hop-0 0.32s ease-out; }
+.tour .cgd-hop.is-hop-1 { animation: cgd-hop-1 0.32s ease-out; }
+.tour .cgd-hop.is-bonk-0 { animation: cgd-bonk-0 0.5s ease-out; }
+.tour .cgd-hop.is-bonk-1 { animation: cgd-bonk-1 0.5s ease-out; }
+@keyframes cgd-hop-0 {
   0% { transform: translateY(0) scale(1, 1); }
   45% { transform: translateY(-34%) scale(0.94, 1.07); }
   80% { transform: translateY(0) scale(1.1, 0.88); }
   100% { transform: translateY(0) scale(1, 1); }
 }
-@keyframes cg-hop-1 {
+@keyframes cgd-hop-1 {
   0% { transform: translateY(0) scale(1, 1); }
   45% { transform: translateY(-34%) scale(0.94, 1.07); }
   80% { transform: translateY(0) scale(1.1, 0.88); }
   100% { transform: translateY(0) scale(1, 1); }
 }
 /* a soft "bonk": lean into the rock, bounce back, wobble — never a crash */
-@keyframes cg-bonk-0 {
+@keyframes cgd-bonk-0 {
   0% { transform: translate(0, 0); }
   30% { transform: translate(calc(var(--dx) * 26%), calc(var(--dy) * 26%)) scale(0.92, 1.05); }
   55% { transform: translate(calc(var(--dx) * -6%), calc(var(--dy) * -6%)) rotate(-7deg); }
   75% { transform: rotate(5deg); }
   100% { transform: rotate(0); }
 }
-@keyframes cg-bonk-1 {
+@keyframes cgd-bonk-1 {
   0% { transform: translate(0, 0); }
   30% { transform: translate(calc(var(--dx) * 26%), calc(var(--dy) * 26%)) scale(0.92, 1.05); }
   55% { transform: translate(calc(var(--dx) * -6%), calc(var(--dy) * -6%)) rotate(-7deg); }
   75% { transform: rotate(5deg); }
   100% { transform: rotate(0); }
 }
-.tour .cg-bonk {
+.tour .cgd-bonk {
   position: absolute;
   left: calc(50% + var(--dx) * 46% - 14%);
   top: calc(50% + var(--dy) * 46% - 14%);
@@ -223,31 +223,31 @@
   height: 28%;
   border-radius: 50%;
   background: radial-gradient(circle, #fff 0 30%, #ffe08a 31% 55%, transparent 56%);
-  animation: cg-bonk-star 0.6s ease-out 0.12s both;
+  animation: cgd-bonk-star 0.6s ease-out 0.12s both;
 }
-@keyframes cg-bonk-star {
+@keyframes cgd-bonk-star {
   0% { transform: scale(0); opacity: 0; }
   35% { transform: scale(1.5); opacity: 1; }
   100% { transform: scale(0.8); opacity: 0; }
 }
-.tour .cg-token.is-ghost { z-index: 2; opacity: 0.5; filter: saturate(0.7) brightness(1.15); }
-.tour .cg-token.is-ghost .pogo { width: 80% !important; height: 80% !important; }
+.tour .cgd-token.is-ghost { z-index: 2; opacity: 0.5; filter: saturate(0.7) brightness(1.15); }
+.tour .cgd-token.is-ghost .pogo { width: 80% !important; height: 80% !important; }
 
 /* the dotted preview path */
-.tour .cg-path { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.tour .cg-path polyline { fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.tour .cg-path-under { stroke: rgba(91, 63, 214, 0.18); stroke-width: 0.2; }
-.tour .cg-path-dots { stroke: var(--t-pogo-deep); stroke-width: 0.11; stroke-dasharray: 0.001 0.24; }
-.tour .cg-path-bump path { fill: #fff3b0; stroke: #c9962b; stroke-width: 0.03; }
-.tour .cg-path-bump { animation: cg-blink 1.1s ease-in-out infinite; }
-@keyframes cg-blink {
+.tour .cgd-path { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.tour .cgd-path polyline { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.tour .cgd-path-under { stroke: rgba(91, 63, 214, 0.18); stroke-width: 0.2; }
+.tour .cgd-path-dots { stroke: var(--t-pogo-deep); stroke-width: 0.11; stroke-dasharray: 0.001 0.24; }
+.tour .cgd-path-bump path { fill: #fff3b0; stroke: #c9962b; stroke-width: 0.03; }
+.tour .cgd-path-bump { animation: cgd-blink 1.1s ease-in-out infinite; }
+@keyframes cgd-blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.45; }
 }
 
 /* numbered footprints (teach) */
-.tour .cg-step { z-index: 1; display: flex; align-items: flex-start; justify-content: flex-start; padding: 5%; box-sizing: border-box; }
-.tour .cg-step b {
+.tour .cgd-step { z-index: 1; display: flex; align-items: flex-start; justify-content: flex-start; padding: 5%; box-sizing: border-box; }
+.tour .cgd-step b {
   min-width: 42%;
   height: 42%;
   padding: 0 4%;
@@ -261,27 +261,27 @@
   font-size: calc(100cqi / var(--n) * 0.27);
   font-weight: 900;
   line-height: 1;
-  animation: cg-pop-in 0.3s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+  animation: cgd-pop-in 0.3s cubic-bezier(0.3, 1.6, 0.5, 1) both;
   animation-delay: calc(var(--k) * 0.08s);
 }
 
 /* the trace pin */
-.tour .cg-pin { z-index: 4; display: flex; justify-content: flex-end; align-items: flex-start; }
-.tour .cg-pin .cgl-pin { width: 52%; height: 52%; margin: -12% -6% 0 0; animation: cg-pin-drop 0.42s cubic-bezier(0.3, 1.5, 0.5, 1) both; }
+.tour .cgd-pin { z-index: 4; display: flex; justify-content: flex-end; align-items: flex-start; }
+.tour .cgd-pin .cgl-pin { width: 52%; height: 52%; margin: -12% -6% 0 0; animation: cgd-pin-drop 0.42s cubic-bezier(0.3, 1.5, 0.5, 1) both; }
 .tour .cgl-pin-body { fill: var(--t-go); stroke: #06505e; stroke-width: 3.2; paint-order: stroke; }
 .tour .cgl-pin-dot { fill: #fff; }
-@keyframes cg-pin-drop {
+@keyframes cgd-pin-drop {
   from { transform: translateY(-70%) scale(0.6); opacity: 0; }
   to { transform: translateY(0) scale(1); opacity: 1; }
 }
-@keyframes cg-pop-in {
+@keyframes cgd-pop-in {
   from { transform: scale(0); }
   to { transform: scale(1); }
 }
 
 /* win sparkle on the flag */
-.tour .cg-burst { z-index: 2; }
-.tour .cg-burst i {
+.tour .cgd-burst { z-index: 2; }
+.tour .cgd-burst i {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -291,15 +291,15 @@
   border-radius: 999px;
   background: var(--t-gold);
   transform: rotate(var(--a)) translateY(-40%);
-  animation: cg-ray 0.8s ease-out both;
+  animation: cgd-ray 0.8s ease-out both;
 }
-@keyframes cg-ray {
+@keyframes cgd-ray {
   0% { opacity: 0; transform: rotate(var(--a)) translateY(-20%) scaleY(0.4); }
   40% { opacity: 1; }
   100% { opacity: 0; transform: rotate(var(--a)) translateY(-150%) scaleY(1); }
 }
 
-.tour .cg-sr {
+.tour .cgd-sr {
   position: absolute;
   width: 1px;
   height: 1px;

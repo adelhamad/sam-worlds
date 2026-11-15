@@ -104,10 +104,12 @@ export function reminderSchedule(now: number, context?: ReminderContext): Remind
   }
   const lead = leadCheer(context);
   const pool = cheerPool();
-  return times.map(({ when, tag, rotation }, i) => {
-    if (i === 0 && lead) return { when, tag, cheer: lead };
-    let cheer = pool[rotation % pool.length];
-    if (i === 1 && cheer === lead) cheer = pool[(rotation + 1) % pool.length]; // no repeat of the lead
-    return { when, tag, cheer };
+  const slots: ReminderSlot[] = [];
+  times.forEach(({ when, tag, rotation }, i) => {
+    let cheer = i === 0 && lead ? lead : pool[rotation % pool.length];
+    // Never the same cheer twice in a row (the lead, or a neighbour pushed along by it).
+    for (let step = 1; i > 0 && cheer === slots[i - 1].cheer && step < pool.length; step++) cheer = pool[(rotation + step) % pool.length];
+    slots.push({ when, tag, cheer });
   });
+  return slots;
 }

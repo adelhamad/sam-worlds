@@ -100,3 +100,44 @@ export function RobotArt() {
     </svg>
   );
 }
+
+const BUBBLE = "M 14 20 Q 14 10 24 10 L 76 10 Q 86 10 86 20 L 86 58 Q 86 68 76 68 L 46 68 L 28 84 L 31 68 L 24 68 Q 14 68 14 58 Z";
+
+/** Yalla Arabic — a warm speech bubble holding the letter ع. */
+export function ArabicArt() {
+  return (
+    <svg viewBox="0 0 100 100" className="ce-svg" aria-hidden="true" focusable="false">
+      <ellipse cx="50" cy="93" rx="27" ry="5" fill="rgba(6,10,38,0.25)" />
+      <path d={BUBBLE} fill="#ff9f6e" stroke={LINE} strokeWidth="5" strokeLinejoin="round" />
+      <path d="M 22 22 Q 22 17 28 17 L 50 17" fill="none" stroke={SHINE} strokeWidth="4" strokeLinecap="round" />
+      <text
+        x="50" y="47" textAnchor="middle" fontSize="38" fontWeight="800" fill="#fff" stroke={LINE} strokeWidth="2.5"
+        paintOrder="stroke" style={{ fontFamily: '"Noto Sans Arabic Variable", "Geeza Pro", sans-serif' }}
+      >
+        ع
+      </text>
+    </svg>
+  );
+}
+
+/** Bonjour French — a speech bubble in blue, white and red. */
+export function FrenchArt() {
+  return (
+    <svg viewBox="0 0 100 100" className="ce-svg" aria-hidden="true" focusable="false">
+      <defs>
+        <clipPath id="ce-fr-bubble"><path d={BUBBLE} /></clipPath>
+      </defs>
+      <ellipse cx="50" cy="93" rx="27" ry="5" fill="rgba(6,10,38,0.25)" />
+      <g clipPath="url(#ce-fr-bubble)">
+        <rect x="10" y="6" width="28" height="82" fill="#3f6bff" />
+        <rect x="38" y="6" width="24" height="82" fill="#f6f8ff" />
+        <rect x="62" y="6" width="28" height="82" fill="#ff5d73" />
+      </g>
+      <path d={BUBBLE} fill="none" stroke={LINE} strokeWidth="5" strokeLinejoin="round" />
+      <path d="M 22 22 Q 22 17 28 17 L 34 17" fill="none" stroke={SHINE} strokeWidth="4" strokeLinecap="round" />
+      <circle cx="41" cy="36" r="3.6" fill={LINE} />
+      <circle cx="59" cy="36" r="3.6" fill={LINE} />
+      <path d="M 40 47 Q 50 57 60 47" fill="none" stroke={LINE} strokeWidth="4" strokeLinecap="round" />
+    </svg>
+  );
+}
