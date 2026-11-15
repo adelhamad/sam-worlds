@@ -48,6 +48,11 @@ export const LANG = {
     means: "It means",
     watch: "Watch",
     yourTurn: "Your turn",
+    /** Give it to Pogo (LangGive). */
+    giveThis: (what: string) => `Pick up: ${what}`,
+    /** Memory (LangMemory). */
+    memCard: "A card. Tap to turn it over.",
+    memFound: (found: number, all: number) => `${found} of ${all} pairs found`,
   },
 
   /** The teach-first slides and the real-life mission card. */
