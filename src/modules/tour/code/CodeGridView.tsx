@@ -54,13 +54,13 @@ function Token({ pose, size, ghost = false }: { pose: PogoPose; size: number; gh
   const mood = ghost ? "idle" : pose.mood;
   return (
     <span
-      className={["cg-token", ghost ? "is-ghost" : "", pose.dir ? "lean-" + pose.dir : "", pose.hop === 0 ? "is-rest" : ""].join(" ")}
+      className={["cgd-token", ghost ? "is-ghost" : "", pose.dir ? "lean-" + pose.dir : "", pose.hop === 0 ? "is-rest" : ""].join(" ")}
       style={at(pose.at, size, { "--dx": dx, "--dy": dy })} data-testid={ghost ? "code-ghost" : "code-pogo"} data-at={pose.at}
     >
-      <span className={`cg-hop ${animClass(pose)}`}>
+      <span className={`cgd-hop ${animClass(pose)}`}>
         <Pogo mood={mood} still={mood === "idle"} size={40} replayKey={pose.hop} />
       </span>
-      {pose.bonk && !ghost && <span key={pose.hop} className="cg-bonk" aria-hidden="true" />}
+      {pose.bonk && !ghost && <span key={pose.hop} className="cgd-bonk" aria-hidden="true" />}
     </span>
   );
 }
@@ -85,11 +85,11 @@ function PathLine({ path, bumpAt, size }: { path: number[]; bumpAt?: { sq: numbe
     spark = { x: colOf(bumpAt.sq, size) + 0.5 + dx * 0.44, y: rowOf(bumpAt.sq, size) + 0.5 + dy * 0.44 };
   }
   return (
-    <svg className="cg-path" viewBox={`0 0 ${size} ${size}`} aria-hidden="true" data-testid="code-preview">
-      {path.length > 1 && <polyline className="cg-path-under" points={points} />}
-      {path.length > 1 && <polyline className="cg-path-dots" points={points} />}
+    <svg className="cgd-path" viewBox={`0 0 ${size} ${size}`} aria-hidden="true" data-testid="code-preview">
+      {path.length > 1 && <polyline className="cgd-path-under" points={points} />}
+      {path.length > 1 && <polyline className="cgd-path-dots" points={points} />}
       {spark && (
-        <g className="cg-path-bump" transform={`translate(${spark.x} ${spark.y})`}>
+        <g className="cgd-path-bump" transform={`translate(${spark.x} ${spark.y})`}>
           <path d="M0 -0.2 0.06 -0.06 0.2 0 0.06 0.06 0 0.2 -0.06 0.06 -0.2 0 -0.06 -0.06Z" />
         </g>
       )}
@@ -105,7 +105,7 @@ function Trail({ trail, size }: { trail: number[]; size: number }) {
       {trail.slice(1).map((sq, k) => {
         if (seen.has(sq)) return null;
         seen.add(sq);
-        return <span key={k} className="cg-step" style={at(sq, size, { "--k": k })}><b>{k + 1}</b></span>;
+        return <span key={k} className="cgd-step" style={at(sq, size, { "--k": k })}><b>{k + 1}</b></span>;
       })}
     </>
   );
@@ -122,14 +122,14 @@ export function CodeGridView({
   const tiles = Array.from({ length: size * size }, (_, sq) => {
     const wall = grid.walls.includes(sq);
     const tone = (rowOf(sq, size) + colOf(sq, size)) % 2 === 0 ? "is-a" : "is-b";
-    const cls = `cg-tile ${tone} ${wall ? "is-wall" : ""} ${sq === grid.start ? "is-start" : ""} ${sq === pin ? "is-pinned" : ""}`;
+    const cls = `cgd-tile ${tone} ${wall ? "is-wall" : ""} ${sq === grid.start ? "is-start" : ""} ${sq === pin ? "is-pinned" : ""}`;
     const inner = (
       <>
-        {wall && <span className={`cg-rock rock-${sq % 3}`} />}
-        {sq === grid.start && <span className="cg-pad" />}
-        {grid.stars.includes(sq) && <StarIcon className={`cg-star ${left.includes(sq) ? "" : "is-got"}`} />}
-        {sq === grid.goal && <FlagIcon className={`cg-flag ${won ? "is-won" : ""}`} />}
-        {sq === ring && <span className="cg-ring" />}
+        {wall && <span className={`cgd-rock rock-${sq % 3}`} />}
+        {sq === grid.start && <span className="cgd-pad" />}
+        {grid.stars.includes(sq) && <StarIcon className={`cgd-star ${left.includes(sq) ? "" : "is-got"}`} />}
+        {sq === grid.goal && <FlagIcon className={`cgd-flag ${won ? "is-won" : ""}`} />}
+        {sq === ring && <span className="cgd-ring" />}
       </>
     );
     if (!tappable || wall) return <div key={sq} className={cls}>{inner}</div>;
@@ -146,29 +146,29 @@ export function CodeGridView({
 
   return (
     <div
-      className={`cg ${tappable ? "is-tappable" : ""} ${className}`} style={{ "--n": size } as CSSProperties}
+      className={`cgd ${tappable ? "is-tappable" : ""} ${className}`} style={{ "--n": size } as CSSProperties}
       data-testid="code-grid"
     >
-      <div className="cg-field">
-        <div className="cg-tiles">{tiles}</div>
-        <div className="cg-layer" aria-hidden="true">
+      <div className="cgd-field">
+        <div className="cgd-tiles">{tiles}</div>
+        <div className="cgd-layer" aria-hidden="true">
           {path && path.length > 0 && <PathLine path={path} bumpAt={bumpAt} size={size} />}
           {trail && <Trail trail={trail} size={size} />}
           {won && grid.goal >= 0 && (
-            <span className="cg-burst" style={at(grid.goal, size)}>
+            <span className="cgd-burst" style={at(grid.goal, size)}>
               {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => <i key={i} style={{ "--a": `${i * 45}deg` } as CSSProperties} />)}
             </span>
           )}
           {ghost && <Token pose={ghost} size={size} ghost />}
           {pin !== null && (
-            <span className="cg-pin" style={at(pin, size)} key={pin}>
+            <span className="cgd-pin" style={at(pin, size)} key={pin}>
               <PinIcon />
             </span>
           )}
           <Token pose={pogo} size={size} />
         </div>
       </div>
-      {pin !== null && <span className="cg-sr" aria-live="polite">{S.pinned}</span>}
+      {pin !== null && <span className="cgd-sr" aria-live="polite">{S.pinned}</span>}
     </div>
   );
 }

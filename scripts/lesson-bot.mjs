@@ -285,6 +285,40 @@ async function checkTopBar(when) {
   if (bad) unsolved.push(`top bar hidden ${when}: ${bad}`);
 }
 
+/**
+ * Chess missions: every star / target ring / destination dot sits dead centre in
+ * its square, and the goal chip's icon does not touch its number (tolerance 2 px).
+ * Animations are switched off while measuring so a bob or pop cannot fool it.
+ */
+async function checkChessAlign(when) {
+  const bad = await page.evaluate(() => {
+    const out = [];
+    const still = [...document.querySelectorAll(".cb-sq > *, .cx-goal")];
+    for (const el of still) el.style.animation = "none";
+    const centre = (r) => [r.left + r.width / 2, r.top + r.height / 2];
+    for (const sq of document.querySelectorAll(".cb-sq")) {
+      for (const el of sq.querySelectorAll(":scope > .cb-star, :scope > .cb-target, :scope > .cb-dot, :scope > .cb-mark")) {
+        const [ax, ay] = centre(sq.getBoundingClientRect());
+        const [bx, by] = centre(el.getBoundingClientRect());
+        if (Math.hypot(ax - bx, ay - by) > 2) out.push(`${el.getAttribute("class")} in square ${sq.dataset.sq} is ${Math.round(bx - ax)},${Math.round(by - ay)}px off centre`);
+      }
+    }
+    const chip = document.querySelector(".cx-goal");
+    const icon = chip?.firstElementChild;
+    const num = chip?.querySelector(".cx-goal-num");
+    if (icon && num) {
+      const a = icon.getBoundingClientRect();
+      const b = num.getBoundingClientRect();
+      const wide = Math.min(a.right, b.right) - Math.max(a.left, b.left);
+      const high = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+      if (wide > 2 && high > 2) out.push(`goal chip icon overlaps its number by ${Math.round(wide)}px`);
+    }
+    for (const el of still) el.style.animation = "";
+    return out;
+  });
+  for (const message of bad) unsolved.push(`chess misaligned ${when}: ${message}`);
+}
+
 // ------------------------------------------------------------------ run
 
 const base = `http://localhost:${server.port}/#`;
@@ -324,6 +358,7 @@ try {
     const firstOfKind = !kindsSeen.has(kind);
     kindsSeen.add(kind);
     await sleep(350);
+    if (kind === "chess-mission") { await sleep(1300); await checkChessAlign(`on mission #${answers}`); }
     if (missAt.has(answers)) {
       await page.evaluate(() => window.__tourLesson.submit("bot-miss"));
       await sleep(900);

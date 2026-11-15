@@ -114,19 +114,19 @@
   align-items: center;
   gap: 14px;
 }
-.tour .ck-grid.cg {
+.tour .ck-grid.cgd {
   width: clamp(150px, 44vw, 230px);
   padding: 3px;
   border-radius: 14px;
   border-bottom-width: 4px;
   box-shadow: none;
 }
-.tour .ck-grid .cg-field { border-radius: 11px; }
-.tour .ck-grid .cg-tile::before { inset: 1.5px; box-shadow: inset 0 -2px 0 var(--cg-a-deep); }
-.tour .ck-grid .cg-tile.is-b::before { box-shadow: inset 0 -2px 0 var(--cg-b-deep); }
-.tour .ck-grid .cg-pad { border-width: 2px; }
-.tour .ck-grid .cg-step b { min-width: 50%; height: 50%; font-size: calc(100cqi / var(--n) * 0.34); }
-.tour .ck-grid .cg-pin .cgl-pin { width: 66%; height: 66%; }
+.tour .ck-grid .cgd-field { border-radius: 11px; }
+.tour .ck-grid .cgd-tile::before { inset: 1.5px; box-shadow: inset 0 -2px 0 var(--cg-a-deep); }
+.tour .ck-grid .cgd-tile.is-b::before { box-shadow: inset 0 -2px 0 var(--cg-b-deep); }
+.tour .ck-grid .cgd-pad { border-width: 2px; }
+.tour .ck-grid .cgd-step b { min-width: 50%; height: 50%; font-size: calc(100cqi / var(--n) * 0.34); }
+.tour .ck-grid .cgd-pin .cgl-pin { width: 66%; height: 66%; }
 .tour .ck-side { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
 .tour .ck-side .cp-track { width: auto; max-width: 100%; }
 .tour .ck-line { font-size: clamp(17px, 4.6vw, 21px); font-weight: 900; line-height: 1.2; text-wrap: balance; }
