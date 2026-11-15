@@ -32,7 +32,7 @@ export const U15: LangUnitPack = {
     { id: "chat", text: "Chat", en: "Cat", art: "cat", topic: "thing", tip: "Say 'shah'. The t is silent." },
     { id: "chien", text: "Chien", en: "Dog", art: "dog", topic: "thing", tip: "Say 'shee-AN'." },
     { id: "arbre", text: "Arbre", en: "Tree", art: "tree", topic: "thing", tip: "Say it 'arbr'." },
-    { id: "parc", text: "Parc", en: "Park", topic: "place", tip: "Say 'park'. The c is silent." },
+    { id: "parc", text: "Parc", en: "Park", topic: "place", tip: "Say it just like 'park' in English." },
     {
       id: "il-pleut", text: "Il pleut.", en: "It's raining", art: "rain", topic: "thing",
       words: [{ text: "Il" }, { text: "pleut" }], tip: "Say 'eel pluh'.",
@@ -65,10 +65,10 @@ export const U15: LangUnitPack = {
     },
     {
       id: "cold-day", setup: "It is freezing outside and you have no jacket.", who: { name: "Papa" },
-      reply: ["jai-froid", "froid"], alsoOk: ["calin", "on-y-va", "vite", "jai-peur"],
+      reply: ["jai-froid", "froid"], alsoOk: ["calin", "on-y-va", "vite"],
     },
     {
-      id: "dog-park", setup: "A friendly dog trots towards you at the park.", who: { name: "Hugo" },
+      id: "dog-park", setup: "A friendly dog trots by at the park. Show Hugo.", who: { name: "Hugo" },
       reply: ["regarde-un-chien", "chien"], alsoOk: ["regarde", "regarde-ca", "super", "joli", "petit", "grand"],
     },
     {

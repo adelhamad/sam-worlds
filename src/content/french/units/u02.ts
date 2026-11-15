@@ -24,8 +24,8 @@ export const U02: LangUnitPack = {
     ],
   },
   phrases: [
-    { id: "moi", text: "Moi", en: "Me", topic: "greeting", tip: "Point to yourself and say it. It rhymes with 'wah'." },
-    { id: "toi", text: "Toi", en: "You", topic: "greeting", tip: "For a friend or family. A stranger grown-up gets vous." },
+    { id: "moi", text: "Moi", en: "Me", topic: "greeting", tip: "Say 'mwah'. Point to yourself when you say it." },
+    { id: "toi", text: "Toi", en: "You", topic: "greeting", tip: "Say 'twah'. To a grown-up you don't know, say vous." },
     { id: "garcon", text: "Garçon", en: "Boy", topic: "thing", tip: "The ç sounds like s. The n is soft." },
     { id: "fille", text: "Fille", en: "Girl", topic: "thing", tip: "Say it like 'fee-y'. The l is not heard." },
     { id: "copain", text: "Copain", en: "Friend (a boy)", topic: "family", tip: "A friend who is a boy. The n is soft." },
@@ -44,7 +44,7 @@ export const U02: LangUnitPack = {
     },
     {
       id: "comment-tu-tappelles", text: "Comment tu t'appelles?", en: "What's your name?", topic: "greeting",
-      words: [{ text: "Comment" }, { text: "tu" }, { text: "t'appelles" }], tip: "For kids. A grown-up stranger hears Comment vous appelez-vous?",
+      words: [{ text: "Comment" }, { text: "tu" }, { text: "t'appelles" }], tip: "For kids. To a grown-up: Comment vous appelez-vous?",
     },
     {
       id: "tu-as-quel-age", text: "Tu as quel âge?", en: "How old are you?", topic: "greeting",
@@ -74,11 +74,11 @@ export const U02: LangUnitPack = {
       reply: ["moi"],
     },
     {
-      id: "friend-girl", setup: "Papa asks who Léa is. She is a girl and your friend.", who: { name: "Papa" },
+      id: "friend-girl", setup: "Papa asks about Léa. Tell him she is your friend.", who: { name: "Papa" },
       reply: ["copine"],
     },
     {
-      id: "friend-boy", setup: "Papa asks who Hugo is. He is a boy and your friend.", who: { name: "Papa" },
+      id: "friend-boy", setup: "Papa asks about Hugo. Tell him he is your friend.", who: { name: "Papa" },
       reply: ["copain"],
     },
   ],

@@ -36,7 +36,7 @@ export const U07: LangUnitPack = {
     { id: "dix", text: "Dix", en: "Ten", topic: "number", tip: "Say 'deess'." },
     { id: "onze", text: "Onze", en: "Eleven", topic: "number", tip: "Say 'onz'." },
     { id: "douze", text: "Douze", en: "Twelve", topic: "number", tip: "Say 'dooz'." },
-    { id: "combien", text: "Combien?", en: "How many?", topic: "number", tip: "Say 'kom-bee-an'." },
+    { id: "combien", text: "Combien?", en: "How many?", topic: "number", like: ["combien-ca-coute"], tip: "Say 'kom-BYAN'." },
     {
       id: "un-deux-trois-partez", text: "Un, deux, trois, partez!", en: "One, two, three, go!", topic: "number",
       words: [{ text: "Un" }, { text: "deux" }, { text: "trois" }, { text: "partez" }], tip: "Shout it at the start of a race.",
@@ -47,7 +47,7 @@ export const U07: LangUnitPack = {
     },
     {
       id: "mon-cousin-a-neuf-ans", text: "Mon cousin a neuf ans.", en: "My cousin is nine", topic: "number",
-      words: [{ text: "Mon" }, { text: "cousin" }, { text: "a" }, { text: "neuf" }, { text: "ans" }], tip: "French says 'my cousin has nine years'.",
+      words: [{ text: "Mon" }, { text: "cousin" }, { text: "a" }, { text: "neuf" }, { text: "ans" }], tip: "French says 'my cousin has nine years'. Say 'neu-VAHN'.",
     },
     {
       id: "je-veux-deux-pommes", text: "Je veux deux pommes.", en: "I want two apples", art: "apple", topic: "number",

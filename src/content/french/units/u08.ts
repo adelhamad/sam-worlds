@@ -70,7 +70,7 @@ export const U08: LangUnitPack = {
     },
     {
       id: "won-race", setup: "You won the race! Léa asks how you feel.", who: { name: "Léa" },
-      reply: ["je-suis-content", "content"], alsoOk: ["ca-va-bien", "ca-va-bien-et-toi", "miam"],
+      reply: ["je-suis-content", "content"], alsoOk: ["ca-va-bien", "ca-va-bien-et-toi"],
     },
     {
       id: "late-night", setup: "It is very late. You can hardly keep your eyes open.", who: { name: "Papa" },
@@ -87,7 +87,7 @@ export const U08: LangUnitPack = {
     },
     {
       id: "cheer-up", setup: "Your friend Léa is crying. You want to comfort her.", who: { name: "Léa" },
-      reply: ["calin", "qu-est-ce-qu-il-y-a"], alsoOk: ["je-taime", "triste"],
+      reply: ["calin", "qu-est-ce-qu-il-y-a"], alsoOk: ["je-taime", "triste", "ca-va", "ce-nest-pas-grave", "desole"],
     },
   ],
 };

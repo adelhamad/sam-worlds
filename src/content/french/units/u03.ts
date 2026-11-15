@@ -46,7 +46,7 @@ export const U03: LangUnitPack = {
     },
     {
       id: "ce-nest-pas-grave", text: "Ce n'est pas grave", en: "It's okay, never mind", topic: "polite",
-      words: [{ text: "Ce" }, { text: "n'est" }, { text: "pas" }, { text: "grave" }], tip: "Say it when someone says sorry to you.",
+      words: [{ text: "Ce" }, { text: "n'est" }, { text: "pas" }, { text: "grave" }], tip: "Say it when someone says sorry. Kids say C'est pas grave.",
     },
     {
       id: "excusez-moi", text: "Excusez-moi", en: "Excuse me (to a grown-up)", topic: "polite", like: ["pardon"],
@@ -96,7 +96,7 @@ export const U03: LangUnitPack = {
     },
     {
       id: "ask-teacher", setup: "You want to ask your teacher a question.", who: { name: "Teacher" },
-      reply: ["excusez-moi"], alsoOk: ["pardon"],
+      reply: ["excusez-moi"], alsoOk: ["pardon", "s-il-vous-plait"],
     },
   ],
 };

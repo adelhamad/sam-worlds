@@ -25,7 +25,7 @@ export const U05: LangUnitPack = {
   },
   phrases: [
     { id: "eau", text: "Eau", en: "Water", art: "cup", topic: "food", tip: "Say it like 'oh'." },
-    { id: "jus", text: "Jus", en: "Juice", topic: "food", tip: "Say it like 'zhoo'." },
+    { id: "jus", text: "Jus", en: "Juice", topic: "food", tip: "Say 'zhew', with round lips." },
     { id: "encore", text: "Encore", en: "More", topic: "action", like: ["encore-s-il-te-plait", "encore-une-fois"], tip: "Say it 'on-kor'." },
     {
       id: "un-peu", text: "Un peu", en: "A little", topic: "action",
@@ -76,14 +76,14 @@ export const U05: LangUnitPack = {
     {
       id: "offer-water", setup: "Papa offers you water. You are very thirsty.", who: { name: "Papa" }, line: "tu-veux-de-leau",
       reply: ["oui-merci", "oui-s-il-te-plait"],
-      alsoOk: ["oui", "merci", "merci-beaucoup", "je-veux", "je-voudrais", "je-veux-de-leau", "encore", "s-il-te-plait", "s-il-vous-plait"],
+      alsoOk: ["oui", "merci", "merci-beaucoup", "beaucoup", "je-veux", "je-voudrais", "je-veux-de-leau", "encore", "s-il-te-plait", "s-il-vous-plait"],
     },
     {
       id: "refuse-cake", setup: "Grandma holds out more cake. You are full.", who: { name: "Grandma" }, line: "tu-veux",
       reply: ["non-merci", "je-ne-veux-pas"], alsoOk: ["non", "merci", "assez"],
     },
     {
-      id: "little-juice", setup: "Papa pours juice. You only want a little.", who: { name: "Papa" },
+      id: "little-juice", setup: "Papa asks how much juice you want. Only a little.", who: { name: "Papa" },
       reply: ["un-peu"],
     },
     {

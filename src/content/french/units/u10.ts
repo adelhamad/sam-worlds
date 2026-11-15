@@ -66,7 +66,7 @@ export const U10: LangUnitPack = {
   scenes: [
     { id: "lost-shoe", setup: "You cannot find your other shoe. Ask Papa.", who: { name: "Papa" }, reply: ["c-est-ou"] },
     {
-      id: "where-mum", setup: "You get home and Maman is not in the kitchen.", reply: ["ou-est-maman"], alsoOk: ["maman", "c-est-ou"],
+      id: "where-mum", setup: "Maman is not in the kitchen. Ask Papa where she is.", who: { name: "Papa" }, reply: ["ou-est-maman"], alsoOk: ["maman", "c-est-ou"],
     },
     {
       id: "dont-know", setup: "Hugo asks where his ball is. You have no idea.", who: { name: "Hugo" }, line: "c-est-ou",

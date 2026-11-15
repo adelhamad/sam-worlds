@@ -65,18 +65,18 @@ export const U12: LangUnitPack = {
     },
     {
       id: "dislike", setup: "Grandma serves a food you really do not like.", who: { name: "Grandma" },
-      reply: ["je-naime-pas-ca"], alsoOk: ["non-merci", "je-ne-veux-pas", "non", "je-nai-plus-faim"],
+      reply: ["je-naime-pas-ca"], alsoOk: ["merci", "non-merci", "je-ne-veux-pas", "non", "je-nai-plus-faim"],
     },
     {
-      id: "pretty", setup: "Léa shows you her new dress. It is lovely.", who: { name: "Léa" },
-      reply: ["joli"], alsoOk: ["super", "bravo", "j-aime-ca", "regarde", "regarde-ca"],
+      id: "pretty", setup: "Léa shows you her new drawing. It is lovely.", who: { name: "Léa" },
+      reply: ["joli"], alsoOk: ["super", "bravo", "j-aime-ca"],
     },
     {
       id: "big-truck", setup: "A huge truck rolls by. Show Hugo how big it is.", who: { name: "Hugo" },
       reply: ["grand"], alsoOk: ["regarde", "regarde-ca", "super"],
     },
     {
-      id: "tiny-bug", setup: "Hugo holds a tiny ladybird on his finger.", who: { name: "Hugo" },
+      id: "tiny-bug", setup: "Hugo shows you a snail. It is so tiny!", who: { name: "Hugo" },
       reply: ["petit"], alsoOk: ["regarde", "regarde-ca", "joli", "super"],
     },
     {

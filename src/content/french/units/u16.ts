@@ -42,7 +42,7 @@ export const U16: LangUnitPack = {
       words: [{ text: "La" }, { text: "monnaie" }], tip: "The coins you get back.",
     },
     {
-      id: "combien-ca-coute", text: "Combien ça coûte?", en: "How much is it?", topic: "polite",
+      id: "combien-ca-coute", text: "Combien ça coûte?", en: "How much is it?", topic: "polite", like: ["combien"],
       words: [{ text: "Combien" }, { text: "ça" }, { text: "coûte" }], tip: "Ask it to a shopkeeper. Say 'koot'.",
     },
     {
@@ -50,7 +50,7 @@ export const U16: LangUnitPack = {
       words: [{ text: "C'est" }, { text: "tout" }], tip: "Say it when you don't want anything else.",
     },
     {
-      id: "bonne-journee", text: "Bonne journée!", en: "Have a good day!", topic: "polite", like: ["merci-vous-aussi"],
+      id: "bonne-journee", text: "Bonne journée!", en: "Have a good day!", topic: "polite",
       words: [{ text: "Bonne" }, { text: "journée" }], tip: "Shopkeepers say it as you leave.",
     },
     {
@@ -68,7 +68,7 @@ export const U16: LangUnitPack = {
     },
     {
       id: "merci-vous-aussi", text: "Merci, vous aussi.", en: "Thanks, you too (grown-up)", topic: "polite",
-      like: ["merci-toi-aussi", "bonne-journee"],
+      like: ["merci-toi-aussi"],
       words: [{ text: "Merci" }, { text: "vous" }, { text: "aussi" }], tip: "The answer to Bonne journée.",
     },
   ],
@@ -78,11 +78,11 @@ export const U16: LangUnitPack = {
       reply: ["bonjour-madame"], alsoOk: ["bonjour", "madame", "bonsoir"],
     },
     {
-      id: "order-bread", setup: "It is your turn at the bakery. You want a baguette.", who: { name: "Baker" },
-      reply: ["une-baguette-s-il-vous-plait"], alsoOk: ["une-baguette", "je-voudrais", "s-il-vous-plait", "je-peux-avoir-de-leau"],
+      id: "order-bread", setup: "You said hello to the baker. Now ask for a baguette.", who: { name: "Baker" },
+      reply: ["une-baguette-s-il-vous-plait"], alsoOk: ["une-baguette", "je-voudrais", "s-il-vous-plait"],
     },
     {
-      id: "order-ice", setup: "At the ice-cream stand, you want one ice cream.", who: { name: "Ice-cream seller" },
+      id: "order-ice", setup: "Your turn at the ice-cream stand. Ask for one ice cream.", who: { name: "Ice-cream seller" },
       reply: ["je-voudrais-une-glace"], alsoOk: ["glace", "je-voudrais", "je-veux", "s-il-vous-plait"],
     },
     {
@@ -91,11 +91,11 @@ export const U16: LangUnitPack = {
     },
     {
       id: "get-bread", setup: "The baker hands you your warm bread and says it.", who: { name: "Baker" }, line: "voila",
-      reply: ["merci", "merci-beaucoup"], alsoOk: ["oui-merci", "merci-vous-aussi", "bravo", "super"],
+      reply: ["merci", "merci-beaucoup"], alsoOk: ["oui-merci", "merci-vous-aussi", "bravo", "super", "bonne-journee", "au-revoir"],
     },
     {
       id: "thats-all", setup: "Madame asks if you want anything else. You are done.", who: { name: "Baker" },
-      reply: ["c-est-tout"], alsoOk: ["non-merci", "non", "merci", "assez"],
+      reply: ["c-est-tout"], alsoOk: ["non-merci", "non", "merci", "assez", "je-ne-veux-pas"],
     },
     {
       id: "goodbye-shop", setup: "The baker wishes you a nice day as you leave.", who: { name: "Baker" }, line: "bonne-journee",

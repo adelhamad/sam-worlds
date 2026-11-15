@@ -68,7 +68,7 @@ export const U13: LangUnitPack = {
   scenes: [
     {
       id: "arrive-school", setup: "Monday morning. Your teacher waits at the classroom door.", who: { name: "Teacher" },
-      reply: ["bonjour-maitresse"], alsoOk: ["bonjour", "salut"],
+      reply: ["bonjour-maitresse"], alsoOk: ["bonjour"],
     },
     {
       id: "got-it", setup: "The teacher explains a sum. You get it right away!", who: { name: "Teacher" },

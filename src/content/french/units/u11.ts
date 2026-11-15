@@ -25,7 +25,7 @@ export const U11: LangUnitPack = {
   },
   phrases: [
     {
-      id: "on-joue", text: "On joue?", en: "Shall we play?", topic: "play", like: ["on-joue-au-ballon", "tu-joues-avec-moi", "avec-moi"],
+      id: "on-joue", text: "On joue?", en: "Shall we play?", topic: "play", like: ["on-joue-au-ballon", "tu-joues-avec-moi"],
       words: [{ text: "On" }, { text: "joue" }], tip: "On means 'we' when friends talk.",
     },
     { id: "ballon", text: "Ballon", en: "Ball", art: "ball", topic: "play", tip: "Say 'ba-LON'. The n is soft." },
@@ -49,7 +49,7 @@ export const U11: LangUnitPack = {
       words: [{ text: "Encore" }, { text: "une" }, { text: "fois" }], tip: "Say it when you want another go.",
     },
     {
-      id: "avec-moi", text: "Avec moi", en: "With me", topic: "play", like: ["on-joue", "tu-joues-avec-moi", "on-joue-au-ballon"],
+      id: "avec-moi", text: "Avec moi", en: "With me", topic: "play", like: ["tu-joues-avec-moi"],
       words: [{ text: "Avec" }, { text: "moi" }], tip: "Say it to ask friends to join you.",
     },
     {
@@ -67,13 +67,13 @@ export const U11: LangUnitPack = {
     },
     {
       id: "on-joue-au-ballon", text: "On joue au ballon?", en: "Shall we play ball?", art: "ball", topic: "play",
-      like: ["on-joue", "avec-moi", "tu-joues-avec-moi"],
-      words: [{ text: "On" }, { text: "joue" }, { text: "au" }, { text: "ballon" }], tip: "Au means 'at the' with games.",
+      like: ["on-joue", "tu-joues-avec-moi"],
+      words: [{ text: "On" }, { text: "joue" }, { text: "au" }, { text: "ballon" }], tip: "Au goes before games: jouer au ballon.",
     },
   ],
   scenes: [
     {
-      id: "invite", setup: "Recess. Léa stands alone with a ball. You want to play.", who: { name: "Léa" },
+      id: "invite", setup: "Break time. Léa stands alone with a ball. You want to play.", who: { name: "Léa" },
       reply: ["on-joue", "tu-joues-avec-moi", "on-joue-au-ballon"], alsoOk: ["avec-moi", "salut", "coucou", "salut-ca-va"],
     },
     {
@@ -90,7 +90,7 @@ export const U11: LangUnitPack = {
     },
     {
       id: "i-won", setup: "You won the race to the gate!", who: { name: "Hugo" },
-      reply: ["jai-gagne"], alsoOk: ["super", "je-suis-content", "content", "moi"],
+      reply: ["jai-gagne"], alsoOk: ["oui", "super", "je-suis-content", "content", "moi"],
     },
     {
       id: "friend-wins", setup: "Léa scores a goal. Cheer for her!", who: { name: "Léa" },

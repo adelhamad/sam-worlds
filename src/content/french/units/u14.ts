@@ -26,13 +26,13 @@ export const U14: LangUnitPack = {
   phrases: [
     { id: "aujourdhui", text: "Aujourd'hui", en: "Today", topic: "time", tip: "Say 'oh-zhoor-DWEE'." },
     { id: "demain", text: "Demain", en: "Tomorrow", topic: "time", tip: "Say 'duh-MAN'." },
-    { id: "hier", text: "Hier", en: "Yesterday", topic: "time", tip: "Say 'yair'." },
+    { id: "hier", text: "Hier", en: "Yesterday", topic: "time", tip: "Say 'ee-YAIR'." },
     { id: "maintenant", text: "Maintenant", en: "Now", topic: "time", tip: "Say 'man-tuh-NAN'." },
     {
       id: "plus-tard", text: "Plus tard", en: "Later", topic: "time",
       words: [{ text: "Plus" }, { text: "tard" }], tip: "The d in tard is silent. Say 'plu tar'.",
     },
-    { id: "matin", text: "Matin", en: "Morning", topic: "time", tip: "Bonjour is what you say in the morning." },
+    { id: "matin", text: "Matin", en: "Morning", topic: "time", tip: "Say 'ma-TAN'. Le matin: in the morning." },
     { id: "soir", text: "Soir", en: "Evening", topic: "time", tip: "Bonsoir means 'good evening'." },
     { id: "lundi", text: "Lundi", en: "Monday", topic: "time", tip: "Days start with a small letter in French." },
     { id: "mardi", text: "Mardi", en: "Tuesday", topic: "time", tip: "Say it 'mar-DEE'." },
