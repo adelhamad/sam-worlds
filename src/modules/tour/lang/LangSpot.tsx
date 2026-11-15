@@ -15,12 +15,15 @@ import "./spot.css";
 const S = LANG.ui;
 
 export function LangSpot({ payload, disabled, onDraft }: WidgetProps<SpotPayload>) {
-  const { ready, say } = useVoice(payload.lang);
+  const { canSayText, say } = useVoice(payload.lang);
+  const heard = payload.words[payload.heard];
+  // A voice file, or failing that the device voice; with neither, the word is shown instead.
+  const ready = canSayText(heard.say);
   const [picked, setPicked] = useState<number | null>(null);
   /** Bumps on every catch so the burst replays. */
   const [catches, setCatches] = useState(0);
   useDraft(onDraft, picked === null ? null : spotAnswer(picked));
-  const heard = payload.words[payload.heard];
+
 
   useEffect(() => {
     if (!ready) return;

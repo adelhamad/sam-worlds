@@ -1,6 +1,7 @@
 // One phrase (or letter) in the studio list: its writing, Latin spelling and
 // meaning, a "recorded" mark, and Record / Stop, Play, Delete.
-import { clipMeta, deleteClips, playClip } from "../../engine/feedback/clips";
+import { clipMeta, deleteClips, playClip, playVoiceFile } from "../../engine/feedback/clips";
+import { voiceFileUrl } from "../../engine/feedback/voiceFiles";
 import { formatSeconds, VOICES } from "../../strings/voices";
 import { Icon } from "../icons/Icon";
 import type { StudioItem } from "./studioData";
@@ -27,6 +28,8 @@ export function ClipRow({ item, lang, studio }: { item: StudioItem; lang: string
   const meta = clipMeta(item.key);
   const recording = studio.active === item.key;
   const busy = studio.active !== null && !recording;
+  // The voice the app ships for this phrase: listen, then decide whether to record your own.
+  const appVoice = voiceFileUrl(item.key);
 
   const toggle = () => {
     if (recording) {
@@ -50,6 +53,11 @@ export function ClipRow({ item, lang, studio }: { item: StudioItem; lang: string
         >
           {recordLabel(recording, Boolean(meta), studio.elapsed)}
         </button>
+        {appVoice && !recording && (
+          <button type="button" className="btn btn-compact btn-secondary" disabled={busy} onClick={() => void playVoiceFile(appVoice)} data-testid={`vx-app-${item.key}`}>
+            <Icon name="sound" size={18} mono /> {S.appVoice}
+          </button>
+        )}
         {meta && !recording && (
           <>
             <button type="button" className="btn btn-compact btn-secondary" disabled={busy} onClick={() => void playClip(item.key)} data-testid={`vx-play-${item.key}`}>

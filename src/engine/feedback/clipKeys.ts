@@ -32,3 +32,12 @@ export function parseClipKey(key: string): ClipRef | null {
   if (parts.length === 3 && parts[1] === LETTER && parts[2]) return { lang, kind: "letter", id: parts[2] };
   return null;
 }
+
+/**
+ * The bundled voice file of one word tile: "ar:word:بدّي". Never recorded by
+ * the parent, so parseClipKey does not know it. Punctuation and capitals do
+ * not make a different word; Arabic vowel marks do (كيفك / كيفِك).
+ */
+export function wordClipKey(lang: LangCode, text: string): string {
+  return `${lang}:word:${text.replace(/[.!?؟,،]/g, "").trim().toLowerCase()}`;
+}

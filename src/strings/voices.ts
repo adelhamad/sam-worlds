@@ -18,18 +18,19 @@ export const VOICES = {
   /** Two calm lines at the top, per language. */
   why: {
     ar: [
-      "The device's Arabic voice reads Standard Arabic, not the Arabic your family speaks.",
-      "Record the phrases in your own voice and Sam hears your family's Arabic instead.",
+      "The app speaks Arabic with its own built-in voice (a Syrian accent), on every device.",
+      "Record a phrase in your own voice and Sam hears your family's Arabic instead.",
     ],
     fr: [
-      "The device's French voice is good, so recording is optional.",
-      "If you record a phrase, Sam hears your voice instead of the device.",
+      "The app speaks French with its own built-in voice, on every device.",
+      "If you record a phrase, Sam hears your voice instead.",
     ],
   } satisfies Record<LangCode, [string, string]>,
   onDevice: "Recordings stay on this device only. They are not backed up and not shared.",
 
   device: {
-    heading: "The device voice",
+    heading: "The device voice (last resort)",
+    lastResort: "Only used if a phrase has neither your recording nor a built-in voice file.",
     uses: "The app uses:",
     none: "No voice for this language on this device.",
     local: "on this device",
@@ -66,6 +67,7 @@ export const VOICES = {
     recordAgain: "Record again",
     stop: (seconds: string) => `Stop ${seconds}`,
     play: "Play",
+    appVoice: "App voice",
     delete: "Delete",
     recorded: "Recorded",
     notYet: "Not recorded",

@@ -37,7 +37,8 @@ export default defineConfig({
         importScripts: ["notify-sw.js"],
         // mp3s are deliberately NOT precached (first load stays light);
         // each track is cached the first time it plays.
-        globPatterns: ["**/*.{js,css,html,png,svg,webp,woff2}"],
+        // voice/**: the voice files of the language courses, so lessons speak offline too (the music stays out).
+        globPatterns: ["**/*.{js,css,html,png,svg,webp,woff2}", "voice/**/*.mp3"],
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
         runtimeCaching: [
           {
