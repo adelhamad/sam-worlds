@@ -1,22 +1,17 @@
 // Pogo — the World Tour mascot: a small violet visitor from Sam's space base
 // with one glowing amber antenna. Sam is the guide; Pogo is the curious learner.
-// The drawing lives in PogoArt.tsx, the motion in pogo.css.
+// The drawing lives in PogoArt.tsx, the moods in pogoPoses.ts, the motion in
+// pogo.css and pogo-moods.css.
 import { useEffect, useState, type ReactNode } from "react";
 import "./tour-base.css";
 import "./pogo.css";
+import "./pogo-moods.css";
 import { PogoArt } from "./PogoArt";
+import type { PogoMood } from "./pogoPoses";
 
 export { Confetti } from "./Confetti";
 
-export type PogoMood =
-  | "idle" // breathing, blinking, antenna sway
-  | "happy" // quick joyful hop (correct answer)
-  | "cheer" // big celebration loop (lesson complete, combo)
-  | "think" // curious head tilt (after a miss — never sad)
-  | "wave" // greeting (hub banner, path)
-  | "talk" // mouth moving while a speech bubble shows
-  | "wow" // amazed (chest opens, new stamp)
-  | "sleep"; // dozing (locked / resting states)
+export type { PogoMood } from "./pogoPoses";
 
 export interface PogoProps {
   mood?: PogoMood;

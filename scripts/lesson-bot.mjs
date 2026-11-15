@@ -23,6 +23,8 @@ const lessonNumber = Number(arg("lesson", 1));
 const width = Number(arg("w", 390));
 const height = Number(arg("h", 800));
 const shotDir = arg("shots", "");
+/** --sheets 1: also photograph every feedback sheet (needs --shots). */
+const sheetShots = arg("sheets", "") !== "";
 const missAt = new Set(String(arg("miss", "")).split(",").filter(Boolean).map(Number));
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -267,6 +269,22 @@ async function passOpening() {
   }
 }
 
+/** The lesson's top bar must stay on screen and on top, whatever the puzzle or sheet does. */
+async function checkTopBar(when) {
+  const bad = await page.evaluate(() => {
+    const bar = document.querySelector(".tl-top");
+    if (!bar) return null;
+    const box = bar.getBoundingClientRect();
+    const root = document.querySelector(".tour-lesson");
+    const quit = bar.querySelector(".tl-quit")?.getBoundingClientRect();
+    const hit = quit ? document.elementFromPoint(quit.left + quit.width / 2, quit.top + quit.height / 2) : null;
+    const covered = Boolean(quit) && !bar.contains(hit);
+    const scrolled = (root?.scrollTop ?? 0) !== 0 || window.scrollY !== 0;
+    return box.top < 0 || covered || scrolled ? `top=${Math.round(box.top)} covered=${covered} scrolled=${scrolled}` : null;
+  });
+  if (bad) unsolved.push(`top bar hidden ${when}: ${bad}`);
+}
+
 // ------------------------------------------------------------------ run
 
 const base = `http://localhost:${server.port}/#`;
@@ -310,6 +328,7 @@ try {
       await page.evaluate(() => window.__tourLesson.submit("bot-miss"));
       await sleep(900);
       await shot(`miss-${kind}`);
+      await checkTopBar(`on the miss sheet of ${kind} (#${answers})`);
       await sleep(2600);
       if (!(await tap(SHEET_BUTTON))) unsolved.push(`no GOT IT after a miss on ${kind}`);
       await sleep(700);
@@ -327,11 +346,18 @@ try {
     const moved = !after || after.result || after.index !== s.index || after.question.id !== s.question.id;
     if (!moved) { unsolved.push(`${kind} (#${answers}) was not accepted`); await shot(`stuck-${kind}`); break; }
     await sleep(450);
-    if (!(await tap(SHEET_BUTTON))) unsolved.push(`no CONTINUE after ${kind} (#${answers})`);
+    if (sheetShots) await shot(`sheet-${answers}-${kind}`);
+    await checkTopBar(`after ${kind} (#${answers})`);
+    // The last right answer has no sheet: the celebration follows on its own.
+    if (!after?.result && !(await tap(SHEET_BUTTON))) unsolved.push(`no CONTINUE after ${kind} (#${answers})`);
     await sleep(700);
     answers += 1;
   }
-  await sleep(2500);
+  // Pogo's entrance plays first; the results follow.
+  await sleep(1200);
+  await shot("entrance");
+  for (let i = 0; i < 40 && !(await page.evaluate(() => Boolean(document.querySelector('[data-testid="lesson-complete"]')))); i++) await sleep(250);
+  await sleep(2200);
   await shot("complete");
   finished = await page.evaluate(() => {
     const state = window.__game.getState();

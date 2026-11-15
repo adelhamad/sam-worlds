@@ -79,9 +79,22 @@ function openingOf(course: Course, stage: StageDef): Opening {
   return intro ? { kind: "chess", intro } : null;
 }
 
-function reactionFor(sheet: LessonSheet | null): PogoMood | null {
+/** How long Pogo stays sad after a miss before leaning in to look at the answer. */
+const SAD_MS = 1700;
+
+/** Pogo's reaction to the last answer: glad, extra glad on a combo and at the
+    end of the lesson — and after a miss, sad for a moment, then curious. */
+function usePogoReaction(sheet: LessonSheet | null, finale: boolean): PogoMood | null {
+  const missId = sheet?.kind === "almost" ? sheet.id : null;
+  const [lookingAt, setLookingAt] = useState<number | null>(null);
+  useEffect(() => {
+    if (missId === null) return;
+    const timer = setTimeout(() => setLookingAt(missId), SAD_MS);
+    return () => clearTimeout(timer);
+  }, [missId]);
+  if (finale) return "cheer";
   if (!sheet) return null;
-  if (sheet.kind === "almost") return "think";
+  if (missId !== null) return lookingAt === missId ? "think" : "sad";
   return sheet.comboCount === null ? "happy" : "cheer";
 }
 
@@ -150,7 +163,7 @@ function LessonPlay({ course, stage, session, flow, meter }: LessonBodyProps & {
   const navigate = useNavigate();
   const [introDone, setIntroDone] = useState(false);
   const [quitOpen, setQuitOpen] = useState(false);
-  const { sheet, interlude } = flow;
+  const { sheet, finale, interlude } = flow;
   const finished = session.result !== null;
   const total = session.questions.length;
 
@@ -159,7 +172,10 @@ function LessonPlay({ course, stage, session, flow, meter }: LessonBodyProps & {
   // queued behind it) is gone.
   const between = !sheet && interlude !== null;
   const next = finished || between ? null : session.questions[session.index] ?? null;
-  const question = sheet?.question ?? next;
+  // The answered question, held on screen by a sheet or by the lesson's last beat.
+  const held = sheet?.question ?? finale;
+  const question = held ?? next;
+  const reaction = usePogoReaction(sheet, finale !== null);
   const opening = !sheet && !between && !introDone && isPristine(session) ? openingOf(course, stage) : null;
 
   return (
@@ -172,7 +188,7 @@ function LessonPlay({ course, stage, session, flow, meter }: LessonBodyProps & {
       {opening && <OpeningView opening={opening} onStart={() => setIntroDone(true)} />}
       {!opening && question && (
         <QuestionView
-          question={question} locked={sheet !== null || quitOpen} reaction={reactionFor(sheet)} reactionKey={sheet?.id}
+          question={question} locked={held !== null || quitOpen} reaction={reaction} reactionKey={sheet?.id}
           aside={sheet?.slowDown ? TOUR.lesson.slowDown : null} dimmed={sheet?.kind === "almost"}
           onSubmit={flow.submit}
         />
@@ -198,7 +214,7 @@ function LessonBody({ course, stage, session }: LessonBodyProps) {
   useDevHandle(flow);
 
   const { result } = session;
-  if (!result || flow.sheet) return <LessonPlay course={course} stage={stage} session={session} flow={flow} meter={meter} />;
+  if (!result || flow.sheet || flow.finale) return <LessonPlay course={course} stage={stage} session={session} flow={flow} meter={meter} />;
   return (
     <LessonComplete
       course={course} stage={stage} seed={session.seed} result={result}

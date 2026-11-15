@@ -3,7 +3,8 @@
 // what the child SEES after each verdict: which feedback sheet, the combo, the
 // passport stamps, the tour day, and the two interludes that show between a
 // sheet and the next question (the mid-lesson gift and Pogo's cheer).
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import { REVEAL_COST, useGame, type Session } from "../../../state/store";
 import type { Question } from "../../../engine/generators/types";
 import { giftDust, lessonBreaks, type SlotTally } from "../../../engine/answers/lessonRewards";
@@ -40,6 +41,9 @@ export type Interlude =
 
 export interface LessonFlow {
   sheet: LessonSheet | null;
+  /** The last answer was right and the lesson is over: its solved puzzle holds
+      the screen for one beat (no sheet) before the celebration takes over. */
+  finale: Question | null;
   /** Showing instead of the next question — never over a sheet. */
   interlude: Interlude | null;
   /** First-try correct answers in a row. */
@@ -66,18 +70,18 @@ export interface LessonFlow {
 export const COMBO_MILESTONES = [3, 5, 8];
 /** CONTINUE lands exactly where CHECK was: a double tap must not skip the feedback. */
 const TAP_THROUGH_MS = 400;
+/** How long the last solved puzzle stays up before Pogo's celebration. */
+const FINALE_BEAT_MS = 650;
 
 function pickPraise(): string {
   const lines = TOUR.lesson.praise;
   return lines[Math.floor(Math.random() * lines.length)];
 }
 
-/** Plays the fanfare when the lesson has just finished. */
-function celebrateIfDone(): boolean {
+/** The lesson has just finished: the celebration screen (and its fanfare) is next. */
+function lessonOver(): boolean {
   const result = useGame.getState().session?.result;
-  if (!result || result.noQuestions) return false;
-  lessonSound.done(result);
-  return true;
+  return Boolean(result && !result.noQuestions);
 }
 
 function tallyOf(s: Session): SlotTally {
@@ -142,6 +146,7 @@ function useInterludes(firstCompletion: boolean) {
 
 export function useLessonFlow(stageId: string): LessonFlow {
   const [sheet, setSheet] = useState<LessonSheet | null>(null);
+  const [finale, setFinale] = useState<Question | null>(null);
   const [combo, setCombo] = useState(0);
   const [newStamps, setNewStamps] = useState<string[]>([]);
   const [dayNumber, setDayNumber] = useState<number | null>(null);
@@ -155,6 +160,10 @@ export function useLessonFlow(stageId: string): LessonFlow {
   const sheetIdRef = useRef(0);
   const openedAtRef = useRef(0);
   const markedSeedRef = useRef<number | null>(null);
+  const finaleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => () => {
+    if (finaleTimer.current) clearTimeout(finaleTimer.current);
+  }, []);
 
   const show = useCallback((next: Omit<LessonSheet, "id">) => {
     sheetIdRef.current += 1;
@@ -193,6 +202,13 @@ export function useLessonFlow(stageId: string): LessonFlow {
     lessonSound.correct();
     if (level > 0) lessonSound.combo(level);
     else if (stamps.length) lessonSound.stamp();
+    if (useGame.getState().session?.result) {
+      // The lesson is over: no sheet over a puzzle that is finished. The solved
+      // puzzle holds for a beat, then the celebration screen says it all.
+      setFinale(question);
+      finaleTimer.current = setTimeout(() => setFinale(null), FINALE_BEAT_MS);
+      return;
+    }
     show({
       kind: "correct", question, submitted, title: pickPraise(), stamps,
       comboCount: level > 0 ? streak : null, canSkip: false, slowDown: false,
@@ -210,7 +226,7 @@ export function useLessonFlow(stageId: string): LessonFlow {
     });
   }, [setStreak, show]);
 
-  const submit = useCallback((value: string) => {
+  const judge = useCallback((value: string) => {
     if (openRef.current || isShowing()) return;
     const game = useGame.getState();
     const before = game.session;
@@ -233,15 +249,21 @@ export function useLessonFlow(stageId: string): LessonFlow {
       // The slot was dropped: carry on with whatever the session now shows.
       settleSlot(before);
       markDayIfDone();
-      if (!celebrateIfDone() && !showNext()) lessonSound.next();
+      if (!lessonOver() && !showNext()) lessonSound.next();
     }
   }, [isShowing, markDayIfDone, onCorrect, onMiss, settleSlot, show, showNext, stageId]);
+
+  // Self-submitting puzzles (missions, pairs, code runs) report from a timer,
+  // where React would paint the store's next question BEFORE the sheet state
+  // lands — tearing down the solved puzzle and rebuilding it from scratch under
+  // the "You got it!" sheet. One synchronous commit keeps what the child built.
+  const submit = useCallback((value: string) => flushSync(() => judge(value)), [judge]);
 
   const close = useCallback(() => {
     openRef.current = false;
     setSheet(null);
     // The celebration screen comes first: nothing may sit on top of it.
-    if (!celebrateIfDone() && !showNext()) lessonSound.next();
+    if (!lessonOver() && !showNext()) lessonSound.next();
   }, [showNext]);
 
   const dismiss = useCallback(() => {
@@ -260,7 +282,7 @@ export function useLessonFlow(stageId: string): LessonFlow {
   }, [close, markDayIfDone, settleSlot]);
 
   return {
-    sheet, interlude, combo, newStamps, dayNumber, firstCompletion, giftCollected,
+    sheet, finale, interlude, combo, newStamps, dayNumber, firstCompletion, giftCollected,
     submit, dismiss, skip, collectGift, endInterlude,
   };
 }

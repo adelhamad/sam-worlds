@@ -1,7 +1,11 @@
 // Every sound the lesson screen makes, named by what happened — one place to
 // retune the lesson's voice. All of it respects the mute flag in audio.ts.
 import { sfx } from "../../../engine/feedback/audio";
+import { pogoVoice } from "../../../engine/feedback/pogoVoice";
 import { tourSfx } from "../../../engine/feedback/tourSfx";
+
+/** Pogo never chirps the same way twice in a row. */
+let chirp = 0;
 
 export const lessonSound = {
   /** Buttons. */
@@ -11,9 +15,17 @@ export const lessonSound = {
   /** A meet card says hello. */
   meet: () => tourSfx.hop(),
   /** Correct answer. */
-  correct: () => tourSfx.match(),
+  correct: () => {
+    tourSfx.match();
+    chirp += 1;
+    const variant = chirp;
+    setTimeout(() => pogoVoice.happy(variant), 110);
+  },
   /** A miss: gentle and curious, never a buzzer. */
-  almost: () => tourSfx.nudge(),
+  almost: () => {
+    tourSfx.nudge();
+    setTimeout(() => pogoVoice.aww(), 160);
+  },
   /** Combo milestone (level 1, 2, 3 = 3, 5, 8 in a row): rises each time. */
   combo: (level: number) => {
     setTimeout(() => tourSfx.combo(level * 2), 220);
@@ -29,11 +41,16 @@ export const lessonSound = {
   /** The lid pops. */
   giftOpen: () => tourSfx.chest(),
   /** Pogo pops in near the end. */
-  cheer: () => tourSfx.cheer(),
+  cheer: () => {
+    tourSfx.cheer();
+    pogoVoice.hey();
+  },
   /** Lesson finished. A Perfect Run and a new trophy keep their own fanfares. */
   done: (result: { newBadge: unknown; perfect: boolean }) => {
     if (result.newBadge) sfx.badge();
     else if (result.perfect) sfx.perfect();
     else tourSfx.lessonDone();
+    pogoVoice.boing(0);
+    setTimeout(() => pogoVoice.yay(), 260);
   },
 };

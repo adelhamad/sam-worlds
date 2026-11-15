@@ -2,7 +2,7 @@
    every unit paints its nodes and banner in its own hue. Tokens come from
    tour-base.css (`.tour`). */
 
-.tour-path {
+.screen.tour-path {
   --tp-ink: #06102a;
   gap: 0;
   padding-top: 0;

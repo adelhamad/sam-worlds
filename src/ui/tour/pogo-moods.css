@@ -1,0 +1,207 @@
+/* Pogo, part two: the ear fins and the scarf (always alive), and the moods
+   added after the first set — sad, dizzy, zoom, splat, starry. Same rules as
+   pogo.css: a mood is a static POSE plus MOTION; `.pogo-still` and reduced
+   motion keep the pose and drop the motion (see the end of pogo.css). */
+
+/* ---------- ear fins + scarf: always alive ---------- */
+.pg-ear-l { animation: pg-ear-l 5.2s ease-in-out infinite; }
+.pg-ear-r { animation: pg-ear-r 5.2s ease-in-out -0.4s infinite; }
+.pg-scarf-tail { animation: pg-scarf 3.1s ease-in-out infinite; }
+@keyframes pg-ear-l {
+  0%, 62%, 74%, 100% { transform: rotate(0deg); }
+  66% { transform: rotate(-13deg); }
+  70% { transform: rotate(5deg); }
+}
+@keyframes pg-ear-r {
+  0%, 62%, 74%, 100% { transform: rotate(0deg); }
+  66% { transform: rotate(13deg); }
+  70% { transform: rotate(-5deg); }
+}
+@keyframes pg-scarf {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(7deg); }
+}
+
+/* joy perks the ears up and whips the scarf */
+.pogo-happy .pg-ear-l, .pogo-cheer .pg-ear-l, .pogo-starry .pg-ear-l { transform: rotate(14deg); animation: pg-ear-perk-l 0.31s ease-in-out infinite alternate; }
+.pogo-happy .pg-ear-r, .pogo-cheer .pg-ear-r, .pogo-starry .pg-ear-r { transform: rotate(-14deg); animation: pg-ear-perk-r 0.31s ease-in-out infinite alternate; }
+.pogo-happy .pg-scarf-tail, .pogo-cheer .pg-scarf-tail, .pogo-starry .pg-scarf-tail { animation: pg-scarf-flap 0.31s ease-in-out infinite alternate; }
+.pogo-wow .pg-ear-l { transform: rotate(20deg); animation: none; }
+.pogo-wow .pg-ear-r { transform: rotate(-20deg); animation: none; }
+.pogo-sleep .pg-ear-l { transform: rotate(-24deg); animation: none; }
+.pogo-sleep .pg-ear-r { transform: rotate(24deg); animation: none; }
+@keyframes pg-ear-perk-l {
+  from { transform: rotate(8deg); }
+  to { transform: rotate(20deg); }
+}
+@keyframes pg-ear-perk-r {
+  from { transform: rotate(-8deg); }
+  to { transform: rotate(-20deg); }
+}
+@keyframes pg-scarf-flap {
+  from { transform: rotate(-14deg); }
+  to { transform: rotate(16deg); }
+}
+
+/* ---------- sad: a soft droop and one tear — gentle, never a tantrum ---------- */
+.pogo-sad .pg-tilt { transform: rotate(-4deg); animation: pg-droop-in 0.55s cubic-bezier(0.3, 0, 0.3, 1) both; }
+.pogo-sad .pg-squash { animation: pg-sigh 3s ease-in-out infinite; }
+.pogo-sad .pg-pupil { transform: translate(0, 5px); }
+.pogo-sad .pg-lid { transform: scaleY(0.3); animation: pg-blink-sad 3s linear infinite; }
+.pogo-sad .pg-arm-l { transform: rotate(7deg); }
+.pogo-sad .pg-arm-r { transform: rotate(-7deg); }
+.pogo-sad .pg-ear-l { transform: rotate(-38deg); animation: none; }
+.pogo-sad .pg-ear-r { transform: rotate(38deg); animation: none; }
+.pogo-sad .pg-cheeks { opacity: 0.3; }
+.pogo-sad .pg-bulb-dim { opacity: 0.5; }
+.pogo-sad .pg-glow { transform: scale(0.7); opacity: 0.22; animation: none; }
+.pogo-sad .pg-antenna { animation: pg-sway-small 3s ease-in-out infinite; }
+.pogo-sad .pg-scarf-tail { transform: rotate(0deg); animation: none; }
+.pogo-sad .pg-mouth { animation: pg-quiver-lip 0.42s ease-in-out infinite alternate; }
+.pogo-sad .pg-brows { animation: pg-brow-knit 3s ease-in-out infinite; }
+.pogo-sad .pg-water { animation: pg-water 3s ease-in-out infinite; }
+.pg-tear { transform: scale(0); opacity: 0; }
+.pogo-sad .pg-tear { transform: translateY(26px) scale(1); opacity: 0.95; animation: pg-tear 3s ease-in infinite; }
+
+@keyframes pg-droop-in {
+  0% { transform: rotate(0deg) translateY(0); }
+  45% { transform: rotate(-6deg) translateY(5px); }
+  100% { transform: rotate(-4deg) translateY(3px); }
+}
+@keyframes pg-sigh {
+  0%, 100% { transform: scale(1.02, 0.975); }
+  38% { transform: scale(0.975, 1.03); }
+  60% { transform: scale(1.045, 0.95); }
+}
+@keyframes pg-blink-sad {
+  0%, 44%, 52%, 100% { transform: scaleY(0.3); }
+  48% { transform: scaleY(1); }
+}
+@keyframes pg-quiver-lip {
+  from { transform: scale(0.94, 1); }
+  to { transform: scale(1.05, 1.08); }
+}
+@keyframes pg-brow-knit {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2.5px); }
+}
+@keyframes pg-water {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.9; }
+}
+@keyframes pg-tear {
+  0%, 8% { transform: translateY(0) scale(0); opacity: 0; }
+  30% { transform: translateY(2px) scale(1); opacity: 0.95; }
+  42% { transform: translateY(4px) scale(1.05); opacity: 0.95; }
+  82% { transform: translateY(52px) scale(0.9); opacity: 0.9; }
+  92%, 100% { transform: translateY(62px) scale(0.5); opacity: 0; }
+}
+
+/* ---------- dizzy: spiral eyes, stars going round ---------- */
+.pogo-dizzy .pg-all { animation: pg-stagger 1.5s ease-in-out infinite; }
+.pogo-dizzy .pg-tilt { transform: rotate(6deg); animation: pg-woozy 1.5s ease-in-out infinite; }
+.pogo-dizzy .pg-spiral { animation: pg-spin 0.8s linear infinite; }
+.pg-orbit-x { transform: translateX(-60px); }
+.pg-orbit-2.pg-orbit-x { transform: translateX(30px); }
+.pg-orbit-3.pg-orbit-x { transform: translateX(52px); }
+.pg-orbit-2.pg-orbit-y { transform: translateY(-14px); }
+.pg-orbit-3.pg-orbit-y { transform: translateY(9px); }
+.pogo-dizzy .pg-orbit-x { animation: pg-orbit-x 0.7s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate; }
+.pogo-dizzy .pg-orbit-y { animation: pg-orbit-y 0.7s cubic-bezier(0.37, 0, 0.63, 1) -0.35s infinite alternate; }
+.pogo-dizzy .pg-orbit-2.pg-orbit-x { animation-delay: -0.47s; }
+.pogo-dizzy .pg-orbit-2.pg-orbit-y { animation-delay: -0.82s; }
+.pogo-dizzy .pg-orbit-3.pg-orbit-x { animation-delay: -0.93s; }
+.pogo-dizzy .pg-orbit-3.pg-orbit-y { animation-delay: -1.28s; }
+.pogo-dizzy .pg-arm-l { transform: rotate(48deg); animation: pg-flop-l 0.75s ease-in-out infinite alternate; }
+.pogo-dizzy .pg-arm-r { transform: rotate(-30deg); animation: pg-flop-r 0.75s ease-in-out -0.3s infinite alternate; }
+.pogo-dizzy .pg-ear-l { transform: rotate(-18deg); animation: pg-ear-perk-l 0.5s ease-in-out infinite alternate; }
+.pogo-dizzy .pg-ear-r { transform: rotate(-10deg); animation: none; }
+.pogo-dizzy .pg-antenna { animation: pg-sway-fast 0.5s ease-in-out infinite alternate; }
+.pogo-dizzy .pg-mouth { animation: pg-quiver-lip 0.3s ease-in-out infinite alternate; }
+.pogo-dizzy .pg-cheeks { opacity: 0.8; }
+@keyframes pg-stagger {
+  0%, 100% { transform: translateX(-7px); }
+  50% { transform: translateX(7px); }
+}
+@keyframes pg-woozy {
+  0%, 100% { transform: rotate(8deg); }
+  50% { transform: rotate(-8deg); }
+}
+@keyframes pg-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes pg-orbit-x {
+  from { transform: translateX(-60px); }
+  to { transform: translateX(60px); }
+}
+@keyframes pg-orbit-y {
+  from { transform: translateY(-16px) scale(0.75); }
+  to { transform: translateY(16px) scale(1.15); }
+}
+@keyframes pg-flop-l {
+  from { transform: rotate(30deg); }
+  to { transform: rotate(62deg); }
+}
+@keyframes pg-flop-r {
+  from { transform: rotate(-20deg); }
+  to { transform: rotate(-52deg); }
+}
+
+/* ---------- zoom: flying on the jet boots, arms out front ---------- */
+.pogo-zoom .pg-shadow { opacity: 0; }
+.pogo-zoom .pg-all { animation: pg-jitter 0.11s linear infinite alternate; }
+.pogo-zoom .pg-squash { animation: none; transform: scale(0.96, 1.05); }
+.pogo-zoom .pg-arm-l { transform: rotate(166deg); }
+.pogo-zoom .pg-arm-r { transform: rotate(-166deg); }
+.pogo-zoom .pg-ear-l { transform: rotate(-30deg); animation: pg-ear-perk-l 0.09s linear infinite alternate; }
+.pogo-zoom .pg-ear-r { transform: rotate(30deg); animation: pg-ear-perk-r 0.09s linear infinite alternate; }
+.pogo-zoom .pg-antenna { animation: pg-quiver 0.09s ease-in-out infinite alternate; }
+.pogo-zoom .pg-scarf-tail { transform: rotate(30deg); animation: pg-scarf-flap 0.12s linear infinite alternate; }
+.pogo-zoom .pg-lid { animation: none; }
+.pogo-zoom .pg-glow { transform: scale(1.5); }
+.pogo-zoom .pg-flame { animation: pg-flicker 0.09s linear infinite alternate; }
+@keyframes pg-jitter {
+  from { transform: translate(-1.5px, 1px); }
+  to { transform: translate(1.5px, -1px); }
+}
+@keyframes pg-flicker {
+  from { transform: scale(0.85, 0.8); opacity: 0.85; }
+  to { transform: scale(1.1, 1.2); opacity: 1; }
+}
+
+/* ---------- splat: flat against the glass ---------- */
+.pogo-splat .pg-shadow { opacity: 0; }
+.pogo-splat .pg-squash { transform: scale(1.2, 0.88); animation: pg-splat 0.5s cubic-bezier(0.2, 1.6, 0.4, 1) both; }
+.pogo-splat .pg-arm-l { transform: rotate(112deg); }
+.pogo-splat .pg-arm-r { transform: rotate(-112deg); }
+.pogo-splat .pg-ear-l { transform: rotate(-22deg); animation: none; }
+.pogo-splat .pg-ear-r { transform: rotate(22deg); animation: none; }
+.pogo-splat .pg-cheeks { opacity: 1; }
+.pogo-splat .pg-antenna { animation: pg-quiver 0.08s ease-in-out 10 alternate; }
+.pogo-splat .pg-scarf-tail { animation: none; }
+@keyframes pg-splat {
+  0% { transform: scale(0.8, 1.2); }
+  40% { transform: scale(1.34, 0.76); }
+  70% { transform: scale(1.15, 0.92); }
+  100% { transform: scale(1.2, 0.88); }
+}
+
+/* ---------- starry: star-struck (Perfect Run) ---------- */
+.pogo-starry .pg-cheeks { opacity: 0.9; }
+.pogo-starry .pg-star-eye { animation: pg-star-eye 0.7s ease-in-out infinite alternate; }
+.pogo-starry .pg-arm-l { transform: rotate(150deg); animation: pg-cheer-l 0.4s ease-in-out infinite alternate; }
+.pogo-starry .pg-arm-r { transform: rotate(-150deg); animation: pg-cheer-r 0.4s ease-in-out -0.2s infinite alternate; }
+.pogo-starry .pg-all { animation: pg-bounce-y 0.8s infinite; }
+.pogo-starry .pg-squash { animation: pg-bounce-squash 0.8s infinite; }
+.pogo-starry .pg-shadow { animation: pg-bounce-shadow 0.8s infinite; }
+.pogo-starry .pg-tilt { animation: pg-rock 1.6s ease-in-out infinite; }
+.pogo-starry .pg-antenna { animation: pg-quiver 0.2s ease-in-out infinite alternate; }
+.pogo-starry .pg-glow { animation: pg-glow-fast 0.4s ease-in-out infinite alternate; }
+.pogo-starry .pg-spark { animation: pg-twinkle 1.2s ease-in-out infinite; }
+.pogo-starry .pg-spark-2 { animation-delay: -0.4s; }
+.pogo-starry .pg-spark-3 { animation-delay: -0.8s; }
+@keyframes pg-star-eye {
+  from { transform: scale(0.82) rotate(-8deg); }
+  to { transform: scale(1.12) rotate(8deg); }
+}

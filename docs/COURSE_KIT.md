@@ -197,8 +197,10 @@ Only when cards cannot teach it. Mirror `chess`, `code` or `tick`, file by file:
   commit.
 - `bun run bot -- --course <id>` plays a whole lesson through the real UI in a headless
   browser and prints the result (`scripts/lesson-bot.mjs`; add `--lesson <n>` to pick a
-  lesson, `--miss 1,3` to miss on purpose, `--shots <dir>` for screenshots). Look at the
-  screenshots: cards must not overflow, nothing may scroll inside a question on a phone.
+  lesson, `--miss 1,3` to miss on purpose, `--shots <dir>` for screenshots, `--sheets 1`
+  to also photograph every feedback sheet). It fails if the top bar ever leaves the
+  screen. Look at the screenshots: cards must not overflow, nothing may scroll inside a
+  question on a phone.
 - DEV test benches while `bun run dev` runs: `/#/tour/lab/kit` (every widget with icon,
   clock and text-only cards, the teach cards and the slides), `/#/tour/lab/code`,
   `/#/tour/lab/tick`, `/#/tour/lab/chess`, `/#/tour/lab/exercises`, `/#/tour/lab/pogo`,
