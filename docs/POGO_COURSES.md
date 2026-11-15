@@ -96,11 +96,23 @@ for Arabic and both syllabuses: `docs/LANGUAGES.md`.
 
 Things to know before touching them:
 
-- **Ten kinds of question** come out of one lesson's data: hear → meaning, meaning →
-  phrase, read (no Latin help), match pairs, build the sentence from word tiles, a
-  real-life scene → what you say, spell a word from letter tiles (the line shows the
-  letters joined, so Arabic connects as in real writing), trace a letter, letter → sound,
-  sound → letter. The lesson kind (`words`, `talk`, `letters`, `review`) only sets the mix.
+- **Lessons are hands-on, not multiple choice.** The owner's verdict on the first version
+  was "boring multiple choice"; 57 % of its questions were "tap one of four cards". Now the
+  hands-on tasks carry every lesson — a **chat** (a family member "sends" a line, the child
+  builds the reply from a word bank; several replies can be right), **dictation** (hear a
+  phrase, build it from tiles), build the sentence, **give it to Pogo** (he asks for a
+  thing, the child drags its picture to him), **catch the word** (tap the word you hear
+  in a sentence), a **memory** game, spelling from letter tiles, tracing a letter, matching
+  pairs — and "tap one card" (hear → meaning, meaning → phrase, read, letter ↔ sound) is
+  the small rest, mostly a word's first meeting. `scripts/audit-lang.ts` fails when
+  "tap one card" goes above 30 % of all planned questions (it is 23 %). The mix per lesson
+  kind (`words`, `talk`, `letters`, `review`) is `WEIGHTS` and `CAPS` in
+  `src/engine/lang/planner.ts`; the hands-on builders are in `playTasks.ts`, the two
+  verdicts that are more than a string compare (chat, memory) in `verdicts.ts`.
+- **A new exercise kind** = a payload in `types.ts`, a builder in `playTasks.ts`, a line in
+  the planner (`WEIGHTS`, `lessonTasks`, `PHRASE_TASKS`), a widget in
+  `src/modules/tour/lang/` wired in `LangExercise.tsx`, a check in
+  `scripts/audit-lang-question.ts` and a solver in `scripts/lesson-bot.mjs`.
 - **The other options of a question are other phrases the child has met.** `like` on a
   phrase and `alsoOk` on a scene keep out anything that could also be right; the audit
   checks every planned question for it. The audit cannot judge the language itself.

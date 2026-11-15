@@ -124,9 +124,11 @@ About 11 phrases and 5–7 scenes per unit.
 - `words`: for every phrase of 2–5 words, the words in speaking order (Arabic: each with
   its `roman`). They must spell the `text` exactly (punctuation aside). This is what
   "build the sentence" uses — sentences in lesson 3 MUST have it.
-- `art`: only an icon name from `src/content/iconNames.ts`, only when it truly shows the
-  thing (water → `cup`, apple → `apple`). Most phrases have none. **Never an emoji** —
-  not in any string, anywhere.
+- `art`: an icon name from `src/content/iconNames.ts`, when it truly shows the thing
+  (water, apple, door, red, three). Give one to every single WORD that can be pictured:
+  "Give it to Pogo" (he asks for a thing, the child drags its picture to him) only runs
+  when a lesson knows three or more things with different pictures. Two different things
+  never share a picture. **Never an emoji** — not in any string, anywhere.
 - `tip`: ≤ 14 simple words; shown when the phrase is taught and when it is missed. Use it
   for the girl's form, a regional variant, when to say it, or how to answer it. Never
   the words "wrong", "fail" or "bad".
