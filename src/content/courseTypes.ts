@@ -23,16 +23,26 @@ export interface CourseUnit {
   piece?: PieceType;
 }
 
+/** Shelf a course sits on at home (the home groups courses once there are many). */
+export type CourseSubject = "explore" | "think" | "create";
+
 export interface Course {
-  id: "tour" | "chess";
+  /** Short permanent id; also the prefix of its stage ids (`<id>-u01-l1`). */
+  id: string;
   /** The world whose stages are this course's lessons. */
   worldId: string;
   title: string;
+  /** Emoji shown where there is no room for art. */
   icon: string;
-  /** One inviting line for the hub (≤ 8 simple words). */
+  /** One inviting line for the home (≤ 8 simple words). */
   tagline: string;
   /** Route of the path screen; lessons live at `${path}/lesson/:stageId`. */
   path: string;
+  /** Signature colour of the course card. */
+  hue: string;
+  subject: CourseSubject;
+  /** Wears the NEW tag at home until the parent has had it for a while (set by hand). */
+  isNew?: boolean;
   units: CourseUnit[];
   world: WorldDef;
 }

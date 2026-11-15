@@ -1,0 +1,71 @@
+/* Today's quests row on "Lesson complete!" (QuestRow.tsx). Kept short: on a
+   360×740 phone it adds ≤ ~70px to the completion screen. */
+.tour .tl-quests {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  animation: tl-quests-in 420ms ease-out both;
+  animation-delay: 1000ms;
+}
+.tour .tl-quests-done {
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.15;
+  color: var(--t-ink);
+  animation: tl-quests-in 360ms ease-out both;
+  animation-delay: 1500ms;
+}
+.tour .tl-quests-done b { color: var(--t-gold); }
+.tour .tl-quests-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.tour .tl-quest-pill {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 14px;
+  background: var(--t-surface);
+  border: 2px solid var(--t-line-deep);
+}
+.tour .tl-quest-pill.is-done { border-color: var(--t-gold-deep); background: color-mix(in srgb, var(--t-gold) 14%, var(--t-surface)); }
+.tour .tl-quest-pill.is-fresh {
+  border-color: var(--t-gold);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--t-gold) 30%, transparent);
+  animation: tl-quest-pop 620ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.tour .tl-quest-icon { flex: 0 0 auto; font-size: 20px; line-height: 1; }
+.tour .tl-quest-text { min-width: 0; display: flex; flex-direction: column; line-height: 1.1; }
+.tour .tl-quest-label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--t-ink-dim);
+}
+.tour .tl-quest-value { font-size: 16px; font-weight: 900; color: var(--t-ink); }
+.tour .tl-quest-pill.is-done .tl-quest-value { color: var(--t-gold); }
+
+@keyframes tl-quests-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes tl-quest-pop {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.16) rotate(-3deg); }
+  100% { transform: scale(1); }
+}
+@media (min-width: 700px) {
+  .tour .tl-quest-pill { padding: 8px 12px; }
+  .tour .tl-quest-icon { font-size: 26px; }
+  .tour .tl-quest-label { font-size: 13px; }
+  .tour .tl-quest-value { font-size: 20px; }
+  .tour .tl-quests-done { font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour .tl-quests,
+  .tour .tl-quests-done,
+  .tour .tl-quest-pill.is-fresh { animation: none; }
+}

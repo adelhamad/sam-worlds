@@ -9,8 +9,7 @@ import { newSeed } from "../engine/rng";
 import type { stageById } from "../content/worlds";
 import type { Session } from "./store";
 import { traitSessionParams } from "../engine/generators/traitSessionParams";
-import { tourSessionParams } from "../engine/tour/sessionParams";
-import { chessSessionParams } from "../engine/chess/sessionParams";
+import { coursePlanner } from "../engine/courses/planners";
 
 type Generator = Parameters<typeof generateQuestionSet>[0];
 type Params = Parameters<typeof generateQuestionSet>[1];
@@ -18,9 +17,9 @@ type Params = Parameters<typeof generateQuestionSet>[1];
 /** Some generators pin the replacement to the question it replaces. */
 function replacementParams(s: Session, generator: Generator, params: Params): Params {
   if (generator === "traits") return traitSessionParams(s.stageId, s.questions[s.index], params);
-  // World Tour: same exercise kind, a different country ("new values, same skill").
-  if (generator === "tour") return tourSessionParams(s.questions[s.index], params);
-  if (generator === "chess") return chessSessionParams(s.questions[s.index], params);
+  // Courses: same skill, new values (engine/courses/planners.ts).
+  const course = coursePlanner(generator);
+  if (course) return course.sessionParams(s.questions[s.index], params);
   return params;
 }
 

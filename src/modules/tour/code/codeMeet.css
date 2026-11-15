@@ -1,0 +1,60 @@
+/* Code Lab — the lesson's opening demo. The root also carries the lesson
+   shell's `.tl-meet` (flex: 1, gutters); everything else is prefixed `cd-`. */
+.tour .cd {
+  --cg-max: min(300px, 100%, 34dvh);
+  box-sizing: border-box;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.tour .cd > .pogo-say { align-self: stretch; flex: none; margin-top: auto; }
+.tour .cd-stage { width: 100%; flex: none; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.tour .cd-track.cp-track { --cp-size: 42px; width: auto; max-width: 100%; min-height: 0; padding: 7px 10px; }
+.tour .cd.is-sequence { --cg-max: min(260px, 100%, 28dvh); }
+.tour .cd.is-sequence .cp-palette { --cp-size: 54px; }
+.tour .cd-try {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 900;
+  color: #a5efff;
+  animation: cd-nudge 1.3s ease-in-out 2s infinite;
+}
+.tour .cd-try.is-done { visibility: hidden; }
+.tour .cd-try-dot { width: 15px; height: 15px; border-radius: 50%; background: var(--t-go); box-shadow: inset 0 -2px 0 var(--t-go-deep); }
+@keyframes cd-nudge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.tour .cd-lines {
+  flex: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+  font-size: clamp(17px, 4.7vw, 22px);
+  font-weight: 800;
+  line-height: 1.2;
+}
+.tour .cd-lines li { animation: t-fade-up 0.4s ease both; animation-delay: calc(var(--i) * 0.9s + 0.5s); }
+.tour .cd-lines li:first-child { color: var(--t-gold); font-weight: 900; }
+.tour .cd-start { flex: none; margin-top: auto; min-height: 60px; font-size: 20px; letter-spacing: 0.06em; }
+
+@media (min-width: 600px) and (min-height: 900px) {
+  .tour .cd { --cg-max: min(380px, 38dvh); gap: 18px; }
+  .tour .cd.is-sequence { --cg-max: min(340px, 32dvh); }
+  .tour .cd-track.cp-track { --cp-size: 52px; }
+  .tour .cd-try { font-size: 19px; }
+}

@@ -6,8 +6,7 @@ import { youTubeId } from "../engine/video";
 import { clearAxisMaps, requestTiltPermission } from "../engine/sensors";
 import { TiltCalibrator } from "./TiltCalibrator";
 import { GiftControls, RewardHistory } from "./ParentRewards";
-import { PetControls } from "./ParentPet";
-import { TourControls } from "./tour/ParentTour";
+import { Glyph, TourControls } from "./tour/ParentTour";
 import { persona } from "../persona.config";
 import { testCheer, timedRemindersSupported } from "../engine/notify/reminders";
 
@@ -252,7 +251,7 @@ function AccessControls() {
         return (
           <div key={w.id} className="parent-row parent-world-row" style={hidden ? { opacity: 0.55 } : undefined}>
             <span className="parent-world-name">
-              {w.icon} {w.name}
+              <span><Glyph value={w.icon} size="1.1em" /> {w.name}</span>
             </span>
             <div className="parent-row-ctrls">
               <button
@@ -288,8 +287,8 @@ function ReminderControls() {
     <section className="panel parent-block">
       <h2>🔔 Encouragement reminders</h2>
       <p className="dim">
-        Friendly notifications about every 6 hours (daytime only) inviting {persona.name} back —
-        like “Cosmo misses you!”. They fire even when the app is closed.
+        One friendly notification a day inviting {persona.name} back (daytime only, never after a lesson).
+        They arrive as push once the push keys are set up — see docs/NOTIFICATIONS.md.
       </p>
       <div className="parent-row">
         <button
@@ -310,8 +309,8 @@ function ReminderControls() {
       </div>
       {!supported && (
         <p className="dim">
-          Heads up: timed reminders need Android/Chrome. This device may not support scheduling them
-          while closed (iPads can't yet).
+          Heads up: push is not set up yet (or this browser lacks it), so nothing arrives while the
+          app is closed. The app-icon badge still works. Setup: docs/NOTIFICATIONS.md.
         </p>
       )}
       {note && <p className="history-redeemed">{note}</p>}
@@ -409,7 +408,7 @@ function ParentControls() {
           return (
             <div key={w.id} className="parent-row parent-world-row">
               <span className="parent-world-name">
-                {w.icon} {w.name}
+                <span><Glyph value={w.icon} size="1.1em" /> {w.name}</span>
                 <small className="parent-world-count">{done}/{w.stages.length}</small>
               </span>
               <div className="parent-row-ctrls">
@@ -458,7 +457,6 @@ function ParentControls() {
 
       <AccessControls />
 
-      <PetControls />
       <TourControls />
 
       <GiftControls />

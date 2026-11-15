@@ -9,14 +9,23 @@ import { useGame, type Session } from "../../state/store";
 import { COURSES, courseOfStage, lessonPlayable, type Course } from "../../content/courses";
 import type { StageDef } from "../../content/types";
 import { chessParams } from "../../content/chess/units";
+import { codeParams } from "../../content/code/units";
+import { kitParams } from "../../content/kitCourse";
+import { tickParams } from "../../content/tick/units";
 import { tourParams } from "../../content/tour/units";
 import { missedDoneSlots, runningPayout } from "../../engine/answers/lessonRewards";
 import type { ChessIntroKey } from "../../engine/chess/types";
+import type { CodeIntroKey } from "../../engine/code/types";
+import type { KitSlide } from "../../engine/kit/types";
+import type { TickIntroKey } from "../../engine/tick/types";
 import { unlockAudio } from "../../engine/feedback/audio";
 import { LockedScreen } from "../../ui/LockedScreen";
 import { Pogo, type PogoMood } from "../../ui/tour/Pogo";
 import { TOUR } from "../../strings/tour";
 import { ChessMeet } from "./chess/ChessMeet";
+import { CodeMeet } from "./code/CodeMeet";
+import { KitMeet } from "./kit/KitMeet";
+import { TickMeet } from "./tick/TickMeet";
 import { CheerBreak } from "./lesson/CheerBreak";
 import { DustToken } from "./lesson/DustMeter";
 import { FeedbackSheet } from "./lesson/FeedbackSheet";
@@ -40,10 +49,28 @@ function isPristine(s: Session): boolean {
   return s.index === 0 && s.correctCount === 0 && s.firstTryMisses === 0 && !s.attemptMissed && s.wrongStamps.length === 0;
 }
 
-/** What a lesson opens with: new countries to greet, a chess demo, or nothing. */
-type Opening = { kind: "countries"; codes: string[] } | { kind: "chess"; intro: ChessIntroKey } | null;
+/** What a lesson opens with: a teach-first demo of its course family, or nothing. */
+type Opening =
+  | { kind: "countries"; codes: string[] }
+  | { kind: "chess"; intro: ChessIntroKey }
+  | { kind: "code"; intro: CodeIntroKey }
+  | { kind: "tick"; intro: TickIntroKey }
+  | { kind: "kit"; slides: KitSlide[] }
+  | null;
 
 function openingOf(course: Course, stage: StageDef): Opening {
+  if (stage.generator === "kit") {
+    const slides = kitParams(stage).intro;
+    return slides?.length ? { kind: "kit", slides } : null;
+  }
+  if (stage.generator === "code") {
+    const intro = codeParams(stage).intro;
+    return intro ? { kind: "code", intro } : null;
+  }
+  if (stage.generator === "tick") {
+    const intro = tickParams(stage).intro;
+    return intro ? { kind: "tick", intro } : null;
+  }
   if (course.id === "tour") {
     const codes = tourParams(stage).focus;
     return codes.length <= MEET_MAX ? { kind: "countries", codes } : null;
@@ -94,8 +121,12 @@ function InterludeView({ flow }: { flow: LessonFlow }) {
 }
 
 function OpeningView({ opening, onStart }: { opening: NonNullable<Opening>; onStart: () => void }) {
+  const start = () => { unlockAudio(); onStart(); };
   if (opening.kind === "countries") return <MeetIntro codes={opening.codes} onStart={onStart} />;
-  return <ChessMeet intro={opening.intro} onStart={() => { unlockAudio(); onStart(); }} />;
+  if (opening.kind === "kit") return <KitMeet slides={opening.slides} onStart={start} />;
+  if (opening.kind === "code") return <CodeMeet intro={opening.intro} onStart={start} />;
+  if (opening.kind === "tick") return <TickMeet intro={opening.intro} onStart={start} />;
+  return <ChessMeet intro={opening.intro} onStart={start} />;
 }
 
 interface LessonBodyProps {

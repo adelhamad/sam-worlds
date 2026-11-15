@@ -13,6 +13,7 @@ Personal PWA learning game for Sam (7). Full spec lives in `SAMS_GAME_PLAN.md` �
 - **bun, never npm/npx** — `bun install`, `bun run <script>`, `bunx`.
 - `bun run dev` — dev server · `bun run lint` — ESLint · `bun run build` — typecheck + production build · `bun run check` — lint + build.
 - Deploys to **Vercel** as a static Vite build (`vercel.json`). Keep it deployable: no server code, no env secrets.
+  - One exception, off by default: push reminders (`api/`, `src/engine/notify/push.ts`). Nothing runs or calls the network unless the owner adds the push keys — see `docs/NOTIFICATIONS.md`. Do not add other server code.
 - ESLint flat config with SonarJS: **max 500 lines/file, complexity ≤ 25, cognitive complexity ≤ 25**. Don't raise limits — split files/functions instead.
 
 ## Architecture (where things go)
@@ -24,7 +25,9 @@ Personal PWA learning game for Sam (7). Full spec lives in `SAMS_GAME_PLAN.md` �
 - `src/ui/` — shared screens (hub, title, workshop).
 - `src/state/store.ts` — single Zustand store; every meaningful action also persists to Dexie (fire-and-forget `void db...put(...)`).
 - `src/strings/en.ts` + `src/persona.config.ts` — every player-facing string goes through these (name-aware, future Arabic toggle).
-- **Pogo's courses** (Duolingo-style lesson paths with mascot Pogo: World Tour = geography, Chess Camp = chess) — read `docs/POGO_COURSES.md` before touching `src/**/tour/` or `src/**/chess/`. Lessons are ordinary stages of worlds `tour` / `chess`; strings live in `src/strings/tour.ts` and `src/strings/chess.ts`; styles are scoped under a `.tour` root class.
+- **Pogo's courses** (Duolingo-style lesson paths with the mascot Pogo: World Tour, Chess Camp, Code Lab, Tick Tock) — read `docs/POGO_COURSES.md` before touching `src/**/tour/` or a course's folders. Lessons are ordinary stages of the course's world; every course is one entry in `src/content/courses.ts`; styles are scoped under a `.tour` root class.
+- **Adding or extending a course** — follow `docs/COURSE_KIT.md` (and the `add-pogo-course` skill). Most courses are data only. Prove it with `bun run check` and `bun run bot -- --course <id>`.
+- **Home** (`src/ui/home/`) is the course home: Pogo's "what next" card, daily quests (`src/engine/quests/`, `src/state/quests.ts`), the course shelf, Sam's things, then the classic worlds. Notifications and what works on which device: `docs/NOTIFICATIONS.md`.
 
 ## Stack gotchas
 
@@ -55,6 +58,7 @@ logic lives in `src/engine/answers/` — never write per-game answer handling.
 
 ## Design rules (from the plan — enforce in code review)
 
+- **No emoji.** The owner dislikes them. Pictures are drawn icons (`src/content/iconNames.ts` names, `<Icon>` / `<Glyph>` in `src/ui/icons/`), other drawn SVG art, or plain words. The audit fails on emoji in course screens, strings and data. (The questions inside the old classic worlds still contain emoji — legacy content.)
 - Touch-first: minimum 48px targets; layouts must work portrait tablet and phone first, desktop second.
 - Never punish: no fail states, no lost progress, no timers Sam didn't opt into. Wrong answer → "Almost! Try again."
 - Cyan (`--cyan`) is reserved for rewards/interactives only.

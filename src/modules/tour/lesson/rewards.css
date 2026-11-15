@@ -22,7 +22,7 @@
   font-weight: 900;
   font-variant-numeric: tabular-nums;
 }
-.tour .tl-dust-icon { font-size: 17px; line-height: 1; }
+.tour .tl-dust-icon { font-size: 17px; }
 .tour .tl-dust-body.is-bump { animation: tl-dust-bump 0.52s var(--tl-spring); }
 @keyframes tl-dust-bump {
   0% { transform: scale(1); }
@@ -43,7 +43,7 @@
   100% { opacity: 0; transform: scale(1.75); }
 }
 
-/* a "+N ✨" token: pops where the dust was earned, then arcs up into the chip.
+/* a "+N" Star Dust token: pops where the dust was earned, then arcs up into the chip.
    The outer box travels sideways, the inner one up — together a curve. */
 .tour .tl-token {
   position: absolute;
@@ -402,7 +402,7 @@
 .tour .tl-bonus-line.is-gift { background: rgba(255, 111, 165, 0.14); border-color: #d94c86; color: #ffd3e4; }
 
 .tour .tl-unit { --tl-unit-hue: var(--t-gold); }
-.tour .tl-unit-icon { color: var(--tl-unit-hue); }
+.tour .tl-unit-icon { color: var(--tl-unit-hue); vertical-align: -0.3em; }
 .tour .tl-unit-road { display: flex; align-items: center; }
 .tour .tl-unit-pip {
   position: relative;

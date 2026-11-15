@@ -169,17 +169,4 @@ export const STR = {
     originIntro: ["Some traits are passed from parents.", "Some things take practice, like riding a bike.", "Other changes happen, like getting muddy."],
     jobIntro: ["A duck's wide feet help it swim.", "A turtle's shell helps keep it safe.", "What can other body parts do?"],
   },
-  // Cosmo — the companion
-  petEggTitle: `A mystery egg appeared, ${n}!`,
-  petEggSub: "Give it a name to hatch it 🥚",
-  petNamePlaceholder: "Name your buddy…",
-  petHatchBtn: "Hatch! ✨",
-  petHappy: (name: string) => `${name} is happy and full ✨`,
-  petPeckish: (name: string) => `${name} is getting peckish 🍃`,
-  petHungry: (name: string) => `${name} is hungry — answer questions to feed it! 🍙`,
-  petMaxed: (name: string) => `${name} is fully grown — a legend! 🌟`,
-  petToNext: (meals: number, label: string) =>
-    `${meals} more ${meals === 1 ? "meal" : "meals"} → ${label}!`,
-  petEvolved: (name: string, label: string) => `${name} grew into a ${label}! 🎉`,
-  petTapLine: (name: string) => `${name} loves you, ${n}! 💖`,
 } as const;

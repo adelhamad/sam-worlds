@@ -65,11 +65,14 @@ export const TOUR = {
     comboBanner: (count: number) => `${count} in a row!`,
     comboChip: (count: number) => `${count} in a row`,
     slowDown: `No rush, ${n}. ${guide} can wait!`,
-    skip: (cost: number) => `Skip (${cost} ✨)`,
+    /** Skip button; the component adds the cost and the Star Dust icon. */
+    skip: "Skip",
+    skipLabel: (cost: number) => `Skip for ${cost} Star Dust`,
     lookFirst: "Look first…",
     // Star Dust meter, the gift and Pogo's cheer
     dustMeter: (dust: number) => `${dust} Star Dust so far`,
-    dustToken: (dust: number) => `+${dust} ✨`,
+    /** "+N" — the Star Dust icon is drawn next to it. */
+    dustToken: (dust: number) => `+${dust}`,
     giftTitle: "A gift for you!",
     giftTap: "Tap to open!",
     giftOpen: "Open the gift",
@@ -93,8 +96,8 @@ export const TOUR = {
     statFirstTry: "First try",
     statStars: "Stars",
     replayNote: "Replays give a little Star Dust.",
-    perfectBonus: (dust: number) => `Perfect bonus +${dust} ✨`,
-    giftLine: (dust: number) => `Gift +${dust} ✨`,
+    perfectBonus: (dust: number) => `Perfect bonus +${dust}`,
+    giftLine: (dust: number) => `Gift +${dust}`,
     lessonOf: (index: number, total: number) => `Lesson ${index} of ${total}`,
     newStamps: "New passport stamps!",
     stampProgress: "Passport stamps",
@@ -115,7 +118,6 @@ export const TOUR = {
   path: {
     back: "Base",
     start: "Start",
-    title: `${guide}'s World Tour`,
     day: (days: number) => `Day ${days}`,
     passport: "Passport",
     unit: (index: number) => `Unit ${index}`,
@@ -123,7 +125,7 @@ export const TOUR = {
     openTag: "OPEN",
     // Lesson card
     lessonOf: (index: number, total: number) => `Lesson ${index} of ${total}`,
-    reward: (dust: number) => `Up to +${dust} ✨`,
+    reward: (dust: number) => `Up to +${dust}`,
     replayHint: "Fresh questions every time!",
     playAgain: "Play again",
     continue: "Continue",
@@ -132,16 +134,49 @@ export const TOUR = {
     // Gentle nudges
     locked: "Finish the one before!",
     chestLocked: (lessons: number) => `Finish all ${lessons} lessons first!`,
-    // Hop to the other course
+    // Course picker (any number of courses)
     courses: "Courses",
     goTo: (course: string) => `Go to ${course}`,
+    courseTitle: (course: string) => `${guide}'s ${course}`,
+    pickerTitle: "Pick a course",
+    pickerSub: (count: number) => (count === 1 ? "1 course" : `${count} courses`),
+    here: "Here",
+    home: "Home",
+    lessonsDone: (done: number, total: number) => `${done}/${total} lessons`,
+    // Lesson card teasers
+    puzzles: (count: number) => `${count} puzzles`,
+    questions: (count: number) => `${count} questions`,
+    codeTask: {
+      run: "Build a path",
+      stars: "Collect stars",
+      trace: "Read the code",
+      debug: "Fix a bug",
+      loop: "Use a loop",
+      "loop-trace": "Read a loop",
+    } as Record<string, string>,
+    kitKind: {
+      pick: "Pick",
+      pairs: "Match",
+      order: "Put in order",
+      sort: "Sort",
+      build: "Build",
+      number: "Count",
+    } as Record<string, string>,
+    // Keepsake shelf (every course without its own collection)
+    shelf: "Keepsakes",
+    shelfTitle: (course: string) => `${n}'s ${course} shelf`,
+    shelfCount: (owned: number, total: number) => `${owned} / ${total} keepsakes`,
+    shelfHow: "Open treasure chests to fill it!",
+    shelfFull: "Your shelf is full!",
+    shelfMystery: "???",
+    // Any course, once every lesson is done
+    finishedCourse: (course: string) => `You finished ${course}!`,
     // Treasure chest
     chestTitle: "Treasure chest!",
     chestFound: (souvenir: string) => `You found the ${souvenir}!`,
     chestDone: "Yay!",
     souvenirOwned: (souvenir: string) => `Your ${souvenir}`,
-    // End of the tour
-    finished: `We saw the whole world, ${n}!`,
+    // End of any course (finishedCourse above)
     finishedSub: "Play any lesson again!",
     // Passport
     passportTitle: `${n}'s Passport`,
@@ -165,9 +200,30 @@ export const TOUR = {
     day: (days: number) => `Day ${days}`,
   },
 
+  /** Course Kit widgets, teach cards and intro slides. */
+  kit: {
+    pickHelp: "Tap your answer",
+    pairsHelp: "Tap two cards that go together",
+    orderHelp: "Tap the cards in order",
+    sortHelp: "Tap a card, then its group",
+    buildHelp: "Tap the words in order",
+    numberHelp: "Type the number",
+    erase: "Erase",
+    yourNumber: "Your number",
+    slot: (n: number) => `Spot ${n}`,
+    // teach cards
+    youPicked: "You picked",
+    goesWith: "goes with",
+    // intro slides
+    next: "Next",
+    letsGo: "Let's go!",
+    skip: "Skip",
+    slideOf: (index: number, total: number) => `${index} of ${total}`,
+  },
+
   /** Parent Section block (plain admin English). */
   parent: {
-    heading: `🛸 ${guide}'s courses`,
+    heading: `${guide}'s courses`,
     course: (lessons: number, total: number, chests: number, units: number) =>
       `lessons ${lessons}/${total} · chests opened ${chests}/${units}`,
     stamps: (stamps: number, countries: number) => `stamps ${stamps}/${countries}`,

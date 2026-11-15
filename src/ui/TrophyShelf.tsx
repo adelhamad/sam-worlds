@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { useGame } from "../state/store";
 import { sfx, unlockAudio } from "../engine/feedback/audio";
 import { STR } from "../strings/en";
+import { Glyph, Icon } from "./icons/Icon";
 
 /** Keep the hub tile compact while giving every earned trophy room to be seen. */
 export function TrophyShelf() {
@@ -25,14 +26,14 @@ export function TrophyShelf() {
           setOpen(true);
         }}
       >
-        <span className="tile-icon">🏆</span>
+        <span className="tile-icon" aria-hidden="true"><Icon name="trophy" size="1em" /></span>
         <span className="tile-name">{STR.trophyShelf}</span>
         {badges.length === 0 ? (
           <span className="tile-sub">{STR.trophyEmpty}</span>
         ) : (
           <>
             <span className="tile-trophies" aria-hidden="true">
-              {newest.slice(0, 3).map((b) => <span key={b.badgeId}>{b.icon}</span>)}
+              {newest.slice(0, 3).map((b) => <Glyph key={b.badgeId} value={b.icon} size="1em" />)}
             </span>
             <span className="tile-sub">{STR.trophyCount(badges.length)} · {STR.viewAll}</span>
           </>
@@ -56,14 +57,14 @@ export function TrophyShelf() {
             }}
           >
             <header className="shop-header">
-              <h2 id="trophy-title">🏆 {STR.trophyShelf}</h2>
-              <button className="btn btn-icon" aria-label="close" autoFocus onClick={close}>✕</button>
+              <h2 id="trophy-title"><span><Icon name="trophy" size="1.1em" /> {STR.trophyShelf}</span></h2>
+              <button className="btn btn-icon" aria-label="close" autoFocus onClick={close}><Icon name="close" size={20} mono /></button>
             </header>
             <p className="dim">{badges.length ? STR.trophyCount(badges.length) : STR.trophyEmpty}</p>
             <div className="trophy-grid">
               {newest.map((b) => (
                 <div key={b.badgeId} className="trophy-item">
-                  <span className="trophy-icon" aria-hidden="true">{b.icon}</span>
+                  <span className="trophy-icon" aria-hidden="true"><Glyph value={b.icon} size="1em" /></span>
                   <span className="trophy-name">{b.name}</span>
                   <span className="trophy-date">{new Date(b.earnedAt).toLocaleDateString()}</span>
                 </div>

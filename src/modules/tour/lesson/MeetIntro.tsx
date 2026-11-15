@@ -2,6 +2,7 @@
 // question 1. Teach by showing: tap a card to hear its name. Skippable at once.
 import { useState } from "react";
 import { useGame } from "../../../state/store";
+import { Icon } from "../../../ui/icons/Icon";
 import { COUNTRY_BY_CODE } from "../../../engine/generators/geography";
 import { continentOf, countryName } from "../../../engine/tour/countries";
 import { unlockAudio } from "../../../engine/feedback/audio";
@@ -66,7 +67,7 @@ export function MeetIntro({ codes, onStart }: MeetIntroProps) {
                 style={{ animationDelay: `${120 + i * 90}ms` }}
                 onClick={() => greet(code)}
               >
-                {met && <span className="tl-meet-tick" aria-hidden="true">✓</span>}
+                {met && <span className="tl-meet-tick" aria-hidden="true"><Icon name="check" size="0.8em" mono /></span>}
                 <Flag code={code} size={compact ? 58 : 84} className={met ? "tl-meet-flag-pop" : ""} />
                 <span className="tl-meet-name">{countryName(code)}</span>
                 <span className="tl-meet-where">

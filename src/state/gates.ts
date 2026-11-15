@@ -1,3 +1,4 @@
+import { COURSE_WORLD_IDS } from "../content/courses";
 import { WORLDS } from "../content/worlds";
 
 /** Worlds open out of the box: the first two, plus the newest explore-worlds
@@ -13,13 +14,13 @@ const OPEN_BY_DEFAULT = new Set([
   "birds", "thennow", "ordinals", "family", "pets", "trace",
   "stars", "ancient", "myths", "maps", "homophones",
   "symmetry", "chance", "signs", "inventors", "calm", "capitals", "countrymaps",
-  "landduel", "areaatlas", "population", "traits", "tour", "chess",
+  "landduel", "areaatlas", "population", "traits",
 ]);
 
 export function withWorldDefaults(stored?: Record<string, boolean>): Record<string, boolean> {
   const out: Record<string, boolean> = {};
   WORLDS.forEach((w, i) => {
-    out[w.id] = stored?.[w.id] ?? (i < 2 || OPEN_BY_DEFAULT.has(w.id));
+    out[w.id] = stored?.[w.id] ?? (i < 2 || OPEN_BY_DEFAULT.has(w.id) || COURSE_WORLD_IDS.has(w.id));
   });
   return out;
 }

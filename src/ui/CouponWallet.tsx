@@ -4,6 +4,7 @@ import { itemById } from "../engine/economy/catalog";
 import { sfx } from "../engine/feedback/audio";
 import { persona } from "../persona.config";
 import { STR } from "../strings/en";
+import { Glyph, Icon } from "./icons/Icon";
 import type { CouponRow } from "../engine/save/db";
 
 /** Active real-world reward coupons — tap one to show Daddy, then mark it used. */
@@ -20,7 +21,7 @@ export function CouponWallet() {
   return (
     <>
       <section className="panel coupon-wallet">
-        <h2>🎟️ {STR.daddyRewards} <span className="coupon-count">{active.length}</span></h2>
+        <h2><span><Icon name="ticket" size="1.2em" /> {STR.daddyRewards}</span> <span className="coupon-count">{active.length}</span></h2>
         <div className="coupon-row">
           {active.map((c) => {
             const item = itemById(c.itemId);
@@ -34,7 +35,7 @@ export function CouponWallet() {
                   setOpen(c);
                 }}
               >
-                {item.icon} {item.name}
+                <Glyph value={item.icon} size="1.1em" /> {item.name}
               </button>
             );
           })}
@@ -44,7 +45,7 @@ export function CouponWallet() {
       {open && openItem && (
         <div className="overlay" onClick={() => setOpen(null)}>
           <div className="panel celebration-card coupon-card" onClick={(e) => e.stopPropagation()}>
-            <div className="coupon-big-icon">{openItem.icon}</div>
+            <div className="coupon-big-icon"><Glyph value={openItem.icon} size="1em" /></div>
             <h2>{STR.tellDaddy(openItem.reward ?? openItem.name)}</h2>
             <p className="dim">
               Earned by {persona.name} on {new Date(open.purchasedAt).toLocaleDateString()}

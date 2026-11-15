@@ -12,8 +12,8 @@ import { answerTransition, type AnswerVerdict } from "./questionFlow";
 import { recordSeenQuestion } from "./seenQuestions";
 import { persistSettings, settingsState } from "./settings";
 import { giftActions } from "./gifts";
-import { petActions, petInitial, type PetSlice } from "./pet";
 import { tourActions, tourInitial, type TourSlice } from "./tour";
+import { questActions, questInitial, type QuestSlice } from "./quests";
 import { videoActions } from "./video";
 import { worldAdminActions } from "./worldAdmin";
 import { couponActions } from "./coupons";
@@ -48,7 +48,7 @@ export interface Session extends SessionRow {
 /** Star Dust it costs to reveal an answer and skip a question. */
 export const REVEAL_COST = 15;
 
-export interface GameStore extends PetSlice, TourSlice {
+export interface GameStore extends TourSlice, QuestSlice {
   loaded: boolean;
   hasSave: boolean;
   starDust: number;
@@ -174,8 +174,8 @@ export const useGame = create<GameStore>((set, get) => ({
   recentWorlds: [], favoriteWorlds: [],
   videoEnabled: false, videoMode: "corner", videoOpacity: 80, videoUrls: [], videoAudioOnly: false, videoSize: 280,
   gifts: [], lastGiftDay: null, giftStreak: 0, giftBestStreak: 0,
-  ...petInitial,
   ...tourInitial,
+  ...questInitial,
   session: null,
 
   hydrate: async () => {
@@ -296,6 +296,7 @@ export const useGame = create<GameStore>((set, get) => ({
     if (!stage || !s.questions[s.index]) return null;
     const ratings = { ...get().skillRatings };
     const { next, verdict } = answerTransition(s, stage, typed, ratings, get().seenQuestionKeys);
+    get().questNoteAnswer(verdict === "correct" || verdict === "again", !s.attemptMissed);
     const shown = verdict === "wrong" || verdict === "again" || verdict === "exhausted";
     set({ skillRatings: ratings, session: next,
       seenQuestionKeys: shown ? recordSeenQuestion(get().seenQuestionKeys, next.questions[next.index]) : get().seenQuestionKeys });
@@ -381,6 +382,7 @@ export const useGame = create<GameStore>((set, get) => ({
     void db.progress.put(progressRow);
     void db.economy.put({ id: 1, starDust, melodyShards: 0 });
     logEvent("stage.complete", { stageId: s.stageId, stars, payout, firstTime, perfect });
+    if (s.questions.length > 0) get().questNoteStage(payout, perfect);
 
     // Surprise treasure every 5th NEW stage cleared — a steady ownership drip.
     let surprise: Treasure | null = null;
@@ -406,7 +408,6 @@ export const useGame = create<GameStore>((set, get) => ({
     });
     if (surprise) persistSettings(get);
     persistSession(finished); // result set → deletes the in-progress row
-    if (s.questions.length > 0) get().feedStage(s.correctCount, perfect, firstTime);
   },
 
   clearSession: () => {
@@ -462,8 +463,8 @@ export const useGame = create<GameStore>((set, get) => ({
   },
 
   ...giftActions(set, get),
-  ...petActions(set, get),
   ...tourActions(set, get),
+  ...questActions(set, get),
   ...videoActions(set, get),
   ...worldAdminActions(set, get),
   ...couponActions(set, get),

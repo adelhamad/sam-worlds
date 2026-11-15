@@ -1,11 +1,12 @@
 // Contract between the lesson screen (shell) and the exercise widgets.
 import type { Question } from "../../../engine/generators/types";
-import { chessPayload } from "../../../engine/chess/types";
-import { tourPayload } from "../../../engine/tour/types";
 
-/** True for kinds that submit by themselves (no CHECK button): pairs and chess missions. */
+/** Kinds that submit by themselves (no CHECK button). */
+const SELF_SUBMITTING = new Set(["pairs", "kit-pairs", "chess-mission", "code-run", "code-debug"]);
+
 export function selfSubmitting(question: Question): boolean {
-  return tourPayload(question)?.tour === "pairs" || chessPayload(question)?.tour === "chess-mission";
+  const kind = (question.payload as { tour?: unknown } | undefined)?.tour;
+  return question.inputMode === "tour" && typeof kind === "string" && SELF_SUBMITTING.has(kind);
 }
 
 export interface ExerciseProps {

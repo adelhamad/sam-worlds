@@ -1,8 +1,10 @@
 import { lazy, Suspense, useEffect } from "react";
 import { HashRouter, Route, Routes, useLocation } from "react-router-dom";
+import { COURSES } from "./content/courses";
 import { useGame } from "./state/store";
 import { TitleScreen } from "./ui/TitleScreen";
 import { Hub } from "./ui/Hub";
+import { Universe } from "./ui/Universe";
 import { PlayRoute, WorldRoute } from "./modules/tour/TourRedirects";
 import { ParentSection } from "./ui/ParentSection";
 import { VideoCompanion } from "./ui/VideoCompanion";
@@ -13,6 +15,10 @@ import { TourLesson } from "./modules/tour/TourLesson";
 const PogoLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/PogoLab")) : null;
 const ExerciseLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/ExerciseLab")) : null;
 const ChessLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/ChessLab")) : null;
+const KitLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/KitLab")) : null;
+const CodeLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/CodeLab")) : null;
+const TickLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/TickLab")) : null;
+const IconLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/IconLab")) : null;
 
 /** Each screen starts at the top — no inherited scroll position. */
 function ScrollToTop() {
@@ -95,12 +101,18 @@ export default function App() {
       <Routes>
         <Route path="/" element={<TitleScreen />} />
         <Route path="/hub" element={<Hub />} />
+        <Route path="/universe" element={<Universe />} />
         <Route path="/world/:worldId" element={<WorldRoute />} />
         <Route path="/play/:stageId" element={<PlayRoute />} />
-        <Route path="/tour" element={<TourPath />} />
-        <Route path="/tour/lesson/:stageId" element={<TourLesson />} />
-        <Route path="/chess" element={<TourPath />} />
-        <Route path="/chess/lesson/:stageId" element={<TourLesson />} />
+        {/* Every course gets its path and lesson routes from the registry. */}
+        {COURSES.flatMap((course) => [
+          <Route key={course.path} path={course.path} element={<TourPath />} />,
+          <Route key={`${course.path}/lesson`} path={`${course.path}/lesson/:stageId`} element={<TourLesson />} />,
+        ])}
+        {KitLab && <Route path="/tour/lab/kit" element={<Suspense fallback={null}><KitLab /></Suspense>} />}
+        {CodeLab && <Route path="/tour/lab/code" element={<Suspense fallback={null}><CodeLab /></Suspense>} />}
+        {TickLab && <Route path="/tour/lab/tick" element={<Suspense fallback={null}><TickLab /></Suspense>} />}
+        {IconLab && <Route path="/tour/lab/icons" element={<Suspense fallback={null}><IconLab /></Suspense>} />}
         {ChessLab && <Route path="/tour/lab/chess" element={<Suspense fallback={null}><ChessLab /></Suspense>} />}
         {PogoLab && ExerciseLab && (
           <>

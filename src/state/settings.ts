@@ -1,5 +1,6 @@
 // Settings round-trip: one place owns the SettingsRow defaults and writes.
 import { db, type SettingsRow } from "../engine/save/db";
+import { NO_COUNTERS } from "../engine/quests/daily";
 import { withWorldDefaults } from "./gates";
 import type { GameStore } from "./store";
 
@@ -25,15 +26,15 @@ export function persistSettings(get: () => GameStore): void {
     lastGiftDay: s.lastGiftDay,
     giftStreak: s.giftStreak,
     giftBestStreak: s.giftBestStreak,
-    petName: s.petName,
-    petXp: s.petXp,
-    petStageIdx: s.petStageIdx,
-    petFedAt: s.petFedAt,
-    petBornAt: s.petBornAt,
     tourStamps: s.tourStamps,
     tourChests: s.tourChests,
     tourDays: s.tourDays,
     tourLastDay: s.tourLastDay,
+    questDay: s.questDay,
+    questCounters: s.questCounters,
+    questClaimed: s.questClaimed,
+    questChestDay: s.questChestDay,
+    questDaysDone: s.questDaysDone,
   });
 }
 
@@ -64,18 +65,6 @@ function giftSettings(s: SettingsRow | undefined) {
   };
 }
 
-/** Cosmo companion defaults (split out to keep each helper under the cap). */
-function petSettings(s: SettingsRow | undefined) {
-  return {
-    petName: s?.petName ?? null,
-    petXp: s?.petXp ?? 0,
-    petStageIdx: s?.petStageIdx ?? 0,
-    petFedAt: s?.petFedAt ?? 0,
-    petBornAt: s?.petBornAt ?? 0,
-    petEvolvedTo: null as number | null,
-  };
-}
-
 /** World Tour defaults: passport stamps, opened chests, tour days. */
 function tourSettings(s: SettingsRow | undefined) {
   return {
@@ -86,13 +75,24 @@ function tourSettings(s: SettingsRow | undefined) {
   };
 }
 
+/** Daily quests defaults. */
+function questSettings(s: SettingsRow | undefined) {
+  return {
+    questDay: s?.questDay ?? null,
+    questCounters: s?.questCounters ?? NO_COUNTERS,
+    questClaimed: s?.questClaimed ?? [],
+    questChestDay: s?.questChestDay ?? null,
+    questDaysDone: s?.questDaysDone ?? 0,
+  };
+}
+
 /** Stored settings row → state slice, with all defaults in one place. */
 export function settingsState(settings: SettingsRow | undefined) {
   return {
     ...scalarSettings(settings),
     ...giftSettings(settings),
-    ...petSettings(settings),
     ...tourSettings(settings),
+    ...questSettings(settings),
     enabledWorlds: withWorldDefaults(settings?.enabledWorlds),
     hiddenWorlds: settings?.hiddenWorlds ?? {},
     recentWorlds: settings?.recentWorlds ?? [],

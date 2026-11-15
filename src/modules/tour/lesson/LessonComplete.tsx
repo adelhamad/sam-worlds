@@ -10,8 +10,10 @@ import type { StageDef } from "../../../content/types";
 import { perfectBonus } from "../../../engine/answers/lessonRewards";
 import { countryName } from "../../../engine/tour/countries";
 import { Flag } from "../../../ui/tour/Flag";
+import { Glyph, Icon } from "../../../ui/icons/Icon";
 import { Confetti, Pogo } from "../../../ui/tour/Pogo";
 import { TOUR } from "../../../strings/tour";
+import { QuestRow } from "./QuestRow";
 import { useCompact } from "./useCompact";
 
 const STAMP_ROW_MAX = 4;
@@ -50,10 +52,10 @@ function Stats({ result, total, misses }: { result: SessionResult; total: number
   return (
     <div className="tl-stats">
       <StatCard tone="dust" label={TOUR.lesson.statDust} delay={300}>
-        <span className="tl-stat-icon" aria-hidden="true">✨</span>+{dust}
+        <Icon name="dust" size="0.9em" className="tl-stat-icon" />+{dust}
       </StatCard>
       <StatCard tone="aim" label={TOUR.lesson.statFirstTry} delay={480}>
-        <span className="tl-stat-icon" aria-hidden="true">🎯</span>{percent}%
+        <Icon name="target" size="0.9em" className="tl-stat-icon" />{percent}%
       </StatCard>
       <StatCard tone="stars" label={TOUR.lesson.statStars} delay={660}>
         <span className="tl-stars" role="img" aria-label={`${result.stars} / 3`}>
@@ -62,7 +64,7 @@ function Stats({ result, total, misses }: { result: SessionResult; total: number
               key={star} className={`tl-star ${star <= result.stars ? "is-lit" : ""}`}
               style={{ animationDelay: `${900 + star * 220}ms` }}
             >
-              ★
+              <Icon name="star" size="1em" mono={star > result.stars} />
             </span>
           ))}
         </span>
@@ -78,10 +80,10 @@ function Bonuses({ perfect, gift }: { perfect: number; gift: number }) {
   return (
     <div className="tl-bonus">
       {perfect > 0 && (
-        <span className="tl-bonus-line"><span aria-hidden="true">🌟</span> {TOUR.lesson.perfectBonus(perfect)}</span>
+        <span className="tl-bonus-line"><Icon name="star" size="1.1em" /> {TOUR.lesson.perfectBonus(perfect)} <Icon name="dust" size="1em" /></span>
       )}
       {gift > 0 && (
-        <span className="tl-bonus-line is-gift"><span aria-hidden="true">🎁</span> {TOUR.lesson.giftLine(gift)}</span>
+        <span className="tl-bonus-line is-gift"><Icon name="gift" size="1.1em" /> {TOUR.lesson.giftLine(gift)} <Icon name="dust" size="1em" /></span>
       )}
     </div>
   );
@@ -94,18 +96,18 @@ function UnitRoad({ unit, stageId, fresh }: { unit: CourseUnit; stageId: string;
   const label = TOUR.lesson.lessonOf(index + 1, unit.lessons.length);
   return (
     <section className="tl-passport tl-unit" style={{ "--tl-unit-hue": unit.hue } as React.CSSProperties}>
-      <h3 className="tl-passport-title"><span className="tl-unit-icon" aria-hidden="true">{unit.icon}</span> {unit.name}</h3>
+      <h3 className="tl-passport-title"><Glyph value={unit.icon} size={26} className="tl-unit-icon" /> {unit.name}</h3>
       <div className="tl-unit-road" role="img" aria-label={label}>
         {unit.lessons.map((lesson, i) => {
           const on = Boolean(progress[lesson.id]?.completed);
           const here = i === index;
           return (
             <i key={lesson.id} className={`tl-unit-pip ${on ? "is-on" : ""} ${here ? "is-here" : ""} ${here && fresh ? "is-fresh" : ""}`}>
-              {on ? "✓" : i + 1}
+              {on ? <Icon name="check" size="0.9em" mono /> : i + 1}
             </i>
           );
         })}
-        <span className={`tl-unit-chest ${unitComplete(unit, progress) ? "is-ready" : ""}`}>🎁</span>
+        <span className={`tl-unit-chest ${unitComplete(unit, progress) ? "is-ready" : ""}`}><Icon name="chest" size="1em" /></span>
       </div>
       <p className="tl-passport-note">{label}</p>
     </section>
@@ -124,7 +126,7 @@ function Passport({ newStamps, focus }: { newStamps: string[]; focus: string[] }
   if (newStamps.length > 0) {
     return (
       <section className={`tl-passport is-new ${newStamps.length > STAMP_ROW_MAX ? "is-many" : ""}`}>
-        <h3 className="tl-passport-title">🛂 {TOUR.lesson.newStamps}</h3>
+        <h3 className="tl-passport-title"><Icon name="passport" size="1.2em" /> {TOUR.lesson.newStamps}</h3>
         <div className="tl-stamp-row">
           {newStamps.map((code, i) => (
             <div key={code} className="tl-stamp" style={{ animationDelay: `${1100 + i * 240}ms` }}>
@@ -140,7 +142,7 @@ function Passport({ newStamps, focus }: { newStamps: string[]; focus: string[] }
   if (row.length === 0) return null;
   return (
     <section className="tl-passport">
-      <h3 className="tl-passport-title">🛂 {TOUR.lesson.stampProgress}</h3>
+      <h3 className="tl-passport-title"><Icon name="passport" size="1.2em" /> {TOUR.lesson.stampProgress}</h3>
       <div className="tl-stamp-row">
         {row.map((code) => {
           const count = Math.min(STAMP_GOAL, stamps[code] ?? 0);
@@ -173,25 +175,25 @@ function Extras({ result, dayNumber, dayNote, chestWaiting }: ExtrasProps) {
     <div className="tl-extras">
       {dayNumber !== null && (
         <div className="tl-chip tl-chip-day">
-          <span className="tl-chip-icon" aria-hidden="true">☀️</span>
+          <Icon name="flame" size="1em" className="tl-chip-icon" />
           <span><b>{TOUR.lesson.dayChip(dayNumber)}</b> {dayNote}</span>
         </div>
       )}
       {result.newBadge && (
         <div className="tl-chip tl-chip-trophy">
-          <span className="tl-chip-icon" aria-hidden="true">{result.newBadge.icon}</span>
+          <Glyph value={result.newBadge.icon} size={28} className="tl-chip-icon" />
           <span>{TOUR.lesson.trophy} <b>{result.newBadge.name}</b></span>
         </div>
       )}
       {chestWaiting && (
         <div className="tl-chip tl-chip-chest">
-          <span className="tl-chip-icon" aria-hidden="true">🎁</span>
+          <Icon name="chest" size="1em" className="tl-chip-icon" />
           <span>{TOUR.lesson.chestTease}</span>
         </div>
       )}
       {result.surprise && (
         <div className="tl-chip tl-chip-gift">
-          <span className="tl-chip-icon" aria-hidden="true">{result.surprise.icon}</span>
+          <Glyph value={result.surprise.icon} size={28} className="tl-chip-icon" />
           <span>{TOUR.lesson.surprise} <b>{result.surprise.name}</b></span>
         </div>
       )}
@@ -234,11 +236,12 @@ export function LessonComplete(props: LessonCompleteProps) {
         <h1 className="tl-done-title">{TOUR.lesson.complete}</h1>
         {result.noQuestions && <p className="tl-done-note">{TOUR.lesson.noQuestions}</p>}
         {result.perfect && !result.noQuestions && (
-          <div className="tl-ribbon"><span aria-hidden="true">🌟</span> {TOUR.lesson.perfect}</div>
+          <div className="tl-ribbon"><Icon name="star" size="1.1em" /> {TOUR.lesson.perfect}</div>
         )}
         {!result.noQuestions && (
           <>
             <Stats result={result} total={total} misses={misses} />
+            <QuestRow stageId={stage.id} seed={seed} />
             <Bonuses perfect={bonus} gift={giftDust} />
             {!result.firstTime && <p className="tl-done-note">{TOUR.lesson.replayNote}</p>}
             {focus && <Passport newStamps={newStamps} focus={focus} />}

@@ -1,38 +1,43 @@
-// Encouragement reminders — friendly nudges to come back and play. There is no
-// server (static build), so these are LOCAL notifications scheduled through the
-// service worker with the Notification Triggers API (TimestampTrigger). That API
-// fires even when the app is closed, with no network — on Chromium (Android/
-// desktop). Where it's unsupported (e.g. iOS Safari) arming is a graceful no-op.
-import { persona } from "../../persona.config";
+// Encouragement reminders — friendly invitations about Pogo, the courses and
+// today's quests. There is no server (static build), so these are LOCAL
+// notifications scheduled through the service worker with the Notification
+// Triggers API (TimestampTrigger), which fires even when the app is closed.
+// CAVEAT (checked 2026-11-15): that API never shipped — it was an origin trial
+// and Chrome no longer pursues it; stable Chrome 157 has no TimestampTrigger.
+// So today arming is a graceful no-op almost everywhere (only a Chromium with
+// the experimental flag schedules them). It lights up by itself if a browser
+// ever ships it. When and what:
+// `schedule.ts`. Platform notes and the (unbuilt) push design: docs/NOTIFICATIONS.md.
+import { todayKey } from "../economy/gifts";
+import { disablePush, enablePush, notePlayedToday, pushReady } from "./push";
+import { cheerPool, REMINDER_TAG, reminderSchedule, type Cheer, type ReminderContext } from "./schedule";
 
-const INTERVAL_MS = 6 * 60 * 60 * 1000; // aim for one cheer every 6 hours
-const COUNT = 8; // schedule ~2 days ahead; re-armed every time the app opens
-const TAG = "sam-reminder";
-// Daytime only — never ping a sleeping child.
-const DAY_START = 8;
-const DAY_END = 20;
+export type { Cheer, ReminderContext };
 
-const n = persona.name;
+const ICON = "icons/icon-192.png";
+const READY_TIMEOUT_MS = 10_000;
 
-export interface Cheer {
-  title: string;
-  body: string;
-}
-
-// Exciting, name-aware, and tied to what's waiting in the app (Cosmo + worlds).
-export const CHEERS: Cheer[] = [
-  { title: "🚀 Adventure time!", body: `A whole universe is waiting, ${n}. Come explore!` },
-  { title: "🐉 Cosmo misses you!", body: `Your buddy is hungry, ${n} — feed it with a quick puzzle!` },
-  { title: "🦕 Dino Dig!", body: `New dinosaurs to discover, ${n}. Let's dig in!` },
-  { title: "🌦️ Weather Watch", body: `Sun, rain or snow today, ${n}? Come find out!` },
-  { title: "⭐ So close!", body: `One more level to grow Cosmo, ${n}. Let's go!` },
-  { title: "🪐 Space Voyage", body: `Blast off and meet the planets, ${n}!` },
-  { title: "✨ Treasure is ready", body: `Your daily gift is waiting, ${n}. Come open it!` },
-  { title: "🎉 Brain boost?", body: `Cosmo's ready when you are, ${n}!` },
-];
+/** Every cheer that rotates through the slots. */
+export const CHEERS: Cheer[] = cheerPool();
 
 export function pickCheer(i: number): Cheer {
   return CHEERS[((i % CHEERS.length) + CHEERS.length) % CHEERS.length];
+}
+
+// Callers that do not pass a context (App start, the parent switch) get the
+// one the quest signals bridge registers, so every re-arm is context-aware.
+let contextSource: (() => ReminderContext | undefined) | null = null;
+
+export function setReminderContextSource(source: (() => ReminderContext | undefined) | null): void {
+  contextSource = source;
+}
+
+function currentContext(): ReminderContext | undefined {
+  try {
+    return contextSource?.();
+  } catch {
+    return undefined;
+  }
 }
 
 interface TriggerCtor {
@@ -47,9 +52,10 @@ export function notificationsSupported(): boolean {
   return typeof window !== "undefined" && "Notification" in window && "serviceWorker" in navigator;
 }
 
-/** Closed-app timed delivery needs the Notification Triggers API. */
+/** Reminders can reach a closed app: by push (when the app was built with a
+ * push key) or, where a browser has it, the Notification Triggers API. */
 export function timedRemindersSupported(): boolean {
-  return notificationsSupported() && triggerCtor() !== null;
+  return notificationsSupported() && (pushReady() || triggerCtor() !== null);
 }
 
 export async function requestReminderPermission(): Promise<NotificationPermission> {
@@ -57,52 +63,81 @@ export async function requestReminderPermission(): Promise<NotificationPermissio
   return Notification.requestPermission();
 }
 
+/** The service worker registration, or null if it never becomes ready (dev, no SW). */
+function swReady(): Promise<ServiceWorkerRegistration | null> {
+  const timeout = new Promise<null>((resolve) => setTimeout(() => resolve(null), READY_TIMEOUT_MS));
+  return Promise.race([navigator.serviceWorker.ready, timeout]);
+}
+
 async function clearScheduled(reg: ServiceWorkerRegistration): Promise<void> {
   const opts = { includeTriggered: true } as unknown as GetNotificationOptions;
   const existing = await reg.getNotifications(opts);
   for (const note of existing) {
-    if (note.tag?.startsWith(TAG)) note.close();
+    if (note.tag?.startsWith(REMINDER_TAG)) note.close();
   }
 }
 
-/** Re-arm the next COUNT daytime cheers, ~6h apart. Returns false (no-op) when
- * permission isn't granted or the platform can't schedule closed-app triggers. */
-export async function armReminders(now: number): Promise<boolean> {
+/** Push path: register the device; a day with a finished lesson is reported so it stays quiet. */
+async function armPush(context: ReminderContext | undefined): Promise<boolean> {
+  const ok = await enablePush();
+  if (ok && context?.playedToday) await notePlayedToday(todayKey());
+  return ok;
+}
+
+async function arm(now: number, context: ReminderContext | undefined): Promise<boolean> {
   if (!notificationsSupported() || Notification.permission !== "granted") return false;
+  if (pushReady()) return armPush(context ?? currentContext());
   const Trigger = triggerCtor();
   if (!Trigger) return false;
-  const reg = await navigator.serviceWorker.ready;
+  const reg = await swReady();
+  if (!reg) return false;
   await clearScheduled(reg);
-  let scheduled = 0;
-  for (let i = 1; i <= COUNT * 4 && scheduled < COUNT; i++) {
-    const when = now + i * INTERVAL_MS;
-    const hour = new Date(when).getHours();
-    if (hour < DAY_START || hour >= DAY_END) continue; // skip night slots
-    const cheer = pickCheer(scheduled + Math.floor(now / INTERVAL_MS));
+  const slots = reminderSchedule(now, context ?? currentContext());
+  for (const slot of slots) {
     const options = {
-      body: cheer.body,
-      tag: `${TAG}-${scheduled}`,
-      icon: "icons/icon-192.png",
-      badge: "icons/icon-192.png",
-      showTrigger: new Trigger(when),
+      body: slot.cheer.body,
+      tag: slot.tag,
+      icon: ICON,
+      badge: ICON,
+      showTrigger: new Trigger(slot.when),
       data: { url: "." },
     } as unknown as NotificationOptions;
-    await reg.showNotification(cheer.title, options);
-    scheduled++;
+    await reg.showNotification(slot.cheer.title, options);
   }
-  return scheduled > 0;
+  return slots.length > 0;
 }
 
-export async function disarmReminders(): Promise<void> {
-  if (!notificationsSupported()) return;
-  const reg = await navigator.serviceWorker.ready;
-  await clearScheduled(reg);
+// Re-arms run one after another so two callers can never interleave
+// clear / schedule and leave duplicates behind.
+let queue: Promise<unknown> = Promise.resolve();
+
+/** Clear and re-schedule the next days' cheers (≤ 2 a day, daytime only).
+ * Returns false (no-op) when permission isn't granted or the platform can't
+ * schedule closed-app triggers. Never throws. */
+export function armReminders(now: number, context?: ReminderContext): Promise<boolean> {
+  const run = queue.then(() => arm(now, context)).catch(() => false);
+  queue = run;
+  return run;
+}
+
+export function disarmReminders(): Promise<void> {
+  const run = queue
+    .then(async () => {
+      if (!notificationsSupported()) return;
+      await disablePush();
+      const reg = await swReady();
+      if (reg) await clearScheduled(reg);
+    })
+    .catch(() => undefined);
+  queue = run;
+  return run;
 }
 
 /** Show one cheer right now so the parent can confirm reminders work. */
 export async function testCheer(): Promise<void> {
   if (!notificationsSupported() || Notification.permission !== "granted") return;
-  const reg = await navigator.serviceWorker.ready;
+  const reg = await swReady();
+  if (!reg) return;
   const cheer = pickCheer(0);
-  await reg.showNotification(cheer.title, { body: cheer.body, icon: "icons/icon-192.png", tag: `${TAG}-test` });
+  await reg.showNotification(cheer.title, { body: cheer.body, icon: ICON, tag: `${REMINDER_TAG}-test`, data: { url: "." } });
 }

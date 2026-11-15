@@ -1,4 +1,5 @@
 import { useGame } from "../state/store";
+import { Glyph, Icon } from "./icons/Icon";
 import { RARITY_ORDER, TREASURES, vaultProgress, type Rarity } from "../engine/economy/gifts";
 
 const RARITY_LABEL: Record<Rarity, string> = {
@@ -18,10 +19,10 @@ export function TreasureVault({ onClose }: { onClose: () => void }) {
     <div className="overlay" onClick={onClose}>
       <div className="panel shop vault" onClick={(e) => e.stopPropagation()}>
         <header className="shop-header">
-          <h2>🗝️ Treasure Vault</h2>
+          <h2><span><Icon name="key" size="1.1em" /> Treasure Vault</span></h2>
           <span className="dust-counter">{count}/{total}</span>
           <button className="btn btn-icon" aria-label="close" onClick={onClose}>
-            ✕
+            <Icon name="close" size={20} mono />
           </button>
         </header>
         <p className="shop-note">Open the Daily Gift and clear stages to collect them all!</p>
@@ -36,7 +37,7 @@ export function TreasureVault({ onClose }: { onClose: () => void }) {
                   const cellClass = have ? `rarity-${rarity}` : "vault-locked";
                   return (
                     <div key={t.id} className={`vault-cell ${cellClass}`}>
-                      <span className="vault-icon">{have ? t.icon : "❔"}</span>
+                      <span className="vault-icon">{have ? <Glyph value={t.icon} size="1em" /> : <Icon name="question" size="1em" />}</span>
                       <span className="vault-name">{have ? t.name : "???"}</span>
                     </div>
                   );

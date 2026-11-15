@@ -1,0 +1,152 @@
+/* Course Kit — teach-first slides. The root also carries the lesson shell's
+   `.tl-meet` (flex: 1, gutters, column); everything else is prefixed `kx-meet`. */
+.tour .kx-meet {
+  position: relative;
+  box-sizing: border-box;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.tour .kx-meet > .pogo-say { align-self: stretch; flex: none; margin-top: auto; padding-right: 64px; }
+.tour .kx-meet-skip {
+  position: absolute;
+  top: 2px;
+  right: var(--tl-gutter, 16px);
+  min-width: 56px;
+  min-height: 48px;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 14px;
+  background: transparent;
+  color: var(--t-ink-dim);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.tour .kx-meet-skip:active { background: rgba(255, 255, 255, 0.08); }
+
+.tour .kx-meet-slide {
+  width: 100%;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-block: auto;
+}
+.tour .kx-meet-badge {
+  --badge: clamp(170px, 48vw, 240px);
+  position: relative;
+  width: var(--badge);
+  height: var(--badge);
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 38%, #3b2f8f 0%, #241c63 62%, #1a1550 100%);
+  box-shadow: 0 0 0 6px rgba(139, 108, 255, 0.25), 0 0 0 12px rgba(255, 209, 102, 0.08), 0 10px 0 #120d3a, 0 18px 40px rgba(0, 0, 0, 0.45);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  animation: kx-meet-in 0.55s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+}
+.tour .kx-meet-badge:active { transform: translateY(4px) scale(0.98); }
+.tour .kx-meet-glow {
+  position: absolute;
+  inset: -22%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 209, 102, 0.34) 0%, rgba(139, 108, 255, 0.2) 42%, transparent 68%);
+  pointer-events: none;
+  z-index: -1;
+  animation: kx-meet-glow 3s ease-in-out infinite;
+}
+.tour .kx-meet-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  line-height: 0;
+  filter: drop-shadow(0 6px 6px rgba(0, 0, 0, 0.35));
+  animation: kx-meet-pop 0.6s cubic-bezier(0.3, 1.7, 0.5, 1) 0.12s both;
+}
+.tour .kx-meet-art.is-boing { animation: kx-meet-boing 0.6s cubic-bezier(0.3, 1.6, 0.5, 1) both; }
+.tour .kx-meet-art .kx-art.is-clock { --clock: calc(var(--badge) * 0.8); }
+/* no picture: Pogo (a size up) is the picture; the lines sit right under him, the pair centred */
+.tour .kx-meet-slide.is-plain { margin-top: 24px; margin-bottom: auto; }
+.tour .kx-meet-slide.is-plain .kx-meet-lines { font-size: clamp(22px, 6.2vw, 30px); }
+.tour .kx-meet-lines {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  font-size: clamp(20px, 5.6vw, 26px);
+  font-weight: 800;
+  line-height: 1.22;
+  text-wrap: balance;
+}
+.tour .kx-meet-lines li { animation: t-fade-up 0.4s ease both; animation-delay: calc(var(--i) * 0.55s + 0.45s); }
+.tour .kx-meet-lines li:first-child { color: var(--t-gold); font-weight: 900; }
+
+.tour .kx-meet-foot {
+  flex: none;
+  align-self: stretch;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+}
+.tour .kx-meet-dots { display: flex; gap: 8px; }
+.tour .kx-meet-dots i {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--t-surface-2);
+  box-shadow: inset 0 0 0 2px var(--t-line);
+  transition: width 0.25s ease, background 0.25s ease;
+}
+.tour .kx-meet-dots i.is-seen { background: var(--t-pogo-deep); box-shadow: none; }
+.tour .kx-meet-dots i.is-on { width: 30px; background: var(--t-pogo); box-shadow: none; }
+.tour .kx-meet-next { min-height: 60px; font-size: 20px; letter-spacing: 0.06em; }
+
+@keyframes kx-meet-in {
+  from { opacity: 0; transform: scale(0.6) rotate(-8deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+@keyframes kx-meet-pop {
+  0% { opacity: 0; transform: scale(0.2) rotate(-25deg); }
+  70% { opacity: 1; transform: scale(1.12) rotate(4deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+@keyframes kx-meet-boing {
+  0% { transform: translateY(0) scale(1, 1); }
+  20% { transform: translateY(4%) scale(1.15, 0.85); }
+  50% { transform: translateY(-22%) scale(0.92, 1.1); }
+  75% { transform: translateY(0) scale(1.06, 0.94); }
+  100% { transform: translateY(0) scale(1, 1); }
+}
+@keyframes kx-meet-glow {
+  0%, 100% { transform: scale(0.92); opacity: 0.8; }
+  50% { transform: scale(1.06); opacity: 1; }
+}
+
+@media (min-width: 700px) and (min-height: 900px) {
+  .tour .kx-meet { gap: 18px; }
+  .tour .kx-meet-badge { --badge: 260px; }
+  .tour .kx-meet-next { min-height: 66px; font-size: 22px; }
+}
+@media (max-height: 700px) {
+  .tour .kx-meet-badge { --badge: clamp(120px, 30vh, 170px); }
+}
