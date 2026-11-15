@@ -36,7 +36,7 @@ at home — not Modern Standard Arabic. Rules:
   widespread one and mention the other in the `tip` ("Some families say aah.").
   House choices: shu (what), biddi (I want), halla’ (now), mniiH (good), ktiir (very / a
   lot), shway (a little), wein (where), hoon (here), leish (why), eimta (when), miin
-  (who), addeish (how much), fii / ma fii (there is / there is not), mish (not), kamaan
+  (who), ’addeish (how much), fii / ma fii (there is / there is not), mish (not), kamaan
   (also, more), khalaS (enough, done), yalla (come on), ee (yes) with "aah" as its `like`
   pair, la’ (no).
 - Formulas everyone uses in their standard form are welcome: shukran, il-Hamdilla,

@@ -15,7 +15,7 @@ export const U03: LangUnitPack = {
       { name: "Please", kind: "words", teach: ["min-fadlak", "min-fadlik", "tfaddal", "afwan", "malesh"] },
       {
         name: "Sorry, Mama!", kind: "talk",
-        teach: ["la-shukran", "aasif-mama", "law-samaht"],
+        teach: ["la-shukran", "aasif-mama", "law-samaht", "maashi"],
         scenes: ["u03-teta-plate", "u03-more-rice", "u03-baba-thanks", "u03-spill", "u03-tower", "u03-shop", "u03-baba-tea"],
       },
       {
@@ -25,8 +25,12 @@ export const U03: LangUnitPack = {
     ],
   },
   phrases: [
-    { id: "ee", text: "إي", roman: "ee", en: "Yes", topic: "polite", like: ["aah"], tip: "Some families say aah." },
-    { id: "aah", text: "آه", roman: "aah", en: "Yes, yeah", topic: "polite", like: ["ee"], tip: "Another way to say ee." },
+    { id: "ee", text: "إي", roman: "ee", en: "Yes", topic: "polite", like: ["aah", "maashi"], tip: "Some families say aah." },
+    { id: "aah", text: "آه", roman: "aah", en: "Yes, yeah", topic: "polite", like: ["ee", "maashi"], tip: "Another way to say ee." },
+    {
+      id: "maashi", text: "ماشي", roman: "maashi", en: "OK, all right", topic: "polite", like: ["ee", "aah"],
+      tip: "Say it when you agree. Many families also say Tayyib.",
+    },
     { id: "la", text: "لأ", roman: "la’", say: "لَأ", en: "No", topic: "polite", like: ["la-shukran"] },
     { id: "shukran", text: "شكرا", roman: "shukran", say: "شُكْراً", en: "Thank you", topic: "polite", like: ["yislamo"] },
     {
