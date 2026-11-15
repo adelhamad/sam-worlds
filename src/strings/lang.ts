@@ -16,7 +16,7 @@ export const LANG = {
     build: (language: string) => `Say it in ${language}`,
     scene: "What do you say?",
     dictate: "Listen! Build what you hear",
-    give: "Give Pogo what he asks for",
+    give: "Give Pogo the picture he says",
     spot: "Which word do you hear? Tap it",
     memory: "Find the pairs",
     spell: "Spell the word",
