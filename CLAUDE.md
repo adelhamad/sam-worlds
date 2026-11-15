@@ -13,6 +13,7 @@ Personal PWA learning game for Sam (7). Full spec lives in `SAMS_GAME_PLAN.md` �
 - **bun, never npm/npx** — `bun install`, `bun run <script>`, `bunx`.
 - `bun run dev` — dev server · `bun run lint` — ESLint · `bun run build` — typecheck + production build · `bun run check` — lint + build.
 - Deploys to **Vercel** as a static Vite build (`vercel.json`). Keep it deployable: no server code, no env secrets.
+  - One exception, off by default: push reminders (`api/`, `src/engine/notify/push.ts`). Nothing runs or calls the network unless the owner adds the push keys — see `docs/NOTIFICATIONS.md`. Do not add other server code.
 - ESLint flat config with SonarJS: **max 500 lines/file, complexity ≤ 25, cognitive complexity ≤ 25**. Don't raise limits — split files/functions instead.
 
 ## Architecture (where things go)

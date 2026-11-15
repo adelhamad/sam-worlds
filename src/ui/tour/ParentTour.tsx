@@ -130,19 +130,21 @@ function ReminderNote() {
     <>
       <h3>Reminders and the app badge</h3>
       <p className="dim">
-        Friendly notifications about Pogo, the courses and today’s quests: at most two a day (about 10:30 and
-        16:30), never before 8:00 or after 19:30, and none for the rest of a day once he has finished a lesson.
-        The on/off switch is under “Encouragement reminders”.
+        One friendly notification a day about Pogo, the courses and today’s quests — only between 8:00 and
+        19:30, and none on a day he has already finished a lesson. The on/off switch is under “Encouragement
+        reminders”.
       </p>
       <p className="dim">
-        They are scheduled on this device, which needs the browser’s “Notification Triggers” feature. No
-        browser ships it today (Chrome only had it as a trial), so the switch usually stays off and says this
-        device can’t — the app is ready if a browser ever turns it on. The app-icon badge works now on installed
-        apps (Android / desktop Chrome, and iPad / iPhone added to the home screen): a number when a quest prize,
-        the quest chest or the daily gift is waiting. On iPad / iPhone, tap the reminders switch once and allow
-        notifications so the badge can show; the switch itself stays off there.
+        They arrive as push notifications, which need a one-time setup by you (keys and a small store on the
+        hosting side — about ten minutes, steps in docs/NOTIFICATIONS.md). Until that is done nothing arrives
+        while the app is closed and the switch says this device can’t. On iPad / iPhone the app must be added
+        to the home screen first.
       </p>
-      <p className="dim">Real push notifications would need a small server — see docs/NOTIFICATIONS.md.</p>
+      <p className="dim">
+        The app-icon badge works without any setup on installed apps: a number when a quest prize, the quest
+        chest or the daily gift is waiting. On iPad / iPhone, tap the reminders switch once and allow
+        notifications so the badge can show.
+      </p>
     </>
   );
 }

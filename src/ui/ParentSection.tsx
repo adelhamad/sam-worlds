@@ -287,8 +287,8 @@ function ReminderControls() {
     <section className="panel parent-block">
       <h2>🔔 Encouragement reminders</h2>
       <p className="dim">
-        Friendly notifications inviting {persona.name} back (two a day at most, daytime only). No browser
-        can schedule them with the app closed today — see the note under “Pogo's courses” below.
+        One friendly notification a day inviting {persona.name} back (daytime only, never after a lesson).
+        They arrive as push once the push keys are set up — see docs/NOTIFICATIONS.md.
       </p>
       <div className="parent-row">
         <button
@@ -309,8 +309,8 @@ function ReminderControls() {
       </div>
       {!supported && (
         <p className="dim">
-          Heads up: this browser cannot schedule reminders while the app is closed. The app-icon
-          badge still shows when a prize or gift is waiting (details: docs/NOTIFICATIONS.md).
+          Heads up: push is not set up yet (or this browser lacks it), so nothing arrives while the
+          app is closed. The app-icon badge still works. Setup: docs/NOTIFICATIONS.md.
         </p>
       )}
       {note && <p className="history-redeemed">{note}</p>}

@@ -1,7 +1,8 @@
 # Daily quests, Pogo's lines, reminders and the app badge
 
 What brings Sam back, and what each device can actually do. Everything here runs on the
-device: no server, no network calls, no accounts (`CLAUDE.md`). Tone rules from
+device — no server, no network calls, no accounts (`CLAUDE.md`) — except push reminders,
+which stay off until the owner adds the keys (last section). Tone rules from
 `SAMS_GAME_PLAN.md` §1 apply everywhere: no streak punishment, no FOMO timers, no guilt,
 deterministic rewards.
 
@@ -29,7 +30,7 @@ almost every device. Only a Chromium with the experimental-features flag on woul
 them. The code feature-detects, does nothing, and would start working by itself if a
 browser ever shipped the API. The parent switch says so when it cannot turn on.
 
-| Platform | Timed reminders with the app closed | App-icon badge | Web Push (if a server ever sends it) |
+| Platform | Timed reminders with the app closed | App-icon badge | Push reminders (once the keys are added) |
 |---|---|---|---|
 | Android, Chrome / Edge / Samsung Internet | Not today (Notification Triggers not shipped) | Yes, once installed | Yes |
 | Desktop Chrome / Edge | Not today | Yes, installed app | Yes, while the browser runs |
@@ -41,41 +42,64 @@ running (when it opens, as things change, and when it goes to the background). A
 cannot update its own badge on a new day. Only Web Push can reach a closed app on any
 platform.
 
-## Real push notifications (designed, deliberately NOT built)
+## Push reminders (built, OFF until you add the keys)
 
-Push is the only way that works today to reach Sam while the app is closed, on any platform
-(including iPhone / iPad). It needs things the project rules forbid right now: **server
-code, a secret key, and network calls while the app runs** (`CLAUDE.md`: "no server code, no
-env secrets", "no runtime network calls"). So it was **not built**. Adding it is the owner's
-call.
+Push is the only thing that reaches Sam while the app is closed, on any platform
+(including iPhone / iPad, for a home-screen app). It is in the code but does nothing — no
+network call, no subscription — until the four setup steps below are done. This is the one
+deliberate exception to the "no server code, no env secrets, no runtime network calls"
+rules in `CLAUDE.md`, and it only applies once the owner switches it on.
 
-If the owner wants it, the smallest honest design is:
+### What it does when on
 
-1. **VAPID keys.** Generate a key pair once (`bunx web-push generate-vapid-keys`). The public
-   key ships in the app. The private key is a secret on the server only (for example a Vercel
-   environment variable).
-2. **Subscribe on the device.** Behind the existing parent opt-in, call
-   `registration.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey })` and
-   POST the subscription (endpoint + keys) to the server. This is the first runtime network call.
-3. **Store subscriptions.** A small key-value store (Vercel KV / Upstash, or one JSON row per
-   device) keyed by endpoint. Delete it when the parent turns reminders off or when sending
-   returns 404 / 410.
-4. **A scheduled sender.** One serverless function on a daily cron (Vercel Cron, for example
-   `30 14 * * *` in UTC, so mind the family's time zone) that sends each stored subscription a
-   payload with the `web-push` library. Keep the cadence the same as the local reminders:
-   at most two a day, nothing before 08:00 or after 19:30, no guilt.
-5. **Payload.** JSON `{ "title": "...", "body": "...", "url": "#/" }`. The server cannot see the
-   save (it lives in IndexedDB on the device), so the text is generic. Reuse the lines in
-   `HOME.cheers` and run them through `scripts/audit-motivators.ts`.
-6. **Client handler.** Already done: the `push` listener in `public/notify-sw.js` shows the
-   notification from that payload (with a fallback title if the payload is empty), and
-   `notificationclick` opens `data.url`. Nothing else in the app has to change for delivery.
+- When the parent turns "Encouragement reminders" on, the device asks the browser for a
+  push subscription and registers it with `/api/push` (`src/engine/notify/push.ts`).
+- Once a day (the schedule in `vercel.json`, 12:30 UTC by default) `/api/push-send` sends
+  ONE friendly reminder to each registered device — only between 08:00 and 19:30 in the
+  device's own time zone, and never on a day Sam already finished a lesson (the app reports
+  "played today" after a lesson).
+- Tapping the reminder opens the app (`public/notify-sw.js`).
+- Turning reminders off unsubscribes the device and deletes it from the store.
 
-**Privacy.** A push subscription is a random endpoint URL from the browser's push service
-(Google, Apple, Mozilla) plus two encryption keys. It holds no name, no age, no progress and
-no personal data. The server would store only that. The push service does see delivery
-metadata (when a message was sent to that device). Payloads are encrypted end to end with the
-subscription keys.
+What the server keeps per device: the push subscription (an address at Apple / Google /
+Mozilla plus two keys), the time zone, and the last day a lesson was finished. No name, no
+progress, no account.
 
-Until then, the app-icon badge (on installed apps) and Pogo's line at home are the live
-signals. The local-reminder code stays in place in case a browser ever ships Notification Triggers.
+### Turn it on (about 10 minutes, once)
+
+1. **Make the keys.** Run `bunx web-push generate-vapid-keys`. You get a public and a
+   private key.
+2. **Add a small key-value store.** In the Vercel project: Storage → add "Upstash for
+   Redis" (the free plan is plenty). It adds `KV_REST_API_URL` and `KV_REST_API_TOKEN`.
+3. **Add four environment variables** in Vercel (Production):
+   - `VITE_PUSH_PUBLIC_KEY` — the public key (it ships in the app; not a secret)
+   - `VAPID_PRIVATE_KEY` — the private key (secret)
+   - `VAPID_SUBJECT` — `mailto:` plus your email (push services ask for a contact)
+   - `CRON_SECRET` — any long random text (Vercel sends it with the daily call)
+4. **Redeploy**, then on Sam's device open the Parent Section → "Encouragement reminders"
+   → On, and allow notifications. On iPad / iPhone the app must first be added to the home
+   screen (Share → Add to Home Screen) and opened from there (iOS / iPadOS 16.4 or later).
+
+To change the time of day, edit the schedule in `vercel.json` (it is in UTC; Vercel's free
+plan allows one run a day). To turn push off again, remove `VITE_PUSH_PUBLIC_KEY` and
+redeploy: the app stops subscribing and the endpoints answer "not set up".
+
+### Where the code is
+
+| Piece | Where |
+|---|---|
+| Device side (subscribe, unsubscribe, "played today") | `src/engine/notify/push.ts`, called from `reminders.ts` |
+| Endpoints | `api/push.ts` (POST from the app), `api/push-send.ts` (GET, daily schedule) |
+| Logic (quiet hours, message of the day, validation) | `api/_lib/pushLogic.ts`, `api/_lib/pushHandlers.ts` |
+| Store + sender (Upstash REST, Web Push / VAPID) | `api/_lib/pushEnv.ts` |
+| Audit (real handlers, fake store and sender) | `scripts/audit-push.ts` (inside `bun run check`) |
+
+### What is and is not verified
+
+Verified here: the handlers and quiet-hours logic (audit), the store against a stand-in for
+the Upstash REST API, and that the sender builds with real VAPID keys. NOT verified: a real
+deployment — the Vercel function wiring, the daily schedule, and a push actually arriving
+on a phone or tablet. After the first deploy with keys, check it once: switch reminders on,
+then open `https://<your app>/api/push-send` with the header
+`Authorization: Bearer <CRON_SECRET>` (for example with curl) at a daytime hour and watch a
+reminder arrive.

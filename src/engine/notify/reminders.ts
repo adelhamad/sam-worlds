@@ -8,6 +8,8 @@
 // the experimental flag schedules them). It lights up by itself if a browser
 // ever ships it. When and what:
 // `schedule.ts`. Platform notes and the (unbuilt) push design: docs/NOTIFICATIONS.md.
+import { todayKey } from "../economy/gifts";
+import { disablePush, enablePush, notePlayedToday, pushReady } from "./push";
 import { cheerPool, REMINDER_TAG, reminderSchedule, type Cheer, type ReminderContext } from "./schedule";
 
 export type { Cheer, ReminderContext };
@@ -50,9 +52,10 @@ export function notificationsSupported(): boolean {
   return typeof window !== "undefined" && "Notification" in window && "serviceWorker" in navigator;
 }
 
-/** Closed-app timed delivery needs the Notification Triggers API. */
+/** Reminders can reach a closed app: by push (when the app was built with a
+ * push key) or, where a browser has it, the Notification Triggers API. */
 export function timedRemindersSupported(): boolean {
-  return notificationsSupported() && triggerCtor() !== null;
+  return notificationsSupported() && (pushReady() || triggerCtor() !== null);
 }
 
 export async function requestReminderPermission(): Promise<NotificationPermission> {
@@ -74,8 +77,16 @@ async function clearScheduled(reg: ServiceWorkerRegistration): Promise<void> {
   }
 }
 
+/** Push path: register the device; a day with a finished lesson is reported so it stays quiet. */
+async function armPush(context: ReminderContext | undefined): Promise<boolean> {
+  const ok = await enablePush();
+  if (ok && context?.playedToday) await notePlayedToday(todayKey());
+  return ok;
+}
+
 async function arm(now: number, context: ReminderContext | undefined): Promise<boolean> {
   if (!notificationsSupported() || Notification.permission !== "granted") return false;
+  if (pushReady()) return armPush(context ?? currentContext());
   const Trigger = triggerCtor();
   if (!Trigger) return false;
   const reg = await swReady();
@@ -113,6 +124,7 @@ export function disarmReminders(): Promise<void> {
   const run = queue
     .then(async () => {
       if (!notificationsSupported()) return;
+      await disablePush();
       const reg = await swReady();
       if (reg) await clearScheduled(reg);
     })
