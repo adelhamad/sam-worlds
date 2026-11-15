@@ -28,7 +28,7 @@ export const U18: LangUnitPack = {
     { id: "madraseh", text: "مدرسة", roman: "madraseh", say: "مَدْرَسة", en: "School", art: "school", topic: "school" },
     { id: "ktaab", text: "كتاب", roman: "ktaab", say: "كْتاب", en: "Book", art: "book", topic: "school" },
     { id: "alam", text: "قلم", roman: "’alam", say: "أَلَم", en: "Pen, pencil", art: "pencil", topic: "school" },
-    { id: "daftar", text: "دفتر", roman: "daftar", say: "دَفْتَر", en: "Notebook", topic: "school" },
+    { id: "daftar", text: "دفتر", roman: "daftar", say: "دَفْتَر", en: "Notebook", art: "notebook", topic: "school" },
     {
       id: "saahbi", text: "صاحبي", roman: "SaaHbi", say: "صاحْبي", en: "My friend", topic: "school", like: ["haada-saahbi"],
       tip: "My friend. A girl friend is SaaHbti. In Lebanon: rfii’i.",

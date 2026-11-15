@@ -25,19 +25,19 @@ export const U14: LangUnitPack = {
     ],
   },
   phrases: [
-    { id: "raas", text: "راس", roman: "raas", en: "Head", topic: "body", tip: "raas is your head. Head hurts? raasi byooja‘ni." },
-    { id: "ein", text: "عين", roman: "‘ein", say: "عَين", en: "Eye", topic: "body", tip: "‘ein is an eye. Two eyes: ‘einein." },
+    { id: "raas", text: "راس", roman: "raas", en: "Head", art: "head", topic: "body", tip: "raas is your head. Head hurts? raasi byooja‘ni." },
+    { id: "ein", text: "عين", roman: "‘ein", say: "عَين", en: "Eye", art: "eye", topic: "body", tip: "‘ein is an eye. Two eyes: ‘einein." },
     {
-      id: "timm", text: "تمّ", roman: "timm", say: "تِمّ", en: "Mouth", topic: "body",
+      id: "timm", text: "تمّ", roman: "timm", say: "تِمّ", en: "Mouth", art: "mouth", topic: "body",
       tip: "timm is your mouth. Some families say tumm.",
     },
-    { id: "iid", text: "إيد", roman: "iid", en: "Hand", art: "hand", topic: "body", tip: "iid is a hand. Two hands: iidein." },
-    { id: "ijr", text: "إجر", roman: "ijr", say: "إِجِر", en: "Foot, leg", topic: "body", tip: "ijr is a foot or a leg. Some families say rijl." },
+    { id: "iid", text: "إيد", roman: "iid", en: "Hand", art: "palm", topic: "body", tip: "iid is a hand. Two hands: iidein." },
+    { id: "ijr", text: "إجر", roman: "ijr", say: "إِجِر", en: "Foot, leg", art: "foot", topic: "body", tip: "ijr is a foot or a leg. Some families say rijl." },
     {
       id: "amiis", text: "قميص", roman: "’amiiS", say: "أَميص", en: "Shirt", art: "shirt", topic: "clothes",
       tip: "’amiiS is a shirt. A top is often a kanzeh or bloozeh.",
     },
-    { id: "bantaloon", text: "بنطلون", roman: "banTaloon", say: "بَنْطَلون", en: "Trousers", topic: "clothes", tip: "banTaloon means trousers, or pants." },
+    { id: "bantaloon", text: "بنطلون", roman: "banTaloon", say: "بَنْطَلون", en: "Trousers", art: "trousers", topic: "clothes", tip: "banTaloon means trousers, or pants." },
     {
       id: "kundara", text: "كندرة", roman: "kundara", say: "كُنْدَرة", en: "Shoes", art: "shoe", topic: "clothes",
       tip: "kundara means shoes. In Lebanon many say SabbaaT.",

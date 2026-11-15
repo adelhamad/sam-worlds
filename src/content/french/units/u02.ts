@@ -26,8 +26,8 @@ export const U02: LangUnitPack = {
   phrases: [
     { id: "moi", text: "Moi", en: "Me", topic: "greeting", tip: "Say 'mwah'. Point to yourself when you say it." },
     { id: "toi", text: "Toi", en: "You", topic: "greeting", tip: "Say 'twah'. To a grown-up you don't know, say vous." },
-    { id: "garcon", text: "Garçon", en: "Boy", topic: "thing", tip: "The ç sounds like s. The n is soft." },
-    { id: "fille", text: "Fille", en: "Girl", topic: "thing", tip: "Say it like 'fee-y'. The l is not heard." },
+    { id: "garcon", text: "Garçon", en: "Boy", art: "boy", topic: "thing", tip: "The ç sounds like s. The n is soft." },
+    { id: "fille", text: "Fille", en: "Girl", art: "girl", topic: "thing", tip: "Say it like 'fee-y'. The l is not heard." },
     { id: "copain", text: "Copain", en: "Friend (a boy)", topic: "family", tip: "A friend who is a boy. The n is soft." },
     { id: "copine", text: "Copine", en: "Friend (a girl)", topic: "family", tip: "A friend who is a girl." },
     {

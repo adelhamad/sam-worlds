@@ -31,8 +31,8 @@ export const U16: LangUnitPack = {
     { id: "madame", text: "Madame", en: "Madam, Mrs", topic: "polite", tip: "Say it to a shopkeeper or a teacher." },
     { id: "monsieur", text: "Monsieur", en: "Sir, Mr", topic: "polite", tip: "Say it 'muh-SYUH'. For a man you don't know." },
     { id: "voila", text: "Voilà", en: "Here you are", topic: "polite", tip: "Say 'vwah-LAH'. Said when handing something over." },
-    { id: "glace", text: "Glace", en: "Ice cream", topic: "food", tip: "Say it 'glass'." },
-    { id: "bonbon", text: "Bonbon", en: "A sweet", topic: "food", tip: "Say 'bon-BON', both through the nose." },
+    { id: "glace", text: "Glace", en: "Ice cream", art: "icecream", topic: "food", tip: "Say it 'glass'." },
+    { id: "bonbon", text: "Bonbon", en: "A sweet", art: "candy", topic: "food", tip: "Say 'bon-BON', both through the nose." },
     {
       id: "une-baguette", text: "Une baguette", en: "A baguette", topic: "food", like: ["une-baguette-s-il-vous-plait"],
       words: [{ text: "Une" }, { text: "baguette" }], tip: "Say 'oon ba-GET'.",

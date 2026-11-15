@@ -28,8 +28,8 @@ export const U02: LangUnitPack = {
     { id: "ana", text: "أنا", roman: "ana", say: "أَنا", en: "I, me", topic: "me", tip: "Who wants cake? Shout: ana!" },
     { id: "inta", text: "إنت", roman: "inta", say: "إِنْتَ", en: "You (to a boy)", topic: "me", like: ["inti"], tip: "inta is for a boy or a man." },
     { id: "inti", text: "إنتي", roman: "inti", say: "إِنْتِ", en: "You (to a girl)", topic: "me", like: ["inta"], tip: "inti is for a girl or a woman." },
-    { id: "walad", text: "ولد", roman: "walad", say: "وَلَد", en: "Boy", topic: "me", tip: "ana walad means I am a boy." },
-    { id: "bint", text: "بنت", roman: "bint", say: "بِنْت", en: "Girl", topic: "me", tip: "A girl says: ana bint." },
+    { id: "walad", text: "ولد", roman: "walad", say: "وَلَد", en: "Boy", art: "boy", topic: "me", tip: "ana walad means I am a boy." },
+    { id: "bint", text: "بنت", roman: "bint", say: "بِنْت", en: "Girl", art: "girl", topic: "me", tip: "A girl says: ana bint." },
     {
       id: "shu-ismak", text: "شو اسمك؟", roman: "shu ismak?", say: "شو إِسْمَك", en: "What's your name? (to a boy)", topic: "me", like: ["shu-ismik"],
       words: [{ text: "شو", roman: "shu" }, { text: "اسمك", roman: "ismak" }],

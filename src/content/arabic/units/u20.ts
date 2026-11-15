@@ -26,19 +26,19 @@ export const U20: LangUnitPack = {
   },
   phrases: [
     {
-      id: "shoob", text: "شوب", roman: "shoob", en: "Hot (weather)", topic: "weather", like: ["ktiir-shoob"],
+      id: "shoob", text: "شوب", roman: "shoob", en: "Hot (weather)", art: "hot", topic: "weather", like: ["ktiir-shoob"],
       tip: "shoob means hot weather. Some families say Harr.",
     },
-    { id: "bard", text: "برد", roman: "bard", say: "بَرْد", en: "Cold (weather)", topic: "weather", tip: "bard means cold weather." },
+    { id: "bard", text: "برد", roman: "bard", say: "بَرْد", en: "Cold (weather)", art: "cold", topic: "weather", tip: "bard means cold weather." },
     { id: "matar", text: "مطر", roman: "maTar", say: "مَطَر", en: "Rain", art: "rain", topic: "weather", like: ["am-tshatti", "ish-shiti"] },
     { id: "talj", text: "تلج", roman: "talj", say: "تَلْج", en: "Snow", art: "snow", topic: "weather" },
-    { id: "hawa", text: "هوا", roman: "hawa", say: "هَوا", en: "Wind", topic: "weather", tip: "hawa is wind. fii hawa: it is windy." },
+    { id: "hawa", text: "هوا", roman: "hawa", say: "هَوا", en: "Wind", art: "wind", topic: "weather", tip: "hawa is wind. fii hawa: it is windy." },
     { id: "is-seif", text: "الصيف", roman: "iS-Seif", say: "الصَّيف", en: "Summer", topic: "weather" },
     {
       id: "ish-shiti", text: "الشتي", roman: "ish-shiti", say: "الشِّتي", en: "Winter", topic: "weather", like: ["matar"],
       tip: "ish-shiti is winter. In Syria, shiti also means rain.",
     },
-    { id: "jaakeit", text: "جاكيت", roman: "jaakeit", en: "Jacket, coat", topic: "weather", tip: "jaakeit is a jacket. Some families say kabboot." },
+    { id: "jaakeit", text: "جاكيت", roman: "jaakeit", en: "Jacket, coat", art: "jacket", topic: "weather", tip: "jaakeit is a jacket. Some families say kabboot." },
     { id: "shamsiyyeh", text: "شمسية", roman: "shamsiyyeh", say: "شَمْسِيّة", en: "Umbrella", art: "umbrella", topic: "weather" },
     {
       id: "am-tshatti", text: "عم تشتي", roman: "‘am tshatti", say: "عَم تْشَتّي", en: "It's raining", art: "rain", topic: "weather", like: ["matar"],

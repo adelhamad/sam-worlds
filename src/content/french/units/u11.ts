@@ -29,7 +29,7 @@ export const U11: LangUnitPack = {
       words: [{ text: "On" }, { text: "joue" }], tip: "On means 'we' when friends talk.",
     },
     { id: "ballon", text: "Ballon", en: "Ball", art: "ball", topic: "play", tip: "Say 'ba-LON'. The n is soft." },
-    { id: "jeu", text: "Jeu", en: "Game", topic: "play", tip: "Say it 'zhuh'." },
+    { id: "jeu", text: "Jeu", en: "Game", art: "dice", topic: "play", tip: "Say it 'zhuh'." },
     { id: "bravo", text: "Bravo!", en: "Well done!", topic: "play", like: ["super"], tip: "Shout it when a friend does well." },
     { id: "super", text: "Super!", en: "Great!", topic: "play", like: ["bravo"], tip: "Also a happy yes to 'On joue?'" },
     {

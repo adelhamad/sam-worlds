@@ -30,7 +30,7 @@ export const U13: LangUnitPack = {
       tip: "Taabeh is a ball, any ball you kick or throw.",
     },
     {
-      id: "libeh", text: "لعبة", roman: "li‘beh", say: "لِعْبة", en: "Toy, game", topic: "play", like: ["taabeh"],
+      id: "libeh", text: "لعبة", roman: "li‘beh", say: "لِعْبة", en: "Toy, game", art: "teddy", topic: "play", like: ["taabeh"],
       tip: "li‘beh is a toy. It can mean a game too.",
     },
     {
