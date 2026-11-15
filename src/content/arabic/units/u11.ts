@@ -15,7 +15,7 @@ export const U11: LangUnitPack = {
       { name: "Door and Window", kind: "words", teach: ["baab", "shubbaak", "taawleh", "kursi", "jneineh"] },
       {
         name: "At Home", kind: "talk",
-        teach: ["ana-bil-beit", "mama-bil-matbakh", "biddi-rooh-al-hammaam", "taa-al-jneineh"],
+        teach: ["ana-bil-beit", "mama-bil-matbakh", "biddi-rooh-al-hammaam", "ana-bil-jneineh"],
         scenes: ["u11-teta-phone", "u11-baba-asks", "u11-toilet", "u11-cousin-garden", "u11-mama-calls", "u11-keys"],
       },
       {
@@ -51,9 +51,8 @@ export const U11: LangUnitPack = {
       tip: "Say it to any grown-up. They will help you.",
     },
     {
-      id: "taa-al-jneineh", text: "تعا عالجنينة", roman: "ta‘a ‘al-jneineh", say: "تَعا عَالجْنَيْنة", en: "Come to the garden!", topic: "home",
-      words: [{ text: "تعا", roman: "ta‘a" }, { text: "عالجنينة", roman: "‘al-jneineh" }],
-      tip: "To a girl: ta‘i ‘al-jneineh.",
+      id: "ana-bil-jneineh", text: "أنا بالجنينة", roman: "ana bil-jneineh", say: "أَنا بِالجْنَيْنة", en: "I'm in the garden", art: "flower", topic: "home",
+      words: [{ text: "أنا", roman: "ana" }, { text: "بالجنينة", roman: "bil-jneineh" }],
     },
   ],
   scenes: [
@@ -67,12 +66,12 @@ export const U11: LangUnitPack = {
     },
     { id: "u11-toilet", setup: "At Teta's house, you really need the toilet!", who: { name: "Teta" }, reply: ["biddi-rooh-al-hammaam"], alsoOk: ["hammaam"] },
     {
-      id: "u11-cousin-garden", setup: "Your cousin is inside. You want to play in the garden.", who: { name: "Cousin" },
-      reply: ["taa-al-jneineh"], alsoOk: ["taa", "yalla", "barra", "jneineh"],
+      id: "u11-cousin-garden", setup: "Your cousin is inside. Call him out to play in the garden!", who: { name: "Cousin" },
+      reply: ["yalla"], alsoOk: ["taa", "barra", "jneineh"],
     },
     {
       id: "u11-mama-calls", setup: "Mama calls you. You are out in the garden.", who: { name: "Mama" },
-      line: "wein", reply: ["barra"], alsoOk: ["ana-hoon", "hoon", "jneineh", "hniik"],
+      line: "wein", reply: ["ana-bil-jneineh"], alsoOk: ["barra", "ana-hoon", "hoon", "jneineh", "hniik", "ana-bil-beit"],
     },
     {
       id: "u11-keys", setup: "Jiddo can't find his keys. They are on the table.", who: { name: "Jiddo" },

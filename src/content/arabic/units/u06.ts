@@ -32,7 +32,7 @@ export const U06: LangUnitPack = {
     { id: "ruzz", text: "رز", roman: "ruzz", say: "رُزّ", en: "Rice", topic: "food", tip: "Some families say rizz." },
     { id: "jaaj", text: "جاج", roman: "jaaj", en: "Chicken", topic: "food" },
     { id: "tiffaaha", text: "تفاحة", roman: "tiffaaHa", say: "تِفّاحة", en: "An apple", art: "apple", topic: "food", tip: "Some families say tuffaaHa." },
-    { id: "moozeh", text: "موزة", roman: "moozeh", en: "A banana", topic: "food" },
+    { id: "moozeh", text: "موزة", roman: "moozeh", say: "مُوزة", en: "A banana", topic: "food" },
     { id: "tayybeh", text: "طيبة", roman: "Tayybeh", say: "طَيّْبة", en: "Tasty, yummy", topic: "food", like: ["helw"], tip: "Some families say zaakyeh." },
     {
       id: "sahtein", text: "صحتين", roman: "SaHtein", say: "صَحْتين", en: "Enjoy your food!", topic: "food",

@@ -31,8 +31,8 @@ export const U12: LangUnitPack = {
     { id: "asfar", text: "أصفر", roman: "aSfar", say: "أَصْفَر", en: "Yellow", topic: "colour", tip: "With some words it becomes Safra." },
     { id: "abyad", text: "أبيض", roman: "abyaD", say: "أَبْيَض", en: "White", topic: "colour", tip: "With some words it becomes beiDa." },
     { id: "aswad", text: "أسود", roman: "aswad", say: "أَسْوَد", en: "Black", topic: "colour", tip: "With some words it becomes sooda." },
-    { id: "kbiir", text: "كبير", roman: "kbiir", say: "كْبير", en: "Big", topic: "colour", like: ["ana-kbiir"], tip: "For a girl: kbiireh." },
-    { id: "zghiir", text: "زغير", roman: "zghiir", say: "زْغير", en: "Small", topic: "colour", tip: "Some families say Sghiir. For a girl: zghiireh." },
+    { id: "kbiir", text: "كبير", roman: "kbiir", say: "كْبير", en: "Big", topic: "colour", like: ["ana-kbiir"], tip: "For a girl: kbiira." },
+    { id: "zghiir", text: "زغير", roman: "zghiir", say: "زْغير", en: "Small", topic: "colour", tip: "Some families say Sghiir. For a girl: zghiira." },
     {
       id: "helw", text: "حلو", roman: "Helw", say: "حِلو", en: "Pretty, lovely", topic: "colour", like: ["ktiir-helw", "tayybeh"],
       tip: "It also means sweet. For a girl: Helweh.",
@@ -53,7 +53,7 @@ export const U12: LangUnitPack = {
     {
       id: "ana-kbiir", text: "أنا كبير", roman: "ana kbiir", say: "أَنا كْبير", en: "I'm big!", topic: "colour", like: ["kbiir"],
       words: [{ text: "أنا", roman: "ana" }, { text: "كبير", roman: "kbiir" }],
-      tip: "A girl says: ana kbiireh.",
+      tip: "A girl says: ana kbiira.",
     },
   ],
   scenes: [

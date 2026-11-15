@@ -60,7 +60,7 @@ export const U05: LangUnitPack = {
       tip: "‘aTiini means give me. To Baba: min faDlak.",
     },
     {
-      id: "biddak-mayy", text: "بدّك مي؟", roman: "biddak mayy?", say: "بِدَّك مَيّ", en: "Do you want water?", art: "cup", topic: "want",
+      id: "biddak-mayy", text: "بدّك مي؟", roman: "biddak mayy?", say: "بِدَّك مَيّ", en: "Do you want water? (boy)", art: "cup", topic: "want",
       words: [{ text: "بدّك", roman: "biddak" }, { text: "مي", roman: "mayy" }],
       tip: "Mama asks a boy this way. Answer: ee, or la’ shukran.",
     },

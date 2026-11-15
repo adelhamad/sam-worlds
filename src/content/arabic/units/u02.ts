@@ -16,7 +16,7 @@ export const U02: LangUnitPack = {
       {
         name: "Nice to Meet You", kind: "talk",
         teach: ["umrak-addeish", "umri-sab-sniin", "inta-min-wein"],
-        scenes: ["u02-cake", "u02-park-boy", "u02-park-girl", "u02-teta-friend", "u02-neighbour-age", "u02-baba-back", "u02-new-friend"],
+        scenes: ["u02-cake", "u02-park-boy", "u02-park-girl", "u02-teta-friend", "u02-great-aunt", "u02-baba-back", "u02-new-friend"],
       },
       {
         name: "Taa and Thaa", kind: "letters", letters: ["ت", "ث"], spell: ["bint"],
@@ -60,7 +60,7 @@ export const U02: LangUnitPack = {
       tip: "The answer to ‘umrak addeish?",
     },
     {
-      id: "inta-min-wein", text: "إنت من وين؟", roman: "inta min wein?", say: "إِنْتَ مِن وين", en: "Where are you from?", topic: "me",
+      id: "inta-min-wein", text: "إنت من وين؟", roman: "inta min wein?", say: "إِنْتَ مِن وين", en: "Where are you from? (boy)", topic: "me",
       words: [{ text: "إنت", roman: "inta" }, { text: "من", roman: "min" }, { text: "وين", roman: "wein" }],
       tip: "To a girl: inti min wein? Answer: ana min… and your country.",
     },
@@ -76,7 +76,7 @@ export const U02: LangUnitPack = {
       reply: ["shu-ismik"], alsoOk: ["marhaba", "ahlein", "kiifik"],
     },
     { id: "u02-teta-friend", setup: "Teta's friend smiles and asks you.", who: { name: "Teta's friend" }, line: "shu-ismak", reply: ["ismi-saam"] },
-    { id: "u02-neighbour-age", setup: "The lady next door asks you.", who: { name: "Neighbour" }, line: "umrak-addeish", reply: ["umri-sab-sniin"] },
+    { id: "u02-great-aunt", setup: "Teta's sister visits and asks you.", who: { name: "Teta's sister" }, line: "umrak-addeish", reply: ["umri-sab-sniin"] },
     {
       id: "u02-baba-back", setup: "Baba asks you. You are fine. Now ask him back!", who: { name: "Baba" },
       line: "kiifak", reply: ["w-inta"], alsoOk: ["kiifak-baba", "mniih", "ana-mniih", "hamdilla"],

@@ -44,7 +44,7 @@ export const U04: LangUnitPack = {
       words: [{ text: "كيفِك", roman: "kiifik" }, { text: "تيتا", roman: "teeta" }],
     },
     {
-      id: "haada-ibn-ammi", text: "هادا ابن عمي", roman: "haada ibn ‘ammi", say: "هادا إِبِن عَمّي", en: "This is my cousin", topic: "family",
+      id: "haada-ibn-ammi", text: "هادا ابن عمي", roman: "haada ibn ‘ammi", say: "هادا إِبِن عَمّي", en: "This is my cousin (boy)", topic: "family",
       words: [{ text: "هادا", roman: "haada" }, { text: "ابن", roman: "ibn" }, { text: "عمي", roman: "‘ammi" }],
       tip: "Lebanese families say hayda. A girl cousin: haadi bint ‘ammi.",
     },
