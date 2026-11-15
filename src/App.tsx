@@ -16,6 +16,7 @@ const PogoLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/Pogo
 const ExerciseLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/ExerciseLab")) : null;
 const ChessLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/ChessLab")) : null;
 const KitLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/KitLab")) : null;
+const LangLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/LangLab")) : null;
 const CodeLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/CodeLab")) : null;
 const TickLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/TickLab")) : null;
 const IconLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/IconLab")) : null;
@@ -110,6 +111,7 @@ export default function App() {
           <Route key={`${course.path}/lesson`} path={`${course.path}/lesson/:stageId`} element={<TourLesson />} />,
         ])}
         {KitLab && <Route path="/tour/lab/kit" element={<Suspense fallback={null}><KitLab /></Suspense>} />}
+        {LangLab && <Route path="/tour/lab/lang" element={<Suspense fallback={null}><LangLab /></Suspense>} />}
         {CodeLab && <Route path="/tour/lab/code" element={<Suspense fallback={null}><CodeLab /></Suspense>} />}
         {TickLab && <Route path="/tour/lab/tick" element={<Suspense fallback={null}><TickLab /></Suspense>} />}
         {IconLab && <Route path="/tour/lab/icons" element={<Suspense fallback={null}><IconLab /></Suspense>} />}

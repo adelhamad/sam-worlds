@@ -7,7 +7,7 @@ import type { StageDef } from "./types";
 import type { LangCode, LangLessonKind, LangParams, LetterCard, Phrase, Scene } from "../engine/lang/types";
 
 export interface LangLessonSeed {
-  /** On the path (≤ 3 words). */
+  /** On the path (≤ 22 characters). */
   name: string;
   kind: LangLessonKind;
   /** New phrases taught here (ids from this pack), 3–5 for a "words" lesson. */
@@ -18,7 +18,7 @@ export interface LangLessonSeed {
   letters?: string[];
   /** Single words to spell from letter tiles (phrase ids taught in this lesson or earlier). */
   spell?: string[];
-  /** A thing to do in real life afterwards (≤ 14 words): "Say 'yislamo' to someone at home today." */
+  /** A thing to do in real life afterwards (≤ 16 words): "Say 'yislamo' to someone at home today." */
   mission?: string;
 }
 
@@ -105,7 +105,7 @@ export function defineLangCourse(seed: LangCourseSeed): Course {
         questions: QUESTIONS[lesson.kind],
         mechanic: "tour",
         payout: 22 + Math.min(unitIndex, 14) * 2 + (last ? 8 : 0),
-        skill: seed.id,
+        skill: `lang-${seed.id}`,
       };
     });
     return {

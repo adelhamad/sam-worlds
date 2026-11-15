@@ -245,6 +245,8 @@
   text-transform: uppercase;
   color: var(--t-ink-dim);
 }
+/* room for the NEW tag that pokes out of the first card below */
+.home .home-shelf-group + .home-shelf-group .home-shelf-sub { margin-top: 18px; margin-bottom: 20px; }
 .home .home-shelf-sub::after { content: ""; flex: 1; height: 2px; border-radius: 2px; background: var(--t-line-deep); }
 .home .home-courses { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 12px; }
 @media (min-width: 600px) { .home .home-courses { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 14px; } }

@@ -26,6 +26,7 @@ Personal PWA learning game for Sam (7). Full spec lives in `SAMS_GAME_PLAN.md` �
 - `src/state/store.ts` — single Zustand store; every meaningful action also persists to Dexie (fire-and-forget `void db...put(...)`).
 - `src/strings/en.ts` + `src/persona.config.ts` — every player-facing string goes through these (name-aware, future Arabic toggle).
 - **Pogo's courses** (Duolingo-style lesson paths with the mascot Pogo: World Tour, Chess Camp, Code Lab, Tick Tock) — read `docs/POGO_COURSES.md` before touching `src/**/tour/` or a course's folders. Lessons are ordinary stages of the course's world; every course is one entry in `src/content/courses.ts`; styles are scoped under a `.tour` root class.
+- **Language courses** (Yalla Arabic = spoken Levantine, Bonjour French) are data in `src/content/arabic/` and `src/content/french/`; read `docs/LANGUAGES.md` before adding or changing a phrase, a scene or a unit, and prove it with `bun scripts/audit-lang.ts`.
 - **Adding or extending a course** — follow `docs/COURSE_KIT.md` (and the `add-pogo-course` skill). Most courses are data only. Prove it with `bun run check` and `bun run bot -- --course <id>`.
 - **Home** (`src/ui/home/`) is the course home: Pogo's "what next" card, daily quests (`src/engine/quests/`, `src/state/quests.ts`), the course shelf, Sam's things, then the classic worlds. Notifications and what works on which device: `docs/NOTIFICATIONS.md`.
 

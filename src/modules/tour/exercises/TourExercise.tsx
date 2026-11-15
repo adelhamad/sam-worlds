@@ -5,11 +5,13 @@ import "./exercises.css";
 import { chessPayload } from "../../../engine/chess/types";
 import { codePayload } from "../../../engine/code/types";
 import { kitPayload } from "../../../engine/kit/types";
+import { langPayload } from "../../../engine/lang/types";
 import { tickPayload } from "../../../engine/tick/types";
 import { tourPayload } from "../../../engine/tour/types";
 import { ChessExercise, ChessTeach } from "../chess/ChessExercise";
 import { CodeExercise, CodeTeach } from "../code/CodeExercise";
 import { KitExercise, KitTeach } from "../kit/KitExercise";
+import { LangExercise, LangTeach } from "../lang/LangExercise";
 import { TickExercise, TickTeach } from "../tick/TickExercise";
 import { BuildExercise } from "./BuildExercise";
 import type { ExerciseProps, TeachProps } from "./contract";
@@ -24,6 +26,7 @@ import { TourTeach as WorldTeach } from "./TourTeach";
 /** The solved view for the "Almost — look at this." sheet, for any course. */
 export function TourTeach(props: TeachProps) {
   if (kitPayload(props.question)) return <KitTeach {...props} />;
+  if (langPayload(props.question)) return <LangTeach {...props} />;
   if (codePayload(props.question)) return <CodeTeach {...props} />;
   if (tickPayload(props.question)) return <TickTeach {...props} />;
   return chessPayload(props.question) ? <ChessTeach {...props} /> : <WorldTeach {...props} />;
@@ -36,6 +39,7 @@ export function TourTeach(props: TeachProps) {
 export function TourExercise(props: ExerciseProps) {
   // One family per payload prefix: kit-* (Course Kit), code-*, tick-*, chess-*, else geography.
   if (kitPayload(props.question)) return <KitExercise key={props.question.id} {...props} />;
+  if (langPayload(props.question)) return <LangExercise key={props.question.id} {...props} />;
   if (codePayload(props.question)) return <CodeExercise key={props.question.id} {...props} />;
   if (tickPayload(props.question)) return <TickExercise key={props.question.id} {...props} />;
   if (chessPayload(props.question)) return <ChessExercise key={props.question.id} {...props} />;
