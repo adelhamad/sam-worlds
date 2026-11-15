@@ -159,7 +159,7 @@
   background: var(--t-surface);
   border: 2px solid var(--t-line);
   font-size: 28px;
-  width: min(100%, 460px);
+  width: min(88%, 460px);
   box-sizing: border-box;
 }
 .tour .sp-break-means { font-size: 20px; font-weight: 900; }

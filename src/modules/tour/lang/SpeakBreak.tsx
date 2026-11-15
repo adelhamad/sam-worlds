@@ -11,7 +11,7 @@ import { useCompact } from "../lesson/useCompact";
 import { MeaningFace, PhraseFace, Speaker } from "./LangFaces";
 import { SpeakPanel } from "./SpeakTurn";
 import { speakBusy, speakPogo } from "./speakPogo";
-import { useSpeakTurn } from "./useSpeakTurn";
+import { useSpeakReady, useSpeakTurn } from "./useSpeakTurn";
 import { useVoice } from "./useVoice";
 import "../../../ui/tour/tour-base.css";
 import "./lang.css";
@@ -31,6 +31,12 @@ export function SpeakBreak({ id, lang, card, onDone }: SpeakBreakProps) {
   const live = speakPogo(turn.phase, turn.takes);
   const { say } = useVoice(lang);
   const { busy } = turn;
+  const ready = useSpeakReady();
+
+  // The microphone turned out unusable (refused, missing): the break simply ends.
+  useEffect(() => {
+    if (!ready) onDone(id);
+  }, [ready, id, onDone]);
 
   // A reminder of how it sounds, once, as the break appears.
   useEffect(() => {

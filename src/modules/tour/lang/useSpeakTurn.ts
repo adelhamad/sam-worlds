@@ -42,7 +42,11 @@ export function useSpeakReady(): boolean {
     if (!on) return;
     let live = true;
     void navigator.permissions?.query({ name: "microphone" as PermissionName })
-      .then((status) => { if (live) setDenied(status.state === "denied"); })
+      .then((status) => {
+        if (status.state !== "denied") return;
+        noteMicTrouble("denied"); // so the speaking break is not offered either
+        if (live) setDenied(true);
+      })
       .catch(() => undefined);
     return () => { live = false; };
   }, [on]);

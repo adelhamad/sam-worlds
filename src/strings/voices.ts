@@ -97,7 +97,7 @@ export const VOICES = {
     heading: "Speaking practice",
     lines: [
       "Sam taps a microphone on the new words, says them, and hears the model and then himself, one after the other. It is never scored.",
-      "Nothing is saved or sent anywhere: his voice is dropped as soon as the slide changes. The iPad will ask for the microphone once.",
+      "His voice is never saved or sent anywhere: each take is dropped as soon as the slide changes. The iPad will ask for the microphone once.",
     ],
     off: "Off",
     on: "On",
