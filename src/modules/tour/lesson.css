@@ -14,11 +14,21 @@
   padding: 0;
   gap: 0;
   overflow: hidden;
+  /* `clip` (unlike `hidden`) can never be scrolled — not even by focus() or
+     by an off-screen sheet growing the scrollable area, which would slide the top bar away */
+  overflow: clip;
   isolation: isolate;
   background:
     radial-gradient(ellipse 90% 46% at 50% -8%, rgba(139, 108, 255, 0.26), transparent 70%),
     radial-gradient(ellipse 70% 40% at 50% 112%, rgba(34, 211, 238, 0.1), transparent 70%),
     var(--t-bg);
+}
+/* the lesson never page-scrolls: lock the document too (100vh > visible area on iOS) */
+html:has(.tour-lesson),
+html:has(.tour-lesson) body {
+  overflow: hidden;
+  height: 100%;
+  overscroll-behavior: none; /* no rubber-band stretch dragging the bar along */
 }
 /* a quiet starfield — two tiled dot layers */
 .tour.tour-lesson::before {

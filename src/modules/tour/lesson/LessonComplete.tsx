@@ -1,8 +1,10 @@
-// "Lesson complete!" — the full-screen celebration: confetti, Pogo cheering,
+// "Lesson complete!" — the full-screen celebration. Pogo makes an entrance
+// first (FinishEntrance.tsx: nothing of the puzzle is left on screen), then
+// the results arrive with the fanfare: confetti, Pogo cheering,
 // three stat cards that count up, the bonuses collected on the way, passport
 // stamps (geography) or the unit's road to its chest (other courses), the tour
 // day, and any trophy / treasure the store handed out. One button: back to the path.
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useGame, type SessionResult } from "../../../state/store";
 import { STAMP_GOAL } from "../../../state/tour";
 import { courseUnitOfStage, unitComplete, type Course, type CourseUnit } from "../../../content/courses";
@@ -13,6 +15,9 @@ import { Flag } from "../../../ui/tour/Flag";
 import { Glyph, Icon } from "../../../ui/icons/Icon";
 import { Confetti, Pogo } from "../../../ui/tour/Pogo";
 import { TOUR } from "../../../strings/tour";
+import { FinishEntrance } from "./FinishEntrance";
+import { entranceAct, entranceOff } from "./finishActs";
+import { lessonSound } from "./lessonSound";
 import { QuestRow } from "./QuestRow";
 import { useCompact } from "./useCompact";
 
@@ -218,20 +223,41 @@ interface LessonCompleteProps {
   onContinue: () => void;
 }
 
+/** False while Pogo's entrance plays; the fanfare sounds as the results arrive. */
+function useEntrance(result: SessionResult): [boolean, () => void] {
+  const [entered, setEntered] = useState(() => result.noQuestions || entranceOff());
+  const played = useRef(false);
+  useEffect(() => {
+    if (!entered || played.current || result.noQuestions) return;
+    played.current = true;
+    lessonSound.done(result);
+  }, [entered, result]);
+  const enter = useCallback(() => setEntered(true), []);
+  return [entered, enter];
+}
+
 export function LessonComplete(props: LessonCompleteProps) {
   const { course, stage, seed, result, total, misses, focus, newStamps, dayNumber, giftDust, onContinue } = props;
   const compact = useCompact();
   const unit = courseUnitOfStage(stage.id);
   const chestWaiting = useGame((s) => Boolean(unit && unitComplete(unit, s.progress) && !s.tourChests.includes(unit.id)));
   const bonus = perfectBonus(result.payout, result.perfect, stage.payout, total, result.firstTime);
+  const [entered, enter] = useEntrance(result);
 
+  if (!entered) {
+    return (
+      <div className="tl-done">
+        <FinishEntrance act={entranceAct(seed)} onDone={enter} />
+      </div>
+    );
+  }
   return (
-    <div className="tl-done">
+    <div className="tl-done" data-testid="lesson-complete">
       <Confetti burstKey={seed} />
       <div className="tl-done-scroll">
         <div className="tl-done-hero">
           <span className="tl-done-glow" aria-hidden="true" />
-          <Pogo mood="cheer" size={compact ? 104 : 168} />
+          <span className="tl-done-pogo"><Pogo mood={result.perfect ? "starry" : "cheer"} size={compact ? 104 : 168} /></span>
         </div>
         <h1 className="tl-done-title">{TOUR.lesson.complete}</h1>
         {result.noQuestions && <p className="tl-done-note">{TOUR.lesson.noQuestions}</p>}

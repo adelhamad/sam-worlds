@@ -54,10 +54,12 @@ body {
 }
 #root {
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .screen {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   padding: max(12px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right))

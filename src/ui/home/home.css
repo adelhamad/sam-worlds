@@ -5,8 +5,9 @@
    (gift, trophies, coupons) keeps a transform/filter after its entrance, so
    their full-screen overlays are never trapped inside a card. */
 
-.home {
+.screen.home {
   gap: 0;
+  padding-top: 0; /* the sticky bar carries the safe-area inset */
   background-color: var(--t-bg);
   background-image:
     radial-gradient(1.5px 1.5px at 22px 34px, rgba(255, 255, 255, 0.75) 50%, transparent 51%),
@@ -47,11 +48,18 @@
 
 /* ---------- top bar ---------- */
 .home .home-bar {
-  position: relative;
+  /* sticky: the page is long, the bar (music, sound, Star Dust, menu) must stay reachable */
+  position: sticky;
+  top: 0;
+  z-index: 25;
   display: flex;
   align-items: center;
   gap: 8px;
   min-height: 56px;
+  margin: 0 calc(-1 * max(16px, env(safe-area-inset-right))) -4px calc(-1 * max(16px, env(safe-area-inset-left)));
+  padding: max(10px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 10px max(16px, env(safe-area-inset-left));
+  background: #0a1730;
+  border-bottom: 2px solid var(--t-line-deep);
 }
 .home .home-mark { display: flex; align-items: center; gap: 6px; min-width: 0; }
 .home .home-mark-pogo { display: grid; place-items: center; width: 40px; height: 40px; flex: none; }

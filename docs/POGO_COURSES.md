@@ -74,6 +74,38 @@ target on a phone; the child always plays White from the bottom; Black never mov
 a puzzle; no castling or en passant yet; every mission's move budget is the fewest moves
 that solve it (the audit re-solves each one).
 
+## Pogo, the lesson's rhythm and the finish
+
+Shared by every course — a new course gets all of it for free.
+
+- **Pogo is drawn in code** (`src/ui/tour/`): `pogoPoses.ts` lists the moods as data
+  (eyes, mouth, brows, antenna, props), `PogoArt.tsx` / `PogoFace.tsx` / `PogoProps.tsx`
+  draw them, `pogo.css` / `pogo-moods.css` move them. A new mood is one `POSES` entry plus
+  its CSS block. Moods: idle, happy, cheer, think, wave, talk, wow, sleep, sad, dizzy,
+  zoom, splat, starry.
+- **A miss makes Pogo sad — briefly.** The owner asked for it. Pogo droops with one tear
+  for under two seconds, then turns curious and looks at the worked answer with the
+  child (`usePogoReaction` in `TourLesson.tsx`). It is sympathy, never blame: the sheet
+  still says "Almost — look at this." and nothing is lost.
+- **Pogo has a voice** (`src/engine/feedback/pogoVoice.ts`, synthesized like every other
+  sound): a chirp on a right answer, a soft "aww" on a miss, a cheer at the end, and the
+  slapstick sounds of the entrance. `lessonSound.ts` is the one place that decides which
+  sound plays when.
+- **The solved puzzle stays solved under the feedback sheet.** Puzzles that submit
+  themselves (missions, pairs, code runs) report from a timer; `useLessonFlow.submit`
+  commits the store change and the sheet in one synchronous render (`flushSync`) so the
+  widget is never rebuilt from scratch — which used to look like the puzzle had restarted.
+- **The last right answer has no sheet.** The solved puzzle holds for a beat
+  (`flow.finale`), then the screen is cleared for Pogo's entrance
+  (`lesson/FinishEntrance.tsx`, scripts in `lesson/finishActs.ts`, motion in
+  `lesson/finish.css`): he hits the glass and slides down, or drops in and bounces, or
+  peeks up from the bottom edge — picked from the session seed, skipped by a tap and by
+  reduced motion. Only then do the results and the fanfare arrive (`LessonComplete.tsx`).
+  A Perfect Run gets the star-struck Pogo.
+- **The lesson screen can never scroll** (`overflow: clip` on its root, the document
+  locked while it shows), so the top bar cannot slide out of view. `bun run bot` checks
+  the bar after every answer.
+
 ## Extending it
 
 - **More geography**: append a unit to `SEEDS` in `tour/units.ts` (12 country codes).
@@ -86,7 +118,8 @@ that solve it (the audit re-solves each one).
   path, lesson player, chests, home shelf and parent controls follow from `COURSES`.
 - Never reorder or rename existing units or lessons — stage ids are saved.
 
-Dev-only test benches (`bun run dev`): `/#/tour/lab/pogo`, `/#/tour/lab/exercises`,
+Dev-only test benches (`bun run dev`): `/#/tour/lab/pogo` (every mood, the three
+entrances, Pogo's voice), `/#/tour/lab/exercises`,
 `/#/tour/lab/kit`, `/#/tour/lab/chess`, `/#/tour/lab/code`, `/#/tour/lab/tick`,
 `/#/tour/lab/icons`.
 
