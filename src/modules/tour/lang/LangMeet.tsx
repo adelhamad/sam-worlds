@@ -5,6 +5,7 @@
 import { useEffect, useState } from "react";
 import { letterCard, phraseCard } from "../../../engine/lang/cards";
 import type { LangCard, LangParams } from "../../../engine/lang/types";
+import { primeSpeech } from "../../../engine/feedback/speech";
 import { tourSfx } from "../../../engine/feedback/tourSfx";
 import { LANG } from "../../../strings/lang";
 import { PogoSay } from "../../../ui/tour/Pogo";
@@ -53,6 +54,7 @@ export function LangMeet({ params, onStart }: LangMeetProps) {
   }, [ready, spoken, say, index]);
 
   const next = () => {
+    primeSpeech();
     if (last) {
       onStart();
       return;
@@ -64,7 +66,7 @@ export function LangMeet({ params, onStart }: LangMeetProps) {
 
   return (
     <div className="tl-meet lx lx-meet" data-testid="lang-meet" data-slide={index}>
-      <button type="button" className="lx-meet-skip" onClick={onStart} data-testid="lang-meet-skip">{S.skip}</button>
+      <button type="button" className="lx-meet-skip" onClick={() => { primeSpeech(); onStart(); }} data-testid="lang-meet-skip">{S.skip}</button>
       <PogoSay mood={index === 0 ? "wave" : undefined} size={compact ? 84 : 116} text={slide.title} />
       <div key={index} className="lx-meet-card">
         <PhraseFace card={slide.card} lang={params.lang} />

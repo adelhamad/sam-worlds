@@ -64,6 +64,24 @@ export function onVoicesChanged(onChange: () => void): () => void {
   return () => synth.removeEventListener?.("voiceschanged", onChange);
 }
 
+let primed = false;
+
+/**
+ * iOS only lets a page speak after it has spoken once inside a tap. Call this
+ * from a tap handler (it says nothing) so later lines can speak on their own.
+ */
+export function primeSpeech(): void {
+  if (primed || !speechSupported()) return;
+  primed = true;
+  try {
+    const u = new SpeechSynthesisUtterance(" ");
+    u.volume = 0;
+    window.speechSynthesis.speak(u);
+  } catch {
+    // ignore — speech stays a nice-to-have
+  }
+}
+
 /** Say `text` in the language. Returns false when the device has no voice for it. */
 export function speakIn(lang: SpokenLang, text: string, slow = false): boolean {
   const voice = voiceFor(lang);
