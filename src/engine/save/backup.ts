@@ -4,6 +4,8 @@
 //  1. We ask for persistent storage (navigator.storage.persist).
 //  2. Every meaningful event also snapshots the whole save into localStorage;
 //     if IndexedDB ever comes up empty while a snapshot exists, we restore it.
+// The parent's voice recordings (table voiceClips) are deliberately NOT
+// mirrored: audio is far too big for localStorage. They live only in IndexedDB.
 import { db } from "./db";
 
 const KEY = "sams-worlds-backup-v1";

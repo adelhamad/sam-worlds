@@ -38,6 +38,7 @@ const SOURCES = [
   "src/ui/tour/ParentTour.tsx", "src/ui/TrophyShelf.tsx", "src/ui/DailyGift.tsx", "src/ui/TreasureVault.tsx",
   "src/ui/Workshop.tsx", "src/ui/CouponWallet.tsx", "src/ui/HubWorlds.tsx", "src/modules/play/WorldMap.tsx",
   "src/strings/home.ts", "src/strings/tour.ts", "src/strings/chess.ts", "src/strings/code.ts", "src/strings/tick.ts",
+  "src/strings/voices.ts", "src/ui/voices", "src/ui/ParentGate.tsx",
 ];
 
 function hasEmoji(text: string): boolean {

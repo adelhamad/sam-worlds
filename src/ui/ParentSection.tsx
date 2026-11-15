@@ -9,60 +9,33 @@ import { GiftControls, RewardHistory } from "./ParentRewards";
 import { Glyph, TourControls } from "./tour/ParentTour";
 import { persona } from "../persona.config";
 import { testCheer, timedRemindersSupported } from "../engine/notify/reminders";
-
-const PARENT_PASSWORD = "adel";
+import { ParentGate } from "./ParentGate";
+import { VOICES } from "../strings/voices";
 
 /**
  * Parent Section: password-protected controls for Adel.
  * NOTE (CLAUDE.md rule): every new world or feature must be reflected here —
  * the world list below iterates the WORLDS registry, so new worlds appear
  * automatically; new mechanics with their own state need explicit controls.
+ * The password gate is shared with the other parent pages (ParentGate).
  */
 export function ParentSection() {
-  // Deliberately NOT persisted: leaving the section locks it again.
-  const [unlocked, setUnlocked] = useState(false);
-  const [pass, setPass] = useState("");
-  const [error, setError] = useState(false);
+  return (
+    <ParentGate title="👨‍👦 Parent Section">
+      <ParentControls />
+    </ParentGate>
+  );
+}
 
-  function tryUnlock() {
-    if (pass.toLowerCase().trim() === PARENT_PASSWORD) {
-      setUnlocked(true);
-    } else {
-      setError(true);
-      setPass("");
-    }
-  }
-
-  if (!unlocked) {
-    return (
-      <div className="screen parent-screen">
-        <header className="hub-header">
-          <Link to="/hub" className="btn btn-secondary">
-            ← Base
-          </Link>
-          <h1>👨‍👦 Parent Section</h1>
-          <span />
-        </header>
-        <div className="panel parent-gate">
-          <p>Enter the parent password:</p>
-          <input
-            className="parent-input"
-            type="password"
-            value={pass}
-            autoFocus
-            onChange={(e) => setPass(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && tryUnlock()}
-          />
-          {error && <p className="shop-note">Not quite — try again.</p>}
-          <button className="btn btn-primary" onClick={tryUnlock}>
-            Unlock
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  return <ParentControls />;
+/** Entry to Parent Section → Voices (device voice + the parent's own recordings). */
+function VoicesEntry() {
+  return (
+    <section className="panel parent-block">
+      <h2>{VOICES.entry.title}</h2>
+      <p className="dim">{VOICES.entry.body}</p>
+      <Link to="/parent/voices" className="btn btn-primary" data-testid="parent-voices-link">{VOICES.entry.open}</Link>
+    </section>
+  );
 }
 
 /**
@@ -459,6 +432,8 @@ function ParentControls() {
 
       <TourControls />
 
+      <VoicesEntry />
+
       <GiftControls />
 
       <ReminderControls />
@@ -471,7 +446,7 @@ function ParentControls() {
 
       <section className="panel parent-block parent-danger">
         <h2>🧨 Full reset</h2>
-        <p className="dim">Wipes everything: progress, Star Dust, badges, coupons. Cannot be undone.</p>
+        <p className="dim">Wipes everything: progress, Star Dust, badges, coupons. Cannot be undone. Your voice recordings are kept (delete them in Voices).</p>
         {confirmReset ? (
           <div className="parent-row">
             <button className="btn btn-secondary" onClick={() => setConfirmReset(false)}>

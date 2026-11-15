@@ -35,6 +35,8 @@ export function persistSettings(get: () => GameStore): void {
     questClaimed: s.questClaimed,
     questChestDay: s.questChestDay,
     questDaysDone: s.questDaysDone,
+    voicePick: s.voicePick,
+    voiceSpeed: s.voiceSpeed,
   });
 }
 
@@ -86,6 +88,14 @@ function questSettings(s: SettingsRow | undefined) {
   };
 }
 
+/** Parent Section → Voices: chosen device voice per language and speed. */
+function voiceSettings(s: SettingsRow | undefined) {
+  return {
+    voicePick: s?.voicePick ?? {},
+    voiceSpeed: s?.voiceSpeed ?? 1,
+  };
+}
+
 /** Stored settings row → state slice, with all defaults in one place. */
 export function settingsState(settings: SettingsRow | undefined) {
   return {
@@ -93,6 +103,7 @@ export function settingsState(settings: SettingsRow | undefined) {
     ...giftSettings(settings),
     ...tourSettings(settings),
     ...questSettings(settings),
+    ...voiceSettings(settings),
     enabledWorlds: withWorldDefaults(settings?.enabledWorlds),
     hiddenWorlds: settings?.hiddenWorlds ?? {},
     recentWorlds: settings?.recentWorlds ?? [],

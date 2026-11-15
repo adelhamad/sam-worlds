@@ -7,6 +7,7 @@ import { Hub } from "./ui/Hub";
 import { Universe } from "./ui/Universe";
 import { PlayRoute, WorldRoute } from "./modules/tour/TourRedirects";
 import { ParentSection } from "./ui/ParentSection";
+import { ParentAutoLock } from "./ui/ParentGate";
 import { VideoCompanion } from "./ui/VideoCompanion";
 import { TourPath } from "./modules/tour/TourPath";
 import { TourLesson } from "./modules/tour/TourLesson";
@@ -16,9 +17,13 @@ const PogoLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/Pogo
 const ExerciseLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/ExerciseLab")) : null;
 const ChessLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/ChessLab")) : null;
 const KitLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/KitLab")) : null;
+const LangLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/LangLab")) : null;
 const CodeLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/CodeLab")) : null;
 const TickLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/TickLab")) : null;
 const IconLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/IconLab")) : null;
+// Parent Section → Voices (device voice + the parent's recordings), loaded on demand.
+const VoicesPage = lazy(() => import("./ui/voices/VoicesPage").then((m) => ({ default: m.VoicesPage })));
+const WriteLab = import.meta.env.DEV ? lazy(() => import("./modules/tour/dev/WriteLab")) : null;
 
 /** Each screen starts at the top — no inherited scroll position. */
 function ScrollToTop() {
@@ -49,6 +54,7 @@ function BlockBrowserNav() {
 }
 import { STR } from "./strings/en";
 import { unlockAudio } from "./engine/feedback/audio";
+import { loadClipIndex, primeClips } from "./engine/feedback/clips";
 import { startMusic } from "./engine/feedback/music";
 import { keepScreenAwake } from "./engine/wakeLock";
 import { armReminders } from "./engine/notify/reminders";
@@ -64,6 +70,8 @@ export default function App() {
       if (useGame.getState().remindersOn) void armReminders(Date.now());
     });
     keepScreenAwake();
+    // The parent's recordings: know which exist before any lesson asks.
+    void loadClipIndex();
   }, [hydrate]);
 
   // Native feel: no long-press context menus anywhere.
@@ -71,6 +79,15 @@ export default function App() {
     const onContextMenu = (e: Event) => e.preventDefault();
     window.addEventListener("contextmenu", onContextMenu);
     return () => window.removeEventListener("contextmenu", onContextMenu);
+  }, []);
+
+  // The parent's recordings play through one <audio> element, which iOS only
+  // lets play on its own after it has played inside a tap. A touch's
+  // pointerdown is not such a tap; a click is. (Stops once primed.)
+  useEffect(() => {
+    const onClick = () => primeClips();
+    window.addEventListener("click", onClick, true);
+    return () => window.removeEventListener("click", onClick, true);
   }, []);
 
   // First tap anywhere unlocks audio and starts the background loop.
@@ -97,6 +114,7 @@ export default function App() {
     <HashRouter>
       <ScrollToTop />
       <BlockBrowserNav />
+      <ParentAutoLock />
       <VideoCompanion />
       <Routes>
         <Route path="/" element={<TitleScreen />} />
@@ -110,9 +128,11 @@ export default function App() {
           <Route key={`${course.path}/lesson`} path={`${course.path}/lesson/:stageId`} element={<TourLesson />} />,
         ])}
         {KitLab && <Route path="/tour/lab/kit" element={<Suspense fallback={null}><KitLab /></Suspense>} />}
+        {LangLab && <Route path="/tour/lab/lang" element={<Suspense fallback={null}><LangLab /></Suspense>} />}
         {CodeLab && <Route path="/tour/lab/code" element={<Suspense fallback={null}><CodeLab /></Suspense>} />}
         {TickLab && <Route path="/tour/lab/tick" element={<Suspense fallback={null}><TickLab /></Suspense>} />}
         {IconLab && <Route path="/tour/lab/icons" element={<Suspense fallback={null}><IconLab /></Suspense>} />}
+        {WriteLab && <Route path="/tour/lab/write" element={<Suspense fallback={null}><WriteLab /></Suspense>} />}
         {ChessLab && <Route path="/tour/lab/chess" element={<Suspense fallback={null}><ChessLab /></Suspense>} />}
         {PogoLab && ExerciseLab && (
           <>
@@ -121,6 +141,7 @@ export default function App() {
           </>
         )}
         <Route path="/parent" element={<ParentSection />} />
+        <Route path="/parent/voices" element={<Suspense fallback={null}><VoicesPage /></Suspense>} />
       </Routes>
     </HashRouter>
   );

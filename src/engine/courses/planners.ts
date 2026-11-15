@@ -9,6 +9,7 @@ import { generateChess, planChessLesson } from "../chess/planner";
 import { chessSessionParams } from "../chess/sessionParams";
 import { codeSessionParams, generateCode, planCodeLesson } from "../code/planner";
 import { generateKit, kitSessionParams, planKitLesson } from "../kit/planner";
+import { generateLang, langSessionParams, planLangLesson } from "../lang/planner";
 import { generateTick, planTickLesson, tickSessionParams } from "../tick/planner";
 import { generateTour, planTourLesson } from "../tour/planner";
 import { tourSessionParams } from "../tour/sessionParams";
@@ -39,6 +40,7 @@ export const COURSE_PLANNERS = {
   kit: planner(planKitLesson, generateKit, kitSessionParams),
   code: planner(planCodeLesson, generateCode, codeSessionParams),
   tick: planner(planTickLesson, generateTick, tickSessionParams),
+  lang: planner(planLangLesson, generateLang, langSessionParams),
 } satisfies Record<string, CoursePlanner>;
 
 export type CourseGeneratorId = keyof typeof COURSE_PLANNERS;

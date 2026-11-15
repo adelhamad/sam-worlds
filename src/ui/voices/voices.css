@@ -1,0 +1,98 @@
+/* Parent Section → Voices. Builds on the Parent Section look in index.css
+   (.panel, .parent-block, .parent-row, .btn-compact); prefixed `vx-`. Phone
+   first; every control at least 48 px tall. */
+@import "@fontsource-variable/noto-sans-arabic";
+
+.vx-page { gap: 14px; padding-bottom: 40px; }
+.vx-page p { margin: 0; line-height: 1.4; }
+.vx-page .btn-compact { min-height: 48px; }
+.vx-page .hub-header .btn { min-height: 48px; }
+
+.vx-tabs { display: flex; gap: 10px; flex-wrap: wrap; }
+.vx-tab { flex: 1 1 140px; min-height: 52px; font-size: 1rem; }
+.vx-tab small { font-weight: 600; opacity: 0.8; }
+
+.vx-why { gap: 6px; }
+.vx-why p:first-child { font-weight: 700; }
+
+.vx-current { justify-content: space-between; flex-wrap: nowrap; }
+.vx-current .parent-world-name { overflow-wrap: anywhere; }
+.vx-field { display: flex; flex-direction: column; gap: 6px; }
+.vx-field-label { font-weight: 700; color: var(--text-dim); font-size: 0.9rem; }
+.vx-select { width: 100%; min-height: 48px; font-size: 16px; }
+.vx-howto {
+  display: flex; flex-direction: column; gap: 6px;
+  border: 2px dashed var(--panel-edge); border-radius: 14px; padding: 12px 14px;
+}
+.vx-problem { color: var(--amber); font-weight: 700; }
+
+.vx-total { font-weight: 800; }
+
+/* ---------- groups (one per unit, plus letters) ---------- */
+.vx-group { border-top: 1px solid rgba(36, 64, 122, 0.6); padding-top: 10px; }
+.vx-group-head { display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.vx-group.is-complete .parent-world-count { color: var(--good); }
+.vx-group-body { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+
+/* ---------- one phrase ---------- */
+.vx-row {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 6px 10px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(6, 15, 36, 0.45);
+  border: 2px solid transparent;
+}
+.vx-row.is-recorded { border-color: rgba(52, 211, 153, 0.45); }
+.vx-row .vx-ctrls { grid-column: 1 / -1; display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+@media (min-width: 640px) {
+  .vx-row { grid-template-columns: 30px minmax(0, 1fr) auto; }
+  .vx-row .vx-ctrls { grid-column: auto; }
+}
+.vx-mark {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 2px solid var(--panel-edge);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--night-deep);
+}
+.vx-mark.is-on { background: var(--good); border-color: var(--good); }
+.vx-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.vx-item { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.vx-text { font-size: 1.15rem; font-weight: 800; overflow-wrap: anywhere; }
+.vx-text:lang(ar) {
+  font-family: "Noto Sans Arabic Variable", "Geeza Pro", "Noto Sans Arabic", system-ui, sans-serif;
+  font-size: 1.35rem; line-height: 1.5; font-weight: 700;
+}
+.vx-text.is-letter { font-size: 1.8rem; }
+.vx-roman { font-weight: 700; color: var(--amber); font-size: 0.95rem; }
+.vx-en { color: var(--text-dim); font-size: 0.95rem; }
+.vx-rec-on { font-variant-numeric: tabular-nums; }
+.vx-del { color: var(--text-dim); }
+
+.vx-confirm {
+  display: flex; flex-direction: column; gap: 8px;
+  border: 2px solid #7f1d1d; border-radius: 14px; padding: 10px 12px;
+}
+
+/* ---------- in a row ---------- */
+.vx-inarow { background: var(--night-deep); }
+.vx-inarow-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.vx-inarow-head h2 { margin: 0; font-size: 1.1rem; }
+.vx-inarow-count { color: var(--text-dim); font-weight: 700; }
+.vx-inarow-card {
+  border: 2px solid var(--panel-edge); border-radius: 18px; padding: 22px 16px;
+  text-align: center; display: flex; justify-content: center;
+}
+.vx-inarow-card.is-recorded { border-color: rgba(52, 211, 153, 0.6); }
+.vx-item.is-big { align-items: center; gap: 6px; }
+.vx-item.is-big .vx-text { font-size: 2rem; }
+.vx-item.is-big .vx-text:lang(ar) { font-size: 2.4rem; }
+.vx-item.is-big .vx-text.is-letter { font-size: 3.4rem; }
+.vx-item.is-big .vx-roman { font-size: 1.2rem; }
+.vx-item.is-big .vx-en { font-size: 1.1rem; }
+.vx-row-choices { justify-content: center; }
+.vx-big-btn { min-height: 56px; flex: 1 1 120px; }
+.vx-row-finished { font-weight: 800; text-align: center; padding: 16px 0; }

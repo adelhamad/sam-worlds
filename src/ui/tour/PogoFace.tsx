@@ -32,12 +32,15 @@ function OpenEye({ x, side, fill, lid, watery }: EyePaint & { x: number; side: "
   return (
     <Pivot x={x} y={EYE_Y} className={`pg-eye pg-eye-${side}`}>
       <ellipse cx={x} cy={EYE_Y} rx={20} ry={23} fill={fill} />
-      <Pivot x={px} y={EYE_Y + 1} className="pg-pupil">
-        <circle cx={px} cy={EYE_Y + 1} r={12.5} fill={INK} />
-        <ellipse cx={px} cy={EYE_Y + 8} rx={7.5} ry={3.6} fill="#7a5cff" opacity={0.65} />
-        <circle cx={px - 4.5} cy={EYE_Y - 4} r={4.8} fill="#fff" />
-        <circle cx={px + 4.8} cy={EYE_Y + 5.5} r={2.1} fill="#fff" opacity={0.9} />
-      </Pivot>
+      {/* pg-gaze follows the child's finger (CSS variables), pg-pupil acts the mood */}
+      <g className="pg-gaze">
+        <Pivot x={px} y={EYE_Y + 1} className="pg-pupil">
+          <circle cx={px} cy={EYE_Y + 1} r={12.5} fill={INK} />
+          <ellipse cx={px} cy={EYE_Y + 8} rx={7.5} ry={3.6} fill="#7a5cff" opacity={0.65} />
+          <circle cx={px - 4.5} cy={EYE_Y - 4} r={4.8} fill="#fff" />
+          <circle cx={px + 4.8} cy={EYE_Y + 5.5} r={2.1} fill="#fff" opacity={0.9} />
+        </Pivot>
+      </g>
       {watery && <path className="pg-water" d={`M${x - 16} ${EYE_Y + 11} Q${x} ${EYE_Y + 4} ${x + 16} ${EYE_Y + 11} Q${x + 10} ${EYE_Y + 23} ${x} ${EYE_Y + 23} Q${x - 10} ${EYE_Y + 23} ${x - 16} ${EYE_Y + 11} Z`} fill="#bfe8ff" opacity={0.8} />}
       <Pivot x={x} y={EYE_Y - 24} className="pg-lid">
         <ellipse cx={x} cy={EYE_Y} rx={21} ry={24} fill={lid} />
@@ -113,6 +116,9 @@ const BROWS: Record<BrowKind, [string, string]> = {
   sad: ["M77 87 Q90 80 105 73", "M163 87 Q150 80 135 73"],
   high: ["M79 74 Q92 66 105 73", "M135 73 Q148 66 161 74"],
   bold: ["M77 73 Q92 76 106 85", "M163 73 Q148 76 134 85"],
+  level: ["M79 85 Q92 82 105 85", "M135 85 Q148 82 161 85"],
+  worry: ["M78 89 Q95 86 108 70", "M162 89 Q145 86 132 70"],
+  firm: ["M79 79 Q93 80 106 87", "M161 79 Q147 80 134 87"],
 };
 
 export function Brows({ kind }: { kind: BrowKind }) {
@@ -163,6 +169,31 @@ export function MouthShape({ kind, clip, grinClip }: { kind: MouthKind; clip: st
       );
     case "snooze":
       return <ellipse cx={120} cy={147} rx={5.5} ry={5} fill={MOUTH} />;
+    case "flat":
+      return <path d="M108 147 Q120 151 132 146" fill="none" stroke={INK} strokeWidth={5} strokeLinecap="round" />;
+    case "tongue":
+      return (
+        <g>
+          <path d="M122 147 Q122 158 128.5 158 Q135 158 134.5 145.5 Z" fill={TONGUE} />
+          <path d="M106 146 Q119 151 133 145" fill="none" stroke={INK} strokeWidth={5} strokeLinecap="round" />
+        </g>
+      );
+    case "bite":
+      return (
+        <g>
+          <path d="M102 152 q4.5 -6 9 0 t9 0 t9 0 t9 0" fill="none" stroke={INK} strokeWidth={4.6} strokeLinecap="round" strokeLinejoin="round" />
+          <rect x={114.5} y={145} width={11} height={8} rx={2.5} fill="#fff" stroke={INK} strokeWidth={2} />
+        </g>
+      );
+    case "phew":
+      return <ellipse cx={127} cy={149} rx={7.5} ry={6.5} fill={MOUTH} />;
+    case "smug":
+      return (
+        <g fill="none" stroke={INK} strokeWidth={5} strokeLinecap="round">
+          <path d="M103 141 Q121 159 138 137" />
+          <path d="M135.5 134 Q141 136 140.5 141.5" strokeWidth={3.6} />
+        </g>
+      );
     default:
       return <path d="M107 141 Q120 156 133 141" fill="none" stroke={INK} strokeWidth={5} strokeLinecap="round" />;
   }

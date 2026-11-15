@@ -24,7 +24,7 @@ export interface CourseUnit {
 }
 
 /** Shelf a course sits on at home (the home groups courses once there are many). */
-export type CourseSubject = "explore" | "think" | "create";
+export type CourseSubject = "explore" | "think" | "create" | "languages";
 
 export interface Course {
   /** Short permanent id; also the prefix of its stage ids (`<id>-u01-l1`). */
