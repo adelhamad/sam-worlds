@@ -1,6 +1,7 @@
 // Static checks of a language course as its authors wrote it — the rules of
 // docs/LANGUAGES.md. Used by audit-lang.ts.
 import type { LangCourseSeed, LangLessonSeed, LangUnitPack } from "../src/content/langCourse";
+import { ARABIC_LETTERS } from "../src/content/arabic/letters";
 import type { Phrase, Scene } from "../src/engine/lang/types";
 
 const KEBAB = /^[a-z0-9]+(-[a-z0-9]+)*$/;
@@ -146,5 +147,8 @@ export function checkSeed(seed: LangCourseSeed, failures: string[]): boolean {
   const walk: Walk = { seed, byId: checkPhrases(seed, failures), taught: new Set(), failures };
   const sceneIds = new Set<string>();
   for (const pack of seed.packs) checkPack(walk, pack, sceneIds);
+  for (const letter of seed.lang === "ar" ? seed.letters ?? [] : []) {
+    if (!ARABIC_LETTERS.some((item) => item.char === letter.char)) failures.push(`${seed.id}: letter "${letter.char}" has no stroke data to trace`);
+  }
   return failures.length === before;
 }

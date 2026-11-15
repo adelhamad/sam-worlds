@@ -3,7 +3,9 @@
 import { langPayload } from "../../../engine/lang/types";
 import { LANG } from "../../../strings/lang";
 import type { TeachProps } from "../exercises/contract";
+import { TraceCanvas } from "../../../ui/write/TraceCanvas";
 import { MeaningFace, PhraseFace, Speaker } from "./LangFaces";
+import { glyphOf } from "./glyphs";
 import { useVoice } from "./useVoice";
 
 export function LangTeach({ question }: TeachProps) {
@@ -11,6 +13,16 @@ export function LangTeach({ question }: TeachProps) {
   const { ready, say } = useVoice(payload?.lang ?? "ar");
   if (!payload) return null;
   const { model, lang } = payload;
+  const glyph = payload.tour === "lang-trace" ? glyphOf(payload.letter.char) : null;
+  if (glyph) {
+    // A missed letter: watch it being written, stroke by stroke.
+    return (
+      <div className="lx lx-teach" data-testid="lang-teach">
+        <TraceCanvas glyph={glyph} disabled maxSize={230} />
+        <p className="lx-teach-line">{payload.explain}</p>
+      </div>
+    );
+  }
   return (
     <div className="lx lx-teach" data-testid="lang-teach">
       <div className="lx-teach-card">

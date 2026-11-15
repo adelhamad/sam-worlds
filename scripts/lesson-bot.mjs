@@ -99,6 +99,18 @@ const session = () => page.evaluate(() => {
   return s ? { index: s.index, total: s.questions.length, question: s.questions[s.index], result: s.result } : null;
 });
 
+/** Midpoints added, so a simulated finger moves in small steps. */
+const dense = (points) => points.flatMap((point, i) => (i === 0 ? [point] : [[(points[i - 1][0] + point[0]) / 2, (points[i - 1][1] + point[1]) / 2], point]));
+
+/** Drag a finger over the tracing canvas along design-box points. */
+async function dragFinger(points, box) {
+  const rect = await page.$eval("[data-testid=write-ink]", (el) => { const r = el.getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width }; });
+  const at = ([x, y]) => [rect.x + (x * rect.w) / box, rect.y + (y * rect.w) / box];
+  await page.touchscreen.touchStart(...at(points[0]));
+  for (const point of points.slice(1)) await page.touchscreen.touchMove(...at(point));
+  await page.touchscreen.touchEnd();
+}
+
 // ------------------------------------------------------------- solvers
 
 /** Indices of `tiles` that spell `target` when joined (depth-first). */
@@ -180,7 +192,16 @@ const SOLVERS = {
       await sleep(160);
     }
   },
-  "lang-trace": async () => { await tid("lang-trace-done"); await sleep(400); },
+  "lang-trace": async (q, p) => {
+    // Wait for the "watch" demo, then write every stroke with a (steady) finger.
+    for (let i = 0; i < 80 && (await page.evaluate(() => document.querySelector("[data-testid=trace-canvas]")?.dataset.watching)) !== "0"; i++) await sleep(250);
+    const glyph = await page.evaluate(async (char) => (await import("/src/content/arabic/letters.ts")).ARABIC_LETTERS.find((letter) => letter.char === char).glyph, p.letter.char);
+    for (const stroke of glyph.strokes) {
+      await dragFinger(stroke.kind === "dot" ? stroke.points : dense(stroke.points), glyph.box);
+      await sleep(450);
+    }
+    await sleep(700);
+  },
   // ---- course kit
   "kit-pick": async (q) => tid(`kit-opt-${q.answer}`),
   "kit-number": async (q) => { for (const digit of q.answer) { await tid(`num-${digit}`); await sleep(120); } },
