@@ -3,6 +3,7 @@
 // checks every question the planner makes from it (audit-lang-question.ts).
 // Run alone (`bun scripts/audit-lang.ts [courseId]`) or through audit-questions.ts.
 import { defineLangCourse, langParams } from "../src/content/langCourse";
+import { isFresh, kitKeys } from "../src/engine/kit/sample";
 import { LANG_SEEDS } from "../src/content/langCourses";
 import { lessonTasks, planLangLesson, langSessionParams } from "../src/engine/lang/planner";
 import { langPayload, type LangParams, type LangPayload } from "../src/engine/lang/types";
@@ -40,6 +41,7 @@ function checkReplacement(run: Run, question: Question, seed: number, seen: Set<
   run.stats.replacements += 1;
   if (!nextPayload) run.failures.push(`${run.where}: replacement is not a lang question`);
   else if (nextPayload.task !== payload.task) run.failures.push(`${run.where}: replacement of ${payload.task} is ${nextPayload.task}`);
+  else if (!isFresh(next, seen)) run.failures.push(`${run.where}: the replacement of ${payload.task} repeats a question of the lesson`);
   else run.failures.push(...checkQuestion(`${run.where} replacement ${nextPayload.task}`, next, nextPayload, run.params));
 }
 
@@ -57,7 +59,8 @@ function checkOnePlan(run: Run, plan: Question[], count: number, seed: number): 
     used[payload.task] = (used[payload.task] ?? 0) + 1;
     failures.push(...checkQuestion(`${where} ${payload.task}`, question, payload, params));
     shownIn(payload).forEach((id) => met.add(id));
-    seen.add(question.dedupeKey ?? question.prompt);
+    if (!isFresh(question, seen)) failures.push(`${where}: the same question twice (${question.dedupeKey})`);
+    kitKeys(question).forEach((key) => seen.add(key));
   }
   for (const phrase of params.teach) if (!met.has(phrase.id)) failures.push(`${where}: new phrase "${phrase.id}" never appears in the lesson`);
   const able = lessonTasks(params).length;

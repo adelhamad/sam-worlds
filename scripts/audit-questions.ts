@@ -8,13 +8,14 @@ import { auditTour } from "./audit-tour";
 import { auditChess } from "./audit-chess";
 import { auditMotivators } from "./audit-motivators";
 import { auditKit } from "./audit-kit";
+import { auditLang } from "./audit-lang";
 import { auditCode } from "./audit-code";
 import { auditTick } from "./audit-tick";
 import { auditIcons } from "./audit-icons";
 import { auditPush } from "./audit-push";
 
 const SEEDS = [1, 3, 7, 37, 101, 509, 1009, 12345, 54321, 99991];
-const failures: string[] = [...auditTraits(), ...auditTour(), ...auditChess(), ...auditKit(), ...auditCode(), ...auditTick(), ...auditMotivators(), ...auditIcons()];
+const failures: string[] = [...auditTraits(), ...auditTour(), ...auditChess(), ...auditKit(), ...auditCode(), ...auditTick(), ...auditLang(), ...auditMotivators(), ...auditIcons()];
 failures.push(...(await auditPush()));
 const stageIds = new Set<string>();
 let sessions = 0;

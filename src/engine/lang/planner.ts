@@ -5,6 +5,7 @@
 // replaces a missed one: same task, another target when there is one.
 // Everything is deterministic from the seed.
 import type { GenContext, GeneratorParams, Question } from "../generators/types";
+import { isFresh, kitKeys, subjectKey } from "../kit/sample";
 import { mulberry32, pick, shuffle, type RNG } from "../rng";
 import * as tasks from "./tasks";
 import { langPayload, type LangLessonKind, type LangParams, type LangTask, type LetterCard, type Phrase } from "./types";
@@ -76,7 +77,7 @@ interface Fill {
   env: tasks.Env;
   /** Targets each task has already asked about. */
   used: Map<LangTask, Set<string>>;
-  /** Dedupe keys already in the session. */
+  /** Identity keys (kitKeys) of every question already in the session. */
   seen: Set<string>;
   /** How often each letter has been traced. */
   traced: Map<string, number>;
@@ -158,7 +159,19 @@ function buildOne(fill: Fill, task: LangTask, avoid?: string): Question | null {
   return tasks[task](env, phrase);
 }
 
-/** A question of `task` the session has not seen; after a few tries, any question of the lesson. */
+/**
+ * The same thing asked once more, when the lesson has truly run out of new
+ * things for the task (two letters, ten questions): a numbered subject and a
+ * `round` in the payload, so it is a question of its own and never a repeat.
+ */
+function again(question: Question, seen: ReadonlySet<string>): Question {
+  const base = (question.dedupeKey ?? question.prompt).replace(/#\d+$/, "");
+  let round = 2;
+  while (seen.has(subjectKey(`${base}#${round}`))) round++;
+  return { ...question, dedupeKey: `${base}#${round}`, payload: { ...question.payload, round } };
+}
+
+/** A question of `task` the session has not seen; when the task has run dry, the same thing once more. */
 function fresh(fill: Fill, task: LangTask, avoid?: string): Question {
   let fallback: Question | null = null;
   const order = [task, ...shuffle(fill.env.rng, lessonTasks(fill.env.params).filter((other) => other !== task))];
@@ -167,12 +180,12 @@ function fresh(fill: Fill, task: LangTask, avoid?: string): Question {
       const question = buildOne(fill, candidate, avoid);
       if (!question) continue; // this target had too few fair options: try another
       fallback ??= question;
-      if (!fill.seen.has(question.dedupeKey ?? question.prompt)) return question;
+      if (isFresh(question, fill.seen)) return question;
     }
-    if (fallback && candidate === task) return fallback; // same task, a repeat: better than another task
+    if (fallback && candidate === task) return again(fallback, fill.seen); // same task once more beats another task
   }
   if (!fallback) throw new Error("lang: this lesson has nothing to ask (no phrases, scenes or letters)");
-  return fallback;
+  return again(fallback, fill.seen);
 }
 
 function newFill(params: LangParams, rng: RNG, ctx: GenContext, seen: Iterable<string>): Fill {
@@ -206,7 +219,7 @@ export function planLangLesson(
       // Lessons warm up and then stretch.
       fill.env.ctx = { ...ctx, difficulty: Math.min(1, Math.max(0, ctx.difficulty + 0.3 * (index / Math.max(1, count - 1) - 0.5))) };
       const question = fresh(fill, task);
-      fill.seen.add(question.dedupeKey ?? question.prompt);
+      kitKeys(question).forEach((key) => fill.seen.add(key));
       shownIn(question).forEach((id) => fill.met.add(id));
       return question;
     });

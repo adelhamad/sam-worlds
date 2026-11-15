@@ -144,6 +144,8 @@ interface LangBase {
   explain: string;
   /** The phrase's own tip, shown under it. */
   tip?: string;
+  /** Set when the lesson asks the same thing once more (2 = the second time). */
+  round?: number;
 }
 
 /** Tap the one right card. answer = the right option's id. */
