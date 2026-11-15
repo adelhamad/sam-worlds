@@ -7,7 +7,8 @@ import { LANG } from "../../strings/lang";
 import { buildAnswer, lettersOf, pairsAnswer } from "./answers";
 import { letterCard, otherLetters, others, phraseCard } from "./cards";
 import {
-  TRACED, type LangCard, type LangParams, type LangPayload, type LangTask, type LangTile, type LetterCard, type Phrase, type Scene,
+  TRACED, type LangCard, type LangParams, type LangPayload, type LangTask, type LangTile, type LetterCard, type Phrase,
+  type PhraseWord, type Scene,
 } from "./types";
 
 export interface Env {
@@ -101,17 +102,28 @@ function scramble(rng: RNG, tiles: LangTile[], right: string[]): LangTile[] {
   return shuffle(rng, tiles);
 }
 
+/**
+ * A phrase's words as tiles. A capital on the first word would give the order
+ * away, so French sentences start lower-case on the tiles (Arabic has no capitals).
+ */
+function tileWords(phrase: Phrase, lang: LangParams["lang"]): PhraseWord[] {
+  const words = phrase.words ?? [{ text: phrase.text, roman: phrase.roman }];
+  if (lang !== "fr") return words;
+  return words.map((word, i) => (i === 0 ? { ...word, text: word.text.charAt(0).toLowerCase() + word.text.slice(1) } : word));
+}
+
 /** Phrases with words to put in order. */
 export function buildable(pool: Phrase[]): Phrase[] {
   return pool.filter((phrase) => (phrase.words?.length ?? 0) >= 2);
 }
 
 export function build(env: Env, phrase: Phrase): Question | null {
-  const words = phrase.words ?? [];
-  if (words.length < 2) return null;
-  const used = new Set(words.map((word) => word.text));
-  const spare = shuffle(env.rng, env.pool.flatMap((other) => other.words ?? [{ text: other.text, roman: other.roman }]))
-    .filter((word) => !used.has(word.text) && !/\s/.test(word.text));
+  if ((phrase.words?.length ?? 0) < 2) return null;
+  const { lang } = env.params;
+  const words = tileWords(phrase, lang);
+  const used = new Set(words.map((word) => word.text.toLowerCase()));
+  const spare = shuffle(env.rng, env.pool.flatMap((other) => tileWords(other, lang)))
+    .filter((word) => !used.has(word.text.toLowerCase()) && !/\s/.test(word.text));
   const decoys: typeof spare = [];
   const wanted = env.ctx.easier ? 0 : 1 + Number(env.ctx.difficulty > 0.6);
   for (const word of spare) {
@@ -127,7 +139,8 @@ export function build(env: Env, phrase: Phrase): Question | null {
 }
 
 export function spell(env: Env, phrase: Phrase): Question | null {
-  const letters = lettersOf(phrase.text);
+  // Lower-case tiles: a capital would give the first letter away.
+  const letters = lettersOf(phrase.text.toLowerCase());
   if (letters.length < 2) return null;
   const inWord = new Set(letters.map((letter) => letter.toLowerCase()));
   const source = env.params.alphabet.length
