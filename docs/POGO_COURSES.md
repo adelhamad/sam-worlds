@@ -1,4 +1,4 @@
-# Pogo's courses — World Tour, Chess Camp, Code Lab, Tick Tock
+# Pogo's courses — World Tour, Chess Camp, Code Lab, Tick Tock, Yalla Arabic, Bonjour French
 
 Duolingo-style lesson paths that sit next to the existing worlds (nothing was removed).
 **Pogo**, a small alien from Sam's base, is the mascot of all of them:
@@ -73,6 +73,43 @@ Chess specifics: boards are 4–6 squares wide so every square stays a comfortab
 target on a phone; the child always plays White from the bottom; Black never moves inside
 a puzzle; no castling or en passant yet; every mission's move budget is the fewest moves
 that solve it (the audit re-solves each one).
+
+## The language courses
+
+**Yalla Arabic** (spoken Levantine Arabic, `/arabic`) and **Bonjour French** (`/french`)
+sit on their own **Languages** shelf at home. They are data: unit files of phrases a
+child really says, real-life scenes ("Teta gives you a cookie — what do you say?") and,
+for Arabic, the alphabet to read and write. Authoring guide, the Latin spelling scheme
+for Arabic and both syllabuses: `docs/LANGUAGES.md`.
+
+| Piece | Where |
+|---|---|
+| Contract, planner, answer helpers | `src/engine/lang/` (`types.ts`, `planner.ts`, `tasks.ts`, `cards.ts`, `answers.ts`) |
+| Course builder | `src/content/langCourse.ts` (`defineLangCourse`), registry `src/content/langCourses.ts` |
+| Content | `src/content/arabic/` (`course.ts`, `alphabet.ts`, `units/uNN.ts`), `src/content/french/` |
+| Widgets, opening slides, teach card, mission card | `src/modules/tour/lang/` |
+| Voices (Arabic, French) | `speakIn` / `voiceFor` in `src/engine/feedback/speech.ts`, `useVoice` |
+| Writing a letter with a finger | judge `src/engine/write/`, canvas `src/ui/write/`, strokes `src/content/arabic/strokes.gen.ts`, guide `docs/ARABIC_WRITING.md` |
+| Strings | `src/strings/lang.ts`, `src/strings/write.ts` |
+| Audit | `scripts/audit-lang.ts` (+ `-seed`, `-question`), `scripts/audit-write.ts` |
+
+Things to know before touching them:
+
+- **Ten kinds of question** come out of one lesson's data: hear → meaning, meaning →
+  phrase, read (no Latin help), match pairs, build the sentence from word tiles, a
+  real-life scene → what you say, spell a word from letter tiles (the line shows the
+  letters joined, so Arabic connects as in real writing), trace a letter, letter → sound,
+  sound → letter. The lesson kind (`words`, `talk`, `letters`, `review`) only sets the mix.
+- **The other options of a question are other phrases the child has met.** `like` on a
+  phrase and `alsoOk` on a scene keep out anything that could also be right; the audit
+  checks every planned question for it. The audit cannot judge the language itself.
+- **The voice is the device's own** (Web Speech, on-device). Arabic voices read Standard
+  Arabic, so each phrase may carry a `say` spelled as the dialect sounds. A device with
+  no voice for the language shows the words to read out loud instead — nothing breaks.
+- **Every unit ends with a real-life mission** (shown on the lesson-complete screen):
+  one thing to say to a real person today. Nothing is tracked.
+- The course's world id is `yalla`, not `arabic`: the classic Letter Garden world owns
+  `arabic` and saves refer to it.
 
 ## Pogo, the lesson's rhythm and the finish
 

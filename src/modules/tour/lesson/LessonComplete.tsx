@@ -18,6 +18,7 @@ import { TOUR } from "../../../strings/tour";
 import { FinishEntrance } from "./FinishEntrance";
 import { entranceAct, entranceOff } from "./finishActs";
 import { lessonSound } from "./lessonSound";
+import { LangMission } from "../lang/LangMission";
 import { QuestRow } from "./QuestRow";
 import { useCompact } from "./useCompact";
 
@@ -268,6 +269,7 @@ export function LessonComplete(props: LessonCompleteProps) {
           <>
             <Stats result={result} total={total} misses={misses} />
             <QuestRow stageId={stage.id} seed={seed} />
+            <LangMission stage={stage} />
             <Bonuses perfect={bonus} gift={giftDust} />
             {!result.firstTime && <p className="tl-done-note">{TOUR.lesson.replayNote}</p>}
             {focus && <Passport newStamps={newStamps} focus={focus} />}
