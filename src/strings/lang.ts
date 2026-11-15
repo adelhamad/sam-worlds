@@ -53,6 +53,10 @@ export const LANG = {
     /** Memory (LangMemory). */
     memCard: "A card. Tap to turn it over.",
     memFound: (found: number, all: number) => `${found} of ${all} pairs found`,
+    /** The chat and catch-the-word widgets. */
+    typing: (name: string) => (name ? `${name} is typing` : "Typing"),
+    sent: "Sent",
+    heardWord: "The word you hear",
   },
 
   /** The teach-first slides and the real-life mission card. */

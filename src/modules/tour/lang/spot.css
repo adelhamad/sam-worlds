@@ -1,0 +1,157 @@
+/* lang-spot — catch the word. The sentence floats as a row of round word
+   bubbles that bob gently (≤ 4 px, staggered; the rest pose is the last
+   keyframe, so reduced motion simply holds them still). The caught bubble
+   turns cyan, pops, and throws a ring of sparks. Every selector starts with
+   `.tour .tx.lx-spot`. */
+
+.tour .tx.lx-spot { gap: 14px; }
+.tour .tx.lx-spot .lxs-ear,
+.tour .tx.lx-spot .lxs-line { align-self: stretch; }
+
+/* no device voice: the word itself, on a card */
+.tour .tx.lx-spot .lxs-shown { align-self: center; min-width: 140px; gap: 2px; font-size: 28px; }
+
+/* ---------- the sentence ---------- */
+.tour .tx.lx-spot .lxs-line {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px 10px;
+  padding: 6px 0;
+}
+.tour .tx.lx-spot .lxs-bob {
+  display: inline-flex;
+  animation: lxs-bob 2.6s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * -0.55s);
+}
+.tour .tx.lx-spot .lxs-word {
+  position: relative;
+  font: inherit;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--t-ink);
+  min-height: 64px;
+  min-width: 64px;
+  box-sizing: border-box;
+  padding: 6px 18px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.1;
+  border-radius: 999px;
+  border: 2px solid var(--t-line);
+  border-bottom-width: 5px;
+  background:
+    radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.16), transparent 42%),
+    var(--t-surface-2);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease;
+}
+/* the shine of a bubble */
+.tour .tx.lx-spot .lxs-word::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 14px;
+  width: 12px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: rotate(-24deg);
+  pointer-events: none;
+}
+.tour .tx.lx-spot .lxs-word:active:not(:disabled) { transform: scale(0.94); }
+.tour .tx.lx-spot .lxs-word:disabled { cursor: default; }
+.tour .tx.lx-spot .lxs-word .lx-script.is-ar { font-size: 1.4em; line-height: 1.45; }
+.tour .tx.lx-spot .lxs-word .lx-roman { font-size: 0.72em; }
+
+/* caught */
+.tour .tx.lx-spot .lxs-word.is-caught {
+  background:
+    radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.35), transparent 42%),
+    var(--t-go);
+  border-color: var(--t-go-deep);
+  color: var(--t-go-ink);
+  animation: lxs-catch 0.4s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+.tour .tx.lx-spot .lxs-word.is-caught .lx-roman { color: #0b4452; }
+.tour .tx.lx-spot.has-catch .lxs-word:not(.is-caught) { opacity: 0.86; }
+.tour .tx.lx-spot.has-catch .lxs-bob:has(.is-caught) { animation-play-state: paused; }
+
+/* the burst: a ring and six sparks flying out from the caught bubble */
+.tour .tx.lx-spot .lxs-burst { position: absolute; inset: 0; pointer-events: none; }
+.tour .tx.lx-spot .lxs-burst::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 999px;
+  border: 3px solid var(--t-go);
+  opacity: 0;
+  animation: lxs-ring 0.5s ease-out;
+}
+.tour .tx.lx-spot .lxs-burst i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: var(--t-gold);
+  opacity: 0;
+  transform: rotate(var(--a)) translateY(0);
+  animation: lxs-spark 0.55s ease-out;
+}
+.tour .tx.lx-spot .lxs-burst i:nth-child(1) { --a: 0deg; }
+.tour .tx.lx-spot .lxs-burst i:nth-child(2) { --a: 60deg; background: var(--t-go); }
+.tour .tx.lx-spot .lxs-burst i:nth-child(3) { --a: 120deg; }
+.tour .tx.lx-spot .lxs-burst i:nth-child(4) { --a: 180deg; background: var(--t-go); }
+.tour .tx.lx-spot .lxs-burst i:nth-child(5) { --a: 240deg; }
+.tour .tx.lx-spot .lxs-burst i:nth-child(6) { --a: 300deg; background: var(--t-go); }
+
+/* the Latin spelling reads left to right, even inside an Arabic line */
+.tour .tx.lx-spot .lx-roman { direction: ltr; unicode-bidi: isolate; }
+
+@keyframes lxs-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes lxs-catch {
+  0% { transform: scale(0.88); }
+  55% { transform: scale(1.14); }
+  100% { transform: none; }
+}
+@keyframes lxs-ring {
+  0% { opacity: 0.9; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.35); }
+}
+@keyframes lxs-spark {
+  0% { opacity: 1; transform: rotate(var(--a)) translateY(-20px) scale(1); }
+  100% { opacity: 0; transform: rotate(var(--a)) translateY(-58px) scale(0.4); }
+}
+
+@media (min-width: 600px) {
+  .tour .tx.lx-spot { gap: 22px; }
+  .tour .tx.lx-spot .lxs-word { font-size: 24px; min-height: 76px; padding: 8px 24px; }
+  .tour .tx.lx-spot .lxs-line { gap: 16px 14px; }
+}
+
+/* a phone on its side: the speaker on the left, the sentence on the right */
+@media (max-height: 520px) and (min-width: 640px) {
+  .tour .tx.lx-spot {
+    display: grid;
+    grid-template-columns: minmax(0, 0.55fr) minmax(0, 1.45fr);
+    align-items: center;
+    column-gap: 16px;
+    max-width: 800px;
+  }
+  .tour .tx.lx-spot .lxs-ear { flex-direction: column; gap: 6px; padding: 0; min-height: 0; }
+  .tour .tx.lx-spot .lxs-ear .lx-speaker.is-big { width: 64px; height: 64px; border-bottom-width: 5px; }
+  .tour .tx.lx-spot .lxs-ear .lx-slow { min-height: 48px; padding: 4px 14px; font-size: 14px; }
+  .tour .tx.lx-spot .lxs-line { gap: 8px; padding: 4px 0; }
+  .tour .tx.lx-spot .lxs-word { min-height: 54px; padding: 2px 16px; font-size: 18px; }
+  .tour .tx.lx-spot .lxs-word .lx-script.is-ar { font-size: 1.3em; line-height: 1.3; }
+}
