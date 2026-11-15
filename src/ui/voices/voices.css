@@ -96,3 +96,9 @@
 .vx-row-choices { justify-content: center; }
 .vx-big-btn { min-height: 56px; flex: 1 1 120px; }
 .vx-row-finished { font-weight: 800; text-align: center; padding: 16px 0; }
+
+/* ---------- speaking practice ---------- */
+.vx-speak h2 { margin: 0; }
+.vx-speak-line { color: var(--text-dim); }
+.vx-speak .parent-row .btn { flex: 1 1 100px; }
+.vx-speak-status { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }

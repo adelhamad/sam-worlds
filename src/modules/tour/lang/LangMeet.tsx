@@ -2,6 +2,9 @@
 // one big card — its writing, how it sounds, what it means — spoken by the
 // device when the slide appears. Pogo asks the child to say it out loud. NEXT
 // walks on, the last slide says "Let's go!", and a quiet Skip starts at once.
+// With speaking practice on (Parent Section → Voices), a microphone appears
+// once the phrase has been heard: he says it, then hears the model and himself
+// (SpeakTurn). It is optional, never judged, and Next always works.
 import { useEffect, useState } from "react";
 import { letterCard, phraseCard } from "../../../engine/lang/cards";
 import type { LangCard, LangParams } from "../../../engine/lang/types";
@@ -12,11 +15,16 @@ import { LANG } from "../../../strings/lang";
 import { PogoSay } from "../../../ui/tour/Pogo";
 import { useCompact } from "../lesson/useCompact";
 import { MeaningFace, PhraseFace, Speaker } from "./LangFaces";
+import { SpeakPanel } from "./SpeakTurn";
+import { speakBusy, speakPogo } from "./speakPogo";
+import { useSpeakReady, useSpeakTurn } from "./useSpeakTurn";
 import { useVoice } from "./useVoice";
 import "../../../ui/tour/tour-base.css";
 import "./lang.css";
 
 const S = LANG.meet;
+/** The microphone shows up once the slide's phrase has (most likely) been heard. */
+const MIC_AFTER_MS = 1600;
 
 interface Slide {
   card: LangCard;
@@ -48,12 +56,24 @@ export function LangMeet({ params, onStart }: LangMeetProps) {
   const last = index >= total - 1;
   const card = slide?.card;
   const audible = canSay(card);
+  const speakOn = useSpeakReady() && audible;
+  const turn = useSpeakTurn(params.lang, speakOn ? card : null);
+  const { busy } = turn;
+  const [micFor, setMicFor] = useState(-1);
+  const live = speakOn ? speakPogo(turn.phase, turn.takes) : null;
+  const quiet = speakOn && speakBusy(turn.phase);
 
   useEffect(() => {
     if (!audible || !card) return;
-    const timer = window.setTimeout(() => say(card), 450);
+    const timer = window.setTimeout(() => { if (!busy()) say(card); }, 450);
     return () => window.clearTimeout(timer);
-  }, [audible, card, say, index]);
+  }, [audible, card, say, index, busy]);
+
+  useEffect(() => {
+    if (!speakOn) return;
+    const timer = window.setTimeout(() => setMicFor(index), MIC_AFTER_MS);
+    return () => window.clearTimeout(timer);
+  }, [speakOn, index]);
 
   const prime = () => {
     primeSpeech();
@@ -73,7 +93,7 @@ export function LangMeet({ params, onStart }: LangMeetProps) {
   return (
     <div className="tl-meet lx lx-meet" data-testid="lang-meet" data-slide={index}>
       <button type="button" className="lx-meet-skip" onClick={() => { prime(); onStart(); }} data-testid="lang-meet-skip">{S.skip}</button>
-      <PogoSay mood={index === 0 ? "wave" : undefined} size={compact ? 84 : 116} text={slide.title} />
+      <PogoSay mood={live?.mood ?? (index === 0 ? "wave" : undefined)} size={compact ? 84 : 116} text={live?.text ?? slide.title} />
       <div key={index} className="lx-meet-card">
         <PhraseFace card={slide.card} lang={params.lang} />
         <div className="lx-meet-means">
@@ -82,12 +102,13 @@ export function LangMeet({ params, onStart }: LangMeetProps) {
         {slide.tip && <p className="lx-meet-tip">{slide.tip}</p>}
         {audible
           ? (
-            <div className="lx-meet-hear">
-              <Speaker label={LANG.ui.listenAgain} onClick={() => say(slide.card)} testId="lang-meet-hear">{LANG.ui.listenAgain}</Speaker>
-              <button type="button" className="lx-slow" onClick={() => say(slide.card, true)}>{LANG.ui.slow}</button>
+            <div className={`lx-meet-hear${quiet ? " is-quiet" : ""}`}>
+              <Speaker label={LANG.ui.listenAgain} onClick={() => { setMicFor(index); say(slide.card); }} disabled={quiet} testId="lang-meet-hear">{LANG.ui.listenAgain}</Speaker>
+              <button type="button" className="lx-slow" onClick={() => say(slide.card, true)} disabled={quiet}>{LANG.ui.slow}</button>
             </div>
           )
           : <p className="lx-note">{LANG.ui.noVoice}</p>}
+        {speakOn && <SpeakPanel phase={turn.phase} takes={turn.takes} tapMic={turn.tapMic} replay={turn.replay} levelRef={turn.levelRef} waiting={micFor !== index} compact={compact} />}
       </div>
       <div className="lx-meet-foot">
         {total > 1 && (

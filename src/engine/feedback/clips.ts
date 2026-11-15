@@ -198,6 +198,40 @@ export async function playBlob(blob: Blob, slow = false): Promise<boolean> {
   return playUrl(el, blobUrl, slow);
 }
 
+/** Forget the unsaved recording: stop it if it is playing and revoke its URL
+ * (the lessons' speaking practice — the child's takes are never kept). */
+export function dropBlob(): void {
+  if (!blobUrl) return;
+  if (player && player.src === blobUrl) stopClip();
+  URL.revokeObjectURL(blobUrl);
+  blobUrl = null;
+}
+
+/**
+ * Resolves when what the shared element is playing has finished (ended,
+ * paused, failed, or something newer started) — at the latest after `maxMs`
+ * (a webm recording can report no duration, so never wait on that alone).
+ */
+export function whenPlaybackEnds(maxMs = 12000): Promise<void> {
+  const el = player;
+  if (!el || el.paused) return Promise.resolve();
+  const token = playToken;
+  return new Promise((resolve) => {
+    const events = ["ended", "pause", "error", "emptied"] as const;
+    const finish = () => {
+      window.clearTimeout(cap);
+      window.clearInterval(watch);
+      for (const name of events) el.removeEventListener(name, finish);
+      resolve();
+    };
+    for (const name of events) el.addEventListener(name, finish);
+    const watch = window.setInterval(() => {
+      if (token !== playToken || el.paused) finish();
+    }, 250);
+    const cap = window.setTimeout(finish, maxMs);
+  });
+}
+
 /** A 50 ms silent WAV (8 kHz, 8-bit mono), for priming the element inside a tap. */
 function silentWav(): string {
   const samples = 400;

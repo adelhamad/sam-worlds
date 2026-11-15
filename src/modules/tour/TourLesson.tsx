@@ -3,7 +3,7 @@
 // the session, judging, regenerate-on-miss, payouts and restore all come from
 // the store; this screen adds the rhythm: Pogo asks → CHECK → feedback sheet →
 // CONTINUE, with Star Dust banking live, a gift halfway and a cheer near the end.
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useGame, type Session } from "../../state/store";
 import { COURSES, courseOfStage, lessonPlayable, type Course } from "../../content/courses";
@@ -21,6 +21,7 @@ import type { KitSlide } from "../../engine/kit/types";
 import type { LangParams } from "../../engine/lang/types";
 import type { TickIntroKey } from "../../engine/tick/types";
 import { unlockAudio } from "../../engine/feedback/audio";
+import { releaseMic } from "../../engine/feedback/recorder";
 import { LockedScreen } from "../../ui/LockedScreen";
 import { Pogo, type PogoMood } from "../../ui/tour/Pogo";
 import { TOUR } from "../../strings/tour";
@@ -28,6 +29,8 @@ import { ChessMeet } from "./chess/ChessMeet";
 import { CodeMeet } from "./code/CodeMeet";
 import { KitMeet } from "./kit/KitMeet";
 import { LangMeet } from "./lang/LangMeet";
+import { SpeakBreak } from "./lang/SpeakBreak";
+import { speakOfferOf } from "./lang/speakOffer";
 import { TickMeet } from "./tick/TickMeet";
 import { CheerBreak } from "./lesson/CheerBreak";
 import { DustToken } from "./lesson/DustMeter";
@@ -203,12 +206,15 @@ function useDevHandle(flow: LessonFlow): void {
   }, [flow]);
 }
 
-/** The gift / the cheer, shown in place of the next question. */
+/** The gift / the cheer / the speaking break, shown in place of the next question. */
 function InterludeView({ flow }: { flow: LessonFlow }) {
   const { interlude } = flow;
   if (!interlude) return null;
   if (interlude.kind === "gift") {
     return <GiftBreak key={interlude.id} id={interlude.id} dust={interlude.dust} onOpen={flow.collectGift} onDone={flow.endInterlude} />;
+  }
+  if (interlude.kind === "speak") {
+    return <SpeakBreak key={interlude.id} id={interlude.id} lang={interlude.lang} card={interlude.card} onDone={flow.endInterlude} />;
   }
   return <CheerBreak key={interlude.id} id={interlude.id} left={interlude.left} onDone={flow.endInterlude} />;
 }
@@ -290,7 +296,8 @@ function LessonPlay({ course, stage, session, flow, meter }: LessonBodyProps & {
 function LessonBody({ course, stage, session }: LessonBodyProps) {
   const navigate = useNavigate();
   const clearSession = useGame((s) => s.clearSession);
-  const flow = useLessonFlow(stage.id);
+  const speakOffer = useMemo(() => speakOfferOf(stage), [stage]);
+  const flow = useLessonFlow(stage.id, speakOffer);
   const meter = useSessionMeter(stage, session, flow);
   useDevHandle(flow);
 
@@ -320,6 +327,8 @@ export function TourLesson() {
   const session = useGame((s) => (s.session?.stageId === stageId ? s.session : null));
   const startStage = useGame((s) => s.startStage);
   const ready = Boolean(stage) && worldEnabled && playable;
+  // Speaking practice keeps one microphone stream for the lesson: give it back on leaving.
+  useEffect(() => releaseMic, []);
 
   // Start a session unless an in-progress one for this lesson was restored.
   // (StrictMode runs this twice: the second pass finds the first one's session.)

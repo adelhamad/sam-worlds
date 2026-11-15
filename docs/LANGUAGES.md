@@ -180,6 +180,19 @@ the phrase in its roman / French form.
    They are not in the localStorage safety mirror (too big), are not synced to another
    device, and a progress reset never clears them; only the Voices page deletes them.
 
+5. **Speaking practice** (Parent Section → Voices → "Speaking practice", SettingsRow
+   `speakPractice`, **off by default**). When on, each opening slide gets a round mic
+   button once the phrase has been heard: the child taps, says it (tap to stop, or it
+   stops by itself after 4 s), then hears the model (the parent's clip, else the device
+   voice) and then his own take, back to back; Pogo is always glad. Once per lesson, about
+   a third of the way in, a speaking break (an interlude like the gift — never judged,
+   pays nothing) asks for one of the lesson's phrases. **His takes are never stored**:
+   memory only, object URL revoked when the slide or break ends. One mic stream per
+   lesson, asked for on the child's first tap and released when the lesson screen closes.
+   If the mic is refused or missing, lessons silently look as with the switch off and the
+   Voices page says why. Code: `src/engine/feedback/speakBack.ts`, `recorder.ts`,
+   `src/modules/tour/lang/useSpeakTurn.ts`, `SpeakTurn.tsx`, `SpeakBreak.tsx`.
+
 `scripts/audit-voices.ts` checks the ranking on fixture voice lists and that every phrase
 and letter of every course has a clip key that round-trips.
 
