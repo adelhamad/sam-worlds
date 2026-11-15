@@ -186,6 +186,16 @@ export async function playClip(key: string, slow = false): Promise<boolean> {
   return url ? playUrl(el, url, slow) : false;
 }
 
+/** Play a voice file the app ships with (voiceFiles.ts). Resolves false when it cannot play. */
+export async function playVoiceFile(url: string, slow = false): Promise<boolean> {
+  const el = audio();
+  if (!el) return false;
+  unlockAudio();
+  hushSpeech();
+  playToken += 1;
+  return playUrl(el, url, slow);
+}
+
 /** Play an unsaved recording (the studio's "listen before keeping"). */
 export async function playBlob(blob: Blob, slow = false): Promise<boolean> {
   const el = audio();

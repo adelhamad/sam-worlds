@@ -89,6 +89,7 @@ for Arabic and both syllabuses: `docs/LANGUAGES.md`.
 | Content | `src/content/arabic/` (`course.ts`, `alphabet.ts`, `units/uNN.ts`), `src/content/french/` |
 | Widgets, opening slides, teach card, mission card | `src/modules/tour/lang/` |
 | Voices (Arabic, French) | ranking `src/engine/feedback/voiceRank.ts`, `rankedVoices` / `voiceFor` / `speakIn` in `src/engine/feedback/speech.ts`, `useVoice` (recording first, then device voice) |
+| Shipped voice files | `public/voice/**`, index `src/content/voiceFiles.gen.json`, lookup `src/engine/feedback/voiceFiles.ts`, built by `scripts/build-voice-files.py` from `scripts/voice-manifest.ts`, audited by `scripts/audit-voice-files.ts` |
 | Parent's recorded clips | table `voiceClips` (db v3), playback `src/engine/feedback/clips.ts`, keys `clipKeys.ts`, mic `recorder.ts`, studio `src/ui/voices/` (route `/parent/voices`), strings `src/strings/voices.ts`, audit `scripts/audit-voices.ts`; guide: "How it is spoken" in `docs/LANGUAGES.md` |
 | Writing a letter with a finger | judge `src/engine/write/`, canvas `src/ui/write/`, strokes `src/content/arabic/strokes.gen.ts`, guide `docs/ARABIC_WRITING.md` |
 | Strings | `src/strings/lang.ts`, `src/strings/write.ts` |

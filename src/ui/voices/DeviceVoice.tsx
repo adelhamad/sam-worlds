@@ -56,6 +56,7 @@ export function DeviceVoice({ seed }: { seed: LangCourseSeed }) {
   return (
     <section className="panel parent-block vx-device" data-testid={`vx-device-${lang}`}>
       <h2>{S.heading}</h2>
+      <p className="vx-note">{S.lastResort}</p>
       {current ? (
         <div className="parent-row vx-current">
           <span className="parent-world-name">

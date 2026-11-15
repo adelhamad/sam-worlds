@@ -7,7 +7,8 @@
 // rest of this visit; the reason is kept here (memory only) for the Voices page.
 import type { LangCode } from "../lang/types";
 import { cardClipKey } from "./clipKeys";
-import { hasClip, playBlob, playClip, whenPlaybackEnds } from "./clips";
+import { hasClip, playBlob, playClip, playVoiceFile, whenPlaybackEnds } from "./clips";
+import { voiceFileUrl } from "./voiceFiles";
 import type { MicProblem } from "./recorder";
 import { speakInUntilDone } from "./speech";
 
@@ -53,10 +54,15 @@ export function pause(ms: number): Promise<void> {
   return new Promise((resolve) => window.setTimeout(resolve, ms));
 }
 
-/** Play the model of a card and resolve when it is over: the parent's clip, else the device voice. */
+/** Play the model of a card and resolve when it is over: the parent's clip, else the shipped voice file, else the device voice. */
 export async function playModel(lang: LangCode, card: { id: string; say: string; letter?: boolean }): Promise<boolean> {
   if (!card.say) return false;
   if (hasClip(cardClipKey(lang, card)) && (await playClip(cardClipKey(lang, card)))) {
+    await whenPlaybackEnds();
+    return true;
+  }
+  const url = voiceFileUrl(cardClipKey(lang, card));
+  if (url && (await playVoiceFile(url))) {
     await whenPlaybackEnds();
     return true;
   }

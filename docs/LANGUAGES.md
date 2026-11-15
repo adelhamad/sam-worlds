@@ -160,7 +160,35 @@ the phrase in its roman / French form.
 
 ## How it is spoken
 
-1. **The device's best voice.** `rankedVoices(lang)` in `src/engine/feedback/speech.ts`
+Three layers, best first: **the parent's own recording → the voice file the app ships
+with → the device's voice**. The middle layer is why lessons speak on every device: many
+tablets (most Android ones) have no Arabic voice at all.
+
+0. **The voice files the app ships with** (`public/voice/<lang>/*.mp3`, index
+   `src/content/voiceFiles.gen.json`, lookup `src/engine/feedback/voiceFiles.ts`): one
+   small mp3 for every phrase, every word tile and every letter name of both courses
+   (about 1,100 files, 7 MB, precached for offline use). Keys are clip keys
+   (`ar:marhaba`, `ar:letter:baa`) plus `ar:word:<the word>` for tiles.
+   - **Built by** `scripts/build-voice-files.py` from `scripts/voice-manifest.ts` (the
+     list of everything sayable). It needs `ffmpeg`, `uv` and the internet, and is run
+     by hand — the header of the script has the three commands. It only builds what is
+     missing; `--all` rebuilds everything.
+   - **Voices**: Microsoft's online neural voices through the `edge-tts` library —
+     `ar-SY-AmanyNeural` (a Syrian accent, the closest there is to the course's
+     Levantine) and `fr-FR-DeniseNeural`. `--ar ar-LB-LaylaNeural`, `ar-JO-SanaNeural`,
+     `ar-SY-LaithNeural` (a man)… switch the accent. This is a personal family app; the
+     voices' licence does not clearly cover redistribution, so replace the files (or
+     record your own) before making the app public.
+   - **Which spelling is read**: a phrase has its plain writing and often a phonetic
+     `say`. The script synthesises both, transcribes each with a speech recogniser
+     (`faster-whisper`) and keeps the take that comes out closest to the words. That is
+     a stand-in for ears, not ears: `--report` lists every clip with what was "heard".
+   - **Privacy**: a phrase that contains the child's name is never sent to the online
+     voice; it is made on the Mac with `say` (the manifest marks it `local`).
+   - **`bun run check` fails** (`scripts/audit-voice-files.ts`) when something sayable
+     has no file, so adding or rewording a phrase means running the script again.
+
+1. **The device's voice (last resort).** `rankedVoices(lang)` in `src/engine/feedback/speech.ts`
    ranks the installed voices with the pure `src/engine/feedback/voiceRank.ts`: natural
    before novelty (Apple's Eddy, Grandma, Zarvox… are listed explicitly), premium before
    enhanced before default, on-device before network, then the locale (ar-SA, ar-001,
@@ -168,9 +196,10 @@ the phrase in its roman / French form.
    slower speed. No device has a Levantine voice: the Arabic one reads Standard Arabic,
    so each phrase's `say` only approximates the dialect.
 2. **The parent's own recording wins.** When a phrase (or a letter's name) has been
-   recorded, lessons play that clip instead (`useVoice` → `src/engine/feedback/clips.ts`);
-   "slowly" plays it at 0.75 speed with the pitch kept. Without a clip and without a
-   device voice, the lesson shows the words.
+   recorded, lessons play that clip instead of the shipped file (`useVoice` →
+   `src/engine/feedback/clips.ts`); "slowly" plays either at 0.75 speed with the pitch
+   kept. On the Voices page every phrase has an **App voice** button: listen to the
+   shipped file, and record your own where it is not how your family says it.
 3. **Where the parent records:** Parent Section → **Voices** (`/parent/voices`, same
    password): per unit, record / play / delete each phrase, or "Record them in a row";
    letters have their own group. Keys: `ar:<phraseId>`, `ar:letter:<letterId>`
