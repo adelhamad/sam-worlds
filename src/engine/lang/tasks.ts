@@ -5,7 +5,7 @@ import type { GenContext, Question } from "../generators/types";
 import { shuffle, type RNG } from "../rng";
 import { LANG } from "../../strings/lang";
 import { buildAnswer, lettersOf, pairsAnswer } from "./answers";
-import { letterCard, otherLetters, others, phraseCard } from "./cards";
+import { clashes, letterCard, otherLetters, others, phraseCard } from "./cards";
 import {
   TRACED, type LangCard, type LangParams, type LangPayload, type LangTask, type LangTile, type LetterCard, type Phrase,
   type PhraseWord, type Scene,
@@ -37,11 +37,16 @@ function make(task: LangTask, target: string, prompt: string, answer: string, pa
 const spoken = (phrase: Phrase) => phrase.roman ?? phrase.text;
 
 function means(phrase: Phrase): string {
-  return phrase.tip ?? LANG.engine.means(spoken(phrase), phrase.en);
+  return LANG.engine.means(spoken(phrase), phrase.en);
 }
 
-function base(env: Env, task: LangTask, target: string, model: LangCard, explain: string) {
-  return { lang: env.params.lang, task, target, model, explain };
+/** How to say a meaning: the teach line of the "produce it" tasks. */
+function sayIt(phrase: Phrase): string {
+  return LANG.engine.sayIt(phrase.en, spoken(phrase));
+}
+
+function base(env: Env, task: LangTask, target: string, model: LangCard, explain: string, tip?: string) {
+  return { lang: env.params.lang, task, target, model, explain, ...(tip ? { tip } : {}) };
 }
 
 /** The phrase and its fair other options, shuffled — or null when there are too few. */
@@ -56,7 +61,7 @@ export function hear(env: Env, phrase: Phrase): Question | null {
   if (!options) return null;
   const card = phraseCard(phrase);
   return make("hear", phrase.id, LANG.engine.hear, phrase.id, {
-    ...base(env, "hear", phrase.id, card, means(phrase)), tour: "lang-choose",
+    ...base(env, "hear", phrase.id, card, means(phrase), phrase.tip), tour: "lang-choose",
     hero: { kind: "hear", card }, show: "meaning", options, noRoman: false,
   });
 }
@@ -66,7 +71,7 @@ export function say(env: Env, phrase: Phrase): Question | null {
   if (!options) return null;
   const card = phraseCard(phrase);
   return make("say", phrase.id, LANG.engine.say(LANG.name[env.params.lang]), phrase.id, {
-    ...base(env, "say", phrase.id, card, phrase.tip ?? LANG.engine.sayIt(phrase.en, spoken(phrase))), tour: "lang-choose",
+    ...base(env, "say", phrase.id, card, sayIt(phrase), phrase.tip), tour: "lang-choose",
     hero: { kind: "mean", card }, show: "phrase", options, noRoman: false,
   });
 }
@@ -76,7 +81,7 @@ export function read(env: Env, phrase: Phrase): Question | null {
   if (!options) return null;
   const card = phraseCard(phrase);
   return make("read", phrase.id, LANG.engine.read, phrase.id, {
-    ...base(env, "read", phrase.id, card, means(phrase)), tour: "lang-choose",
+    ...base(env, "read", phrase.id, card, means(phrase), phrase.tip), tour: "lang-choose",
     hero: { kind: "read", card }, show: "meaning", options, noRoman: true,
   });
 }
@@ -114,26 +119,49 @@ function tileWords(phrase: Phrase, lang: LangParams["lang"]): PhraseWord[] {
 
 /** Phrases with words to put in order. */
 export function buildable(pool: Phrase[]): Phrase[] {
-  return pool.filter((phrase) => (phrase.words?.length ?? 0) >= 2);
+  // Two different words at least: "shway shway" has no order to find.
+  return pool.filter((phrase) => new Set((phrase.words ?? []).map((word) => bare(word.text))).size >= 2);
+}
+
+/** A word without vowel marks, punctuation or capitals: كيفِك and كيفك are the same tile to a child. */
+function bare(text: string): string {
+  return text.toLowerCase().replace(/\p{M}/gu, "").replace(/[.!?؟,]/g, "").trim();
+}
+
+/**
+ * Words that must never be decoy tiles for `phrase`: its own words (also with
+ * other vowel marks — the girl's form of a word), and every word that is a
+ * `like` twin of one of them (shukran / yislamo), since swapping it in would
+ * build another perfectly good sentence.
+ */
+function closedWords(phrase: Phrase, words: PhraseWord[], pool: Phrase[]): Set<string> {
+  const closed = new Set(words.map((word) => bare(word.text)));
+  const twins = pool.filter((other) => !other.words && closed.has(bare(other.text)));
+  for (const twin of [phrase, ...twins]) {
+    for (const other of pool) {
+      if (other.id !== twin.id && clashes(twin, other)) (other.words ?? [{ text: other.text }]).forEach((word) => closed.add(bare(word.text)));
+    }
+  }
+  return closed;
 }
 
 export function build(env: Env, phrase: Phrase): Question | null {
-  if ((phrase.words?.length ?? 0) < 2) return null;
+  if (!buildable([phrase]).length) return null;
   const { lang } = env.params;
   const words = tileWords(phrase, lang);
-  const used = new Set(words.map((word) => word.text.toLowerCase()));
+  const closed = closedWords(phrase, words, env.pool);
   const spare = shuffle(env.rng, env.pool.flatMap((other) => tileWords(other, lang)))
-    .filter((word) => !used.has(word.text.toLowerCase()) && !/\s/.test(word.text));
+    .filter((word) => !closed.has(bare(word.text)) && !/\s/.test(word.text));
   const decoys: typeof spare = [];
   const wanted = env.ctx.easier ? 0 : 1 + Number(env.ctx.difficulty > 0.6);
   for (const word of spare) {
     if (decoys.length >= wanted) break;
-    if (!decoys.some((taken) => taken.text === word.text)) decoys.push(word);
+    if (!decoys.some((taken) => bare(taken.text) === bare(word.text))) decoys.push(word);
   }
   const right = words.map((word) => word.text);
   const tiles = [...words, ...decoys].map((word): LangTile => ({ text: word.text, say: word.text, ...(word.roman ? { roman: word.roman } : {}) }));
   return make("build", phrase.id, LANG.engine.build(LANG.name[env.params.lang]), buildAnswer(right, "word"), {
-    ...base(env, "build", phrase.id, phraseCard(phrase), phrase.tip ?? LANG.engine.sayIt(phrase.en, spoken(phrase))), tour: "lang-build",
+    ...base(env, "build", phrase.id, phraseCard(phrase), sayIt(phrase), phrase.tip), tour: "lang-build",
     unit: "word", hero: phraseCard(phrase), tiles: scramble(env.rng, tiles, right), rtl: env.params.lang === "ar",
   });
 }
@@ -150,7 +178,7 @@ export function spell(env: Env, phrase: Phrase): Question | null {
   const decoys = spare.slice(0, env.ctx.easier ? 1 : 2);
   const tiles = [...letters, ...decoys].map((text): LangTile => ({ text, say: "" }));
   return make("spell", phrase.id, LANG.engine.spell, buildAnswer(letters, "letter"), {
-    ...base(env, "spell", phrase.id, phraseCard(phrase), means(phrase)), tour: "lang-build",
+    ...base(env, "spell", phrase.id, phraseCard(phrase), means(phrase), phrase.tip), tour: "lang-build",
     unit: "letter", hero: phraseCard(phrase), tiles: scramble(env.rng, tiles, letters), rtl: env.params.lang === "ar",
   });
 }
@@ -168,7 +196,7 @@ export function scene(env: Env, moment: Scene): Question | null {
   const options = optionsFor(env, right, [...replies.slice(1), ...fine, ...(line ? [line] : [])]);
   if (!options) return null;
   return make("scene", moment.id, LANG.engine.scene, right.id, {
-    ...base(env, "scene", moment.id, phraseCard(right), right.tip ?? LANG.engine.means(spoken(right), right.en)), tour: "lang-choose",
+    ...base(env, "scene", moment.id, phraseCard(right), means(right), right.tip), tour: "lang-choose",
     hero: { kind: "scene", setup: moment.setup, ...(moment.who ? { who: moment.who } : {}), ...(line ? { line: phraseCard(line) } : {}) },
     show: "phrase", options, noRoman: false,
   });

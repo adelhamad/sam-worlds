@@ -30,13 +30,13 @@ export interface Phrase {
   roman?: string;
   /** What the voice reads, when plain `text` would be read badly (Arabic: with harakat, spelled as it sounds). */
   say?: string;
-  /** The meaning in simple English (≤ 5 words): "How are you?". */
+  /** The meaning in simple English (≤ 6 words): "How are you?". */
   en: string;
   /** A drawn icon, for things you can see (water, bread, cat). Never an emoji. */
   art?: IconName;
   /** The words of `text` in speaking order (2–5), for sentence building. Omit for single words. */
   words?: PhraseWord[];
-  /** One short tip (≤ 12 simple words) for when it is taught or missed: "To a girl, say kiifik." */
+  /** One short tip (≤ 14 simple words) for when it is taught or missed: "To a girl, say kiifik." */
   tip?: string;
   /** Ids of phrases that mean (almost) the same, or would also be a fine answer wherever this
    * one is — they are never offered as the "other" options next to it. Keep it symmetric. */
@@ -49,7 +49,7 @@ export interface Phrase {
 export interface Scene {
   /** Unique in the course, kebab-case. */
   id: string;
-  /** The moment, in simple English (≤ 12 words): "Teta gives you a cookie." */
+  /** The moment, in simple English (≤ 14 words): "Teta gives you a cookie." */
   setup: string;
   /** Who is there, e.g. { name: "Teta", art: "…" }. */
   who?: { name: string; art?: IconName };
@@ -140,8 +140,10 @@ interface LangBase {
   target: string;
   /** The right answer as a card, for the "Almost — look at this." sheet. */
   model: LangCard;
-  /** One warm line for that sheet. */
+  /** One warm line for that sheet: what it means. */
   explain: string;
+  /** The phrase's own tip, shown under it. */
+  tip?: string;
 }
 
 /** Tap the one right card. answer = the right option's id. */

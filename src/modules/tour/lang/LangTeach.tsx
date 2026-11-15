@@ -22,6 +22,7 @@ export function LangTeach({ question }: TeachProps) {
         <MeaningFace card={model} />
       </div>
       <p className="lx-teach-line">{payload.explain}</p>
+      {payload.tip && <p className="lx-teach-tip">{payload.tip}</p>}
     </div>
   );
 }
