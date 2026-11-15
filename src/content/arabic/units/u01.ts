@@ -26,9 +26,9 @@ export const U01: LangUnitPack = {
     ],
   },
   phrases: [
-    { id: "marhaba", text: "مرحبا", roman: "marHaba", say: "مَرْحَبا", en: "Hello", art: "hand", topic: "greeting", like: ["ahlein"] },
+    { id: "marhaba", text: "مرحبا", roman: "marHaba", say: "مَرْحَبا", en: "Hello", art: "hand", topic: "greeting", like: ["ahlein", "aloo", "ahla-w-sahla"] },
     {
-      id: "ahlein", text: "أهلين", roman: "ahlein", say: "أَهْلين", en: "Hi! (a warm answer)", topic: "greeting", like: ["marhaba"],
+      id: "ahlein", text: "أهلين", roman: "ahlein", say: "أَهْلين", en: "Hi! (a warm answer)", topic: "greeting", like: ["marhaba", "ahla-w-sahla", "ahlein-fiik", "ahlein-fiiki"],
       tip: "Someone says marHaba? Answer: ahlein!",
     },
     { id: "mama", text: "ماما", roman: "maama", en: "Mom", topic: "family" },
@@ -46,7 +46,7 @@ export const U01: LangUnitPack = {
       tip: "A boy says mniiH. A girl says mniiHa.",
     },
     {
-      id: "hamdilla", text: "الحمد لله", roman: "il-Hamdilla", say: "الحَمْدِ لله", en: "Thank God, I'm well", topic: "greeting", like: ["mniih", "ana-mniih"],
+      id: "hamdilla", text: "الحمد لله", roman: "il-Hamdilla", say: "الحَمْدِ لله", en: "Thank God, I'm well", topic: "greeting", like: ["mniih", "ana-mniih", "il-hamdilla-as-salaameh"],
       tip: "Grown-ups love this answer to kiifak.",
     },
     {
@@ -62,11 +62,11 @@ export const U01: LangUnitPack = {
       words: [{ text: "أنا", roman: "ana" }, { text: "منيح", roman: "mniiH" }],
     },
     {
-      id: "maa-salaameh", text: "مع السلامة", roman: "ma‘ is-salaameh", say: "مَع السَّلامة", en: "Goodbye", art: "hand", topic: "greeting", like: ["yalla-bye"],
+      id: "maa-salaameh", text: "مع السلامة", roman: "ma‘ is-salaameh", say: "مَع السَّلامة", en: "Goodbye", art: "hand", topic: "greeting", like: ["yalla-bye", "bshoofik-an-ariib"],
       words: [{ text: "مع", roman: "ma‘" }, { text: "السلامة", roman: "is-salaameh" }],
     },
     {
-      id: "yalla-bye", text: "يلا باي", roman: "yalla baay", say: "يَلّا باي", en: "OK, bye!", topic: "greeting", like: ["maa-salaameh"],
+      id: "yalla-bye", text: "يلا باي", roman: "yalla baay", say: "يَلّا باي", en: "OK, bye!", topic: "greeting", like: ["maa-salaameh", "bshoofik-an-ariib"],
       words: [{ text: "يلا", roman: "yalla" }, { text: "باي", roman: "baay" }],
     },
   ],

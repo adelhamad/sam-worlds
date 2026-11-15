@@ -27,16 +27,16 @@ export const U09: LangUnitPack = {
   phrases: [
     { id: "taa", text: "تعا", roman: "ta‘a", say: "تَعا", en: "Come here!", topic: "action", like: ["yalla"], tip: "To a girl or a woman: ta‘i." },
     { id: "rooh", text: "روح", roman: "rooH", en: "Go!", topic: "action", like: ["yalla"], tip: "To a girl or a woman: rooHi." },
-    { id: "shoof", text: "شوف", roman: "shoof", en: "Look!", topic: "action", like: ["shoofi-mama"], tip: "To a girl or a woman: shoofi." },
+    { id: "shoof", text: "شوف", roman: "shoof", en: "Look!", topic: "action", like: ["shoofi-mama", "shoof-il-bisseh"], tip: "To a girl or a woman: shoofi." },
     { id: "isma", text: "اسمع", roman: "isma‘", say: "إِسْمَع", en: "Listen!", art: "ear", topic: "action", tip: "To a girl or a woman: isma‘i." },
     {
       id: "yalla", text: "يلا", roman: "yalla", say: "يَلّا", en: "Come on! Let's go!", topic: "action", like: ["taa", "rooh", "yalla-bsura"],
       tip: "Family says yalla all day long.",
     },
-    { id: "uud", text: "اقعد", roman: "u’‘ud", say: "أُأْعُد", en: "Sit down!", topic: "action", tip: "To a girl or a woman: u’‘udi." },
+    { id: "uud", text: "اقعد", roman: "u’‘ud", say: "أُعُد", en: "Sit down!", topic: "action", tip: "To a girl or a woman: u’‘udi." },
     { id: "oom", text: "قوم", roman: "’oom", say: "أوم", en: "Stand up! Get up!", topic: "action", tip: "To a girl or a woman: ’oomi." },
     { id: "khood", text: "خود", roman: "khood", en: "Take it!", topic: "action", like: ["tfaddal"], tip: "To a girl or a woman: khudi." },
-    { id: "jiib", text: "جيب", roman: "jiib", en: "Bring it!", topic: "action", tip: "To a girl or a woman: jiibi." },
+    { id: "jiib", text: "جيب", roman: "jiib", say: "جِيب", en: "Bring it!", topic: "action", tip: "To a girl or a woman: jiibi." },
     { id: "bsura", text: "بسرعة", roman: "bsur‘a", say: "بْسُرْعة", en: "Quickly!", topic: "action", like: ["yalla-bsura"] },
     {
       id: "stanna-shway", text: "استنى شوي", roman: "stanna shway", say: "سْتَنّى شْوَيّ", en: "Wait a little!", topic: "action",
@@ -48,7 +48,7 @@ export const U09: LangUnitPack = {
       words: [{ text: "شوي", roman: "shway" }, { text: "شوي", roman: "shway" }],
     },
     {
-      id: "yalla-bsura", text: "يلا بسرعة", roman: "yalla bsur‘a", say: "يَلّا بْسُرْعة", en: "Come on, quick!", topic: "action",
+      id: "yalla-bsura", text: "يلا بسرعة", roman: "yalla bsur‘a", say: "يَلّا بْسُرْعة", en: "Let's go, quick!", topic: "action",
       like: ["yalla", "bsura"],
       words: [{ text: "يلا", roman: "yalla" }, { text: "بسرعة", roman: "bsur‘a" }],
     },

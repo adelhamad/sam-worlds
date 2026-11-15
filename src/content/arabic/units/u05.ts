@@ -40,8 +40,8 @@ export const U05: LangUnitPack = {
       words: [{ text: "ما", roman: "ma" }, { text: "بدّي", roman: "biddi" }],
       tip: "Add shukran to make it kind: ma biddi, shukran.",
     },
-    { id: "kamaan", text: "كمان", roman: "kamaan", say: "كَمان", en: "More, also", topic: "want", like: ["biddi-kamaan"] },
-    { id: "khalas", text: "خلص", roman: "khalaS", say: "خَلَص", en: "Enough! All done!", topic: "want", like: ["ana-shabaan"], tip: "Say it when you have had enough." },
+    { id: "kamaan", text: "كمان", roman: "kamaan", say: "كَمان", en: "More, also", topic: "want", like: ["biddi-kamaan", "kamaan-marra"] },
+    { id: "khalas", text: "خلص", roman: "khalaS", say: "خَلَص", en: "Enough! All done!", topic: "want", like: ["ana-shabaan", "bass-heik"], tip: "Say it when you have had enough." },
     { id: "shway", text: "شوي", roman: "shway", say: "شْوَيّ", en: "A little bit", topic: "want" },
     { id: "ktiir", text: "كتير", roman: "ktiir", say: "كْتير", en: "A lot, very", topic: "want", tip: "shukran ktiir means thank you very much." },
     {
@@ -57,10 +57,10 @@ export const U05: LangUnitPack = {
       id: "atiini-mayy-min-fadlik", text: "عطيني مي من فضلِك", roman: "‘aTiini mayy min faDlik", say: "عَطيني مَيّ مِن فَضْلِك",
       en: "Please give me water, Mom", art: "cup", topic: "want", like: ["biddi-mayy"],
       words: [{ text: "عطيني", roman: "‘aTiini" }, { text: "مي", roman: "mayy" }, { text: "من", roman: "min" }, { text: "فضلِك", roman: "faDlik" }],
-      tip: "‘aTiini means give me. To Baba: min faDlak.",
+      tip: "‘aTiini means give me. Some say a‘Tiini. To Baba: min faDlak.",
     },
     {
-      id: "biddak-mayy", text: "بدّك مي؟", roman: "biddak mayy?", say: "بِدَّك مَيّ", en: "Do you want water?", art: "cup", topic: "want",
+      id: "biddak-mayy", text: "بدّك مي؟", roman: "biddak mayy?", say: "بِدَّك مَيّ", en: "Do you want water? (boy)", art: "cup", topic: "want",
       words: [{ text: "بدّك", roman: "biddak" }, { text: "مي", roman: "mayy" }],
       tip: "Mama asks a boy this way. Answer: ee, or la’ shukran.",
     },

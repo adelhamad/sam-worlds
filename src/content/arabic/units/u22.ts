@@ -20,15 +20,15 @@ export const U22: LangUnitPack = {
       },
       {
         name: "Reading Hello", kind: "letters", letters: ["ن", "ب", "ث"], spell: ["aloo", "miin", "booseh", "bboosik"],
-        mission: "Call Teta today. Say aloo, kiifik teta? and end with bboosik.",
+        mission: "Call Teta today. Say aloo, kiifik teeta? and end with bboosik.",
       },
     ],
   },
   phrases: [
-    { id: "aloo", text: "ألو", roman: "aloo", say: "أَلو", en: "Hello? (on the phone)", topic: "phone", tip: "Pick up the phone and say: aloo?" },
+    { id: "aloo", text: "ألو", roman: "aloo", say: "أَلو", en: "Hello? (on the phone)", topic: "phone", like: ["marhaba"], tip: "Pick up the phone and say: aloo?" },
     { id: "miin", text: "مين؟", roman: "miin?", say: "مين", en: "Who?", topic: "phone", like: ["miin-mai"], tip: "miin? means who? Knock knock: miin?" },
     {
-      id: "ana-saam", text: "أنا سام", roman: "ana saam", say: "أَنا سام", en: "It's me, Sam!", topic: "phone",
+      id: "ana-saam", text: "أنا سام", roman: "ana saam", say: "أَنا سام", en: "It's me, Sam!", topic: "phone", like: ["ismi-saam"],
       words: [{ text: "أنا", roman: "ana" }, { text: "سام", roman: "saam" }],
       tip: "It's me, Sam! Say it when someone asks miin?",
     },
@@ -52,7 +52,7 @@ export const U22: LangUnitPack = {
     },
     {
       id: "bboosik", text: "ببوسِك", roman: "bboosik", say: "بْبوسِك", en: "Kisses! (to a girl)", topic: "phone", like: ["booseh"],
-      tip: "Kisses, to Teta or Mama. To Jiddo or Baba: bboosak.",
+      tip: "To Jiddo or Baba: bboosak. Many kiss Teta's hand: bboos iidik.",
     },
     {
       id: "miin-mai", text: "مين معي؟", roman: "miin ma‘i?", say: "مين مَعي", en: "Who is it? (on the phone)", topic: "phone", like: ["miin"],
@@ -67,14 +67,14 @@ export const U22: LangUnitPack = {
     },
     {
       id: "bshoofik-an-ariib", text: "بشوفِك عن قريب", roman: "bshoofik ‘an ’ariib", say: "بْشوفِك عَن أَريب", en: "See you soon! (to a girl)",
-      topic: "phone",
+      topic: "phone", like: ["maa-salaameh", "yalla-bye"],
       words: [{ text: "بشوفِك", roman: "bshoofik" }, { text: "عن", roman: "‘an" }, { text: "قريب", roman: "’ariib" }],
       tip: "See you soon! To Jiddo: bshoofak ‘an ’ariib.",
     },
   ],
   scenes: [
     { id: "u22-ring", setup: "The phone rings. You pick it up.", reply: ["aloo"], alsoOk: ["marhaba"] },
-    { id: "u22-who-is-it", setup: "You call Teta's house. A voice answers and asks:", who: { name: "Teta" }, line: "miin-mai", reply: ["ana-saam"] },
+    { id: "u22-who-is-it", setup: "You call Teta's house. A voice answers and asks:", who: { name: "Teta" }, line: "miin-mai", reply: ["ana-saam"], alsoOk: ["ana", "ismi-saam"] },
     { id: "u22-its-teta", setup: "It's Teta on the phone! Ask her how she is.", who: { name: "Teta" }, reply: ["kiifik-teeta"], alsoOk: ["kiifik"] },
     {
       id: "u22-pots-pans", setup: "You hear pots and pans behind Teta. Ask what she's up to.", who: { name: "Teta" },
@@ -82,12 +82,12 @@ export const U22: LangUnitPack = {
     },
     {
       id: "u22-soft-voice", setup: "Teta's voice goes soft. She says:", who: { name: "Teta" },
-      line: "ishtatillak", reply: ["w-ana-kamaan"], alsoOk: ["ishtatillik", "ishtatillik-ktiir"],
+      line: "ishtatillak", reply: ["w-ana-kamaan"], alsoOk: ["ishtatillik", "ishtatillik-ktiir", "bhebbik"],
     },
-    { id: "u22-screen-kiss", setup: "On the video call, Teta blows you a kiss.", who: { name: "Teta" }, reply: ["bboosik"], alsoOk: ["booseh"] },
+    { id: "u22-screen-kiss", setup: "On the video call, Teta blows you a kiss.", who: { name: "Teta" }, reply: ["bboosik"], alsoOk: ["booseh", "bhebbik"] },
     {
       id: "u22-hang-up", setup: "Time to hang up. You will visit Teta next month.", who: { name: "Teta" },
-      reply: ["bshoofik-an-ariib"], alsoOk: ["maa-salaameh", "yalla-bye", "bboosik", "booseh"],
+      reply: ["bshoofik-an-ariib"], alsoOk: ["maa-salaameh", "yalla-bye", "bboosik", "booseh", "bhebbik"],
     },
   ],
 };

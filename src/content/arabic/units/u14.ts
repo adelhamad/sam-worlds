@@ -69,15 +69,15 @@ export const U14: LangUnitPack = {
   scenes: [
     {
       id: "u14-pyjamas", setup: "School morning. You are still in pyjamas. Mama calls:", who: { name: "Mama" },
-      line: "ilbas-tyaabak", reply: ["haader"],
+      line: "ilbas-tyaabak", reply: ["haader"], alsoOk: ["ee", "aah"],
     },
-    { id: "u14-car-keys", setup: "Baba waits at the door with the car keys.", who: { name: "Baba" }, line: "ilbas-il-kundara", reply: ["haader"] },
-    { id: "u14-sweets", setup: "You ate too many sweets. Your tummy feels funny. Tell Mama.", who: { name: "Mama" }, reply: ["batni-byoojani"] },
+    { id: "u14-car-keys", setup: "Baba waits at the door with the car keys.", who: { name: "Baba" }, line: "ilbas-il-kundara", reply: ["haader"], alsoOk: ["ee", "aah", "yalla"] },
+    { id: "u14-sweets", setup: "You ate too many sweets. Your tummy feels funny. Tell Mama.", who: { name: "Mama" }, reply: ["batni-byoojani"], alsoOk: ["taabaan", "mariid"] },
     { id: "u14-sticky-hands", setup: "Your little cousin has sticky hands. Lunch is ready.", reply: ["ghassil-iideik"] },
     { id: "u14-jiddo-eye", setup: "Jiddo points at his eye. Say what it is.", who: { name: "Jiddo" }, reply: ["ein"] },
     {
       id: "u14-bare-feet", setup: "Your little brother wants to go out with bare feet!",
-      reply: ["ilbas-il-kundara"], alsoOk: ["kundara"],
+      reply: ["ilbas-il-kundara"], alsoOk: ["kundara", "la"],
     },
   ],
 };

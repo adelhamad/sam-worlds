@@ -66,7 +66,7 @@ export const U20: LangUnitPack = {
     },
     {
       id: "u20-door-jacket", setup: "You run to the door. It is freezing outside. Mama calls:", who: { name: "Mama" },
-      line: "ilbas-il-jaakeit", reply: ["haader"],
+      line: "ilbas-il-jaakeit", reply: ["haader"], alsoOk: ["ee", "aah"],
     },
     {
       id: "u20-snowball", setup: "Snowball fight! Your fingers are freezing. Tell Teta.", who: { name: "Teta" },

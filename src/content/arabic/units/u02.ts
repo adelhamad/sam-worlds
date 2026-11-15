@@ -16,18 +16,18 @@ export const U02: LangUnitPack = {
       {
         name: "Nice to Meet You", kind: "talk",
         teach: ["umrak-addeish", "umri-sab-sniin", "inta-min-wein"],
-        scenes: ["u02-cake", "u02-park-boy", "u02-park-girl", "u02-teta-friend", "u02-neighbour-age", "u02-baba-back", "u02-new-friend"],
+        scenes: ["u02-cake", "u02-park-boy", "u02-park-girl", "u02-teta-friend", "u02-great-aunt", "u02-baba-back", "u02-new-friend"],
       },
       {
         name: "Taa and Thaa", kind: "letters", letters: ["ت", "ث"], spell: ["bint"],
-        mission: "Ask Baba: ‘umrak addeish? Then tell him: ‘umri sab‘ sniin!",
+        mission: "Ask Baba: ‘umrak ’addeish? Then tell him: ‘umri sab‘ sniin!",
       },
     ],
   },
   phrases: [
     { id: "ana", text: "أنا", roman: "ana", say: "أَنا", en: "I, me", topic: "me", tip: "Who wants cake? Shout: ana!" },
     { id: "inta", text: "إنت", roman: "inta", say: "إِنْتَ", en: "You (to a boy)", topic: "me", like: ["inti"], tip: "inta is for a boy or a man." },
-    { id: "inti", text: "إنتِ", roman: "inti", say: "إِنْتِ", en: "You (to a girl)", topic: "me", like: ["inta"], tip: "inti is for a girl or a woman." },
+    { id: "inti", text: "إنتي", roman: "inti", say: "إِنْتِ", en: "You (to a girl)", topic: "me", like: ["inta"], tip: "inti is for a girl or a woman." },
     { id: "walad", text: "ولد", roman: "walad", say: "وَلَد", en: "Boy", topic: "me", tip: "ana walad means I am a boy." },
     { id: "bint", text: "بنت", roman: "bint", say: "بِنْت", en: "Girl", topic: "me", tip: "A girl says: ana bint." },
     {
@@ -41,7 +41,7 @@ export const U02: LangUnitPack = {
       tip: "Ask a girl or a woman this way.",
     },
     {
-      id: "ismi-saam", text: "اسمي سام", roman: "ismi saam", say: "إِسْمي سام", en: "My name is Sam", topic: "me",
+      id: "ismi-saam", text: "اسمي سام", roman: "ismi saam", say: "إِسْمي سام", en: "My name is Sam", topic: "me", like: ["ana-saam"],
       words: [{ text: "اسمي", roman: "ismi" }, { text: "سام", roman: "saam" }],
       tip: "ismi means my name. Then say your name.",
     },
@@ -50,17 +50,17 @@ export const U02: LangUnitPack = {
       tip: "Say mniiH, then ask back: w inta? To a girl: w inti?",
     },
     {
-      id: "umrak-addeish", text: "عمرك قدّيش؟", roman: "‘umrak addeish?", say: "عُمْرَك أَدّيش", en: "How old are you? (boy)", topic: "me", like: ["umrik-addeish"],
-      words: [{ text: "عمرك", roman: "‘umrak" }, { text: "قدّيش", roman: "addeish" }],
-      tip: "Grown-ups love to ask this. To a girl: ‘umrik addeish?",
+      id: "umrak-addeish", text: "عمرك قدّيش؟", roman: "‘umrak ’addeish?", say: "عُمْرَك أَدّيش", en: "How old are you? (boy)", topic: "me", like: ["umrik-addeish"],
+      words: [{ text: "عمرك", roman: "‘umrak" }, { text: "قدّيش", roman: "’addeish" }],
+      tip: "Grown-ups love to ask this. To a girl: ‘umrik ’addeish?",
     },
     {
       id: "umri-sab-sniin", text: "عمري سبع سنين", roman: "‘umri sab‘ sniin", say: "عُمْري سَبِع سْنين", en: "I am seven years old", topic: "me",
       words: [{ text: "عمري", roman: "‘umri" }, { text: "سبع", roman: "sab‘" }, { text: "سنين", roman: "sniin" }],
-      tip: "The answer to ‘umrak addeish?",
+      tip: "The answer to ‘umrak ’addeish?",
     },
     {
-      id: "inta-min-wein", text: "إنت من وين؟", roman: "inta min wein?", say: "إِنْتَ مِن وين", en: "Where are you from?", topic: "me",
+      id: "inta-min-wein", text: "إنت من وين؟", roman: "inta min wein?", say: "إِنْتَ مِن وين", en: "Where are you from? (boy)", topic: "me",
       words: [{ text: "إنت", roman: "inta" }, { text: "من", roman: "min" }, { text: "وين", roman: "wein" }],
       tip: "To a girl: inti min wein? Answer: ana min… and your country.",
     },
@@ -76,7 +76,7 @@ export const U02: LangUnitPack = {
       reply: ["shu-ismik"], alsoOk: ["marhaba", "ahlein", "kiifik"],
     },
     { id: "u02-teta-friend", setup: "Teta's friend smiles and asks you.", who: { name: "Teta's friend" }, line: "shu-ismak", reply: ["ismi-saam"] },
-    { id: "u02-neighbour-age", setup: "The lady next door asks you.", who: { name: "Neighbour" }, line: "umrak-addeish", reply: ["umri-sab-sniin"] },
+    { id: "u02-great-aunt", setup: "Teta's sister visits and asks you.", who: { name: "Teta's sister" }, line: "umrak-addeish", reply: ["umri-sab-sniin"] },
     {
       id: "u02-baba-back", setup: "Baba asks you. You are fine. Now ask him back!", who: { name: "Baba" },
       line: "kiifak", reply: ["w-inta"], alsoOk: ["kiifak-baba", "mniih", "ana-mniih", "hamdilla"],

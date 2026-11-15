@@ -37,7 +37,7 @@ export const U03: LangUnitPack = {
       id: "min-fadlak", text: "من فضلك", roman: "min faDlak", say: "مِن فَضْلَك", en: "Please (to a man)", topic: "polite",
       like: ["min-fadlik", "law-samaht"],
       words: [{ text: "من", roman: "min" }, { text: "فضلك", roman: "faDlak" }],
-      tip: "Ask Baba, Jiddo or a man this way.",
+      tip: "Ask Baba or Jiddo this way. Some families say iza bitriid.",
     },
     {
       id: "min-fadlik", text: "من فضلِك", roman: "min faDlik", say: "مِن فَضْلِك", en: "Please (to a woman)", topic: "polite",
@@ -46,8 +46,8 @@ export const U03: LangUnitPack = {
       tip: "Ask Mama, Teta or a woman this way.",
     },
     {
-      id: "tfaddal", text: "تفضل", roman: "tfaDDal", say: "تْفَضَّل", en: "Here you go! (to a man)", topic: "polite", like: ["khood"],
-      tip: "Say it when you give something. To a woman: tfaDDali.",
+      id: "tfaddal", text: "تفضل", roman: "tfaDDal", say: "تْفَضَّل", en: "Here you go! (to a man)", topic: "polite", like: ["khood", "foot", "tfaddal-il-masaari"],
+      tip: "Say it when you give something, or for come in. To a woman: tfaDDali.",
     },
     { id: "afwan", text: "عفوا", roman: "‘afwan", say: "عَفْواً", en: "You're welcome", topic: "polite", tip: "The answer to shukran. Some families say tikram." },
     { id: "malesh", text: "معلش", roman: "ma‘lesh", say: "مَعْلِش", en: "Never mind, it's OK", topic: "polite", tip: "Say it when someone says sorry to you." },
@@ -56,9 +56,9 @@ export const U03: LangUnitPack = {
       words: [{ text: "لأ", roman: "la’" }, { text: "شكرا", roman: "shukran" }],
     },
     {
-      id: "aasif-mama", text: "آسف ماما", roman: "aasif maama", say: "آسِف ماما", en: "Sorry, Mom", topic: "polite",
-      words: [{ text: "آسف", roman: "aasif" }, { text: "ماما", roman: "maama" }],
-      tip: "Sorry is aasif. A girl says aasfeh.",
+      id: "aasif-mama", text: "آسف ماما", roman: "aasef maama", say: "آسِف ماما", en: "Sorry, Mom", topic: "polite",
+      words: [{ text: "آسف", roman: "aasef" }, { text: "ماما", roman: "maama" }],
+      tip: "Sorry is aasef. A girl says aasfeh.",
     },
     {
       id: "law-samaht", text: "لو سمحت", roman: "law samaHt", say: "لَو سَمَحْت", en: "Excuse me (to a man)", topic: "polite",

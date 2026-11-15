@@ -20,7 +20,7 @@ export const U08: LangUnitPack = {
       },
       {
         name: "Daad and Taa", kind: "letters", letters: ["ض", "ط"], spell: ["mabsoot", "mariid"],
-        mission: "At bedtime, say bHebbik to Mama and bHebbak to Baba.",
+        mission: "At bedtime, say bHibbik to Mama and bHibbak to Baba.",
       },
     ],
   },
@@ -32,14 +32,14 @@ export const U08: LangUnitPack = {
       tip: "It also means not feeling well. A girl says ta‘baaneh.",
     },
     { id: "nasaan", text: "نعسان", roman: "na‘saan", say: "نَعْسان", en: "Sleepy", topic: "feeling", like: ["taabaan"], tip: "A girl says na‘saaneh." },
-    { id: "khaayif", text: "خايف", roman: "khaayif", say: "خايِف", en: "Scared", topic: "feeling", tip: "A girl says khaayfeh." },
+    { id: "khaayif", text: "خايف", roman: "khaayef", say: "خايِف", en: "Scared", topic: "feeling", tip: "A girl says khaayfeh." },
     { id: "mariid", text: "مريض", roman: "mariiD", say: "مَريض", en: "Sick", topic: "feeling", like: ["taabaan"], tip: "A girl says mariiDa." },
     {
-      id: "bhebbak", text: "بحبّك", roman: "bHebbak", say: "بْحِبَّك", en: "I love you (to a man)", art: "heart", topic: "feeling", like: ["bhebbik"],
+      id: "bhebbak", text: "بحبّك", roman: "bHibbak", say: "بْحِبَّك", en: "I love you (to a man)", art: "heart", topic: "feeling", like: ["bhebbik"],
       tip: "Say it to Baba or Jiddo.",
     },
     {
-      id: "bhebbik", text: "بحبِّك", roman: "bHebbik", say: "بْحِبِّك", en: "I love you (to a woman)", art: "heart", topic: "feeling", like: ["bhebbak"],
+      id: "bhebbik", text: "بحبِّك", roman: "bHibbik", say: "بْحِبِّك", en: "I love you (to a woman)", art: "heart", topic: "feeling", like: ["bhebbak"],
       tip: "Say it to Mama or Teta.",
     },
     {
@@ -55,7 +55,7 @@ export const U08: LangUnitPack = {
     {
       id: "biddi-dammeh", text: "بدّي ضمّة", roman: "biddi Dammeh", say: "بِدّي ضَمّة", en: "I want a hug", topic: "feeling",
       words: [{ text: "بدّي", roman: "biddi" }, { text: "ضمّة", roman: "Dammeh" }],
-      tip: "A hug is Dammeh. Open your arms wide!",
+      tip: "A hug is Dammeh. Some families say HuDun.",
     },
   ],
   scenes: [
