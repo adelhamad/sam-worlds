@@ -35,6 +35,7 @@ export const HOME = {
       explore: "Explore the world",
       think: "Think it through",
       create: "Make things",
+      languages: "Languages",
     },
     newTag: "NEW",
     chestReady: "Chest ready!",
